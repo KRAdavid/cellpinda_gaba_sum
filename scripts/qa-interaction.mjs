@@ -107,6 +107,12 @@ try {
   await waitForProgress('01 / 11');
   const openingPhase = await evaluate('document.querySelector(".story-sequence .is-active")?.innerText||""');
   assert('story sequence starts with everyday context', openingPhase.includes('일상 상태'), openingPhase);
+  await send('Page.navigate', {url: `${baseUrl}?card=5#story`});
+  await waitForProgress('05 / 11');
+  const gabaCard = await evaluate('({title:document.querySelector("#story-card-gaba h3")?.innerText||"",body:document.querySelector("#story-card-gaba .card-content p")?.innerText||"",visible:document.querySelector("#story-card-gaba")?.getAttribute("aria-current")==="true"})');
+  assert('GABA card defines the ingredient before product information', gabaCard.visible && gabaCard.title.includes('성분 이름') && gabaCard.body.includes('감마아미노부티르산을 줄여 부르는 이름') && gabaCard.body.includes('제품 정보는 다음 카드'), JSON.stringify(gabaCard));
+  await send('Page.navigate', {url: baseUrl});
+  await waitForProgress('01 / 11');
   await evaluate('document.querySelector(".intro-presentation-button")?.click()');
   await waitForProgress('01 / 11');
   const introPresentation = await evaluate('({presentation:!!document.querySelector(".story--presentation"),url:location.href})');
