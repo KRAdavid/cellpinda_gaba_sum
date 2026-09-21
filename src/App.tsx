@@ -442,6 +442,7 @@ export default function App() {
           <p className="separation-note">이 페이지는 기존 셀핀다 GABA 공식 배포 사이트와 구분되는 별도 소비자 안내 페이지입니다. 일반 GABA 연구는 셀핀다 제품의 효능을 직접 입증하지 않습니다.</p>
           <a className="text-button" href="#story">첫 카드부터 보기 <span aria-hidden="true">↓</span></a>
           <button type="button" className="text-button intro-presentation-button" onClick={event => enterPresentation(event.currentTarget)}>영업용 발표 모드 <span aria-hidden="true">↗</span></button>
+          <button type="button" className="text-button intro-product-button" onClick={() => {goTo(6); document.getElementById('story')?.scrollIntoView({behavior: 'smooth'});}}>제품 문의부터 보기 <span aria-hidden="true">→</span></button>
         </div>
         <div className="intro-orbit" aria-hidden="true"><span>GABA</span><i>일상<br />이해</i></div>
       </section>

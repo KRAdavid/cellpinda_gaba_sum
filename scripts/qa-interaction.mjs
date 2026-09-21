@@ -69,6 +69,11 @@ try {
   assert('page identity', initialPage.title.includes('GABA 한 장씩 보기'));
   assert('mobile width has no horizontal overflow', initialPage.width === 390 && initialPage.docWidth === 390, `${initialPage.width}/${initialPage.docWidth}`);
 
+  await evaluate('document.querySelector(".intro-product-button")?.click()');
+  await waitForProgress('07 / 11');
+  const productEntry = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText,visible:!!document.querySelector("#story-card-product")})');
+  assert('intro product entry opens card 7', productEntry.progress === '07 / 11' && productEntry.visible, JSON.stringify(productEntry));
+
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
   await waitForProgress('01 / 11');
   const fullFlowStart = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
