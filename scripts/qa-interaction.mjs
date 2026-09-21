@@ -95,8 +95,8 @@ try {
   assert('presenter guidance opens', note.open && note.prompt.length > 10 && note.boundary.length > 10, JSON.stringify(note));
 
   await press('ArrowRight', 'ArrowRight', 39);
-  const next = await evaluate('document.querySelector(".story-controls span")?.innerText');
-  assert('presenter keyboard advances one card', next === '08 / 11', next);
+  const next = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText,url:location.href})');
+  assert('presenter keyboard advances one card', next.progress === '08 / 11' && next.url.includes('mode=presenter') && next.url.includes('card=8'), JSON.stringify(next));
 
   const shareMocked = await evaluate('(() => { try { Object.defineProperty(navigator, "share", {configurable:true, value: async data => { window.__qaShared = data; }}); return true; } catch { return false; } })()');
   if (shareMocked) {

@@ -178,6 +178,13 @@ export default function App() {
   const goTo = (index: number) => {
     const next = Math.max(0, Math.min(slides.length - 1, index));
     if (next !== active) programmaticTargetRef.current = next;
+    if (presentationModeRef.current) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('mode', 'presenter');
+      url.searchParams.set('card', String(next + 1));
+      url.hash = 'story';
+      window.history.replaceState({}, '', url);
+    }
     setActive(next);
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     slideRefs.current[next]?.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', inline: 'center', block: 'nearest'});
@@ -370,6 +377,11 @@ export default function App() {
 
   const enterPresentation = (returnElement?: HTMLElement | null) => {
     presentationReturnRef.current = returnElement ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
+    const url = new URL(window.location.href);
+    url.searchParams.set('mode', 'presenter');
+    url.searchParams.set('card', String(active + 1));
+    url.hash = 'story';
+    window.history.replaceState({}, '', url);
     presentationModeRef.current = true;
     setPresentationMode(true);
   };
