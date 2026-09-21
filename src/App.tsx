@@ -519,6 +519,8 @@ export default function App() {
     : openPanel === 'review'
       ? '스마트스토어 후기 열기'
       : '스마트스토어 제품 정보 열기';
+  const panelSource = panelSourceIndex ?? active;
+  const panelNext = slides[Math.min(slides.length - 1, panelSource + 1)];
 
   return <>
     <header className="site-header">
@@ -621,7 +623,7 @@ export default function App() {
             </> : null}
             <p className="info-panel__flow-note">현재 페이지의 흐름은 유지됩니다. 외부 링크는 보조 선택이며, 아래 버튼으로 다음 카드로 계속 볼 수 있습니다.</p>
             <div className="info-panel__actions">
-              <button type="button" className="info-panel__next" onClick={continueToNextCard}>{(panelSourceIndex ?? active) < slides.length - 1 ? '다음 카드로 계속 보기 →' : '카드 흐름으로 돌아가기'}</button>
+              <button type="button" className="info-panel__next" onClick={continueToNextCard}>{panelSource < slides.length - 1 ? <>다음 카드: {panelNext.label} →</> : '카드 흐름으로 돌아가기'}</button>
               <a className="info-panel__external" href={openExternal} target="_blank" rel="noreferrer">{panelExternalLabel} ↗</a>
             </div>
           </aside>

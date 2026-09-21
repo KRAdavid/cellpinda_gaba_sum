@@ -48,6 +48,7 @@ const required = [
   ['product card boundary', '이 카드에서 확정하지 않고'],
   ['review rights boundary', '원문·이미지 사용권 확인 전 재게시하지 않음'],
   ['in-page flow continuity', '현재 페이지의 흐름은 유지됩니다'],
+  ['in-page next destination', '다음 카드:'],
 ];
 
 const requiredMetadata = [

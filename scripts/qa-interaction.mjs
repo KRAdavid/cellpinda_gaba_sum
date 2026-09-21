@@ -177,6 +177,8 @@ try {
   assert('research dialog keeps the story in page', research.flowNote.includes('현재 페이지의 흐름은 유지됩니다') && research.flowNote.includes('다음 카드'), research.flowNote);
   const researchActionOrder = await evaluate('([...document.querySelectorAll(".info-panel__actions > *")].map(element => element.className).join("|"))');
   assert('in-page next action precedes external source', researchActionOrder.startsWith('info-panel__next|info-panel__external'), researchActionOrder);
+  const researchNextLabel = await evaluate('document.querySelector(".info-panel__next")?.innerText||""');
+  assert('in-page next action names its destination', researchNextLabel.includes('다음 카드:') && researchNextLabel.includes('07 · 셀핀다 제품 정보'), researchNextLabel);
   const researchExternal = await evaluate('({target:document.querySelector(".info-panel__external")?.target||"",href:document.querySelector(".info-panel__external")?.href||""})');
   assert('research source link is an explicit new-tab choice', researchExternal.target === '_blank' && researchExternal.href.includes('pubmed.ncbi.nlm.nih.gov/33041752'), JSON.stringify(researchExternal));
 
