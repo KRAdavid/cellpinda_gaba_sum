@@ -7,8 +7,8 @@
 | 공개 소비자 안내 | <https://kradavid.github.io/cellpinda_gaba_sum/> |
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
-| 앱 최신 커밋 | `bd142dd` |
-| 릴리스 검증 기준 Pages 배포 | [run 35595077564](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35595077564) (정적 번들 QA 포함, `bd142dd` 기준) |
+| 앱 최신 커밋 | `b4b3e49` |
+| 릴리스 검증 기준 Pages 배포 | [run 35595562949](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35595562949) (정적 번들 QA 포함, `b4b3e49` 기준) |
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 이 공개본은 소비자 안내와 사업자 발표를 위한 별도 페이지이며, 기존 공식 배포 사이트를 대체하거나 수정하지 않는다.
 
