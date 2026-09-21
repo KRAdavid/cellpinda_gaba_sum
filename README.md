@@ -16,6 +16,8 @@ UX·영업·근거/준법·접근성·QA의 반복 검토 결과는 [`docs/TF_RE
 
 실제 사업자 상담 3회 검증은 [`docs/SALES_SESSION_VALIDATION.md`](docs/SALES_SESSION_VALIDATION.md) 양식으로 기록합니다.
 
+세션 진행자·관찰자·준법 검토자가 같은 순서로 진행할 때는 [`docs/SALES_SESSION_QUICKSTART.md`](docs/SALES_SESSION_QUICKSTART.md)를 사용합니다.
+
 공개본의 배포·검증·승인 게이트 인수인계는 [`docs/RELEASE_HANDOFF.md`](docs/RELEASE_HANDOFF.md)에 정리합니다.
 
 목표별 PASS·HOLD 기준과 종료 조건은 [`docs/GOAL_ACCEPTANCE_MATRIX.md`](docs/GOAL_ACCEPTANCE_MATRIX.md)에서 확인합니다.
