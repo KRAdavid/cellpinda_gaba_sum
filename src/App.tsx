@@ -7,6 +7,7 @@ type Slide = {
   body: string;
   tone: string;
   note?: string;
+  image?: string;
   link?: {href: string; label: string; panel: PanelKey};
 };
 
@@ -14,6 +15,7 @@ type PanelKey = 'research' | 'product' | 'review';
 
 const RESEARCH_URL = 'https://pubmed.ncbi.nlm.nih.gov/33041752/';
 const PRODUCT_URL = 'https://smartstore.naver.com/cellpinda/products/4701017202';
+const PRODUCT_IMAGE = `${import.meta.env.BASE_URL}product-gaba1500.webp`;
 
 function makeSlides(): Slide[] {
   return [
@@ -67,6 +69,7 @@ function makeSlides(): Slide[] {
       title: '제품 구성과 섭취 방법은 제품 표시사항에서 확인하세요.',
       body: '셀핀다 가바 1500의 상품 구성, 가격, 재고, 섭취 방법은 스마트스토어와 제품 포장을 기준으로 확인합니다.',
       tone: 'product',
+      image: PRODUCT_IMAGE,
       note: '제품 정보는 일반 GABA 연구 결과와 별도로 확인해야 합니다.',
       link: {href: PRODUCT_URL, label: '제품 정보 카드에서 보기', panel: 'product'},
     },
@@ -111,6 +114,7 @@ export default function App() {
   const [openPanel, setOpenPanel] = useState<PanelKey | null>(null);
   const [panelSourceIndex, setPanelSourceIndex] = useState<number | null>(null);
   const [presentationMode, setPresentationMode] = useState(false);
+  const [shareMessage, setShareMessage] = useState('');
   const railRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
   const panelTriggerRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -137,6 +141,36 @@ export default function App() {
     setActive(next);
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     slideRefs.current[next]?.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', inline: 'center', block: 'nearest'});
+  };
+
+  useEffect(() => {
+    const requested = Number(new URLSearchParams(window.location.search).get('card'));
+    if (!Number.isInteger(requested) || requested < 1 || requested > slides.length) return;
+    window.requestAnimationFrame(() => goTo(requested - 1));
+  }, [slides.length]);
+
+  const copyCardLink = async () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('card', String(active + 1));
+    url.hash = 'story';
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url.toString());
+      } else {
+        const field = document.createElement('textarea');
+        field.value = url.toString();
+        field.setAttribute('readonly', '');
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand('copy');
+        field.remove();
+      }
+      setShareMessage('현재 카드 링크를 복사했습니다.');
+    } catch {
+      setShareMessage('링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
   };
 
   useEffect(() => {
@@ -244,18 +278,22 @@ export default function App() {
           <div>
             <button type="button" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="이전 카드">←</button>
             <button type="button" onClick={() => goTo(active + 1)} disabled={active === slides.length - 1} aria-label="다음 카드">→</button>
+            <button type="button" className="story-share-button" onClick={copyCardLink}>현재 카드 링크 복사</button>
             <button type="button" className="story-presentation-toggle" onClick={() => setPresentationMode(value => !value)}>{presentationMode ? '발표 모드 종료' : '발표 모드'}</button>
           </div>
         </div>
+        <p className="story-share-message" aria-live="polite">{shareMessage}</p>
         <div className="story-rail" ref={railRef} tabIndex={0} aria-label="GABA 소개 카드 목록">
           {slides.map((slide, index) => <article
             key={slide.id}
+            id={`story-card-${slide.id}`}
             ref={element => {slideRefs.current[index] = element;}}
             data-index={index}
             className={`story-card story-card--${slide.tone}${presentationMode && index !== active ? ' story-card--presentation-hidden' : ''}`}
             aria-labelledby={`slide-${slide.id}`}
           >
             <div className="card-label"><span>{slide.label}</span><span>{String(index + 1).padStart(2, '0')}</span></div>
+            {slide.image ? <img className="card-product-image" src={slide.image} alt="셀핀다 가바 1500 제품 이미지" /> : null}
             <div className="card-content">
               <h3 id={`slide-${slide.id}`}>{slide.title}</h3>
               <p>{slide.body}</p>
@@ -276,9 +314,10 @@ export default function App() {
               <p className="info-panel__boundary">이 자료는 일반 GABA 원료 또는 GABA 섭취 연구입니다. 셀핀다 제품의 효능을 직접 입증하는 자료가 아닙니다.</p>
             </> : null}
             {openPanel === 'product' ? <>
+              <div className="product-facts"><img src={PRODUCT_IMAGE} alt="셀핀다 가바 1500 제품 이미지" /><dl><div><dt>제품명</dt><dd>셀핀다 가바 1500</dd></div><div><dt>공개 안내 범위</dt><dd>30포 구성</dd></div><div><dt>식품 유형</dt><dd>기타가공품</dd></div></dl></div>
               <p>제품을 소개할 때는 연구 결과와 분리해 아래 순서로 안내하면 이해가 쉽습니다.</p>
               <ol><li>제품명과 구성 확인</li><li>제품 표시사항의 섭취 방법·주의사항 확인</li><li>가격·재고·배송 등 판매 정보 확인</li></ol>
-              <p className="info-panel__boundary">제품 정보는 스마트스토어와 제품 포장 표시사항을 기준으로 확인해 주세요.</p>
+              <p className="info-panel__boundary">위 내용은 공개 안내 범위입니다. 최신 포장 표시사항의 섭취법·주의사항·로트 정보는 제품 포장과 스마트스토어에서 다시 확인해 주세요.</p>
             </> : null}
             {openPanel === 'review' ? <>
               <p>후기는 구매자가 남긴 개인 경험입니다. 고객 상담이나 영업 설명에서는 경험과 객관적 제품 정보를 나누어 전달하세요.</p>
