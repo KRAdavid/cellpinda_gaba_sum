@@ -291,7 +291,7 @@ export default function App() {
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', closeOnEscape);
     window.requestAnimationFrame(() => {
-      slideRefs.current[active]?.scrollIntoView({behavior: 'auto', inline: 'center', block: 'nearest'});
+      presentationRef.current?.scrollTo({top: 0, behavior: 'auto'});
       if (!presentationDidFocusRef.current && !openPanel) {
         const focusTarget = presentationRef.current?.querySelector<HTMLElement>('.story-presentation-toggle');
         if (focusTarget && !presentationRef.current?.contains(document.activeElement)) focusTarget.focus();
