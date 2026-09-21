@@ -39,6 +39,8 @@ const forbidden = [
 ];
 
 const failures = [];
+if (!index.includes('favicon.svg')) failures.push('missing favicon link');
+if (!fs.existsSync(path.join(dist, 'favicon.svg'))) failures.push('missing favicon asset');
 for (const [label, value] of required) {
   if (!assetText.includes(value)) failures.push(`missing required ${label}: ${value}`);
 }
