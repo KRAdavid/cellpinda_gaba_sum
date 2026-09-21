@@ -22,6 +22,13 @@ TF 회의를 같은 순서로 진행하려면 [`docs/TF_MEETING_PACK.md`](docs/T
 
 실제 TF 참가자를 모집하고 첫 회의에 초대할 때는 [`docs/TF_TEAM_INVITE.md`](docs/TF_TEAM_INVITE.md)의 전달문과 회신 양식을 사용합니다.
 
+TF 배정·현장 세션·제품·후기·실기기 게이트의 현재 상태는 다음 명령으로 확인합니다. 기본 점검은 HOLD 상태를 설명하고 종료되며, 엄격 모드는 최종 승인 조건이 채워지지 않으면 실패합니다.
+
+```bash
+pnpm run qa:tf
+pnpm run qa:tf:strict
+```
+
 전체 설명용 발표 북마크는 `https://kradavid.github.io/cellpinda_gaba_sum/?mode=presenter&card=1#story`로 01번부터 시작합니다. 제품 문의가 먼저 나온 경우에는 `card=7`을 지정해 제품 카드부터 열 수 있습니다.
 
 실제 상담 순서와 권장·보류 표현은 [`docs/SALES_WALKTHROUGH.md`](docs/SALES_WALKTHROUGH.md)를 따릅니다.

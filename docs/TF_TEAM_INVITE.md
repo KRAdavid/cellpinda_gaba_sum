@@ -61,6 +61,8 @@ iOS·Android 확인 가능 기기:
 
 회신 내용은 [`TF_KICKOFF_INPUT.md`](TF_KICKOFF_INPUT.md)에 옮기고, 확정된 담당자·백업·결정권은 [`TF_ROSTER.md`](TF_ROSTER.md)에 기록한다. 회의 결과는 [`TF_DECISION_REGISTER.md`](TF_DECISION_REGISTER.md)와 [`TF_REVIEW_LOG.md`](TF_REVIEW_LOG.md)에 남긴다.
 
+입력 후 현재 준비 상태는 저장소 루트에서 `pnpm run qa:tf`로 확인한다. 정식 승인 전 CI 차단이 필요한 경우에만 `pnpm run qa:tf:strict`를 사용한다.
+
 ## 승인 경계
 
 - 일반 GABA 연구를 셀핀다 제품의 동일 제형·섭취량 효능으로 바꾸어 말하지 않는다.

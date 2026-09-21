@@ -29,6 +29,7 @@ const checks = [
   ['public URL is documented', files.readme, 'https://kradavid.github.io/cellpinda_gaba_sum/'],
   ['README documents presenter product shortcut', files.readme, '제품부터 설명'],
   ['README links team invite packet', files.readme, 'docs/TF_TEAM_INVITE.md'],
+  ['README documents TF readiness command', files.readme, 'pnpm run qa:tf'],
   ['official site is identified separately', files.handoff, 'https://kradavid.github.io/cellpinda_GABA/'],
   ['meeting pack is linked from README', files.readme, 'docs/TF_MEETING_PACK.md'],
   ['TF roles are defined', files.tf, '근거·준법 리드'],
@@ -88,6 +89,7 @@ const checks = [
   ['team invite defines core roles', files.invite, '핵심 역할과 결정 범위'],
   ['team invite defines kickoff agenda', files.invite, '첫 회의 안건'],
   ['team invite preserves approval boundaries', files.invite, '일반 GABA 연구를 셀핀다 제품'],
+  ['team invite documents readiness command', files.invite, 'pnpm run qa:tf'],
 ];
 
 const failures = checks
