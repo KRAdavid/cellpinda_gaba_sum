@@ -95,4 +95,6 @@ pnpm run qa:interaction
 
 2026-09-22 발표 모드 패널 고객용 카드 링크 배포 재검증: `8c03d3b`에 대해 [Pages run 35633429223](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35633429223)이 `build success`와 `deploy success`로 종료됐다. 발표 모드의 연구·제품·후기 정보 패널에만 `이 카드 고객용 링크 복사`를 추가하고, `panelSource` 카드 번호로 동일 사이트 `card=N#story`를 생성하며 `mode=presenter`·`presenter` 파라미터를 제거했다. `다음 카드`를 주 행동으로 유지하고 외부 자료는 접힌 보조 선택으로 남겼으며, 복사 후 패널·발표 모드·현재 카드가 유지되는지 확인했다. 공개 자산 `index-Ceq9qPju.js`·`index-CHo0UqdT.css`는 HTTP 200이고, 공개 URL 320·390·1440px 매트릭스와 390·1440px 패널 캡처에서 링크 복사 행동·패널 경계·연구 경계·제품/후기 인페이지 흐름을 통과했다. 이 결과는 기술·배포 PASS이며, A/B/C 사업자 세션의 링크 전달 성공률·외부 선행 이탈·다음 행동 명확도, 제품·후기·실기기·전체 광고 인상 승인은 계속 HOLD다.
 
+2026-09-22 모바일 실제 스와이프 QA 배포 재검증: `1570d26`에 대해 [Pages run 35634372928](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35634372928)이 `success / completed`로 종료됐다. 공개 URL은 HTTP 200, 공개 자산 `index-Ceq9qPju.js`·`index-CHo0UqdT.css`도 HTTP 200으로 응답했다. 공개 URL 320×900·390×844에서 Chrome CDP `touchStart → touchMove → touchEnd` 전진·후진으로 01↔02 카드 이동을 확인했고, 1440×900 기존 회귀 흐름도 통과했다. 이 결과는 브라우저 자동화 기반 기술·배포 PASS이며 실제 iOS/Android·네트워크/브라우저별 검증과 A/B/C 사업자 세션, 제품·후기·전체 광고 인상 승인은 계속 HOLD다.
+
 요구사항별 완료·보류 판단은 [GOAL_ACCEPTANCE_MATRIX.md](GOAL_ACCEPTANCE_MATRIX.md)를 기준으로 한다.
