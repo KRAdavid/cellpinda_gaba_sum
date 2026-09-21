@@ -24,6 +24,7 @@
 상담 직전의 시작 링크·핵심 경로·경계 문장은 [`SALES_ONE_PAGE_GUIDE.md`](SALES_ONE_PAGE_GUIDE.md)에 모아 관리한다.
 TF 회의의 역할별 발언 순서와 30분 의사결정 패킷은 [`TF_MEETING_PACK.md`](TF_MEETING_PACK.md)를 사용한다.
 회의에서 다룰 논점·이견·필요 증거·결정 상태는 [`TF_DISCUSSION_BOARD.md`](TF_DISCUSSION_BOARD.md)에 관리한다.
+실제 주 담당자·백업·결정권 배정은 [`TF_ROSTER.md`](TF_ROSTER.md)에 기록한다. 역할표는 책임 관점의 정의이며, 실명 배정 전에는 TF 구성 완료로 표시하지 않는다.
 배포 전 번들 문구 가드는 `pnpm run qa:bundle`로 실행하며, GitHub Pages workflow에서도 자동 실행한다.
 릴리스 인수인계와 승인 증거의 위치는 [`RELEASE_HANDOFF.md`](RELEASE_HANDOFF.md)로 통일한다.
 전체 목표의 PASS·HOLD 판단과 종료 조건은 [`GOAL_ACCEPTANCE_MATRIX.md`](GOAL_ACCEPTANCE_MATRIX.md)에서 관리한다.
@@ -63,6 +64,7 @@ TF 회의의 역할별 발언 순서와 30분 의사결정 패킷은 [`TF_MEETIN
 | --- | --- | --- | --- |
 | 카드 단계 가이드 | 소비자 UX·카피 + 프론트엔드·접근성 | 현재 카드에 맞는 단계 강조, 공개 번들·320·390·1440px QA | 완료 |
 | TF 역할·결정권 등록 | TF 리드·PM | 역할별 책임·결정권·완료 기준을 `PUBLISHING_TF.md`와 회의 패킷에 동기화 | 완료 / 반복회의 대기 |
+| TF 실제 담당자·백업 배정 | TF 리드·PM | `TF_ROSTER.md`의 11개 역할에 주 담당자·백업·결정권 입력 | HOLD / 사용자 입력 필요 |
 | TF 토론 대기열·이견 기록 | TF 리드·PM | 논점 ID·충돌 관점·필요 증거·결정권자·종료 조건을 `TF_DISCUSSION_BOARD.md`에 기록 | 완료 / 첫 회의 대기 |
 | 발표자 질문 답변 전달성 | 소비자 UX·카피 + 프론트엔드·접근성 | 발표자 FAQ가 기본 닫힘을 유지하고, 4개 승인 문장을 페이지 안에서 복사하며, 소비자 화면에는 노출되지 않음 | 완료 / 현장 사용 대기 |
 | 상담 직전 1페이지 런치 가이드 | 사업·영업 + 소비자 UX·카피 | 시작 링크·전체/핵심 경로·안전 문장·질문 대응·종료 선택지와 공개 전 경계가 한 문서에 있음 | 완료 / 현장 사용 대기 |

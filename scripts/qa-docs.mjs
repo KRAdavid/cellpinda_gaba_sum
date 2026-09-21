@@ -18,6 +18,7 @@ const files = {
   quickstart: read('docs/SALES_SESSION_QUICKSTART.md'),
   launchGuide: read('docs/SALES_ONE_PAGE_GUIDE.md'),
   discussion: read('docs/TF_DISCUSSION_BOARD.md'),
+  roster: read('docs/TF_ROSTER.md'),
 };
 
 const checks = [
@@ -42,6 +43,9 @@ const checks = [
   ['discussion board separates field hold', files.discussion, '기술 PASS / 현장 HOLD'],
   ['discussion board records dissent and evidence', files.discussion, '반대 관점·리스크'],
   ['discussion board keeps product facts on hold', files.discussion, 'EVD-01'],
+  ['TF roster defines assignment gate', files.roster, '실제 인력 배정 HOLD'],
+  ['TF roster defines core attendees', files.roster, '핵심 회의 참석자'],
+  ['acceptance matrix tracks TF assignment', files.acceptance, 'TF 실제 담당자·백업·결정권 배정'],
   ['launch guide is linked from README', files.readme, 'docs/SALES_ONE_PAGE_GUIDE.md'],
   ['launch guide defines the full sales route', files.launchGuide, '01 일상 상태 → 02 여유가 안 생기는 날 → 03 생각 과부하 → 04 적극적인 휴식 → 05 GABA 성분 이름 → 06 일반 GABA 연구 → 07 제품 정보 → 08 활용 TIP → 09 생활 루틴 → 10 후기 → 11 마무리'],
   ['launch guide keeps GABA research bounded', files.launchGuide, '셀핀다 제품의 동일 제형·섭취량 효능을 직접 입증하는 자료는 아닙니다'],
