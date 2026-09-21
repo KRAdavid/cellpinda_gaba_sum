@@ -157,7 +157,7 @@ try {
     await evaluate('document.querySelector(".story-share-copy-button")?.click()');
     await wait(120);
     const copiedAgain = await evaluate('document.querySelector(".story-share-message")?.innerText||""');
-    assert('shared card exposes a direct copy action', copiedAgain.includes('복사했습니다'), copiedAgain);
+    assert('shared card exposes a direct customer copy action', copiedAgain.includes('고객용 링크를 복사했습니다') && copiedAgain.includes('발표자 모드 제외'), copiedAgain);
   }
 
   await send('Page.navigate', {url: `${baseUrl}?card=6#story`});

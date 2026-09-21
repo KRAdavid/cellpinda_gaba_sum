@@ -277,12 +277,12 @@ export default function App() {
       try {
         await navigator.share({title: '셀핀다 GABA 한 장씩 보기', text: '현재 카드부터 이어서 확인해 보세요.', url: link});
         if (shareRequest !== shareRequestRef.current) return;
-        setShareMessage('현재 카드 링크를 공유했습니다.');
+        setShareMessage('고객용 링크를 공유했습니다. (발표자 모드 제외)');
         return;
       } catch (error) {
         if (error instanceof DOMException && error.name === 'AbortError') {
           if (shareRequest !== shareRequestRef.current) return;
-          setShareMessage('공유를 취소했습니다.');
+          setShareMessage('고객용 링크 공유를 취소했습니다.');
           return;
         }
       }
@@ -290,10 +290,10 @@ export default function App() {
     try {
       await copyText(link);
       if (shareRequest !== shareRequestRef.current) return;
-      setShareMessage('현재 카드 링크를 복사했습니다.');
+      setShareMessage('고객용 링크를 복사했습니다. (발표자 모드 제외)');
     } catch {
       if (shareRequest !== shareRequestRef.current) return;
-      setShareMessage('링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+      setShareMessage('고객용 링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
   };
 
@@ -304,10 +304,10 @@ export default function App() {
     try {
       await copyText(link);
       if (shareRequest !== shareRequestRef.current) return;
-      setShareMessage('현재 카드 링크를 복사했습니다.');
+      setShareMessage('고객용 링크를 복사했습니다. (발표자 모드 제외)');
     } catch {
       if (shareRequest !== shareRequestRef.current) return;
-      setShareMessage('링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+      setShareMessage('고객용 링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
   };
 
