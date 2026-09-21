@@ -112,16 +112,23 @@ export default function App() {
   const [panelSourceIndex, setPanelSourceIndex] = useState<number | null>(null);
   const [presentationMode, setPresentationMode] = useState(false);
   const [shareMessage, setShareMessage] = useState('');
+  const [shareUrl, setShareUrl] = useState('');
   const railRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
   const panelTriggerRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const panelRef = useRef<HTMLElement>(null);
   const panelCloseRef = useRef<HTMLButtonElement>(null);
+  const presentationRef = useRef<HTMLElement>(null);
+  const presentationModeRef = useRef(false);
+  const presentationDidFocusRef = useRef(false);
+  const presentationReturnRef = useRef<HTMLElement | null>(null);
+  const panelReturnRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const rail = railRef.current;
     if (!rail) return;
     const observer = new IntersectionObserver(entries => {
+      if (presentationModeRef.current) return;
       const visible = entries
         .filter(entry => entry.isIntersecting)
         .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
@@ -150,6 +157,7 @@ export default function App() {
     const url = new URL(window.location.href);
     url.searchParams.set('card', String(active + 1));
     url.hash = 'story';
+    setShareUrl(url.toString());
     try {
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(url.toString());
@@ -160,9 +168,12 @@ export default function App() {
         field.style.position = 'fixed';
         field.style.opacity = '0';
         document.body.appendChild(field);
-        field.select();
-        document.execCommand('copy');
-        field.remove();
+        try {
+          field.select();
+          if (!document.execCommand('copy')) throw new Error('copy command failed');
+        } finally {
+          field.remove();
+        }
       }
       setShareMessage('현재 카드 링크를 복사했습니다.');
     } catch {
@@ -202,28 +213,104 @@ export default function App() {
   useEffect(() => {
     if (!presentationMode) return;
     const previousOverflow = document.body.style.overflow;
+    const outside = [
+      document.querySelector<HTMLElement>('.site-header'),
+      document.querySelector<HTMLElement>('.intro'),
+      document.querySelector<HTMLElement>('.guardrail'),
+      document.querySelector<HTMLElement>('.site-footer'),
+    ].filter(Boolean) as HTMLElement[];
+    const previousOutsideState = outside.map(element => ({
+      element,
+      inert: element.getAttribute('inert'),
+      ariaHidden: element.getAttribute('aria-hidden'),
+    }));
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && !openPanel) setPresentationMode(false);
+      if (event.key === 'Escape' && !openPanel) {
+        exitPresentation();
+        return;
+      }
+      if (event.key !== 'Tab' || openPanel) return;
+      const presentation = presentationRef.current;
+      if (!presentation) return;
+      const focusable = Array.from(presentation.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+        .filter(element => {
+          const style = window.getComputedStyle(element);
+          return !element.closest('[inert], .story-card--presentation-hidden') && style.display !== 'none' && style.visibility !== 'hidden';
+        });
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
+    outside.forEach(element => {
+      element.setAttribute('inert', '');
+      element.setAttribute('aria-hidden', 'true');
+    });
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', closeOnEscape);
-    window.requestAnimationFrame(() => slideRefs.current[active]?.scrollIntoView({behavior: 'auto', inline: 'center', block: 'nearest'}));
+    window.requestAnimationFrame(() => {
+      slideRefs.current[active]?.scrollIntoView({behavior: 'auto', inline: 'center', block: 'nearest'});
+      if (!presentationDidFocusRef.current && !openPanel) {
+        const focusTarget = presentationRef.current?.querySelector<HTMLElement>('.story-presentation-toggle');
+        if (focusTarget && !presentationRef.current?.contains(document.activeElement)) focusTarget.focus();
+        presentationDidFocusRef.current = true;
+      }
+    });
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', closeOnEscape);
+      previousOutsideState.forEach(({element, inert, ariaHidden}) => {
+        if (inert === null) element.removeAttribute('inert');
+        else element.setAttribute('inert', inert);
+        if (ariaHidden === null) element.removeAttribute('aria-hidden');
+        else element.setAttribute('aria-hidden', ariaHidden);
+      });
     };
-  }, [presentationMode, openPanel, active]);
+  }, [presentationMode, openPanel]);
 
-  const closePanel = () => {
-    const sourceIndex = panelSourceIndex;
-    setOpenPanel(null);
-    setPanelSourceIndex(null);
+  useEffect(() => {
+    if (!presentationMode) presentationDidFocusRef.current = false;
+  }, [presentationMode]);
+
+  const enterPresentation = (returnElement?: HTMLElement | null) => {
+    presentationReturnRef.current = returnElement ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
+    presentationModeRef.current = true;
+    setPresentationMode(true);
+  };
+
+  const exitPresentation = () => {
+    const currentActive = active;
+    const returnElement = presentationReturnRef.current;
+    setPresentationMode(false);
     window.requestAnimationFrame(() => {
-      if (sourceIndex !== null) panelTriggerRefs.current[sourceIndex]?.focus();
+      presentationModeRef.current = false;
+      setActive(currentActive);
+      slideRefs.current[currentActive]?.scrollIntoView({behavior: 'auto', inline: 'center', block: 'nearest'});
+      if (returnElement?.isConnected) returnElement.focus();
+      presentationReturnRef.current = null;
     });
   };
 
-  const openInfoPanel = (index: number, panel: PanelKey) => {
+  const closePanel = () => {
+    const sourceIndex = panelSourceIndex;
+    const returnElement = panelReturnRef.current;
+    setOpenPanel(null);
+    setPanelSourceIndex(null);
+    window.requestAnimationFrame(() => {
+      if (returnElement?.isConnected) returnElement.focus();
+      else if (sourceIndex !== null) panelTriggerRefs.current[sourceIndex]?.focus();
+    });
+    panelReturnRef.current = null;
+  };
+
+  const openInfoPanel = (index: number, panel: PanelKey, returnElement?: HTMLElement | null) => {
+    panelReturnRef.current = returnElement ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setPanelSourceIndex(index);
     setOpenPanel(panel);
   };
@@ -254,15 +341,16 @@ export default function App() {
       <section className="intro" aria-labelledby="page-title">
         <div className="intro-copy">
           <p className="eyebrow">셀핀다 제품 관련 소비자 안내 · 광고성 정보 포함</p>
-          <h1 id="page-title">GABA를<br /><em>한 장씩</em> 알아보세요.</h1>
+          <h1 id="page-title">GABA를<br /><em>한 장씩</em><br />알아보세요.</h1>
           <p className="intro-body">일상에서 GABA 정보를 연구·제품·후기로 나누어, 옆으로 넘기며 확인해 보세요.</p>
           <p className="separation-note">이 페이지는 기존 셀핀다 GABA 공식 배포 사이트와 구분되는 별도 소비자 안내 페이지입니다. 일반 GABA 연구는 셀핀다 제품의 효능을 직접 입증하지 않습니다.</p>
           <a className="text-button" href="#story">첫 카드부터 보기 <span aria-hidden="true">↓</span></a>
+          <button type="button" className="text-button intro-presentation-button" onClick={event => enterPresentation(event.currentTarget)}>영업용 발표 모드 <span aria-hidden="true">↗</span></button>
         </div>
         <div className="intro-orbit" aria-hidden="true"><span>GABA</span><i>일상<br />이해</i></div>
       </section>
 
-      <section id="story" className={`story${presentationMode ? ' story--presentation' : ''}`} aria-labelledby="story-title">
+      <section id="story" ref={presentationRef} className={`story${presentationMode ? ' story--presentation' : ''}`} role={presentationMode ? 'dialog' : undefined} aria-labelledby="story-title" aria-modal={presentationMode ? 'true' : undefined}>
         <div className="story-heading">
           <div>
             <p className="eyebrow">1 page · 1 message</p>
@@ -276,10 +364,11 @@ export default function App() {
             <button type="button" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="이전 카드">←</button>
             <button type="button" onClick={() => goTo(active + 1)} disabled={active === slides.length - 1} aria-label="다음 카드">→</button>
             <button type="button" className="story-share-button" onClick={copyCardLink}>현재 카드 링크 복사</button>
-            <button type="button" className="story-presentation-toggle" onClick={() => setPresentationMode(value => !value)}>{presentationMode ? '발표 모드 종료' : '발표 모드'}</button>
+            <button type="button" className="story-presentation-toggle" onClick={event => presentationMode ? exitPresentation() : enterPresentation(event.currentTarget)}>{presentationMode ? '발표 모드 종료' : '발표 모드'}</button>
           </div>
         </div>
         <p className="story-share-message" aria-live="polite">{shareMessage}</p>
+        {shareUrl ? <input className="story-share-url" value={shareUrl} readOnly aria-label="현재 카드 공유 링크" onFocus={event => event.currentTarget.select()} /> : null}
         <div className="story-rail" ref={railRef} tabIndex={0} aria-label="GABA 소개 카드 목록">
           {slides.map((slide, index) => <article
             key={slide.id}
@@ -293,7 +382,7 @@ export default function App() {
             <div className="card-content">
               <h3 id={`slide-${slide.id}`}>{slide.title}</h3>
               <p>{slide.body}</p>
-              {slide.link ? <button type="button" className="card-link" ref={element => {panelTriggerRefs.current[index] = element;}} onClick={() => openInfoPanel(index, slide.link!.panel)}>{slide.link.label} <span aria-hidden="true">＋</span></button> : null}
+              {slide.link ? <button type="button" className="card-link" ref={element => {panelTriggerRefs.current[index] = element;}} onClick={event => openInfoPanel(index, slide.link!.panel, event.currentTarget)}>{slide.link.label} <span aria-hidden="true">＋</span></button> : null}
               {slide.note ? <small>{slide.note}</small> : null}
             </div>
           </article>)}
@@ -337,7 +426,7 @@ export default function App() {
 
     <footer className="site-footer">
       <p>셀핀다 제품 관련 소비자 안내 · 광고성 정보 포함 · 의료정보나 제품 효능 보증이 아닙니다.</p>
-      <button type="button" className="footer-product-button" onClick={() => {setPanelSourceIndex(6); setOpenPanel('product'); document.getElementById('story')?.scrollIntoView({behavior: 'smooth'});}}>제품 정보 패널 열기 ＋</button>
+      <button type="button" className="footer-product-button" onClick={event => {panelReturnRef.current = event.currentTarget; setPanelSourceIndex(6); setOpenPanel('product'); document.getElementById('story')?.scrollIntoView({behavior: 'smooth'});}}>제품 정보 패널 열기 ＋</button>
     </footer>
   </>;
 }
