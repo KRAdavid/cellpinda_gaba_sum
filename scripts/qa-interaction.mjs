@@ -163,6 +163,8 @@ try {
   assert('finish card research choice stays in page', finishResearch.dialog && finishResearch.title.includes('일반 GABA 연구') && finishResearch.url.startsWith(new URL(baseUrl).origin), JSON.stringify(finishResearch));
   await evaluate('document.querySelector(".info-panel__next")?.click()');
   await wait(180);
+  const finishFocus = await evaluate('document.activeElement?.innerText||""');
+  assert('finish card panel returns focus to selected choice', finishFocus.includes('일반 GABA 연구 다시 보기'), finishFocus);
 
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=6#story`});
   await waitForProgress('06 / 11');

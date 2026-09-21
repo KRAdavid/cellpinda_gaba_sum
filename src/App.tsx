@@ -424,12 +424,16 @@ export default function App() {
   };
 
   const continueToNextCard = () => {
-    const next = Math.min(slides.length - 1, (panelSourceIndex ?? active) + 1);
+    const sourceIndex = panelSourceIndex ?? active;
+    const next = Math.min(slides.length - 1, sourceIndex + 1);
+    const returnElement = panelReturnRef.current;
     closePanel(false);
     goTo(next);
     window.requestAnimationFrame(() => {
       const focusTarget = presentationMode
         ? presentationRef.current?.querySelector<HTMLElement>('.story-presentation-toggle')
+        : next === sourceIndex && returnElement?.isConnected
+          ? returnElement
         : panelTriggerRefs.current[next] ?? railRef.current;
       focusTarget?.focus();
     });
