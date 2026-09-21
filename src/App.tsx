@@ -110,6 +110,7 @@ export default function App() {
   const [active, setActive] = useState(0);
   const [openPanel, setOpenPanel] = useState<PanelKey | null>(null);
   const [panelSourceIndex, setPanelSourceIndex] = useState<number | null>(null);
+  const [presentationMode, setPresentationMode] = useState(false);
   const railRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
   const panelTriggerRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -133,6 +134,7 @@ export default function App() {
 
   const goTo = (index: number) => {
     const next = Math.max(0, Math.min(slides.length - 1, index));
+    setActive(next);
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     slideRefs.current[next]?.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', inline: 'center', block: 'nearest'});
   };
@@ -165,6 +167,21 @@ export default function App() {
       window.removeEventListener('keydown', closeOnEscape);
     };
   }, [openPanel]);
+
+  useEffect(() => {
+    if (!presentationMode) return;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && !openPanel) setPresentationMode(false);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', closeOnEscape);
+    window.requestAnimationFrame(() => slideRefs.current[active]?.scrollIntoView({behavior: 'auto', inline: 'center', block: 'nearest'}));
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [presentationMode, openPanel, active]);
 
   const closePanel = () => {
     const sourceIndex = panelSourceIndex;
@@ -214,7 +231,7 @@ export default function App() {
         <div className="intro-orbit" aria-hidden="true"><span>GABA</span><i>일상<br />이해</i></div>
       </section>
 
-      <section id="story" className="story" aria-labelledby="story-title">
+      <section id="story" className={`story${presentationMode ? ' story--presentation' : ''}`} aria-labelledby="story-title">
         <div className="story-heading">
           <div>
             <p className="eyebrow">1 page · 1 message</p>
@@ -227,6 +244,7 @@ export default function App() {
           <div>
             <button type="button" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="이전 카드">←</button>
             <button type="button" onClick={() => goTo(active + 1)} disabled={active === slides.length - 1} aria-label="다음 카드">→</button>
+            <button type="button" className="story-presentation-toggle" onClick={() => setPresentationMode(value => !value)}>{presentationMode ? '발표 모드 종료' : '발표 모드'}</button>
           </div>
         </div>
         <div className="story-rail" ref={railRef} tabIndex={0} aria-label="GABA 소개 카드 목록">
@@ -234,7 +252,7 @@ export default function App() {
             key={slide.id}
             ref={element => {slideRefs.current[index] = element;}}
             data-index={index}
-            className={`story-card story-card--${slide.tone}`}
+            className={`story-card story-card--${slide.tone}${presentationMode && index !== active ? ' story-card--presentation-hidden' : ''}`}
             aria-labelledby={`slide-${slide.id}`}
           >
             <div className="card-label"><span>{slide.label}</span><span>{String(index + 1).padStart(2, '0')}</span></div>
