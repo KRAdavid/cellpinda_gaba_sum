@@ -123,6 +123,8 @@ try {
   const presenter = await evaluate('({title:document.title,width:innerWidth,docWidth:document.documentElement.scrollWidth,url:location.href,presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText,visible:[...document.querySelectorAll(".story-card")].filter(card=>getComputedStyle(card).display!=="none").length})');
   assert('presenter deep link opens the requested card', presenter.presentation && presenter.progress === '07 / 11', `${presenter.url} ${presenter.progress}`);
   assert('presenter shows one card', presenter.visible === 1, String(presenter.visible));
+  const nextHint = await evaluate('document.querySelector(".presenter-next-hint")?.innerText||""');
+  assert('presenter shows the next card hint', nextHint.includes('다음 설명:') && nextHint.includes('08 · 활용 TIP'), nextHint);
 
   await evaluate('document.querySelector(".presenter-note summary").click()');
   await wait(80);

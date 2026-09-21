@@ -152,6 +152,8 @@ TF 문서 게이트 공개 배포 확인: [Pages run 35605104422](https://github
 
 공개 URL 직접 매트릭스 재검증: 2026-09-21에 `QA_URL=https://kradavid.github.io/cellpinda_gaba_sum/ pnpm run qa:matrix`를 실행해 실제 Pages 자산에서 320·390·1440px의 1페이지 1메시지 카드 흐름, 발표 모드, 고객용 링크 공유, 연구·제품·후기 인페이지 패널, 다음 카드 전환, 현재 단계 자동 정렬을 모두 통과했다. 이 결과는 기술 배포 증거이며 실제 iOS·Android 및 사업자 상담 3회 승인을 대체하지 않는다. 문서 동기화 배포는 [Pages run 35606372392](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35606372392)에서 성공했다.
 
+발표자 흐름 보완: 발표자가 현재 카드에서 다음 설명을 준비할 때 카드 번호를 다시 찾느라 고객과의 대화가 끊길 수 있어, 발표 모드에만 `다음 설명: [다음 카드]` 힌트를 추가했다. 소비자 화면에는 노출하지 않고, 연구·제품·후기 경계 문구와 카드 이동 동작은 유지했다. 변경 파일은 `src/App.tsx`, `src/styles.css`, `scripts/qa-public.mjs`, `scripts/qa-interaction.mjs`이며, 번들 QA와 320·390·1440px 매트릭스에서 발표자 힌트·소비자 화면 숨김·인페이지 흐름을 통과했다. 다음은 실제 사업자 세션에서 힌트가 설명 속도를 높이는지 관찰하는 것이다.
+
 ## 의사결정 원칙
 
 1. 관심은 소비자가 공감할 수 있는 일상 장면에서 만든다.
