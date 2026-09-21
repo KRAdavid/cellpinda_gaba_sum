@@ -187,6 +187,8 @@ try {
   assert('research dialog keeps the story in page', research.flowNote.includes('현재 페이지의 흐름은 유지됩니다') && research.flowNote.includes('다음 카드'), research.flowNote);
   const researchActionOrder = await evaluate('([...document.querySelectorAll(".info-panel__actions > *")].map(element => element.className).join("|"))');
   assert('in-page next action precedes external source', researchActionOrder.startsWith('info-panel__next|info-panel__external'), researchActionOrder);
+  const researchActionVisibility = await evaluate('(() => { const panel = document.querySelector(".info-panel")?.getBoundingClientRect(); const actions = document.querySelector(".info-panel__actions"); const rect = actions?.getBoundingClientRect(); return {position:actions ? getComputedStyle(actions).position : "", visible:!!rect && rect.height > 0 && !!panel && rect.bottom <= panel.bottom + 1, bottom:rect?.bottom ?? -1, panelBottom:panel?.bottom ?? -1}; })()');
+  assert('in-page next action stays visible in the panel', researchActionVisibility.position === 'sticky' && researchActionVisibility.visible, JSON.stringify(researchActionVisibility));
   const researchNextLabel = await evaluate('document.querySelector(".info-panel__next")?.innerText||""');
   assert('in-page next action names its destination', researchNextLabel.includes('다음 카드:') && researchNextLabel.includes('07 · 셀핀다 제품 정보'), researchNextLabel);
   const researchExternal = await evaluate('({target:document.querySelector(".info-panel__external")?.target||"",href:document.querySelector(".info-panel__external")?.href||""})');
