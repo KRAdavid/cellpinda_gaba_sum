@@ -58,3 +58,5 @@ pnpm run qa:interaction
 ```
 
 공개 URL의 실제 동작 검증은 [SALES_SESSION_VALIDATION.md](SALES_SESSION_VALIDATION.md)와 [TF_REVIEW_LOG.md](TF_REVIEW_LOG.md)에 이어서 기록한다.
+
+요구사항별 완료·보류 판단은 [GOAL_ACCEPTANCE_MATRIX.md](GOAL_ACCEPTANCE_MATRIX.md)를 기준으로 한다.
