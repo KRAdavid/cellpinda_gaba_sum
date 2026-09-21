@@ -12,6 +12,8 @@
 
 UX·영업·근거/준법·접근성·QA의 반복 검토 결과는 [`docs/TF_REVIEW_LOG.md`](docs/TF_REVIEW_LOG.md)에 기록합니다.
 
+실제 사업자 상담 3회 검증은 [`docs/SALES_SESSION_VALIDATION.md`](docs/SALES_SESSION_VALIDATION.md) 양식으로 기록합니다.
+
 ## Local preview
 
 ```bash
