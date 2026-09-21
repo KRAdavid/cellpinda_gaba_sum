@@ -144,6 +144,15 @@ try {
   const review = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),title:document.querySelector("[role=dialog] h2")?.innerText||"",status:document.querySelector(".info-panel__status")?.innerText||"",boundary:document.querySelector(".info-panel__boundary")?.innerText||"",url:location.href})');
   assert('review opens in the same dialog flow', review.dialog && review.title.includes('후기') && review.status.includes('사용권 확인 전 재게시하지 않음') && review.boundary.includes('효능') && review.url.startsWith(new URL(baseUrl).origin), JSON.stringify(review));
 
+  await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=6#story`});
+  await waitForProgress('06 / 11');
+  await evaluate('document.querySelector("#story-card-research .card-link")?.click()');
+  await wait(180);
+  await evaluate('document.querySelector(".info-panel__next")?.click()');
+  await wait(350);
+  const presenterPanelNext = await evaluate('({dialog:!!document.querySelector(".info-panel"),progress:document.querySelector(".story-controls span")?.innerText,focus:document.activeElement?.className||""})');
+  assert('presenter panel next keeps focus in the story', !presenterPanelNext.dialog && presenterPanelNext.progress === '07 / 11' && presenterPanelNext.focus.includes('story-presentation-toggle'), JSON.stringify(presenterPanelNext));
+
   console.log('Interaction QA passed.');
 } finally {
   socket.close();
