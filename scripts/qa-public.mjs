@@ -30,7 +30,7 @@ const required = [
   ['card sharing control', '현재 카드 링크 공유'],
   ['native share fallback', 'navigator.share'],
   ['lifestyle and product boundary', '이 생활 루틴은 특정 성분이나 제품의 효과를 뜻하지 않습니다'],
-  ['product verification status', '최신 포장·판매 SKU 대조 필요'],
+  ['product verification status', '최종 제품 사실로 확정하지 않습니다'],
   ['review rights boundary', '원문·이미지 사용권 확인 전 재게시하지 않음'],
 ];
 

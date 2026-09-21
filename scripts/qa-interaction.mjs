@@ -119,7 +119,7 @@ try {
   await evaluate('([...document.querySelectorAll(".story-card")].find(card=>card.querySelector("h3")?.innerText.includes("제품 구성"))?.querySelector(".card-link")?.click())');
   await wait(180);
   const product = await evaluate('({title:document.querySelector("[role=dialog] h2")?.innerText||"",facts:document.querySelector(".product-facts")?.innerText||"",status:document.querySelector(".info-panel__status")?.innerText||""})');
-  assert('product opens in the same dialog flow', product.title.includes('제품 정보') && product.facts.includes('셀핀다 가바 1500') && product.status.includes('최신 포장'), JSON.stringify(product));
+  assert('product opens in the same dialog flow', product.title.includes('제품 정보') && product.facts.includes('셀핀다 가바 1500') && product.status.includes('최종 제품 사실로 확정하지 않습니다'), JSON.stringify(product));
 
   console.log('Interaction QA passed.');
 } finally {

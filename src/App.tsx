@@ -498,7 +498,7 @@ export default function App() {
             </> : null}
             {openPanel === 'product' ? <>
               <p className="info-panel__transition">여기서부터는 연구가 아닌 판매 제품의 표시 정보입니다.</p>
-              <p className="info-panel__status">확인 상태: 제한적 공개 범위 · 최신 포장·판매 SKU 대조 필요</p>
+              <p className="info-panel__status">확인 상태: 제한적 공개 안내 범위 · 최신 포장·판매 SKU 대조 전 최종 제품 사실로 확정하지 않습니다.</p>
               <div className="product-facts"><dl><div><dt>제품명</dt><dd>셀핀다 가바 1500</dd></div><div><dt>공개 안내 범위</dt><dd>30포 구성</dd></div><div><dt>식품 유형</dt><dd>기타가공품</dd></div></dl></div>
               <p>제품을 소개할 때는 연구 결과와 분리해 아래 순서로 안내하면 이해가 쉽습니다.</p>
               <ol><li>제품명과 구성 확인</li><li>제품 표시사항의 섭취 방법·주의사항 확인</li><li>가격·재고·배송 등 판매 정보 확인</li></ol>
