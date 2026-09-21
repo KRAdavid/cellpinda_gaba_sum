@@ -29,6 +29,14 @@ const required = [
   ['presenter dialog state', 'story--presentation'],
   ['card sharing control', '현재 카드 링크 공유'],
   ['native share fallback', 'navigator.share'],
+  ['lifestyle and product boundary', '이 생활 루틴은 특정 성분이나 제품의 효과를 뜻하지 않습니다'],
+  ['product verification status', '최신 포장·판매 SKU 대조 필요'],
+  ['review rights boundary', '원문·이미지 사용권 확인 전 재게시하지 않음'],
+];
+
+const requiredMetadata = [
+  ['description metadata', '셀핀다 제품 관련 소비자 안내 페이지입니다'],
+  ['Open Graph description', '일반 GABA 연구, 셀핀다 제품 정보, 구매자 후기를 구분'],
 ];
 
 const forbidden = [
@@ -45,6 +53,9 @@ if (!index.includes('favicon.svg')) failures.push('missing favicon link');
 if (!fs.existsSync(path.join(dist, 'favicon.svg'))) failures.push('missing favicon asset');
 for (const [label, value] of required) {
   if (!assetText.includes(value)) failures.push(`missing required ${label}: ${value}`);
+}
+for (const [label, value] of requiredMetadata) {
+  if (!index.includes(value)) failures.push(`missing required ${label}: ${value}`);
 }
 for (const [label, value] of forbidden) {
   if (assetText.includes(value)) failures.push(`found forbidden ${label}: ${value}`);

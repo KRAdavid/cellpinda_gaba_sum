@@ -48,6 +48,7 @@ function makeSlides(): Slide[] {
       title: '먼저 5분, 화면을 내려놓고 휴식 시간을 만들어 보세요.',
       body: '물을 마시거나 창밖을 바라보는 것처럼 지금 바로 할 수 있는 생활 속 행동부터 시작합니다.',
       tone: 'green',
+      note: '이 생활 루틴은 특정 성분이나 제품의 효과를 뜻하지 않습니다.',
       presenterNote: '성분 설명 전에 지금 할 수 있는 생활 속 휴식 행동을 제안합니다.',
     },
     {
@@ -377,16 +378,30 @@ export default function App() {
     });
   };
 
-  const closePanel = () => {
+  const closePanel = (restoreFocus = true) => {
     const sourceIndex = panelSourceIndex;
     const returnElement = panelReturnRef.current;
     setOpenPanel(null);
     setPanelSourceIndex(null);
-    window.requestAnimationFrame(() => {
-      if (returnElement?.isConnected) returnElement.focus();
-      else if (sourceIndex !== null) panelTriggerRefs.current[sourceIndex]?.focus();
-    });
+    if (restoreFocus) {
+      window.requestAnimationFrame(() => {
+        if (returnElement?.isConnected) returnElement.focus();
+        else if (sourceIndex !== null) panelTriggerRefs.current[sourceIndex]?.focus();
+      });
+    }
     panelReturnRef.current = null;
+  };
+
+  const continueToNextCard = () => {
+    const next = Math.min(slides.length - 1, (panelSourceIndex ?? active) + 1);
+    closePanel(false);
+    goTo(next);
+    window.requestAnimationFrame(() => {
+      const focusTarget = presentationMode
+        ? presentationRef.current?.querySelector<HTMLElement>('.story-presentation-toggle')
+        : panelTriggerRefs.current[next] ?? railRef.current;
+      focusTarget?.focus();
+    });
   };
 
   const openInfoPanel = (index: number, panel: PanelKey, returnElement?: HTMLElement | null) => {
@@ -471,7 +486,7 @@ export default function App() {
         <div className="story-dots" aria-hidden="true">{slides.map((slide, index) => <span key={slide.id} className={index === active ? 'active' : ''} />)}</div>
         {openPanel ? <div className="info-layer" role="presentation" onMouseDown={event => {if (event.target === event.currentTarget) closePanel();}}>
           <aside className="info-panel" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title">
-            <div className="info-panel__topline"><span>카드 흐름 안에서 확인</span><button ref={panelCloseRef} type="button" onClick={closePanel} aria-label="정보 패널 닫기">×</button></div>
+            <div className="info-panel__topline"><span>카드 흐름 안에서 확인</span><button ref={panelCloseRef} type="button" onClick={() => closePanel()} aria-label="정보 패널 닫기">×</button></div>
             <p className="eyebrow">{openPanel === 'research' ? '일반 GABA 연구' : openPanel === 'product' ? '셀핀다 제품 정보' : '구매자 후기'}</p>
             <h2 id="info-panel-title">{panelTitle}</h2>
             {openPanel === 'research' ? <>
@@ -482,6 +497,7 @@ export default function App() {
             </> : null}
             {openPanel === 'product' ? <>
               <p className="info-panel__transition">여기서부터는 연구가 아닌 판매 제품의 표시 정보입니다.</p>
+              <p className="info-panel__status">확인 상태: 제한적 공개 범위 · 최신 포장·판매 SKU 대조 필요</p>
               <div className="product-facts"><dl><div><dt>제품명</dt><dd>셀핀다 가바 1500</dd></div><div><dt>공개 안내 범위</dt><dd>30포 구성</dd></div><div><dt>식품 유형</dt><dd>기타가공품</dd></div></dl></div>
               <p>제품을 소개할 때는 연구 결과와 분리해 아래 순서로 안내하면 이해가 쉽습니다.</p>
               <ol><li>제품명과 구성 확인</li><li>제품 표시사항의 섭취 방법·주의사항 확인</li><li>가격·재고·배송 등 판매 정보 확인</li></ol>
@@ -489,12 +505,13 @@ export default function App() {
             </> : null}
             {openPanel === 'review' ? <>
               <p>판매처에 게시된 후기는 작성자의 개인 경험입니다. 고객 상담이나 영업 설명에서는 경험과 객관적 제품 정보를 나누어 전달하세요.</p>
+              <p className="info-panel__status">공개 상태: 개인 경험 안내 · 원문·이미지 사용권 확인 전 재게시하지 않음</p>
               <ul><li>사용 기간과 섭취 맥락 확인</li><li>개인 느낌과 객관적 사실 구분</li><li>모든 사람에게 같은 결과가 나타난다고 해석하지 않기</li></ul>
               <p className="info-panel__boundary">후기는 개인 경험이며 제품 효능을 입증하는 연구자료가 아닙니다.</p>
             </> : null}
             <div className="info-panel__actions">
               <a className="info-panel__external" href={openExternal} target="_blank" rel="noreferrer">{panelExternalLabel} ↗</a>
-              <button type="button" className="info-panel__next" onClick={() => {const next = Math.min(slides.length - 1, (panelSourceIndex ?? active) + 1); closePanel(); goTo(next);}}>{(panelSourceIndex ?? active) < slides.length - 1 ? '다음 카드로 계속 보기 →' : '카드 흐름으로 돌아가기'}</button>
+              <button type="button" className="info-panel__next" onClick={continueToNextCard}>{(panelSourceIndex ?? active) < slides.length - 1 ? '다음 카드로 계속 보기 →' : '카드 흐름으로 돌아가기'}</button>
             </div>
           </aside>
         </div> : null}

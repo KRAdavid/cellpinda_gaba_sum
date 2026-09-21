@@ -93,8 +93,18 @@ try {
     assert('card link share keeps the current story context', shared.url.includes('card=8') && shared.url.includes('#story') && shared.native?.url === shared.url, JSON.stringify(shared));
   }
 
-  await send('Page.navigate', {url: `${baseUrl}?card=6%23story`});
+  const fallbackMocked = await evaluate('(() => { try { Object.defineProperty(navigator, "share", {configurable:true, value: undefined}); Object.defineProperty(navigator, "clipboard", {configurable:true, value: {writeText: async () => { throw new Error("qa clipboard failure"); }}}); Object.defineProperty(document, "execCommand", {configurable:true, value: () => true}); return true; } catch { return false; } })()');
+  if (fallbackMocked) {
+    await evaluate('document.querySelector(".story-share-button")?.click()');
+    await wait(120);
+    const fallback = await evaluate('({url:document.querySelector(".story-share-url")?.value||"",message:document.querySelector(".story-share-message")?.innerText||""})');
+    assert('card link share falls back to copy', fallback.url.includes('card=8') && fallback.message.includes('복사했습니다'), JSON.stringify(fallback));
+  }
+
+  await send('Page.navigate', {url: `${baseUrl}?card=6#story`});
   await wait(850);
+  const researchEntry = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText,hash:location.hash})');
+  assert('research deep link opens the requested card', researchEntry.progress === '06 / 11' && researchEntry.hash === '#story', JSON.stringify(researchEntry));
   await evaluate('document.querySelector("#story-card-research .card-link").click()');
   await wait(180);
   const research = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),title:document.querySelector("[role=dialog] h2")?.innerText||"",boundary:document.querySelector(".info-panel__boundary")?.innerText||"",url:location.href})');
@@ -103,13 +113,13 @@ try {
 
   await evaluate('document.querySelector(".info-panel__next").click()');
   await wait(350);
-  const productCard = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),progress:document.querySelector(".story-controls span")?.innerText})');
-  assert('next card continues the story', !productCard.dialog && productCard.progress === '07 / 11', JSON.stringify(productCard));
+  const productCard = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),progress:document.querySelector(".story-controls span")?.innerText,focus:document.activeElement?.innerText||""})');
+  assert('next card continues the story', !productCard.dialog && productCard.progress === '07 / 11' && productCard.focus.includes('제품 정보'), JSON.stringify(productCard));
 
   await evaluate('([...document.querySelectorAll(".story-card")].find(card=>card.querySelector("h3")?.innerText.includes("제품 구성"))?.querySelector(".card-link")?.click())');
   await wait(180);
-  const product = await evaluate('({title:document.querySelector("[role=dialog] h2")?.innerText||"",facts:document.querySelector(".product-facts")?.innerText||""})');
-  assert('product opens in the same dialog flow', product.title.includes('제품 정보') && product.facts.includes('셀핀다 가바 1500'));
+  const product = await evaluate('({title:document.querySelector("[role=dialog] h2")?.innerText||"",facts:document.querySelector(".product-facts")?.innerText||"",status:document.querySelector(".info-panel__status")?.innerText||""})');
+  assert('product opens in the same dialog flow', product.title.includes('제품 정보') && product.facts.includes('셀핀다 가바 1500') && product.status.includes('최신 포장'), JSON.stringify(product));
 
   console.log('Interaction QA passed.');
 } finally {
