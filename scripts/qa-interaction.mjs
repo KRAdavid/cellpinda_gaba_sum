@@ -82,6 +82,11 @@ try {
   assert('viewport has no horizontal overflow', initialPage.width === viewportWidth && initialPage.docWidth === initialPage.clientWidth && initialPage.docWidth <= initialPage.width, `${initialPage.width}/${initialPage.clientWidth}/${initialPage.docWidth}`);
   assert('consumer view hides presenter guidance', !initialPage.presenterGuidance);
 
+  await evaluate('document.getElementById("story")?.scrollIntoView({behavior:"auto"})');
+  await wait(200);
+  const railBehavior = await evaluate('(() => { const rail = document.querySelector(".story-rail"); const style = rail ? getComputedStyle(rail) : null; return {touchAction:style?.touchAction || "", snap:style?.scrollSnapType || "", overflow:style?.overflowX || ""}; })()');
+  if (viewportWidth <= 760) assert('mobile rail declares horizontal touch and snap', railBehavior.touchAction === 'pan-x' && railBehavior.snap.includes('x') && railBehavior.overflow === 'auto', JSON.stringify(railBehavior));
+
   await evaluate('document.querySelector(".intro-product-button")?.click()');
   await waitForProgress('07 / 11');
   const productEntry = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText,visible:!!document.querySelector("#story-card-product")})');
