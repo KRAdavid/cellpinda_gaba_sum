@@ -127,6 +127,7 @@ export default function App() {
   const [shareUrl, setShareUrl] = useState('');
   const railRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
+  const programmaticTargetRef = useRef<number | null>(null);
   const panelTriggerRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const panelRef = useRef<HTMLElement>(null);
   const panelCloseRef = useRef<HTMLButtonElement>(null);
@@ -141,6 +142,15 @@ export default function App() {
     if (!rail) return;
     const observer = new IntersectionObserver(entries => {
       if (presentationModeRef.current) return;
+      const programmaticTarget = programmaticTargetRef.current;
+      if (programmaticTarget !== null) {
+        const targetReached = entries.some(entry => {
+          const index = Number((entry.target as HTMLElement).dataset.index);
+          return index === programmaticTarget && entry.isIntersecting && entry.intersectionRatio >= 0.65;
+        });
+        if (!targetReached) return;
+        programmaticTargetRef.current = null;
+      }
       const visible = entries
         .filter(entry => entry.isIntersecting)
         .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
@@ -154,6 +164,7 @@ export default function App() {
 
   const goTo = (index: number) => {
     const next = Math.max(0, Math.min(slides.length - 1, index));
+    if (next !== active) programmaticTargetRef.current = next;
     setActive(next);
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     slideRefs.current[next]?.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', inline: 'center', block: 'nearest'});

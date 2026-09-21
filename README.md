@@ -34,3 +34,9 @@ npm run dev
 ```bash
 pnpm run qa:public
 ```
+
+로컬 Vite 서버와 Chrome 원격 디버깅 포트(9223)가 실행 중이면 발표·패널·딥링크 상호작용도 검사할 수 있습니다.
+
+```bash
+pnpm run qa:interaction
+```

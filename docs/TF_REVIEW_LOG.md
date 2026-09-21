@@ -24,6 +24,8 @@
 
 릴리스 QA 자동화: `scripts/qa-public.mjs`를 추가해 빌드 번들의 필수 경계 문구와 발표 기능 존재 여부, 금지 표현·검증되지 않은 제품 이미지·기존 공식 사이트 URL의 혼입 여부를 자동 검사한다. `pnpm run qa:public`과 Pages workflow에서 실행한다.
 
+상호작용 QA 개선: `pnpm run qa:interaction`에서 연구 패널의 `다음 카드로 계속 보기` 직후 이전 카드 진행률로 되돌아가는 경합을 재현했다. 프로그램 이동 목표 카드가 65% 이상 보일 때까지 IntersectionObserver의 이전 값을 무시하도록 수정했고, 발표 딥링크·메모·Escape·연구 패널·제품 패널 흐름을 다시 통과시켰다.
+
 마감 품질 보완: 브라우저 콘솔의 favicon 404를 제거하기 위해 Cellpinda GABA 전용 SVG favicon을 추가하고, 번들 QA에서 링크와 실제 자산 존재를 함께 검사한다.
 
 발표 접근성 개선: `?mode=presenter&card=N#story`로 발표 모드와 카드 위치를 바로 열 수 있게 했다. 발표 중 카드 링크를 복사하면 `mode=presenter`가 유지되고, `Esc`로 종료하면 일반 카드 URL로 정리된다.

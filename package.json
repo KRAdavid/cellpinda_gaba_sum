@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "qa:bundle": "node scripts/qa-public.mjs",
-    "qa:public": "pnpm run build && pnpm run qa:bundle"
+    "qa:public": "pnpm run build && pnpm run qa:bundle",
+    "qa:interaction": "node scripts/qa-interaction.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.1.0",
