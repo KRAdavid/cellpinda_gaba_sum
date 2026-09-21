@@ -7,11 +7,11 @@
 | 공개 소비자 안내 | <https://kradavid.github.io/cellpinda_gaba_sum/> |
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
-| 앱 최신 커밋 | `8c9bdf2` |
+| 앱 최신 커밋 | `4bdfa6b` |
 | 최신 운영 문서 기준 | `main` 브랜치의 `docs/`와 Pages workflow 문서 게이트 (`qa:docs`) |
 | 릴리스 검증 기준 Pages 배포 | [run 35611131797](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35611131797) (발표 모드 제품 우선 전환·다음 설명 힌트·현재 단계 자동 정렬·인페이지 흐름 안내·고객용 링크 확인 문구·접근 가능한 carousel·TF 문서 게이트를 포함한 보완본, 정적 번들 QA 및 공개 URL 320·390·1440px 매트릭스 통과) |
 | 운영 문서 동기화 확인 | `main`에 push할 때마다 Pages workflow의 `qa:docs` 단계가 영업 가이드·릴리스 인수인계를 함께 검증 |
-| 최신 앱 공개 자산 직접 확인 | `index-DoaqEEu4.js` 및 `index-CZCNL243.css` HTTP 200, `8c9bdf2`의 소비자 `다음 카드` 명시·발표 모드 `제품부터 설명`·모바일 발표자 컨트롤 3행 정렬·인페이지 CTA sticky 고정·외부 자료 접힘·접근성 라벨·연구 경계 문구 확인, 공개 URL 320·390·1440px 매트릭스 통과 |
+| 최신 앱 공개 자산 직접 확인 | `index-DbLKjYyd.js` 및 `index-BR4qDsaX.css` HTTP 200, `4bdfa6b`의 소비자 `다음 카드` 명시·공유/발표 기능 `더 보기` 접힘·발표 모드 `제품부터 설명`·모바일 발표자 컨트롤 3행 정렬·인페이지 CTA sticky 고정·외부 자료 접힘·접근성 라벨·연구 경계 문구 확인, 공개 URL 320·390·1440px 매트릭스 통과 |
 | 운영 문서 동기화 | `main`에 반영된 TF 문서와 Pages workflow가 동일 저장소에서 관리되며, 문서-only push도 workflow로 검증 |
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 이 공개본은 소비자 안내와 사업자 발표를 위한 별도 페이지이며, 기존 공식 배포 사이트를 대체하거나 수정하지 않는다.
@@ -71,5 +71,7 @@ pnpm run qa:interaction
 2026-09-21 발표자 모바일 컨트롤 재검증: `5001ed4` 반영 후 공개 자산 `index-DpSpNWnQ.js`와 `index-BHwfNGnH.css`의 HTTP 200을 확인했다. 실제 공개 URL의 320·390·1440px 매트릭스에서 발표자 컨트롤 경계·3행 정렬·첫 카드 제목/본문 가시성·제품 우선 전환·페이지 안 연구→제품→후기 흐름을 모두 통과했고, 390px 공개 캡처에서 버튼 겹침이 없는 것을 확인했다. 이 결과는 기술 QA 증거이며, 실제 영업 세션·실기기 검증을 대체하지 않는다.
 
 2026-09-21 소비자 다음 행동 재검증: `8c9bdf2` 반영 후 공개 자산 `index-DoaqEEu4.js`와 `index-CZCNL243.css`의 HTTP 200을 확인했다. 실제 공개 URL의 320·390·1440px 매트릭스에서 소비자 화면의 `다음 카드` 라벨·01→02 이동·모바일 스냅·외부 자료 기본 닫힘·연구·제품·후기 인페이지 흐름을 모두 통과했고, 390px 공개 캡처에서 `다음 카드`가 카드 흐름의 기본 행동으로 보이는 것을 확인했다. 이 결과는 기술 QA 증거이며, 실제 영업 세션·실기기 검증을 대체하지 않는다.
+
+2026-09-21 소비자 도구 정리 재검증: `4bdfa6b` 반영 후 공개 자산 `index-DbLKjYyd.js`와 `index-BR4qDsaX.css`의 HTTP 200을 확인했다. 실제 공개 URL의 320·390·1440px 매트릭스에서 소비자 화면의 `다음 카드` 기본 행동·`더 보기` 기본 닫힘·요청 시 공유/발표 기능 노출·연구·제품·후기 인페이지 흐름을 모두 통과했고, 390px 공개 캡처에서 도구보다 카드 흐름이 먼저 보이는 것을 확인했다. 이 결과는 기술 QA 증거이며, 실제 영업 세션·실기기 검증을 대체하지 않는다.
 
 요구사항별 완료·보류 판단은 [GOAL_ACCEPTANCE_MATRIX.md](GOAL_ACCEPTANCE_MATRIX.md)를 기준으로 한다.
