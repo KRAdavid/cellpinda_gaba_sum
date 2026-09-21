@@ -7,7 +7,6 @@ type Slide = {
   body: string;
   tone: string;
   note?: string;
-  image?: string;
   link?: {href: string; label: string; panel: PanelKey};
 };
 
@@ -15,7 +14,6 @@ type PanelKey = 'research' | 'product' | 'review';
 
 const RESEARCH_URL = 'https://pubmed.ncbi.nlm.nih.gov/33041752/';
 const PRODUCT_URL = 'https://smartstore.naver.com/cellpinda/products/4701017202';
-const PRODUCT_IMAGE = `${import.meta.env.BASE_URL}product-gaba1500.webp`;
 
 function makeSlides(): Slide[] {
   return [
@@ -69,7 +67,6 @@ function makeSlides(): Slide[] {
       title: '제품 구성과 섭취 방법은 제품 표시사항에서 확인하세요.',
       body: '셀핀다 가바 1500의 상품 구성, 가격, 재고, 섭취 방법은 스마트스토어와 제품 포장을 기준으로 확인합니다.',
       tone: 'product',
-      image: PRODUCT_IMAGE,
       note: '제품 정보는 일반 GABA 연구 결과와 별도로 확인해야 합니다.',
       link: {href: PRODUCT_URL, label: '제품 정보 카드에서 보기', panel: 'product'},
     },
@@ -293,7 +290,6 @@ export default function App() {
             aria-labelledby={`slide-${slide.id}`}
           >
             <div className="card-label"><span>{slide.label}</span><span>{String(index + 1).padStart(2, '0')}</span></div>
-            {slide.image ? <img className="card-product-image" src={slide.image} alt="셀핀다 가바 1500 제품 이미지" /> : null}
             <div className="card-content">
               <h3 id={`slide-${slide.id}`}>{slide.title}</h3>
               <p>{slide.body}</p>
@@ -314,7 +310,7 @@ export default function App() {
               <p className="info-panel__boundary">이 자료는 일반 GABA 원료 또는 GABA 섭취 연구입니다. 셀핀다 제품의 효능을 직접 입증하는 자료가 아닙니다.</p>
             </> : null}
             {openPanel === 'product' ? <>
-              <div className="product-facts"><img src={PRODUCT_IMAGE} alt="셀핀다 가바 1500 제품 이미지" /><dl><div><dt>제품명</dt><dd>셀핀다 가바 1500</dd></div><div><dt>공개 안내 범위</dt><dd>30포 구성</dd></div><div><dt>식품 유형</dt><dd>기타가공품</dd></div></dl></div>
+              <div className="product-facts"><dl><div><dt>제품명</dt><dd>셀핀다 가바 1500</dd></div><div><dt>공개 안내 범위</dt><dd>30포 구성</dd></div><div><dt>식품 유형</dt><dd>기타가공품</dd></div></dl></div>
               <p>제품을 소개할 때는 연구 결과와 분리해 아래 순서로 안내하면 이해가 쉽습니다.</p>
               <ol><li>제품명과 구성 확인</li><li>제품 표시사항의 섭취 방법·주의사항 확인</li><li>가격·재고·배송 등 판매 정보 확인</li></ol>
               <p className="info-panel__boundary">위 내용은 공개 안내 범위입니다. 최신 포장 표시사항의 섭취법·주의사항·로트 정보는 제품 포장과 스마트스토어에서 다시 확인해 주세요.</p>
