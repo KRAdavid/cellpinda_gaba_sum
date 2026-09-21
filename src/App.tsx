@@ -45,7 +45,7 @@ function makeSlides(): Slide[] {
       title: '몸은 쉬고 있는데, 생각은 다음 일로 먼저 달려갑니다.',
       body: '수면·스트레스·생활 리듬 등 여러 요인이 있을 수 있으며, 한 가지 성분이나 제품으로 설명하지 않습니다.',
       tone: 'warm',
-      presenterPrompt: '쉬는 중에도 생각이 이어지는 상황이 있나요?',
+      presenterPrompt: '몸은 쉬고 있는데 생각이 다음 일로 달려간다고 느낀 적이 있나요?',
       presenterBoundary: '수면·스트레스의 원인을 한 가지 성분이나 제품으로 단정하지 않습니다.',
     },
     {
