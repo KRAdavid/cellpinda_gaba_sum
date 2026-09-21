@@ -273,6 +273,20 @@ export default function App() {
     }
   };
 
+  const copySharedCardLink = async () => {
+    const link = shareUrl;
+    if (!link) return;
+    const shareRequest = shareRequestRef.current;
+    try {
+      await copyText(link);
+      if (shareRequest !== shareRequestRef.current) return;
+      setShareMessage('현재 카드 링크를 복사했습니다.');
+    } catch {
+      if (shareRequest !== shareRequestRef.current) return;
+      setShareMessage('링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
+  };
+
   useEffect(() => {
     if (!openPanel) return;
     const previousOverflow = document.body.style.overflow;
@@ -520,7 +534,7 @@ export default function App() {
           </div>
         </div>
         <p className="story-share-message" aria-live="polite">{shareMessage}</p>
-        {shareUrl ? <input className="story-share-url" value={shareUrl} readOnly aria-label="현재 카드 공유 링크" onFocus={event => event.currentTarget.select()} /> : null}
+        {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="현재 카드 공유 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>링크 복사</button></div> : null}
         {presentationMode ? <details className="presenter-note"><summary>발표자용 진행 포인트</summary><div className="presenter-note__grid"><div><strong>고객에게 물어보기</strong><p>{slides[active].presenterPrompt}</p></div><div><strong>이어서 말할 때</strong><p>{slides[active].presenterBoundary}</p></div></div></details> : null}
         <div className="story-rail" ref={railRef} tabIndex={0} aria-label="GABA 소개 카드 목록">
           {slides.map((slide, index) => <article

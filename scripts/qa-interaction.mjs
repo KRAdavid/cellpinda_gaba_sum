@@ -152,6 +152,10 @@ try {
     await wait(120);
     const fallback = await evaluate('({url:document.querySelector(".story-share-url")?.value||"",message:document.querySelector(".story-share-message")?.innerText||""})');
     assert('card link share falls back to copy', fallback.url.includes('card=8') && fallback.url.includes('#story') && !fallback.url.includes('mode=presenter') && fallback.message.includes('복사했습니다'), JSON.stringify(fallback));
+    await evaluate('document.querySelector(".story-share-copy-button")?.click()');
+    await wait(120);
+    const copiedAgain = await evaluate('document.querySelector(".story-share-message")?.innerText||""');
+    assert('shared card exposes a direct copy action', copiedAgain.includes('복사했습니다'), copiedAgain);
   }
 
   await send('Page.navigate', {url: `${baseUrl}?card=6#story`});

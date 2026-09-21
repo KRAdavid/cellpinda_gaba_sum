@@ -33,6 +33,7 @@ const required = [
   ['presenter keyboard support', 'PageUp/PageDown'],
   ['presenter dialog state', 'story--presentation'],
   ['card sharing control', '현재 카드 링크 공유'],
+  ['card sharing copy control', '링크 복사'],
   ['business entry label', '사업자용 설명 시작'],
   ['opening everyday hook', '말이 먼저 세게 나온 날'],
   ['opening product boundary', '바로 제품을 찾기보다'],
