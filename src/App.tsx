@@ -155,6 +155,7 @@ export default function App() {
   const presentationDidFocusRef = useRef(false);
   const presentationReturnRef = useRef<HTMLElement | null>(null);
   const panelReturnRef = useRef<HTMLElement | null>(null);
+  const shareRequestRef = useRef(0);
 
   useEffect(() => {
     const rail = railRef.current;
@@ -185,6 +186,7 @@ export default function App() {
     const next = Math.max(0, Math.min(slides.length - 1, index));
     if (next !== active) {
       programmaticTargetRef.current = next;
+      shareRequestRef.current += 1;
       // Clear immediately as well as in the active-card effect; navigation and
       // the async share callback can otherwise briefly show a stale link.
       setShareUrl('');
@@ -238,6 +240,7 @@ export default function App() {
   };
 
   const shareCardLink = async () => {
+    const shareRequest = ++shareRequestRef.current;
     const url = new URL(window.location.href);
     url.searchParams.set('card', String(active + 1));
     // Customer-facing shares must never expose presenter notes or controls.
@@ -249,10 +252,12 @@ export default function App() {
     if (navigator.share) {
       try {
         await navigator.share({title: '셀핀다 GABA 한 장씩 보기', text: '현재 카드부터 이어서 확인해 보세요.', url: link});
+        if (shareRequest !== shareRequestRef.current) return;
         setShareMessage('현재 카드 링크를 공유했습니다.');
         return;
       } catch (error) {
         if (error instanceof DOMException && error.name === 'AbortError') {
+          if (shareRequest !== shareRequestRef.current) return;
           setShareMessage('공유를 취소했습니다.');
           return;
         }
@@ -260,8 +265,10 @@ export default function App() {
     }
     try {
       await copyText(link);
+      if (shareRequest !== shareRequestRef.current) return;
       setShareMessage('현재 카드 링크를 복사했습니다.');
     } catch {
+      if (shareRequest !== shareRequestRef.current) return;
       setShareMessage('링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
   };
