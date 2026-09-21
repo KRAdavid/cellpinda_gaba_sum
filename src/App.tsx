@@ -611,6 +611,7 @@ export default function App() {
               <ul><li>사용 기간과 섭취 맥락 확인</li><li>개인 느낌과 객관적 사실 구분</li><li>모든 사람에게 같은 결과가 나타난다고 해석하지 않기</li></ul>
               <p className="info-panel__boundary">후기는 개인 경험이며 제품 효능을 입증하는 연구자료가 아닙니다.</p>
             </> : null}
+            <p className="info-panel__flow-note">현재 페이지의 흐름은 유지됩니다. 외부 링크는 보조 선택이며, 아래 버튼으로 다음 카드로 계속 볼 수 있습니다.</p>
             <div className="info-panel__actions">
               <a className="info-panel__external" href={openExternal} target="_blank" rel="noreferrer">{panelExternalLabel} ↗</a>
               <button type="button" className="info-panel__next" onClick={continueToNextCard}>{(panelSourceIndex ?? active) < slides.length - 1 ? '다음 카드로 계속 보기 →' : '카드 흐름으로 돌아가기'}</button>
