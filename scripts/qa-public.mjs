@@ -40,6 +40,7 @@ const required = [
   ['native share fallback', 'navigator.share'],
   ['lifestyle and product boundary', '이 생활 루틴은 특정 성분이나 제품의 효과를 뜻하지 않습니다'],
   ['product verification status', '최종 제품 사실로 확정하지 않습니다'],
+  ['product card boundary', '이 카드에서 확정하지 않고'],
   ['review rights boundary', '원문·이미지 사용권 확인 전 재게시하지 않음'],
 ];
 
