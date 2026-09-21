@@ -254,6 +254,8 @@ try {
   await wait(180);
   const product = await evaluate('({title:document.querySelector("[role=dialog] h2")?.innerText||"",facts:document.querySelector(".product-facts")?.innerText||"",status:document.querySelector(".info-panel__status")?.innerText||""})');
   assert('product opens in the same dialog flow', product.title.includes('제품 정보') && product.facts.includes('셀핀다 가바 1500') && product.status.includes('최종 제품 사실로 확정하지 않습니다'), JSON.stringify(product));
+  const productNextAction = await evaluate('({button:document.querySelector(".info-panel__next")?.innerText||"",note:document.querySelector(".info-panel__flow-note")?.innerText||""})');
+  assert('product panel names a sales-safe in-page next action', productNextAction.button.includes('제품 안내를 이어서 보기') && productNextAction.button.includes('08 · 활용 TIP') && productNextAction.note.includes('표시사항 확인 순서'), JSON.stringify(productNextAction));
   const productExternal = await evaluate('({target:document.querySelector(".info-panel__external")?.target||"",href:document.querySelector(".info-panel__external")?.href||""})');
   assert('product source link is an explicit new-tab choice', productExternal.target === '_blank' && productExternal.href.includes('smartstore.naver.com/cellpinda/products/4701017202'), JSON.stringify(productExternal));
 

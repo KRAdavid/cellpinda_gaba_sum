@@ -569,6 +569,9 @@ export default function App() {
       : '스마트스토어 제품 정보 열기';
   const panelSource = panelSourceIndex ?? active;
   const panelNext = slides[Math.min(slides.length - 1, panelSource + 1)];
+  const panelNextAction = panelSource < slides.length - 1
+    ? `${openPanel === 'product' ? '제품 안내를 이어서 보기:' : '다음 카드:'} ${panelNext.label} →`
+    : '카드 흐름으로 돌아가기';
 
   return <>
     <header className="site-header">
@@ -585,7 +588,7 @@ export default function App() {
           <p className="separation-note">이 페이지는 기존 셀핀다 GABA 공식 배포 사이트와 구분되는 별도 소비자 안내 페이지입니다. 일반 GABA 연구는 셀핀다 제품의 효능을 직접 입증하지 않습니다.</p>
           <a className="text-button" href="#story">전체 카드부터 보기 <span aria-hidden="true">↓</span></a>
           <button type="button" className="text-button intro-presentation-button" onClick={event => enterPresentation(event.currentTarget)}>사업자용 설명 시작 <span aria-hidden="true">↗</span></button>
-          <button type="button" className="text-button intro-product-button" onClick={() => {goTo(6); document.getElementById('story')?.scrollIntoView({behavior: 'smooth'});}}>제품 문의가 먼저라면 <span aria-hidden="true">→</span></button>
+          <button type="button" className="text-button intro-product-button" onClick={() => {goTo(6); document.getElementById('story')?.scrollIntoView({behavior: 'smooth'});}}>제품 정보가 먼저라면 <span aria-hidden="true">→</span></button>
         </div>
         <div className="intro-orbit" aria-hidden="true"><span>GABA</span><i>일상<br />이해</i></div>
       </section>
@@ -678,9 +681,9 @@ export default function App() {
               <ul><li>사용 기간과 섭취 맥락 확인</li><li>개인 느낌과 객관적 사실 구분</li><li>모든 사람에게 같은 결과가 나타난다고 해석하지 않기</li></ul>
               <p className="info-panel__boundary">후기는 개인 경험이며 제품 효능을 입증하는 연구자료가 아닙니다.</p>
             </> : null}
-            <p className="info-panel__flow-note">현재 페이지의 흐름은 유지됩니다. 외부 링크는 보조 선택이며, 아래 버튼으로 다음 카드로 계속 볼 수 있습니다.</p>
+            <p className="info-panel__flow-note">{openPanel === 'product' ? '제품 안내를 확인했다면 다음 카드에서 표시사항 확인 순서를 이어서 보여 주세요. 외부 판매처는 필요한 경우에만 확인합니다.' : '현재 페이지의 흐름은 유지됩니다. 외부 링크는 보조 선택이며, 아래 버튼으로 다음 카드로 계속 볼 수 있습니다.'}</p>
             <div className="info-panel__actions">
-              <button type="button" className="info-panel__next" onClick={continueToNextCard}>{panelSource < slides.length - 1 ? <>다음 카드: {panelNext.label} →</> : '카드 흐름으로 돌아가기'}</button>
+              <button type="button" className="info-panel__next" onClick={continueToNextCard}>{panelNextAction}</button>
               <details className="info-panel__external-choice">
                 <summary>외부 자료는 필요할 때만 확인 <span aria-hidden="true">＋</span></summary>
                 <a className="info-panel__external" href={openExternal} target="_blank" rel="noreferrer">{panelExternalLabel} ↗</a>
