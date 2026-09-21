@@ -7,8 +7,8 @@
 | 공개 소비자 안내 | <https://kradavid.github.io/cellpinda_gaba_sum/> |
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
-| 앱 최신 커밋 | `6db3e2b` |
-| 릴리스 검증 기준 Pages 배포 | [run 35602804116](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35602804116) (카드 링크 직접 복사 보완본, 정적 번들 QA 및 공개 URL 320·390·1440px 매트릭스 통과) |
+| 앱 최신 커밋 | `daef04c` |
+| 릴리스 검증 기준 Pages 배포 | [run 35603615706](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35603615706) (카드 단계 가이드 보완본, 정적 번들 QA 및 공개 URL 320·390·1440px 매트릭스 통과) |
 | 운영 문서 동기화 | `main`에 반영된 TF 문서와 Pages workflow가 동일 저장소에서 관리되며, 문서-only push도 workflow로 검증 |
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 이 공개본은 소비자 안내와 사업자 발표를 위한 별도 페이지이며, 기존 공식 배포 사이트를 대체하거나 수정하지 않는다.
@@ -17,7 +17,7 @@
 
 | 영역 | 확인 결과 | 근거 |
 | --- | --- | --- |
-| 카드 흐름 | 11개 카드, 모바일 좌우 스냅, 1페이지 1메시지 | 공개 URL 및 Chrome CDP 확인 |
+| 카드 흐름 | 11개 카드, 모바일 좌우 스냅, 1페이지 1메시지, 현재 단계 안내 | 공개 URL 및 Chrome CDP 확인 |
 | 외부 이탈 방지 | 연구·제품·후기 버튼은 인페이지 패널을 먼저 열고 외부 링크는 보조 CTA로만 제공 | `src/App.tsx`, `PUBLISHING_TF.md` |
 | 발표 모드 | 이전·다음 버튼, 키보드 이동, 발표자용 진행 포인트(질문·경계 문장), `?mode=presenter&card=N#story` | 공개 URL 확인 |
 | 제품·연구 경계 | 일반 GABA 연구 결론과 셀핀다 제품 표시 정보를 분리 | 연구·제품 패널 |
