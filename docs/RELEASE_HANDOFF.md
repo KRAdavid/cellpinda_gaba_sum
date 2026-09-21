@@ -18,7 +18,7 @@
 | --- | --- | --- |
 | 카드 흐름 | 11개 카드, 모바일 좌우 스냅, 1페이지 1메시지 | 공개 URL 및 Chrome CDP 확인 |
 | 외부 이탈 방지 | 연구·제품·후기 버튼은 인페이지 패널을 먼저 열고 외부 링크는 보조 CTA로만 제공 | `src/App.tsx`, `PUBLISHING_TF.md` |
-| 발표 모드 | 이전·다음 버튼, 키보드 이동, 발표자용 설명 포인트, `?mode=presenter&card=N#story` | 공개 URL 확인 |
+| 발표 모드 | 이전·다음 버튼, 키보드 이동, 발표자용 진행 포인트(질문·경계 문장), `?mode=presenter&card=N#story` | 공개 URL 확인 |
 | 제품·연구 경계 | 일반 GABA 연구 결론과 셀핀다 제품 표시 정보를 분리 | 연구·제품 패널 |
 | 릴리스 가드 | 필수 경계 문구, 금지 표현, 제품 이미지, 기존 공식 URL, favicon을 빌드 전에 검사 | `pnpm run qa:public`, Pages workflow |
 | 상호작용 QA | 발표 딥링크·발표자 메모·키보드·Escape·연구·제품·후기 패널·다음 카드 전환·영업 시작점 01/07·카드 링크 공유·제품 사실 경계 | 공개 URL 대상 `QA_URL=https://kradavid.github.io/cellpinda_gaba_sum/ pnpm run qa:interaction` 전체 통과 |

@@ -62,12 +62,13 @@ try {
   await send('Emulation.setDeviceMetricsOverride', {width: 390, height: 844, deviceScaleFactor: 1, mobile: true});
   await send('Network.enable');
   await send('Network.clearBrowserCache');
-  await send('Page.reload', {ignoreCache: true});
+  await send('Page.navigate', {url: baseUrl});
   await wait(900);
 
-  const initialPage = await evaluate('({title:document.title,width:innerWidth,docWidth:document.documentElement.scrollWidth})');
+  const initialPage = await evaluate('({title:document.title,width:innerWidth,docWidth:document.documentElement.scrollWidth,presenterGuidance:!!document.querySelector(".presenter-note")})');
   assert('page identity', initialPage.title.includes('GABA 한 장씩 보기'));
   assert('mobile width has no horizontal overflow', initialPage.width === 390 && initialPage.docWidth === 390, `${initialPage.width}/${initialPage.docWidth}`);
+  assert('consumer view hides presenter guidance', !initialPage.presenterGuidance);
 
   await evaluate('document.querySelector(".intro-product-button")?.click()');
   await waitForProgress('07 / 11');
@@ -90,8 +91,8 @@ try {
 
   await evaluate('document.querySelector(".presenter-note summary").click()');
   await wait(80);
-  const note = await evaluate('({open:document.querySelector(".presenter-note")?.open,text:document.querySelector(".presenter-note p")?.innerText||""})');
-  assert('presenter guidance opens', note.open && note.text.length > 10);
+  const note = await evaluate('({open:document.querySelector(".presenter-note")?.open,prompt:document.querySelector(".presenter-note__grid > div:first-child p")?.innerText||"",boundary:document.querySelector(".presenter-note__grid > div:last-child p")?.innerText||""})');
+  assert('presenter guidance opens', note.open && note.prompt.length > 10 && note.boundary.length > 10, JSON.stringify(note));
 
   await press('ArrowRight', 'ArrowRight', 39);
   const next = await evaluate('document.querySelector(".story-controls span")?.innerText');
