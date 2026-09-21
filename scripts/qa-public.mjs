@@ -30,6 +30,7 @@ const required = [
   ['presenter keyboard support', 'PageUp/PageDown'],
   ['presenter dialog state', 'story--presentation'],
   ['card sharing control', '현재 카드 링크 공유'],
+  ['business entry label', '사업자용 설명 시작'],
   ['native share fallback', 'navigator.share'],
   ['lifestyle and product boundary', '이 생활 루틴은 특정 성분이나 제품의 효과를 뜻하지 않습니다'],
   ['product verification status', '최종 제품 사실로 확정하지 않습니다'],
