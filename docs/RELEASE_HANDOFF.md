@@ -21,7 +21,7 @@
 | 발표 모드 | 이전·다음 버튼, 키보드 이동, 발표자용 설명 포인트, `?mode=presenter&card=N#story` | 공개 URL 확인 |
 | 제품·연구 경계 | 일반 GABA 연구 결론과 셀핀다 제품 표시 정보를 분리 | 연구·제품 패널 |
 | 릴리스 가드 | 필수 경계 문구, 금지 표현, 제품 이미지, 기존 공식 URL, favicon을 빌드 전에 검사 | `pnpm run qa:public`, Pages workflow |
-| 상호작용 QA | 발표 딥링크·발표자 메모·키보드·Escape·연구 패널·제품 패널·다음 카드 전환·영업 시작점 01/07·카드 링크 공유·제품 사실 경계 | 공개 URL 대상 `QA_URL=https://kradavid.github.io/cellpinda_gaba_sum/ pnpm run qa:interaction` 전체 통과 |
+| 상호작용 QA | 발표 딥링크·발표자 메모·키보드·Escape·연구·제품·후기 패널·다음 카드 전환·영업 시작점 01/07·카드 링크 공유·제품 사실 경계 | 공개 URL 대상 `QA_URL=https://kradavid.github.io/cellpinda_gaba_sum/ pnpm run qa:interaction` 전체 통과 |
 | 기본 마감 품질 | favicon HTTP 200, 공개 페이지 HTTP 200 | 공개 URL 읽기 전용 확인 |
 
 ## 사업자 사용 순서

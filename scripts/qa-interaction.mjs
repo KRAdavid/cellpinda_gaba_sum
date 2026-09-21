@@ -137,6 +137,13 @@ try {
   const product = await evaluate('({title:document.querySelector("[role=dialog] h2")?.innerText||"",facts:document.querySelector(".product-facts")?.innerText||"",status:document.querySelector(".info-panel__status")?.innerText||""})');
   assert('product opens in the same dialog flow', product.title.includes('제품 정보') && product.facts.includes('셀핀다 가바 1500') && product.status.includes('최종 제품 사실로 확정하지 않습니다'), JSON.stringify(product));
 
+  await send('Page.navigate', {url: `${baseUrl}?card=10#story`});
+  await waitForProgress('10 / 11');
+  await evaluate('document.querySelector("#story-card-review .card-link")?.click()');
+  await wait(180);
+  const review = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),title:document.querySelector("[role=dialog] h2")?.innerText||"",status:document.querySelector(".info-panel__status")?.innerText||"",boundary:document.querySelector(".info-panel__boundary")?.innerText||"",url:location.href})');
+  assert('review opens in the same dialog flow', review.dialog && review.title.includes('후기') && review.status.includes('사용권 확인 전 재게시하지 않음') && review.boundary.includes('효능') && review.url.startsWith(new URL(baseUrl).origin), JSON.stringify(review));
+
   console.log('Interaction QA passed.');
 } finally {
   socket.close();
