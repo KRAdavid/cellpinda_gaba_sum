@@ -19,6 +19,15 @@ type Slide = {
 const RESEARCH_URL = 'https://pubmed.ncbi.nlm.nih.gov/33041752/';
 const PRODUCT_URL = 'https://smartstore.naver.com/cellpinda/products/4701017202';
 
+const STORY_PHASES = [
+  {id: 'everyday', label: '일상 상태', start: 0, end: 2},
+  {id: 'rest', label: '휴식', start: 3, end: 3},
+  {id: 'ingredient', label: '성분 일반정보', start: 4, end: 4},
+  {id: 'research', label: '일반 연구', start: 5, end: 5},
+  {id: 'product', label: '제품 정보', start: 6, end: 7},
+  {id: 'review', label: '후기·마무리', start: 8, end: 10},
+] as const;
+
 function makeSlides(): Slide[] {
   return [
     {
@@ -156,6 +165,7 @@ export default function App() {
   const presentationReturnRef = useRef<HTMLElement | null>(null);
   const panelReturnRef = useRef<HTMLElement | null>(null);
   const shareRequestRef = useRef(0);
+  const activePhase = STORY_PHASES.find(phase => active >= phase.start && active <= phase.end) ?? STORY_PHASES[0];
 
   useEffect(() => {
     const rail = railRef.current;
@@ -523,6 +533,11 @@ export default function App() {
           </div>
           <p>{presentationMode ? <>← → 또는 PageUp/PageDown으로 넘기고<br />Esc로 발표 모드를 종료하세요.</> : <>모바일에서는 좌우로 밀어 보세요.<br />연구·제품·후기는 각각 다른 정보입니다.</>}</p>
         </div>
+        <nav className="story-sequence" aria-label="카드 흐름 단계">
+          {STORY_PHASES.map((phase, index) => <span key={phase.id} className={phase.id === activePhase.id ? 'is-active' : ''} aria-current={phase.id === activePhase.id ? 'step' : undefined}>
+            {phase.label}{index < STORY_PHASES.length - 1 ? <i aria-hidden="true">→</i> : null}
+          </span>)}
+        </nav>
         <div className="story-controls">
           <span aria-live="polite">{String(active + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</span>
           <div>

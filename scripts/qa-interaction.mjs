@@ -89,11 +89,13 @@ try {
 
   await evaluate('document.querySelector(".intro-product-button")?.click()');
   await waitForProgress('07 / 11');
-  const productEntry = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText,visible:!!document.querySelector("#story-card-product")})');
-  assert('intro product entry opens card 7', productEntry.progress === '07 / 11' && productEntry.visible, JSON.stringify(productEntry));
+  const productEntry = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText,visible:!!document.querySelector("#story-card-product"),phase:document.querySelector(".story-sequence .is-active")?.innerText||""})');
+  assert('intro product entry opens card 7', productEntry.progress === '07 / 11' && productEntry.visible && productEntry.phase.includes('제품 정보'), JSON.stringify(productEntry));
 
   await send('Page.navigate', {url: baseUrl});
   await waitForProgress('01 / 11');
+  const openingPhase = await evaluate('document.querySelector(".story-sequence .is-active")?.innerText||""');
+  assert('story sequence starts with everyday context', openingPhase.includes('일상 상태'), openingPhase);
   await evaluate('document.querySelector(".intro-presentation-button")?.click()');
   await waitForProgress('01 / 11');
   const introPresentation = await evaluate('({presentation:!!document.querySelector(".story--presentation"),url:location.href})');
