@@ -75,6 +75,14 @@ try {
   const productEntry = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText,visible:!!document.querySelector("#story-card-product")})');
   assert('intro product entry opens card 7', productEntry.progress === '07 / 11' && productEntry.visible, JSON.stringify(productEntry));
 
+  await send('Page.navigate', {url: baseUrl});
+  await waitForProgress('01 / 11');
+  await evaluate('document.querySelector(".intro-presentation-button")?.click()');
+  await waitForProgress('01 / 11');
+  const introPresentation = await evaluate('({presentation:!!document.querySelector(".story--presentation"),url:location.href})');
+  assert('intro presenter entry creates a resumable card link', introPresentation.presentation && introPresentation.url.includes('mode=presenter') && introPresentation.url.includes('card=1'), JSON.stringify(introPresentation));
+  await press('Escape', 'Escape', 27);
+
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
   await waitForProgress('01 / 11');
   const fullFlowStart = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
