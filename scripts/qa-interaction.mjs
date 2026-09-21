@@ -89,6 +89,11 @@ try {
   if (viewportWidth <= 760) assert('mobile rail declares horizontal touch and snap', railBehavior.touchAction === 'pan-x' && railBehavior.snap.includes('x') && railBehavior.overflow === 'auto', JSON.stringify(railBehavior));
   const consumerNext = await evaluate('(() => { const button = document.querySelector(".story-next-button"); const rect = button?.getBoundingClientRect(); return {label:button?.innerText||"",width:rect?.width||0,visible:!!rect && rect.width > 0 && rect.height > 0}; })()');
   assert('consumer next action is explicit', consumerNext.visible && consumerNext.width >= 90 && consumerNext.label.includes('다음 카드'), JSON.stringify(consumerNext));
+  const consumerSecondary = await evaluate('({open:document.querySelector(".story-secondary-controls")?.open ?? true,summary:document.querySelector(".story-secondary-controls summary")?.innerText||""})');
+  assert('consumer secondary controls stay collapsed', consumerSecondary.open === false && consumerSecondary.summary.includes('더 보기'), JSON.stringify(consumerSecondary));
+  await evaluate('document.querySelector(".story-secondary-controls summary")?.click()');
+  const openedSecondary = await evaluate('({open:document.querySelector(".story-secondary-controls")?.open ?? false,share:!!document.querySelector(".story-secondary-controls .story-share-button"),presenter:!!document.querySelector(".story-secondary-controls .story-presentation-toggle")})');
+  assert('consumer secondary controls open on request', openedSecondary.open && openedSecondary.share && openedSecondary.presenter, JSON.stringify(openedSecondary));
   await evaluate('document.querySelector(".story-next-button")?.click()');
   await waitForProgress('02 / 11');
   assert('consumer next action advances the story', true);
