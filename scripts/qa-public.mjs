@@ -49,7 +49,7 @@ const required = [
   ['business entry label', '사업자용 설명 시작'],
   ['product information entry label', '제품 정보가 먼저라면'],
   ['primary consumer entry class', 'intro-primary-button'],
-  ['secondary entry hierarchy label', '사업자·제품 문의가 먼저라면'],
+  ['secondary entry hierarchy label', '사업자 설명·제품 정보가 먼저라면'],
   ['opening everyday hook', '말이 먼저 세게 나온 날'],
   ['opening product boundary', '바로 제품을 찾기보다'],
   ['opening presenter prompt', '몸은 쉬고 있는데 생각이 다음 일로 달려간다고 느낀 적이 있나요?'],

@@ -636,7 +636,7 @@ export default function App() {
           <div className="intro-entry-actions">
             <a className="text-button intro-primary-button" href="#story">전체 카드부터 보기 <span aria-hidden="true">↓</span></a>
             <div className="intro-secondary-actions" aria-label="다른 시작점">
-              <span className="intro-secondary-label">사업자·제품 문의가 먼저라면</span>
+              <span className="intro-secondary-label">사업자 설명·제품 정보가 먼저라면</span>
               <div>
                 <button type="button" className="text-button intro-presentation-button" onClick={event => enterPresentation(event.currentTarget, 0)}>사업자용 설명 시작 <span aria-hidden="true">↗</span></button>
                 <button type="button" className="text-button intro-product-button" onClick={() => {goTo(6); document.getElementById('story')?.scrollIntoView({behavior: 'smooth'});}}>제품 정보가 먼저라면 <span aria-hidden="true">→</span></button>
