@@ -24,3 +24,9 @@ npm run dev
 ## Deployment
 
 `main`에 push하면 GitHub Pages workflow가 `https://kradavid.github.io/cellpinda_gaba_sum/` 경로를 기준으로 정적 페이지를 빌드합니다. GitHub 저장소 설정에서 Pages의 Source가 `GitHub Actions`인지 확인해야 합니다.
+
+배포 전 공개 번들 문구와 금지 표현은 다음 명령으로 검사합니다.
+
+```bash
+pnpm run qa:public
+```

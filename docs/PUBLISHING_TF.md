@@ -18,6 +18,7 @@
 
 반복 검토의 판단과 다음 액션은 [`TF_REVIEW_LOG.md`](TF_REVIEW_LOG.md)에 누적한다.
 실제 사업자 상담 검증은 [`SALES_SESSION_VALIDATION.md`](SALES_SESSION_VALIDATION.md)에 별도로 기록한다.
+배포 전 번들 문구 가드는 `pnpm run qa:bundle`로 실행하며, GitHub Pages workflow에서도 자동 실행한다.
 
 ## TF 구성
 

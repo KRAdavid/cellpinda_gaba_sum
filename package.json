@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "qa:bundle": "node scripts/qa-public.mjs",
+    "qa:public": "pnpm run build && pnpm run qa:bundle"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.1.0",
