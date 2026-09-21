@@ -107,6 +107,8 @@ try {
   await waitForPresentation('01 / 11');
   const fullFlowStart = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
   assert('full-flow presenter starts at card 1', fullFlowStart.presentation && fullFlowStart.progress === '01 / 11', JSON.stringify(fullFlowStart));
+  const presenterControlLayout = await evaluate('(() => { const buttons = [...document.querySelectorAll(".story--presentation .story-controls button")]; const rects = buttons.map(button => { const rect = button.getBoundingClientRect(); return {label:button.innerText, left:rect.left, right:rect.right, top:rect.top, bottom:rect.bottom, width:rect.width, height:rect.height}; }); const overlap = rects.some((left, index) => rects.slice(index + 1).some(right => left.left < right.right && left.right > right.left && left.top < right.bottom && left.bottom > right.top)); const product = rects.find(rect => rect.label === "제품부터 설명"); return {within:rects.every(rect => rect.left >= -1 && rect.right <= innerWidth + 1 && rect.top >= -1 && rect.bottom <= innerHeight + 1), overlap, product, rects}; })()');
+  assert('presenter controls stay bounded and non-overlapping', presenterControlLayout.within && !presenterControlLayout.overlap && presenterControlLayout.product?.width > 0 && presenterControlLayout.product?.height > 0, JSON.stringify(presenterControlLayout));
   await evaluate('document.querySelector(".story-product-start")?.click()');
   await waitForPresentation('07 / 11');
   const inPageProductShortcut = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText,url:location.href})');
