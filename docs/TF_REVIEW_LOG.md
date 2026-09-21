@@ -112,6 +112,8 @@ QA 격리 보완: 상호작용 QA가 직전 브라우저의 발표 모드 URL을
 
 공유 UX 보완: 공유 결과가 화면에 남은 뒤에도 사업자가 직접 `링크 복사`를 누를 수 있도록 보조 버튼을 추가했다. 기존 native share·fallback·카드 전환 시 stale context 제거 흐름과 함께 320·390·1440px에서 확인했다.
 
+영업 문서 공유 경로 정합성 보완: `SALES_WALKTHROUGH.md`와 `SALES_SESSION_QUICKSTART.md`에 기본 공유 메뉴와 표시된 `링크 복사` 버튼의 사용 순서를 반영했다. 고객용 링크에서 발표자 모드가 제거되는 조건도 그대로 유지한다.
+
 공개 배포 재검증: 카드 링크 직접 복사 보완본 `6db3e2b`의 [Pages run 35602804116](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35602804116) 성공 후 공개 JS 자산을 확인하고, 공개 URL 320·390·1440px에서 발표 복귀·패널·외부 링크 경계·직접 복사 흐름을 전체 통과시켰다.
 
 공개 배포 재검증: 제품 카드 경계 보완본 `d21733c`의 [Pages run 35602498730](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35602498730) 성공과 공개 URL HTTP 200을 확인했다. 기존 320·390·1440px 상호작용 매트릭스는 앱 동작 변경 없이 유지되는 문구 변경이며, 다음 앱 기능 변경 때 다시 전체 실행한다.
