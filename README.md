@@ -4,6 +4,8 @@
 
 이 저장소는 기존 [cellpinda_GABA](https://github.com/KRAdavid/cellpinda_GABA) 공식 배포 사이트와 구분되는 별도 소비자용 소개 페이지입니다. 일반 GABA 연구, 셀핀다 제품 정보, 구매자 후기를 같은 근거처럼 섞지 않도록 화면에서 분리했습니다.
 
+카드의 연구·제품·후기 버튼은 먼저 페이지 안의 정보 패널을 열어 설명 흐름을 유지합니다. 원문과 스마트스토어 링크는 패널을 읽은 뒤 선택하는 보조 경로입니다. 퍼블리싱 TF의 역할, 검토 기준, 공개 전 수용 기준은 [`docs/PUBLISHING_TF.md`](docs/PUBLISHING_TF.md)에 기록합니다.
+
 ## Local preview
 
 ```bash
