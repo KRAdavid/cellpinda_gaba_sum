@@ -38,6 +38,15 @@ const evaluate = async expression => (await send('Runtime.evaluate', {
   awaitPromise: true,
 })).result?.value;
 
+const waitForProgress = async expected => {
+  const deadline = Date.now() + 4000;
+  while (Date.now() < deadline) {
+    if (await evaluate('document.querySelector(".story-controls span")?.innerText') === expected) return;
+    await wait(100);
+  }
+  throw new Error(`Timed out waiting for progress ${expected}`);
+};
+
 const press = async (key, code, virtualKeyCode) => {
   await send('Input.dispatchKeyEvent', {type: 'rawKeyDown', key, code, windowsVirtualKeyCode: virtualKeyCode, nativeVirtualKeyCode: virtualKeyCode});
   await send('Input.dispatchKeyEvent', {type: 'keyUp', key, code, windowsVirtualKeyCode: virtualKeyCode, nativeVirtualKeyCode: virtualKeyCode});
@@ -51,6 +60,8 @@ const assert = (label, condition, detail = '') => {
 
 try {
   await send('Emulation.setDeviceMetricsOverride', {width: 390, height: 844, deviceScaleFactor: 1, mobile: true});
+  await send('Network.enable');
+  await send('Network.clearBrowserCache');
   await send('Page.reload', {ignoreCache: true});
   await wait(900);
 
@@ -59,12 +70,12 @@ try {
   assert('mobile width has no horizontal overflow', initialPage.width === 390 && initialPage.docWidth === 390, `${initialPage.width}/${initialPage.docWidth}`);
 
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
-  await wait(850);
+  await waitForProgress('01 / 11');
   const fullFlowStart = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
   assert('full-flow presenter starts at card 1', fullFlowStart.presentation && fullFlowStart.progress === '01 / 11', JSON.stringify(fullFlowStart));
 
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=7#story`});
-  await wait(850);
+  await waitForProgress('07 / 11');
   const productShortcutStart = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
   assert('product shortcut presenter starts at card 7', productShortcutStart.presentation && productShortcutStart.progress === '07 / 11', JSON.stringify(productShortcutStart));
 
@@ -102,7 +113,7 @@ try {
   }
 
   await send('Page.navigate', {url: `${baseUrl}?card=6#story`});
-  await wait(850);
+  await waitForProgress('06 / 11');
   const researchEntry = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText,hash:location.hash})');
   assert('research deep link opens the requested card', researchEntry.progress === '06 / 11' && researchEntry.hash === '#story', JSON.stringify(researchEntry));
   await evaluate('document.querySelector("#story-card-research .card-link").click()');
