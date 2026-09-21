@@ -14,6 +14,7 @@
 - 회의 후 결정·담당·기한·증거 제출 위치: [`TF_DECISION_REGISTER.md`](TF_DECISION_REGISTER.md)
 - 실제 주 담당자·백업·결정권: [`TF_ROSTER.md`](TF_ROSTER.md)
 - 담당자·첫 회의·A/B/C 입력: [`TF_KICKOFF_INPUT.md`](TF_KICKOFF_INPUT.md)
+- 실제 TF 참가자 초대·회신 양식: [`TF_TEAM_INVITE.md`](TF_TEAM_INVITE.md)
 - 현장 세션 기록: [`SALES_SESSION_VALIDATION.md`](SALES_SESSION_VALIDATION.md)
 - A/B/C 세션 고정 진행·관찰·P0 판정: [`FIELD_SESSION_PACKET.md`](FIELD_SESSION_PACKET.md)
 

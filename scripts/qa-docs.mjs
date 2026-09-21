@@ -22,11 +22,13 @@ const files = {
   kickoff: read('docs/TF_KICKOFF_INPUT.md'),
   decisions: read('docs/TF_DECISION_REGISTER.md'),
   fieldPacket: read('docs/FIELD_SESSION_PACKET.md'),
+  invite: read('docs/TF_TEAM_INVITE.md'),
 };
 
 const checks = [
   ['public URL is documented', files.readme, 'https://kradavid.github.io/cellpinda_gaba_sum/'],
   ['README documents presenter product shortcut', files.readme, '제품부터 설명'],
+  ['README links team invite packet', files.readme, 'docs/TF_TEAM_INVITE.md'],
   ['official site is identified separately', files.handoff, 'https://kradavid.github.io/cellpinda_GABA/'],
   ['meeting pack is linked from README', files.readme, 'docs/TF_MEETING_PACK.md'],
   ['TF roles are defined', files.tf, '근거·준법 리드'],
@@ -50,9 +52,11 @@ const checks = [
   ['discussion board tracks entry hierarchy', files.discussion, 'UX-03'],
   ['discussion board tracks accessibility evidence', files.discussion, 'REL-02'],
   ['discussion board tracks fast swipe evidence', files.discussion, 'REL-03'],
+  ['discussion board tracks evidence shortcut', files.discussion, 'SALES-04'],
   ['decision register tracks owners and evidence', files.decisions, '실행 담당·백업'],
   ['decision register preserves field hold', files.decisions, 'READY FOR FIELD'],
   ['decision register uses strict per-session threshold', files.decisions, 'A/B/C **각 세션 4점 이상'],
+  ['decision register tracks evidence shortcut', files.decisions, 'SALES-04'],
   ['field packet fixes public baseline', files.fieldPacket, 'RELEASE_HANDOFF.md'],
   ['field packet covers all three scenarios', files.fieldPacket, '### C. 근거 질문 대응'],
   ['field packet defines observer scoring', files.fieldPacket, '다음 행동 명확도 1~5점'],
@@ -81,6 +85,9 @@ const checks = [
   ['TF execution board defines exit criteria and next action', files.tf, '종료 조건 | 담당 | 다음 액션'],
   ['TF execution board preserves field hold', files.tf, '기술 PASS / 현장 HOLD'],
   ['TF execution board tracks product inquiry validation', files.tf, '제품 문의 후 행동 전환 검증'],
+  ['team invite defines core roles', files.invite, '핵심 역할과 결정 범위'],
+  ['team invite defines kickoff agenda', files.invite, '첫 회의 안건'],
+  ['team invite preserves approval boundaries', files.invite, '일반 GABA 연구를 셀핀다 제품'],
 ];
 
 const failures = checks
