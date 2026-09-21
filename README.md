@@ -42,3 +42,9 @@ pnpm run qa:public
 ```bash
 pnpm run qa:interaction
 ```
+
+320px·390px·1440px 화면에서 같은 흐름을 반복하는 릴리스 매트릭스는 다음 명령으로 실행합니다.
+
+```bash
+pnpm run qa:matrix
+```

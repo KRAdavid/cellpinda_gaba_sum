@@ -1,6 +1,8 @@
 const wait = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 const baseUrl = process.env.QA_URL ?? 'http://127.0.0.1:55124/';
 const cdpUrl = process.env.CDP_URL ?? 'http://127.0.0.1:9223';
+const viewportWidth = Number(process.env.QA_WIDTH ?? 390);
+const viewportHeight = Number(process.env.QA_HEIGHT ?? 844);
 const presenterUrl = `${baseUrl}?mode=presenter%26card=7%23story`;
 
 const targetResponse = await fetch(`${cdpUrl}/json/new?${presenterUrl}`, {method: 'PUT'});
@@ -47,6 +49,16 @@ const waitForProgress = async expected => {
   throw new Error(`Timed out waiting for progress ${expected}`);
 };
 
+const waitForPresentation = async expected => {
+  const deadline = Date.now() + 4000;
+  while (Date.now() < deadline) {
+    const state = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText,presentation:!!document.querySelector(".story--presentation")})');
+    if (state.progress === expected && state.presentation) return;
+    await wait(100);
+  }
+  throw new Error(`Timed out waiting for presenter state ${expected}`);
+};
+
 const press = async (key, code, virtualKeyCode) => {
   await send('Input.dispatchKeyEvent', {type: 'rawKeyDown', key, code, windowsVirtualKeyCode: virtualKeyCode, nativeVirtualKeyCode: virtualKeyCode});
   await send('Input.dispatchKeyEvent', {type: 'keyUp', key, code, windowsVirtualKeyCode: virtualKeyCode, nativeVirtualKeyCode: virtualKeyCode});
@@ -59,15 +71,15 @@ const assert = (label, condition, detail = '') => {
 };
 
 try {
-  await send('Emulation.setDeviceMetricsOverride', {width: 390, height: 844, deviceScaleFactor: 1, mobile: true});
+  await send('Emulation.setDeviceMetricsOverride', {width: viewportWidth, height: viewportHeight, deviceScaleFactor: 1, mobile: viewportWidth <= 760});
   await send('Network.enable');
   await send('Network.clearBrowserCache');
   await send('Page.navigate', {url: baseUrl});
   await wait(900);
 
-  const initialPage = await evaluate('({title:document.title,width:innerWidth,docWidth:document.documentElement.scrollWidth,presenterGuidance:!!document.querySelector(".presenter-note")})');
+  const initialPage = await evaluate('({title:document.title,width:innerWidth,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,presenterGuidance:!!document.querySelector(".presenter-note")})');
   assert('page identity', initialPage.title.includes('GABA 한 장씩 보기'));
-  assert('mobile width has no horizontal overflow', initialPage.width === 390 && initialPage.docWidth === 390, `${initialPage.width}/${initialPage.docWidth}`);
+  assert('viewport has no horizontal overflow', initialPage.width === viewportWidth && initialPage.docWidth === initialPage.clientWidth && initialPage.docWidth <= initialPage.width, `${initialPage.width}/${initialPage.clientWidth}/${initialPage.docWidth}`);
   assert('consumer view hides presenter guidance', !initialPage.presenterGuidance);
 
   await evaluate('document.querySelector(".intro-product-button")?.click()');
@@ -84,12 +96,12 @@ try {
   await press('Escape', 'Escape', 27);
 
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
-  await waitForProgress('01 / 11');
+  await waitForPresentation('01 / 11');
   const fullFlowStart = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
   assert('full-flow presenter starts at card 1', fullFlowStart.presentation && fullFlowStart.progress === '01 / 11', JSON.stringify(fullFlowStart));
 
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=7#story`});
-  await waitForProgress('07 / 11');
+  await waitForPresentation('07 / 11');
   const productShortcutStart = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
   assert('product shortcut presenter starts at card 7', productShortcutStart.presentation && productShortcutStart.progress === '07 / 11', JSON.stringify(productShortcutStart));
 
@@ -167,7 +179,7 @@ try {
   assert('finish card panel returns focus to selected choice', finishFocus.includes('일반 GABA 연구 다시 보기'), finishFocus);
 
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=6#story`});
-  await waitForProgress('06 / 11');
+  await waitForPresentation('06 / 11');
   await evaluate('document.querySelector("#story-card-research .card-link")?.click()');
   await wait(180);
   await evaluate('document.querySelector(".info-panel__next")?.click()');

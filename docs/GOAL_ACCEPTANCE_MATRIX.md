@@ -23,6 +23,7 @@
 ```bash
 pnpm run qa:public
 QA_URL=https://kradavid.github.io/cellpinda_gaba_sum/ pnpm run qa:interaction
+pnpm run qa:matrix
 ```
 
 PowerShell에서는 공개 URL 상호작용 QA를 다음처럼 실행한다.
@@ -31,6 +32,9 @@ PowerShell에서는 공개 URL 상호작용 QA를 다음처럼 실행한다.
 $env:QA_URL = 'https://kradavid.github.io/cellpinda_gaba_sum/'
 pnpm run qa:interaction
 Remove-Item Env:QA_URL
+
+# 320px·390px·1440px 매트릭스
+pnpm run qa:matrix
 ```
 
 ## TF 사용 규칙

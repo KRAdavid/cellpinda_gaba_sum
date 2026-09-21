@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "qa:bundle": "node scripts/qa-public.mjs",
     "qa:public": "pnpm run build && pnpm run qa:bundle",
-    "qa:interaction": "node scripts/qa-interaction.mjs"
+    "qa:interaction": "node scripts/qa-interaction.mjs",
+    "qa:matrix": "node scripts/qa-matrix.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.1.0",
