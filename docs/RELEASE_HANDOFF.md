@@ -7,11 +7,11 @@
 | 공개 소비자 안내 | <https://kradavid.github.io/cellpinda_gaba_sum/> |
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
-| 앱 최신 커밋 | `a3c20e8` |
+| 앱 최신 커밋 | `8e6e2a8` |
 | 최신 운영 문서 기준 | `main` 브랜치의 `docs/`와 Pages workflow 문서 게이트 (`qa:docs`) |
 | 릴리스 검증 기준 Pages 배포 | [run 35611131797](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35611131797) (발표 모드 제품 우선 전환·다음 설명 힌트·현재 단계 자동 정렬·인페이지 흐름 안내·고객용 링크 확인 문구·접근 가능한 carousel·TF 문서 게이트를 포함한 보완본, 정적 번들 QA 및 공개 URL 320·390·1440px 매트릭스 통과) |
 | 운영 문서 동기화 확인 | `main`에 push할 때마다 Pages workflow의 `qa:docs` 단계가 영업 가이드·릴리스 인수인계를 함께 검증 |
-| 최신 앱 공개 자산 직접 확인 | `index-BLyS0E7X.js` 및 `index-DhaN7tV7.css` HTTP 200, `a3c20e8`의 발표 모드 `제품부터 설명`·인페이지 CTA sticky 고정·모바일 패널 CTA 밀도 조정·`다음 카드: 07 · 셀핀다 제품 정보`·`고객용 링크 복사`·접근성 라벨·연구 경계 문구 확인, 공개 URL 320·390·1440px 매트릭스 통과 |
+| 최신 앱 공개 자산 직접 확인 | `index-BX4owlcY.js` 및 `index-DSvsQn3n.css` HTTP 200, `8e6e2a8`의 발표 모드 `제품부터 설명`·인페이지 CTA sticky 고정·외부 자료 접힘·모바일 패널 CTA 밀도 조정·`다음 카드: 07 · 셀핀다 제품 정보`·`고객용 링크 복사`·접근성 라벨·연구 경계 문구 확인, 공개 URL 320·390·1440px 매트릭스 통과 |
 | 운영 문서 동기화 | `main`에 반영된 TF 문서와 Pages workflow가 동일 저장소에서 관리되며, 문서-only push도 workflow로 검증 |
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 이 공개본은 소비자 안내와 사업자 발표를 위한 별도 페이지이며, 기존 공식 배포 사이트를 대체하거나 수정하지 않는다.
@@ -21,7 +21,7 @@
 | 영역 | 확인 결과 | 근거 |
 | --- | --- | --- |
 | 카드 흐름 | 11개 카드, 모바일 좌우 스냅, 1페이지 1메시지, 현재 단계 안내 | 공개 URL 및 Chrome CDP 확인 |
-| 외부 이탈 방지 | 연구·제품·후기 버튼은 인페이지 패널을 먼저 열고 외부 링크는 보조 CTA로만 제공 | `src/App.tsx`, `PUBLISHING_TF.md` |
+| 외부 이탈 방지 | 연구·제품·후기 버튼은 인페이지 패널을 먼저 열고 외부 링크는 접힌 보조 선택으로만 제공 | `src/App.tsx`, `PUBLISHING_TF.md` |
 | 발표 모드 | 이전·다음 버튼, 키보드 이동, 다음 설명 힌트, 발표자용 진행 포인트(질문·경계 문장), `?mode=presenter&card=N#story` | 공개 URL 확인 |
 | 제품·연구 경계 | 일반 GABA 연구 결론과 셀핀다 제품 표시 정보를 분리 | 연구·제품 패널 |
 | 릴리스 가드 | 필수 경계 문구, 금지 표현, 제품 이미지, 기존 공식 URL, favicon을 빌드 전에 검사 | `pnpm run qa:public`, Pages workflow |
@@ -36,7 +36,7 @@
 4. `다음 카드로 계속 보기`로 07번 제품 카드와 제품 패널로 이동한다.
 5. 제품명·구성·식품 유형은 공개 범위로만 설명하고, 최신 표시사항이 필요한 질문은 답을 확정하지 않는다.
 6. 전체 설명에서는 08번 활용 TIP과 09번 생활 루틴 참고까지 이어서 보여준다. 시간 제한이 있거나 고객 질문이 없으면 핵심 경로로 진행하되, 섭취법·조합·저녁 루틴 질문이 나오면 해당 카드로 돌아간다.
-7. 10번 구매자 후기와 11번 마지막 선택지에서 고객이 원하는 다음 행동을 고르게 한다. 후기 원문·외부 판매처는 고객이 원할 때만 패널의 보조 링크로 연다.
+7. 10번 구매자 후기와 11번 마지막 선택지에서 고객이 원하는 다음 행동을 고르게 한다. 후기 원문·외부 판매처는 고객이 원할 때만 패널의 `외부 자료는 필요할 때만 확인`을 열어 선택하게 한다.
 
 ## 최종 승인 전 HOLD
 
@@ -65,5 +65,7 @@ pnpm run qa:interaction
 공개 URL의 실제 동작 검증은 [SALES_SESSION_VALIDATION.md](SALES_SESSION_VALIDATION.md)와 [TF_REVIEW_LOG.md](TF_REVIEW_LOG.md)에 이어서 기록한다.
 
 2026-09-21 재검증: 공개 URL을 대상으로 `pnpm run qa:public`과 `QA_URL=https://kradavid.github.io/cellpinda_gaba_sum/ pnpm run qa:matrix`를 실행했다. 번들 가드와 실제 Pages 자산의 320·390·1440px 발표 딥링크·제품 우선 전환·패널 sticky CTA·카드 공유·연구→제품→후기 흐름이 모두 통과했다. 이 결과는 기술 QA 증거이며, 실제 영업 세션·실기기 검증을 대체하지 않는다.
+
+2026-09-21 외부 링크 이탈 방지 재검증: `8e6e2a8` 반영 후 공개 자산 `index-BX4owlcY.js`와 `index-DSvsQn3n.css`의 HTTP 200을 확인했다. 실제 공개 URL의 320·390·1440px 매트릭스에서 외부 자료 기본 닫힘·요청 시 링크 열기·페이지 안 다음 카드 전환·연구·제품·후기 패널·발표 모드를 모두 통과했으며, 390px 공개 캡처에서 `다음 카드` 우선 노출을 확인했다. 이 결과는 기술 QA 증거이며, 실제 영업 세션·실기기 검증을 대체하지 않는다.
 
 요구사항별 완료·보류 판단은 [GOAL_ACCEPTANCE_MATRIX.md](GOAL_ACCEPTANCE_MATRIX.md)를 기준으로 한다.
