@@ -8,7 +8,9 @@
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
 | 앱 최신 커밋 | `e2f10dd` |
+| 최신 운영 문서 커밋 | `4178377` (`docs: make sales launch guide a release gate`) |
 | 최신 운영 문서 기준 | `main` 브랜치의 `docs/`와 Pages workflow 문서 게이트 (`qa:docs`) |
+| 최신 Pages 배포 확인 | [run 35619219760](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35619219760) (커밋 `4178377`, build·deploy 성공) |
 | 릴리스 검증 기준 Pages 배포 | [run 35611131797](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35611131797) (발표 모드 제품 우선 전환·다음 설명 힌트·현재 단계 자동 정렬·인페이지 흐름 안내·고객용 링크 확인 문구·접근 가능한 carousel·TF 문서 게이트를 포함한 보완본, 정적 번들 QA 및 공개 URL 320·390·1440px 매트릭스 통과) |
 | 운영 문서 동기화 확인 | `main`에 push할 때마다 Pages workflow의 `qa:docs` 단계가 영업 가이드·릴리스 인수인계를 함께 검증 |
 | 최신 앱 공개 자산 직접 확인 | `index-COltLXbP.js` 및 `index-BR4qDsaX.css` HTTP 200, `e2f10dd`의 GABA 정의·소비자 `다음 카드` 명시·공유/발표 기능 `더 보기` 접힘·발표 모드 `제품부터 설명`·모바일 발표자 컨트롤 3행 정렬·인페이지 CTA sticky 고정·외부 자료 접힘·접근성 라벨·연구 경계 문구 확인, 공개 URL 320·390·1440px 매트릭스 통과 |
@@ -77,5 +79,7 @@ pnpm run qa:interaction
 2026-09-21 소비자 도구 정리 재검증: `4bdfa6b` 반영 후 공개 자산 `index-DbLKjYyd.js`와 `index-BR4qDsaX.css`의 HTTP 200을 확인했다. 실제 공개 URL의 320·390·1440px 매트릭스에서 소비자 화면의 `다음 카드` 기본 행동·`더 보기` 기본 닫힘·요청 시 공유/발표 기능 노출·연구·제품·후기 인페이지 흐름을 모두 통과했고, 390px 공개 캡처에서 도구보다 카드 흐름이 먼저 보이는 것을 확인했다. 이 결과는 기술 QA 증거이며, 실제 영업 세션·실기기 검증을 대체하지 않는다.
 
 2026-09-21 GABA 일반 정의 재검증: `e2f10dd` 반영 후 공개 자산 `index-COltLXbP.js`와 `index-BR4qDsaX.css`의 HTTP 200을 확인했다. 공개 번들에서 `감마아미노부티르산을 줄여 부르는 이름`을 확인했고, 공개 URL 320·390·1440px 매트릭스에서 소비자 다음 카드·더 보기·연구·제품·후기 인페이지 흐름을 모두 통과했다. 이 결과는 일반 성분명 설명과 기술 QA 증거이며, 제품 효능이나 최종 준법 승인을 의미하지 않는다.
+
+2026-09-22 운영 문서 게이트 배포 재검증: `4178377`에 대해 수동 실행한 [Pages run 35619219760](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35619219760)이 `build success`와 `deploy success`로 종료됐다. 공개 URL은 HTTP 200으로 응답했으며, 이번 변경은 사업자 런치 가이드와 TF 문서 게이트를 강화한 문서 변경이다. 앱 기능·제품 사실·현장 사용성·실기기 검증의 상태는 기존 수용 매트릭스대로 별도 판단한다.
 
 요구사항별 완료·보류 판단은 [GOAL_ACCEPTANCE_MATRIX.md](GOAL_ACCEPTANCE_MATRIX.md)를 기준으로 한다.
