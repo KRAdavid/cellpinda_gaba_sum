@@ -167,6 +167,19 @@ export default function App() {
   const panelReturnRef = useRef<HTMLElement | null>(null);
   const shareRequestRef = useRef(0);
   const activePhase = STORY_PHASES.find(phase => active >= phase.start && active <= phase.end) ?? STORY_PHASES[0];
+  const phaseNavRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const nav = phaseNavRef.current;
+    const current = nav?.querySelector<HTMLElement>(`[data-phase="${activePhase.id}"]`);
+    if (!nav || !current) return;
+    const viewStart = nav.scrollLeft;
+    const viewEnd = viewStart + nav.clientWidth;
+    const itemStart = current.offsetLeft;
+    const itemEnd = itemStart + current.offsetWidth;
+    if (itemStart < viewStart) nav.scrollLeft = Math.max(0, itemStart - 8);
+    else if (itemEnd > viewEnd) nav.scrollLeft = itemEnd - nav.clientWidth + 8;
+  }, [activePhase.id]);
 
   useEffect(() => {
     const rail = railRef.current;
@@ -534,8 +547,8 @@ export default function App() {
           </div>
           <p>{presentationMode ? <>← → 또는 PageUp/PageDown으로 넘기고<br />Esc로 발표 모드를 종료하세요.</> : <>모바일에서는 좌우로 밀어 보세요.<br />연구·제품·후기는 각각 다른 정보입니다.</>}</p>
         </div>
-        <nav className="story-sequence" aria-label="카드 흐름 단계">
-          {STORY_PHASES.map((phase, index) => <span key={phase.id} className={phase.id === activePhase.id ? 'is-active' : ''} aria-current={phase.id === activePhase.id ? 'step' : undefined}>
+        <nav ref={phaseNavRef} className="story-sequence" aria-label="카드 흐름 단계">
+          {STORY_PHASES.map((phase, index) => <span key={phase.id} data-phase={phase.id} className={phase.id === activePhase.id ? 'is-active' : ''} aria-current={phase.id === activePhase.id ? 'step' : undefined}>
             {phase.label}{index < STORY_PHASES.length - 1 ? <i aria-hidden="true">→</i> : null}
           </span>)}
         </nav>

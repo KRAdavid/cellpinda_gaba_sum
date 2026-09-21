@@ -207,6 +207,8 @@ try {
 
   await send('Page.navigate', {url: `${baseUrl}?card=11#story`});
   await waitForProgress('11 / 11');
+  const finalPhase = await evaluate('(() => { const nav=document.querySelector(".story-sequence"); const current=nav?.querySelector(".is-active"); const navRect=nav?.getBoundingClientRect(); const currentRect=current?.getBoundingClientRect(); return {label:current?.innerText||"",visible:!!navRect&&!!currentRect&&currentRect.left>=navRect.left-1&&currentRect.right<=navRect.right+1,navScroll:nav?.scrollLeft||0}; })()');
+  assert('story sequence keeps current phase visible', finalPhase.label.includes('후기') && finalPhase.visible, JSON.stringify(finalPhase));
   const finishChoices = await evaluate('({count:document.querySelectorAll("#story-card-finish .card-link").length,labels:[...document.querySelectorAll("#story-card-finish .card-link")].map(button=>button.innerText)})');
   assert('finish card keeps three in-page next actions', finishChoices.count === 3 && finishChoices.labels.join('|').includes('일반 GABA 연구') && finishChoices.labels.join('|').includes('제품 정보') && finishChoices.labels.join('|').includes('구매자 후기'), JSON.stringify(finishChoices));
   await evaluate('document.querySelector("#story-card-finish .card-link")?.click()');
