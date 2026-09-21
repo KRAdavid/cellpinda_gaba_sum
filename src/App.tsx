@@ -7,6 +7,7 @@ type Slide = {
   body: string;
   tone: string;
   note?: string;
+  presenterNote: string;
   link?: {href: string; label: string; panel: PanelKey};
 };
 
@@ -23,6 +24,7 @@ function makeSlides(): Slide[] {
       title: '평소보다 마음의 여유가 줄어드는 날이 있죠.',
       body: '생각이 겹치고 잠깐 멈추기 어려운 날에는, 성분이나 제품보다 먼저 내 상태와 휴식 시간을 돌아보세요.',
       tone: 'deep',
+      presenterNote: '고객의 일상 경험을 먼저 묻습니다. 상태를 진단하거나 제품 효능으로 연결하지 않습니다.',
     },
     {
       id: 'clear',
@@ -30,6 +32,7 @@ function makeSlides(): Slide[] {
       title: '잘 쉬고 난 뒤에는, 같은 일도 한 번 더 바라볼 여유가 생깁니다.',
       body: '먼저 일상 속 휴식과 상태를 살펴보고, 그다음 성분 일반정보를 확인해 보겠습니다.',
       tone: 'fresh',
+      presenterNote: '휴식 후 개인적으로 느끼는 점을 묻고, 사람마다 다를 수 있다는 점을 함께 안내합니다.',
     },
     {
       id: 'overload',
@@ -37,6 +40,7 @@ function makeSlides(): Slide[] {
       title: '쉬는 중에도 생각이 이어진다면, 잠깐 멈추는 루틴부터 확인해 보세요.',
       body: '수면·스트레스·생활 리듬 등 여러 요인이 있을 수 있으며, 한 가지 성분이나 제품으로 설명하지 않습니다.',
       tone: 'warm',
+      presenterNote: '여러 생활 요인을 먼저 말합니다. 한 가지 성분으로 원인을 단정하지 않습니다.',
     },
     {
       id: 'active-rest',
@@ -44,6 +48,7 @@ function makeSlides(): Slide[] {
       title: '먼저 5분, 화면을 내려놓고 휴식 시간을 만들어 보세요.',
       body: '물을 마시거나 창밖을 바라보는 것처럼 지금 바로 할 수 있는 생활 속 행동부터 시작합니다.',
       tone: 'green',
+      presenterNote: '성분 설명 전에 지금 할 수 있는 생활 속 휴식 행동을 제안합니다.',
     },
     {
       id: 'gaba',
@@ -51,6 +56,7 @@ function makeSlides(): Slide[] {
       title: '이제 GABA라는 성분의 일반정보부터 살펴보겠습니다.',
       body: '이 페이지에서 GABA는 일반 성분 정보로 소개합니다. 셀핀다 제품의 효능이나 섭취 판단으로 연결하지 않습니다.',
       tone: 'green-dark',
+      presenterNote: 'GABA는 일반 성분정보로만 소개합니다. 제품 효능을 약속하지 않습니다.',
     },
     {
       id: 'research',
@@ -59,6 +65,7 @@ function makeSlides(): Slide[] {
       body: '연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 검토했습니다. 스트레스 관련 근거는 제한적이고 수면 관련 근거는 매우 제한적이었습니다.',
       tone: 'research',
       note: '중요: 셀핀다 제품의 동일 제형·동일 섭취량 효능을 검증한 연구가 아닙니다.',
+      presenterNote: '14개 인체시험 문헌고찰의 제한적 결론과 셀핀다 제품 비동일성을 함께 설명합니다.',
       link: {href: RESEARCH_URL, label: '일반 GABA 연구 내용 보기', panel: 'research'},
     },
     {
@@ -68,6 +75,7 @@ function makeSlides(): Slide[] {
       body: '셀핀다 가바 1500의 상품 구성, 가격, 재고, 섭취 방법은 스마트스토어와 제품 포장을 기준으로 확인합니다.',
       tone: 'product',
       note: '제품 정보는 일반 GABA 연구 결과와 별도로 확인해야 합니다.',
+      presenterNote: '공개된 제품명·구성·식품 유형만 말하고, 최신 포장 표시사항 확인이 필요한 항목은 확정하지 않습니다.',
       link: {href: PRODUCT_URL, label: '제품 정보 카드에서 보기', panel: 'product'},
     },
     {
@@ -76,6 +84,7 @@ function makeSlides(): Slide[] {
       title: '섭취 방법은 제품 포장에 적힌 표시사항을 따르세요.',
       body: '표시사항으로 확인되지 않은 혼합 방법은 안내하지 않습니다.',
       tone: 'use',
+      presenterNote: '혼합 방법이나 섭취량은 최신 제품 표시사항으로 확인되기 전까지 답을 확정하지 않습니다.',
     },
     {
       id: 'evening',
@@ -84,6 +93,7 @@ function makeSlides(): Slide[] {
       body: '허브티 등 다른 제품을 선택할 때는 각 제품의 원료와 주의사항을 따로 확인하세요. 이 페이지는 특정 제품 조합이나 수면 개선을 안내하지 않습니다.',
       tone: 'evening',
       note: '특정 제품 조합이나 수면 효과를 보장하지 않습니다.',
+      presenterNote: '허브티나 다른 제품과의 조합을 보장하지 않고, 각 제품의 원료와 주의사항을 따로 확인합니다.',
     },
     {
       id: 'review',
@@ -92,6 +102,7 @@ function makeSlides(): Slide[] {
       body: '판매처에 게시된 후기는 작성자의 개인 경험입니다. 객관적 연구 결과나 모든 사람에게 동일한 결과가 나타난다는 의미는 아닙니다.',
       tone: 'review',
       note: '후기는 개인 경험이며 제품 효능을 입증하는 연구자료가 아닙니다.',
+      presenterNote: '후기는 개인 경험으로만 설명하고, 권한 확인 전 원문·이미지를 재게시하지 않습니다.',
       link: {href: `${PRODUCT_URL}#REVIEW_DIALOG`, label: '구매자 후기 안내 보기', panel: 'review'},
     },
     {
@@ -100,6 +111,7 @@ function makeSlides(): Slide[] {
       title: '일반 GABA 연구, 제품 정보, 구매자 후기를 각각 확인해 보세요.',
       body: '일반 연구·제품 정보·구매자 후기를 각각 확인한 뒤, 오늘 실천할 작은 휴식을 정해 보세요.',
       tone: 'finish',
+      presenterNote: '고객이 더 보고 싶은 다음 행동을 일반 연구·제품 정보·구매자 후기 중에서 선택하게 합니다.',
       link: {href: PRODUCT_URL, label: '제품 정보 카드에서 보기', panel: 'product'},
     },
   ];
@@ -256,7 +268,7 @@ export default function App() {
       if (event.key !== 'Tab') return;
       const presentation = presentationRef.current;
       if (!presentation) return;
-      const focusable = Array.from(presentation.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+      const focusable = Array.from(presentation.querySelectorAll<HTMLElement>('summary, a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'))
         .filter(element => {
           const style = window.getComputedStyle(element);
           return !element.closest('[inert], .story-card--presentation-hidden') && style.display !== 'none' && style.visibility !== 'hidden';
@@ -393,6 +405,7 @@ export default function App() {
         </div>
         <p className="story-share-message" aria-live="polite">{shareMessage}</p>
         {shareUrl ? <input className="story-share-url" value={shareUrl} readOnly aria-label="현재 카드 공유 링크" onFocus={event => event.currentTarget.select()} /> : null}
+        {presentationMode ? <details className="presenter-note"><summary>발표자용 설명 포인트</summary><p>{slides[active].presenterNote}</p></details> : null}
         <div className="story-rail" ref={railRef} tabIndex={0} aria-label="GABA 소개 카드 목록">
           {slides.map((slide, index) => <article
             key={slide.id}
