@@ -7,12 +7,12 @@
 | 공개 소비자 안내 | <https://kradavid.github.io/cellpinda_gaba_sum/> |
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
-| 앱 최신 커밋 | `d137c47` (`feat: harden public consumer flow and TF gates`) |
+| 앱 최신 커밋 | `b1ef4b3` (`feat: add presenter evidence shortcut`) |
 | 최신 운영 문서 기준 | `main` 브랜치의 `docs/`와 Pages workflow 문서 게이트 (`qa:docs`) |
-| 최신 Pages 배포 확인 | [run 35637236606](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35637236606) (커밋 `d137c47`, TF 결정 등록부·A/B/C 현장 세션 패킷·첫 화면 CTA 위계·모바일 한 장 이동·패널 포커스/접근성 보강, build·deploy 성공) |
+| 최신 Pages 배포 확인 | [run 35638695397](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35638695397) (커밋 `b1ef4b3`, 발표 모드의 `근거부터 설명` 빠른 진입·모바일 시작점 3열 정렬·C 시나리오 문서 정합성 보강, build·deploy 성공) |
 | 릴리스 검증 기준 Pages 배포 | [run 35611131797](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35611131797) (발표 모드 제품 우선 전환·다음 설명 힌트·현재 단계 자동 정렬·인페이지 흐름 안내·고객용 링크 확인 문구·접근 가능한 carousel·TF 문서 게이트를 포함한 보완본, 정적 번들 QA 및 공개 URL 320·390·1440px 매트릭스 통과) |
 | 운영 문서 동기화 확인 | `main`에 push할 때마다 Pages workflow의 `qa:docs` 단계가 영업 가이드·릴리스 인수인계를 함께 검증 |
-| 최신 앱 공개 자산 직접 확인 | `index-k9KyhHOb.js` 및 `index-Cv3zrxtd.css` HTTP 200, `d137c47`의 전체 흐름 주 CTA·사업자/제품 보조 진입·비활성 카드/패널 배경 보조기기 비노출·활성 카드 제목 포커스·sticky CTA와 연구 근거 분리·`scroll-snap-stop: always`·TF 실행 문서와 기존 발표·연구·제품·후기 경계 확인, 공개 URL 320·390·1440px 매트릭스 및 콘솔 오류 0건 통과 |
+| 최신 앱 공개 자산 직접 확인 | `index-DjvKIcHx.js` 및 `index-Bc9lOUze.css` HTTP 200, `b1ef4b3`의 전체 흐름 주 CTA·사업자/제품 보조 진입·`근거부터 설명`→06번 카드·모바일 시작점 3열·비활성 카드/패널 배경 보조기기 비노출·활성 카드 제목 포커스·sticky CTA와 연구 근거 분리·`scroll-snap-stop: always`·TF 실행 문서와 기존 발표·연구·제품·후기 경계 확인, 공개 URL 320·390·1440px 매트릭스 및 콘솔 오류 0건 통과 |
 | 운영 문서 동기화 | `main`에 반영된 TF 문서와 Pages workflow가 동일 저장소에서 관리되며, 문서-only push도 workflow로 검증 |
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 이 공개본은 소비자 안내와 사업자 발표를 위한 별도 페이지이며, 기존 공식 배포 사이트를 대체하거나 수정하지 않는다.
@@ -98,5 +98,7 @@ pnpm run qa:interaction
 2026-09-22 모바일 실제 스와이프 QA 배포 재검증: `1570d26`에 대해 [Pages run 35634372928](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35634372928)이 `success / completed`로 종료됐다. 공개 URL은 HTTP 200, 공개 자산 `index-Ceq9qPju.js`·`index-CHo0UqdT.css`도 HTTP 200으로 응답했다. 공개 URL 320×900·390×844에서 Chrome CDP `touchStart → touchMove → touchEnd` 전진·후진으로 01↔02 카드 이동을 확인했고, 1440×900 기존 회귀 흐름도 통과했다. 이 결과는 브라우저 자동화 기반 기술·배포 PASS이며 실제 iOS/Android·네트워크/브라우저별 검증과 A/B/C 사업자 세션, 제품·후기·전체 광고 인상 승인은 계속 HOLD다.
 
 2026-09-22 공개 소비자 흐름·TF 실행 게이트 배포 재검증: `d137c47`에 대해 [Pages run 35637236606](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35637236606)이 `build success`와 `deploy success`로 종료됐고, Pages deployment도 `success`로 전환됐다. 공개 자산 `index-k9KyhHOb.js`·`index-Cv3zrxtd.css`가 HTTP 200으로 응답했으며, 공개 URL 320×900·390×844·1440×900에서 전체 흐름 주 CTA, 한 장 스와이프·역방향 이동, 연구·제품·후기 인페이지 패널, 패널 다음 카드 포커스, 발표 모드, 고객용 카드 링크, 비활성 카드·패널 배경 접근성 상태를 통과했다. 공개 콘솔 오류도 0건이다. 이 결과는 기술·배포 PASS이며 실제 iOS/Android·VoiceOver/TalkBack·빠른 스와이프 반복, A/B/C 사업자 세션, 제품 최신 표시사항, 후기 사용권, 전체 광고 인상 승인은 계속 HOLD다.
+
+2026-09-22 발표자 근거 질문 빠른 진입 배포 재검증: `b1ef4b3`에 대해 [Pages run 35638695397](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35638695397)이 `completed successfully`로 종료됐다. 공개 자산 `index-DjvKIcHx.js`·`index-Bc9lOUze.css`가 HTTP 200으로 응답했고, 발표 모드의 `근거부터 설명`이 페이지 안에서 06번 일반 GABA 연구 카드로 이동하는 것을 확인했다. 320×900·390×844·1440×900 공개 매트릭스에서 시작점 버튼 비겹침·첫 카드 본문 가시성·C 시나리오 이동·연구/제품/후기 인페이지 흐름·외부 자료 보조 순서를 통과했으며 콘솔 오류는 0건이다. 이 결과는 기술·배포 PASS이며 실제 C 세션에서 설명자의 사용 편의성·다음 행동 명확도, 실기기·제품·후기·전체 광고 인상 승인은 계속 HOLD다.
 
 요구사항별 완료·보류 판단은 [GOAL_ACCEPTANCE_MATRIX.md](GOAL_ACCEPTANCE_MATRIX.md)를 기준으로 한다.
