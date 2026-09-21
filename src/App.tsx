@@ -1,5 +1,8 @@
 import {useEffect, useMemo, useRef, useState} from 'react';
 
+type PanelKey = 'research' | 'product' | 'review';
+type SlideLink = {href: string; label: string; panel: PanelKey};
+
 type Slide = {
   id: string;
   label: string;
@@ -9,10 +12,9 @@ type Slide = {
   note?: string;
   presenterPrompt: string;
   presenterBoundary: string;
-  link?: {href: string; label: string; panel: PanelKey};
+  link?: SlideLink;
+  links?: SlideLink[];
 };
-
-type PanelKey = 'research' | 'product' | 'review';
 
 const RESEARCH_URL = 'https://pubmed.ncbi.nlm.nih.gov/33041752/';
 const PRODUCT_URL = 'https://smartstore.naver.com/cellpinda/products/4701017202';
@@ -125,7 +127,11 @@ function makeSlides(): Slide[] {
       tone: 'finish',
       presenterPrompt: '연구·제품 정보·후기 중 무엇을 더 확인하고 싶으신가요?',
       presenterBoundary: '다음 행동을 선택하게 하되 효과를 약속하는 결론으로 마무리하지 않습니다.',
-      link: {href: PRODUCT_URL, label: '제품 정보 카드에서 보기', panel: 'product'},
+      links: [
+        {href: RESEARCH_URL, label: '일반 GABA 연구 다시 보기', panel: 'research'},
+        {href: PRODUCT_URL, label: '제품 정보 다시 보기', panel: 'product'},
+        {href: `${PRODUCT_URL}#REVIEW_DIALOG`, label: '구매자 후기 다시 보기', panel: 'review'},
+      ],
     },
   ];
 }
@@ -505,6 +511,7 @@ export default function App() {
               <h3 id={`slide-${slide.id}`}>{slide.title}</h3>
               <p>{slide.body}</p>
               {slide.link ? <button type="button" className="card-link" ref={element => {panelTriggerRefs.current[index] = element;}} onClick={event => openInfoPanel(index, slide.link!.panel, event.currentTarget)}>{slide.link.label} <span aria-hidden="true">＋</span></button> : null}
+              {slide.links ? <div className="card-link-group" aria-label="더 확인할 정보">{slide.links.map(link => <button key={link.panel} type="button" className="card-link" ref={element => {panelTriggerRefs.current[index] = element;}} onClick={event => openInfoPanel(index, link.panel, event.currentTarget)}>{link.label} <span aria-hidden="true">＋</span></button>)}</div> : null}
               {slide.note ? <small>{slide.note}</small> : null}
             </div>
           </article>)}

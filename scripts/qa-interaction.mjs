@@ -153,6 +153,17 @@ try {
   const review = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),title:document.querySelector("[role=dialog] h2")?.innerText||"",status:document.querySelector(".info-panel__status")?.innerText||"",boundary:document.querySelector(".info-panel__boundary")?.innerText||"",url:location.href})');
   assert('review opens in the same dialog flow', review.dialog && review.title.includes('후기') && review.status.includes('사용권 확인 전 재게시하지 않음') && review.boundary.includes('효능') && review.url.startsWith(new URL(baseUrl).origin), JSON.stringify(review));
 
+  await send('Page.navigate', {url: `${baseUrl}?card=11#story`});
+  await waitForProgress('11 / 11');
+  const finishChoices = await evaluate('({count:document.querySelectorAll("#story-card-finish .card-link").length,labels:[...document.querySelectorAll("#story-card-finish .card-link")].map(button=>button.innerText)})');
+  assert('finish card keeps three in-page next actions', finishChoices.count === 3 && finishChoices.labels.join('|').includes('일반 GABA 연구') && finishChoices.labels.join('|').includes('제품 정보') && finishChoices.labels.join('|').includes('구매자 후기'), JSON.stringify(finishChoices));
+  await evaluate('document.querySelector("#story-card-finish .card-link")?.click()');
+  await wait(180);
+  const finishResearch = await evaluate('({dialog:!!document.querySelector(".info-panel"),title:document.querySelector(".info-panel h2")?.innerText||"",url:location.href})');
+  assert('finish card research choice stays in page', finishResearch.dialog && finishResearch.title.includes('일반 GABA 연구') && finishResearch.url.startsWith(new URL(baseUrl).origin), JSON.stringify(finishResearch));
+  await evaluate('document.querySelector(".info-panel__next")?.click()');
+  await wait(180);
+
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=6#story`});
   await waitForProgress('06 / 11');
   await evaluate('document.querySelector("#story-card-research .card-link")?.click()');
