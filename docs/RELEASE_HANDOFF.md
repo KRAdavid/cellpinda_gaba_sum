@@ -9,6 +9,7 @@
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
 | 앱 최신 커밋 | `345eb43` |
 | 릴리스 검증 기준 Pages 배포 | [run 35598567496](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35598567496) (정적 번들 QA 및 320·390·1440px 매트릭스 기준, 앱 코드 `345eb43`·QA `9137194`) |
+| 최신 운영 문서 동기화 | [run 35599130072](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35599130072) (운영 문서 커밋 `6f6cc8b`, Pages 성공) |
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 이 공개본은 소비자 안내와 사업자 발표를 위한 별도 페이지이며, 기존 공식 배포 사이트를 대체하거나 수정하지 않는다.
 
@@ -58,5 +59,7 @@ pnpm run qa:interaction
 ```
 
 공개 URL의 실제 동작 검증은 [SALES_SESSION_VALIDATION.md](SALES_SESSION_VALIDATION.md)와 [TF_REVIEW_LOG.md](TF_REVIEW_LOG.md)에 이어서 기록한다.
+
+2026-09-21 재검증: 공개 URL을 대상으로 `pnpm run qa:public`과 `QA_URL=... pnpm run qa:matrix`를 실행했다. 번들 가드와 320·390·1440px의 발표 딥링크·패널·카드 공유·연구→제품→후기 흐름이 모두 통과했다. 이 결과는 기술 QA 증거이며, 실제 영업 세션·실기기 검증을 대체하지 않는다.
 
 요구사항별 완료·보류 판단은 [GOAL_ACCEPTANCE_MATRIX.md](GOAL_ACCEPTANCE_MATRIX.md)를 기준으로 한다.
