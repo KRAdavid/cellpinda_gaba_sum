@@ -23,12 +23,16 @@ const files = {
   decisions: read('docs/TF_DECISION_REGISTER.md'),
   fieldPacket: read('docs/FIELD_SESSION_PACKET.md'),
   invite: read('docs/TF_TEAM_INVITE.md'),
+  productEvidence: read('docs/PRODUCT_EVIDENCE_INTAKE.md'),
+  rightsRegister: read('docs/REVIEW_RIGHTS_REGISTER.md'),
 };
 
 const checks = [
   ['public URL is documented', files.readme, 'https://kradavid.github.io/cellpinda_gaba_sum/'],
   ['README documents presenter product shortcut', files.readme, '제품부터 설명'],
   ['README links team invite packet', files.readme, 'docs/TF_TEAM_INVITE.md'],
+  ['README links product evidence intake', files.readme, 'docs/PRODUCT_EVIDENCE_INTAKE.md'],
+  ['README links review rights register', files.readme, 'docs/REVIEW_RIGHTS_REGISTER.md'],
   ['README documents TF readiness command', files.readme, 'pnpm run qa:tf'],
   ['official site is identified separately', files.handoff, 'https://kradavid.github.io/cellpinda_GABA/'],
   ['meeting pack is linked from README', files.readme, 'docs/TF_MEETING_PACK.md'],
@@ -90,6 +94,10 @@ const checks = [
   ['team invite defines kickoff agenda', files.invite, '첫 회의 안건'],
   ['team invite preserves approval boundaries', files.invite, '일반 GABA 연구를 셀핀다 제품'],
   ['team invite documents readiness command', files.invite, 'pnpm run qa:tf'],
+  ['product evidence intake keeps approval hold', files.productEvidence, '상태를 `HOLD`로 유지'],
+  ['product evidence intake separates approvers', files.productEvidence, '제품 책임자와 근거·준법 리드'],
+  ['rights register records economic interest', files.rightsRegister, '경제적 이해관계'],
+  ['rights register preserves personal data guardrail', files.rightsRegister, '개인정보는 이 표에 기록하지 않는다'],
 ];
 
 const failures = checks

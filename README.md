@@ -22,6 +22,8 @@ TF 회의를 같은 순서로 진행하려면 [`docs/TF_MEETING_PACK.md`](docs/T
 
 실제 TF 참가자를 모집하고 첫 회의에 초대할 때는 [`docs/TF_TEAM_INVITE.md`](docs/TF_TEAM_INVITE.md)의 전달문과 회신 양식을 사용합니다.
 
+제품 자료는 [`docs/PRODUCT_EVIDENCE_INTAKE.md`](docs/PRODUCT_EVIDENCE_INTAKE.md), 후기 사용권은 [`docs/REVIEW_RIGHTS_REGISTER.md`](docs/REVIEW_RIGHTS_REGISTER.md)에 항목별로 기록합니다.
+
 TF 배정·현장 세션·제품·후기·실기기 게이트의 현재 상태는 다음 명령으로 확인합니다. 기본 점검은 HOLD 상태를 설명하고 종료되며, 엄격 모드는 최종 승인 조건이 채워지지 않으면 실패합니다.
 
 ```bash
