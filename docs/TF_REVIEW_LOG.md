@@ -134,6 +134,8 @@ TF 운영 패킷 보완: 반복 회의가 단순 진행 상황 공유로 끝나�
 
 TF 문서 게이트 보완: `scripts/qa-docs.mjs`를 추가해 공개 URL·기존 공식 사이트 분리, TF 회의 패킷 연결, 역할·A/B/C 시나리오, 실제 영업·실기기 HOLD, 개인정보 기록 금지, 제품 사실 경계와 README 문서 링크를 자동 확인한다. `qa:public`과 Pages workflow가 같은 문서 게이트를 실행해 코드 변경과 운영 문서의 불일치를 배포 전에 발견하도록 했다.
 
+TF 문서 게이트 공개 배포 확인: [Pages run 35605104422](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35605104422)에서 `Verify TF documents`, build, 번들 가드, Pages 배포가 모두 성공했다. 공개본은 기술적으로 배포 가능하지만 실제 사업자 세션·제품 승인·후기 권리·실기기 검증 HOLD는 유지한다.
+
 단계 안내 접근성 보완: 320px 화면에서 마지막 카드로 이동할 때 현재 `후기·마무리` 단계가 가로로 잘리지 않도록 단계 안내의 scroll position을 현재 단계에 맞춰 자동 정렬했다. `489dadb`에서 현재 단계 표시와 320·390·1440px 가시성 검사를 통과했고, [Pages run 35604703379](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35604703379) 성공 후 공개 자산에 반영했다. 실제 기기 스와이프 확인은 계속 HOLD다.
 
 ## 의사결정 원칙
