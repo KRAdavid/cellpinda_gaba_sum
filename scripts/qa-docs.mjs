@@ -43,6 +43,7 @@ const checks = [
   ['discussion board separates field hold', files.discussion, '기술 PASS / 현장 HOLD'],
   ['discussion board records dissent and evidence', files.discussion, '반대 관점·리스크'],
   ['discussion board keeps product facts on hold', files.discussion, 'EVD-01'],
+  ['discussion board tracks product inquiry next action', files.discussion, 'SALES-01'],
   ['TF roster defines assignment gate', files.roster, '실제 인력 배정 HOLD'],
   ['TF roster defines core attendees', files.roster, '핵심 회의 참석자'],
   ['acceptance matrix tracks TF assignment', files.acceptance, 'TF 실제 담당자·백업·결정권 배정'],
@@ -62,6 +63,7 @@ const checks = [
   ['TF execution board defines purpose and deliverable', files.tf, '정식 공개 실행 보드'],
   ['TF execution board defines exit criteria and next action', files.tf, '종료 조건 | 담당 | 다음 액션'],
   ['TF execution board preserves field hold', files.tf, '기술 PASS / 현장 HOLD'],
+  ['TF execution board tracks product inquiry validation', files.tf, '제품 문의 후 행동 전환 검증'],
 ];
 
 const failures = checks

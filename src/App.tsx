@@ -215,13 +215,30 @@ export default function App() {
         });
         if (!targetReached) return;
         programmaticTargetRef.current = null;
+        setActive(programmaticTarget);
+        return;
       }
-      const visible = entries
-        .filter(entry => entry.isIntersecting)
-        .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
-      if (!visible) return;
-      const index = Number((visible.target as HTMLElement).dataset.index);
-      if (Number.isInteger(index)) setActive(index);
+      if (rail.scrollLeft <= 1) {
+        setActive(0);
+        return;
+      }
+      const railRect = rail.getBoundingClientRect();
+      const railCenter = railRect.left + railRect.width / 2;
+      const visible = slideRefs.current
+        .map((slide, index) => ({slide, index}))
+        .filter(({slide}) => {
+          if (!slide) return false;
+          const rect = slide.getBoundingClientRect();
+          return rect.width > 0 && rect.right > railRect.left && rect.left < railRect.right;
+        })
+        .sort((left, right) => {
+          const leftRect = left.slide!.getBoundingClientRect();
+          const rightRect = right.slide!.getBoundingClientRect();
+          const leftDistance = Math.abs(leftRect.left + leftRect.width / 2 - railCenter);
+          const rightDistance = Math.abs(rightRect.left + rightRect.width / 2 - railCenter);
+          return leftDistance - rightDistance;
+        })[0];
+      if (visible) setActive(visible.index);
     }, {root: rail, threshold: [0.65]});
     slideRefs.current.forEach(slide => slide && observer.observe(slide));
     return () => observer.disconnect();
