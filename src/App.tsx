@@ -553,7 +553,7 @@ export default function App() {
           </span>)}
         </nav>
         <div className="story-controls">
-          <span aria-live="polite">{String(active + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</span>
+          <span aria-live="polite" aria-label={`현재 ${active + 1}번째 카드, 총 ${slides.length}장`}>{String(active + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</span>
           <div>
             {presentationMode ? <button type="button" className="story-restart-button" onClick={() => goTo(0)} disabled={active === 0}>처음부터</button> : null}
             <button type="button" className="story-nav-button" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="이전 카드"><span aria-hidden="true">←</span><span className="nav-label">이전 카드</span></button>
@@ -565,13 +565,17 @@ export default function App() {
         <p className="story-share-message" aria-live="polite">{shareMessage}</p>
         {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="현재 카드 공유 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>링크 복사</button></div> : null}
         {presentationMode ? <details className="presenter-note"><summary>발표자용 진행 포인트</summary><div className="presenter-note__grid"><div><strong>고객에게 물어보기</strong><p>{slides[active].presenterPrompt}</p></div><div><strong>이어서 말할 때</strong><p>{slides[active].presenterBoundary}</p></div></div></details> : null}
-        <div className="story-rail" ref={railRef} tabIndex={0} aria-label="GABA 소개 카드 목록">
+        <div className="story-rail" ref={railRef} tabIndex={0} role="region" aria-roledescription="carousel" aria-label="GABA 소개 카드 흐름">
           {slides.map((slide, index) => <article
             key={slide.id}
             id={`story-card-${slide.id}`}
             ref={element => {slideRefs.current[index] = element;}}
             data-index={index}
             className={`story-card story-card--${slide.tone}${presentationMode && index !== active ? ' story-card--presentation-hidden' : ''}`}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')} ${slide.label}`}
+            aria-current={index === active ? 'true' : undefined}
             aria-labelledby={`slide-${slide.id}`}
           >
             <div className="card-label"><span>{slide.label}</span><span>{String(index + 1).padStart(2, '0')}</span></div>

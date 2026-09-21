@@ -77,10 +77,11 @@ try {
   await send('Page.navigate', {url: baseUrl});
   await wait(900);
 
-  const initialPage = await evaluate('({title:document.title,width:innerWidth,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,presenterGuidance:!!document.querySelector(".presenter-note")})');
+  const initialPage = await evaluate('({title:document.title,width:innerWidth,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,presenterGuidance:!!document.querySelector(".presenter-note"),carousel:document.querySelector(".story-rail")?.getAttribute("aria-roledescription")||"",currentCard:document.querySelector(".story-card[aria-current=\\"true\\"]")?.getAttribute("aria-label")||""})');
   assert('page identity', initialPage.title.includes('GABA 한 장씩 보기'));
   assert('viewport has no horizontal overflow', initialPage.width === viewportWidth && initialPage.docWidth === initialPage.clientWidth && initialPage.docWidth <= initialPage.width, `${initialPage.width}/${initialPage.clientWidth}/${initialPage.docWidth}`);
   assert('consumer view hides presenter guidance', !initialPage.presenterGuidance);
+  assert('story carousel exposes accessible slide state', initialPage.carousel === 'carousel' && initialPage.currentCard.includes('01 / 11'), JSON.stringify(initialPage));
 
   await evaluate('document.getElementById("story")?.scrollIntoView({behavior:"auto"})');
   await wait(200);

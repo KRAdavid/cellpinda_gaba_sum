@@ -40,6 +40,7 @@ const required = [
   ['opening product boundary', '바로 제품을 찾기보다'],
   ['opening presenter prompt', '몸은 쉬고 있는데 생각이 다음 일로 달려간다고 느낀 적이 있나요?'],
   ['story sequence guide', 'story-sequence'],
+  ['accessible story carousel', 'aria-roledescription'],
   ['native share fallback', 'navigator.share'],
   ['lifestyle and product boundary', '이 생활 루틴은 특정 성분이나 제품의 효과를 뜻하지 않습니다'],
   ['product verification status', '최종 제품 사실로 확정하지 않습니다'],
