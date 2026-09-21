@@ -7,12 +7,12 @@
 | 공개 소비자 안내 | <https://kradavid.github.io/cellpinda_gaba_sum/> |
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
-| 앱 최신 커밋 | `c4cf2b3` (`feat: stabilize presenter entry and focus flow`) |
+| 앱 최신 커밋 | `8c03d3b` (`feat: add presenter panel customer handoff`) |
 | 최신 운영 문서 기준 | `main` 브랜치의 `docs/`와 Pages workflow 문서 게이트 (`qa:docs`) |
-| 최신 Pages 배포 확인 | [run 35632091059](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35632091059) (커밋 `c4cf2b3`, 사업자 설명 시작점 01번 고정·패널 포커스 순환·외부 링크 `noopener` 포함, build·deploy 성공) |
+| 최신 Pages 배포 확인 | [run 35633429223](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35633429223) (커밋 `8c03d3b`, 발표 모드 패널의 고객용 카드 링크 복사·카드 번호/발표자 모드 경계·현장 검증 논점 포함, build·deploy 성공) |
 | 릴리스 검증 기준 Pages 배포 | [run 35611131797](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35611131797) (발표 모드 제품 우선 전환·다음 설명 힌트·현재 단계 자동 정렬·인페이지 흐름 안내·고객용 링크 확인 문구·접근 가능한 carousel·TF 문서 게이트를 포함한 보완본, 정적 번들 QA 및 공개 URL 320·390·1440px 매트릭스 통과) |
 | 운영 문서 동기화 확인 | `main`에 push할 때마다 Pages workflow의 `qa:docs` 단계가 영업 가이드·릴리스 인수인계를 함께 검증 |
-| 최신 앱 공개 자산 직접 확인 | `index-hG9UAs0X.js` 및 `index-DNvIhvLy.css` HTTP 200, `c4cf2b3`의 사업자 설명 시작점 01번 고정·닫힌 외부 링크 포커스 제외·외부 링크 `noopener`와 기존 제품 정보 진입 명칭·제품 패널 `제품 안내를 이어서 보기: 08 · 활용 TIP`·표시사항 확인 순서·프로그램 이동 카드 확정·데스크톱 중앙 카드 판정·초기 01번 카드 유지·SALES-01 토론 게이트·기존 GABA 정의·소비자 `다음 카드` 명시·공유/발표 기능 `더 보기` 접힘·발표 모드 `제품부터 설명`·`자주 묻는 질문에 답하기`·승인 답변 `답변 복사`·모바일 발표자 컨트롤 3행 정렬·인페이지 CTA sticky 고정·외부 자료 접힘·접근성 라벨·연구 경계 문구 확인, 공개 URL 320·390·1440px 매트릭스 통과 |
+| 최신 앱 공개 자산 직접 확인 | `index-Ceq9qPju.js` 및 `index-CHo0UqdT.css` HTTP 200, `8c03d3b`의 발표 모드 패널 `이 카드 고객용 링크 복사`·`card=N#story`·발표자 모드 제거·복사 후 패널 유지·사업자 설명 시작점 01번 고정·닫힌 외부 링크 포커스 제외·외부 링크 `noopener`와 기존 제품 정보 진입 명칭·제품 패널 `제품 안내를 이어서 보기: 08 · 활용 TIP`·표시사항 확인 순서·프로그램 이동 카드 확정·데스크톱 중앙 카드 판정·초기 01번 카드 유지·SALES-01/03 토론 게이트·기존 GABA 정의·소비자 `다음 카드` 명시·공유/발표 기능 `더 보기` 접힘·발표 모드 `제품부터 설명`·`자주 묻는 질문에 답하기`·승인 답변 `답변 복사`·모바일 발표자 컨트롤 3행 정렬·인페이지 CTA sticky 고정·외부 자료 접힘·접근성 라벨·연구 경계 문구 확인, 공개 URL 320·390·1440px 매트릭스 통과 |
 | 운영 문서 동기화 | `main`에 반영된 TF 문서와 Pages workflow가 동일 저장소에서 관리되며, 문서-only push도 workflow로 검증 |
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 이 공개본은 소비자 안내와 사업자 발표를 위한 별도 페이지이며, 기존 공식 배포 사이트를 대체하거나 수정하지 않는다.
@@ -92,5 +92,7 @@ pnpm run qa:interaction
 2026-09-22 제품 정보 진입·다음 행동 배포 재검증: `03fc16f`에 대해 [Pages run 35629859977](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35629859977)이 `build success`와 `deploy success`로 종료됐다. 첫 화면의 실제 동작과 일치하도록 `제품 정보가 먼저라면`으로 라벨을 정정했고, 제품 패널의 주 CTA를 `제품 안내를 이어서 보기: 08 · 활용 TIP`으로 구체화했다. 공개 URL은 HTTP 200, `index-C65rRWBJ.js`·`index-DNvIhvLy.css`는 공개 자산으로 제공되며, 공개 320·390·1440px 매트릭스에서 제품 패널 다음 행동·외부 자료 보조 순서·연구·제품·후기 인페이지 흐름을 통과했다. 구매·상담·효능 CTA와 최신 제품 사실 확장은 추가하지 않았고, 실제 B 시나리오 영업 적합성·제품·후기·실기기 게이트는 여전히 HOLD다.
 
 2026-09-22 사업자 설명 시작점·패널 포커스 배포 재검증: `c4cf2b3`에 대해 [Pages run 35632091059](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35632091059)이 `build success`와 `deploy success`로 종료됐다. `?card=7#story` 상태에서 첫 화면의 `사업자용 설명 시작`을 눌러도 01번 발표 모드로 시작하도록 고정했고, 제품 우선 경로는 기존 `제품부터 설명`으로 분리했다. 닫힌 외부 자료 링크는 패널 키보드 포커스 순환에서 제외하고 새 탭 외부 링크에는 `noopener`를 명시했다. 공개 자산 `index-hG9UAs0X.js`·`index-DNvIhvLy.css`는 HTTP 200이며, 공개 URL 320·390·1440px 매트릭스에서 발표 시작점·포커스·연구·제품·후기 인페이지 흐름과 외부 자료 보조 순서를 모두 통과했다. 이 결과는 기술·배포 PASS이며, 실제 TF 참석자·A/B/C 사업자 세션·제품 사실·후기 권리·iOS/Android 실기기·전체 광고 인상 승인은 계속 HOLD다.
+
+2026-09-22 발표 모드 패널 고객용 카드 링크 배포 재검증: `8c03d3b`에 대해 [Pages run 35633429223](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35633429223)이 `build success`와 `deploy success`로 종료됐다. 발표 모드의 연구·제품·후기 정보 패널에만 `이 카드 고객용 링크 복사`를 추가하고, `panelSource` 카드 번호로 동일 사이트 `card=N#story`를 생성하며 `mode=presenter`·`presenter` 파라미터를 제거했다. `다음 카드`를 주 행동으로 유지하고 외부 자료는 접힌 보조 선택으로 남겼으며, 복사 후 패널·발표 모드·현재 카드가 유지되는지 확인했다. 공개 자산 `index-Ceq9qPju.js`·`index-CHo0UqdT.css`는 HTTP 200이고, 공개 URL 320·390·1440px 매트릭스와 390·1440px 패널 캡처에서 링크 복사 행동·패널 경계·연구 경계·제품/후기 인페이지 흐름을 통과했다. 이 결과는 기술·배포 PASS이며, A/B/C 사업자 세션의 링크 전달 성공률·외부 선행 이탈·다음 행동 명확도, 제품·후기·실기기·전체 광고 인상 승인은 계속 HOLD다.
 
 요구사항별 완료·보류 판단은 [GOAL_ACCEPTANCE_MATRIX.md](GOAL_ACCEPTANCE_MATRIX.md)를 기준으로 한다.
