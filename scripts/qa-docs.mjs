@@ -20,6 +20,7 @@ const files = {
 
 const checks = [
   ['public URL is documented', files.readme, 'https://kradavid.github.io/cellpinda_gaba_sum/'],
+  ['README documents presenter product shortcut', files.readme, '제품부터 설명'],
   ['official site is identified separately', files.handoff, 'https://kradavid.github.io/cellpinda_GABA/'],
   ['meeting pack is linked from README', files.readme, 'docs/TF_MEETING_PACK.md'],
   ['TF roles are defined', files.tf, '근거·준법 리드'],
