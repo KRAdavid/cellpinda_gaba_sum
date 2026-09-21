@@ -77,10 +77,10 @@ try {
   await send('Page.navigate', {url: baseUrl});
   await wait(900);
 
-  const initialPage = await evaluate('({title:document.title,width:innerWidth,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,presenterGuidance:!!document.querySelector(".presenter-note"),carousel:document.querySelector(".story-rail")?.getAttribute("aria-roledescription")||"",currentCard:document.querySelector(".story-card[aria-current=\\"true\\"]")?.getAttribute("aria-label")||""})');
+  const initialPage = await evaluate('({title:document.title,width:innerWidth,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,presenterGuidance:!!document.querySelector(".presenter-note"),presenterProductShortcut:!!document.querySelector(".story-product-start"),carousel:document.querySelector(".story-rail")?.getAttribute("aria-roledescription")||"",currentCard:document.querySelector(".story-card[aria-current=\\"true\\"]")?.getAttribute("aria-label")||""})');
   assert('page identity', initialPage.title.includes('GABA 한 장씩 보기'));
   assert('viewport has no horizontal overflow', initialPage.width === viewportWidth && initialPage.docWidth === initialPage.clientWidth && initialPage.docWidth <= initialPage.width, `${initialPage.width}/${initialPage.clientWidth}/${initialPage.docWidth}`);
-  assert('consumer view hides presenter guidance', !initialPage.presenterGuidance);
+  assert('consumer view hides presenter guidance', !initialPage.presenterGuidance && !initialPage.presenterProductShortcut);
   assert('story carousel exposes accessible slide state', initialPage.carousel === 'carousel' && initialPage.currentCard.includes('01 / 11'), JSON.stringify(initialPage));
 
   await evaluate('document.getElementById("story")?.scrollIntoView({behavior:"auto"})');
@@ -107,6 +107,12 @@ try {
   await waitForPresentation('01 / 11');
   const fullFlowStart = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
   assert('full-flow presenter starts at card 1', fullFlowStart.presentation && fullFlowStart.progress === '01 / 11', JSON.stringify(fullFlowStart));
+  await evaluate('document.querySelector(".story-product-start")?.click()');
+  await waitForPresentation('07 / 11');
+  const inPageProductShortcut = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText,url:location.href})');
+  assert('presenter can jump to product without leaving the flow', inPageProductShortcut.presentation && inPageProductShortcut.progress === '07 / 11' && inPageProductShortcut.url.includes('mode=presenter') && inPageProductShortcut.url.includes('card=7'), JSON.stringify(inPageProductShortcut));
+  await evaluate('document.querySelector(".story-restart-button")?.click()');
+  await waitForPresentation('01 / 11');
 
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=7#story`});
   await waitForPresentation('07 / 11');
