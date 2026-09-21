@@ -26,6 +26,8 @@ TF 회의의 역할별 발언 순서와 30분 의사결정 패킷은 [`TF_MEETIN
 회의에서 다룰 논점·이견·필요 증거·결정 상태는 [`TF_DISCUSSION_BOARD.md`](TF_DISCUSSION_BOARD.md)에 관리한다.
 회의 후 결정·담당·기한·증거 제출 위치는 [`TF_DECISION_REGISTER.md`](TF_DECISION_REGISTER.md) 한 곳에서 추적한다.
 실제 A/B/C 세션의 고정 링크·설명 문장·관찰 점수·P0 판정은 [`FIELD_SESSION_PACKET.md`](FIELD_SESSION_PACKET.md)를 사용한다.
+
+첫 회의 전 TF 준비 상태는 저장소 루트의 `pnpm run qa:tf`로 확인한다. 이 결과가 `킥오프 입력 필요`이면 실제 담당자·백업·A/B/C 진행자 입력부터 완료하고, 기술 QA 결과만으로 현장 PASS를 선언하지 않는다.
 실제 주 담당자·백업·결정권 배정은 [`TF_ROSTER.md`](TF_ROSTER.md)에 기록한다. 역할표는 책임 관점의 정의이며, 실명 배정 전에는 TF 구성 완료로 표시하지 않는다.
 배포 전 번들 문구 가드는 `pnpm run qa:bundle`로 실행하며, GitHub Pages workflow에서도 자동 실행한다.
 릴리스 인수인계와 승인 증거의 위치는 [`RELEASE_HANDOFF.md`](RELEASE_HANDOFF.md)로 통일한다.
