@@ -531,6 +531,7 @@ export default function App() {
               <p className="info-panel__evidence">연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 검토했습니다. 스트레스 관련 근거는 제한적이고 수면 관련 근거는 매우 제한적이었습니다.</p>
               <ul><li>참여자와 연구 대상이 누구였는지</li><li>GABA 섭취량과 기간이 어떻게 설정됐는지</li><li>비교 조건과 측정 방법이 무엇이었는지</li></ul>
               <p className="info-panel__boundary">이 자료는 일반 GABA 원료 또는 GABA 섭취 연구입니다. 셀핀다 제품의 효능을 직접 입증하는 자료가 아닙니다.</p>
+              <div className="info-panel__source"><strong>출처</strong><p className="info-panel__source-title">Effects of Oral Gamma-Aminobutyric Acid (GABA) Administration on Stress and Sleep in Humans: A Systematic Review</p><p className="info-panel__source-meta">Hepsomali et al. · Front Neurosci. 2020;14:923 · PMID 33041752</p></div>
             </> : null}
             {openPanel === 'product' ? <>
               <p className="info-panel__transition">여기서부터는 연구가 아닌 판매 제품의 표시 정보입니다.</p>

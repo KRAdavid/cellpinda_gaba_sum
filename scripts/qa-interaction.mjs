@@ -132,9 +132,9 @@ try {
   assert('research deep link opens the requested card', researchEntry.progress === '06 / 11' && researchEntry.hash === '#story', JSON.stringify(researchEntry));
   await evaluate('document.querySelector("#story-card-research .card-link").click()');
   await wait(180);
-  const research = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),title:document.querySelector("[role=dialog] h2")?.innerText||"",boundary:document.querySelector(".info-panel__boundary")?.innerText||"",url:location.href})');
+  const research = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),title:document.querySelector("[role=dialog] h2")?.innerText||"",source:document.querySelector(".info-panel__source")?.innerText||"",boundary:document.querySelector(".info-panel__boundary")?.innerText||"",url:location.href})');
   assert('research opens in an in-page dialog', research.dialog && research.title.includes('일반 GABA 연구') && research.url.startsWith(new URL(baseUrl).origin));
-  assert('research dialog keeps the product boundary', research.boundary.includes('셀핀다 제품의 효능'));
+  assert('research dialog keeps the citation and product boundary', research.source.includes('PMID 33041752') && research.boundary.includes('셀핀다 제품의 효능'), JSON.stringify(research));
 
   await evaluate('document.querySelector(".info-panel__next").click()');
   await wait(350);

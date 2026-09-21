@@ -22,6 +22,8 @@ const assetText = assetPaths
 const required = [
   ['general research label', '일반 GABA 연구'],
   ['research limitation', '14개 위약대조 인체시험'],
+  ['research citation title', 'Effects of Oral Gamma-Aminobutyric Acid'],
+  ['research citation PMID', 'PMID 33041752'],
   ['product efficacy boundary', '셀핀다 제품의 효능을 직접 입증하는 자료가 아닙니다'],
   ['research to product transition', '여기서부터는 연구가 아닌 판매 제품의 표시 정보입니다'],
   ['presenter guidance', '발표자용 진행 포인트'],
