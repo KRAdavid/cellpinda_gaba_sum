@@ -21,6 +21,7 @@ const assetText = assetPaths
 
 const required = [
   ['general research label', '일반 GABA 연구'],
+  ['gaba name definition', '감마아미노부티르산을 줄여 부르는 이름'],
   ['research limitation', '14개 위약대조 인체시험'],
   ['research citation title', 'Effects of Oral Gamma-Aminobutyric Acid'],
   ['research citation PMID', 'PMID 33041752'],
