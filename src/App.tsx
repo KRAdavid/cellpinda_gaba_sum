@@ -173,6 +173,7 @@ export default function App() {
   const [presentationMode, setPresentationMode] = useState(false);
   const [shareMessage, setShareMessage] = useState('');
   const [shareUrl, setShareUrl] = useState('');
+  const [panelShareMessage, setPanelShareMessage] = useState('');
   const [presenterCopyMessage, setPresenterCopyMessage] = useState('');
   const railRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
@@ -310,15 +311,19 @@ export default function App() {
     }
   };
 
-  const shareCardLink = async () => {
-    const shareRequest = ++shareRequestRef.current;
+  const getCustomerCardLink = (index: number) => {
     const url = new URL(window.location.href);
-    url.searchParams.set('card', String(active + 1));
+    url.searchParams.set('card', String(index + 1));
     // Customer-facing shares must never expose presenter notes or controls.
     url.searchParams.delete('mode');
     url.searchParams.delete('presenter');
     url.hash = 'story';
-    const link = url.toString();
+    return url.toString();
+  };
+
+  const shareCardLink = async () => {
+    const shareRequest = ++shareRequestRef.current;
+    const link = getCustomerCardLink(active);
     setShareUrl(link);
     if (navigator.share) {
       try {
@@ -341,6 +346,19 @@ export default function App() {
     } catch {
       if (shareRequest !== shareRequestRef.current) return;
       setShareMessage('고객용 링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
+  };
+
+  const copyPanelCardLink = async () => {
+    const shareRequest = ++shareRequestRef.current;
+    const link = getCustomerCardLink(panelSourceIndex ?? active);
+    try {
+      await copyText(link);
+      if (shareRequest !== shareRequestRef.current) return;
+      setPanelShareMessage('고객용 카드 링크를 복사했습니다.');
+    } catch {
+      if (shareRequest !== shareRequestRef.current) return;
+      setPanelShareMessage('고객용 카드 링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
   };
 
@@ -528,6 +546,7 @@ export default function App() {
     const returnElement = panelReturnRef.current;
     setOpenPanel(null);
     setPanelSourceIndex(null);
+    setPanelShareMessage('');
     if (restoreFocus) {
       window.requestAnimationFrame(() => {
         if (returnElement?.isConnected) returnElement.focus();
@@ -556,6 +575,7 @@ export default function App() {
   const openInfoPanel = (index: number, panel: PanelKey, returnElement?: HTMLElement | null) => {
     panelReturnRef.current = returnElement ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setPanelSourceIndex(index);
+    setPanelShareMessage('');
     setOpenPanel(panel);
   };
 
@@ -691,6 +711,11 @@ export default function App() {
             <p className="info-panel__flow-note">{openPanel === 'product' ? '제품 안내를 확인했다면 다음 카드에서 표시사항 확인 순서를 이어서 보여 주세요. 외부 판매처는 필요한 경우에만 확인합니다.' : '현재 페이지의 흐름은 유지됩니다. 외부 링크는 보조 선택이며, 아래 버튼으로 다음 카드로 계속 볼 수 있습니다.'}</p>
             <div className="info-panel__actions">
               <button type="button" className="info-panel__next" onClick={continueToNextCard}>{panelNextAction}</button>
+              {presentationMode ? <div className="info-panel__customer-link">
+                <button type="button" className="info-panel__customer-copy" onClick={copyPanelCardLink}>이 카드 고객용 링크 복사</button>
+                <p>복사한 링크는 발표자 모드 없이 이 카드에서 열립니다.</p>
+                <p className="info-panel__customer-message" aria-live="polite">{panelShareMessage}</p>
+              </div> : null}
               <details className="info-panel__external-choice">
                 <summary>외부 자료는 필요할 때만 확인 <span aria-hidden="true">＋</span></summary>
                 <a className="info-panel__external" href={openExternal} target="_blank" rel="noopener noreferrer">{panelExternalLabel} ↗</a>
