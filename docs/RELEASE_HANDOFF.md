@@ -8,9 +8,9 @@
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
 | 앱 최신 커밋 | `9776290` |
-| 최신 운영 문서 커밋 | `9776290` (발표 모드 안에서 제품 카드로 이동하는 영업 경로 보완) |
+| 최신 운영 문서 기준 | `main` 브랜치의 `docs/`와 Pages workflow 문서 게이트 (`qa:docs`) |
 | 릴리스 검증 기준 Pages 배포 | [run 35611131797](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35611131797) (발표 모드 제품 우선 전환·다음 설명 힌트·현재 단계 자동 정렬·인페이지 흐름 안내·고객용 링크 확인 문구·접근 가능한 carousel·TF 문서 게이트를 포함한 보완본, 정적 번들 QA 및 공개 URL 320·390·1440px 매트릭스 통과) |
-| 운영 문서 동기화 확인 | [run 35611131797](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35611131797) (최신 코드·영업 가이드·릴리스 인수인계가 함께 검증되고 Pages 배포 성공) |
+| 운영 문서 동기화 확인 | `main`에 push할 때마다 Pages workflow의 `qa:docs` 단계가 영업 가이드·릴리스 인수인계를 함께 검증 |
 | 최신 앱 공개 자산 직접 확인 | `index-BGk6sH5a.js` HTTP 200, `9776290`의 발표 모드 `제품부터 설명`·인페이지 다음 CTA 우선순위·`다음 카드: 07 · 셀핀다 제품 정보`·`고객용 링크 복사`·접근성 라벨·연구 경계 문구 확인, 공개 URL 320·390·1440px 매트릭스 통과 |
 | 운영 문서 동기화 | `main`에 반영된 TF 문서와 Pages workflow가 동일 저장소에서 관리되며, 문서-only push도 workflow로 검증 |
 
