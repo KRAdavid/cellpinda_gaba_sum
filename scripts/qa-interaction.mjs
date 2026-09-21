@@ -157,6 +157,8 @@ try {
     await wait(120);
     const fallback = await evaluate('({url:document.querySelector(".story-share-url")?.value||"",message:document.querySelector(".story-share-message")?.innerText||""})');
     assert('card link share falls back to copy', fallback.url.includes('card=8') && fallback.url.includes('#story') && !fallback.url.includes('mode=presenter') && fallback.message.includes('복사했습니다'), JSON.stringify(fallback));
+    const copyLabel = await evaluate('document.querySelector(".story-share-copy-button")?.innerText||""');
+    assert('shared card exposes customer copy label', copyLabel === '고객용 링크 복사', copyLabel);
     await evaluate('document.querySelector(".story-share-copy-button")?.click()');
     await wait(120);
     const copiedAgain = await evaluate('document.querySelector(".story-share-message")?.innerText||""');

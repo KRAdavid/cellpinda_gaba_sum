@@ -34,7 +34,7 @@ const required = [
   ['presenter keyboard support', 'PageUp/PageDown'],
   ['presenter dialog state', 'story--presentation'],
   ['card sharing control', '현재 카드 링크 공유'],
-  ['card sharing copy control', '링크 복사'],
+  ['card sharing copy control', '고객용 링크 복사'],
   ['customer share confirmation', '고객용 링크를 복사했습니다'],
   ['business entry label', '사업자용 설명 시작'],
   ['opening everyday hook', '말이 먼저 세게 나온 날'],
