@@ -25,7 +25,8 @@ const STORY_PHASES = [
   {id: 'ingredient', label: '성분 일반정보', start: 4, end: 4},
   {id: 'research', label: '일반 연구', start: 5, end: 5},
   {id: 'product', label: '제품 정보', start: 6, end: 7},
-  {id: 'review', label: '후기·마무리', start: 8, end: 10},
+  {id: 'lifestyle', label: '생활 루틴', start: 8, end: 8},
+  {id: 'review', label: '후기·마무리', start: 9, end: 10},
 ] as const;
 
 function makeSlides(): Slide[] {
