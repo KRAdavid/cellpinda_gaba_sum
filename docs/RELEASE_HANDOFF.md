@@ -7,8 +7,8 @@
 | 공개 소비자 안내 | <https://kradavid.github.io/cellpinda_gaba_sum/> |
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
-| 앱 최신 커밋 | `fa361c9` |
-| 릴리스 검증 기준 Pages 배포 | [run 35599806242](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35599806242) (공유 상태 경합 보완본, 정적 번들 QA 및 공개 URL 320·390·1440px 매트릭스 통과) |
+| 앱 최신 커밋 | `608870d` |
+| 릴리스 검증 기준 Pages 배포 | [run 35600624143](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35600624143) (모바일 레일 touch 계약 보완본, 정적 번들 QA 및 공개 URL 320·390·1440px 매트릭스 통과) |
 | 운영 문서 동기화 | `main`에 반영된 TF 문서와 Pages workflow가 동일 저장소에서 관리되며, 문서-only push도 workflow로 검증 |
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 이 공개본은 소비자 안내와 사업자 발표를 위한 별도 페이지이며, 기존 공식 배포 사이트를 대체하거나 수정하지 않는다.

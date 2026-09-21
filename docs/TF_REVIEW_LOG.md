@@ -92,6 +92,8 @@ QA 격리 보완: 상호작용 QA가 직전 브라우저의 발표 모드 URL을
 
 모바일 카드 레일 계약 보강: 카드 레일에 `touch-action: pan-x`를 명시하고 320·390px에서 수평 overflow·touch 방향·scroll snap 설정을 자동 확인하도록 QA를 보강했다. Chrome CDP의 합성 터치 이벤트는 390px에서 실제 스와이프 전달이 안정적이지 않아 스와이프 자체를 PASS로 주장하지 않으며, iOS·Android 실기기 스와이프 확인은 계속 HOLD한다.
 
+공개 배포 재검증: 모바일 레일 계약 보완본 `608870d`의 [Pages run 35600624143](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35600624143) 성공 후 공개 URL 320·390·1440px 매트릭스를 재실행해 touch 방향·스냅 계약과 기존 영업 흐름을 모두 통과시켰다.
+
 공개 배포 재검증: 종료 선택지 포커스 보완본 `3b8d195`의 Pages 배포 [run 35596995932](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35596995932) 성공과 공개 URL 상호작용 QA 전체 통과를 확인했다.
 
 영업 흐름 정합성 개선: 기존 가이드가 `card=7`에서 시작한다고 안내하면서 01~03번 일상 카드부터 설명하도록 작성되어 시작점이 불명확했다. 전체 설명은 `card=1`, 제품 문의가 먼저 나온 경우는 `card=7`로 역할을 분리해 README·영업 가이드·인수인계 문서를 수정했다. 다음 영업 세션에서는 실제 담당자가 두 링크를 혼동하지 않는지 확인한다.
