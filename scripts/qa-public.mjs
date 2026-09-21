@@ -29,6 +29,7 @@ const required = [
   ['presenter guidance', '발표자용 진행 포인트'],
   ['presenter prompt guidance', '고객에게 물어보기'],
   ['presenter boundary guidance', '이어서 말할 때'],
+  ['presenter restart control', '처음부터'],
   ['presenter keyboard support', 'PageUp/PageDown'],
   ['presenter dialog state', 'story--presentation'],
   ['card sharing control', '현재 카드 링크 공유'],

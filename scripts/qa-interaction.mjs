@@ -110,6 +110,13 @@ try {
   const productShortcutStart = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
   assert('product shortcut presenter starts at card 7', productShortcutStart.presentation && productShortcutStart.progress === '07 / 11', JSON.stringify(productShortcutStart));
 
+  await evaluate('document.querySelector(".story-restart-button")?.click()');
+  await waitForPresentation('01 / 11');
+  const restarted = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText,url:location.href})');
+  assert('presenter can restart the full flow', restarted.presentation && restarted.progress === '01 / 11' && restarted.url.includes('card=1'), JSON.stringify(restarted));
+  await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=7#story`});
+  await waitForPresentation('07 / 11');
+
   const presenter = await evaluate('({title:document.title,width:innerWidth,docWidth:document.documentElement.scrollWidth,url:location.href,presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText,visible:[...document.querySelectorAll(".story-card")].filter(card=>getComputedStyle(card).display!=="none").length})');
   assert('presenter deep link opens the requested card', presenter.presentation && presenter.progress === '07 / 11', `${presenter.url} ${presenter.progress}`);
   assert('presenter shows one card', presenter.visible === 1, String(presenter.visible));
