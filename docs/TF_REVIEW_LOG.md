@@ -148,6 +148,8 @@ TF 문서 게이트 공개 배포 확인: [Pages run 35605104422](https://github
 
 카드 접근성 의미 보완: 카드 레일을 `carousel`, 개별 카드를 `slide`로 노출하고 현재 카드 번호·전체 장수·현재 단계 정보를 보조기술에 전달하도록 `aria-roledescription`, `aria-label`, `aria-current`를 추가했다. 시각적 카드 흐름은 유지하며, 공개 번들 검사와 320·390·1440px 상호작용 QA에서 접근 가능한 슬라이드 상태를 확인한다.
 
+카드 접근성 공개 배포 확인: `f9bbd30`의 [Pages run 35606246645](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35606246645)에서 접근 가능한 carousel 라벨, TF 문서 게이트, 번들 가드와 Pages 배포가 모두 성공했다. 실제 iOS·Android 보조기술 검증은 계속 HOLD다.
+
 ## 의사결정 원칙
 
 1. 관심은 소비자가 공감할 수 있는 일상 장면에서 만든다.
