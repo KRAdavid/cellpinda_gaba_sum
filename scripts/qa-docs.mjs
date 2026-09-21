@@ -15,6 +15,7 @@ const files = {
   acceptance: read('docs/GOAL_ACCEPTANCE_MATRIX.md'),
   handoff: read('docs/RELEASE_HANDOFF.md'),
   sessions: read('docs/SALES_SESSION_VALIDATION.md'),
+  quickstart: read('docs/SALES_SESSION_QUICKSTART.md'),
 };
 
 const checks = [
@@ -30,6 +31,8 @@ const checks = [
   ['acceptance matrix keeps device validation on hold', files.acceptance, '실기기 접근성'],
   ['session template forbids personal data collection', files.sessions, '건강정보'],
   ['handoff keeps product facts bounded', files.handoff, '최신 표시사항이 필요한 질문은 답을 확정하지 않는다'],
+  ['quickstart defines the full card route', files.quickstart, '01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11'],
+  ['session scenario A covers routine cards', files.sessions, '제품 → 활용 TIP → 생활 루틴 → 후기'],
   ['TF execution board defines purpose and deliverable', files.tf, '정식 공개 실행 보드'],
   ['TF execution board defines exit criteria and next action', files.tf, '종료 조건 | 담당 | 다음 액션'],
   ['TF execution board preserves field hold', files.tf, '기술 PASS / 현장 HOLD'],
