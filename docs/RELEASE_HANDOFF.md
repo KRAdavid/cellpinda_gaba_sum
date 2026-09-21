@@ -7,12 +7,12 @@
 | 공개 소비자 안내 | <https://kradavid.github.io/cellpinda_gaba_sum/> |
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
-| 앱 최신 커밋 | `d225157` (`fix: stabilize card deep links and add sales debate gate`) |
+| 앱 최신 커밋 | `03fc16f` (`feat: clarify product handoff in sales flow`) |
 | 최신 운영 문서 기준 | `main` 브랜치의 `docs/`와 Pages workflow 문서 게이트 (`qa:docs`) |
-| 최신 Pages 배포 확인 | [run 35628559496](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35628559496) (커밋 `d225157`, 카드 딥링크 안정화·SALES-01 토론 게이트 포함, build·deploy 성공) |
+| 최신 Pages 배포 확인 | [run 35629859977](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35629859977) (커밋 `03fc16f`, 제품 정보 진입 명칭·제품 패널 다음 행동·SALES-01 토론 게이트 포함, build·deploy 성공) |
 | 릴리스 검증 기준 Pages 배포 | [run 35611131797](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35611131797) (발표 모드 제품 우선 전환·다음 설명 힌트·현재 단계 자동 정렬·인페이지 흐름 안내·고객용 링크 확인 문구·접근 가능한 carousel·TF 문서 게이트를 포함한 보완본, 정적 번들 QA 및 공개 URL 320·390·1440px 매트릭스 통과) |
 | 운영 문서 동기화 확인 | `main`에 push할 때마다 Pages workflow의 `qa:docs` 단계가 영업 가이드·릴리스 인수인계를 함께 검증 |
-| 최신 앱 공개 자산 직접 확인 | `index-BYoC8dEl.js` 및 `index-DNvIhvLy.css` HTTP 200, `d225157`의 프로그램 이동 카드 확정·데스크톱 중앙 카드 판정·초기 01번 카드 유지·SALES-01 토론 게이트와 기존 GABA 정의·소비자 `다음 카드` 명시·공유/발표 기능 `더 보기` 접힘·발표 모드 `제품부터 설명`·`자주 묻는 질문에 답하기`·승인 답변 `답변 복사`·모바일 발표자 컨트롤 3행 정렬·인페이지 CTA sticky 고정·외부 자료 접힘·접근성 라벨·연구 경계 문구 확인, 공개 URL 320·390·1440px 매트릭스 통과 |
+| 최신 앱 공개 자산 직접 확인 | `index-C65rRWBJ.js` 및 `index-DNvIhvLy.css` HTTP 200, `03fc16f`의 제품 정보 진입 명칭·제품 패널 `제품 안내를 이어서 보기: 08 · 활용 TIP`·표시사항 확인 순서·프로그램 이동 카드 확정·데스크톱 중앙 카드 판정·초기 01번 카드 유지·SALES-01 토론 게이트와 기존 GABA 정의·소비자 `다음 카드` 명시·공유/발표 기능 `더 보기` 접힘·발표 모드 `제품부터 설명`·`자주 묻는 질문에 답하기`·승인 답변 `답변 복사`·모바일 발표자 컨트롤 3행 정렬·인페이지 CTA sticky 고정·외부 자료 접힘·접근성 라벨·연구 경계 문구 확인, 공개 URL 320·390·1440px 매트릭스 통과 |
 | 운영 문서 동기화 | `main`에 반영된 TF 문서와 Pages workflow가 동일 저장소에서 관리되며, 문서-only push도 workflow로 검증 |
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 이 공개본은 소비자 안내와 사업자 발표를 위한 별도 페이지이며, 기존 공식 배포 사이트를 대체하거나 수정하지 않는다.
@@ -88,5 +88,7 @@ pnpm run qa:interaction
 2026-09-22 TF 실제 배정 게이트 배포 재검증: `886e90a`에 대해 [Pages run 35626689111](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35626689111)이 `build success`와 `deploy success`로 종료됐다. `TF_ROSTER.md`의 11개 역할 배정 슬롯, 핵심 참석자, 실명 입력 전 `HOLD` 규칙이 문서 QA에 포함됐고, 공개 URL은 HTTP 200으로 응답했다. 앱 코드는 변경하지 않았으며, 공개 흐름·발표·인페이지 패널은 기존 공개 매트릭스 증거를 유지한다. 실제 담당자 배정·사업자 세션·제품·후기·실기기 게이트는 여전히 HOLD다.
 
 2026-09-22 카드 딥링크·제품 문의 논점 배포 재검증: `d225157`에 대해 [Pages run 35628559496](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35628559496)이 `build success`와 `deploy success`로 종료됐다. 프로그램 이동 중 요청 카드를 우선 확정하고, 일반 스크롤에서는 레일 중앙 카드를 활성 상태로 판단하도록 보강했다. 공개 URL은 HTTP 200, `index-BYoC8dEl.js`·`index-DNvIhvLy.css`는 공개 자산으로 제공되며, 실제 320·390·1440px 매트릭스와 1440px interaction QA를 통과했다. `SALES-01` 제품 문의 후 행동 논점은 B 시나리오 현장 검증 대기로 남겼고, 실제 담당자 배정·사업자 세션·제품·후기·실기기 게이트는 여전히 HOLD다.
+
+2026-09-22 제품 정보 진입·다음 행동 배포 재검증: `03fc16f`에 대해 [Pages run 35629859977](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35629859977)이 `build success`와 `deploy success`로 종료됐다. 첫 화면의 실제 동작과 일치하도록 `제품 정보가 먼저라면`으로 라벨을 정정했고, 제품 패널의 주 CTA를 `제품 안내를 이어서 보기: 08 · 활용 TIP`으로 구체화했다. 공개 URL은 HTTP 200, `index-C65rRWBJ.js`·`index-DNvIhvLy.css`는 공개 자산으로 제공되며, 공개 320·390·1440px 매트릭스에서 제품 패널 다음 행동·외부 자료 보조 순서·연구·제품·후기 인페이지 흐름을 통과했다. 구매·상담·효능 CTA와 최신 제품 사실 확장은 추가하지 않았고, 실제 B 시나리오 영업 적합성·제품·후기·실기기 게이트는 여전히 HOLD다.
 
 요구사항별 완료·보류 판단은 [GOAL_ACCEPTANCE_MATRIX.md](GOAL_ACCEPTANCE_MATRIX.md)를 기준으로 한다.
