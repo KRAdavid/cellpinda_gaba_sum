@@ -157,6 +157,18 @@ try {
   assert('research opens in an in-page dialog', research.dialog && research.title.includes('일반 GABA 연구') && research.url.startsWith(new URL(baseUrl).origin));
   assert('research dialog keeps the citation and product boundary', research.source.includes('PMID 33041752') && research.boundary.includes('셀핀다 제품의 효능'), JSON.stringify(research));
 
+  await press('Escape', 'Escape', 27);
+  const researchEscaped = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),focus:document.activeElement?.innerText||""})');
+  assert('Escape closes the research dialog', !researchEscaped.dialog && researchEscaped.focus.includes('일반 GABA 연구 내용'), JSON.stringify(researchEscaped));
+  await evaluate('document.querySelector("#story-card-research .card-link")?.click()');
+  await wait(180);
+  await evaluate('document.querySelector(".info-layer")?.dispatchEvent(new MouseEvent("mousedown", {bubbles:true}))');
+  await wait(120);
+  const researchOutside = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),focus:document.activeElement?.innerText||""})');
+  assert('outside click closes the research dialog', !researchOutside.dialog && researchOutside.focus.includes('일반 GABA 연구 내용'), JSON.stringify(researchOutside));
+  await evaluate('document.querySelector("#story-card-research .card-link")?.click()');
+  await wait(180);
+
   await evaluate('document.querySelector(".info-panel__next").click()');
   await wait(350);
   const productCard = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),progress:document.querySelector(".story-controls span")?.innerText,focus:document.activeElement?.innerText||""})');
