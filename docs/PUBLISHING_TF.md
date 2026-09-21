@@ -21,6 +21,7 @@
 반복 검토의 판단과 다음 액션은 [`TF_REVIEW_LOG.md`](TF_REVIEW_LOG.md)에 누적한다.
 실제 사업자 상담 검증은 [`SALES_SESSION_VALIDATION.md`](SALES_SESSION_VALIDATION.md)에 별도로 기록한다.
 현장 진행 순서와 관찰 기준은 [`SALES_SESSION_QUICKSTART.md`](SALES_SESSION_QUICKSTART.md)를 사용한다.
+TF 회의의 역할별 발언 순서와 30분 의사결정 패킷은 [`TF_MEETING_PACK.md`](TF_MEETING_PACK.md)를 사용한다.
 배포 전 번들 문구 가드는 `pnpm run qa:bundle`로 실행하며, GitHub Pages workflow에서도 자동 실행한다.
 릴리스 인수인계와 승인 증거의 위치는 [`RELEASE_HANDOFF.md`](RELEASE_HANDOFF.md)로 통일한다.
 전체 목표의 PASS·HOLD 판단과 종료 조건은 [`GOAL_ACCEPTANCE_MATRIX.md`](GOAL_ACCEPTANCE_MATRIX.md)에서 관리한다.
