@@ -16,6 +16,7 @@ const files = {
   handoff: read('docs/RELEASE_HANDOFF.md'),
   sessions: read('docs/SALES_SESSION_VALIDATION.md'),
   quickstart: read('docs/SALES_SESSION_QUICKSTART.md'),
+  launchGuide: read('docs/SALES_ONE_PAGE_GUIDE.md'),
 };
 
 const checks = [
@@ -28,6 +29,10 @@ const checks = [
   ['meeting pack covers scenario B', files.meeting, 'B. 제품 문의 우선'],
   ['meeting pack covers scenario C', files.meeting, 'C. 근거 질문 대응'],
   ['meeting pack records decision evidence', files.meeting, '문제 → 결정 → 변경 파일 → 검증 결과 → 다음 담당자·종료 조건'],
+  ['launch guide is linked from README', files.readme, 'docs/SALES_ONE_PAGE_GUIDE.md'],
+  ['launch guide defines the full sales route', files.launchGuide, '01 일상 상태 → 02 여유가 안 생기는 날 → 03 생각 과부하 → 04 적극적인 휴식 → 05 GABA 성분 이름 → 06 일반 GABA 연구 → 07 제품 정보 → 08 활용 TIP → 09 생활 루틴 → 10 후기 → 11 마무리'],
+  ['launch guide keeps GABA research bounded', files.launchGuide, '셀핀다 제품의 동일 제형·섭취량 효능을 직접 입증하는 자료는 아닙니다'],
+  ['launch guide keeps external sources secondary', files.launchGuide, '외부 자료는 필요할 때만 확인'],
   ['acceptance matrix keeps business validation on hold', files.acceptance, '실제 영업 적합성 | 세션 검증 양식'],
   ['acceptance matrix keeps device validation on hold', files.acceptance, '실기기 접근성'],
   ['session template forbids personal data collection', files.sessions, '건강정보'],
