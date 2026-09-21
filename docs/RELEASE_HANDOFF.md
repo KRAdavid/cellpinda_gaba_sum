@@ -8,7 +8,7 @@
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
 | 앱 최신 커밋 | `787cb00` |
-| 릴리스 검증 기준 Pages 배포 | [run 35590740327](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35590740327) (`a9a9e89` 기준) |
+| 릴리스 검증 기준 Pages 배포 | [run 35591032818](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35591032818) (정적 번들 QA 포함) |
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 이 공개본은 소비자 안내와 사업자 발표를 위한 별도 페이지이며, 기존 공식 배포 사이트를 대체하거나 수정하지 않는다.
 
@@ -21,7 +21,7 @@
 | 발표 모드 | 이전·다음 버튼, 키보드 이동, 발표자용 설명 포인트, `?mode=presenter&card=N#story` | 공개 URL 확인 |
 | 제품·연구 경계 | 일반 GABA 연구 결론과 셀핀다 제품 표시 정보를 분리 | 연구·제품 패널 |
 | 릴리스 가드 | 필수 경계 문구, 금지 표현, 제품 이미지, 기존 공식 URL, favicon을 빌드 전에 검사 | `pnpm run qa:public`, Pages workflow |
-| 상호작용 QA | 발표 딥링크·발표자 메모·키보드·Escape·연구 패널·제품 패널·다음 카드 전환·영업 시작점 01/07 | `pnpm run qa:interaction`, run `35590740327` |
+| 상호작용 QA | 발표 딥링크·발표자 메모·키보드·Escape·연구 패널·제품 패널·다음 카드 전환·영업 시작점 01/07 | 공개 URL 대상 `QA_URL=https://kradavid.github.io/cellpinda_gaba_sum/ pnpm run qa:interaction` 전체 통과 |
 | 기본 마감 품질 | favicon HTTP 200, 공개 페이지 HTTP 200 | 공개 URL 읽기 전용 확인 |
 
 ## 사업자 사용 순서
