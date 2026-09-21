@@ -7,10 +7,10 @@
 | 공개 소비자 안내 | <https://kradavid.github.io/cellpinda_gaba_sum/> |
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
-| 앱 최신 커밋 | `1f052a7` |
+| 앱 최신 커밋 | `e0c20cf` |
 | 릴리스 검증 기준 Pages 배포 | [run 35607235586](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35607235586) (발표 모드 다음 설명 힌트·현재 단계 자동 정렬·인페이지 흐름 안내·고객용 링크 확인 문구·접근 가능한 carousel·TF 문서 게이트를 포함한 보완본, 정적 번들 QA 및 공개 URL 320·390·1440px 매트릭스 통과) |
 | 운영 문서 동기화 확인 | [run 35607410714](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35607410714) (발표자 힌트 릴리스 이후 TF 문서 게이트·빌드·번들 QA·Pages 배포 성공) |
-| 최신 앱 공개 자산 직접 확인 | `index-DxVQg-BS.js` HTTP 200, `1f052a7`의 인페이지 다음 CTA 우선순위·`고객용 링크 복사`·접근성 라벨·연구 경계 문구 확인, 공개 URL 320·390·1440px 매트릭스 통과 |
+| 최신 앱 공개 자산 직접 확인 | `index-BOzM6c3s.js` HTTP 200, `e0c20cf`의 인페이지 다음 CTA 우선순위·`다음 카드: 07 · 셀핀다 제품 정보`·`고객용 링크 복사`·접근성 라벨·연구 경계 문구 확인, 공개 URL 320·390·1440px 매트릭스 통과 |
 | 운영 문서 동기화 | `main`에 반영된 TF 문서와 Pages workflow가 동일 저장소에서 관리되며, 문서-only push도 workflow로 검증 |
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 이 공개본은 소비자 안내와 사업자 발표를 위한 별도 페이지이며, 기존 공식 배포 사이트를 대체하거나 수정하지 않는다.
