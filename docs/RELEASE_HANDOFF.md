@@ -16,6 +16,8 @@
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 이 공개본은 소비자 안내와 사업자 발표를 위한 별도 페이지이며, 기존 공식 배포 사이트를 대체하거나 수정하지 않는다.
 
+사업자가 상담 직전에 확인할 요약 경로는 [`SALES_ONE_PAGE_GUIDE.md`](SALES_ONE_PAGE_GUIDE.md), 세션 결과 기록은 [`SALES_SESSION_VALIDATION.md`](SALES_SESSION_VALIDATION.md)를 사용한다.
+
 ## 현재 확인된 범위
 
 | 영역 | 확인 결과 | 근거 |

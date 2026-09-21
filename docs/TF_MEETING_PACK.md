@@ -8,6 +8,7 @@
 - 전체 설명 시작: `?mode=presenter&card=1#story`
 - 제품 문의 우선 시작: `?mode=presenter&card=7#story`
 - 최신 배포와 코드 상태: [`RELEASE_HANDOFF.md`](RELEASE_HANDOFF.md)
+- 사업자 상담 직전 요약본: [`SALES_ONE_PAGE_GUIDE.md`](SALES_ONE_PAGE_GUIDE.md)
 - 이전 결정과 재현 기록: [`TF_REVIEW_LOG.md`](TF_REVIEW_LOG.md)
 - 현장 세션 기록: [`SALES_SESSION_VALIDATION.md`](SALES_SESSION_VALIDATION.md)
 
