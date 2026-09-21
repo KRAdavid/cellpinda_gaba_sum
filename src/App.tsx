@@ -229,7 +229,31 @@ export default function App() {
         exitPresentation();
         return;
       }
-      if (event.key !== 'Tab' || openPanel) return;
+      const eventTarget = event.target instanceof HTMLElement ? event.target : null;
+      const isTextEntry = eventTarget?.matches('input, textarea, [contenteditable="true"]');
+      if (isTextEntry && event.key !== 'Tab') return;
+      if (openPanel) return;
+      if (event.key === 'ArrowRight' || event.key === 'PageDown') {
+        event.preventDefault();
+        goTo(active + 1);
+        return;
+      }
+      if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+        event.preventDefault();
+        goTo(active - 1);
+        return;
+      }
+      if (event.key === 'Home') {
+        event.preventDefault();
+        goTo(0);
+        return;
+      }
+      if (event.key === 'End') {
+        event.preventDefault();
+        goTo(slides.length - 1);
+        return;
+      }
+      if (event.key !== 'Tab') return;
       const presentation = presentationRef.current;
       if (!presentation) return;
       const focusable = Array.from(presentation.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'))
@@ -272,7 +296,7 @@ export default function App() {
         else element.setAttribute('aria-hidden', ariaHidden);
       });
     };
-  }, [presentationMode, openPanel]);
+  }, [presentationMode, openPanel, active]);
 
   useEffect(() => {
     if (!presentationMode) presentationDidFocusRef.current = false;
@@ -350,13 +374,13 @@ export default function App() {
         <div className="intro-orbit" aria-hidden="true"><span>GABA</span><i>일상<br />이해</i></div>
       </section>
 
-      <section id="story" ref={presentationRef} className={`story${presentationMode ? ' story--presentation' : ''}`} role={presentationMode ? 'dialog' : undefined} aria-labelledby="story-title" aria-modal={presentationMode ? 'true' : undefined}>
+      <section id="story" ref={presentationRef} className={`story${presentationMode ? ' story--presentation' : ''}`} role={presentationMode ? 'dialog' : undefined} aria-labelledby="story-title" aria-modal={presentationMode ? 'true' : undefined} aria-keyshortcuts={presentationMode ? 'ArrowLeft ArrowRight PageUp PageDown Home End Escape' : undefined}>
         <div className="story-heading">
           <div>
             <p className="eyebrow">1 page · 1 message</p>
             <h2 id="story-title">GABA 정보를<br />나누어 확인하기</h2>
           </div>
-          <p>모바일에서는 좌우로 밀어 보세요.<br />연구·제품·후기는 각각 다른 정보입니다.</p>
+          <p>{presentationMode ? <>← → 또는 PageUp/PageDown으로 넘기고<br />Esc로 발표 모드를 종료하세요.</> : <>모바일에서는 좌우로 밀어 보세요.<br />연구·제품·후기는 각각 다른 정보입니다.</>}</p>
         </div>
         <div className="story-controls">
           <span aria-live="polite">{String(active + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</span>
