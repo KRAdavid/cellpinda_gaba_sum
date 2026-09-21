@@ -11,12 +11,14 @@
 - 사업자 상담 직전 요약본: [`SALES_ONE_PAGE_GUIDE.md`](SALES_ONE_PAGE_GUIDE.md)
 - 이전 결정과 재현 기록: [`TF_REVIEW_LOG.md`](TF_REVIEW_LOG.md)
 - 이번 회의의 논점·이견·필요 증거: [`TF_DISCUSSION_BOARD.md`](TF_DISCUSSION_BOARD.md)
+- 회의 후 결정·담당·기한·증거 제출 위치: [`TF_DECISION_REGISTER.md`](TF_DECISION_REGISTER.md)
 - 실제 주 담당자·백업·결정권: [`TF_ROSTER.md`](TF_ROSTER.md)
 - 담당자·첫 회의·A/B/C 입력: [`TF_KICKOFF_INPUT.md`](TF_KICKOFF_INPUT.md)
 - 현장 세션 기록: [`SALES_SESSION_VALIDATION.md`](SALES_SESSION_VALIDATION.md)
+- A/B/C 세션 고정 진행·관찰·P0 판정: [`FIELD_SESSION_PACKET.md`](FIELD_SESSION_PACKET.md)
 
 회의 전 릴리스 QA 담당자는 `pnpm run qa:public`과 가능한 경우 `pnpm run qa:matrix`의 결과를 준비한다. 실제 세션이 없는 날에는 현장 PASS를 선언하지 않고 기술 증거만 갱신한다.
-회의 참석자는 토론 보드에서 이번 회의에 올릴 논점 1~2개와 반대 관점을 미리 읽고, 새 아이디어보다 종료 증거와 다음 담당자를 준비한다.
+회의 참석자는 토론 보드에서 이번 회의에 올릴 논점 1~2개와 반대 관점을 미리 읽고, 새 아이디어보다 종료 증거와 다음 담당자를 준비한다. 회의가 끝나면 결정 대장의 해당 행에 담당자 식별자·제출 기한·다음 검토일을 기록한다.
 
 ## 역할별 발언 순서
 

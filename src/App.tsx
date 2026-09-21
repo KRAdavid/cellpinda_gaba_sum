@@ -379,6 +379,13 @@ export default function App() {
   useEffect(() => {
     if (!openPanel) return;
     const previousOverflow = document.body.style.overflow;
+    const storyOutside = Array.from(presentationRef.current?.children ?? [])
+      .filter(element => !element.classList.contains('info-layer')) as HTMLElement[];
+    const previousStoryOutsideState = storyOutside.map(element => ({
+      element,
+      inert: element.getAttribute('inert'),
+      ariaHidden: element.getAttribute('aria-hidden'),
+    }));
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') closePanel();
       if (event.key !== 'Tab') return;
@@ -401,12 +408,22 @@ export default function App() {
         first.focus();
       }
     };
+    storyOutside.forEach(element => {
+      element.setAttribute('inert', '');
+      element.setAttribute('aria-hidden', 'true');
+    });
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', closeOnEscape);
     window.requestAnimationFrame(() => panelCloseRef.current?.focus());
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', closeOnEscape);
+      previousStoryOutsideState.forEach(({element, inert, ariaHidden}) => {
+        if (inert === null) element.removeAttribute('inert');
+        else element.setAttribute('inert', inert);
+        if (ariaHidden === null) element.removeAttribute('aria-hidden');
+        else element.setAttribute('aria-hidden', ariaHidden);
+      });
     };
   }, [openPanel]);
 
@@ -563,12 +580,15 @@ export default function App() {
     closePanel(false);
     goTo(next);
     window.requestAnimationFrame(() => {
-      const focusTarget = presentationMode
-        ? presentationRef.current?.querySelector<HTMLElement>('.story-presentation-toggle')
-        : next === sourceIndex && returnElement?.isConnected
+      window.requestAnimationFrame(() => {
+        const focusTarget = next === sourceIndex && returnElement?.isConnected
           ? returnElement
-        : panelTriggerRefs.current[next] ?? railRef.current;
-      focusTarget?.focus();
+          : slideRefs.current[next]?.querySelector<HTMLElement>('h3')
+            ?? (presentationMode ? presentationRef.current?.querySelector<HTMLElement>('.story-presentation-toggle') : null)
+            ?? panelTriggerRefs.current[next]
+            ?? railRef.current;
+        focusTarget?.focus();
+      });
     });
   };
 
@@ -613,9 +633,16 @@ export default function App() {
           <h1 id="page-title">GABA를<br /><em>한 장씩</em><br />알아보세요.</h1>
           <p className="intro-body">일상에서 GABA 정보를 연구·제품·후기로 나누어, 옆으로 넘기며 확인해 보세요.</p>
           <p className="separation-note">이 페이지는 기존 셀핀다 GABA 공식 배포 사이트와 구분되는 별도 소비자 안내 페이지입니다. 일반 GABA 연구는 셀핀다 제품의 효능을 직접 입증하지 않습니다.</p>
-          <a className="text-button" href="#story">전체 카드부터 보기 <span aria-hidden="true">↓</span></a>
-          <button type="button" className="text-button intro-presentation-button" onClick={event => enterPresentation(event.currentTarget, 0)}>사업자용 설명 시작 <span aria-hidden="true">↗</span></button>
-          <button type="button" className="text-button intro-product-button" onClick={() => {goTo(6); document.getElementById('story')?.scrollIntoView({behavior: 'smooth'});}}>제품 정보가 먼저라면 <span aria-hidden="true">→</span></button>
+          <div className="intro-entry-actions">
+            <a className="text-button intro-primary-button" href="#story">전체 카드부터 보기 <span aria-hidden="true">↓</span></a>
+            <div className="intro-secondary-actions" aria-label="다른 시작점">
+              <span className="intro-secondary-label">사업자·제품 문의가 먼저라면</span>
+              <div>
+                <button type="button" className="text-button intro-presentation-button" onClick={event => enterPresentation(event.currentTarget, 0)}>사업자용 설명 시작 <span aria-hidden="true">↗</span></button>
+                <button type="button" className="text-button intro-product-button" onClick={() => {goTo(6); document.getElementById('story')?.scrollIntoView({behavior: 'smooth'});}}>제품 정보가 먼저라면 <span aria-hidden="true">→</span></button>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="intro-orbit" aria-hidden="true"><span>GABA</span><i>일상<br />이해</i></div>
       </section>
@@ -668,12 +695,14 @@ export default function App() {
             role="group"
             aria-roledescription="slide"
             aria-label={`${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')} ${slide.label}`}
+            aria-hidden={index === active ? undefined : 'true'}
+            inert={index === active ? undefined : true}
             aria-current={index === active ? 'true' : undefined}
             aria-labelledby={`slide-${slide.id}`}
           >
             <div className="card-label"><span>{slide.label}</span><span>{String(index + 1).padStart(2, '0')}</span></div>
             <div className="card-content">
-              <h3 id={`slide-${slide.id}`}>{slide.title}</h3>
+              <h3 id={`slide-${slide.id}`} tabIndex={-1}>{slide.title}</h3>
               <p>{slide.body}</p>
               {slide.link ? <button type="button" className="card-link" ref={element => {panelTriggerRefs.current[index] = element;}} onClick={event => openInfoPanel(index, slide.link!.panel, event.currentTarget)}>{slide.link.label} <span aria-hidden="true">＋</span></button> : null}
               {slide.links ? <div className="card-link-group" aria-label="더 확인할 정보">{slide.links.map(link => <button key={link.panel} type="button" className="card-link" ref={element => {panelTriggerRefs.current[index] = element;}} onClick={event => openInfoPanel(index, link.panel, event.currentTarget)}>{link.label} <span aria-hidden="true">＋</span></button>)}</div> : null}
@@ -692,7 +721,6 @@ export default function App() {
               <p className="info-panel__evidence">연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 검토했습니다. 스트레스 관련 근거는 제한적이고 수면 관련 근거는 매우 제한적이었습니다.</p>
               <ul><li>참여자와 연구 대상이 누구였는지</li><li>GABA 섭취량과 기간이 어떻게 설정됐는지</li><li>비교 조건과 측정 방법이 무엇이었는지</li></ul>
               <p className="info-panel__boundary">이 자료는 일반 GABA 원료 또는 GABA 섭취 연구입니다. 셀핀다 제품의 효능을 직접 입증하는 자료가 아닙니다.</p>
-              <div className="info-panel__source"><strong>출처</strong><p className="info-panel__source-title">Effects of Oral Gamma-Aminobutyric Acid (GABA) Administration on Stress and Sleep in Humans: A Systematic Review</p><p className="info-panel__source-meta">Hepsomali et al. · Front Neurosci. 2020;14:923 · PMID 33041752</p></div>
             </> : null}
             {openPanel === 'product' ? <>
               <p className="info-panel__transition">여기서부터는 연구가 아닌 판매 제품의 표시 정보입니다.</p>
@@ -708,19 +736,20 @@ export default function App() {
               <ul><li>사용 기간과 섭취 맥락 확인</li><li>개인 느낌과 객관적 사실 구분</li><li>모든 사람에게 같은 결과가 나타난다고 해석하지 않기</li></ul>
               <p className="info-panel__boundary">후기는 개인 경험이며 제품 효능을 입증하는 연구자료가 아닙니다.</p>
             </> : null}
-            <p className="info-panel__flow-note">{openPanel === 'product' ? '제품 안내를 확인했다면 다음 카드에서 표시사항 확인 순서를 이어서 보여 주세요. 외부 판매처는 필요한 경우에만 확인합니다.' : '현재 페이지의 흐름은 유지됩니다. 외부 링크는 보조 선택이며, 아래 버튼으로 다음 카드로 계속 볼 수 있습니다.'}</p>
             <div className="info-panel__actions">
               <button type="button" className="info-panel__next" onClick={continueToNextCard}>{panelNextAction}</button>
-              {presentationMode ? <div className="info-panel__customer-link">
-                <button type="button" className="info-panel__customer-copy" onClick={copyPanelCardLink}>이 카드 고객용 링크 복사</button>
-                <p>복사한 링크는 발표자 모드 없이 이 카드에서 열립니다.</p>
-                <p className="info-panel__customer-message" aria-live="polite">{panelShareMessage}</p>
-              </div> : null}
-              <details className="info-panel__external-choice">
-                <summary>외부 자료는 필요할 때만 확인 <span aria-hidden="true">＋</span></summary>
-                <a className="info-panel__external" href={openExternal} target="_blank" rel="noopener noreferrer">{panelExternalLabel} ↗</a>
-              </details>
             </div>
+            <p className="info-panel__flow-note">{openPanel === 'product' ? '제품 안내를 확인했다면 다음 카드에서 표시사항 확인 순서를 이어서 보여 주세요. 외부 판매처는 필요한 경우에만 확인합니다.' : '현재 페이지의 흐름은 유지됩니다. 외부 링크는 보조 선택이며, 아래 버튼으로 다음 카드로 계속 볼 수 있습니다.'}</p>
+            {openPanel === 'research' ? <div className="info-panel__source"><strong>출처</strong><p className="info-panel__source-title">Effects of Oral Gamma-Aminobutyric Acid (GABA) Administration on Stress and Sleep in Humans: A Systematic Review</p><p className="info-panel__source-meta">Hepsomali et al. · Front Neurosci. 2020;14:923 · PMID 33041752</p></div> : null}
+            {presentationMode ? <div className="info-panel__customer-link">
+              <button type="button" className="info-panel__customer-copy" onClick={copyPanelCardLink}>이 카드 고객용 링크 복사</button>
+              <p>복사한 링크는 발표자 모드 없이 이 카드에서 열립니다.</p>
+              <p className="info-panel__customer-message" aria-live="polite">{panelShareMessage}</p>
+            </div> : null}
+            <details className="info-panel__external-choice">
+              <summary>외부 자료는 필요할 때만 확인 <span aria-hidden="true">＋</span></summary>
+              <a className="info-panel__external" href={openExternal} target="_blank" rel="noopener noreferrer">{panelExternalLabel} ↗</a>
+            </details>
           </aside>
         </div> : null}
       </section>

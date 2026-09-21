@@ -20,6 +20,8 @@ const files = {
   discussion: read('docs/TF_DISCUSSION_BOARD.md'),
   roster: read('docs/TF_ROSTER.md'),
   kickoff: read('docs/TF_KICKOFF_INPUT.md'),
+  decisions: read('docs/TF_DECISION_REGISTER.md'),
+  fieldPacket: read('docs/FIELD_SESSION_PACKET.md'),
 };
 
 const checks = [
@@ -45,6 +47,17 @@ const checks = [
   ['discussion board records dissent and evidence', files.discussion, '반대 관점·리스크'],
   ['discussion board keeps product facts on hold', files.discussion, 'EVD-01'],
   ['discussion board tracks product inquiry next action', files.discussion, 'SALES-01'],
+  ['discussion board tracks entry hierarchy', files.discussion, 'UX-03'],
+  ['discussion board tracks accessibility evidence', files.discussion, 'REL-02'],
+  ['discussion board tracks fast swipe evidence', files.discussion, 'REL-03'],
+  ['decision register tracks owners and evidence', files.decisions, '실행 담당·백업'],
+  ['decision register preserves field hold', files.decisions, 'READY FOR FIELD'],
+  ['decision register uses strict per-session threshold', files.decisions, 'A/B/C **각 세션 4점 이상'],
+  ['field packet fixes public baseline', files.fieldPacket, 'RELEASE_HANDOFF.md'],
+  ['field packet covers all three scenarios', files.fieldPacket, '### C. 근거 질문 대응'],
+  ['field packet defines observer scoring', files.fieldPacket, '다음 행동 명확도 1~5점'],
+  ['field packet preserves privacy guardrail', files.fieldPacket, '고객의 이름·연락처·건강 상태·복용 약'],
+  ['field packet defines P0 rules', files.fieldPacket, '### P0 판정'],
   ['TF roster defines assignment gate', files.roster, '실제 인력 배정 HOLD'],
   ['TF roster defines core attendees', files.roster, '핵심 회의 참석자'],
   ['TF kickoff input defines six core roles', files.kickoff, '6개 핵심 역할'],

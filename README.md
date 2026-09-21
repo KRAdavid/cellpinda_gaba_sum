@@ -14,6 +14,8 @@ TF 회의를 같은 순서로 진행하려면 [`docs/TF_MEETING_PACK.md`](docs/T
 
 회의에서 다룰 논점과 필요한 증거는 [`docs/TF_DISCUSSION_BOARD.md`](docs/TF_DISCUSSION_BOARD.md)에서 관리합니다. 기술 QA와 실제 사업자 평가를 분리하고, 이견·결정·다음 검증을 계속 누적합니다.
 
+회의 후 결정·담당·제출 기한은 [`docs/TF_DECISION_REGISTER.md`](docs/TF_DECISION_REGISTER.md)에서 한 줄 단위로 추적하고, A/B/C 현장 세션은 [`docs/FIELD_SESSION_PACKET.md`](docs/FIELD_SESSION_PACKET.md)의 고정 진행·관찰 기준을 사용합니다.
+
 실제 주 담당자·백업·결정권 배정은 [`docs/TF_ROSTER.md`](docs/TF_ROSTER.md)에서 확인하고 입력합니다. 역할 정의만으로 실제 TF 구성 완료를 선언하지 않습니다.
 
 담당자·첫 회의·A/B/C 세션 진행자를 한 번에 입력하려면 [`docs/TF_KICKOFF_INPUT.md`](docs/TF_KICKOFF_INPUT.md)를 사용합니다.
