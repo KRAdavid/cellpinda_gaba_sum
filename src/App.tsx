@@ -160,7 +160,13 @@ export default function App() {
   };
 
   useEffect(() => {
-    const requested = Number(new URLSearchParams(window.location.search).get('card'));
+    const params = new URLSearchParams(window.location.search);
+    const requested = Number(params.get('card'));
+    const presenterRequested = params.get('mode') === 'presenter' || params.get('presenter') === '1';
+    if (presenterRequested) {
+      presentationModeRef.current = true;
+      setPresentationMode(true);
+    }
     if (!Number.isInteger(requested) || requested < 1 || requested > slides.length) return;
     window.requestAnimationFrame(() => goTo(requested - 1));
   }, [slides.length]);
@@ -168,6 +174,8 @@ export default function App() {
   const copyCardLink = async () => {
     const url = new URL(window.location.href);
     url.searchParams.set('card', String(active + 1));
+    if (presentationMode) url.searchParams.set('mode', 'presenter');
+    else url.searchParams.delete('mode');
     url.hash = 'story';
     setShareUrl(url.toString());
     try {
@@ -323,6 +331,10 @@ export default function App() {
   const exitPresentation = () => {
     const currentActive = active;
     const returnElement = presentationReturnRef.current;
+    const url = new URL(window.location.href);
+    url.searchParams.delete('mode');
+    url.searchParams.delete('presenter');
+    window.history.replaceState({}, '', url);
     setPresentationMode(false);
     window.requestAnimationFrame(() => {
       presentationModeRef.current = false;
