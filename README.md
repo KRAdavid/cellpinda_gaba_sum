@@ -38,6 +38,7 @@ npm run dev
 배포 전 공개 번들 문구와 금지 표현은 다음 명령으로 검사합니다.
 
 ```bash
+pnpm run qa:docs
 pnpm run qa:public
 ```
 
