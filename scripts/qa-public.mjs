@@ -37,6 +37,7 @@ const required = [
   ['presenter next-card hint', '다음 설명:'],
   ['presenter restart control', '처음부터'],
   ['presenter product shortcut', '제품부터 설명'],
+  ['presenter evidence shortcut', '근거부터 설명'],
   ['presenter keyboard support', 'PageUp/PageDown'],
   ['presenter dialog state', 'story--presentation'],
   ['card sharing control', '현재 카드 링크 공유'],

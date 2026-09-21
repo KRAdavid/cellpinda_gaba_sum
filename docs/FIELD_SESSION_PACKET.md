@@ -13,7 +13,7 @@
 | 설명자 식별자 |  |
 | 관찰자 식별자 |  |
 | 기기·OS·브라우저 |  |
-| 시작 링크 | A: `?mode=presenter&card=1#story` / B: `?mode=presenter&card=7#story` / C: `?card=6#story` |
+| 시작 링크 | A: `?mode=presenter&card=1#story` / B: `?mode=presenter&card=7#story` / C: `?card=6#story` 또는 발표 모드의 `근거부터 설명` |
 
 세션 중 카피나 카드 순서를 즉석에서 바꾸지 않는다. 문제가 생기면 현재 화면·카드 번호·사용한 문장·다음 행동을 기록하고, 세션 후 `TF_REVIEW_LOG.md`에서 변경 여부를 결정한다.
 
