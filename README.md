@@ -14,6 +14,8 @@ TF 회의를 같은 순서로 진행하려면 [`docs/TF_MEETING_PACK.md`](docs/T
 
 실제 상담 순서와 권장·보류 표현은 [`docs/SALES_WALKTHROUGH.md`](docs/SALES_WALKTHROUGH.md)를 따릅니다.
 
+상담 직전에 볼 요약본은 [`docs/SALES_ONE_PAGE_GUIDE.md`](docs/SALES_ONE_PAGE_GUIDE.md)에서 확인합니다.
+
 UX·영업·근거/준법·접근성·QA의 반복 검토 결과는 [`docs/TF_REVIEW_LOG.md`](docs/TF_REVIEW_LOG.md)에 기록합니다.
 
 실제 사업자 상담 3회 검증은 [`docs/SALES_SESSION_VALIDATION.md`](docs/SALES_SESSION_VALIDATION.md) 양식으로 기록합니다.
