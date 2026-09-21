@@ -209,8 +209,9 @@ export default function App() {
   const shareCardLink = async () => {
     const url = new URL(window.location.href);
     url.searchParams.set('card', String(active + 1));
-    if (presentationMode) url.searchParams.set('mode', 'presenter');
-    else url.searchParams.delete('mode');
+    // Customer-facing shares must never expose presenter notes or controls.
+    url.searchParams.delete('mode');
+    url.searchParams.delete('presenter');
     url.hash = 'story';
     const link = url.toString();
     setShareUrl(link);

@@ -81,24 +81,24 @@ try {
   const next = await evaluate('document.querySelector(".story-controls span")?.innerText');
   assert('presenter keyboard advances one card', next === '08 / 11', next);
 
-  await press('Escape', 'Escape', 27);
-  const exited = await evaluate('({url:location.href,presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
-  assert('Escape exits presenter mode and keeps card', !exited.presentation && exited.progress === '08 / 11' && !exited.url.includes('mode=presenter'), JSON.stringify(exited));
-
   const shareMocked = await evaluate('(() => { try { Object.defineProperty(navigator, "share", {configurable:true, value: async data => { window.__qaShared = data; }}); return true; } catch { return false; } })()');
   if (shareMocked) {
     await evaluate('document.querySelector(".story-share-button")?.click()');
     await wait(120);
     const shared = await evaluate('({url:document.querySelector(".story-share-url")?.value||"",message:document.querySelector(".story-share-message")?.innerText||"",native:window.__qaShared||null})');
-    assert('card link share keeps the current story context', shared.url.includes('card=8') && shared.url.includes('#story') && shared.native?.url === shared.url, JSON.stringify(shared));
+    assert('customer card share strips presenter mode', shared.url.includes('card=8') && shared.url.includes('#story') && !shared.url.includes('mode=presenter') && shared.native?.url === shared.url, JSON.stringify(shared));
   }
+
+  await press('Escape', 'Escape', 27);
+  const exited = await evaluate('({url:location.href,presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
+  assert('Escape exits presenter mode and keeps card', !exited.presentation && exited.progress === '08 / 11' && !exited.url.includes('mode=presenter'), JSON.stringify(exited));
 
   const fallbackMocked = await evaluate('(() => { try { Object.defineProperty(navigator, "share", {configurable:true, value: undefined}); Object.defineProperty(navigator, "clipboard", {configurable:true, value: {writeText: async () => { throw new Error("qa clipboard failure"); }}}); Object.defineProperty(document, "execCommand", {configurable:true, value: () => true}); return true; } catch { return false; } })()');
   if (fallbackMocked) {
     await evaluate('document.querySelector(".story-share-button")?.click()');
     await wait(120);
     const fallback = await evaluate('({url:document.querySelector(".story-share-url")?.value||"",message:document.querySelector(".story-share-message")?.innerText||""})');
-    assert('card link share falls back to copy', fallback.url.includes('card=8') && fallback.message.includes('복사했습니다'), JSON.stringify(fallback));
+    assert('card link share falls back to copy', fallback.url.includes('card=8') && fallback.url.includes('#story') && !fallback.url.includes('mode=presenter') && fallback.message.includes('복사했습니다'), JSON.stringify(fallback));
   }
 
   await send('Page.navigate', {url: `${baseUrl}?card=6#story`});
