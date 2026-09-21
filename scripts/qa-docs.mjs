@@ -42,6 +42,7 @@ const checks = [
   ['launch guide keeps GABA research bounded', files.launchGuide, '셀핀다 제품의 동일 제형·섭취량 효능을 직접 입증하는 자료는 아닙니다'],
   ['launch guide keeps external sources secondary', files.launchGuide, '외부 자료는 필요할 때만 확인'],
   ['launch guide includes presenter question guidance', files.launchGuide, '자주 묻는 질문에 답하기'],
+  ['launch guide includes presenter answer copy guardrail', files.launchGuide, '답변 복사'],
   ['acceptance matrix keeps business validation on hold', files.acceptance, '실제 영업 적합성 | 세션 검증 양식'],
   ['acceptance matrix keeps device validation on hold', files.acceptance, '실기기 접근성'],
   ['session template forbids personal data collection', files.sessions, '건강정보'],

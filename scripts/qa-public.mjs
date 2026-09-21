@@ -32,6 +32,8 @@ const required = [
   ['presenter boundary guidance', '이어서 말할 때'],
   ['presenter question guidance', '자주 묻는 질문에 답하기'],
   ['presenter safe combination answer', '병용 가능 여부를 단정하지 않고'],
+  ['presenter answer copy control', '답변 복사'],
+  ['presenter answer copy confirmation', '답변을 복사했습니다'],
   ['presenter next-card hint', '다음 설명:'],
   ['presenter restart control', '처음부터'],
   ['presenter product shortcut', '제품부터 설명'],

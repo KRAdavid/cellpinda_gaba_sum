@@ -173,6 +173,7 @@ export default function App() {
   const [presentationMode, setPresentationMode] = useState(false);
   const [shareMessage, setShareMessage] = useState('');
   const [shareUrl, setShareUrl] = useState('');
+  const [presenterCopyMessage, setPresenterCopyMessage] = useState('');
   const railRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
   const programmaticTargetRef = useRef<number | null>(null);
@@ -280,6 +281,15 @@ export default function App() {
       if (!document.execCommand('copy')) throw new Error('copy command failed');
     } finally {
       field.remove();
+    }
+  };
+
+  const copyPresenterAnswer = async (label: string, answer: string) => {
+    try {
+      await copyText(answer);
+      setPresenterCopyMessage(`${label} 답변을 복사했습니다.`);
+    } catch {
+      setPresenterCopyMessage(`${label} 답변 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.`);
     }
   };
 
@@ -450,6 +460,7 @@ export default function App() {
 
   useEffect(() => {
     if (!presentationMode) presentationDidFocusRef.current = false;
+    if (!presentationMode) setPresenterCopyMessage('');
   }, [presentationMode]);
 
   useEffect(() => {
@@ -457,6 +468,7 @@ export default function App() {
     // navigation changes the active card so a presenter cannot resend stale context.
     setShareUrl('');
     setShareMessage('');
+    setPresenterCopyMessage('');
   }, [active]);
 
   const enterPresentation = (returnElement?: HTMLElement | null) => {
@@ -596,7 +608,8 @@ export default function App() {
         {presentationMode ? <>
           <p className="presenter-next-hint" aria-live="polite">{nextSlide ? <>다음 설명: <strong>{nextSlide.label}</strong></> : '마지막 설명 카드입니다. 고객이 원하는 자료를 선택하게 하세요.'}</p>
           <details key={`guidance-${active}`} className="presenter-note"><summary>발표자용 진행 포인트</summary><div className="presenter-note__grid"><div><strong>고객에게 물어보기</strong><p>{slides[active].presenterPrompt}</p></div><div><strong>이어서 말할 때</strong><p>{slides[active].presenterBoundary}</p></div></div></details>
-          <details key={`questions-${active}`} className="presenter-questions"><summary>자주 묻는 질문에 답하기</summary><div className="presenter-questions__list">{PRESENTER_QUESTIONS.map(question => <div key={question.label}><strong>{question.label}</strong><p>{question.answer}</p></div>)}</div></details>
+          <details key={`questions-${active}`} className="presenter-questions"><summary>자주 묻는 질문에 답하기</summary><div className="presenter-questions__list">{PRESENTER_QUESTIONS.map(question => <div key={question.label}><div className="presenter-questions__heading"><strong>{question.label}</strong><button type="button" className="presenter-answer-copy" onClick={() => copyPresenterAnswer(question.label, question.answer)}>답변 복사</button></div><p>{question.answer}</p></div>)}</div></details>
+          <p className="presenter-copy-message" aria-live="polite">{presenterCopyMessage}</p>
         </> : null}
         <div className="story-rail" ref={railRef} tabIndex={0} role="region" aria-roledescription="carousel" aria-label="GABA 소개 카드 흐름">
           {slides.map((slide, index) => <article

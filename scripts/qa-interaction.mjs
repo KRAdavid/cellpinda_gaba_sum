@@ -165,6 +165,15 @@ try {
   await evaluate('document.querySelector(".presenter-questions summary")?.click()');
   const questions = await evaluate('({open:document.querySelector(".presenter-questions")?.open,items:document.querySelectorAll(".presenter-questions__list > div").length,text:document.querySelector(".presenter-questions")?.innerText||""})');
   assert('presenter question guidance opens with safe answers', questions.open && questions.items === 4 && questions.text.includes('병용 가능 여부를 단정하지 않고') && questions.text.includes('최신 포장 표시사항'), JSON.stringify(questions));
+  const answerCopyButtons = await evaluate('({count:document.querySelectorAll(".presenter-answer-copy").length,labels:[...document.querySelectorAll(".presenter-answer-copy")].map(button=>button.innerText)})');
+  assert('presenter questions expose answer copy controls', answerCopyButtons.count === 4 && answerCopyButtons.labels.every(label => label === '답변 복사'), JSON.stringify(answerCopyButtons));
+  const answerCopyMocked = await evaluate('(() => { try { Object.defineProperty(navigator, "clipboard", {configurable:true, value:{writeText: async text => { window.__qaCopiedAnswer = text; }}}); return true; } catch { return false; } })()');
+  if (answerCopyMocked) {
+    await evaluate('document.querySelector(".presenter-answer-copy")?.click()');
+    await wait(120);
+    const answerCopied = await evaluate('({message:document.querySelector(".presenter-copy-message")?.innerText||"",text:window.__qaCopiedAnswer||""})');
+    assert('presenter can copy a safe answer without leaving the flow', answerCopied.message.includes('수면·스트레스 답변을 복사했습니다') && answerCopied.text.includes('일반 GABA 연구'), JSON.stringify(answerCopied));
+  }
 
   await press('ArrowRight', 'ArrowRight', 39);
   const next = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText,url:location.href})');
