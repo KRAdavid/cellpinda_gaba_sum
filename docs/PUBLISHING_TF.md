@@ -10,7 +10,7 @@
 | --- | --- | --- |
 | 별도 공개 URL·저장소 | 완료 | `cellpinda_gaba_sum` GitHub Pages |
 | 카드 흐름 안의 연구·제품·후기 패널 | 완료 | 공개 URL에서 `role=dialog`와 다음 카드 흐름 확인 |
-| 사업자 발표 모드·카드 링크 복사 | 완료 | 공개 URL의 카드 컨트롤, 전체 흐름 `card=1`, 제품 문의용 `card=7` |
+| 사업자 발표 모드·카드 링크 공유·복사 | 완료 | 공개 URL의 카드 컨트롤, 전체 흐름 `card=1`, 제품 문의용 `card=7` |
 | 발표 모드 딥링크 | 완료 | `?mode=presenter&card=N#story`와 발표 상태 공유 링크 |
 | 실제 사업자 상담 3회 검증 | HOLD | [세션 검증 양식](SALES_SESSION_VALIDATION.md) 기록 필요 |
 | 제품 최신 표시사항·로트 대조 | HOLD | 제품 책임자 확인 필요 |
