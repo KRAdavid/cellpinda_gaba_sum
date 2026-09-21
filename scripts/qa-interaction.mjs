@@ -156,6 +156,8 @@ try {
   const research = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),title:document.querySelector("[role=dialog] h2")?.innerText||"",source:document.querySelector(".info-panel__source")?.innerText||"",boundary:document.querySelector(".info-panel__boundary")?.innerText||"",url:location.href})');
   assert('research opens in an in-page dialog', research.dialog && research.title.includes('일반 GABA 연구') && research.url.startsWith(new URL(baseUrl).origin));
   assert('research dialog keeps the citation and product boundary', research.source.includes('PMID 33041752') && research.boundary.includes('셀핀다 제품의 효능'), JSON.stringify(research));
+  const researchExternal = await evaluate('({target:document.querySelector(".info-panel__external")?.target||"",href:document.querySelector(".info-panel__external")?.href||""})');
+  assert('research source link is an explicit new-tab choice', researchExternal.target === '_blank' && researchExternal.href.includes('pubmed.ncbi.nlm.nih.gov/33041752'), JSON.stringify(researchExternal));
 
   await press('Escape', 'Escape', 27);
   const researchEscaped = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),focus:document.activeElement?.innerText||""})');
@@ -178,6 +180,8 @@ try {
   await wait(180);
   const product = await evaluate('({title:document.querySelector("[role=dialog] h2")?.innerText||"",facts:document.querySelector(".product-facts")?.innerText||"",status:document.querySelector(".info-panel__status")?.innerText||""})');
   assert('product opens in the same dialog flow', product.title.includes('제품 정보') && product.facts.includes('셀핀다 가바 1500') && product.status.includes('최종 제품 사실로 확정하지 않습니다'), JSON.stringify(product));
+  const productExternal = await evaluate('({target:document.querySelector(".info-panel__external")?.target||"",href:document.querySelector(".info-panel__external")?.href||""})');
+  assert('product source link is an explicit new-tab choice', productExternal.target === '_blank' && productExternal.href.includes('smartstore.naver.com/cellpinda/products/4701017202'), JSON.stringify(productExternal));
 
   await send('Page.navigate', {url: `${baseUrl}?card=10#story`});
   await waitForProgress('10 / 11');
@@ -185,6 +189,8 @@ try {
   await wait(180);
   const review = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),title:document.querySelector("[role=dialog] h2")?.innerText||"",status:document.querySelector(".info-panel__status")?.innerText||"",boundary:document.querySelector(".info-panel__boundary")?.innerText||"",url:location.href})');
   assert('review opens in the same dialog flow', review.dialog && review.title.includes('후기') && review.status.includes('사용권 확인 전 재게시하지 않음') && review.boundary.includes('효능') && review.url.startsWith(new URL(baseUrl).origin), JSON.stringify(review));
+  const reviewExternal = await evaluate('({target:document.querySelector(".info-panel__external")?.target||"",href:document.querySelector(".info-panel__external")?.href||""})');
+  assert('review source link is an explicit new-tab choice', reviewExternal.target === '_blank' && reviewExternal.href.includes('smartstore.naver.com/cellpinda/products/4701017202#REVIEW_DIALOG'), JSON.stringify(reviewExternal));
 
   await send('Page.navigate', {url: `${baseUrl}?card=11#story`});
   await waitForProgress('11 / 11');
