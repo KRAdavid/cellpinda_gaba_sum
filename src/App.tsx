@@ -183,7 +183,13 @@ export default function App() {
 
   const goTo = (index: number) => {
     const next = Math.max(0, Math.min(slides.length - 1, index));
-    if (next !== active) programmaticTargetRef.current = next;
+    if (next !== active) {
+      programmaticTargetRef.current = next;
+      // Clear immediately as well as in the active-card effect; navigation and
+      // the async share callback can otherwise briefly show a stale link.
+      setShareUrl('');
+      setShareMessage('');
+    }
     if (presentationModeRef.current) {
       const url = new URL(window.location.href);
       url.searchParams.set('mode', 'presenter');
@@ -380,6 +386,13 @@ export default function App() {
   useEffect(() => {
     if (!presentationMode) presentationDidFocusRef.current = false;
   }, [presentationMode]);
+
+  useEffect(() => {
+    // A link is only valid for the card it was created from. Clear it when
+    // navigation changes the active card so a presenter cannot resend stale context.
+    setShareUrl('');
+    setShareMessage('');
+  }, [active]);
 
   const enterPresentation = (returnElement?: HTMLElement | null) => {
     presentationReturnRef.current = returnElement ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);

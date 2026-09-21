@@ -124,6 +124,10 @@ try {
     await wait(120);
     const shared = await evaluate('({url:document.querySelector(".story-share-url")?.value||"",message:document.querySelector(".story-share-message")?.innerText||"",native:window.__qaShared||null})');
     assert('customer card share strips presenter mode', shared.url.includes('card=8') && shared.url.includes('#story') && !shared.url.includes('mode=presenter') && shared.native?.url === shared.url, JSON.stringify(shared));
+    await press('ArrowRight', 'ArrowRight', 39);
+    const clearedShare = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText,url:document.querySelector(".story-share-url")?.value||"",message:document.querySelector(".story-share-message")?.innerText||""})');
+    assert('card navigation clears stale share context', clearedShare.progress === '09 / 11' && !clearedShare.url && !clearedShare.message, JSON.stringify(clearedShare));
+    await press('ArrowLeft', 'ArrowLeft', 37);
   }
 
   await press('Escape', 'Escape', 27);
