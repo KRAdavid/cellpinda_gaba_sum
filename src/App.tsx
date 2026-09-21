@@ -366,7 +366,12 @@ export default function App() {
       if (event.key !== 'Tab') return;
       const panel = panelRef.current;
       if (!panel) return;
-      const focusable = Array.from(panel.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'));
+      const focusable = Array.from(panel.querySelectorAll<HTMLElement>('summary, a[href], button:not([disabled]), input:not([disabled])'))
+        .filter(element => {
+          const closedDetails = element.closest('details:not([open])');
+          const style = window.getComputedStyle(element);
+          return (!closedDetails || element.matches('summary')) && style.display !== 'none' && style.visibility !== 'hidden';
+        });
       if (!focusable.length) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
@@ -488,11 +493,13 @@ export default function App() {
     setPresenterCopyMessage('');
   }, [active]);
 
-  const enterPresentation = (returnElement?: HTMLElement | null) => {
+  const enterPresentation = (returnElement?: HTMLElement | null, startIndex = active) => {
+    const start = Math.max(0, Math.min(slides.length - 1, startIndex));
     presentationReturnRef.current = returnElement ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
+    if (start !== active) goTo(start);
     const url = new URL(window.location.href);
     url.searchParams.set('mode', 'presenter');
-    url.searchParams.set('card', String(active + 1));
+    url.searchParams.set('card', String(start + 1));
     url.hash = 'story';
     window.history.replaceState({}, '', url);
     presentationModeRef.current = true;
@@ -587,7 +594,7 @@ export default function App() {
           <p className="intro-body">일상에서 GABA 정보를 연구·제품·후기로 나누어, 옆으로 넘기며 확인해 보세요.</p>
           <p className="separation-note">이 페이지는 기존 셀핀다 GABA 공식 배포 사이트와 구분되는 별도 소비자 안내 페이지입니다. 일반 GABA 연구는 셀핀다 제품의 효능을 직접 입증하지 않습니다.</p>
           <a className="text-button" href="#story">전체 카드부터 보기 <span aria-hidden="true">↓</span></a>
-          <button type="button" className="text-button intro-presentation-button" onClick={event => enterPresentation(event.currentTarget)}>사업자용 설명 시작 <span aria-hidden="true">↗</span></button>
+          <button type="button" className="text-button intro-presentation-button" onClick={event => enterPresentation(event.currentTarget, 0)}>사업자용 설명 시작 <span aria-hidden="true">↗</span></button>
           <button type="button" className="text-button intro-product-button" onClick={() => {goTo(6); document.getElementById('story')?.scrollIntoView({behavior: 'smooth'});}}>제품 정보가 먼저라면 <span aria-hidden="true">→</span></button>
         </div>
         <div className="intro-orbit" aria-hidden="true"><span>GABA</span><i>일상<br />이해</i></div>
@@ -686,7 +693,7 @@ export default function App() {
               <button type="button" className="info-panel__next" onClick={continueToNextCard}>{panelNextAction}</button>
               <details className="info-panel__external-choice">
                 <summary>외부 자료는 필요할 때만 확인 <span aria-hidden="true">＋</span></summary>
-                <a className="info-panel__external" href={openExternal} target="_blank" rel="noreferrer">{panelExternalLabel} ↗</a>
+                <a className="info-panel__external" href={openExternal} target="_blank" rel="noopener noreferrer">{panelExternalLabel} ↗</a>
               </details>
             </div>
           </aside>

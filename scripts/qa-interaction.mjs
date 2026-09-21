@@ -121,6 +121,13 @@ try {
   const introPresentation = await evaluate('({presentation:!!document.querySelector(".story--presentation"),url:location.href})');
   assert('intro presenter entry creates a resumable card link', introPresentation.presentation && introPresentation.url.includes('mode=presenter') && introPresentation.url.includes('card=1'), JSON.stringify(introPresentation));
   await press('Escape', 'Escape', 27);
+  await send('Page.navigate', {url: `${baseUrl}?card=7#story`});
+  await waitForProgress('07 / 11');
+  await evaluate('window.scrollTo({top:0,left:0,behavior:"auto"}); document.querySelector(".intro-presentation-button")?.click()');
+  await waitForPresentation('01 / 11');
+  const introPresenterReset = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText,url:location.href})');
+  assert('intro presenter entry always starts at card 1', introPresenterReset.presentation && introPresenterReset.progress === '01 / 11' && introPresenterReset.url.includes('card=1'), JSON.stringify(introPresenterReset));
+  await press('Escape', 'Escape', 27);
 
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
   await waitForPresentation('01 / 11');
@@ -226,6 +233,8 @@ try {
   assert('in-page next action precedes external source', researchActionOrder.startsWith('info-panel__next|info-panel__external-choice'), researchActionOrder);
   const researchExternalChoice = await evaluate('({open:document.querySelector(".info-panel__external-choice")?.open ?? true,summary:document.querySelector(".info-panel__external-choice summary")?.innerText||""})');
   assert('external source stays secondary until requested', researchExternalChoice.open === false && researchExternalChoice.summary.includes('필요할 때만'), JSON.stringify(researchExternalChoice));
+  const researchFocusTrap = await evaluate('(() => { const summary=document.querySelector(".info-panel__external-choice summary"); summary?.focus(); window.dispatchEvent(new KeyboardEvent("keydown", {key:"Tab", bubbles:true})); return {active:document.activeElement?.getAttribute("aria-label")||"",summaryFocused:document.activeElement === summary}; })()');
+  assert('closed external link is excluded from panel focus loop', researchFocusTrap.active === '정보 패널 닫기' && !researchFocusTrap.summaryFocused, JSON.stringify(researchFocusTrap));
   await evaluate('document.querySelector(".info-panel__external-choice summary")?.click()');
   const researchExpandedExternal = await evaluate('({open:document.querySelector(".info-panel__external-choice")?.open ?? false,visible:!!document.querySelector(".info-panel__external") && document.querySelector(".info-panel__external")?.getBoundingClientRect().height > 0})');
   assert('external source can be opened on request', researchExpandedExternal.open && researchExpandedExternal.visible, JSON.stringify(researchExpandedExternal));
@@ -233,8 +242,8 @@ try {
   assert('in-page next action stays visible in the panel', researchActionVisibility.position === 'sticky' && researchActionVisibility.visible, JSON.stringify(researchActionVisibility));
   const researchNextLabel = await evaluate('document.querySelector(".info-panel__next")?.innerText||""');
   assert('in-page next action names its destination', researchNextLabel.includes('다음 카드:') && researchNextLabel.includes('07 · 셀핀다 제품 정보'), researchNextLabel);
-  const researchExternal = await evaluate('({target:document.querySelector(".info-panel__external")?.target||"",href:document.querySelector(".info-panel__external")?.href||""})');
-  assert('research source link is an explicit new-tab choice', researchExternal.target === '_blank' && researchExternal.href.includes('pubmed.ncbi.nlm.nih.gov/33041752'), JSON.stringify(researchExternal));
+  const researchExternal = await evaluate('({target:document.querySelector(".info-panel__external")?.target||"",rel:document.querySelector(".info-panel__external")?.rel||"",href:document.querySelector(".info-panel__external")?.href||""})');
+  assert('research source link is an explicit new-tab choice', researchExternal.target === '_blank' && researchExternal.rel.includes('noopener') && researchExternal.href.includes('pubmed.ncbi.nlm.nih.gov/33041752'), JSON.stringify(researchExternal));
 
   await press('Escape', 'Escape', 27);
   const researchEscaped = await evaluate('({dialog:!!document.querySelector("[role=dialog]"),focus:document.activeElement?.innerText||""})');
