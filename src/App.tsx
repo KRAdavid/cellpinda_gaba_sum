@@ -560,8 +560,8 @@ export default function App() {
           <div>
             {presentationMode ? <button type="button" className="story-restart-button" onClick={() => goTo(0)} disabled={active === 0}>처음부터</button> : null}
             {presentationMode ? <button type="button" className="story-product-start" onClick={() => goTo(6)} disabled={active === 6}>제품부터 설명</button> : null}
-            <button type="button" className="story-nav-button" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="이전 카드"><span aria-hidden="true">←</span><span className="nav-label">이전 카드</span></button>
-            <button type="button" className="story-nav-button" onClick={() => goTo(active + 1)} disabled={active === slides.length - 1} aria-label="다음 카드"><span className="nav-label">다음 카드</span><span aria-hidden="true">→</span></button>
+            <button type="button" className="story-nav-button story-prev-button" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="이전 카드"><span aria-hidden="true">←</span><span className="nav-label">이전 카드</span></button>
+            <button type="button" className="story-nav-button story-next-button" onClick={() => goTo(active + 1)} disabled={active === slides.length - 1} aria-label="다음 카드"><span className="nav-label">다음 카드</span><span aria-hidden="true">→</span></button>
             <button type="button" className="story-share-button" onClick={shareCardLink}>현재 카드 링크 공유</button>
             <button type="button" className="story-presentation-toggle" onClick={event => presentationMode ? exitPresentation() : enterPresentation(event.currentTarget)}>{presentationMode ? '발표 모드 종료' : '발표 모드'}</button>
           </div>

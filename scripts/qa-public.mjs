@@ -50,6 +50,7 @@ const required = [
   ['review rights boundary', '원문·이미지 사용권 확인 전 재게시하지 않음'],
   ['in-page flow continuity', '현재 페이지의 흐름은 유지됩니다'],
   ['in-page next destination', '다음 카드:'],
+  ['consumer next action', 'story-next-button'],
   ['external link disclosure', '외부 자료는 필요할 때만 확인'],
 ];
 
