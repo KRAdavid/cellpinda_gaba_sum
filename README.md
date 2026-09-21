@@ -8,7 +8,7 @@
 
 사업자 설명 상황에서는 카드 컨트롤의 `발표 모드`를 사용해 한 장씩 보여줄 수 있습니다. `Escape`로 발표 모드를 종료하고, 연구·제품·후기 상세는 현재 화면의 패널에서 먼저 설명합니다.
 
-발표용 북마크는 `https://kradavid.github.io/cellpinda_gaba_sum/?mode=presenter&card=7#story`처럼 카드 번호를 지정해 바로 열 수 있습니다.
+전체 설명용 발표 북마크는 `https://kradavid.github.io/cellpinda_gaba_sum/?mode=presenter&card=1#story`로 01번부터 시작합니다. 제품 문의가 먼저 나온 경우에는 `card=7`을 지정해 제품 카드부터 열 수 있습니다.
 
 실제 상담 순서와 권장·보류 표현은 [`docs/SALES_WALKTHROUGH.md`](docs/SALES_WALKTHROUGH.md)를 따릅니다.
 

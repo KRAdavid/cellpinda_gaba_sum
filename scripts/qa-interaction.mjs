@@ -54,9 +54,21 @@ try {
   await send('Page.reload', {ignoreCache: true});
   await wait(900);
 
+  const initialPage = await evaluate('({title:document.title,width:innerWidth,docWidth:document.documentElement.scrollWidth})');
+  assert('page identity', initialPage.title.includes('GABA 한 장씩 보기'));
+  assert('mobile width has no horizontal overflow', initialPage.width === 390 && initialPage.docWidth === 390, `${initialPage.width}/${initialPage.docWidth}`);
+
+  await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
+  await wait(850);
+  const fullFlowStart = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
+  assert('full-flow presenter starts at card 1', fullFlowStart.presentation && fullFlowStart.progress === '01 / 11', JSON.stringify(fullFlowStart));
+
+  await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=7#story`});
+  await wait(850);
+  const productShortcutStart = await evaluate('({presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
+  assert('product shortcut presenter starts at card 7', productShortcutStart.presentation && productShortcutStart.progress === '07 / 11', JSON.stringify(productShortcutStart));
+
   const presenter = await evaluate('({title:document.title,width:innerWidth,docWidth:document.documentElement.scrollWidth,url:location.href,presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText,visible:[...document.querySelectorAll(".story-card")].filter(card=>getComputedStyle(card).display!=="none").length})');
-  assert('page identity', presenter.title.includes('GABA 한 장씩 보기'));
-  assert('mobile width has no horizontal overflow', presenter.width === 390 && presenter.docWidth === 390, `${presenter.width}/${presenter.docWidth}`);
   assert('presenter deep link opens the requested card', presenter.presentation && presenter.progress === '07 / 11', `${presenter.url} ${presenter.progress}`);
   assert('presenter shows one card', presenter.visible === 1, String(presenter.visible));
 
