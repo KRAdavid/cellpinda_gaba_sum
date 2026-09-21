@@ -85,6 +85,14 @@ try {
   const exited = await evaluate('({url:location.href,presentation:!!document.querySelector(".story--presentation"),progress:document.querySelector(".story-controls span")?.innerText})');
   assert('Escape exits presenter mode and keeps card', !exited.presentation && exited.progress === '08 / 11' && !exited.url.includes('mode=presenter'), JSON.stringify(exited));
 
+  const shareMocked = await evaluate('(() => { try { Object.defineProperty(navigator, "share", {configurable:true, value: async data => { window.__qaShared = data; }}); return true; } catch { return false; } })()');
+  if (shareMocked) {
+    await evaluate('document.querySelector(".story-share-button")?.click()');
+    await wait(120);
+    const shared = await evaluate('({url:document.querySelector(".story-share-url")?.value||"",message:document.querySelector(".story-share-message")?.innerText||"",native:window.__qaShared||null})');
+    assert('card link share keeps the current story context', shared.url.includes('card=8') && shared.url.includes('#story') && shared.native?.url === shared.url, JSON.stringify(shared));
+  }
+
   await send('Page.navigate', {url: `${baseUrl}?card=6%23story`});
   await wait(850);
   await evaluate('document.querySelector("#story-card-research .card-link").click()');

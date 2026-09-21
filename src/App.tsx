@@ -182,30 +182,51 @@ export default function App() {
     window.requestAnimationFrame(() => goTo(requested - 1));
   }, [slides.length]);
 
-  const copyCardLink = async () => {
+  const copyText = async (text: string) => {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+    } catch {
+      // Fall through to the selection-based fallback when clipboard permission is unavailable.
+    }
+    const field = document.createElement('textarea');
+    field.value = text;
+    field.setAttribute('readonly', '');
+    field.style.position = 'fixed';
+    field.style.opacity = '0';
+    document.body.appendChild(field);
+    try {
+      field.select();
+      if (!document.execCommand('copy')) throw new Error('copy command failed');
+    } finally {
+      field.remove();
+    }
+  };
+
+  const shareCardLink = async () => {
     const url = new URL(window.location.href);
     url.searchParams.set('card', String(active + 1));
     if (presentationMode) url.searchParams.set('mode', 'presenter');
     else url.searchParams.delete('mode');
     url.hash = 'story';
-    setShareUrl(url.toString());
-    try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(url.toString());
-      } else {
-        const field = document.createElement('textarea');
-        field.value = url.toString();
-        field.setAttribute('readonly', '');
-        field.style.position = 'fixed';
-        field.style.opacity = '0';
-        document.body.appendChild(field);
-        try {
-          field.select();
-          if (!document.execCommand('copy')) throw new Error('copy command failed');
-        } finally {
-          field.remove();
+    const link = url.toString();
+    setShareUrl(link);
+    if (navigator.share) {
+      try {
+        await navigator.share({title: '셀핀다 GABA 한 장씩 보기', text: '현재 카드부터 이어서 확인해 보세요.', url: link});
+        setShareMessage('현재 카드 링크를 공유했습니다.');
+        return;
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          setShareMessage('공유를 취소했습니다.');
+          return;
         }
       }
+    }
+    try {
+      await copyText(link);
       setShareMessage('현재 카드 링크를 복사했습니다.');
     } catch {
       setShareMessage('링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
@@ -422,7 +443,7 @@ export default function App() {
           <div>
             <button type="button" className="story-nav-button" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="이전 카드"><span aria-hidden="true">←</span><span className="nav-label">이전 카드</span></button>
             <button type="button" className="story-nav-button" onClick={() => goTo(active + 1)} disabled={active === slides.length - 1} aria-label="다음 카드"><span className="nav-label">다음 카드</span><span aria-hidden="true">→</span></button>
-            <button type="button" className="story-share-button" onClick={copyCardLink}>현재 카드 링크 복사</button>
+            <button type="button" className="story-share-button" onClick={shareCardLink}>현재 카드 링크 공유</button>
             <button type="button" className="story-presentation-toggle" onClick={event => presentationMode ? exitPresentation() : enterPresentation(event.currentTarget)}>{presentationMode ? '발표 모드 종료' : '발표 모드'}</button>
           </div>
         </div>
