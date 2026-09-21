@@ -110,6 +110,8 @@ QA 격리 보완: 상호작용 QA가 직전 브라우저의 발표 모드 URL을
 
 제품 카드 경계 보강: 카드 본문만 읽어도 제품 구성·가격·재고·섭취 방법을 확정하지 않도록 “이 카드에서 확정하지 않고, 최신 포장과 스마트스토어에서 확인”한다는 문장을 직접 표시하고 번들 QA 필수 문구로 등록했다.
 
+공개 배포 재검증: 제품 카드 경계 보완본 `d21733c`의 [Pages run 35602498730](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35602498730) 성공과 공개 URL HTTP 200을 확인했다. 기존 320·390·1440px 상호작용 매트릭스는 앱 동작 변경 없이 유지되는 문구 변경이며, 다음 앱 기능 변경 때 다시 전체 실행한다.
+
 공개 배포 재검증: 발표 모드 복귀 보완본 `ebf2a31`의 [Pages run 35602189273](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35602189273) 성공 후 최신 JS 자산을 확인하고, 공개 URL 320·390·1440px 매트릭스에서 `card=7 → 처음부터 → card=1`과 기존 패널·공유 흐름을 전체 통과시켰다.
 
 공개 배포 재검증: 종료 선택지 포커스 보완본 `3b8d195`의 Pages 배포 [run 35596995932](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35596995932) 성공과 공개 URL 상호작용 QA 전체 통과를 확인했다.
