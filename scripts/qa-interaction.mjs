@@ -186,7 +186,12 @@ try {
   assert('research dialog keeps the citation and product boundary', research.source.includes('PMID 33041752') && research.boundary.includes('셀핀다 제품의 효능'), JSON.stringify(research));
   assert('research dialog keeps the story in page', research.flowNote.includes('현재 페이지의 흐름은 유지됩니다') && research.flowNote.includes('다음 카드'), research.flowNote);
   const researchActionOrder = await evaluate('([...document.querySelectorAll(".info-panel__actions > *")].map(element => element.className).join("|"))');
-  assert('in-page next action precedes external source', researchActionOrder.startsWith('info-panel__next|info-panel__external'), researchActionOrder);
+  assert('in-page next action precedes external source', researchActionOrder.startsWith('info-panel__next|info-panel__external-choice'), researchActionOrder);
+  const researchExternalChoice = await evaluate('({open:document.querySelector(".info-panel__external-choice")?.open ?? true,summary:document.querySelector(".info-panel__external-choice summary")?.innerText||""})');
+  assert('external source stays secondary until requested', researchExternalChoice.open === false && researchExternalChoice.summary.includes('필요할 때만'), JSON.stringify(researchExternalChoice));
+  await evaluate('document.querySelector(".info-panel__external-choice summary")?.click()');
+  const researchExpandedExternal = await evaluate('({open:document.querySelector(".info-panel__external-choice")?.open ?? false,visible:!!document.querySelector(".info-panel__external") && document.querySelector(".info-panel__external")?.getBoundingClientRect().height > 0})');
+  assert('external source can be opened on request', researchExpandedExternal.open && researchExpandedExternal.visible, JSON.stringify(researchExpandedExternal));
   const researchActionVisibility = await evaluate('(() => { const panel = document.querySelector(".info-panel")?.getBoundingClientRect(); const actions = document.querySelector(".info-panel__actions"); const rect = actions?.getBoundingClientRect(); return {position:actions ? getComputedStyle(actions).position : "", visible:!!rect && rect.height > 0 && !!panel && rect.bottom <= panel.bottom + 1, bottom:rect?.bottom ?? -1, panelBottom:panel?.bottom ?? -1}; })()');
   assert('in-page next action stays visible in the panel', researchActionVisibility.position === 'sticky' && researchActionVisibility.visible, JSON.stringify(researchActionVisibility));
   const researchNextLabel = await evaluate('document.querySelector(".info-panel__next")?.innerText||""');

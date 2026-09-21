@@ -625,7 +625,10 @@ export default function App() {
             <p className="info-panel__flow-note">현재 페이지의 흐름은 유지됩니다. 외부 링크는 보조 선택이며, 아래 버튼으로 다음 카드로 계속 볼 수 있습니다.</p>
             <div className="info-panel__actions">
               <button type="button" className="info-panel__next" onClick={continueToNextCard}>{panelSource < slides.length - 1 ? <>다음 카드: {panelNext.label} →</> : '카드 흐름으로 돌아가기'}</button>
-              <a className="info-panel__external" href={openExternal} target="_blank" rel="noreferrer">{panelExternalLabel} ↗</a>
+              <details className="info-panel__external-choice">
+                <summary>외부 자료는 필요할 때만 확인 <span aria-hidden="true">＋</span></summary>
+                <a className="info-panel__external" href={openExternal} target="_blank" rel="noreferrer">{panelExternalLabel} ↗</a>
+              </details>
             </div>
           </aside>
         </div> : null}
