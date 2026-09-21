@@ -19,6 +19,7 @@ const files = {
   launchGuide: read('docs/SALES_ONE_PAGE_GUIDE.md'),
   discussion: read('docs/TF_DISCUSSION_BOARD.md'),
   roster: read('docs/TF_ROSTER.md'),
+  kickoff: read('docs/TF_KICKOFF_INPUT.md'),
 };
 
 const checks = [
@@ -46,6 +47,9 @@ const checks = [
   ['discussion board tracks product inquiry next action', files.discussion, 'SALES-01'],
   ['TF roster defines assignment gate', files.roster, '실제 인력 배정 HOLD'],
   ['TF roster defines core attendees', files.roster, '핵심 회의 참석자'],
+  ['TF kickoff input defines six core roles', files.kickoff, '6개 핵심 역할'],
+  ['TF kickoff input defines session assignments', files.kickoff, 'A 시나리오 설명자·관찰자'],
+  ['TF kickoff input preserves privacy guardrail', files.kickoff, '건강 상태·복용 약'],
   ['acceptance matrix tracks TF assignment', files.acceptance, 'TF 실제 담당자·백업·결정권 배정'],
   ['launch guide is linked from README', files.readme, 'docs/SALES_ONE_PAGE_GUIDE.md'],
   ['launch guide defines the full sales route', files.launchGuide, '01 일상 상태 → 02 여유가 안 생기는 날 → 03 생각 과부하 → 04 적극적인 휴식 → 05 GABA 성분 이름 → 06 일반 GABA 연구 → 07 제품 정보 → 08 활용 TIP → 09 생활 루틴 → 10 후기 → 11 마무리'],

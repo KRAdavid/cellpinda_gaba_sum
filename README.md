@@ -16,6 +16,8 @@ TF 회의를 같은 순서로 진행하려면 [`docs/TF_MEETING_PACK.md`](docs/T
 
 실제 주 담당자·백업·결정권 배정은 [`docs/TF_ROSTER.md`](docs/TF_ROSTER.md)에서 확인하고 입력합니다. 역할 정의만으로 실제 TF 구성 완료를 선언하지 않습니다.
 
+담당자·첫 회의·A/B/C 세션 진행자를 한 번에 입력하려면 [`docs/TF_KICKOFF_INPUT.md`](docs/TF_KICKOFF_INPUT.md)를 사용합니다.
+
 전체 설명용 발표 북마크는 `https://kradavid.github.io/cellpinda_gaba_sum/?mode=presenter&card=1#story`로 01번부터 시작합니다. 제품 문의가 먼저 나온 경우에는 `card=7`을 지정해 제품 카드부터 열 수 있습니다.
 
 실제 상담 순서와 권장·보류 표현은 [`docs/SALES_WALKTHROUGH.md`](docs/SALES_WALKTHROUGH.md)를 따릅니다.
