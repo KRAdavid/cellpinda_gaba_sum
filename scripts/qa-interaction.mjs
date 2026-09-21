@@ -77,10 +77,10 @@ try {
   await send('Page.navigate', {url: baseUrl});
   await wait(900);
 
-  const initialPage = await evaluate('({title:document.title,width:innerWidth,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,presenterGuidance:!!document.querySelector(".presenter-note"),presenterProductShortcut:!!document.querySelector(".story-product-start"),carousel:document.querySelector(".story-rail")?.getAttribute("aria-roledescription")||"",currentCard:document.querySelector(".story-card[aria-current=\\"true\\"]")?.getAttribute("aria-label")||""})');
+  const initialPage = await evaluate('({title:document.title,width:innerWidth,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,presenterGuidance:!!document.querySelector(".presenter-note"),presenterQuestions:!!document.querySelector(".presenter-questions"),presenterProductShortcut:!!document.querySelector(".story-product-start"),carousel:document.querySelector(".story-rail")?.getAttribute("aria-roledescription")||"",currentCard:document.querySelector(".story-card[aria-current=\\"true\\"]")?.getAttribute("aria-label")||""})');
   assert('page identity', initialPage.title.includes('GABA 한 장씩 보기'));
   assert('viewport has no horizontal overflow', initialPage.width === viewportWidth && initialPage.docWidth === initialPage.clientWidth && initialPage.docWidth <= initialPage.width, `${initialPage.width}/${initialPage.clientWidth}/${initialPage.docWidth}`);
-  assert('consumer view hides presenter guidance', !initialPage.presenterGuidance && !initialPage.presenterProductShortcut);
+  assert('consumer view hides presenter guidance', !initialPage.presenterGuidance && !initialPage.presenterQuestions && !initialPage.presenterProductShortcut);
   assert('story carousel exposes accessible slide state', initialPage.carousel === 'carousel' && initialPage.currentCard.includes('01 / 11'), JSON.stringify(initialPage));
 
   await evaluate('document.getElementById("story")?.scrollIntoView({behavior:"auto"})');
@@ -160,6 +160,11 @@ try {
   await wait(80);
   const note = await evaluate('({open:document.querySelector(".presenter-note")?.open,prompt:document.querySelector(".presenter-note__grid > div:first-child p")?.innerText||"",boundary:document.querySelector(".presenter-note__grid > div:last-child p")?.innerText||""})');
   assert('presenter guidance opens', note.open && note.prompt.length > 10 && note.boundary.length > 10, JSON.stringify(note));
+  const questionsClosed = await evaluate('({open:document.querySelector(".presenter-questions")?.open ?? true,summary:document.querySelector(".presenter-questions summary")?.innerText||""})');
+  assert('presenter question guidance stays collapsed', questionsClosed.open === false && questionsClosed.summary.includes('자주 묻는 질문에 답하기'), JSON.stringify(questionsClosed));
+  await evaluate('document.querySelector(".presenter-questions summary")?.click()');
+  const questions = await evaluate('({open:document.querySelector(".presenter-questions")?.open,items:document.querySelectorAll(".presenter-questions__list > div").length,text:document.querySelector(".presenter-questions")?.innerText||""})');
+  assert('presenter question guidance opens with safe answers', questions.open && questions.items === 4 && questions.text.includes('병용 가능 여부를 단정하지 않고') && questions.text.includes('최신 포장 표시사항'), JSON.stringify(questions));
 
   await press('ArrowRight', 'ArrowRight', 39);
   const next = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText,url:location.href})');

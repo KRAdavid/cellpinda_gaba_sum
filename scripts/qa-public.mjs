@@ -30,6 +30,8 @@ const required = [
   ['presenter guidance', '발표자용 진행 포인트'],
   ['presenter prompt guidance', '고객에게 물어보기'],
   ['presenter boundary guidance', '이어서 말할 때'],
+  ['presenter question guidance', '자주 묻는 질문에 답하기'],
+  ['presenter safe combination answer', '병용 가능 여부를 단정하지 않고'],
   ['presenter next-card hint', '다음 설명:'],
   ['presenter restart control', '처음부터'],
   ['presenter product shortcut', '제품부터 설명'],

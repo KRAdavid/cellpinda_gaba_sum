@@ -29,6 +29,25 @@ const STORY_PHASES = [
   {id: 'review', label: '후기·마무리', start: 9, end: 10},
 ] as const;
 
+const PRESENTER_QUESTIONS = [
+  {
+    label: '수면·스트레스',
+    answer: '일반 GABA 연구의 조건과 한계를 먼저 보여주고, 셀핀다 제품 효능으로 확정하지 않습니다.',
+  },
+  {
+    label: '섭취량·활용',
+    answer: '최신 포장 표시사항을 확인하기 전 섭취량·혼합 방법을 확정하지 않습니다.',
+  },
+  {
+    label: '다른 제품과 함께',
+    answer: '병용 가능 여부를 단정하지 않고, 제품 표시사항과 개인 상황을 전문가에게 확인합니다.',
+  },
+  {
+    label: '구매자 후기',
+    answer: '개인 경험과 객관적 제품 정보를 나누고, 사용권 확인 전 재게시하지 않습니다.',
+  },
+] as const;
+
 function makeSlides(): Slide[] {
   return [
     {
@@ -576,7 +595,8 @@ export default function App() {
         {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="고객에게 전달할 카드 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>고객용 링크 복사</button></div> : null}
         {presentationMode ? <>
           <p className="presenter-next-hint" aria-live="polite">{nextSlide ? <>다음 설명: <strong>{nextSlide.label}</strong></> : '마지막 설명 카드입니다. 고객이 원하는 자료를 선택하게 하세요.'}</p>
-          <details className="presenter-note"><summary>발표자용 진행 포인트</summary><div className="presenter-note__grid"><div><strong>고객에게 물어보기</strong><p>{slides[active].presenterPrompt}</p></div><div><strong>이어서 말할 때</strong><p>{slides[active].presenterBoundary}</p></div></div></details>
+          <details key={`guidance-${active}`} className="presenter-note"><summary>발표자용 진행 포인트</summary><div className="presenter-note__grid"><div><strong>고객에게 물어보기</strong><p>{slides[active].presenterPrompt}</p></div><div><strong>이어서 말할 때</strong><p>{slides[active].presenterBoundary}</p></div></div></details>
+          <details key={`questions-${active}`} className="presenter-questions"><summary>자주 묻는 질문에 답하기</summary><div className="presenter-questions__list">{PRESENTER_QUESTIONS.map(question => <div key={question.label}><strong>{question.label}</strong><p>{question.answer}</p></div>)}</div></details>
         </> : null}
         <div className="story-rail" ref={railRef} tabIndex={0} role="region" aria-roledescription="carousel" aria-label="GABA 소개 카드 흐름">
           {slides.map((slide, index) => <article
