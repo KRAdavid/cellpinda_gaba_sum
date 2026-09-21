@@ -27,6 +27,8 @@ const required = [
   ['presenter guidance', '발표자용 설명 포인트'],
   ['presenter keyboard support', 'PageUp/PageDown'],
   ['presenter dialog state', 'story--presentation'],
+  ['card sharing control', '현재 카드 링크 공유'],
+  ['native share fallback', 'navigator.share'],
 ];
 
 const forbidden = [
