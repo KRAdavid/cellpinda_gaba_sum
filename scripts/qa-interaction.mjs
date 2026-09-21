@@ -65,6 +65,14 @@ const press = async (key, code, virtualKeyCode) => {
   await wait(180);
 };
 
+const swipeRail = async (fromX, toX, y) => {
+  const touchPoint = (x, id = 1) => ({x, y, id, radiusX: 1, radiusY: 1, force: 1});
+  await send('Input.dispatchTouchEvent', {type: 'touchStart', touchPoints: [touchPoint(fromX)]});
+  await send('Input.dispatchTouchEvent', {type: 'touchMove', touchPoints: [touchPoint(toX)]});
+  await send('Input.dispatchTouchEvent', {type: 'touchEnd', touchPoints: []});
+  await wait(500);
+};
+
 const assert = (label, condition, detail = '') => {
   if (!condition) throw new Error(`${label}${detail ? `: ${detail}` : ''}`);
   console.log(`PASS ${label}`);
@@ -92,6 +100,24 @@ try {
   if (viewportWidth <= 760) assert('mobile rail declares horizontal touch and snap', railBehavior.touchAction === 'pan-x' && railBehavior.snap.includes('x') && railBehavior.overflow === 'auto', JSON.stringify(railBehavior));
   const consumerNext = await evaluate('(() => { const button = document.querySelector(".story-next-button"); const rect = button?.getBoundingClientRect(); return {label:button?.innerText||"",width:rect?.width||0,visible:!!rect && rect.width > 0 && rect.height > 0}; })()');
   assert('consumer next action is explicit', consumerNext.visible && consumerNext.width >= 90 && consumerNext.label.includes('다음 카드'), JSON.stringify(consumerNext));
+  if (viewportWidth <= 760) {
+    const swipeGeometry = await evaluate('(() => { const rail=document.querySelector(".story-rail")?.getBoundingClientRect(); return {left:rail?.left??0,width:rail?.width??0,top:rail?.top??0,height:rail?.height??0,scrollLeft:document.querySelector(".story-rail")?.scrollLeft??0}; })()');
+    const swipeY = Math.min(Math.max(swipeGeometry.top + Math.min(swipeGeometry.height * 0.25, 80), 20), viewportHeight - 20);
+    await swipeRail(swipeGeometry.left + swipeGeometry.width * 0.64, swipeGeometry.left + swipeGeometry.width * 0.42, swipeY);
+    const swipeForward = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText||"",scrollLeft:document.querySelector(".story-rail")?.scrollLeft??0})');
+    assert('mobile finger swipe advances the rail', swipeForward.progress === '02 / 11' && swipeForward.scrollLeft > swipeGeometry.scrollLeft, JSON.stringify({before:swipeGeometry,after:swipeForward}));
+    await send('Page.navigate', {url: `${baseUrl}?card=2#story`});
+    await waitForProgress('02 / 11');
+    await evaluate('document.querySelector(".story-rail")?.scrollIntoView({behavior:"auto",block:"center"})');
+    await wait(200);
+    const reverseGeometry = await evaluate('(() => { const rail=document.querySelector(".story-rail")?.getBoundingClientRect(); return {left:rail?.left??0,width:rail?.width??0,top:rail?.top??0,height:rail?.height??0,scrollLeft:document.querySelector(".story-rail")?.scrollLeft??0}; })()');
+    const reverseSwipeY = Math.min(Math.max(reverseGeometry.top + Math.min(reverseGeometry.height * 0.25, 80), 20), viewportHeight - 20);
+    await swipeRail(reverseGeometry.left + reverseGeometry.width * 0.42, reverseGeometry.left + reverseGeometry.width * 0.7, reverseSwipeY);
+    const swipeBack = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText||"",scrollLeft:document.querySelector(".story-rail")?.scrollLeft??0})');
+    assert('mobile reverse finger swipe returns to the prior card', swipeBack.progress === '01 / 11' && swipeBack.scrollLeft < reverseGeometry.scrollLeft, JSON.stringify({before:reverseGeometry,after:swipeBack}));
+    await send('Page.navigate', {url: baseUrl});
+    await waitForProgress('01 / 11');
+  }
   const consumerSecondary = await evaluate('({open:document.querySelector(".story-secondary-controls")?.open ?? true,summary:document.querySelector(".story-secondary-controls summary")?.innerText||""})');
   assert('consumer secondary controls stay collapsed', consumerSecondary.open === false && consumerSecondary.summary.includes('더 보기'), JSON.stringify(consumerSecondary));
   await evaluate('document.querySelector(".story-secondary-controls summary")?.click()');
