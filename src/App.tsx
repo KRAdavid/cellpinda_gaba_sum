@@ -324,6 +324,7 @@ export default function App() {
   const nextVideo = selectedVideoIndex >= 0 ? panelVideos[selectedVideoIndex + 1] ?? null : null;
   const selectedVideoReviewDraft = selectedVideo ? videoReviewDrafts[selectedVideo.id] ?? makeEmptyVideoReviewDraft() : null;
   const selectedReviewCheckCount = selectedVideoReviewDraft ? VIDEO_REVIEW_CHECKS.filter(check => selectedVideoReviewDraft[check.key]).length : 0;
+  const incompleteAuditVideos = useMemo(() => panelVideos.filter(video => VIDEO_REVIEW_CHECKS.filter(check => videoReviewDrafts[video.id]?.[check.key]).length < VIDEO_REVIEW_CHECKS.length), [panelVideos, videoReviewDrafts]);
 
   useEffect(() => setPreviewImageError(false), [panelVideoId]);
 
@@ -587,6 +588,26 @@ export default function App() {
     try {
       await copyText(lines.join('\n'));
       setVideoReviewMessage('작성된 감리 초안을 모두 복사했습니다.');
+    } catch {
+      setVideoReviewMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
+  };
+
+  const copyIncompleteVideoAuditQueue = async () => {
+    const lines = [
+      'GABA 영상 감리 진행 필요 목록',
+      `미완료 후보 ${incompleteAuditVideos.length}건`,
+      '',
+      ...incompleteAuditVideos.map((video, index) => {
+        const completed = VIDEO_REVIEW_CHECKS.filter(check => videoReviewDrafts[video.id]?.[check.key]).length;
+        return `${index + 1}. ${video.id} · ${video.title} · ${completed}/${VIDEO_REVIEW_CHECKS.length} 확인 · 상태 ${VIDEO_STATUS_LABELS[video.status]} · 다음 행동: ${video.audit.nextAction}`;
+      }),
+      '',
+      '※ 브라우저 로컬 감리 초안의 미완료 목록입니다. 원문·자막·화자·권리·주장 범위 확인 전에는 공개 승인이나 권위 승인으로 보지 않습니다.',
+    ];
+    try {
+      await copyText(lines.join('\n'));
+      setVideoReviewMessage('미완료 감리 목록을 복사했습니다.');
     } catch {
       setVideoReviewMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
@@ -1173,7 +1194,7 @@ export default function App() {
             {openPanel === 'video' ? <>
               <p>{presentationMode ? '발표자용 영상 DB 감리 화면입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 확인하고, 영상별 권위 수준과 공개 여부를 따로 결정합니다.' : '오늘 공유하신 국내 YouTube Shorts를 원문 확인용으로 소개합니다. 영상의 권위와 주장은 감리 상태를 따로 확인해 주세요.'}</p>
               <p className="info-panel__status">{presentationMode ? `감리 대장 ${GABA_VIDEO_DB.length}건 · 현재 국내 큐 ${filteredPanelVideos.length}건 · DB 승인 이력 ${PUBLIC_GABA_VIDEOS.length}건 · 국내 공개 승인 ${DOMESTIC_PUBLIC_GABA_VIDEOS.length}건 · 감리 초안 ${Object.keys(videoReviewDrafts).length}건` : `오늘 공유 영상 ${SHARED_GABA_VIDEOS.length}건 · 원문 확인 필요`}</p>
-              {presentationMode ? <div className="video-review-summary" aria-label="감리 초안 전체 복사"><span>현재 브라우저 감리 초안 {Object.keys(videoReviewDrafts).length}건</span><button type="button" disabled={!Object.keys(videoReviewDrafts).length} onClick={copyAllVideoReviewDrafts}>작성 초안 전체 복사</button><small aria-live="polite">{videoReviewMessage}</small></div> : null}
+              {presentationMode ? <div className="video-review-summary" aria-label="감리 목록 복사"><span>감리 초안 {Object.keys(videoReviewDrafts).length}건 · 미완료 {incompleteAuditVideos.length}건</span><button type="button" disabled={!Object.keys(videoReviewDrafts).length} onClick={copyAllVideoReviewDrafts}>작성 초안 전체 복사</button><button type="button" disabled={!incompleteAuditVideos.length} onClick={copyIncompleteVideoAuditQueue}>미완료 목록 복사</button><small aria-live="polite">{videoReviewMessage}</small></div> : null}
               {presentationMode ? <div className="monitor-snapshot">
                 <div className="monitor-snapshot__heading"><p className="eyebrow">일일 감리 상태</p><button type="button" className="monitor-snapshot__copy" onClick={copyDailyMonitorBrief}>회의용 요약 복사</button></div>
                 <small className="monitor-snapshot__copy-message" aria-live="polite">{monitorCopyMessage}</small>

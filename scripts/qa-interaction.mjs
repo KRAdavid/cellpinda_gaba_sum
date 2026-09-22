@@ -218,12 +218,16 @@ try {
   await wait(180);
   const copyReviewState = await evaluate('document.querySelector(".video-review-draft__actions")?.innerText||""');
   assert('presenter review draft copy action is wired', copyReviewState.includes('감리 기록 초안을 복사했습니다.') || copyReviewState.includes('복사에 실패했습니다'), copyReviewState);
-  const reviewSummary = await evaluate('({count:document.querySelector(".video-review-summary")?.innerText||"",disabled:document.querySelector(".video-review-summary button")?.disabled??true})');
-  assert('presenter review draft summary exposes batch copy', reviewSummary.count.includes('감리 초안 1건') && reviewSummary.disabled === false, JSON.stringify(reviewSummary));
+  const reviewSummary = await evaluate('({count:document.querySelector(".video-review-summary")?.innerText||"",buttons:document.querySelectorAll(".video-review-summary button").length,disabled:document.querySelector(".video-review-summary button")?.disabled??true})');
+  assert('presenter review draft summary exposes batch copy', reviewSummary.count.includes('감리 초안 1건') && reviewSummary.count.includes('미완료 9건') && reviewSummary.buttons === 2 && reviewSummary.disabled === false, JSON.stringify(reviewSummary));
   await evaluate('document.querySelector(".video-review-summary button")?.click()');
   await wait(180);
   const batchCopyState = await evaluate('document.querySelector(".video-review-summary")?.innerText||""');
   assert('presenter review drafts can be copied as a meeting batch', batchCopyState.includes('작성된 감리 초안을 모두 복사했습니다.') || batchCopyState.includes('복사에 실패했습니다'), batchCopyState);
+  await evaluate('document.querySelectorAll(".video-review-summary button")[1]?.click()');
+  await wait(180);
+  const incompleteCopyState = await evaluate('document.querySelector(".video-review-summary")?.innerText||""');
+  assert('presenter can copy the unfinished audit queue for a meeting', incompleteCopyState.includes('미완료 감리 목록을 복사했습니다.') || incompleteCopyState.includes('복사에 실패했습니다'), incompleteCopyState);
   await press('Escape', 'Escape', 27);
   await evaluate('document.querySelector(".story-ops-board-button")?.click()');
   await waitForText('#info-panel-title', 'TF 운영 보드');
