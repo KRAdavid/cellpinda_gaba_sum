@@ -3,6 +3,12 @@ const baseUrl = process.env.QA_URL ?? 'http://127.0.0.1:55124/';
 const cdpUrl = process.env.CDP_URL ?? 'http://127.0.0.1:9223';
 const viewportWidth = Number(process.env.QA_WIDTH ?? 390);
 const viewportHeight = Number(process.env.QA_HEIGHT ?? 844);
+const routeUrl = (params = {}, hash = 'story') => {
+  const url = new URL(baseUrl);
+  Object.entries(params).forEach(([key, value]) => url.searchParams.set(key, value));
+  url.hash = hash;
+  return url.toString();
+};
 
 const targetResponse = await fetch(`${cdpUrl}/json/new?${baseUrl}`, {method: 'PUT'});
 if (!targetResponse.ok) throw new Error(`Could not create a Chrome target at ${cdpUrl}.`);
@@ -104,7 +110,7 @@ try {
   await waitForProgress('03 / 08');
   assert('consumer next action advances the story', true);
 
-  await send('Page.navigate', {url: `${baseUrl}?card=7#story`});
+  await send('Page.navigate', {url: routeUrl({card: '7'})});
   await waitForProgress('07 / 08');
   await evaluate('document.querySelector("#story-scene-research .reader-link")?.click()');
   await waitForText('#info-panel-title', '일반 GABA 연구를 읽는 방법');
@@ -152,7 +158,7 @@ try {
   assert('consumer can continue to the next video without leaving the page', nextPublicVideo.detail.includes('30년 자율신경') && nextPublicVideo.button.includes('다음 영상'), JSON.stringify(nextPublicVideo));
   await press('Escape', 'Escape', 27);
 
-  await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
+  await send('Page.navigate', {url: routeUrl({mode: 'presenter', card: '1'})});
   await waitForPresentation('01 / 08');
   const presenterEntry = await evaluate('({presentation:!!document.querySelector(".story--presentation"),button:!!document.querySelector(".story-video-db-button"),opsButton:!!document.querySelector(".story-ops-board-button"),product:document.body.innerText.includes("셀핀다 제품")})');
   assert('presenter mode exposes the video DB and operations controls', presenterEntry.presentation && presenterEntry.button && presenterEntry.opsButton && !presenterEntry.product, JSON.stringify(presenterEntry));
