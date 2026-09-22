@@ -37,6 +37,7 @@ const files = {
 const checks = [
   ['public URL is documented', files.readme, 'https://kradavid.github.io/cellpinda_gaba_sum/'],
   ['README documents product exclusion', files.readme, '제품·후기·판매 정보는 공개 읽기 흐름과 패널에서 다루지 않습니다'],
+  ['README separates presenter tools from public flow', files.readme, '발표자·TF 기능은 노출하지 않습니다'],
   ['README links current operator guide', files.readme, 'docs/GENERAL_GABA_OPERATOR_GUIDE.md'],
   ['README links current field session', files.readme, 'docs/GENERAL_GABA_FIELD_SESSION.md'],
   ['README links video database', files.readme, 'GABA_VIDEO_DB.md'],
