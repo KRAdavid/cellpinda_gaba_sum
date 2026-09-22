@@ -1,8 +1,9 @@
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {GABA_VIDEO_DB, PUBLIC_GABA_VIDEOS, type GabaVideoRecord} from './gabaVideos';
 import {GABA_MONITOR_SNAPSHOT} from './gabaMonitorSnapshot';
+import {TF_MEETING_STEPS, TF_WORKSTREAMS} from './tfBoard';
 
-type PanelKey = 'research' | 'video';
+type PanelKey = 'research' | 'video' | 'ops';
 type SlideLink = {href: string; label: string; panel: PanelKey};
 
 type Slide = {
@@ -557,8 +558,8 @@ export default function App() {
     setPresenterCopyMessage('');
   }, [active]);
 
-  const panelTitle = openPanel === 'research' ? '일반 GABA 연구를 읽는 방법' : 'GABA 영상 DB 검토';
-  const openExternal = openPanel === 'research' ? RESEARCH_URL : selectedVideo?.url ?? (presentationMode ? '' : publicVideo?.url ?? '');
+  const panelTitle = openPanel === 'research' ? '일반 GABA 연구를 읽는 방법' : openPanel === 'video' ? 'GABA 영상 DB 검토' : 'TF 운영 보드';
+  const openExternal = openPanel === 'research' ? RESEARCH_URL : openPanel === 'video' ? selectedVideo?.url ?? (presentationMode ? '' : publicVideo?.url ?? '') : '';
   const panelExternalLabel = openPanel === 'research' ? '연구 원문을 새 탭에서 보기' : '선택 영상 원문 보기';
   const panelSource = panelSourceIndex ?? active;
   const panelNext = slides[Math.min(slides.length - 1, panelSource + 1)];
@@ -602,6 +603,7 @@ export default function App() {
           <span aria-live="polite" aria-label={`현재 ${active + 1}번째 카드, 총 ${slides.length}장`}>{String(active + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</span>
           <div>
             {presentationMode ? <button type="button" className="story-start-button story-video-db-button" onClick={event => openVideoPanel(event.currentTarget)}>영상 DB</button> : null}
+            {presentationMode ? <button type="button" className="story-start-button story-ops-board-button" onClick={event => openInfoPanel(active, 'ops', event.currentTarget)}>운영 보드</button> : null}
             <button type="button" className="story-nav-button story-prev-button" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="이전 카드"><span aria-hidden="true">←</span><span className="nav-label">이전 카드</span></button>
             <button type="button" className="story-nav-button story-next-button" onClick={() => goTo(active + 1)} disabled={active === slides.length - 1} aria-label="다음 카드"><span className="nav-label">다음 카드</span><span aria-hidden="true">→</span></button>
             {presentationMode ? <>
@@ -651,7 +653,7 @@ export default function App() {
         {openPanel ? <div className="info-layer" role="presentation" onMouseDown={event => {if (event.target === event.currentTarget) closePanel();}}>
           <aside className="info-panel" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title">
             <div className="info-panel__topline"><span>카드 흐름 안에서 확인</span><button ref={panelCloseRef} type="button" onClick={() => closePanel()} aria-label="정보 패널 닫기">×</button></div>
-            <p className="eyebrow">{openPanel === 'research' ? '일반 GABA 연구' : '권위 영상 DB'}</p>
+            <p className="eyebrow">{openPanel === 'research' ? '일반 GABA 연구' : openPanel === 'video' ? '권위 영상 DB' : '발표자 운영'}</p>
             <h2 id="info-panel-title">{panelTitle}</h2>
             {openPanel === 'research' ? <>
               <p>연구 결과를 볼 때는 무엇을 살펴봤는지와 어떤 조건이었는지를 함께 확인하세요.</p>
@@ -708,6 +710,27 @@ export default function App() {
                 <p className="video-db-detail__meta">확인일 {selectedVideo.checkedAt} · 채널 {selectedVideo.channel} · 화자 {selectedVideo.speaker}</p>
               </div> : null}
               <p className="info-panel__boundary">영상의 설명은 일반 GABA 교육을 돕는 보조 자료이며, 개인별 효과나 의료적 판단을 대신하지 않습니다.</p>
+            </> : null}
+            {openPanel === 'ops' ? <>
+              <p>이 보드는 공개 소비자용 내용이 아니라, 일반 GABA 교육 자료를 검토·회의·배포하는 사업자용 운영 화면입니다.</p>
+              <div className="tf-board__metrics" aria-label="TF 운영 현황">
+                <div><strong>{GABA_MONITOR_SNAPSHOT.humanRoleAssigned}/{GABA_MONITOR_SNAPSHOT.humanRoleTotal}</strong><span>핵심 역할 배정</span></div>
+                <div><strong>{GABA_MONITOR_SNAPSHOT.humanSourceReviewed}/{GABA_MONITOR_SNAPSHOT.humanSourceTotal}</strong><span>출처 사람 검토</span></div>
+                <div><strong>{GABA_MONITOR_SNAPSHOT.registeredVideoApproved}/{GABA_MONITOR_SNAPSHOT.registeredVideoTotal}</strong><span>영상 공개 승인</span></div>
+                <div><strong>{GABA_MONITOR_SNAPSHOT.firstMeetingReady ? '입력됨' : '필요'}</strong><span>첫 회의 입력</span></div>
+              </div>
+              <div className="tf-board__list">
+                {TF_WORKSTREAMS.map(workstream => <article key={workstream.id} className="tf-board__item">
+                  <div className="tf-board__item-topline"><span>{workstream.id}</span><strong>HOLD</strong></div>
+                  <h3>{workstream.title}</h3>
+                  <p><b>담당:</b> {workstream.owner}</p>
+                  <p><b>다음 행동:</b> {workstream.action}</p>
+                  <p className="tf-board__exit"><b>종료 조건:</b> {workstream.exit}</p>
+                </article>)}
+              </div>
+              <details className="tf-board__meeting"><summary>첫 회의 진행 순서 <span aria-hidden="true">＋</span></summary><ol>{TF_MEETING_STEPS.map(step => <li key={step}>{step}</li>)}</ol></details>
+              <p className="info-panel__boundary">AI-OPS는 문서·코드·QA·업무 추적을 실행하지만, 과학·의학·권리·현장·최종 공개 승인을 대신하지 않습니다.</p>
+              <div className="tf-board__links"><a href={GABA_MONITOR_SNAPSHOT.kickoffUrl} target="_blank" rel="noopener noreferrer">첫 회의 준비서 ↗</a><a href={GABA_MONITOR_SNAPSHOT.sourceRegisterUrl} target="_blank" rel="noopener noreferrer">과학 출처 등록부 ↗</a></div>
             </> : null}
             <div className="info-panel__actions"><button type="button" className="info-panel__next" onClick={continueToNextCard}>{panelNextAction}</button></div>
             <p className="info-panel__flow-note">현재 페이지의 흐름은 유지됩니다. 외부 링크는 원문 확인이 필요할 때만 선택하세요.</p>

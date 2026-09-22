@@ -6,6 +6,10 @@ const inboxPath = path.join(root, 'docs', 'GABA_VIDEO_INBOX.md');
 const reportPath = path.join(root, 'docs', 'GABA_VIDEO_DAILY_REPORT.md');
 const triagePath = path.join(root, 'docs', 'GABA_VIDEO_TRIAGE.md');
 const snapshotPath = path.join(root, 'src', 'gabaMonitorSnapshot.ts');
+const educationTfPath = path.join(root, 'docs', 'GABA_EDUCATION_TF.md');
+const sourceRegisterPath = path.join(root, 'docs', 'GABA_SOURCE_REGISTER.md');
+const videoRegisterPath = path.join(root, 'docs', 'GABA_VIDEO_REGISTER.md');
+const kickoffPath = path.join(root, 'docs', 'GABA_EDUCATION_KICKOFF.md');
 const reportArchiveDir = path.join(root, 'docs', 'gaba-video-daily');
 const writeMode = process.argv.includes('--write');
 const keywords = [/가바/i, /\bGABA\b/i];
@@ -180,6 +184,17 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const ranked = entries.map(entry => screenCandidate(`${entry.title} ${entry.description}`));
   const scienceMedicalPriority = ranked.filter(item => item.priority !== 'VIDEO 우선').length;
+  const educationTf = fs.existsSync(educationTfPath) ? fs.readFileSync(educationTfPath, 'utf8') : '';
+  const sourceRegister = fs.existsSync(sourceRegisterPath) ? fs.readFileSync(sourceRegisterPath, 'utf8') : '';
+  const videoRegister = fs.existsSync(videoRegisterPath) ? fs.readFileSync(videoRegisterPath, 'utf8') : '';
+  const kickoff = fs.existsSync(kickoffPath) ? fs.readFileSync(kickoffPath, 'utf8') : '';
+  const coreRoles = ['PM', 'SCIENCE', 'MEDICAL', 'VIDEO', 'RIGHTS', 'UX', 'QA'];
+  const humanRoleAssigned = coreRoles.filter(role => {
+    const row = educationTf.split('\n').find(line => line.startsWith(`| ${role} |`)) ?? '';
+    return row && !row.includes('| 미배정 |');
+  }).length;
+  const sourceRows = sourceRegister.split('\n').filter(line => /^\| SRC-\d+ \|/.test(line));
+  const videoRows = videoRegister.split('\n').filter(line => /^\| (?:AUTH|VID|SHORT)-\d+ \|/.test(line));
   const snapshot = {
     checkedAt: date,
     sourceChannels: successfulSources,
@@ -191,8 +206,17 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     scienceMedicalPriority,
     videoPriority: entries.length - scienceMedicalPriority,
     autoPublish: 0,
+    humanRoleAssigned,
+    humanRoleTotal: coreRoles.length,
+    humanSourceReviewed: sourceRows.filter(line => line.includes('| HUMAN_REVIEWED |')).length,
+    humanSourceTotal: sourceRows.length,
+    registeredVideoApproved: videoRows.filter(line => line.includes('| PUBLISH_GENERAL |')).length,
+    registeredVideoTotal: videoRows.length,
+    firstMeetingReady: !/^회의 날짜·시간:\s*$/m.test(kickoff),
     triageUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md',
     reportUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md',
+    kickoffUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md',
+    sourceRegisterUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md',
   };
   return `export const GABA_MONITOR_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)} as const;\n`;
 };

@@ -115,8 +115,8 @@ try {
 
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
   await waitForPresentation('01 / 09');
-  const presenterEntry = await evaluate('({presentation:!!document.querySelector(".story--presentation"),button:!!document.querySelector(".story-video-db-button"),product:document.body.innerText.includes("셀핀다 제품")})');
-  assert('presenter mode exposes the video DB control', presenterEntry.presentation && presenterEntry.button && !presenterEntry.product, JSON.stringify(presenterEntry));
+  const presenterEntry = await evaluate('({presentation:!!document.querySelector(".story--presentation"),button:!!document.querySelector(".story-video-db-button"),opsButton:!!document.querySelector(".story-ops-board-button"),product:document.body.innerText.includes("셀핀다 제품")})');
+  assert('presenter mode exposes the video DB and operations controls', presenterEntry.presentation && presenterEntry.button && presenterEntry.opsButton && !presenterEntry.product, JSON.stringify(presenterEntry));
   await evaluate('document.querySelector(".story-video-db-button")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
   const presenterDb = await evaluate('({items:document.querySelectorAll(".video-db-item").length,hasHold:document.querySelector(".video-db-list")?.innerText.includes("검토 보류")||false,detail:document.querySelector(".video-db-detail")?.innerText||"",search:!!document.querySelector(".video-db-search input"),filters:document.querySelectorAll(".video-db-filters button").length})');
@@ -139,6 +139,14 @@ try {
   await waitForText('.video-db-detail', '인물 소개');
   const selected = await evaluate('({detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||""})');
   assert('video DB selection shows summary and person introduction', selected.detail.includes('인물 소개') && selected.external.includes('dnalc.cshl.edu'), JSON.stringify(selected));
+  await press('Escape', 'Escape', 27);
+  await evaluate('document.querySelector(".story-ops-board-button")?.click()');
+  await waitForText('#info-panel-title', 'TF 운영 보드');
+  const opsBoard = await evaluate('({text:document.querySelector(".info-panel")?.innerText||"",workstreams:document.querySelectorAll(".tf-board__item").length,links:document.querySelectorAll(".tf-board__links a").length,hold:[...document.querySelectorAll(".tf-board__item-topline strong")].filter(element => element.innerText === "HOLD").length})');
+  assert('presenter operations board keeps human gates and next actions visible', opsBoard.text.includes('핵심 역할 배정') && opsBoard.text.includes('다음 행동') && opsBoard.workstreams === 4 && opsBoard.links === 2 && opsBoard.hold === 4, JSON.stringify(opsBoard));
+  await evaluate('document.querySelector(".tf-board__meeting summary")?.click()');
+  const meetingSteps = await evaluate('document.querySelectorAll(".tf-board__meeting li").length');
+  assert('operations board exposes the first meeting sequence', meetingSteps === 6, String(meetingSteps));
   await press('Escape', 'Escape', 27);
   await press('ArrowRight', 'ArrowRight', 39);
   await waitForProgress('02 / 09');

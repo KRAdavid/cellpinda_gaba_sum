@@ -34,6 +34,7 @@ assert('workflow stages triage board changes', workflow.includes('docs/GABA_VIDE
 assert('monitor generates a presenter snapshot', monitor.includes('snapshotPath') && monitor.includes('monitorSnapshotTypeScript') && monitor.includes("path.join(root, 'src', 'gabaMonitorSnapshot.ts')"));
 assert('workflow stages presenter snapshot changes', workflow.includes('src/gabaMonitorSnapshot.ts'));
 assert('presenter snapshot keeps publication gated', snapshot.includes('GABA_MONITOR_SNAPSHOT') && snapshot.includes('pendingReview') && snapshot.includes('autoPublish') && snapshot.includes('"autoPublish": 0'));
+assert('presenter snapshot includes human decision gates', snapshot.includes('humanRoleAssigned') && snapshot.includes('humanSourceReviewed') && snapshot.includes('registeredVideoApproved') && snapshot.includes('firstMeetingReady'));
 assert('triage board exists and keeps human review boundary', triage.includes('GABA 숏츠 감리 우선순위 보드') && triage.includes('공개 승인을 판정하지 않는다') && triage.includes('PENDING_REVIEW'));
 assert('inbox has no duplicate video IDs', new Set(inboxIds).size === inboxIds.length);
 
