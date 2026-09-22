@@ -473,6 +473,11 @@ export default function App() {
   const showcaseVideo = SHARED_GABA_VIDEOS[showcaseVideoIndex] ?? SHARED_GABA_VIDEOS[0] ?? null;
   const panelVideos = presentationMode ? ACTIVE_GABA_VIDEOS : publicPanelVideos;
   const selectedVideo = panelVideoId ? panelVideos.find(video => video.id === panelVideoId) ?? GABA_VIDEO_DB.find(video => video.id === panelVideoId) ?? null : null;
+  const selectedVideoId = selectedVideo?.url.match(/(?:shorts\/|watch\?v=)([\w-]{11})/)?.[1] ?? null;
+  const selectedVideoEmbedUrl = selectedVideoId && /youtube\.com|youtu\.be/i.test(selectedVideo?.url ?? '')
+    ? `https://www.youtube-nocookie.com/embed/${selectedVideoId}?rel=0&modestbranding=1`
+    : null;
+  const selectedVideoIsShort = Boolean(selectedVideo?.url.includes('/shorts/'));
   const selectedVideoIndex = selectedVideo ? panelVideos.findIndex(video => video.id === selectedVideo.id) : -1;
   const nextVideo = selectedVideoIndex >= 0 ? panelVideos[selectedVideoIndex + 1] ?? null : null;
   const selectedVideoReviewDraft = selectedVideo ? videoReviewDrafts[selectedVideo.id] ?? makeEmptyVideoReviewDraft() : null;
@@ -1706,8 +1711,13 @@ export default function App() {
                 <h3 tabIndex={-1}>{presentationMode ? selectedVideo.title : selectedVideo.publicTitle ?? selectedVideo.title}</h3>
                 {selectedVideo.previewImage || selectedVideo.previewLabel ? <figure className={'video-db-preview' + (!selectedVideo.previewImage || previewImageError ? ' video-db-preview--source' : '')}>
                   {selectedVideo.previewImage && !previewImageError ? <img src={selectedVideo.previewImage} alt={selectedVideo.previewAlt ?? `${selectedVideo.title} 공식 원문 미리보기`} loading="lazy" decoding="async" onError={() => setPreviewImageError(true)} /> : <div className="video-db-preview__source-mark"><span>공식 교육기관</span><strong>{selectedVideo.previewLabel}</strong><small>원문 페이지·대본 확인</small></div>}
-                  <figcaption>공식 원문 페이지 미리보기 · 영상 재생과 전체 맥락은 원문에서 확인합니다.</figcaption>
+                  <figcaption>공식 원문 미리보기 · 아래 페이지 안에서 먼저 재생하고, 전체 맥락은 원문 선택에서 확인합니다.</figcaption>
                 </figure> : null}
+                {selectedVideoEmbedUrl ? <section className={`video-db-embed${selectedVideoIsShort ? ' video-db-embed--short' : ''}`} aria-label="YouTube 원문 플레이어">
+                  <div className="video-db-embed__heading"><strong>페이지 안에서 원문 재생</strong><small>YouTube 공식 플레이어 · {selectedVideoIsShort ? 'Shorts' : '영상'}</small></div>
+                  <iframe src={selectedVideoEmbedUrl} title={`${selectedVideo.title} YouTube 원문 플레이어`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
+                  <p>임베드가 제한되면 아래 원문 링크를 선택하세요. 플레이어 재생은 사람 감리·권위 확인·공개 승인을 의미하지 않습니다.</p>
+                </section> : null}
                 <div className="video-db-detail__summary">
                   <p><strong>무엇을 어떻게 소개했나</strong><br />{presentationMode ? selectedVideo.summary : selectedVideo.publicSummary ?? selectedVideo.summary}</p>
                   <p><strong>인물 소개</strong><br />{presentationMode ? selectedVideo.personSummary : selectedVideo.publicPersonSummary ?? selectedVideo.personSummary}</p>
@@ -1755,7 +1765,7 @@ export default function App() {
                   </div>
                 </details> : null}
               </div> : null}
-              <p className="info-panel__boundary">{presentationMode ? '공유 영상의 요약은 감리 전 예비 정리입니다. 원문·자막·인물·권리 상태를 확인하고 일반 GABA 연구나 제품 효능과 구분해 읽습니다.' : '소비자 화면에서는 원본의 건강·상업 주장을 재전달하지 않고, 일반 GABA 교육과 영상 검토 상태만 안내합니다. 전체 맥락은 상세 패널의 원문 선택에서 확인하세요.'}</p>
+              <p className="info-panel__boundary">{presentationMode ? '공유 영상의 요약은 감리 전 예비 정리입니다. 원문·자막·인물·권리 상태를 확인하고 일반 GABA 연구나 제품 효능과 구분해 읽습니다.' : '소비자 화면에서는 원본의 건강·상업 주장을 재전달하지 않고, 일반 GABA 교육과 영상 검토 상태만 안내합니다. 페이지 안에서 먼저 재생한 뒤 필요할 때 상세 패널의 원문을 선택하세요.'}</p>
             </> : null}
             {openPanel === 'ops' ? <>
               <p>이 보드는 공개 소비자용 내용이 아니라, 일반 GABA 교육 자료를 검토·회의·배포하는 사업자용 운영 화면입니다.</p>
