@@ -173,6 +173,15 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
 .video-showcase__actions a,.video-showcase__actions button{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;border:1px solid #75a385;border-radius:999px;background:transparent;color:#2b684b;font:inherit;font-size:11px;font-weight:800;text-decoration:none;cursor:pointer}
 .video-showcase__actions a:hover,.video-showcase__actions button:hover{background:#d9ebd9}
 .video-showcase__media:focus-visible,.video-showcase__db-button:focus-visible,.video-showcase__actions a:focus-visible,.video-showcase__actions button:focus-visible{outline:3px solid #e07a4d;outline-offset:4px}
+.story:not(.story--presentation) .story-controls .story-next-button{display:none}
+.reel-next-bar{position:absolute;z-index:6;right:clamp(24px,9vw,130px);bottom:25px;left:clamp(24px,9vw,130px);display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:820px;margin:0 auto;color:#d8ebdc;pointer-events:none}
+.reel-next-bar__copy{display:grid;gap:4px;min-width:0;text-shadow:0 2px 14px rgba(0,0,0,.24)}
+.reel-next-bar__copy span{color:#b9dfc3;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.reel-next-bar__copy strong{overflow:hidden;color:#fff;font-size:13px;font-weight:650;letter-spacing:-.03em;text-overflow:ellipsis;white-space:nowrap}
+.reel-next-button,.reel-next-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:42px;padding:10px 15px;border:1px solid rgba(216,235,220,.72);border-radius:999px;background:rgba(9,38,27,.34);backdrop-filter:blur(9px);color:#fff;font:inherit;font-size:11px;font-weight:800;text-decoration:none;white-space:nowrap;cursor:pointer;pointer-events:auto}
+.reel-next-button span,.reel-next-link span{font-size:17px;font-weight:400;line-height:1}
+.reel-next-button:hover,.reel-next-link:hover{background:rgba(43,112,78,.68)}
+.reel-next-button:focus-visible,.reel-next-link:focus-visible{outline:3px solid #f5d7b8;outline-offset:4px}
 @media(max-width:760px){
   .video-showcase{padding:68px 20px 84px}
   .video-showcase__heading{display:block}
@@ -186,4 +195,7 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
   .video-showcase__meta{font-size:9px}
   .video-showcase__copy h3{font-size:29px}
   .video-showcase__copy>p:not(.video-showcase__channel){font-size:13px}
+  .reel-next-bar{right:24px;bottom:23px;left:24px;gap:10px}
+  .reel-next-bar__copy strong{max-width:145px;font-size:12px}
+  .reel-next-button,.reel-next-link{min-height:39px;padding:8px 11px;font-size:10px}
 }

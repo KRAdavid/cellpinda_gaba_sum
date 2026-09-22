@@ -82,8 +82,8 @@ try {
   assert('mobile rail declares vertical touch and snap', rail.touchAction === 'pan-y' && rail.snap.includes('y') && rail.overflowY === 'auto' && rail.overflowX === 'hidden' && rail.scrollHeight > rail.clientHeight && rail.scrollWidth === rail.clientWidth, JSON.stringify(rail));
   const feedSurface = await evaluate('(() => { const story=document.querySelector("#story"), rail=document.querySelector(".story-rail"), card=document.querySelector(".story-card"), dots=document.querySelector(".story-dots"), storyStyle=getComputedStyle(story), railStyle=getComputedStyle(rail), cardStyle=getComputedStyle(card), dotStyle=getComputedStyle(dots); return {storyHeight:story?.getBoundingClientRect().height||0,railHeight:rail?.getBoundingClientRect().height||0,cardWidth:card?.getBoundingClientRect().width||0,cardHeight:card?.getBoundingClientRect().height||0,viewport:innerHeight,contentWidth:document.documentElement.clientWidth,heading:getComputedStyle(document.querySelector(".story-heading")).display,dotsDirection:dotStyle.flexDirection,visual:cardStyle.backgroundImage.includes("gaba-overload"),storyPadding:storyStyle.padding,railHeightStyle:railStyle.height}; })()');
   assert('consumer feed is full-screen and visually focused', feedSurface.storyHeight >= viewportHeight - 2 && feedSurface.railHeight >= viewportHeight - 2 && feedSurface.cardHeight >= viewportHeight - 2 && feedSurface.cardWidth >= feedSurface.contentWidth - 20 && feedSurface.heading === 'none' && feedSurface.dotsDirection === 'column' && feedSurface.visual && feedSurface.storyPadding === '0px', JSON.stringify(feedSurface));
-  const swipeHint = await evaluate('({text:document.querySelector(".feed-swipe-hint")?.innerText||"",visible:!!document.querySelector(".feed-swipe-hint")})');
-  assert('first consumer card explains the swipe action', swipeHint.visible && swipeHint.text.includes('아래로 넘겨 계속'), JSON.stringify(swipeHint));
+  const nextBar = await evaluate('({text:document.querySelector(".reel-next-bar")?.innerText||"",button:!!document.querySelector(".reel-next-button"),link:!!document.querySelector(".reel-next-link"),visible:!!document.querySelector(".reel-next-bar")})');
+  assert('reel feed exposes the next message action', nextBar.visible && nextBar.button && !nextBar.link && nextBar.text.includes('아래로 넘겨 계속') && nextBar.text.includes('02 · 충분히 쉰 날'), JSON.stringify(nextBar));
 
   await evaluate('(() => { const story=document.getElementById("story"); window.scrollTo({top:story.offsetTop,left:0,behavior:"instant"}); const el=document.querySelector(".story-rail"); el.scrollTo({top:0,behavior:"auto"}); return true; })()');
   await wait(160);
@@ -91,6 +91,8 @@ try {
   await wait(1800);
   const swiped = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText||"",scrollTop:document.querySelector(".story-rail")?.scrollTop||0})');
   assert('mobile vertical swipe-compatible scroll advances the active card', swiped.progress === '02 / 08' && swiped.scrollTop > rail.scrollTop, JSON.stringify({before:rail,after:swiped}));
+  const nextBarAfterSwipe = await evaluate('document.querySelector(".reel-next-bar")?.innerText||""');
+  assert('reel feed previews the following message', nextBarAfterSwipe.includes('다음 메시지') && nextBarAfterSwipe.includes('03 · 뇌 과부하 상태'), nextBarAfterSwipe);
 
   await evaluate('document.querySelector(".story-next-button")?.click()');
   await waitForProgress('03 / 08');
@@ -107,6 +109,8 @@ try {
   await evaluate('document.querySelector(".info-panel__next")?.click()');
   await waitForProgress('08 / 08');
   assert('research panel next action continues the card flow', true);
+  const finalReelAction = await evaluate('({text:document.querySelector(".reel-next-bar")?.innerText||"",href:document.querySelector(".reel-next-link")?.getAttribute("href")||""})');
+  assert('last reel message hands off to the video section', finalReelAction.text.includes('권위 영상 요약') && finalReelAction.href === '#video-showcase', JSON.stringify(finalReelAction));
 
   await evaluate('document.querySelector(".video-showcase__item:nth-child(2)")?.scrollIntoView({block:"center",behavior:"instant"})');
   await wait(700);

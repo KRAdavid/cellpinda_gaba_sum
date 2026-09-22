@@ -34,6 +34,8 @@ const required = [
   ['separate video showcase', '별도 섹션 · 영상 요약'],
   ['video showcase official link', '공식 원문에서 영상 보기'],
   ['video showcase hero copy', '원문으로 확인하세요'],
+  ['reel next action', '다음 메시지'],
+  ['reel video handoff', '영상 요약으로 이어가기'],
   ['video person summary', '인물 소개'],
   ['video operator sentence', '사업자 설명 한 문장'],
   ['video audit fields', '확인 기반'],

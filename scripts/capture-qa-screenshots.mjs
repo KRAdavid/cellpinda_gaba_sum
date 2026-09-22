@@ -50,6 +50,15 @@ try {
   await wait(900);
   await capture('cellpinda-video-showcase-390-current.png');
 
+  await send('Emulation.setDeviceMetricsOverride', {width: 1440, height: 900, deviceScaleFactor: 1, mobile: false});
+  await send('Page.navigate', {url: baseUrl});
+  await wait(900);
+  await capture('cellpinda-consumer-1440-current.png');
+
+  await send('Page.navigate', {url: `${baseUrl}#video-showcase`});
+  await wait(900);
+  await capture('cellpinda-video-showcase-1440-current.png');
+
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
   await wait(900);
   await capture('cellpinda-presenter-390-current.png');

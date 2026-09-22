@@ -676,10 +676,16 @@ export default function App() {
               {slide.links ? <div className="card-link-group" aria-label="더 확인할 정보">{slide.links.map(link => <button key={link.panel} type="button" className="card-link" ref={element => {panelTriggerRefs.current[index] = element;}} onClick={event => openInfoPanel(index, link.panel, event.currentTarget)}>{link.label} <span aria-hidden="true">＋</span></button>)}</div> : null}
               {slide.note ? <small>{slide.note}</small> : null}
             </div>
-            {!presentationMode && index === 0 ? <p className="feed-swipe-hint" aria-label="아래로 넘겨 다음 메시지 보기">아래로 넘겨 계속 <span aria-hidden="true">↓</span></p> : null}
           </article>)}
         </div>
         <div className="story-dots" aria-hidden="true">{slides.map((slide, index) => <span key={slide.id} className={index === active ? 'active' : ''} />)}</div>
+        {!presentationMode ? <div className="reel-next-bar" aria-live="polite">
+          <div className="reel-next-bar__copy">
+            <span>{active === 0 ? '아래로 넘겨 계속' : nextSlide ? '다음 메시지' : '다음 섹션'}</span>
+            <strong>{nextSlide ? nextSlide.label : '권위 영상 요약'}</strong>
+          </div>
+          {nextSlide ? <button type="button" className="reel-next-button" onClick={() => goTo(active + 1)} aria-label={`다음 메시지 ${nextSlide.label} 보기`}>다음 메시지 <span aria-hidden="true">↓</span></button> : <a className="reel-next-link" href="#video-showcase">영상 요약으로 이어가기 <span aria-hidden="true">↓</span></a>}
+        </div> : null}
         {openPanel ? <div className="info-layer" role="presentation" onMouseDown={event => {if (event.target === event.currentTarget) closePanel();}}>
           <aside className="info-panel" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title">
             <div className="info-panel__topline"><span>카드 흐름 안에서 확인</span><button ref={panelCloseRef} type="button" onClick={() => closePanel()} aria-label="정보 패널 닫기">×</button></div>

@@ -22,10 +22,9 @@
 5. GABA 이름
 6. 뇌의 신호 조절
 7. 일반 GABA 연구
-8. 권위 있는 설명 영상
-9. 한 문장 정리
+8. 한 문장 정리
 
-소비자 모드는 한 화면에 한 메시지를 보여주는 풀스크린 세로 피드다. 연구·영상 정보는 인페이지 패널에서 먼저 보여주고, 원문 링크는 보조 선택으로 둔다.
+소비자 모드는 한 화면에 한 메시지를 보여주는 풀스크린 세로 릴스 피드다. 연구는 인페이지 패널에서 먼저 보여주고, 08번 뒤 권위 영상은 별도 섹션에서 히어로 샷·요약·인물 소개·공식 원문 링크로 제공한다.
 
 ## 영상 운영 상태
 
@@ -38,7 +37,7 @@
 
 ## 사업자 운영
 
-사업자는 [`GENERAL_GABA_OPERATOR_GUIDE.md`](GENERAL_GABA_OPERATOR_GUIDE.md)의 발표 링크와 9장 순서를 사용한다. 영상 DB에서 후보를 찾을 때는 상태·검색·감리 필드를 먼저 확인하고, `PUBLISH_GENERAL`이 아닌 영상은 승인 영상처럼 소개하지 않는다.
+사업자는 [`GENERAL_GABA_OPERATOR_GUIDE.md`](GENERAL_GABA_OPERATOR_GUIDE.md)의 발표 링크와 8장 순서를 사용한다. 영상 요약 섹션과 영상 DB에서 후보를 찾을 때는 상태·검색·감리 필드를 먼저 확인하고, `PUBLISH_GENERAL`이 아닌 영상은 승인 영상처럼 소개하지 않는다.
 
 TF 회의는 [`GABA_EDUCATION_KICKOFF.md`](GABA_EDUCATION_KICKOFF.md), 반복 논의는 [`TF_DISCUSSION_BOARD.md`](TF_DISCUSSION_BOARD.md), 실제 사용성은 [`GENERAL_GABA_FIELD_SESSION.md`](GENERAL_GABA_FIELD_SESSION.md)에 기록한다.
 
