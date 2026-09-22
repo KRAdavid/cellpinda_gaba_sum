@@ -178,10 +178,10 @@ const markdown = value => value.replaceAll('|', '\\|').replaceAll('[', '\\[').re
 const checkedDate = new Date().toISOString().slice(0, 10);
 
 const triageRules = [
-  {label: '질환·치료 표현', priority: 'SCIENCE/MEDICAL 우선', pattern: /불면증|우울증|ADHD|치매|알츠하이머|공황|PTSD|불안장애|치료|예방|진단|결핍|신약|정신질환/i},
-  {label: '약물 대체·비교', priority: 'SCIENCE/MEDICAL 우선', pattern: /수면제|졸피뎀|자낙스|약.*대체|대체.*약/i},
-  {label: '효과·안전성 단정 신호', priority: 'SCIENCE/MEDICAL 우선', pattern: /부작용\s*없|안전|황금 복용량|특효|효과|해결|꿀잠|치유|도움되는/i},
-  {label: '섭취·상업성 신호', priority: 'SCIENCE/MEDICAL + RIGHTS', pattern: /영양제|건기식|수면영양제|판매|품절|상륙|복용량|함량|발효|식품|섭취/i},
+  {label: '질환·치료 표현', priority: 'SCIENCE/MEDICAL 우선', pattern: /불면증|우울증|ADHD|치매|알츠하이머|공황|PTSD|불안장애|치료|예방|진단|결핍|신약|정신질환|insomnia|depression|ADHD|alzheimer|panic|PTSD|anxiety|treat(?:ment)?|prevent(?:ion)?|diagnos(?:is|e)|deficien(?:cy|t)|clinical trial/i},
+  {label: '약물 대체·비교', priority: 'SCIENCE/MEDICAL 우선', pattern: /수면제|졸피뎀|자낙스|약.*대체|대체.*약|sleep(?:ing)?\s*pill|zolpidem|xanax|instead of (?:a )?(?:sleeping )?pill|replace(?:ment)?/i},
+  {label: '효과·안전성 단정 신호', priority: 'SCIENCE/MEDICAL 우선', pattern: /부작용\s*없|안전|황금 복용량|특효|효과|해결|꿀잠|치유|도움되는|side[-\s]?effect[-\s]?free|safe(?:ly)?|dosage|effective|effect|reduce|relief|cure|help(?:s|ful)?|calm(?:ing)?|sleep better/i},
+  {label: '섭취·상업성 신호', priority: 'SCIENCE/MEDICAL + RIGHTS', pattern: /영양제|건기식|수면영양제|판매|품절|상륙|복용량|함량|발효|식품|섭취|supplement|dietary supplement|sleep supplement|sold|buy|dosage|amount|fermented|food|intake|consume/i},
 ];
 
 const screenCandidate = text => {

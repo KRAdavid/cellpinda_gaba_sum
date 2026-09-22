@@ -31,6 +31,7 @@ assert('daily report is archived by date', monitor.includes('reportArchiveDir') 
 assert('workflow runs daily and includes report archive changes', workflow.includes("cron: '0 0 * * *'") && workflow.includes('docs/gaba-video-daily'));
 assert('daily report keeps candidates in review status', report.includes('자동 공개: 0건') && report.includes('PENDING_REVIEW'));
 assert('triage classifier is present and explicitly non-approval', monitor.includes('screenCandidate') && monitor.includes('triagePath') && monitor.includes('제목 기반 주의 신호'));
+assert('triage classifier covers English effect and supplement signals', monitor.includes('reduce|relief') && monitor.includes('supplement') && monitor.includes('SCIENCE/MEDICAL + RIGHTS'));
 assert('workflow stages triage board changes', workflow.includes('docs/GABA_VIDEO_TRIAGE.md'));
 assert('monitor generates a presenter snapshot', monitor.includes('snapshotPath') && monitor.includes('monitorSnapshotTypeScript') && monitor.includes("path.join(root, 'src', 'gabaMonitorSnapshot.ts')"));
 assert('workflow stages presenter snapshot changes', workflow.includes('src/gabaMonitorSnapshot.ts'));
