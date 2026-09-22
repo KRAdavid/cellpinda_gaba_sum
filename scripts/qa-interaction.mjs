@@ -141,6 +141,26 @@ try {
   await evaluate('document.querySelector(".info-panel__topline button")?.click()');
   await wait(120);
 
+  await send('Page.navigate', {url: routeUrl({card: '4'})});
+  await waitForProgress('04 / 08');
+  const sleepEvidenceEntry = await evaluate('({text:document.querySelector("#story-scene-sleep .reader-link")?.innerText||"",href:location.href})');
+  assert('sleep scene offers an in-page evidence entry', sleepEvidenceEntry.text.includes('수면 회복 근거 읽기') && !sleepEvidenceEntry.href.includes('pubmed'), JSON.stringify(sleepEvidenceEntry));
+  await evaluate('document.querySelector("#story-scene-sleep .reader-link")?.click()');
+  await waitForText('#info-panel-title', '일반 GABA 연구를 읽는 방법');
+  const sleepEvidencePanel = await evaluate('({title:document.querySelector("#info-panel-title")?.innerText||"",url:location.href})');
+  assert('sleep evidence opens without leaving the reading flow', sleepEvidencePanel.title.includes('일반 GABA 연구') && !sleepEvidencePanel.url.includes('pubmed'), JSON.stringify(sleepEvidencePanel));
+  await evaluate('document.querySelector(".info-panel__topline button")?.click()');
+  await wait(120);
+
+  await send('Page.navigate', {url: routeUrl({card: '6'})});
+  await waitForProgress('06 / 08');
+  const functionEvidenceEntry = await evaluate('({text:document.querySelector("#story-scene-function .reader-link")?.innerText||"",href:location.href})');
+  assert('GABA function scene offers an in-page evidence entry', functionEvidenceEntry.text.includes('GABA 기능 근거 읽기') && !functionEvidenceEntry.href.includes('pubmed'), JSON.stringify(functionEvidenceEntry));
+  await evaluate('document.querySelector("#story-scene-function .reader-link")?.click()');
+  await waitForText('#info-panel-title', '일반 GABA 연구를 읽는 방법');
+  await evaluate('document.querySelector(".info-panel__topline button")?.click()');
+  await wait(120);
+
   await evaluate('document.querySelector(".video-showcase__item")?.scrollIntoView({block:"center",behavior:"instant"})');
   await wait(700);
   const videoShowcase = await evaluate('({section:!!document.querySelector("#video-showcase"),title:document.querySelector("#video-showcase-title")?.innerText||"",items:document.querySelectorAll(".video-showcase__index-button").length,summaries:document.querySelectorAll(".video-showcase__copy").length,links:[...document.querySelectorAll(".video-showcase__actions a")].map(link=>link.getAttribute("href")||""),actionButtons:document.querySelectorAll(".video-showcase__actions button").length,preview:document.querySelectorAll(".video-showcase__media img, .video-showcase__media > .video-showcase__source-mark:not(.video-showcase__source-mark--fallback)").length,previewImageLoaded:[...document.querySelectorAll(".video-showcase__media img")].every(image => image.complete && image.naturalWidth > 0),mediaButtons:document.querySelectorAll(".video-showcase__media").length,playIcon:!!document.querySelector(".video-showcase__play svg"),candidateNotes:document.querySelectorAll(".video-showcase__candidate-note").length,body:document.querySelector("#video-showcase")?.innerText||""})');

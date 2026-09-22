@@ -481,6 +481,7 @@ function makeSlides(): Slide[] {
       note: '수면과 회복의 일반 정보는 공공기관 자료와 함께 확인합니다.',
       presenterPrompt: '수면이 줄어들었을 때 일상에서 가장 먼저 달라지는 것은 무엇인가요?',
       presenterBoundary: '수면 부족을 GABA 부족으로 바꾸어 설명하지 않습니다.',
+      link: {href: RESEARCH_URL, label: '수면 회복 근거 읽기', panel: 'research'},
     },
     {
       id: 'gaba',
@@ -502,6 +503,7 @@ function makeSlides(): Slide[] {
       note: '“뇌의 브레이크”는 이해를 위한 비유이며, 개인의 감정·수면·집중을 진단하는 표현이 아닙니다.',
       presenterPrompt: '가속 페달과 브레이크가 함께 있어야 속도를 조절할 수 있다는 비유로 설명해 보세요.',
       presenterBoundary: '일반적인 신경생리 기능 설명이며 GABA를 섭취하면 뇌가 즉시 안정된다는 뜻이 아닙니다.',
+      link: {href: RESEARCH_URL, label: 'GABA 기능 근거 읽기', panel: 'research'},
     },
     {
       id: 'research',
