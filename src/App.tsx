@@ -29,6 +29,44 @@ const VIDEO_FILTERS: Array<{id: VideoFilter; label: string}> = [
 ];
 
 const RESEARCH_URL = 'https://pubmed.ncbi.nlm.nih.gov/33041752/';
+const RESEARCH_SOURCES = [
+  {
+    id: 'SRC-01',
+    topic: '일반 생리',
+    title: 'Synaptic inhibition and γ-aminobutyric acid in the mammalian central nervous system',
+    meta: 'Obata · Proc Jpn Acad Ser B. 2013 · PMID 23574805',
+    summary: 'GABA를 척추동물 억제성 시냅스의 주요 신경전달물질로 설명하는 리뷰입니다.',
+    boundary: '일반 신경생리 자료이며 경구 섭취·수면 개선·제품 효능을 검증한 연구가 아닙니다.',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/23574805/',
+  },
+  {
+    id: 'SRC-02',
+    topic: '신경 신호 조절',
+    title: 'GABA tone regulation and its cognitive functions in the brain',
+    meta: 'Koh et al. · Nat Rev Neurosci. 2023 · PMID 37495761',
+    summary: '빠른 억제성 신호와 tonic GABA current가 신경활동을 조절하는 기전을 다루는 리뷰입니다.',
+    boundary: '기전·신경과학 리뷰이며 식품 GABA의 섭취 후 결과나 특정 제품을 말하는 자료가 아닙니다.',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/37495761/',
+  },
+  {
+    id: 'SRC-03',
+    topic: '경구 GABA 인체 연구',
+    title: 'Effects of Oral Gamma-Aminobutyric Acid (GABA) Administration on Stress and Sleep in Humans',
+    meta: 'Hepsomali et al. · Front Neurosci. 2020 · PMID 33041752',
+    summary: '자연 유래·발효 GABA를 살핀 14개 위약대조 인체시험을 검토한 체계적 문헌고찰입니다.',
+    boundary: '스트레스 근거는 제한적이고 수면 근거는 매우 제한적이며, 특정 제품의 효능을 입증하지 않습니다.',
+    url: RESEARCH_URL,
+  },
+  {
+    id: 'SRC-04',
+    topic: '수면과 회복',
+    title: 'About Sleep',
+    meta: 'NICHD · National Institutes of Health',
+    summary: '수면이 학습·기억·대사·면역과 연결되고 뇌가 수면 중에도 활동한다는 일반 생리 자료입니다.',
+    boundary: '수면의 중요성을 설명하는 공공기관 자료이며 GABA 섭취 효과를 입증하지 않습니다.',
+    url: 'https://www.nichd.nih.gov/health/topics/sleep/conditioninfo',
+  },
+] as const;
 const VIDEO_STATUS_LABELS: Record<GabaVideoRecord['status'], string> = {
   PUBLISH_GENERAL: '일반 교육 공개 승인',
   LIMITED_USE: '제한 사용 후보',
@@ -619,6 +657,19 @@ export default function App() {
               <p className="info-panel__evidence">연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 검토했습니다. 스트레스 관련 근거는 제한적이고 수면 관련 근거는 매우 제한적이었습니다.</p>
               <ul><li>참여자와 연구 대상이 누구였는지</li><li>섭취량과 기간이 어떻게 설정됐는지</li><li>비교 조건과 측정 방법이 무엇이었는지</li></ul>
               <p className="info-panel__boundary">이 자료는 일반 GABA 원료 또는 GABA 섭취 연구입니다. 개인별 결과를 보장하는 자료가 아닙니다.</p>
+              <details className="info-panel__research-sources">
+                <summary>근거 출처 4건 펼쳐 보기 <span aria-hidden="true">＋</span></summary>
+                <div className="research-source-list">
+                  {RESEARCH_SOURCES.map(source => <article key={source.id}>
+                    <p className="research-source-list__topic">{source.id} · {source.topic}</p>
+                    <h3>{source.title}</h3>
+                    <p>{source.summary}</p>
+                    <p className="research-source-list__meta">{source.meta}</p>
+                    <p className="research-source-list__boundary">{source.boundary}</p>
+                    <a href={source.url} target="_blank" rel="noopener noreferrer">원문 출처 보기 ↗</a>
+                  </article>)}
+                </div>
+              </details>
             </> : null}
             {openPanel === 'video' ? <>
               <p>{presentationMode ? '발표자용 영상 DB입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 감리한 뒤 공개 여부를 결정합니다.' : '공개 승인된 일반 GABA 설명 영상만 보여드립니다. 영상의 권위와 주장의 근거를 따로 확인하고, 원문 보기는 보조 행동으로 제공합니다.'}</p>

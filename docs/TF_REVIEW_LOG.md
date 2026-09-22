@@ -277,6 +277,8 @@ TF 실제 배정 게이트 보완: 역할과 토론 논점은 정의됐지만 �
 
 발표자 영상 DB 탐색성 보완: 영상 후보가 늘어날수록 발표 모드에서 10건을 순서대로 읽어야 하는 불편이 있어, 소비자 화면에는 노출하지 않는 상태 필터와 제목·채널·화자 검색을 추가했다. `전체·검토 필요·공개 승인·보류·제한 사용·배제`별 건수와 현재 결과 수를 표시하고, 기본 전체 목록은 기존 승인 기준 자료 순서를 유지해 발표 중 기준 자료가 먼저 보이게 했다. `src/App.tsx`, `src/styles.css`, `scripts/qa-interaction.mjs`를 변경했고, 390px 로컬 Chrome CDP에서 필터 4건·`Wei Lu` 검색 1건·상세 요약/인물 소개·소비자 화면 비노출을 확인했다. 결정은 **기술 PASS / 현장 HOLD**이며, 실제 사업자 A/B/C 세션에서 검토 대상 첫 탐색 시간과 오선택 여부를 기록한다.
 
+일반 GABA 근거 출처 층위 보강: 기존 연구 패널이 경구 GABA 체계적 문헌고찰 1건에 집중되어 일반 생리·기전·수면 생리와 섭취 인체 연구의 경계가 한눈에 보이지 않았다. PubMed의 억제성 시냅스 리뷰(PMID 23574805), GABA tone 리뷰(PMID 37495761), 경구 GABA 체계적 문헌고찰(PMID 33041752), NIH NICHD 수면 자료를 `SRC-01~05`에 AI_PRECHECKED로 등록하고, 연구 패널 안에 4개 출처와 각 한계를 접어서 표시했다. 출처는 사람 과학·의료 검토 전이므로 HUMAN_REVIEWED나 제품 효능 근거로 표시하지 않는다. `src/App.tsx`, `src/styles.css`, `docs/GABA_SOURCE_REGISTER.md`, `scripts/qa-gaba-education-tf.mjs`, `scripts/qa-public.mjs`, `scripts/qa-interaction.mjs`를 반영했고, 320·390·1440px에서 출처 패널·다음 카드·외부 링크 보조 흐름을 확인했다. 결정은 **AI 사전 확인 PASS / 사람 검토 HOLD**다.
+
 ## 의사결정 원칙
 
 1. 관심은 소비자가 공감할 수 있는 일상 장면에서 만든다.

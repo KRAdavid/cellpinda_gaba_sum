@@ -96,6 +96,8 @@ try {
   await waitForText('#info-panel-title', '일반 GABA 연구를 읽는 방법');
   const researchPanel = await evaluate('({title:document.querySelector("#info-panel-title")?.innerText||"",source:document.querySelector(".info-panel__source")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||"",url:location.href})');
   assert('research opens in an in-page panel', researchPanel.title.includes('일반 GABA 연구') && researchPanel.source.includes('PMID 33041752') && researchPanel.external.includes('pubmed.ncbi.nlm.nih.gov') && !researchPanel.url.includes('pubmed'), JSON.stringify(researchPanel));
+  const researchSources = await evaluate('({summary:document.querySelector(".info-panel__research-sources summary")?.innerText||"",items:document.querySelectorAll(".research-source-list article").length})');
+  assert('research panel keeps multiple evidence sources in-page', researchSources.summary.includes('근거 출처 4건') && researchSources.items === 4, JSON.stringify(researchSources));
   await evaluate('document.querySelector(".info-panel__next")?.click()');
   await waitForProgress('08 / 09');
   assert('research panel next action continues the card flow', true);
