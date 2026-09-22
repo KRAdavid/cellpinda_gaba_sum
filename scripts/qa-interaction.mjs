@@ -184,7 +184,11 @@ try {
   await evaluate('document.querySelector(".video-db-filters button:nth-child(4)")?.click()');
   await wait(180);
   const holdFilter = await evaluate('({items:document.querySelectorAll(".video-db-item").length,active:document.querySelector(".video-db-filters button:nth-child(4)")?.getAttribute("aria-pressed")||""})');
-  assert('presenter video DB filters review status before selection', presenterDb.search && presenterDb.filters === 6 && holdFilter.items === 5 && holdFilter.active === 'true', JSON.stringify({presenterDb,holdFilter}));
+  assert('presenter video DB filters review status before selection', presenterDb.search && presenterDb.filters === 7 && holdFilter.items === 5 && holdFilter.active === 'true', JSON.stringify({presenterDb,holdFilter}));
+  await evaluate('document.querySelector(".video-db-filters button:last-child")?.click()');
+  await wait(180);
+  const profileFilter = await evaluate('({items:document.querySelectorAll(".video-db-item").length,active:document.querySelector(".video-db-filters button:last-child")?.innerText||"",label:document.querySelector(".video-db-filters")?.getAttribute("aria-label")||""})');
+  assert('presenter video DB can prioritize candidates with person evidence', profileFilter.items === 5 && profileFilter.active.includes('인물 출처 있음') && profileFilter.label.includes('인물 출처'), JSON.stringify(profileFilter));
   await evaluate('document.querySelector(".video-db-filters button:first-child")?.click()');
   await wait(120);
   await evaluate('(() => { const input=document.querySelector(".video-db-search input"); if (!input) return false; const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value")?.set; setter?.call(input,"이동환"); input.dispatchEvent(new Event("input",{bubbles:true})); return true; })()');

@@ -25,7 +25,7 @@ const STORY_VISUALS = {
   neural: `${import.meta.env.BASE_URL}images/gaba-neural-signal.png`,
 } as const;
 
-type VideoFilter = 'ALL' | 'REVIEW' | GabaVideoRecord['status'];
+type VideoFilter = 'ALL' | 'REVIEW' | 'PROFILE' | GabaVideoRecord['status'];
 type TfAssignment = Record<string, {lead: string; backup: string}>;
 type VideoReviewDecision = 'UNDECIDED' | 'HOLD' | 'LIMITED_USE' | 'PUBLISH_GENERAL' | 'EXCLUDE';
 type VideoReviewDraft = {
@@ -75,6 +75,7 @@ const VIDEO_FILTERS: Array<{id: VideoFilter; label: string}> = [
   {id: 'HOLD', label: '보류'},
   {id: 'LIMITED_USE', label: '제한 사용'},
   {id: 'EXCLUDE', label: '배제'},
+  {id: 'PROFILE', label: '인물 출처 있음'},
 ];
 
 const RESEARCH_URL = 'https://pubmed.ncbi.nlm.nih.gov/33041752/';
@@ -343,6 +344,7 @@ export default function App() {
     const query = videoQuery.trim().toLocaleLowerCase();
     const matchesFilter = (video: GabaVideoRecord) => videoFilter === 'ALL'
       || (videoFilter === 'REVIEW' && video.status !== 'PUBLISH_GENERAL')
+      || (videoFilter === 'PROFILE' && Boolean(video.authorityEvidenceUrl) && video.audit.authorityLevel !== 'UNVERIFIED')
       || video.status === videoFilter;
     return [...panelVideos]
       .filter(video => matchesFilter(video))
@@ -351,6 +353,7 @@ export default function App() {
 
   const videoFilterCount = (filter: VideoFilter) => panelVideos.filter(video => filter === 'ALL'
     || (filter === 'REVIEW' && video.status !== 'PUBLISH_GENERAL')
+    || (filter === 'PROFILE' && Boolean(video.authorityEvidenceUrl) && video.audit.authorityLevel !== 'UNVERIFIED')
     || video.status === filter).length;
 
   useEffect(() => {
@@ -1185,7 +1188,7 @@ export default function App() {
                 <label className="video-db-search">영상 DB 검색
                   <input type="search" value={videoQuery} onChange={event => setVideoQuery(event.currentTarget.value)} placeholder="제목·채널·화자·ID" aria-label="영상 DB 검색" />
                 </label>
-                <div className="video-db-filters" role="group" aria-label="영상 DB 상태 필터">
+                <div className="video-db-filters" role="group" aria-label="영상 DB 상태·인물 출처 필터">
                   {VIDEO_FILTERS.map(filter => <button key={filter.id} type="button" className={videoFilter === filter.id ? 'is-active' : ''} aria-pressed={videoFilter === filter.id} onClick={() => setVideoFilter(filter.id)}>
                     {filter.label}<span>{videoFilterCount(filter.id)}</span>
                   </button>)}
