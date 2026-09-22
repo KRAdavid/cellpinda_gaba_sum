@@ -746,7 +746,7 @@ export default function App() {
       'GABA Shorts 일일 감리 요약',
       `확인일: ${snapshot.checkedAt}`,
       `수집 범위: 채널 ${snapshot.sourceChannels}/${snapshot.registeredChannels} · 검색어 ${snapshot.discoveryQueries}/${snapshot.totalDiscoveryQueries}`,
-      `검토 대기: ${snapshot.pendingReview}건 · SCIENCE/MEDICAL 우선: ${snapshot.scienceMedicalPriority}건 · 신규 후보: ${snapshot.newCandidates}건`,
+      `검토 대기: ${snapshot.pendingReview}건 · SCIENCE/MEDICAL 우선: ${snapshot.scienceMedicalPriority}건 · 오늘 신규 후보(누적): ${snapshot.newCandidates}건 · 이번 실행 신규 후보: ${snapshot.newCandidatesThisRun}건`,
       `자동 공개: ${snapshot.autoPublish}건 · 자동 공개는 사람 승인 전 0건 유지`,
       `등록 영상 링크: ${snapshot.registeredVideoLinksHealthy}/${snapshot.registeredVideoLinksChecked} · 경고 ${snapshot.registeredVideoLinkWarnings}건`,
       `권위·연구 출처 링크: ${snapshot.registeredEvidenceLinksHealthy}/${snapshot.registeredEvidenceLinksChecked} · 경고 ${snapshot.registeredEvidenceLinkWarnings}건`,

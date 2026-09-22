@@ -44,6 +44,7 @@ assert('successful monitor run triggers Pages publication', deployWorkflow.inclu
 assert('presenter snapshot keeps publication gated', snapshot.includes('GABA_MONITOR_SNAPSHOT') && snapshot.includes('pendingReview') && snapshot.includes('autoPublish') && snapshot.includes('"autoPublish": 0'));
 assert('monitor snapshot keeps recent history', monitor.includes('readPreviousMonitorHistory') && monitor.includes('slice(-14)') && snapshot.includes('"history"') && snapshot.includes('"captionBodiesAvailable"'));
 assert('presenter exposes recent monitor history', app.includes('monitor-snapshot__history') && app.includes('최근 감리 추이') && app.includes('pendingDelta'));
+assert('meeting brief distinguishes daily and run candidate counts', app.includes('오늘 신규 후보(누적)') && app.includes('이번 실행 신규 후보'));
 assert('presenter snapshot includes human decision gates', snapshot.includes('humanRoleAssigned') && snapshot.includes('humanSourceReviewed') && snapshot.includes('registeredVideoApproved') && snapshot.includes('domesticPublicApproved') && snapshot.includes('domesticVideoTotal') && snapshot.includes('firstMeetingReady'));
 assert('monitor checks registered video source links', monitor.includes('checkRegisteredVideoLinks') && monitor.includes('registeredVideoLinksChecked') && monitor.includes('registeredVideoLinkWarnings'));
 assert('daily report exposes registered link health', report.includes('등록 영상 원문 링크') && report.includes('링크 경고'));
