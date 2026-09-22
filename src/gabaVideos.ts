@@ -26,6 +26,7 @@ export type GabaVideoRecord = {
   channel: string;
   sourceChannelUrl?: string;
   speaker: string;
+  authorityEvidenceUrl?: string;
   summary: string;
   operatorSentence: string;
   personSummary: string;
@@ -207,7 +208,8 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     speaker: '정이안',
     summary: '자율신경 건강을 음식과 GABA 성분의 관계로 설명하는 프레임입니다. 제목·채널 설명 기반 예비 요약입니다.',
     operatorSentence: '음식 속 GABA와 섭취 후 효과를 분리 확인하기 전에는 공개 설명에 사용하지 않는 후보입니다.',
-    personSummary: '공개 프로필은 한의학 박사·한의원 원장으로 소개하지만 영상 발언과 연구 전문성은 별도 검토가 필요합니다.',
+    personSummary: '서울시 공개 소개 자료는 정이안을 한의학 박사·한의원 원장·동국대 외래교수로 소개합니다. 이 확인은 영상 발언과 GABA 연구 근거를 승인하는 자료가 아닙니다.',
+    authorityEvidenceUrl: 'https://mediahub.seoul.go.kr/archives/1114317',
     status: 'LIMITED_USE',
     statusReason: 'GABA 함유 식품과 섭취 후 인체 효과를 분리 확인해야 합니다.',
     checkedAt: '2026-09-22',
@@ -230,7 +232,8 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     speaker: '신원철',
     summary: 'GABA가 뇌로 직접 가지 않는데 효과가 있는지를 질문으로 제시하고 수면 보충제의 작용과 안전성을 설명하겠다고 안내합니다.',
     operatorSentence: '경구 GABA와 수면·안전성 주장을 원문과 연구 조건으로 다시 확인해야 하는 후보입니다.',
-    personSummary: '수면의학·신경과 분야 경력은 공개 프로필에서 확인 출발점이 있지만 영상 주장 자체는 별도 검증해야 합니다.',
+    personSummary: '국립의과학지식센터에 신원철이 현미쌀눈 유래 GABA 수면 연구의 공저자로 등록되어 있어 수면 연구 경력의 확인 출발점이 있습니다. 연구 경력은 이 쇼츠의 화자·발언·상업성·제품 효능을 자동 승인하지 않습니다.',
+    authorityEvidenceUrl: 'https://library.nih.go.kr/ncmiklib/elib/kom/articleDtl.do?pk_pb_seq=PB07234096',
     status: 'HOLD',
     statusReason: '부작용 없음·안전한 수면 보충제 같은 표현과 상업적 이해관계를 확인해야 합니다.',
     checkedAt: '2026-09-22',
@@ -276,7 +279,8 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     speaker: '이제원',
     summary: 'GABA의 역할을 직접 묻고 한방내과 진료 철학과 연결해 소개합니다. 제목·공개 설명 기반 예비 요약입니다.',
     operatorSentence: '일반 역할 설명과 진료·약물·보충제 조언을 분리 확인해야 하는 후보입니다.',
-    personSummary: '채널 공개 설명의 자기소개를 기반으로 하며 공식 자격·영상 화자 여부는 독립 확인 전입니다.',
+    personSummary: '비엠한방내과 공식 게시물은 이제원 원장과 한방내과 전문의로서의 활동을 소개합니다. 공식 게시물은 영상 속 실제 화자와 GABA 발언의 근거·범위를 대신 확인하지 않습니다.',
+    authorityEvidenceUrl: 'https://www.bmkclinic.com/bm-posts/a-scientists-perspective---bm-k-clinic-director-lee-je-wons-akomnews-interview',
     status: 'LIMITED_USE',
     statusReason: '일반 역할 설명과 진료·약물·보충제 조언 구간을 분리해야 합니다.',
     checkedAt: '2026-09-22',

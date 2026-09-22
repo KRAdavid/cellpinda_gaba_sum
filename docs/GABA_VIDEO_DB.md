@@ -23,6 +23,7 @@
 | `contentBasis` | 원문·대본 확인인지, 공식 강의 페이지인지, 제목·공개 설명만 본 예비 확인인지 |
 | `previewImage`·`previewLabel` | 공식 원문이 제공하는 미리보기 이미지 또는 기관 미디어 블록 정보. 영상 파일을 복제하는 필드가 아님 |
 | `operatorSentence` | 사업자가 고객 앞에서 읽을 수 있는 일반 교육용 한 문장 |
+| `authorityEvidenceUrl` | 화자·소속을 확인하는 독립 출처 링크. 자격 확인과 영상 주장·효능·공개 승인은 별도임 |
 | `authorityLevel` | 공식 원출처로 확인됨, 부분 확인, 미확인 |
 | `evidenceLevel` | 일반 설명 근거 A~D 또는 아직 미검토 |
 | `claimCategories` | 일반 생리, 경구 GABA 인체 연구, 수면·스트레스, 질환·치료, 제품·상업성 중 확인된 주장 범위 |
