@@ -8,6 +8,7 @@
 | AUTH-02 | [Molecular regulation of synaptic inhibition](https://videocast.nih.gov/watch=51064) | NIH VideoCast · Wei Lu, Ph.D., NINDS | NIH 공식 강의 페이지·발표자·설명 확인 | PUBLISH_GENERAL | 핵심 일반 생리 구간을 선별해 원문 링크로 사용 |
 | VID-01 | [수면에 도움이 되는 성분, 가바(GABA)를 아시나요?](https://www.youtube.com/watch?v=z-VLanhugWI&t=152s) | 여에스더 박사·의학채널 비온뒤 | 구간 후보 | HOLD | 원문·권리·과학 검토 |
 | VID-02 | [신경전달물질은 우리 몸을 어떻게 지배할까?](https://www.youtube.com/watch?v=zfW2JC3gMcU) | 국가과학기술연구회(nst)·안전성평가연구소 백정엽 박사 | 공식 연구기관 채널·설명 확인 | HOLD | GABA 설명 구간·자막·권리 검토 |
+| VID-03 | [뇌영양제 가바(GABA) 꼭 먹어야 한다면 이렇게 해보세요/불안, 불면, 우울증](https://www.youtube.com/watch?v=R14wnRPxOJ8) | Braintube·실제 화자 확인 필요 | 공개 챕터·채널 연결 부분 확인 | HOLD | 01:25 전후 일반 정의와 이후 보충제·증상 주장 분리 검토 |
 | SHORT-01 | [갱년기 잠 못 자면](https://www.youtube.com/shorts/Cnk0PGn9YBM) | 셀럽의 건강비결 | 재게시·예비 | EXCLUDE | 원출처 확인 전 사용 금지 |
 | SHORT-02 | [수면제 말고 GABA](https://www.youtube.com/shorts/RLAU1VWGsaI) | 이동환TV | 프로필 부분 확인·예비 | HOLD | 자막·대체 표현 감리 |
 | SHORT-03 | [신경 안정과 수면](https://www.youtube.com/shorts/vnocd9ZVJj0) | 양과자 | 자격 미확인·예비 | HOLD | 화자·근거 확인 |

@@ -8,6 +8,7 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | z-VLanhugWI | [원문 보기](https://www.youtube.com/watch?v=z-VLanhugWI&t=152s) | \[에스더쇼 미니강연\] 수면에 도움이 되는 성분, 가바(GABA)를 아시나요? (여에스더 박사) | 의학채널 비온뒤 | [채널 원문](https://www.youtube.com/@aftertherainkr) | 제목·채널 확인 | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |
 | zfW2JC3gMcU | [원문 보기](https://www.youtube.com/watch?v=zfW2JC3gMcU) | 신경전달물질은 우리 몸을 어떻게 지배할까? | 국가과학기술연구회(nst) | [채널 원문](https://www.youtube.com/@KoreaScienceTechnology) | 제목·채널 확인 | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |
+| R14wnRPxOJ8 | [원문 보기](https://www.youtube.com/watch?v=R14wnRPxOJ8) | 뇌영양제👩‍⚕️👨‍⚕️가바(GABA)꼭먹어야 한다면 이렇게해보세요/불안,불면,우울증 | 브레인튜브 Brain Doctor | [채널 원문](https://www.youtube.com/@%EB%B8%8C%EB%A0%88%EC%9D%B8%ED%8A%9C%EB%B8%8CBrainDoctor) | 제목·채널 확인 | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |
 | Cnk0PGn9YBM | [원문 보기](https://www.youtube.com/shorts/Cnk0PGn9YBM) | 여에스더 "갱년기 잠 못 자면 노화 빨라져요" 수면제보다 안전한 영양제 | 셀럽의 건강비결 | [채널 원문](https://www.youtube.com/@Celeb_tip) | 제목·채널 확인 | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |
 | RLAU1VWGsaI | [원문 보기](https://www.youtube.com/shorts/RLAU1VWGsaI) | 잠자기 어렵다면 수면제 말고  이것 으로 해결하세요. #가바 | 교육하는 의사! 이동환TV | [채널 원문](https://www.youtube.com/@doctorLeeTV) | 제목·채널 확인 | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |
 | vnocd9ZVJj0 | [원문 보기](https://www.youtube.com/shorts/vnocd9ZVJj0) | 신경을 안정시켜 수면에 도움되는  '가바' (GABA, 졸피뎀, 자낙스, 가바수용체) | 영양과학자 양과자 | [채널 원문](https://www.youtube.com/@snack-yang) | 제목·채널 확인 | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |
