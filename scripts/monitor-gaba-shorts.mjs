@@ -282,7 +282,14 @@ const parseShortsPage = html => html.split(/"shortsLockupViewModel"\s*:/i).slice
 }).filter(item => item.id && keywords.some(keyword => keyword.test(item.title)));
 
 const markdown = value => value.replaceAll('|', '\\|').replaceAll('[', '\\[').replaceAll(']', '\\]').replaceAll('\r', ' ').replaceAll('\n', ' ');
-const checkedDate = new Date().toISOString().slice(0, 10);
+const koreaDateParts = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Asia/Seoul',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+}).formatToParts(new Date());
+const koreaDatePart = type => koreaDateParts.find(part => part.type === type)?.value ?? '';
+const checkedDate = `${koreaDatePart('year')}-${koreaDatePart('month')}-${koreaDatePart('day')}`;
 
 const readPreviousMonitorHistory = () => {
   if (!fs.existsSync(snapshotPath)) return [];

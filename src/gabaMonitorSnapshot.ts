@@ -1,5 +1,5 @@
 export const GABA_MONITOR_SNAPSHOT = {
-  "checkedAt": "2026-09-22",
+  "checkedAt": "2026-09-23",
   "sourceChannels": 8,
   "registeredChannels": 8,
   "discoveryQueries": 6,
@@ -132,6 +132,17 @@ export const GABA_MONITOR_SNAPSHOT = {
       "captionBodiesChecked": 9,
       "captionBodyWarnings": 9,
       "autoPublish": 0
+    },
+    {
+      "date": "2026-09-23",
+      "newCandidates": 0,
+      "pendingReview": 91,
+      "scienceMedicalPriority": 55,
+      "videoPriority": 36,
+      "captionBodiesAvailable": 0,
+      "captionBodiesChecked": 9,
+      "captionBodyWarnings": 9,
+      "autoPublish": 0
     }
   ],
   "autoPublish": 0,
@@ -161,8 +172,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "firstMeetingReady": false,
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",
-  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-09-22.md",
-  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-09-22.md",
+  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-09-23.md",
+  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-09-23.md",
   "kickoffUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md",
   "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md"
 } as const;

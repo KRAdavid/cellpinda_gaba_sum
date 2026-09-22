@@ -45,6 +45,8 @@ pnpm run monitor:gaba-shorts:write
 
 GitHub Actions는 .github/workflows/monitor-gaba-shorts.yml에서 매일 실행한다. 예약 실행이 멈추지 않도록 저장소의 Actions·Pages 권한과 기본 브랜치를 확인한다.
 
+일일 리포트·스냅샷의 기준일은 실행 서버의 UTC가 아니라 `Asia/Seoul` 한국 시간으로 생성한다. 자정 전후 실행에서도 회의에서 사용하는 날짜와 문서 파일명이 하루 밀리지 않도록 하기 위한 기준이다.
+
 감리 워크플로가 성공하면 `.github/workflows/deploy-pages.yml`의 `workflow_run` 경로가 Pages를 다시 빌드한다. 이 연결은 일일 리포트·감리 대기 수·발표자 스냅샷을 최신 공개 발표자 화면에 반영하기 위한 것이며, 새 후보를 소비자 공개 목록에 자동 추가하거나 `PUBLISH_GENERAL`로 승인하지 않는다.
 
 수집 결과의 팀 토론과 승인·보류·배제 기록은 GABA_VIDEO_REVIEW_LOG.md에 남긴다. 자동 수집 후보를 공개 페이지로 옮길 때는 이 로그의 종료 조건을 모두 채운다.
