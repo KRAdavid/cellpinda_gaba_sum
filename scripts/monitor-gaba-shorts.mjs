@@ -345,6 +345,12 @@ const parseInboxEntries = text => text.split(/^### /m).slice(1).map(section => {
   return {id, status, title: videoMatch[1], url: videoMatch[2], channel, description};
 }).filter(Boolean);
 
+const authoritySignalLabel = entry => entry.signals.includes('전문가 자격 확인 신호')
+  ? '전문가 표현 감지 · 자격 미확인'
+  : entry.signals.includes('권위 후보 검색 발견')
+    ? '권위 검색 발견 · 자격 미확인'
+    : '해당 없음 · 권위 신호 없음';
+
 const triageMarkdown = ({inboxText, checkedDate: date}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)})).sort((a, b) => {
@@ -354,9 +360,9 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
   const rows = ranked.length
     ? ranked.map(entry => {
       const {reviewer: firstReviewer} = reviewAssignment(entry.priority);
-      return `| ${entry.id} | [${markdown(entry.title)}](${entry.url}) | ${markdown(entry.channel)} | ${markdown(entry.signals.join(' · '))} | ${entry.priority} | ${firstReviewer} | PENDING_REVIEW |`;
+      return `| ${entry.id} | [${markdown(entry.title)}](${entry.url}) | ${markdown(entry.channel)} | ${markdown(entry.signals.join(' · '))} | ${authoritySignalLabel(entry)} | ${entry.priority} | ${firstReviewer} | PENDING_REVIEW |`;
     }).join('\n')
-    : '| 없음 | 검토 대기 후보 없음 | - | - | - | - | - |';
+    : '| 없음 | 검토 대기 후보 없음 | - | - | - | - | - | - |';
   const scienceFirst = ranked.filter(entry => entry.priority !== 'VIDEO 우선').length;
   return [
     '# GABA 숏츠 감리 우선순위 보드',
@@ -379,8 +385,8 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
     '',
     '## 검토 대기 목록',
     '',
-    '| ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 자동 우선순위 | 첫 담당 | 상태 |',
-    '| --- | --- | --- | --- | --- | --- | --- |',
+    '| ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 첫 담당 | 상태 |',
+    '| --- | --- | --- | --- | --- | --- | --- | --- |',
     rows,
     '',
     '## 다음 행동',
@@ -412,6 +418,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
         `- 첫 담당 제안: ${assignment.reviewer}`,
         `- 다음 행동 제안: ${assignment.nextAction}`,
         `- 제목·공개 텍스트 주의 신호: ${markdown(candidate.signals.join(' · '))}`,
+        `- 권위 신호 구분: ${authoritySignalLabel(candidate)}`,
         '- 현재 상태: PENDING_REVIEW',
         '',
         '### 사람 검토 체크',

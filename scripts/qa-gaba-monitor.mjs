@@ -61,6 +61,7 @@ assert('presenter queue carries reviewer and next action', monitor.includes('rev
 assert('authority queue separates discovery basis from authority approval', monitor.includes('authorityBasis') && monitor.includes('TITLE_DESCRIPTION_SIGNAL') && monitor.includes('KEYWORD_DISCOVERY') && snapshot.includes('"authorityBasis"') && app.includes('AUTHORITY_BASIS_LABELS') && app.includes('권위 후보 확인 전'));
 assert('daily review session is generated for human discussion', monitor.includes('reviewSessionMarkdown') && monitor.includes('GABA_VIDEO_REVIEW_SESSION_${checkedDate}.md') && snapshot.includes('reviewSessionUrl'));
 assert('triage board exists and keeps human review boundary', triage.includes('GABA 숏츠 감리 우선순위 보드') && triage.includes('공개 승인을 판정하지 않는다') && triage.includes('PENDING_REVIEW'));
+assert('triage board separates authority signal basis', monitor.includes('authoritySignalLabel') && monitor.includes('권위 신호 구분') && triage.includes('전문가 표현 감지 · 자격 미확인') && triage.includes('권위 검색 발견 · 자격 미확인'));
 assert('inbox has no duplicate video IDs', new Set(inboxIds).size === inboxIds.length);
 
 console.log(`GABA monitor QA passed: ${sourceCount} channels, ${inboxIds.length} unique inbox video IDs.`);
