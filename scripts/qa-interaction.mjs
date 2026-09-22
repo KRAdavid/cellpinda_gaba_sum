@@ -297,7 +297,7 @@ try {
   await evaluate('document.querySelector(".video-db-item__select")?.click()');
   await waitForText('.video-db-detail', '인물 소개');
   const selected = await evaluate('({detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||""})');
-  assert('video DB selection shows summary, person introduction, operator sentence, and next audit action', selected.detail.includes('무엇을 어떻게 소개했나') && selected.detail.includes('인물 소개') && selected.detail.includes('사업자 설명 한 문장') && selected.detail.includes('고객 설명 3문장 복사') && selected.detail.includes('다음 감리 행동') && selected.external.includes('youtube.com/shorts/RLAU1VWGsaI'), JSON.stringify(selected));
+  assert('video DB selection shows summary, person introduction, operator sentence, and next audit action', selected.detail.includes('무엇을 어떻게 소개했나') && selected.detail.includes('인물 소개') && selected.detail.includes('사업자 설명 한 문장') && selected.detail.includes('고객 설명 3문장 복사') && selected.detail.includes('고객 전달용 문장은 미승인 영상을') && selected.detail.includes('원문 확인 전') && selected.detail.includes('다음 감리 행동') && selected.external.includes('youtube.com/shorts/RLAU1VWGsaI'), JSON.stringify(selected));
   await evaluate('document.querySelector("[data-copy-video-review-link]")?.click()');
   await wait(180);
   const reviewLinkCopyState = await evaluate('document.querySelector(".video-db-detail__operator")?.innerText||""');

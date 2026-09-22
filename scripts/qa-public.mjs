@@ -149,6 +149,7 @@ if (!fs.existsSync(path.join(dist, 'favicon.svg'))) failures.push('missing favic
 for (const [label, value] of required) if (!assetText.includes(value)) failures.push(`missing required ${label}: ${value}`);
 for (const [label, value] of requiredMetadata) if (!index.includes(value)) failures.push(`missing required ${label}: ${value}`);
 if (!appSource.includes('const customerStatus = approvedForCustomerSummary ?') || !appSource.includes('현재 상태는 ${customerStatus}')) failures.push('customer brief does not neutralize unapproved status for customer-facing copy');
+if (!appSource.includes('고객 전달용 문장은 미승인 영상을')) failures.push('customer brief rule is not visible in presenter video detail');
 for (const [label, value] of forbiddenMetadata) if (index.includes(value)) failures.push(`found forbidden ${label}: ${value}`);
 for (const [label, value] of forbiddenPublicCopy) if (assetText.includes(value)) failures.push(`found forbidden public copy ${label}: ${value}`);
 for (const [label, value] of forbiddenPublicBundleTerms) if (assetText.includes(value)) failures.push(`found forbidden public bundle term ${label}: ${value}`);
