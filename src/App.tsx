@@ -208,7 +208,7 @@ function makeSlides(): Slide[] {
       id: 'finish',
       label: '08 · 한 문장 정리',
       title: 'GABA는 뇌의 신호 균형을 이해할 때 만나는 성분입니다.',
-      body: '무엇인지, 어떤 기능으로 알려졌는지, 일반 연구가 무엇을 살펴보는지를 차례로 확인하면 과장 없이 이해할 수 있습니다. 권위 영상 요약은 아래 별도 섹션에서 이어집니다.',
+      body: '무엇인지, 어떤 기능으로 알려졌는지, 일반 연구가 무엇을 살펴보는지를 차례로 확인하면 과장 없이 이해할 수 있습니다. 영상 검토 후보 요약은 아래 별도 섹션에서 이어집니다.',
       tone: 'finish',
       presenterPrompt: 'GABA를 오늘 한 문장으로 설명한다면 어떻게 말하시겠어요?',
       presenterBoundary: '마지막도 교육적 요약으로 끝내며 구매나 효능 약속으로 연결하지 않습니다.',
@@ -696,14 +696,14 @@ export default function App() {
         {!presentationMode ? <div className="reel-next-bar" aria-live="polite">
           <div className="reel-next-bar__copy">
             <span>{active === 0 ? '아래로 넘겨 계속' : nextSlide ? '다음 장면' : '다음 섹션'}</span>
-            <strong>{nextSlide ? nextSlide.label : '권위 영상 요약'}</strong>
+          <strong>{nextSlide ? nextSlide.label : '영상 검토 후보'}</strong>
           </div>
           {nextSlide ? <button type="button" className="reel-next-button" onClick={() => goTo(active + 1)} aria-label={`다음 장면 ${nextSlide.label} 보기`}>다음 장면 <span aria-hidden="true">↓</span></button> : <a className="reel-next-link" href="#video-showcase">영상 요약으로 이어가기 <span aria-hidden="true">↓</span></a>}
         </div> : null}
         {openPanel ? <div className="info-layer" role="presentation" onMouseDown={event => {if (event.target === event.currentTarget) closePanel();}}>
           <aside className="info-panel" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title">
             <div className="info-panel__topline"><span>카드 흐름 안에서 확인</span><button ref={panelCloseRef} type="button" onClick={() => closePanel()} aria-label="정보 패널 닫기">×</button></div>
-            <p className="eyebrow">{openPanel === 'research' ? '일반 GABA 연구' : openPanel === 'video' ? '권위 영상 DB' : '발표자 운영'}</p>
+            <p className="eyebrow">{openPanel === 'research' ? '일반 GABA 연구' : openPanel === 'video' ? (presentationMode ? '권위 영상 DB' : '영상 검토 DB') : '발표자 운영'}</p>
             <h2 id="info-panel-title">{panelTitle}</h2>
             {openPanel === 'research' ? <>
               <p>연구 결과를 볼 때는 무엇을 살펴봤는지와 어떤 조건이었는지를 함께 확인하세요.</p>

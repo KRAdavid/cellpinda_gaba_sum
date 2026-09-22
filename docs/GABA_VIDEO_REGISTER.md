@@ -1,4 +1,4 @@
-# 일반 GABA 권위 영상 등록부
+# 일반 GABA 영상 감리 등록부
 
 이 문서는 영상 DB의 빠른 인덱스다. 영상별 “무엇을 어떻게 소개했는지”, 인물 소개, 근거 감리와 다음 작업은 GABA_VIDEO_DB.md에 기록한다. 판정 방식은 GABA_VIDEO_REVIEW_RULES.md를 따른다.
 
