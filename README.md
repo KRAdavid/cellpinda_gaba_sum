@@ -2,7 +2,7 @@
 
 소비자가 모바일에서 한 장씩 넘겨 보는 GABA 소개 페이지입니다.
 
-권위 영상 후보는 [GABA_VIDEO_DB.md](docs/GABA_VIDEO_DB.md)에 영상별 요약과 인물 소개를 기록하고, [GABA_VIDEO_REVIEW_RULES.md](docs/GABA_VIDEO_REVIEW_RULES.md)의 권위·근거·상업성·권리 감리를 거칩니다. 새 가바·GABA 숏츠는 [GABA_VIDEO_INBOX.md](docs/GABA_VIDEO_INBOX.md)에 PENDING_REVIEW로 수집되며, 일일 운영은 [GABA_VIDEO_DAILY_MONITOR.md](docs/GABA_VIDEO_DAILY_MONITOR.md)에 정리했습니다. 자동 수집 후보는 검토 전 공개 페이지에 반영하지 않습니다.
+권위 영상 후보는 [GABA_VIDEO_DB.md](docs/GABA_VIDEO_DB.md)에 영상별 요약과 인물 소개를 기록하고, [GABA_VIDEO_REVIEW_RULES.md](docs/GABA_VIDEO_REVIEW_RULES.md)의 권위·근거·상업성·권리 감리를 거칩니다. 새 가바·GABA 숏츠는 [GABA_VIDEO_INBOX.md](docs/GABA_VIDEO_INBOX.md)에 PENDING_REVIEW로 수집되며, 사업자는 [GABA_VIDEO_TRIAGE.md](docs/GABA_VIDEO_TRIAGE.md)에서 제목 기반 주의 신호가 있는 후보부터 확인할 수 있습니다. 일일 운영은 [GABA_VIDEO_DAILY_MONITOR.md](docs/GABA_VIDEO_DAILY_MONITOR.md)에 정리했습니다. 자동 수집 후보는 검토 전 공개 페이지에 반영하지 않습니다.
 
 매일 실행 요약과 채널 경고·신규 후보·다음 감리 순서는 [`docs/GABA_VIDEO_DAILY_REPORT.md`](docs/GABA_VIDEO_DAILY_REPORT.md)에 자동 기록됩니다.
 일자별 리포트 원본은 [`docs/gaba-video-daily/`](docs/gaba-video-daily/)에 누적해 회의 전후의 변화와 반복 경고를 비교할 수 있습니다.

@@ -4,6 +4,7 @@ import path from 'node:path';
 const root = process.cwd();
 const inboxPath = path.join(root, 'docs', 'GABA_VIDEO_INBOX.md');
 const reportPath = path.join(root, 'docs', 'GABA_VIDEO_DAILY_REPORT.md');
+const triagePath = path.join(root, 'docs', 'GABA_VIDEO_TRIAGE.md');
 const reportArchiveDir = path.join(root, 'docs', 'gaba-video-daily');
 const writeMode = process.argv.includes('--write');
 const keywords = [/가바/i, /\bGABA\b/i];
@@ -91,16 +92,96 @@ const parseShortsPage = html => html.split(/"shortsLockupViewModel"\s*:/i).slice
   return {id, title, description: '', published: '', updated: ''};
 }).filter(item => item.id && keywords.some(keyword => keyword.test(item.title)));
 
-const markdown = value => value.replaceAll('|', '\\|').replaceAll('\r', ' ').replaceAll('\n', ' ');
+const markdown = value => value.replaceAll('|', '\\|').replaceAll('[', '\\[').replaceAll(']', '\\]').replaceAll('\r', ' ').replaceAll('\n', ' ');
 const checkedDate = new Date().toISOString().slice(0, 10);
+
+const triageRules = [
+  {label: '질환·치료 표현', priority: 'SCIENCE/MEDICAL 우선', pattern: /불면증|우울증|ADHD|치매|알츠하이머|공황|PTSD|불안장애|치료|예방|진단|결핍|신약|정신질환/i},
+  {label: '약물 대체·비교', priority: 'SCIENCE/MEDICAL 우선', pattern: /수면제|졸피뎀|자낙스|약.*대체|대체.*약/i},
+  {label: '효과·안전성 단정 신호', priority: 'SCIENCE/MEDICAL 우선', pattern: /부작용\s*없|안전|황금 복용량|특효|효과|해결|꿀잠|치유|도움되는/i},
+  {label: '섭취·상업성 신호', priority: 'SCIENCE/MEDICAL + RIGHTS', pattern: /영양제|건기식|수면영양제|판매|품절|상륙|복용량|함량|발효|식품|섭취/i},
+];
+
+const screenCandidate = text => {
+  const matched = triageRules.filter(rule => rule.pattern.test(text));
+  const signals = matched.length ? [...new Set(matched.map(rule => rule.label))] : ['일반 설명 후보'];
+  const priority = matched.some(rule => rule.priority === 'SCIENCE/MEDICAL 우선')
+    ? 'SCIENCE/MEDICAL 우선'
+    : matched.some(rule => rule.priority === 'SCIENCE/MEDICAL + RIGHTS')
+      ? 'SCIENCE/MEDICAL + RIGHTS'
+      : 'VIDEO 우선';
+  return {signals, priority};
+};
+
+const parseInboxEntries = text => text.split(/^### /m).slice(1).map(section => {
+  const lines = section.split('\n');
+  const id = lines[0].trim();
+  const status = lines.find(line => line.startsWith('- 상태:'))?.replace('- 상태:', '').trim() ?? '';
+  const videoMatch = lines.find(line => line.startsWith('- 영상:'))?.match(/^- 영상: \[(.*?)\]\((https?:\/\/[^)]+)\)/);
+  const channel = lines.find(line => line.startsWith('- 채널:'))?.replace('- 채널:', '').trim() ?? '';
+  const description = lines.find(line => line.startsWith('- 공개 설명(자동 수집):'))?.replace('- 공개 설명(자동 수집):', '').trim() ?? '';
+  if (!id || !videoMatch) return null;
+  return {id, status, title: videoMatch[1], url: videoMatch[2], channel, description};
+}).filter(Boolean);
+
+const triageMarkdown = ({inboxText, checkedDate: date}) => {
+  const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
+  const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`)})).sort((a, b) => {
+    const rank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
+    return rank(a.priority) - rank(b.priority) || a.id.localeCompare(b.id);
+  });
+  const rows = ranked.length
+    ? ranked.map(entry => {
+      const firstReviewer = entry.priority === 'VIDEO 우선'
+        ? 'VIDEO'
+        : entry.priority === 'SCIENCE/MEDICAL + RIGHTS'
+          ? 'SCIENCE/MEDICAL → RIGHTS'
+          : 'SCIENCE/MEDICAL';
+      return `| ${entry.id} | [${markdown(entry.title)}](${entry.url}) | ${markdown(entry.channel)} | ${markdown(entry.signals.join(' · '))} | ${entry.priority} | ${firstReviewer} | PENDING_REVIEW |`;
+    }).join('\n')
+    : '| 없음 | 검토 대기 후보 없음 | - | - | - | - | - |';
+  const scienceFirst = ranked.filter(entry => entry.priority !== 'VIDEO 우선').length;
+  return [
+    '# GABA 숏츠 감리 우선순위 보드',
+    '',
+    `> 자동 생성일: ${date} · 제목과 수집된 공개 설명 기반의 감리 보조 분류다. 권위·근거·권리·공개 승인을 판정하지 않는다.`,
+    '',
+    '## 오늘의 큐',
+    '',
+    `- 검토 대기: ${ranked.length}건`,
+    `- SCIENCE/MEDICAL 또는 RIGHTS 선확인: ${scienceFirst}건`,
+    `- VIDEO 원문·자막 선확인: ${ranked.length - scienceFirst}건`,
+    '',
+    '## 우선순위 정의',
+    '',
+    '- SCIENCE/MEDICAL 우선: 질환·치료, 약물 대체·비교, 효과·안전성 단정으로 읽힐 수 있어 일반 GABA 연구와 분리해 먼저 감리한다.',
+    '- SCIENCE/MEDICAL + RIGHTS: 섭취·상업성 신호가 있어 과학·의료 주장과 이해관계·사용권을 함께 확인한다.',
+    '- VIDEO 우선: 제목상 위험 신호가 적어 원문·자막·화자·Shorts 형식부터 확인한다.',
+    '- 모든 행은 PENDING_REVIEW이며, 이 보드의 분류만으로 공개·배제하지 않는다.',
+    '',
+    '## 검토 대기 목록',
+    '',
+    '| ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 자동 우선순위 | 첫 담당 | 상태 |',
+    '| --- | --- | --- | --- | --- | --- | --- |',
+    rows,
+    '',
+    '## 다음 행동',
+    '',
+    '1. SCIENCE/MEDICAL 우선 행은 질환·약물·효과·안전성 표현을 일반 GABA 연구와 분리해 원문 타임코드와 함께 기록한다.',
+    '2. VIDEO 담당은 모든 후보의 실제 Shorts 형식·자막·화자를 확인하고, 제목만으로 인물 권위를 승인하지 않는다.',
+    '3. RIGHTS 담당은 임베드·원문 링크·재사용·인용 범위를 확인한다.',
+    '4. 최종 상태는 GABA_VIDEO_REVIEW_RULES.md의 PUBLISH_GENERAL·LIMITED_USE·HOLD·EXCLUDE 중 하나로 사람이 결정한다.',
+    '',
+  ].join('\n');
+};
 
 const dailyReport = ({successfulSources, successfulSearches, candidates, errors, fallbackSources}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
   const candidateRows = candidates.length
-    ? candidates.map(item => `| PENDING-${checkedDate.replaceAll('-', '')}-${item.id} | [${markdown(item.title)}](https://www.youtube.com/watch?v=${item.id}) | ${markdown(item.source.name)} | PENDING_REVIEW |`).join('\n')
-    : '| 없음 | 신규 후보 없음 | - | - |';
+    ? candidates.map(item => `| PENDING-${checkedDate.replaceAll('-', '')}-${item.id} | [${markdown(item.title)}](https://www.youtube.com/watch?v=${item.id}) | ${markdown(item.source.name)} | ${markdown(item.riskSignals.join(' · '))} | ${item.reviewPriority} | PENDING_REVIEW |`).join('\n')
+    : '| 없음 | 신규 후보 없음 | - | - | - |';
   return [
     '# GABA Shorts 일일 모니터 리포트',
     '',
@@ -116,8 +197,8 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, errors,
     '',
     '## 신규 후보',
     '',
-    '| ID | 영상 | 채널 | 상태 |',
-    '| --- | --- | --- | --- |',
+    '| ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 상태 |',
+    '| --- | --- | --- | --- | --- | --- |',
     candidateRows,
     '',
     '## 채널 경고',
@@ -165,7 +246,8 @@ const main = async () => {
   const addCandidates = (items, source, channelId) => {
     for (const item of items) {
       if (existingIds.has(item.id) || candidates.some(candidate => candidate.id === item.id)) continue;
-      candidates.push({...item, source, channelId});
+      const triage = screenCandidate(`${item.title} ${item.description ?? ''}`);
+      candidates.push({...item, source, channelId, riskSignals: triage.signals, reviewPriority: triage.priority});
     }
   };
 
@@ -225,6 +307,9 @@ const main = async () => {
     '- 공개일: ' + (item.published || '확인 필요'),
     '- 수집일: ' + checkedDate,
     '- 키워드 일치: 가바/GABA 제목',
+    '- 공개 설명(자동 수집): ' + (item.description ? markdown(item.description).slice(0, 240) : '없음'),
+    '- 제목 기반 주의 신호: ' + item.riskSignals.join(' · '),
+    '- 자동 우선순위: ' + item.reviewPriority,
     '- 형식: Shorts 여부 확인 필요',
     '- 무엇을 어떻게 소개했나: 원문·자막 확인 전',
     '- 인물 소개: 확인 전',
@@ -241,8 +326,11 @@ const main = async () => {
   const report = dailyReport({successfulSources, successfulSearches, candidates, errors, fallbackSources});
   fs.writeFileSync(reportPath, report, 'utf8');
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
+  const updatedInbox = fs.readFileSync(inboxPath, 'utf8');
+  fs.writeFileSync(triagePath, triageMarkdown({inboxText: updatedInbox, checkedDate}), 'utf8');
   console.log('- wrote: daily report to docs/GABA_VIDEO_DAILY_REPORT.md');
   console.log('- archived: docs/gaba-video-daily/GABA_VIDEO_DAILY_REPORT_' + checkedDate + '.md');
+  console.log('- wrote: triage board to docs/GABA_VIDEO_TRIAGE.md');
 };
 
 main().catch(error => {

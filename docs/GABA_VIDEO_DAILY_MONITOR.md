@@ -10,6 +10,8 @@
 YouTube 채널 RSS/Shorts 페이지 + 키워드 검색 결과
         ↓ 매일 09:00 KST 후보·유사 콘텐츠 수집
 docs/GABA_VIDEO_INBOX.md (PENDING_REVIEW)
+        ↓ 제목 기반 주의 신호·첫 담당 제안
+docs/GABA_VIDEO_TRIAGE.md (사업자용 감리 우선순위 보드)
         ↓ 실행 요약·채널 경고·오늘의 액션
 docs/GABA_VIDEO_DAILY_REPORT.md
         ↓ VIDEO: 원문·자막·화자 확인
@@ -34,6 +36,8 @@ GitHub Actions는 .github/workflows/monitor-gaba-shorts.yml에서 매일 실행�
 수집 결과의 팀 토론과 승인·보류·배제 기록은 GABA_VIDEO_REVIEW_LOG.md에 남긴다. 자동 수집 후보를 공개 페이지로 옮길 때는 이 로그의 종료 조건을 모두 채운다.
 
 매일 실행한 채널 성공률·경고·신규 후보·다음 15분 감리 순서는 `GABA_VIDEO_DAILY_REPORT.md`에 자동 기록하고, 같은 내용을 `docs/gaba-video-daily/`에 날짜별로 보관한다. 이 리포트는 공개 승인 자료가 아니며, 팀의 당일 검토 입력으로만 사용한다.
+
+사업자는 `GABA_VIDEO_TRIAGE.md`에서 제목 기반 주의 신호가 있는 후보부터 열어볼 수 있다. 분류는 감리 순서만 제안하므로, 영상의 권위·연구 결과·권리·공개 가능성을 대신 판정하지 않는다.
 
 ## 자동 수집이 하지 않는 일
 
