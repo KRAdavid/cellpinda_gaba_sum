@@ -7,8 +7,8 @@
 - 채널 확인: 8/8
 - 유사 콘텐츠 검색어 확인: 8/8
 - Shorts 페이지 보완 수집: 0개 채널
-- 오늘 신규 후보(누적): 5건
-- 이번 실행 신규 후보: 0건
+- 오늘 신규 후보(누적): 6건
+- 이번 실행 신규 후보: 1건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 2건
 - 등록 영상 원문 링크: 12/12 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 8/8 접근 확인 · 출처 링크 경고 0건
@@ -27,6 +27,7 @@
 | PENDING-20260923-vKVJvHULUZw | [셀핀다 김치유산균 발효가바 GABA100% #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=vKVJvHULUZw) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
 | PENDING-20260923-ov9HdDI0Dmw | [수면 영양제 비교, 마그네슘, 멜라토닌, GABA의 선택법](https://www.youtube.com/watch?v=ov9HdDI0Dmw) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260923-rUqPUDKWEwM | [잠이 얕다면, 가바를 기억하세요 수면의 질, GABA, 50~60대 여성, 영양제, 숙면, 뒤척임, 중장년 건강, 밤잠, 피로 회복](https://www.youtube.com/watch?v=rUqPUDKWEwM) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260923-cX3HiwHE8o4 | [집중력 향상과 스트레스 완화에 좋은 가바(GABA) 효능과 섭취방법](https://www.youtube.com/watch?v=cX3HiwHE8o4) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
