@@ -975,36 +975,36 @@ export default function App() {
               <div className="video-db-list" aria-label="GABA 영상 DB 목록">
                 {filteredPanelVideos.length ? filteredPanelVideos.map(video => <article key={video.id} className={'video-db-item' + (panelVideoId === video.id ? ' is-selected' : '')}>
                   <div className="video-db-item__topline"><span>{video.id}</span><strong>{VIDEO_STATUS_LABELS[video.status]}</strong></div>
-                  <h3>{video.title}</h3>
+                  <h3>{presentationMode ? video.title : video.publicTitle ?? video.title}</h3>
                   <p>{video.channel}</p>
                   <button type="button" className="video-db-item__select" aria-pressed={panelVideoId === video.id} onClick={() => setPanelVideoId(video.id)}>{panelVideoId === video.id ? '선택된 영상' : '이 영상 검토'}</button>
                 </article>) : <p className="info-panel__flow-note">현재 조건에 맞는 영상이 없습니다. 검색어를 지우거나 다른 상태를 선택하세요.</p>}
               </div>
               {selectedVideo ? <div className="video-db-detail">
                 <p className="eyebrow">선택 영상 상세 · {VIDEO_STATUS_LABELS[selectedVideo.status]}</p>
-                <h3 tabIndex={-1}>{selectedVideo.title}</h3>
+                <h3 tabIndex={-1}>{presentationMode ? selectedVideo.title : selectedVideo.publicTitle ?? selectedVideo.title}</h3>
                 {selectedVideo.previewImage || selectedVideo.previewLabel ? <figure className={'video-db-preview' + (!selectedVideo.previewImage || previewImageError ? ' video-db-preview--source' : '')}>
                   {selectedVideo.previewImage && !previewImageError ? <img src={selectedVideo.previewImage} alt={selectedVideo.previewAlt ?? `${selectedVideo.title} 공식 원문 미리보기`} loading="lazy" decoding="async" onError={() => setPreviewImageError(true)} /> : <div className="video-db-preview__source-mark"><span>공식 교육기관</span><strong>{selectedVideo.previewLabel}</strong><small>원문 페이지·대본 확인</small></div>}
                   <figcaption>공식 원문 페이지 미리보기 · 영상 재생과 전체 맥락은 원문에서 확인합니다.</figcaption>
                 </figure> : null}
                 <div className="video-db-detail__summary">
-                  <p><strong>무엇을 어떻게 소개했나</strong><br />{selectedVideo.summary}</p>
-                  <p><strong>인물 소개</strong><br />{selectedVideo.personSummary}</p>
+                  <p><strong>무엇을 어떻게 소개했나</strong><br />{presentationMode ? selectedVideo.summary : selectedVideo.publicSummary ?? selectedVideo.summary}</p>
+                  <p><strong>인물 소개</strong><br />{presentationMode ? selectedVideo.personSummary : selectedVideo.publicPersonSummary ?? selectedVideo.personSummary}</p>
                 </div>
-                <div className="video-db-detail__operator"><strong>사업자 설명 한 문장</strong><p>{selectedVideo.operatorSentence}</p>{presentationMode ? <><div className="video-db-detail__operator-actions"><button type="button" onClick={() => copyVideoOperatorSentence(selectedVideo)}>설명 문장 복사</button><button type="button" onClick={() => copyVideoCustomerBrief(selectedVideo)}>고객 설명 3문장 복사</button></div><span aria-live="polite">{videoCopyMessage}</span></> : null}</div>
+                <div className="video-db-detail__operator"><strong>사업자 설명 한 문장</strong><p>{presentationMode ? selectedVideo.operatorSentence : selectedVideo.publicOperatorSentence ?? selectedVideo.operatorSentence}</p>{presentationMode ? <><div className="video-db-detail__operator-actions"><button type="button" onClick={() => copyVideoOperatorSentence(selectedVideo)}>설명 문장 복사</button><button type="button" onClick={() => copyVideoCustomerBrief(selectedVideo)}>고객 설명 3문장 복사</button></div><span aria-live="polite">{videoCopyMessage}</span></> : null}</div>
                 <dl className="video-db-audit" aria-label="영상 감리 필드">
                   <div><dt>확인 기반</dt><dd>{VIDEO_AUDIT_LABELS.contentBasis[selectedVideo.audit.contentBasis]}</dd></div>
                   <div><dt>권위</dt><dd>{VIDEO_AUDIT_LABELS.authorityLevel[selectedVideo.audit.authorityLevel]}</dd></div>
                   <div><dt>근거</dt><dd>{VIDEO_AUDIT_LABELS.evidenceLevel[selectedVideo.audit.evidenceLevel]}</dd></div>
                   <div><dt>사용 방식</dt><dd>{VIDEO_AUDIT_LABELS.usageMode[selectedVideo.audit.usageMode]}</dd></div>
                   <div><dt>권리</dt><dd>{VIDEO_AUDIT_LABELS.rightsStatus[selectedVideo.audit.rightsStatus]}</dd></div>
-                  <div><dt>주장 범위</dt><dd>{selectedVideo.audit.claimCategories.map(category => VIDEO_CLAIM_LABELS[category]).join(' · ')}</dd></div>
+                  {presentationMode ? <div><dt>주장 범위</dt><dd>{selectedVideo.audit.claimCategories.map(category => VIDEO_CLAIM_LABELS[category]).join(' · ')}</dd></div> : null}
                 </dl>
-                <p className="video-db-detail__next"><strong>다음 감리 행동</strong><br />{selectedVideo.audit.nextAction}</p>
-                <p className="info-panel__status">{selectedVideo.statusReason}</p>
+                <p className="video-db-detail__next"><strong>다음 감리 행동</strong><br />{presentationMode ? selectedVideo.audit.nextAction : '원문·자막·화자·권리 확인 전에는 영상 내용이나 효능으로 확장하지 않습니다.'}</p>
+                <p className="info-panel__status">{presentationMode ? selectedVideo.statusReason : '이 영상은 일반 GABA 교육에 활용할 수 있는지 확인 중인 검토 후보입니다.'}</p>
                 <p className="video-db-detail__meta">확인일 {selectedVideo.checkedAt} · 채널 {selectedVideo.channel} · 화자 {selectedVideo.speaker}{selectedVideo.sourceChannelUrl ? <> · <a href={selectedVideo.sourceChannelUrl} target="_blank" rel="noopener noreferrer">채널 원문 보기 ↗</a></> : null}{selectedVideo.authorityEvidenceUrl ? <> · <a href={selectedVideo.authorityEvidenceUrl} target="_blank" rel="noopener noreferrer">화자·소속 확인 출처 ↗</a></> : null}{selectedVideo.researchEvidenceUrl ? <> · <a href={selectedVideo.researchEvidenceUrl} target="_blank" rel="noopener noreferrer">관련 연구 기록 ↗</a></> : null}</p>
               </div> : null}
-              <p className="info-panel__boundary">공유 영상의 요약은 감리 전 예비 정리입니다. 원문·자막·인물·권리 상태를 확인하고 일반 GABA 연구나 제품 효능과 구분해 읽습니다.</p>
+              <p className="info-panel__boundary">{presentationMode ? '공유 영상의 요약은 감리 전 예비 정리입니다. 원문·자막·인물·권리 상태를 확인하고 일반 GABA 연구나 제품 효능과 구분해 읽습니다.' : '소비자 화면에서는 원본의 건강·상업 주장을 재전달하지 않고, 일반 GABA 교육과 영상 검토 상태만 안내합니다. 전체 맥락은 상세 패널의 원문 선택에서 확인하세요.'}</p>
             </> : null}
             {openPanel === 'ops' ? <>
               <p>이 보드는 공개 소비자용 내용이 아니라, 일반 GABA 교육 자료를 검토·회의·배포하는 사업자용 운영 화면입니다.</p>
@@ -1077,21 +1077,21 @@ export default function App() {
               <p>한 편씩 확인하고, 필요한 경우에만 상세 감리에서 원문을 엽니다.</p>
             </nav>
             <article className="video-showcase__item" aria-live="polite">
-              <button type="button" className="video-showcase__media" onClick={event => openVideoPanel(event.currentTarget, showcaseVideo.id)} aria-label={`${showcaseVideo.title} 상세 감리 보기`}>
+              <button type="button" className="video-showcase__media" onClick={event => openVideoPanel(event.currentTarget, showcaseVideo.id)} aria-label={`${showcaseVideo.publicTitle ?? showcaseVideo.title} 상세 감리 보기`}>
                 {showcaseVideo.previewImage ? <><img src={showcaseVideo.previewImage} alt={showcaseVideo.previewAlt ?? `${showcaseVideo.title} YouTube Shorts 미리보기`} loading="eager" decoding="async" onError={event => {event.currentTarget.style.display = 'none'; event.currentTarget.parentElement?.classList.add('is-image-missing');}} /><div className="video-showcase__source-mark video-showcase__source-mark--fallback"><span>YouTube Shorts</span><strong>{showcaseVideo.previewLabel}</strong><small>원문 링크·대본 확인</small></div></> : <div className="video-showcase__source-mark"><span>YouTube Shorts</span><strong>{showcaseVideo.previewLabel}</strong><small>원문 링크·대본 확인</small></div>}
                 <span className="video-showcase__play" aria-hidden="true">＋</span>
               </button>
               <div className="video-showcase__copy">
                 <div className="video-showcase__meta"><span>{showcaseVideo.id}</span><span className="video-showcase__status">오늘 공유 · {VIDEO_STATUS_LABELS[showcaseVideo.status]}</span></div>
-                <h3>{showcaseVideo.title}</h3>
+                <h3>{showcaseVideo.publicTitle ?? showcaseVideo.title}</h3>
                 <p className="video-showcase__channel">{showcaseVideo.channel} · {showcaseVideo.speaker}</p>
                 <div className="video-showcase__audit" aria-label="영상 공개 감리 상태">
                   <span>권위 확인: {VIDEO_AUDIT_LABELS.authorityLevel[showcaseVideo.audit.authorityLevel]}</span>
                   <span>근거: {VIDEO_AUDIT_LABELS.evidenceLevel[showcaseVideo.audit.evidenceLevel]}</span>
                   <span>사용: {VIDEO_AUDIT_LABELS.usageMode[showcaseVideo.audit.usageMode]}</span>
                 </div>
-                <p><strong>무엇을 어떻게 소개했나 · 예비</strong><br />{showcaseVideo.summary}</p>
-                <p><strong>인물 소개</strong><br />{showcaseVideo.personSummary}</p>
+                <p><strong>무엇을 어떻게 소개했나 · 예비</strong><br />{showcaseVideo.publicSummary ?? showcaseVideo.summary}</p>
+                <p><strong>인물 소개</strong><br />{showcaseVideo.publicPersonSummary ?? showcaseVideo.personSummary}</p>
                 <div className="video-showcase__actions"><button type="button" onClick={event => openVideoPanel(event.currentTarget, showcaseVideo.id)}>상세 감리 먼저 보기 <span aria-hidden="true">＋</span></button><span className="video-showcase__source-note">원문 링크는 상세 패널에서 선택</span></div>
                 <div className="video-showcase__pager" aria-label="영상 이동">
                   <button type="button" onClick={() => selectShowcaseVideo(showcaseVideoIndex - 1)} disabled={showcaseVideoIndex === 0}>이전 영상</button>

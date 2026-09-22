@@ -19,6 +19,10 @@ export type GabaVideoAudit = {
 export type GabaVideoRecord = {
   id: string;
   title: string;
+  publicTitle?: string;
+  publicSummary?: string;
+  publicPersonSummary?: string;
+  publicOperatorSentence?: string;
   url: string;
   previewImage?: string;
   previewAlt?: string;
@@ -311,6 +315,51 @@ export const DOMESTIC_PUBLIC_GABA_VIDEOS = ACTIVE_GABA_VIDEOS.filter(video => vi
 // link-only review candidates, not general-efficacy endorsements. EXCLUDE records
 // stay out of the consumer surface until their source and rights are resolved.
 const SHARED_GABA_VIDEO_ORDER = ['SHORT-08', 'SHORT-04', 'SHORT-05', 'SHORT-02', 'SHORT-03', 'SHORT-06', 'SHORT-07'];
+const CONSUMER_GABA_VIDEO_COPY: Record<string, Pick<GabaVideoRecord, 'publicTitle' | 'publicSummary' | 'publicPersonSummary' | 'publicOperatorSentence'>> = {
+  'SHORT-02': {
+    publicTitle: 'GABA와 수면을 연결해 질문하는 영상 후보',
+    publicSummary: '수면과 GABA를 연결해 질문을 던지는 방식의 영상입니다. 이 페이지에서는 원문 확인 전 검토 후보로만 소개합니다.',
+    publicPersonSummary: '채널은 이동환을 의사로 소개하지만, 이 기록은 인물 확인용이며 영상의 실제 발언·근거·권위를 대신 승인하지 않습니다.',
+    publicOperatorSentence: 'GABA와 수면을 연결한 영상 후보이며, 원문·자막·화자·권리 확인 후 일반 교육 자료로 사용할 수 있는지 판단합니다.',
+  },
+  'SHORT-03': {
+    publicTitle: 'GABA와 신경 신호를 연결해 설명하는 영상 후보',
+    publicSummary: 'GABA를 신경 신호와 연결해 설명하는 방식의 영상입니다. 정확한 내용과 맥락은 원문 확인이 필요합니다.',
+    publicPersonSummary: '채널명으로 화자를 소개하고 있으나 실명·학위·소속은 이 기록만으로 확인되지 않았습니다.',
+    publicOperatorSentence: 'GABA의 일반 기능을 설명하는 부분이 있는지 원문·자막·화자 확인 후 제한적으로 검토합니다.',
+  },
+  'SHORT-04': {
+    publicTitle: 'GABA의 일반 역할을 소개하는 영상 후보',
+    publicSummary: 'GABA를 뇌의 신호 조절과 연결해 설명하는 영상 후보입니다. 일반 생리 설명과 그 밖의 주장은 구분해 확인합니다.',
+    publicPersonSummary: '관련 의료기관 출처가 있으나, 그 출처가 실제 영상 화자·발언·근거의 범위를 자동으로 확인해 주지는 않습니다.',
+    publicOperatorSentence: 'GABA의 일반 정의·기능에 해당하는 구간만 원문과 자막으로 확인한 뒤 사용 범위를 판단합니다.',
+  },
+  'SHORT-05': {
+    publicTitle: '음식과 GABA의 관계를 설명하는 영상 후보',
+    publicSummary: '음식과 GABA 성분의 관계를 설명하는 방식의 영상입니다. 음식 속 성분과 사람에게 나타나는 결과는 따로 확인합니다.',
+    publicPersonSummary: '정이안의 소속·경력 확인 출처가 있으나, 영상 발언과 GABA 연구 근거를 자동 승인하는 자료는 아닙니다.',
+    publicOperatorSentence: '음식 속 GABA와 일반 인체 연구를 구분해 원문·자막·근거를 확인합니다.',
+  },
+  'SHORT-06': {
+    publicTitle: '경구 GABA와 일반 연구를 질문하는 영상 후보',
+    publicSummary: '섭취한 GABA가 어떻게 이해되는지를 질문하는 영상 후보입니다. 일반 연구의 조건과 영상의 설명을 따로 비교합니다.',
+    publicPersonSummary: '신원철의 소속·연구 경력 확인 출처가 있으나, 이는 영상 발언·상업성·특정 결과를 자동 승인하지 않습니다.',
+    publicOperatorSentence: '경구 GABA에 관한 영상 설명을 일반 연구의 조건·한계와 대조한 뒤 공개 범위를 판단합니다.',
+  },
+  'SHORT-07': {
+    publicTitle: 'GABA와 긴장·뇌 신호를 연결하는 영상 후보',
+    publicSummary: 'GABA와 긴장·뇌 신호의 관계를 연결해 설명하는 영상 후보입니다. 화자와 실제 발언은 원문 확인이 필요합니다.',
+    publicPersonSummary: '공개 설명에서 실제 화자의 이름·학위·면허·소속을 확인하지 못했습니다.',
+    publicOperatorSentence: '일반 GABA 기능 설명인지, 개인의 상태나 치료를 말하는지 원문과 자막을 먼저 확인합니다.',
+  },
+  'SHORT-08': {
+    publicTitle: 'GABA의 역할을 묻는 영상 후보',
+    publicSummary: 'GABA가 어떤 역할을 하는지 묻고 설명하는 영상 후보입니다. 일반 생리 설명과 진료·개인 조언은 구분해 확인합니다.',
+    publicPersonSummary: '이제원의 소속·경력 확인 출처가 있으나, 영상 속 실제 화자와 발언의 근거·범위를 대신 확인하지는 않습니다.',
+    publicOperatorSentence: 'GABA의 일반 역할 설명을 원문·자막·화자 확인 후 일반 교육 자료로 사용할 수 있는지 판단합니다.',
+  },
+};
+
 export const SHARED_GABA_VIDEOS = GABA_VIDEO_DB
   .filter(video => video.id.startsWith('SHORT-') && video.status !== 'EXCLUDE')
   .sort((left, right) => SHARED_GABA_VIDEO_ORDER.indexOf(left.id) - SHARED_GABA_VIDEO_ORDER.indexOf(right.id))
@@ -318,6 +367,7 @@ export const SHARED_GABA_VIDEOS = GABA_VIDEO_DB
     const videoId = video.url.match(/\/shorts\/([^?&#/]+)/)?.[1];
     return {
       ...video,
+      ...CONSUMER_GABA_VIDEO_COPY[video.id],
       previewImage: videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : video.previewImage,
       previewAlt: `${video.title} YouTube Shorts 미리보기`,
       previewLabel: 'YouTube Shorts · 오늘 공유 영상',
