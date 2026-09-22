@@ -4,9 +4,9 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 89건
+- 검토 대기: 90건
 - SCIENCE/MEDICAL 또는 RIGHTS 선확인: 54건
-- VIDEO 원문·자막 선확인: 35건
+- VIDEO 원문·자막 선확인: 36건
 
 ## 우선순위 정의
 
@@ -104,6 +104,7 @@
 | PENDING-20260922-W707RAaQDyU | [GABA :- A neurotransmitter #shorts #shorts #biology #facts #viral](https://www.youtube.com/watch?v=W707RAaQDyU) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-WCvW1eVl9WY | [누우면 생각이 많아지는 이유 🌙 #협찬 #파마코가바멜라](https://www.youtube.com/watch?v=WCvW1eVl9WY) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-whfAiIaj6xY | [뇌의 흥분을 가라앉히는 가바](https://www.youtube.com/watch?v=whfAiIaj6xY) | YouTube 검색: GABA 신경전달물질 (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
+| PENDING-20260922-X80_eSROFkw | [GABA: The brain chemical messenger \\| Neuroscience \\| Brain health \\| Evidence based science](https://www.youtube.com/watch?v=X80_eSROFkw) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-xf6jDx7lqOI | [🧠 GABA vs Glutamate — The Brain’s “Brake” and “Accelerator”](https://www.youtube.com/watch?v=xf6jDx7lqOI) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-XlIVQqC8eUQ | [글루탐산 대 GABA! #건강 #사실 #과학 #단편 #당신을 위한 #의사 #동기부여 #뇌 #행복 #스트레스](https://www.youtube.com/watch?v=XlIVQqC8eUQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-XQfVcYi5M_o | [GABA는 핵심 신경전달물질입니다! #신경전달물질 #간호학](https://www.youtube.com/watch?v=XQfVcYi5M_o) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |

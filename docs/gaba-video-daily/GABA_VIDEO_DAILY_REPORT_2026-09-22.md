@@ -20,7 +20,7 @@
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 상태 |
 | --- | --- | --- | --- | --- | --- |
-| PENDING-20260922-XJ5bvJlr5h4 | [#제품제공 꿀잠캠프 번개 이벤트에 당첨되어 굿슬립가바 365를 엄마에게 선물했어요💜  #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애](https://www.youtube.com/watch?v=XJ5bvJlr5h4) | YouTube 검색: 가바 수면 영양제 Shorts | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | PENDING_REVIEW |
+| PENDING-20260922-X80_eSROFkw | [GABA: The brain chemical messenger \| Neuroscience \| Brain health \| Evidence based science](https://www.youtube.com/watch?v=X80_eSROFkw) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts | 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견 | VIDEO 우선 | PENDING_REVIEW |
 
 ## 채널 경고
 

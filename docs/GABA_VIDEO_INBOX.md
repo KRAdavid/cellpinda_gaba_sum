@@ -1596,3 +1596,21 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-X80_eSROFkw
+
+- 상태: PENDING_REVIEW
+- 영상: [GABA: The brain chemical messenger \| Neuroscience \| Brain health \| Evidence based science](https://www.youtube.com/watch?v=X80_eSROFkw)
+- 채널: YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견
+- 자동 우선순위: VIDEO 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
