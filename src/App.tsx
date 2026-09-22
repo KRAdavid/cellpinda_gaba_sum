@@ -826,10 +826,10 @@ export default function App() {
           </div>
           <div className="video-showcase__list">
             {SHARED_GABA_VIDEOS.map(video => <article key={video.id} className="video-showcase__item">
-              <a className="video-showcase__media" href={video.url} target="_blank" rel="noopener noreferrer" aria-label={`${video.title} YouTube 원문 영상 보기`}>
+              <button type="button" className="video-showcase__media" onClick={event => openVideoPanel(event.currentTarget, video.id)} aria-label={`${video.title} 상세 감리 보기`}>
                 {video.previewImage ? <img src={video.previewImage} alt={video.previewAlt ?? `${video.title} YouTube Shorts 미리보기`} loading="eager" decoding="async" onError={event => {event.currentTarget.style.display = 'none';}} /> : <div className="video-showcase__source-mark"><span>YouTube Shorts</span><strong>{video.previewLabel}</strong><small>원문 링크·대본 확인</small></div>}
-                <span className="video-showcase__play" aria-hidden="true">↗</span>
-              </a>
+                <span className="video-showcase__play" aria-hidden="true">＋</span>
+              </button>
               <div className="video-showcase__copy">
                 <div className="video-showcase__meta"><span>{video.id}</span><span>오늘 공유 · 원문 확인 필요</span></div>
                 <h3>{video.title}</h3>
