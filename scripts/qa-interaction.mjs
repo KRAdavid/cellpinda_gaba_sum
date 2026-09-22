@@ -140,7 +140,7 @@ try {
   await evaluate('document.querySelector(".video-db-item__select")?.click()');
   await waitForText('.video-db-detail', '인물 소개');
   const selected = await evaluate('({detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||""})');
-  assert('video DB selection shows summary, person introduction, and next audit action', selected.detail.includes('무엇을 어떻게 소개했나') && selected.detail.includes('인물 소개') && selected.detail.includes('다음 감리 행동') && selected.detail.includes('원문 페이지·대본 확인') && selected.external.includes('dnalc.cshl.edu'), JSON.stringify(selected));
+  assert('video DB selection shows summary, person introduction, operator sentence, and next audit action', selected.detail.includes('무엇을 어떻게 소개했나') && selected.detail.includes('인물 소개') && selected.detail.includes('사업자 설명 한 문장') && selected.detail.includes('다음 감리 행동') && selected.detail.includes('원문 페이지·대본 확인') && selected.external.includes('dnalc.cshl.edu'), JSON.stringify(selected));
   await press('Escape', 'Escape', 27);
   await evaluate('document.querySelector(".story-ops-board-button")?.click()');
   await waitForText('#info-panel-title', 'TF 운영 보드');
