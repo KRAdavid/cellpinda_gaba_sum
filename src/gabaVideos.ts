@@ -6,6 +6,16 @@ export type GabaVideoStatus =
   | 'PENDING_REVIEW'
   | 'AUTO_FILTERED';
 
+export type GabaVideoAudit = {
+  contentBasis: 'ORIGINAL_PAGE_TRANSCRIPT' | 'OFFICIAL_EVENT_PAGE' | 'TITLE_AND_PUBLIC_DESCRIPTION' | 'UNREVIEWED';
+  authorityLevel: 'VERIFIED' | 'PARTIAL' | 'UNVERIFIED';
+  evidenceLevel: 'A' | 'B' | 'C' | 'D' | 'UNREVIEWED';
+  claimCategories: Array<'GENERAL_PHYSIOLOGY' | 'ORAL_GABA_HUMAN_RESEARCH' | 'SLEEP_STRESS' | 'DISEASE_TREATMENT' | 'PRODUCT_COMMERCIAL' | 'UNREVIEWED'>;
+  rightsStatus: 'SOURCE_PAGE' | 'CHECK_REQUIRED' | 'NOT_FOR_USE';
+  usageMode: 'SOURCE_LINK' | 'EMBED_IF_ALLOWED' | 'REVIEW_ONLY' | 'EXCLUDE';
+  nextAction: string;
+};
+
 export type GabaVideoRecord = {
   id: string;
   title: string;
@@ -17,6 +27,7 @@ export type GabaVideoRecord = {
   status: GabaVideoStatus;
   statusReason: string;
   checkedAt: string;
+  audit: GabaVideoAudit;
 };
 
 export const GABA_VIDEO_DB: GabaVideoRecord[] = [
@@ -31,6 +42,15 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     status: 'PUBLISH_GENERAL',
     statusReason: '교육기관 공개 페이지, 영상과 transcript 확인 가능, 일반 GABA 기능 중심, 제품 효능·구매 유도 없음. 원문 링크 방식으로 공개합니다.',
     checkedAt: '2026-09-22',
+    audit: {
+      contentBasis: 'ORIGINAL_PAGE_TRANSCRIPT',
+      authorityLevel: 'VERIFIED',
+      evidenceLevel: 'A',
+      claimCategories: ['GENERAL_PHYSIOLOGY'],
+      rightsStatus: 'SOURCE_PAGE',
+      usageMode: 'SOURCE_LINK',
+      nextAction: '일반 생리 설명 카드에서 교육기관 원문 링크로 제공',
+    },
   },
   {
     id: 'AUTH-02',
@@ -43,6 +63,15 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     status: 'PUBLISH_GENERAL',
     statusReason: 'NIH 공식 VideoCast, 발표자·소속·강의 설명 확인 가능, GABA 일반 생리 중심. 일반 소비자에게는 핵심 구간을 선별해 원문 링크로 제공합니다.',
     checkedAt: '2026-09-22',
+    audit: {
+      contentBasis: 'OFFICIAL_EVENT_PAGE',
+      authorityLevel: 'VERIFIED',
+      evidenceLevel: 'A',
+      claimCategories: ['GENERAL_PHYSIOLOGY'],
+      rightsStatus: 'SOURCE_PAGE',
+      usageMode: 'SOURCE_LINK',
+      nextAction: '분자·시냅스 일반 설명 구간을 확인한 뒤 NIH 원문 링크로 제공',
+    },
   },
   {
     id: 'SHORT-01',
@@ -55,6 +84,15 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     status: 'EXCLUDE',
     statusReason: '재게시 여부와 다중 건강효과 표현을 확인하기 전에는 권위 영상으로 사용하지 않습니다.',
     checkedAt: '2026-09-22',
+    audit: {
+      contentBasis: 'TITLE_AND_PUBLIC_DESCRIPTION',
+      authorityLevel: 'UNVERIFIED',
+      evidenceLevel: 'C',
+      claimCategories: ['SLEEP_STRESS', 'PRODUCT_COMMERCIAL'],
+      rightsStatus: 'NOT_FOR_USE',
+      usageMode: 'EXCLUDE',
+      nextAction: '원출처와 재사용 권리를 확인하기 전 공개 자료에서 제외',
+    },
   },
   {
     id: 'SHORT-02',
@@ -67,6 +105,15 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     status: 'HOLD',
     statusReason: '수면제 대체로 읽히는 표현, 자막, 연구 근거와 사용 권리를 추가 확인해야 합니다.',
     checkedAt: '2026-09-22',
+    audit: {
+      contentBasis: 'TITLE_AND_PUBLIC_DESCRIPTION',
+      authorityLevel: 'PARTIAL',
+      evidenceLevel: 'C',
+      claimCategories: ['SLEEP_STRESS', 'DISEASE_TREATMENT', 'PRODUCT_COMMERCIAL'],
+      rightsStatus: 'CHECK_REQUIRED',
+      usageMode: 'REVIEW_ONLY',
+      nextAction: '전체 자막에서 수면제 대체 표현과 근거·상업 링크를 확인',
+    },
   },
   {
     id: 'SHORT-03',
@@ -79,6 +126,15 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     status: 'HOLD',
     statusReason: '보충제 추천과 약물 비교가 일반 GABA 연구와 분리되는지 확인해야 합니다.',
     checkedAt: '2026-09-22',
+    audit: {
+      contentBasis: 'TITLE_AND_PUBLIC_DESCRIPTION',
+      authorityLevel: 'UNVERIFIED',
+      evidenceLevel: 'C',
+      claimCategories: ['SLEEP_STRESS', 'PRODUCT_COMMERCIAL'],
+      rightsStatus: 'CHECK_REQUIRED',
+      usageMode: 'REVIEW_ONLY',
+      nextAction: '화자 자격·전체 발언·보충제 추천 구간과 상업성을 확인',
+    },
   },
   {
     id: 'SHORT-04',
@@ -91,6 +147,15 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     status: 'LIMITED_USE',
     statusReason: '일반 GABA 정의 구간만 자막·타임코드 확인 후 검토할 수 있습니다.',
     checkedAt: '2026-09-22',
+    audit: {
+      contentBasis: 'TITLE_AND_PUBLIC_DESCRIPTION',
+      authorityLevel: 'PARTIAL',
+      evidenceLevel: 'B',
+      claimCategories: ['GENERAL_PHYSIOLOGY', 'SLEEP_STRESS'],
+      rightsStatus: 'CHECK_REQUIRED',
+      usageMode: 'REVIEW_ONLY',
+      nextAction: '일반 정의 구간의 자막·타임코드·실제 화자를 확인',
+    },
   },
   {
     id: 'SHORT-05',
@@ -103,6 +168,15 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     status: 'LIMITED_USE',
     statusReason: 'GABA 함유 식품과 섭취 후 인체 효과를 분리 확인해야 합니다.',
     checkedAt: '2026-09-22',
+    audit: {
+      contentBasis: 'TITLE_AND_PUBLIC_DESCRIPTION',
+      authorityLevel: 'PARTIAL',
+      evidenceLevel: 'C',
+      claimCategories: ['GENERAL_PHYSIOLOGY', 'ORAL_GABA_HUMAN_RESEARCH', 'PRODUCT_COMMERCIAL'],
+      rightsStatus: 'CHECK_REQUIRED',
+      usageMode: 'REVIEW_ONLY',
+      nextAction: '음식 속 GABA와 경구 섭취 연구·개인 효과 주장을 분리',
+    },
   },
   {
     id: 'SHORT-06',
@@ -115,6 +189,15 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     status: 'HOLD',
     statusReason: '부작용 없음·안전한 수면 보충제 같은 표현과 상업적 이해관계를 확인해야 합니다.',
     checkedAt: '2026-09-22',
+    audit: {
+      contentBasis: 'TITLE_AND_PUBLIC_DESCRIPTION',
+      authorityLevel: 'PARTIAL',
+      evidenceLevel: 'C',
+      claimCategories: ['ORAL_GABA_HUMAN_RESEARCH', 'SLEEP_STRESS', 'PRODUCT_COMMERCIAL'],
+      rightsStatus: 'CHECK_REQUIRED',
+      usageMode: 'REVIEW_ONLY',
+      nextAction: '안전성 단정·복용 권고·이해관계와 경구 연구 조건을 확인',
+    },
   },
   {
     id: 'SHORT-07',
@@ -127,6 +210,15 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     status: 'HOLD',
     statusReason: '불안 완화가 치료·보충제 사용 지시로 읽히는지 먼저 감리해야 합니다.',
     checkedAt: '2026-09-22',
+    audit: {
+      contentBasis: 'TITLE_AND_PUBLIC_DESCRIPTION',
+      authorityLevel: 'UNVERIFIED',
+      evidenceLevel: 'C',
+      claimCategories: ['SLEEP_STRESS', 'DISEASE_TREATMENT', 'PRODUCT_COMMERCIAL'],
+      rightsStatus: 'CHECK_REQUIRED',
+      usageMode: 'REVIEW_ONLY',
+      nextAction: '화자·자막·불안 완화 표현과 보충제 권고 여부를 확인',
+    },
   },
   {
     id: 'SHORT-08',
@@ -139,6 +231,15 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     status: 'LIMITED_USE',
     statusReason: '일반 역할 설명과 진료·약물·보충제 조언 구간을 분리해야 합니다.',
     checkedAt: '2026-09-22',
+    audit: {
+      contentBasis: 'TITLE_AND_PUBLIC_DESCRIPTION',
+      authorityLevel: 'PARTIAL',
+      evidenceLevel: 'C',
+      claimCategories: ['GENERAL_PHYSIOLOGY', 'DISEASE_TREATMENT', 'PRODUCT_COMMERCIAL'],
+      rightsStatus: 'CHECK_REQUIRED',
+      usageMode: 'REVIEW_ONLY',
+      nextAction: '자격·실제 화자와 일반 역할 설명 구간을 먼저 확인',
+    },
   },
 ];
 

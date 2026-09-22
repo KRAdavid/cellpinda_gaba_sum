@@ -83,6 +83,26 @@ const VIDEO_STATUS_LABELS: Record<GabaVideoRecord['status'], string> = {
   PENDING_REVIEW: '검토 대기',
   AUTO_FILTERED: '자동 필터 제외',
 };
+const VIDEO_AUDIT_LABELS = {
+  contentBasis: {
+    ORIGINAL_PAGE_TRANSCRIPT: '원문 페이지·대본 확인',
+    OFFICIAL_EVENT_PAGE: '공식 강의·행사 페이지 확인',
+    TITLE_AND_PUBLIC_DESCRIPTION: '제목·공개 설명 기반 예비 확인',
+    UNREVIEWED: '아직 확인하지 않음',
+  },
+  authorityLevel: {VERIFIED: '권위 확인', PARTIAL: '부분 확인', UNVERIFIED: '미확인'},
+  evidenceLevel: {A: '근거 A', B: '근거 B', C: '근거 C', D: '근거 D', UNREVIEWED: '근거 미검토'},
+  rightsStatus: {SOURCE_PAGE: '원문 링크 방식', CHECK_REQUIRED: '권리 확인 필요', NOT_FOR_USE: '사용하지 않음'},
+  usageMode: {SOURCE_LINK: '원문 링크', EMBED_IF_ALLOWED: '허용 시 임베드', REVIEW_ONLY: '검토용', EXCLUDE: '공개 제외'},
+} as const;
+const VIDEO_CLAIM_LABELS: Record<GabaVideoRecord['audit']['claimCategories'][number], string> = {
+  GENERAL_PHYSIOLOGY: '일반 생리',
+  ORAL_GABA_HUMAN_RESEARCH: '경구 GABA 인체 연구',
+  SLEEP_STRESS: '수면·스트레스',
+  DISEASE_TREATMENT: '질환·치료',
+  PRODUCT_COMMERCIAL: '제품·상업성',
+  UNREVIEWED: '미검토',
+};
 
 const STORY_PHASES = [
   {id: 'everyday', label: '일상 상태', start: 0, end: 2},
@@ -715,8 +735,19 @@ export default function App() {
               {selectedVideo ? <div className="video-db-detail">
                 <p className="eyebrow">선택 영상 상세 · {VIDEO_STATUS_LABELS[selectedVideo.status]}</p>
                 <h3>{selectedVideo.title}</h3>
-                <p>{selectedVideo.summary}</p>
-                <p><strong>인물 소개</strong><br />{selectedVideo.personSummary}</p>
+                <div className="video-db-detail__summary">
+                  <p><strong>무엇을 어떻게 소개했나</strong><br />{selectedVideo.summary}</p>
+                  <p><strong>인물 소개</strong><br />{selectedVideo.personSummary}</p>
+                </div>
+                <dl className="video-db-audit" aria-label="영상 감리 필드">
+                  <div><dt>확인 기반</dt><dd>{VIDEO_AUDIT_LABELS.contentBasis[selectedVideo.audit.contentBasis]}</dd></div>
+                  <div><dt>권위</dt><dd>{VIDEO_AUDIT_LABELS.authorityLevel[selectedVideo.audit.authorityLevel]}</dd></div>
+                  <div><dt>근거</dt><dd>{VIDEO_AUDIT_LABELS.evidenceLevel[selectedVideo.audit.evidenceLevel]}</dd></div>
+                  <div><dt>사용 방식</dt><dd>{VIDEO_AUDIT_LABELS.usageMode[selectedVideo.audit.usageMode]}</dd></div>
+                  <div><dt>권리</dt><dd>{VIDEO_AUDIT_LABELS.rightsStatus[selectedVideo.audit.rightsStatus]}</dd></div>
+                  <div><dt>주장 범위</dt><dd>{selectedVideo.audit.claimCategories.map(category => VIDEO_CLAIM_LABELS[category]).join(' · ')}</dd></div>
+                </dl>
+                <p className="video-db-detail__next"><strong>다음 감리 행동</strong><br />{selectedVideo.audit.nextAction}</p>
                 <p className="info-panel__status">{selectedVideo.statusReason}</p>
                 <p className="video-db-detail__meta">확인일 {selectedVideo.checkedAt} · 채널 {selectedVideo.channel} · 화자 {selectedVideo.speaker}</p>
               </div> : null}
