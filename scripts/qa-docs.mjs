@@ -77,6 +77,7 @@ const checks = [
 const failures = checks
   .filter(([, content, expected]) => !content.includes(expected))
   .map(([label, , expected]) => `${label}: ${expected}`);
+if (!files.videoDb.includes('https://pubmed.ncbi.nlm.nih.gov/23574805/') || files.videoDb.includes('https://pubmed.ncbi.nlm.nih.gov/31869147/')) failures.push('video DB general physiology reference is out of sync with the source register');
 
 const readmeDocLinks = [...files.readme.matchAll(/\]\((docs\/[^)]+)\)/g)].map(match => match[1]);
 for (const relativePath of readmeDocLinks) {
