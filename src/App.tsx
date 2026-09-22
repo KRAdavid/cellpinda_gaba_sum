@@ -543,6 +543,7 @@ export default function App() {
   const [presenterCopyMessage, setPresenterCopyMessage] = useState('');
   const [videoCopyMessage, setVideoCopyMessage] = useState('');
   const [showcaseShareMessage, setShowcaseShareMessage] = useState('');
+  const [showcasePlayerStartedId, setShowcasePlayerStartedId] = useState<string | null>(null);
   const [previewImageError, setPreviewImageError] = useState(false);
   const [videoFilter, setVideoFilter] = useState<VideoFilter>('ALL');
   const [videoQuery, setVideoQuery] = useState('');
@@ -1765,6 +1766,7 @@ export default function App() {
     const nextIndex = Math.max(0, Math.min(SHARED_GABA_VIDEOS.length - 1, index));
     const nextVideo = SHARED_GABA_VIDEOS[nextIndex];
     setShowcaseVideoIndex(nextIndex);
+    setShowcasePlayerStartedId(null);
     setShowcaseShareMessage('');
     setPreviewImageError(false);
     if (nextVideo) {
@@ -2485,7 +2487,7 @@ export default function App() {
             <article className="video-showcase__item" aria-live="polite">
               <section className="video-showcase__player" aria-label={`${showcaseVideo.publicTitle ?? showcaseVideo.title} 페이지 안에서 재생`}>
                 <div className="video-showcase__player-heading"><span>원문 확인 전</span><small>YouTube Shorts · 페이지 안에서 재생</small></div>
-                {showcaseVideoEmbedUrl ? <iframe src={showcaseVideoEmbedUrl} title={`${showcaseVideo.title} YouTube Shorts 원문 플레이어`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /> : <div className="video-showcase__source-mark"><span>YouTube Shorts</span><strong>{showcaseVideo.previewLabel}</strong><small>상세 감리에서 원문 확인</small></div>}
+                {showcaseVideoEmbedUrl && showcasePlayerStartedId === showcaseVideo.id ? <iframe src={showcaseVideoEmbedUrl} title={`${showcaseVideo.title} YouTube Shorts 원문 플레이어`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /> : <button type="button" className="video-showcase__player-poster" data-play-showcase-video onClick={() => setShowcasePlayerStartedId(showcaseVideo.id)} aria-label="페이지 안에서 YouTube 원문 재생 시작"><span className="video-showcase__player-poster-label">GABA · YouTube Shorts</span><strong>{showcaseVideo.publicTitle ?? 'GABA 영상 후보'}</strong><small>원문 확인 전 · 눌러서 페이지 안에서 원문 재생</small><span className="video-showcase__play" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5.2v13.6L19 12 8 5.2Z" /></svg></span></button>}
                 <p className="video-showcase__player-note">플레이어 재생은 사람 감리·권위 확인·공개 승인을 의미하지 않습니다.</p>
               </section>
               <div className="video-showcase__reel-controls" aria-label="영상 릴 이동">

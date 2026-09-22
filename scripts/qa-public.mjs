@@ -35,6 +35,7 @@ const required = [
   ['presenter source review draft', '과학 출처 사람 검토 초안'],
   ['presenter source review copy', '출처 검토 초안 전체 복사'],
   ['in-page video player', '페이지 안에서 원문 재생'],
+  ['neutral video poster', '눌러서 페이지 안에서 원문 재생'],
   ['general physiology source', 'Synaptic inhibition and γ-aminobutyric acid'],
   ['GABA tone source', 'GABA tone regulation and its cognitive functions'],
   ['stress human trial source', 'Oral intake of γ-aminobutyric acid affects mood'],
