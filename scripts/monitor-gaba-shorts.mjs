@@ -263,8 +263,8 @@ const captionAuditMarkdown = ({checkedDate: date, captionHealth, captionBodyHeal
 
 const metadataAuditMarkdown = ({checkedDate: date, metadataHealth}) => {
   const rows = metadataHealth.records.length
-    ? metadataHealth.records.map(record => `| ${record.videoId || '확인 필요'} | [원문 보기](${record.url}) | ${markdown(record.title || '확인 필요')} | ${markdown(record.authorName || '확인 필요')} | ${markdown(record.status)} | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |`).join('\n')
-    : '| 없음 | 등록 YouTube 링크 없음 | - | - | - | - |';
+    ? metadataHealth.records.map(record => `| ${record.videoId || '확인 필요'} | [원문 보기](${record.url}) | ${markdown(record.title || '확인 필요')} | ${markdown(record.authorName || '확인 필요')} | ${record.authorUrl ? `[채널 원문](${record.authorUrl})` : '확인 필요'} | ${markdown(record.status)} | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |`).join('\n')
+    : '| 없음 | 등록 YouTube 링크 없음 | - | - | - | - | - |';
   return [
     '# GABA 영상 YouTube 메타데이터 감사',
     '',
@@ -272,8 +272,8 @@ const metadataAuditMarkdown = ({checkedDate: date, metadataHealth}) => {
     '',
     '## 영상별 확인',
     '',
-    '| 영상 ID | 원문 | oEmbed 제목 | oEmbed 채널 | 상태 | 해석 경계 |',
-    '| --- | --- | --- | --- | --- | --- |',
+    '| 영상 ID | 원문 | oEmbed 제목 | oEmbed 채널 | oEmbed 채널 원문 | 상태 | 해석 경계 |',
+    '| --- | --- | --- | --- | --- | --- | --- |',
     rows,
     '',
     '## 다음 사람 감리',
