@@ -854,7 +854,7 @@ export default function App() {
                 <span className="video-showcase__play" aria-hidden="true">＋</span>
               </button>
               <div className="video-showcase__copy">
-                <div className="video-showcase__meta"><span>{video.id}</span><span>오늘 공유 · 원문 확인 필요</span></div>
+                <div className="video-showcase__meta"><span>{video.id}</span><span className="video-showcase__status">오늘 공유 · {VIDEO_STATUS_LABELS[video.status]}</span></div>
                 <h3>{video.title}</h3>
                 <p className="video-showcase__channel">{video.channel} · {video.speaker}</p>
                 <p><strong>무엇을 어떻게 소개했나 · 예비</strong><br />{video.summary}</p>
