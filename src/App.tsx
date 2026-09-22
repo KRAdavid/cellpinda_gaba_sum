@@ -261,6 +261,7 @@ export default function App() {
   const selectedVideo = panelVideoId ? panelVideos.find(video => video.id === panelVideoId) ?? GABA_VIDEO_DB.find(video => video.id === panelVideoId) ?? null : null;
   const selectedVideoIndex = selectedVideo ? panelVideos.findIndex(video => video.id === selectedVideo.id) : -1;
   const nextVideo = selectedVideoIndex >= 0 ? panelVideos[selectedVideoIndex + 1] ?? null : null;
+
   useEffect(() => setPreviewImageError(false), [panelVideoId]);
   const filteredPanelVideos = useMemo(() => {
     const query = videoQuery.trim().toLocaleLowerCase();
@@ -313,7 +314,7 @@ export default function App() {
     });
   };
 
-  const goTo = (index: number) => {
+  const goTo = (index: number, requestedBehavior?: ScrollBehavior) => {
     const next = Math.max(0, Math.min(slides.length - 1, index));
     programmaticTargetRef.current = next;
     shareRequestRef.current += 1;
@@ -328,10 +329,18 @@ export default function App() {
     }
     setActive(next);
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    slideRefs.current[next]?.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', inline: 'nearest', block: 'start'});
+    const behavior = requestedBehavior ?? (reduceMotion ? 'auto' : 'smooth');
+    const rail = railRef.current;
+    const target = slideRefs.current[next];
+    if (rail && target) {
+      rail.scrollTo({top: target.offsetTop, behavior});
+    } else {
+      target?.scrollIntoView({behavior, inline: 'nearest', block: 'start'});
+    }
+    const settleDelay = behavior === 'auto' ? 80 : 850;
     window.setTimeout(() => {
       if (programmaticTargetRef.current === next) programmaticTargetRef.current = null;
-    }, reduceMotion ? 80 : 850);
+    }, settleDelay);
   };
 
   useEffect(() => {
@@ -663,6 +672,16 @@ export default function App() {
           {STORY_PHASES.map((phase, index) => <span key={phase.id} data-phase={phase.id} className={phase.id === activePhase.id ? 'is-active' : ''} aria-current={phase.id === activePhase.id ? 'step' : undefined}>
             {phase.label}{index < STORY_PHASES.length - 1 ? <i aria-hidden="true">→</i> : null}
           </span>)}
+        </nav>
+        <nav className="story-progress" aria-label="GABA 소개 장면 바로가기">
+          {slides.map((slide, index) => <button
+            key={slide.id}
+            type="button"
+            className={index === active ? 'is-active' : ''}
+            aria-current={index === active ? 'step' : undefined}
+            aria-label={`${String(index + 1).padStart(2, '0')}번 장면 ${slide.label} 보기`}
+            onClick={() => goTo(index, 'auto')}
+          ><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span></button>)}
         </nav>
         <div className="story-controls">
           <span aria-live="polite" aria-label={`현재 ${active + 1}번째 카드, 총 ${slides.length}장`}>{String(active + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</span>
