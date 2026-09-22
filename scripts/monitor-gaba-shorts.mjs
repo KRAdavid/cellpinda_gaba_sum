@@ -636,7 +636,7 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, errors,
     '1. VIDEO: 실제 Shorts 형식·원문·자막·발언 타임코드 확인',
     '2. SCIENCE/MEDICAL: 일반 GABA 생리와 수면·스트레스·치료·보충제 주장을 분리',
     '3. RIGHTS: 원문 링크·임베드·인용 가능 범위 확인',
-    '4. PM/UX: 소비자 카드에서 한 메시지로 전달 가능한지와 다음 카드 흐름 확인',
+    '4. PM/UX: 소비자 영상은 현재 영상 1건·compact 인덱스·상세 패널·다음 영상 이동으로 집중 흐름이 유지되는지 확인',
     '5. 공개 판정: PUBLISH_GENERAL이 아니면 공개 페이지에 반영하지 않음',
     '',
   ].join('\n');
