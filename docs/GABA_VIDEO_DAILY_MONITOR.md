@@ -57,7 +57,7 @@ GitHub Actions는 .github/workflows/monitor-gaba-shorts.yml에서 매일 실행�
 
 같은 패널의 `권위 후보 확인` 큐에는 권위 검색어로 발견됐거나 제목·설명에 전문가 자격 신호가 있는 후보를 별도로 표시한다. 이 큐는 권위 자료를 우선 찾기 위한 보조 목록이며, 실제 자격·화자·원문·자막·권리 검토 전에는 권위 영상으로 공개하지 않는다.
 
-같은 상위 후보와 사람 검토 체크리스트는 `docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_YYYY-MM-DD.md`로 날짜별 보관한다. 발표자 화면의 `오늘 리뷰 세션` 링크에서 팀 토론 문서를 열 수 있으며, 체크가 끝나도 영상 DB와 검토 로그에 최종 판정을 기록하기 전에는 공개 상태를 바꾸지 않는다.
+같은 상위 후보와 사람 검토 체크리스트는 `docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_YYYY-MM-DD.md`로 날짜별 보관한다. 등록 영상별 자막 트랙·본문 접근 결과는 `docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_YYYY-MM-DD.md`로 함께 보관한다. 발표자 화면의 `오늘 리뷰 세션`과 `자막 감사 기록` 링크에서 팀 토론·원문 확인 문서를 열 수 있으며, 체크가 끝나도 영상 DB와 검토 로그에 최종 판정을 기록하기 전에는 공개 상태를 바꾸지 않는다.
 
 ## 자동 수집이 하지 않는 일
 

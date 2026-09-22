@@ -13,6 +13,7 @@
 - 등록 YouTube 메타데이터: 9/9 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 9/9 watch 페이지에서 발견 · 자막 경고 0건
 - 등록 YouTube 자막 본문: 0/9 본문 확인 · 본문 경고 9건
+- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-09-22.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
 ## 신규 후보
