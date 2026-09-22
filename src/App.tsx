@@ -2072,6 +2072,7 @@ export default function App() {
             <h2 id="info-panel-title">{panelTitle}</h2>
             {openPanel === 'research' ? <>
               <p>연구 결과를 볼 때는 무엇을 살펴봤는지와 어떤 조건이었는지를 함께 확인하세요.</p>
+              <p className="info-panel__verification"><strong>출처 확인 상태</strong>현재 등록된 5개 출처는 AI 사전 확인 상태이며, SCIENCE·MEDICAL 사람 검토 전입니다. 원문과 한계를 먼저 확인하고, 최종 공개 문장으로 확정하지 않습니다.</p>
               <p className="info-panel__evidence">연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 검토했습니다. 스트레스 관련 근거는 제한적이고 수면 관련 근거는 매우 제한적이라고 정리하므로, 연구 대상·섭취량·기간·비교 조건과 함께 확인해야 합니다.</p>
               <ul><li>참여자와 연구 대상이 누구였는지</li><li>섭취량과 기간이 어떻게 설정됐는지</li><li>비교 조건과 측정 방법이 무엇이었는지</li></ul>
               <p className="info-panel__boundary">이 자료는 일반 GABA 원료와 GABA 섭취 연구를 구분해 읽도록 돕는 일반 교육 자료입니다.</p>

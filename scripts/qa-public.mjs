@@ -31,6 +31,7 @@ const required = [
   ['research citation PMID', 'PMID 33041752'],
   ['research neutral summary', '스트레스와 수면 관련 지표'],
   ['research source disclosure', '근거 출처 5건'],
+  ['research source review status', 'AI 사전 확인 상태이며'],
   ['presenter source review draft', '과학 출처 사람 검토 초안'],
   ['presenter source review copy', '출처 검토 초안 전체 복사'],
   ['in-page video player', '페이지 안에서 원문 재생'],
