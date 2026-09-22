@@ -39,6 +39,7 @@ if (!source.includes("PUBLIC_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => video.s
 if (!appSource.includes("const approvedForCustomerSummary = video.status === 'PUBLISH_GENERAL';") || !appSource.includes('현재 요약은 제목·공개 설명 기반의 예비 정보이며')) failures.push('customer copy does not gate unapproved video summaries');
 if (!appSource.includes('video.publicTitle') || !appSource.includes('selectedVideo.publicSummary') || !appSource.includes('selectedVideo.publicPersonSummary') || !appSource.includes('selectedVideo.publicOperatorSentence')) failures.push('consumer video surface does not use the separate public copy fields');
 if (!appSource.includes('<dt>요약 근거</dt>') || !appSource.includes('요약 근거: {VIDEO_AUDIT_LABELS.contentBasis[showcaseVideo.audit.contentBasis]}')) failures.push('consumer video surface does not expose the summary evidence basis');
+if (!appSource.includes('무엇을 어떻게 소개했나: ${selectedVideo.summary}') || !appSource.includes('인물 소개: ${selectedVideo.personSummary}') || !appSource.includes('무엇을 어떻게 소개했나: ${video.summary}') || !appSource.includes('인물 소개: ${video.personSummary}')) failures.push('meeting copy does not preserve each video summary and person introduction');
 if (source.includes("status: 'PUBLISH_GENERAL',\n    statusReason: '")) {
   const publicBlocks = recordBlocks.filter(block => block.includes("status: 'PUBLISH_GENERAL'"));
   for (const block of publicBlocks) {
