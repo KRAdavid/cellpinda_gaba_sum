@@ -6,6 +6,7 @@ const source = fs.readFileSync(path.join(root, 'src', 'gabaVideos.ts'), 'utf8');
 const publicSource = fs.readFileSync(path.join(root, 'src', 'gabaPublicVideos.ts'), 'utf8');
 const appSource = fs.readFileSync(path.join(root, 'src', 'App.tsx'), 'utf8');
 const requiredSeeds = ['Cnk0PGn9YBM', 'RLAU1VWGsaI', 'vnocd9ZVJj0', 'BiZXS_ojLUA', '7Zsxm9Wh2Yg', 'rOFkZg09AoY', '4MTqi-bapLY', '4xGSHxkMYew'];
+const requiredChannelIds = ['UC86AuKBawrgBuEZIgiOo7hA', 'UC9Vkx4zyHY4myJoykjtVm7A', 'UCY-mXLM6DsS9cmSwlh0tqSA', 'UCR6sR1ITtHIz8GZqJOwqxDQ', 'UCHkibO5NjXrjMO90jGjhcPQ', 'UC70hC0mVGURG6rCBibw9Wug', 'UCGZQ3Ac7xkBNL0_s5pDVCKg', 'UC-eyEDlbCD_8epmh-qCJ9oA'];
 const consumerCopyIds = ['SHORT-02', 'SHORT-03', 'SHORT-04', 'SHORT-05', 'SHORT-06', 'SHORT-07', 'SHORT-08'];
 const forbiddenConsumerClaimWords = ['수면제', '영양제', '보충제', '불안 완화', '부작용 없음'];
 const requiredFields = ['id:', 'title:', 'url:', 'channel:', 'speaker:', 'summary:', 'operatorSentence:', 'personSummary:', 'status:', 'statusReason:', 'checkedAt:', 'audit:', 'contentBasis:', 'authorityLevel:', 'evidenceLevel:', 'claimCategories:', 'rightsStatus:', 'usageMode:', 'nextAction:'];
@@ -25,13 +26,15 @@ for (const field of requiredFields) {
   if (missing) failures.push(`${field} missing from ${missing} record(s)`);
 }
 for (const seed of requiredSeeds) if (!source.includes(seed)) failures.push(`provided Shorts seed missing: ${seed}`);
+for (const channelId of requiredChannelIds) if (!source.includes(`sourceChannelId: '${channelId}'`)) failures.push(`provided Shorts source channel ID missing: ${channelId}`);
+if (source.includes('https://www.youtube.com/@%EB%B8%8C%EB%A0%88%EC%9D%B8%ED%8A%9C%EB%B8%8CBrainDoctor')) failures.push('SHORT-04 keeps an unstable encoded handle instead of the verified channel ID URL');
 if (!source.includes("status: 'PUBLISH_GENERAL'")) failures.push('no PUBLISH_GENERAL record found');
 if (!source.includes('https://www.sleepnet.or.kr/workshop/monthly/view?idx=150') || !source.includes('https://e-jsm.org/upload/jsm-13-2-60.pdf')) failures.push('SHORT-06 authority and research evidence links are not the verified official records');
 if (!source.includes('https://mediahub.seoul.go.kr/archives/1135642')) failures.push('SHORT-05 authority evidence link is not the current Seoul official profile record');
 const short05Block = source.match(/\{\n    id: 'SHORT-05'[\s\S]*?\n  \},/)?.[0] ?? '';
 const short06Block = source.match(/\{\n    id: 'SHORT-06'[\s\S]*?\n  \},/)?.[0] ?? '';
 if (!short05Block.includes("status: 'LIMITED_USE'") || !short06Block.includes("status: 'HOLD'")) failures.push('official source-link upgrades must not bypass SHORT-05/06 video-content review gates');
-if (!source.includes('https://www.youtube.com/@doctorLeeTV/about') || !source.includes('https://www.youtube.com/@%EB%B8%8C%EB%A0%88%EC%9D%B8%ED%8A%9C%EB%B8%8CBrainDoctor/about')) failures.push('SHORT-02/04 authority evidence links are not the current official profile pages');
+if (!source.includes('https://www.youtube.com/channel/UC9Vkx4zyHY4myJoykjtVm7A/about') || !source.includes('https://www.youtube.com/channel/UCR6sR1ITtHIz8GZqJOwqxDQ/about')) failures.push('SHORT-02/04 authority evidence links are not the current official profile pages');
 if (!source.includes("PUBLIC_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => video.status === 'PUBLISH_GENERAL')")) failures.push('public list is not restricted to PUBLISH_GENERAL');
 if (!appSource.includes("const approvedForCustomerSummary = video.status === 'PUBLISH_GENERAL';") || !appSource.includes('현재 요약은 제목·공개 설명 기반의 예비 정보이며')) failures.push('customer copy does not gate unapproved video summaries');
 if (!appSource.includes('video.publicTitle') || !appSource.includes('selectedVideo.publicSummary') || !appSource.includes('selectedVideo.publicPersonSummary') || !appSource.includes('selectedVideo.publicOperatorSentence')) failures.push('consumer video surface does not use the separate public copy fields');
