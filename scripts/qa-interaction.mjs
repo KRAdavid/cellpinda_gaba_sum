@@ -78,6 +78,7 @@ try {
   await send('Page.navigate', {url: baseUrl});
   await wait(900);
   await evaluate('localStorage.removeItem("cellpinda-gaba-video-review-draft-v1")');
+  await evaluate('localStorage.removeItem("cellpinda-gaba-monitor-review-draft-v1")');
 
   const initial = await evaluate('(() => { const scenes=[...document.querySelectorAll(".story-reader-scene")]; return {title:document.title,width:innerWidth,height:innerHeight,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,scenes:scenes.length,legacyCards:document.querySelectorAll(".story-card").length,progress:(document.querySelector(".story-reader-heading__count strong")?.innerText||"")+" / 08",storyTop:document.querySelector("#story")?.getBoundingClientRect().top||0,heading:!!document.querySelector(".story-reader-heading"),body:document.body.innerText}; })()');
   assert('page identity is general GABA education', initial.title.includes('일반 GABA 교육'));
@@ -188,6 +189,21 @@ try {
   await wait(180);
   const monitorCopyState = await evaluate('document.querySelector(".monitor-snapshot__copy-message")?.innerText||""');
   assert('presenter daily monitoring brief copy is wired', monitorCopyState.includes('회의용 일일 감리 요약을 복사했습니다.') || monitorCopyState.includes('복사에 실패했습니다'), monitorCopyState);
+  await evaluate('document.querySelector(".monitor-snapshot__queue details")?.setAttribute("open", "")');
+  await evaluate('document.querySelector(".monitor-candidate-review-button")?.click()');
+  await wait(180);
+  const monitorReview = await evaluate('({open:!!document.querySelector(".monitor-candidate-review"),candidate:document.querySelector(".monitor-candidate-review h3")?.innerText||"",checks:document.querySelectorAll(".monitor-candidate-review__checks input[type=checkbox]").length,progress:document.querySelector(".monitor-candidate-review__checks legend")?.innerText||"",boundary:document.querySelector(".monitor-candidate-review__boundary")?.innerText||"",transcript:document.querySelector("[data-monitor-review-field=transcriptExcerpt]")?.getAttribute("placeholder")||""})');
+  assert('presenter can start a local draft from a daily monitor candidate', monitorReview.open && monitorReview.candidate.length > 0 && monitorReview.checks === 5 && monitorReview.progress.includes('0/5') && monitorReview.boundary.includes('PENDING_REVIEW') && monitorReview.transcript.includes('원문에서 확인'), JSON.stringify(monitorReview));
+  await evaluate('(() => { const setValue=(selector,value) => { const field=document.querySelector(selector); const prototype=field?.tagName === "TEXTAREA" ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype; const setter=Object.getOwnPropertyDescriptor(prototype,"value")?.set; setter?.call(field,value); field?.dispatchEvent(new Event("input",{bubbles:true})); field?.dispatchEvent(new Event("change",{bubbles:true})); }; setValue("[data-monitor-review-field=reviewer]","VIDEO 담당"); setValue("[data-monitor-review-field=timestamps]","00:18–00:31"); setValue("[data-monitor-review-field=transcriptExcerpt]","원문에서 확인한 GABA 설명 구간"); setValue("[data-monitor-review-field=notes]","사람 감리 후 DB 반영"); return true; })()');
+  await wait(180);
+  await evaluate('document.querySelector("[data-monitor-review-check=sourceChecked]")?.click()');
+  await wait(180);
+  const savedMonitorDraft = await evaluate('(() => { const raw=localStorage.getItem("cellpinda-gaba-monitor-review-draft-v1"); const saved=raw ? JSON.parse(raw) : {}; const draft=Object.values(saved)[0]||{}; return {reviewer:draft.reviewer||"",timestamps:draft.timestamps||"",transcript:draft.transcriptExcerpt||"",notes:draft.notes||"",checked:!!draft.sourceChecked,decision:draft.decision||""}; })()');
+  assert('daily monitor candidate draft persists locally without changing approval', savedMonitorDraft.reviewer === 'VIDEO 담당' && savedMonitorDraft.timestamps.includes('00:18') && savedMonitorDraft.transcript.includes('GABA') && savedMonitorDraft.notes.includes('사람 감리') && savedMonitorDraft.checked && savedMonitorDraft.decision === 'UNDECIDED', JSON.stringify(savedMonitorDraft));
+  await evaluate('document.querySelector("[data-monitor-review-copy]")?.click()');
+  await wait(180);
+  const monitorReviewCopyState = await evaluate('document.querySelector(".monitor-candidate-review__actions")?.innerText||""');
+  assert('daily monitor candidate draft copy is wired', monitorReviewCopyState.includes('신규 후보 감리 초안을 복사했습니다.') || monitorReviewCopyState.includes('복사에 실패했습니다'), monitorReviewCopyState);
   await evaluate('document.querySelector(".video-db-filters button:nth-child(4)")?.click()');
   await wait(180);
   const holdFilter = await evaluate('({items:document.querySelectorAll(".video-db-item").length,active:document.querySelector(".video-db-filters button:nth-child(4)")?.getAttribute("aria-pressed")||""})');

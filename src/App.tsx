@@ -43,9 +43,12 @@ type VideoReviewDraft = {
   updatedAt: string;
 };
 type VideoReviewDrafts = Record<string, VideoReviewDraft>;
+type MonitorCandidate = typeof GABA_MONITOR_SNAPSHOT.pendingQueue[number] | typeof GABA_MONITOR_SNAPSHOT.authorityQueue[number];
+type MonitorReviewDrafts = Record<string, VideoReviewDraft>;
 
 const TF_ASSIGNMENT_STORAGE_KEY = 'cellpinda-gaba-tf-assignment-draft-v1';
 const VIDEO_REVIEW_STORAGE_KEY = 'cellpinda-gaba-video-review-draft-v1';
+const MONITOR_REVIEW_STORAGE_KEY = 'cellpinda-gaba-monitor-review-draft-v1';
 const VIDEO_REVIEW_ROLES = ['VIDEO', 'SCIENCE', 'MEDICAL', 'RIGHTS', 'PM'] as const;
 const VIDEO_REVIEW_CHECKS = [
   {key: 'sourceChecked', label: '원문·영상'},
@@ -301,6 +304,9 @@ export default function App() {
   const [videoReviewDrafts, setVideoReviewDrafts] = useState<VideoReviewDrafts>({});
   const [videoReviewMessage, setVideoReviewMessage] = useState('');
   const [monitorCopyMessage, setMonitorCopyMessage] = useState('');
+  const [monitorReviewDrafts, setMonitorReviewDrafts] = useState<MonitorReviewDrafts>({});
+  const [monitorReviewCandidateId, setMonitorReviewCandidateId] = useState<string | null>(null);
+  const [monitorReviewMessage, setMonitorReviewMessage] = useState('');
   const railRef = useRef<HTMLDivElement>(null);
   const readerStreamRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
@@ -327,6 +333,10 @@ export default function App() {
   const selectedVideoReviewDraft = selectedVideo ? videoReviewDrafts[selectedVideo.id] ?? makeEmptyVideoReviewDraft() : null;
   const selectedReviewCheckCount = selectedVideoReviewDraft ? VIDEO_REVIEW_CHECKS.filter(check => selectedVideoReviewDraft[check.key]).length : 0;
   const incompleteAuditVideos = useMemo(() => panelVideos.filter(video => VIDEO_REVIEW_CHECKS.filter(check => videoReviewDrafts[video.id]?.[check.key]).length < VIDEO_REVIEW_CHECKS.length), [panelVideos, videoReviewDrafts]);
+  const monitorCandidates = useMemo<MonitorCandidate[]>(() => [...GABA_MONITOR_SNAPSHOT.pendingQueue, ...GABA_MONITOR_SNAPSHOT.authorityQueue], []);
+  const monitorReviewCandidate = monitorCandidates.find(candidate => candidate.id === monitorReviewCandidateId) ?? null;
+  const monitorReviewDraft = monitorReviewCandidate ? monitorReviewDrafts[monitorReviewCandidate.id] ?? makeEmptyVideoReviewDraft() : null;
+  const monitorReviewCheckCount = monitorReviewDraft ? VIDEO_REVIEW_CHECKS.filter(check => monitorReviewDraft[check.key]).length : 0;
 
   useEffect(() => setPreviewImageError(false), [panelVideoId]);
 
@@ -350,6 +360,17 @@ export default function App() {
       if (parsed && typeof parsed === 'object') setVideoReviewDrafts(parsed);
     } catch {
       // A local review draft is optional and must never block the public page.
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(MONITOR_REVIEW_STORAGE_KEY);
+      if (!saved) return;
+      const parsed = JSON.parse(saved) as MonitorReviewDrafts;
+      if (parsed && typeof parsed === 'object') setMonitorReviewDrafts(parsed);
+    } catch {
+      // A local monitor draft is optional and must never block the public page.
     }
   }, []);
   const filteredPanelVideos = useMemo(() => {
@@ -515,6 +536,14 @@ export default function App() {
     }
   };
 
+  const persistMonitorReviewDrafts = (drafts: MonitorReviewDrafts) => {
+    try {
+      window.localStorage.setItem(MONITOR_REVIEW_STORAGE_KEY, JSON.stringify(drafts));
+    } catch {
+      // Keep the in-memory draft when browser storage is unavailable.
+    }
+  };
+
   const updateVideoReviewDraft = <K extends keyof VideoReviewDraft>(field: K, value: VideoReviewDraft[K]) => {
     if (!selectedVideo) return;
     const current = videoReviewDrafts[selectedVideo.id] ?? makeEmptyVideoReviewDraft();
@@ -523,6 +552,53 @@ export default function App() {
     setVideoReviewDrafts(next);
     persistVideoReviewDrafts(next);
     setVideoReviewMessage('이 브라우저에 감리 기록 초안을 저장했습니다.');
+  };
+
+  const startMonitorReview = (candidateId: string) => {
+    setMonitorReviewCandidateId(candidateId);
+    setMonitorReviewMessage('');
+  };
+
+  const updateMonitorReviewDraft = <K extends keyof VideoReviewDraft>(field: K, value: VideoReviewDraft[K]) => {
+    if (!monitorReviewCandidate) return;
+    const current = monitorReviewDrafts[monitorReviewCandidate.id] ?? makeEmptyVideoReviewDraft();
+    const nextDraft = {...current, [field]: value, updatedAt: new Date().toISOString()};
+    const next = {...monitorReviewDrafts, [monitorReviewCandidate.id]: nextDraft};
+    setMonitorReviewDrafts(next);
+    persistMonitorReviewDrafts(next);
+    setMonitorReviewMessage('이 브라우저에 신규 후보 감리 초안을 저장했습니다.');
+  };
+
+  const copyMonitorReviewDraft = async () => {
+    if (!monitorReviewCandidate || !monitorReviewDraft) return;
+    const candidatePriority = 'priority' in monitorReviewCandidate ? monitorReviewCandidate.priority : '권위 후보 확인';
+    const checked = VIDEO_REVIEW_CHECKS
+      .map(check => `- ${check.label}: ${monitorReviewDraft[check.key] ? '확인' : '미확인'}`)
+      .join('\n');
+    const lines = [
+      `GABA 신규 후보 감리 기록 초안 · ${monitorReviewCandidate.id}`,
+      `제목: ${monitorReviewCandidate.title}`,
+      `발견 경로: ${monitorReviewCandidate.channel}`,
+      `우선순위: ${candidatePriority}`,
+      `담당자: ${monitorReviewDraft.reviewer.trim() || ('reviewer' in monitorReviewCandidate ? monitorReviewCandidate.reviewer : '미입력')} · 역할: ${monitorReviewDraft.role}`,
+      `결정 초안: ${VIDEO_REVIEW_DECISIONS.find(item => item.id === monitorReviewDraft.decision)?.label ?? '아직 결정하지 않음'}`,
+      `확인 타임코드: ${monitorReviewDraft.timestamps.trim() || '미입력'}`,
+      `확인한 발언·자막 발췌: ${(monitorReviewDraft.transcriptExcerpt ?? '').trim() || '미입력'}`,
+      `자동 주의 신호: ${monitorReviewCandidate.signals.join(' · ')}`,
+      '',
+      '확인 체크',
+      checked,
+      '',
+      `팀 메모: ${monitorReviewDraft.notes.trim() || '미입력'}`,
+      '',
+      '※ 브라우저 로컬 초안이며 공식 DB 등록·공개 승인·과학/의학·권리 판정을 의미하지 않습니다. 원문·자막·화자·권리 확인 후 사람이 DB와 일일 검토 로그에 최종 반영합니다.',
+    ];
+    try {
+      await copyText(lines.join('\n'));
+      setMonitorReviewMessage('신규 후보 감리 초안을 복사했습니다.');
+    } catch {
+      setMonitorReviewMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
   };
 
   const copyVideoReviewDraft = async () => {
@@ -1197,7 +1273,7 @@ export default function App() {
             </> : null}
             {openPanel === 'video' ? <>
               <p>{presentationMode ? '발표자용 영상 DB 감리 화면입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 확인하고, 영상별 권위 수준과 공개 여부를 따로 결정합니다.' : '오늘 공유하신 국내 YouTube Shorts를 원문 확인용으로 소개합니다. 영상의 권위와 주장은 감리 상태를 따로 확인해 주세요.'}</p>
-              <p className="info-panel__status">{presentationMode ? `감리 대장 ${GABA_VIDEO_DB.length}건 · 현재 국내 큐 ${filteredPanelVideos.length}건 · DB 승인 이력 ${PUBLIC_GABA_VIDEOS.length}건 · 국내 공개 승인 ${DOMESTIC_PUBLIC_GABA_VIDEOS.length}건 · 감리 초안 ${Object.keys(videoReviewDrafts).length}건` : `오늘 공유 영상 ${SHARED_GABA_VIDEOS.length}건 · 원문 확인 필요`}</p>
+              <p className="info-panel__status">{presentationMode ? `감리 대장 ${GABA_VIDEO_DB.length}건 · 현재 국내 큐 ${filteredPanelVideos.length}건 · DB 승인 이력 ${PUBLIC_GABA_VIDEOS.length}건 · 국내 공개 승인 ${DOMESTIC_PUBLIC_GABA_VIDEOS.length}건 · 등록 영상 초안 ${Object.keys(videoReviewDrafts).length}건 · 신규 후보 초안 ${Object.keys(monitorReviewDrafts).length}건` : `오늘 공유 영상 ${SHARED_GABA_VIDEOS.length}건 · 원문 확인 필요`}</p>
               {presentationMode ? <div className="video-review-summary" aria-label="감리 목록 복사"><span>감리 초안 {Object.keys(videoReviewDrafts).length}건 · 미완료 {incompleteAuditVideos.length}건</span><button type="button" disabled={!Object.keys(videoReviewDrafts).length} onClick={copyAllVideoReviewDrafts}>작성 초안 전체 복사</button><button type="button" disabled={!incompleteAuditVideos.length} onClick={copyIncompleteVideoAuditQueue}>미완료 목록 복사</button><small aria-live="polite">{videoReviewMessage}</small></div> : null}
               {presentationMode ? <div className="monitor-snapshot">
                 <div className="monitor-snapshot__heading"><p className="eyebrow">일일 감리 상태</p><button type="button" className="monitor-snapshot__copy" onClick={copyDailyMonitorBrief}>회의용 요약 복사</button></div>
@@ -1226,14 +1302,30 @@ export default function App() {
                 </div>
                 <div className="monitor-snapshot__queue" aria-label="오늘 먼저 검토할 후보">
                   <p className="eyebrow">오늘 먼저 검토할 후보</p>
-                  {GABA_MONITOR_SNAPSHOT.pendingQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.pendingQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{candidate.priority}</strong><span>{candidate.title}</span></summary><div><small>상태: PENDING_REVIEW · 첫 담당: {candidate.reviewer}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>주의 신호: {candidate.signals.join(' · ')}</small><small>원문·자막·화자·권리 확인 전에는 공개하지 않습니다.</small></div></details></li>)}</ol> : <p>현재 검토 대기 후보가 없습니다.</p>}
+                  {GABA_MONITOR_SNAPSHOT.pendingQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.pendingQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{candidate.priority}</strong><span>{candidate.title}</span></summary><div><small>상태: PENDING_REVIEW · 첫 담당: {candidate.reviewer}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>주의 신호: {candidate.signals.join(' · ')}</small><small>원문·자막·화자·권리 확인 전에는 공개하지 않습니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 검토 대기 후보가 없습니다.</p>}
                   <small>제목·공개 설명 기반 우선순위입니다. 영상 원문·자막·화자·권리 확인 전 공개 승인으로 보지 않습니다.</small>
                 </div>
                 <div className="monitor-snapshot__authority-queue" aria-label="권위 후보 확인 큐">
                   <p className="eyebrow">권위 후보 확인</p>
-                  {GABA_MONITOR_SNAPSHOT.authorityQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.authorityQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{candidate.id.replace(/^PENDING-\d+-/, '')}</strong><span>{candidate.title}</span></summary><div><small>발견 신호: {candidate.signals.join(' · ')}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>자격·실제 화자·원문·자막·권리 확인 전에는 권위 영상으로 공개하지 않습니다.</small></div></details></li>)}</ol> : <p>현재 권위 후보 신호가 있는 영상이 없습니다.</p>}
+                  {GABA_MONITOR_SNAPSHOT.authorityQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.authorityQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{candidate.id.replace(/^PENDING-\d+-/, '')}</strong><span>{candidate.title}</span></summary><div><small>발견 신호: {candidate.signals.join(' · ')}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>자격·실제 화자·원문·자막·권리 확인 전에는 권위 영상으로 공개하지 않습니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 권위 후보 신호가 있는 영상이 없습니다.</p>}
                   <small>검색어·제목 기반의 발견 신호일 뿐, 의사·과학자 자격이나 영상의 과학적 타당성을 승인하지 않습니다.</small>
                 </div>
+                {monitorReviewCandidate && monitorReviewDraft ? <section className="monitor-candidate-review" aria-label="신규 후보 감리 초안">
+                  <div className="monitor-candidate-review__heading"><div><p className="eyebrow">오늘 검토 후보 입력</p><strong>{monitorReviewCandidate.id}</strong></div><button type="button" onClick={() => setMonitorReviewCandidateId(null)}>닫기</button></div>
+                  <h3>{monitorReviewCandidate.title}</h3>
+                  <p className="monitor-candidate-review__meta">{monitorReviewCandidate.channel} · {('priority' in monitorReviewCandidate ? monitorReviewCandidate.priority : '권위 후보 확인')}</p>
+                  <p className="monitor-candidate-review__boundary">자동 수집 후보는 아직 `PENDING_REVIEW`입니다. 아래 기록은 이 브라우저의 감리 초안이며 공식 DB 등록·공개 승인 상태를 바꾸지 않습니다.</p>
+                  <div className="monitor-candidate-review__fields">
+                    <label>담당자<input data-monitor-review-field="reviewer" type="text" value={monitorReviewDraft.reviewer} onChange={event => updateMonitorReviewDraft('reviewer', event.currentTarget.value)} placeholder="예: VIDEO 담당" /></label>
+                    <label>역할<select data-monitor-review-field="role" value={monitorReviewDraft.role} onChange={event => updateMonitorReviewDraft('role', event.currentTarget.value)}>{VIDEO_REVIEW_ROLES.map(role => <option key={role} value={role}>{role}</option>)}</select></label>
+                    <label>결정 초안<select data-monitor-review-field="decision" value={monitorReviewDraft.decision} onChange={event => updateMonitorReviewDraft('decision', event.currentTarget.value as VideoReviewDecision)}>{VIDEO_REVIEW_DECISIONS.map(decision => <option key={decision.id} value={decision.id}>{decision.label}</option>)}</select></label>
+                    <label>확인 타임코드<input data-monitor-review-field="timestamps" type="text" value={monitorReviewDraft.timestamps} onChange={event => updateMonitorReviewDraft('timestamps', event.currentTarget.value)} placeholder="예: 00:12–00:28" /></label>
+                  </div>
+                  <label className="monitor-candidate-review__transcript">확인한 발언·자막 발췌<textarea data-monitor-review-field="transcriptExcerpt" value={monitorReviewDraft.transcriptExcerpt} onChange={event => updateMonitorReviewDraft('transcriptExcerpt', event.currentTarget.value)} placeholder="예: 원문에서 확인한 문장을 그대로 기록하세요." rows={3} /></label>
+                  <fieldset className="monitor-candidate-review__checks"><legend>{monitorReviewCheckCount}/5 확인</legend>{VIDEO_REVIEW_CHECKS.map(check => <label key={check.key}><input type="checkbox" data-monitor-review-check={check.key} checked={monitorReviewDraft[check.key]} onClick={() => updateMonitorReviewDraft(check.key, !monitorReviewDraft[check.key])} onChange={() => undefined} /> {check.label}</label>)}</fieldset>
+                  <label className="monitor-candidate-review__notes">팀 메모<textarea data-monitor-review-field="notes" value={monitorReviewDraft.notes} onChange={event => updateMonitorReviewDraft('notes', event.currentTarget.value)} placeholder="확인한 근거, 이견, 다음 질문을 기록하세요." rows={3} /></label>
+                  <div className="monitor-candidate-review__actions"><button type="button" data-monitor-review-copy onClick={copyMonitorReviewDraft}>후보 감리 초안 복사</button><span aria-live="polite">{monitorReviewMessage}</span></div>
+                </section> : null}
                 <div className="monitor-snapshot__links"><a href={GABA_MONITOR_SNAPSHOT.triageUrl} target="_blank" rel="noopener noreferrer">감리 우선순위 보드 원문 ↗</a><a href={GABA_MONITOR_SNAPSHOT.reportUrl} target="_blank" rel="noopener noreferrer">일일 리포트 ↗</a><a href={GABA_MONITOR_SNAPSHOT.reviewSessionUrl} target="_blank" rel="noopener noreferrer">오늘 리뷰 세션 ↗</a><a href={GABA_MONITOR_SNAPSHOT.captionAuditUrl} target="_blank" rel="noopener noreferrer">자막 감사 기록 ↗</a></div>
               </div> : null}
               {presentationMode ? <div className="video-db-tools">
