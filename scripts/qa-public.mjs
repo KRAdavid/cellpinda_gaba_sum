@@ -38,6 +38,7 @@ const required = [
   ['video showcase source-link guard', '원문 링크는 상세 패널에서 선택'],
   ['video showcase hero copy', '원문으로 확인하세요'],
   ['video candidate boundary', '오늘 공유된 검토 후보입니다'],
+  ['video audit preview', '권위 확인:'],
   ['video monitor freshness', '영상 DB 자동 확인'],
   ['reel next action', '다음 장면'],
   ['reel video handoff', '영상 요약으로 이어가기'],

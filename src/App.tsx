@@ -981,6 +981,11 @@ export default function App() {
                 <div className="video-showcase__meta"><span>{video.id}</span><span className="video-showcase__status">오늘 공유 · {VIDEO_STATUS_LABELS[video.status]}</span></div>
                 <h3>{video.title}</h3>
                 <p className="video-showcase__channel">{video.channel} · {video.speaker}</p>
+                <div className="video-showcase__audit" aria-label="영상 공개 감리 상태">
+                  <span>권위 확인: {VIDEO_AUDIT_LABELS.authorityLevel[video.audit.authorityLevel]}</span>
+                  <span>근거: {VIDEO_AUDIT_LABELS.evidenceLevel[video.audit.evidenceLevel]}</span>
+                  <span>사용: {VIDEO_AUDIT_LABELS.usageMode[video.audit.usageMode]}</span>
+                </div>
                 <p><strong>무엇을 어떻게 소개했나 · 예비</strong><br />{video.summary}</p>
                 <p><strong>인물 소개</strong><br />{video.personSummary}</p>
                 <div className="video-showcase__actions"><button type="button" onClick={event => openVideoPanel(event.currentTarget, video.id)}>상세 감리 먼저 보기 <span aria-hidden="true">＋</span></button><span className="video-showcase__source-note">원문 링크는 상세 패널에서 선택</span></div>
