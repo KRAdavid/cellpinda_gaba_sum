@@ -100,6 +100,8 @@ const forbiddenMetadata = [
 ];
 
 const forbiddenPublicCopy = [
+  ['product brand name', '셀핀다'],
+  ['product store URL', 'smartstore.naver.com'],
   ['negative stress evidence wording', '스트레스 근거는 제한적이고'],
   ['negative sleep evidence wording', '수면 근거는 매우 제한적이며'],
 ];

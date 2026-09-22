@@ -75,7 +75,7 @@ try {
   const initial = await evaluate('(() => { const scenes=[...document.querySelectorAll(".story-reader-scene")]; return {title:document.title,width:innerWidth,height:innerHeight,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,scenes:scenes.length,legacyCards:document.querySelectorAll(".story-card").length,progress:(document.querySelector(".story-reader-heading__count strong")?.innerText||"")+" / 08",storyTop:document.querySelector("#story")?.getBoundingClientRect().top||0,heading:!!document.querySelector(".story-reader-heading"),body:document.body.innerText}; })()');
   assert('page identity is general GABA education', initial.title.includes('일반 GABA 교육'));
   assert('mobile viewport has no horizontal overflow', initial.width === viewportWidth && initial.docWidth === initial.clientWidth && initial.docWidth <= initial.width, JSON.stringify(initial));
-  assert('consumer page contains no product or review content', !initial.body.includes('셀핀다 제품') && !initial.body.includes('구매자 후기') && !initial.body.includes('스마트스토어'));
+  assert('consumer page contains no product or review content', !initial.body.includes('셀핀다') && !initial.body.includes('구매자 후기') && !initial.body.includes('스마트스토어') && !initial.body.includes('smartstore.naver.com'));
   assert('consumer page hides presenter monitoring snapshot', !initial.body.includes('일일 감리 상태') && !initial.body.includes('검토 대기'));
   assert('consumer root enters the vertical reading flow immediately', Math.abs(initial.storyTop) < 2 && initial.heading && initial.scenes === 8, JSON.stringify(initial));
   assert('story has eight one-message scenes', initial.scenes === 8 && initial.legacyCards === 0 && initial.progress === '01 / 08', JSON.stringify(initial));
