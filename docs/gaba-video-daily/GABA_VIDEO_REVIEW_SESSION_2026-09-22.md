@@ -56,7 +56,30 @@
 - 결정: HOLD (사람 검토 전 기본값)
 - 타임코드·근거·권리 메모: 
 
-## 03 · PENDING-20260922-6QgcctlfBZU
+## 03 · PENDING-20260922-26wX746Ga6M
+
+- 영상: [불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=26wX746Ga6M)
+- 발견 경로: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 첫 담당 제안: SCIENCE/MEDICAL
+- 다음 행동 제안: 질환·효과·안전성 표현 확인
+- 제목·공개 텍스트 주의 신호: 질환·치료 표현 · 효과·안전성 단정 신호
+- 현재 상태: PENDING_REVIEW
+
+### 사람 검토 체크
+
+- [ ] VIDEO: 실제 Shorts 형식·원문·자막·화자 확인
+- [ ] SCIENCE/MEDICAL: 일반 GABA 생리와 질환·수면·스트레스·섭취 주장을 분리
+- [ ] RIGHTS: 원문 링크·임베드·인용·재사용 범위 확인
+- [ ] PM/UX: 소비자에게 한 문장으로 설명할 수 있는지 확인
+- [ ] 최종 판정과 보류 사유를 `GABA_VIDEO_REVIEW_LOG.md`에 기록
+
+### 회의 메모
+
+- 결정: HOLD (사람 검토 전 기본값)
+- 타임코드·근거·권리 메모: 
+
+## 04 · PENDING-20260922-6QgcctlfBZU
 
 - 영상: [Supplement GABA to reduce stress! #shorts](https://www.youtube.com/watch?v=6QgcctlfBZU)
 - 발견 경로: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
@@ -79,33 +102,10 @@
 - 결정: HOLD (사람 검토 전 기본값)
 - 타임코드·근거·권리 메모: 
 
-## 04 · PENDING-20260922-7h0wzAM7Frw
+## 05 · PENDING-20260922-7h0wzAM7Frw
 
 - 영상: ['몽진환'은 어떤 제품일까요 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=7h0wzAM7Frw)
 - 발견 경로: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
-- 자동 우선순위: SCIENCE/MEDICAL 우선
-- 첫 담당 제안: SCIENCE/MEDICAL
-- 다음 행동 제안: 질환·효과·안전성 표현 확인
-- 제목·공개 텍스트 주의 신호: 질환·치료 표현
-- 현재 상태: PENDING_REVIEW
-
-### 사람 검토 체크
-
-- [ ] VIDEO: 실제 Shorts 형식·원문·자막·화자 확인
-- [ ] SCIENCE/MEDICAL: 일반 GABA 생리와 질환·수면·스트레스·섭취 주장을 분리
-- [ ] RIGHTS: 원문 링크·임베드·인용·재사용 범위 확인
-- [ ] PM/UX: 소비자에게 한 문장으로 설명할 수 있는지 확인
-- [ ] 최종 판정과 보류 사유를 `GABA_VIDEO_REVIEW_LOG.md`에 기록
-
-### 회의 메모
-
-- 결정: HOLD (사람 검토 전 기본값)
-- 타임코드·근거·권리 메모: 
-
-## 05 · PENDING-20260922-8GK06KKKUeA
-
-- 영상: [스틸녹스 장기 복용 시 뇌에 생기는 변화, GABA 수용체와 수면 구조 \\| 대장동 불면증 한의원](https://www.youtube.com/watch?v=8GK06KKKUeA)
-- 발견 경로: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
 - 자동 우선순위: SCIENCE/MEDICAL 우선
 - 첫 담당 제안: SCIENCE/MEDICAL
 - 다음 행동 제안: 질환·효과·안전성 표현 확인

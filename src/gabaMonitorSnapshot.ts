@@ -5,8 +5,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "discoveryQueries": 6,
   "totalDiscoveryQueries": 6,
   "newCandidates": 1,
-  "pendingReview": 90,
-  "scienceMedicalPriority": 54,
+  "pendingReview": 91,
+  "scienceMedicalPriority": 55,
   "videoPriority": 36,
   "pendingQueue": [
     {
@@ -34,6 +34,18 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
+      "id": "PENDING-20260922-26wX746Ga6M",
+      "title": "불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "효과·안전성 단정 신호"
+      ],
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
       "id": "PENDING-20260922-6QgcctlfBZU",
       "title": "Supplement GABA to reduce stress! #shorts",
       "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
@@ -49,17 +61,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "id": "PENDING-20260922-7h0wzAM7Frw",
       "title": "'몽진환'은 어떤 제품일까요 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
       "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현"
-      ],
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-8GK06KKKUeA",
-      "title": "스틸녹스 장기 복용 시 뇌에 생기는 변화, GABA 수용체와 수면 구조 \\| 대장동 불면증 한의원",
-      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현"
@@ -133,14 +134,14 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoLinksHealthy": 11,
   "registeredVideoLinkWarnings": 0,
   "registeredEvidenceLinksChecked": 6,
-  "registeredEvidenceLinksHealthy": 4,
-  "registeredEvidenceLinkWarnings": 2,
+  "registeredEvidenceLinksHealthy": 6,
+  "registeredEvidenceLinkWarnings": 0,
   "registeredVideoMetadataChecked": 9,
   "registeredVideoMetadataHealthy": 9,
   "registeredVideoMetadataWarnings": 0,
   "registeredVideoCaptionTracksChecked": 9,
-  "registeredVideoCaptionTracksAvailable": 0,
-  "registeredVideoCaptionTrackWarnings": 9,
+  "registeredVideoCaptionTracksAvailable": 9,
+  "registeredVideoCaptionTrackWarnings": 0,
   "registeredVideoCaptionBodiesChecked": 9,
   "registeredVideoCaptionBodiesAvailable": 0,
   "registeredVideoCaptionBodyWarnings": 9,

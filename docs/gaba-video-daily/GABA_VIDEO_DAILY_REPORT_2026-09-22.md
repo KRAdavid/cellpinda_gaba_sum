@@ -9,9 +9,9 @@
 - Shorts 페이지 보완 수집: 0개 채널
 - 신규 후보: 1건
 - 등록 영상 원문 링크: 11/11 접근 확인 · 링크 경고 0건
-- 권위·연구 출처 링크: 4/6 접근 확인 · 출처 링크 경고 2건
+- 권위·연구 출처 링크: 6/6 접근 확인 · 출처 링크 경고 0건
 - 등록 YouTube 메타데이터: 9/9 제목·채널 확인 · 메타데이터 경고 0건
-- 등록 YouTube 자막 트랙: 0/9 watch 페이지에서 발견 · 자막 경고 9건
+- 등록 YouTube 자막 트랙: 9/9 watch 페이지에서 발견 · 자막 경고 0건
 - 등록 YouTube 자막 본문: 0/9 본문 확인 · 본문 경고 9건
 - 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-09-22.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
@@ -20,7 +20,7 @@
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 상태 |
 | --- | --- | --- | --- | --- | --- |
-| PENDING-20260922-X80_eSROFkw | [GABA: The brain chemical messenger \| Neuroscience \| Brain health \| Evidence based science](https://www.youtube.com/watch?v=X80_eSROFkw) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts | 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견 | VIDEO 우선 | PENDING_REVIEW |
+| PENDING-20260922-26wX746Ga6M | [불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=26wX746Ga6M) | YouTube 검색: 가바 스트레스 Shorts | 질환·치료 표현 · 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -38,8 +38,7 @@
 
 ## 권위·연구 출처 링크 상태
 
-- 경고: https://www.stressmanagement.co.kr/page/49jdfx45 → fetch failed
-- 경고: https://www.seoulsangok.com/ → fetch failed
+- 등록된 권위·연구 출처 링크에서 HTTP 경고 없음
 - 이 점검은 등록된 출처 URL의 접근 상태만 확인한다. 링크 접근 가능 여부는 인물 자격·영상 화자 일치·연구 내용·과학적 타당성·권리·공개 승인을 의미하지 않는다.
 
 ## 등록 YouTube 메타데이터 상태
@@ -49,28 +48,20 @@
 
 ## 등록 YouTube 자막 트랙 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → watch 페이지 자막 트랙 없음
+- 모든 등록 YouTube watch 페이지에서 자막 트랙 안내 발견
 - 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 의미하지 않는다. 사람 검토 전 요약과 공개 상태는 바꾸지 않는다.
 
 ## 등록 YouTube 자막 본문 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 확인 HTTP 429
 - 자막 본문 확인은 텍스트 응답의 존재만 점검한다. 번역 정확성·발언 맥락·화자·과학적 타당성·권리를 승인하지 않으며, 본문 확인 전 요약과 공개 상태를 바꾸지 않는다.
 
 ## 다음 15분 감리 순서

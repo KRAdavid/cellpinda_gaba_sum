@@ -4,8 +4,8 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 90건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 54건
+- 검토 대기: 91건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 55건
 - VIDEO 원문·자막 선확인: 36건
 
 ## 우선순위 정의
@@ -22,6 +22,7 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | PENDING-20260922-_XGO7xk24jo | [헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=_XGO7xk24jo) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922--azWbivGh5Y | [잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠](https://www.youtube.com/watch?v=-azWbivGh5Y) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20260922-26wX746Ga6M | [불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=26wX746Ga6M) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-6QgcctlfBZU | [Supplement GABA to reduce stress! #shorts](https://www.youtube.com/watch?v=6QgcctlfBZU) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-7h0wzAM7Frw | ['몽진환'은 어떤 제품일까요 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=7h0wzAM7Frw) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-8GK06KKKUeA | [스틸녹스 장기 복용 시 뇌에 생기는 변화, GABA 수용체와 수면 구조 \\| 대장동 불면증 한의원](https://www.youtube.com/watch?v=8GK06KKKUeA) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
