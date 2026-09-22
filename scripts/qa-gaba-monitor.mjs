@@ -5,6 +5,7 @@ const root = process.cwd();
 const read = relativePath => fs.readFileSync(path.join(root, relativePath), 'utf8');
 const monitor = read('scripts/monitor-gaba-shorts.mjs');
 const workflow = read('.github/workflows/monitor-gaba-shorts.yml');
+const deployWorkflow = read('.github/workflows/deploy-pages.yml');
 const report = read('docs/GABA_VIDEO_DAILY_REPORT.md');
 const inbox = read('docs/GABA_VIDEO_INBOX.md');
 const snapshot = read('src/gabaMonitorSnapshot.ts');
@@ -33,6 +34,7 @@ assert('triage classifier is present and explicitly non-approval', monitor.inclu
 assert('workflow stages triage board changes', workflow.includes('docs/GABA_VIDEO_TRIAGE.md'));
 assert('monitor generates a presenter snapshot', monitor.includes('snapshotPath') && monitor.includes('monitorSnapshotTypeScript') && monitor.includes("path.join(root, 'src', 'gabaMonitorSnapshot.ts')"));
 assert('workflow stages presenter snapshot changes', workflow.includes('src/gabaMonitorSnapshot.ts'));
+assert('successful monitor run triggers Pages publication', deployWorkflow.includes('workflow_run:') && deployWorkflow.includes('Monitor GABA Shorts candidates') && deployWorkflow.includes("github.event.workflow_run.conclusion == 'success'"));
 assert('presenter snapshot keeps publication gated', snapshot.includes('GABA_MONITOR_SNAPSHOT') && snapshot.includes('pendingReview') && snapshot.includes('autoPublish') && snapshot.includes('"autoPublish": 0'));
 assert('presenter snapshot includes human decision gates', snapshot.includes('humanRoleAssigned') && snapshot.includes('humanSourceReviewed') && snapshot.includes('registeredVideoApproved') && snapshot.includes('domesticPublicApproved') && snapshot.includes('domesticVideoTotal') && snapshot.includes('firstMeetingReady'));
 assert('monitor checks registered video source links', monitor.includes('checkRegisteredVideoLinks') && monitor.includes('registeredVideoLinksChecked') && monitor.includes('registeredVideoLinkWarnings'));
