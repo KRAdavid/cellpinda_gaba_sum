@@ -55,3 +55,14 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
   .story--presentation .story-card{height:100%;min-height:0;padding:25px 23px}
 }
 .story-controls .story-next-button{display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.video-db-tools{display:grid;gap:11px;margin-top:18px;padding:14px;border:1px solid #c6d9c8;border-radius:15px;background:#edf5eb}
+.video-db-search{display:grid;gap:6px;color:#47715a;font-size:11px;font-weight:800}
+.video-db-search input{width:100%;min-height:38px;padding:8px 11px;border:1px solid #a8c5ad;border-radius:9px;background:#f9fbf6;color:#17392b;font:inherit;font-size:13px;outline:none}
+.video-db-search input:focus{outline:3px solid #e07a4d;outline-offset:2px}
+.video-db-filters{display:flex;flex-wrap:wrap;gap:7px}
+.video-db-filters button{min-height:32px;padding:6px 9px;border:1px solid #a8c5ad;border-radius:999px;background:transparent;color:#47715a;font:inherit;font-size:11px;font-weight:750;cursor:pointer}
+.video-db-filters button span{display:inline-block;min-width:16px;margin-left:5px;padding:1px 4px;border-radius:999px;background:#d9e9d9;color:#315c43;font-size:10px}
+.video-db-filters button:hover,.video-db-filters button.is-active{border-color:#2b7c59;background:#2b7c59;color:#fff}
+.video-db-filters button:hover span,.video-db-filters button.is-active span{background:rgba(255,255,255,.2);color:#fff}
+.video-db-item{content-visibility:auto;contain-intrinsic-size:0 116px}
+@media(max-width:760px){.video-db-tools{padding:12px}.video-db-filters{gap:6px}.video-db-filters button{font-size:10px;padding-inline:8px}}

@@ -17,6 +17,17 @@ type Slide = {
   links?: SlideLink[];
 };
 
+type VideoFilter = 'ALL' | 'REVIEW' | GabaVideoRecord['status'];
+
+const VIDEO_FILTERS: Array<{id: VideoFilter; label: string}> = [
+  {id: 'ALL', label: '전체'},
+  {id: 'REVIEW', label: '검토 필요'},
+  {id: 'PUBLISH_GENERAL', label: '공개 승인'},
+  {id: 'HOLD', label: '보류'},
+  {id: 'LIMITED_USE', label: '제한 사용'},
+  {id: 'EXCLUDE', label: '배제'},
+];
+
 const RESEARCH_URL = 'https://pubmed.ncbi.nlm.nih.gov/33041752/';
 const VIDEO_STATUS_LABELS: Record<GabaVideoRecord['status'], string> = {
   PUBLISH_GENERAL: '일반 교육 공개 승인',
@@ -162,6 +173,8 @@ export default function App() {
   const [shareUrl, setShareUrl] = useState('');
   const [panelShareMessage, setPanelShareMessage] = useState('');
   const [presenterCopyMessage, setPresenterCopyMessage] = useState('');
+  const [videoFilter, setVideoFilter] = useState<VideoFilter>('ALL');
+  const [videoQuery, setVideoQuery] = useState('');
   const railRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
   const panelTriggerRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -180,6 +193,19 @@ export default function App() {
   const publicVideo = PUBLIC_GABA_VIDEOS[0] ?? null;
   const panelVideos = presentationMode ? GABA_VIDEO_DB : PUBLIC_GABA_VIDEOS;
   const selectedVideo = panelVideoId ? GABA_VIDEO_DB.find(video => video.id === panelVideoId) ?? null : null;
+  const filteredPanelVideos = useMemo(() => {
+    const query = videoQuery.trim().toLocaleLowerCase();
+    const matchesFilter = (video: GabaVideoRecord) => videoFilter === 'ALL'
+      || (videoFilter === 'REVIEW' && video.status !== 'PUBLISH_GENERAL')
+      || video.status === videoFilter;
+    return [...panelVideos]
+      .filter(video => matchesFilter(video))
+      .filter(video => !query || [video.id, video.title, video.channel, video.speaker].join(' ').toLocaleLowerCase().includes(query));
+  }, [panelVideos, videoFilter, videoQuery]);
+
+  const videoFilterCount = (filter: VideoFilter) => panelVideos.filter(video => filter === 'ALL'
+    || (filter === 'REVIEW' && video.status !== 'PUBLISH_GENERAL')
+    || video.status === filter).length;
 
   useEffect(() => {
     const nav = phaseNavRef.current;
@@ -344,6 +370,8 @@ export default function App() {
     setOpenPanel(null);
     setPanelSourceIndex(null);
     setPanelVideoId(null);
+    setVideoFilter('ALL');
+    setVideoQuery('');
     setPanelShareMessage('');
     panelReturnRef.current = null;
     if (restoreFocus) {
@@ -377,6 +405,8 @@ export default function App() {
     panelReturnRef.current = returnElement ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setPanelSourceIndex(index);
     setPanelVideoId(panel === 'video' && !presentationMode ? publicVideo?.id ?? null : null);
+    setVideoFilter('ALL');
+    setVideoQuery('');
     setPanelShareMessage('');
     setOpenPanel(panel);
   };
@@ -385,6 +415,8 @@ export default function App() {
     panelReturnRef.current = returnElement ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setPanelSourceIndex(active);
     setPanelVideoId(null);
+    setVideoFilter('ALL');
+    setVideoQuery('');
     setPanelShareMessage('');
     setOpenPanel('video');
   };
@@ -590,14 +622,24 @@ export default function App() {
             </> : null}
             {openPanel === 'video' ? <>
               <p>{presentationMode ? '발표자용 영상 DB입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 감리한 뒤 공개 여부를 결정합니다.' : '공개 승인된 일반 GABA 설명 영상만 보여드립니다. 영상의 권위와 주장의 근거를 따로 확인하고, 원문 보기는 보조 행동으로 제공합니다.'}</p>
-              <p className="info-panel__status">{presentationMode ? `관리 중 후보 ${GABA_VIDEO_DB.length}건 · 공개 승인 ${PUBLIC_GABA_VIDEOS.length}건` : `현재 공개 승인 영상 ${PUBLIC_GABA_VIDEOS.length}건`}</p>
+              <p className="info-panel__status">{presentationMode ? `관리 중 DB ${GABA_VIDEO_DB.length}건 · 공개 승인 ${PUBLIC_GABA_VIDEOS.length}건 · 현재 보기 ${filteredPanelVideos.length}건` : `현재 공개 승인 영상 ${PUBLIC_GABA_VIDEOS.length}건`}</p>
+              {presentationMode ? <div className="video-db-tools">
+                <label className="video-db-search">영상 DB 검색
+                  <input type="search" value={videoQuery} onChange={event => setVideoQuery(event.currentTarget.value)} placeholder="제목·채널·화자·ID" aria-label="영상 DB 검색" />
+                </label>
+                <div className="video-db-filters" role="group" aria-label="영상 DB 상태 필터">
+                  {VIDEO_FILTERS.map(filter => <button key={filter.id} type="button" className={videoFilter === filter.id ? 'is-active' : ''} aria-pressed={videoFilter === filter.id} onClick={() => setVideoFilter(filter.id)}>
+                    {filter.label}<span>{videoFilterCount(filter.id)}</span>
+                  </button>)}
+                </div>
+              </div> : null}
               <div className="video-db-list" aria-label="GABA 영상 DB 목록">
-                {panelVideos.length ? panelVideos.map(video => <article key={video.id} className={'video-db-item' + (panelVideoId === video.id ? ' is-selected' : '')}>
+                {filteredPanelVideos.length ? filteredPanelVideos.map(video => <article key={video.id} className={'video-db-item' + (panelVideoId === video.id ? ' is-selected' : '')}>
                   <div className="video-db-item__topline"><span>{video.id}</span><strong>{VIDEO_STATUS_LABELS[video.status]}</strong></div>
                   <h3>{video.title}</h3>
                   <p>{video.channel}</p>
                   <button type="button" className="video-db-item__select" aria-pressed={panelVideoId === video.id} onClick={() => setPanelVideoId(video.id)}>{panelVideoId === video.id ? '선택된 영상' : '이 영상 검토'}</button>
-                </article>) : <p className="info-panel__flow-note">아직 공개 승인된 영상이 없습니다. 원문·자막·인물·권리 확인이 끝난 자료만 이 화면에 추가합니다.</p>}
+                </article>) : <p className="info-panel__flow-note">현재 조건에 맞는 영상이 없습니다. 검색어를 지우거나 다른 상태를 선택하세요.</p>}
               </div>
               {selectedVideo ? <div className="video-db-detail">
                 <p className="eyebrow">선택 영상 상세 · {VIDEO_STATUS_LABELS[selectedVideo.status]}</p>
