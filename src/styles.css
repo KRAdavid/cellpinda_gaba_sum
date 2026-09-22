@@ -286,3 +286,4 @@ body{background:var(--editorial-cream);color:var(--editorial-ink)}
 @media(prefers-reduced-motion:reduce){.story-reader-scene__visual{transition:none}}
 .site-header--consumer .brand{color:var(--editorial-ink)}
 @media(max-width:760px){.story-reader-heading{padding-top:90px;padding-bottom:20px}.story-reader-heading>div:first-child>p:last-child{margin-top:13px;line-height:1.65}.story-reader-phase-wrap{display:none}.story-reader-layout{margin-top:18px}.story-reader-scene{padding-top:34px}}
+.story-reader-scene__copy h3{word-break:keep-all}
