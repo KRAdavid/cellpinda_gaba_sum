@@ -6,6 +6,22 @@ export type TfWorkstream = {
   exit: string;
 };
 
+export type TfRole = {
+  id: string;
+  title: string;
+  responsibility: string;
+};
+
+export const TF_ROLES: TfRole[] = [
+  {id: 'PM', title: '편집 PM·회의 진행', responsibility: '범위·우선순위·회의 결정·공개 기준'},
+  {id: 'SCIENCE', title: 'GABA 과학 근거 리드', responsibility: '정의·기전·연구 설계·근거 수준'},
+  {id: 'MEDICAL', title: '의학·건강정보 검토자', responsibility: '진단·치료·안전성 오해 방지'},
+  {id: 'VIDEO', title: '권위 영상·출처 큐레이터', responsibility: '원문·발언 구간·자막·화자'},
+  {id: 'RIGHTS', title: '영상·이미지 권리 담당', responsibility: '링크·임베드·인용·재사용 범위'},
+  {id: 'UX', title: '소비자 UX·카피 리드', responsibility: '일상 용어·이해도·접근성'},
+  {id: 'QA', title: '프론트엔드·릴리스 QA', responsibility: '모바일·패널·공개 배포 검증'},
+];
+
 export const TF_WORKSTREAMS: TfWorkstream[] = [
   {
     id: 'PEOPLE',

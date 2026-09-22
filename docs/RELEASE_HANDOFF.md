@@ -38,7 +38,7 @@
 
 ## 사업자 운영
 
-사업자는 [`GENERAL_GABA_OPERATOR_GUIDE.md`](GENERAL_GABA_OPERATOR_GUIDE.md)의 발표 링크와 8장 순서를 사용한다. 영상 요약 섹션과 영상 DB에서 후보를 찾을 때는 상태·검색·감리 필드를 먼저 확인하고, `PUBLISH_GENERAL`이 아닌 영상은 승인 영상처럼 소개하지 않는다.
+사업자는 [`GENERAL_GABA_OPERATOR_GUIDE.md`](GENERAL_GABA_OPERATOR_GUIDE.md)의 발표 링크와 8장 순서를 사용한다. 영상 요약 섹션과 영상 DB에서 후보를 찾을 때는 상태·검색·감리 필드를 먼저 확인하고, `PUBLISH_GENERAL`이 아닌 영상은 승인 영상처럼 소개하지 않는다. TF 운영 보드의 `팀 업무 배정 초안 만들기`는 주 담당·백업·첫 회의 일시를 회의용으로 복사하는 보조 도구이며, 브라우저 로컬 초안일 뿐 공식 역할 배정이나 공개 승인 기록이 아니다.
 
 TF 회의는 [`GABA_EDUCATION_KICKOFF.md`](GABA_EDUCATION_KICKOFF.md), 반복 논의는 [`TF_DISCUSSION_BOARD.md`](TF_DISCUSSION_BOARD.md), 실제 사용성은 [`GENERAL_GABA_FIELD_SESSION.md`](GENERAL_GABA_FIELD_SESSION.md)에 기록한다.
 

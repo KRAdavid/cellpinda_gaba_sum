@@ -87,6 +87,25 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
 .tf-board__metrics>div{display:grid;gap:3px;padding:10px 8px;border:1px solid #e2c6aa;border-radius:12px;background:#fff7ef;text-align:center}
 .tf-board__metrics strong{color:#754a2b;font-size:18px;line-height:1}
 .tf-board__metrics span{color:#876b55;font-size:10px;line-height:1.3}
+.tf-board__assignment{margin-top:16px;border:1px solid #d9c3a5;border-radius:14px;background:#fffaf3}
+.tf-board__assignment>summary{padding:13px;color:#66472f;font-size:13px;font-weight:800;cursor:pointer}
+.tf-board__assignment-body{padding:0 13px 14px}
+.tf-board__assignment-body>p{margin:0 0 12px;color:#725b48;font-size:11px;line-height:1.6}
+.tf-board__role-list{display:grid;gap:7px}
+.tf-board__role-row{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(90px,.7fr) minmax(90px,.7fr);gap:7px;align-items:end;padding:9px;border:1px solid #eadbc7;border-radius:10px;background:#fff}
+.tf-board__role-copy{display:grid;gap:2px;min-width:0}
+.tf-board__role-copy strong{color:#8b5d30;font-size:10px;letter-spacing:.08em}
+.tf-board__role-copy span{overflow:hidden;color:#66472f;font-size:11px;font-weight:800;text-overflow:ellipsis;white-space:nowrap}
+.tf-board__role-copy small{overflow:hidden;color:#92745b;font-size:10px;text-overflow:ellipsis;white-space:nowrap}
+.tf-board__role-row label,.tf-board__meeting-draft{display:grid;gap:4px;color:#92745b;font-size:9px;font-weight:800}
+.tf-board__role-row input,.tf-board__meeting-draft input{width:100%;min-height:31px;padding:6px 8px;border:1px solid #d9c3a5;border-radius:7px;background:#fffdf9;color:#5c3a25;font:inherit;font-size:11px;outline:none}
+.tf-board__role-row input:focus,.tf-board__meeting-draft input:focus{border-color:#c47c4d;box-shadow:0 0 0 2px rgba(196,124,77,.15)}
+.tf-board__meeting-draft{margin-top:10px}
+.tf-board__assignment-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:12px}
+.tf-board__assignment-actions button{min-height:33px;padding:7px 11px;border:1px solid #b88962;border-radius:999px;background:#fff;color:#725036;font:inherit;font-size:11px;font-weight:800;cursor:pointer}
+.tf-board__assignment-actions button:hover{background:#fff0df}
+.tf-board__assignment-actions span{color:#876b55;font-size:10px}
+.tf-board__assignment-note{padding-top:9px!important;border-top:1px solid #eee0ce;color:#92745b!important;font-size:10px!important}
 .tf-board__list{display:grid;gap:10px;margin-top:16px}
 .tf-board__item{padding:13px;border:1px solid #d9c3a5;border-radius:14px;background:#fffaf3}
 .tf-board__item-topline{display:flex;align-items:center;justify-content:space-between;color:#92745b;font-size:10px;letter-spacing:.06em}
@@ -108,7 +127,7 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
 .video-db-filters button span{display:inline-block;min-width:16px;margin-left:5px;padding:1px 4px;border-radius:999px;background:#d9e9d9;color:#315c43;font-size:10px}
 .video-db-filters button:hover,.video-db-filters button.is-active{border-color:#2b7c59;background:#2b7c59;color:#fff}
 .video-db-filters button:hover span,.video-db-filters button.is-active span{background:rgba(255,255,255,.2);color:#fff}
-@media(max-width:760px){.video-db-tools{padding:12px}.video-db-filters{gap:6px}.video-db-filters button{font-size:10px;padding-inline:8px}.tf-board__metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.video-db-tools{padding:12px}.video-db-filters{gap:6px}.video-db-filters button{font-size:10px;padding-inline:8px}.tf-board__metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.tf-board__role-row{grid-template-columns:1fr 1fr}.tf-board__role-copy{grid-column:1/-1}.tf-board__role-copy small{white-space:normal}}
 
 /* Consumer feed mode: the lesson itself becomes the interface. Presenter tools stay in their separate mode. */
 .story:not(.story--presentation){position:relative;min-height:100svh;padding:0;background:#102f24}

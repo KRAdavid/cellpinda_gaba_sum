@@ -179,8 +179,11 @@ try {
   await press('Escape', 'Escape', 27);
   await evaluate('document.querySelector(".story-ops-board-button")?.click()');
   await waitForText('#info-panel-title', 'TF 운영 보드');
-  const opsBoard = await evaluate('({text:document.querySelector(".info-panel")?.innerText||"",workstreams:document.querySelectorAll(".tf-board__item").length,links:document.querySelectorAll(".tf-board__links a").length,hold:[...document.querySelectorAll(".tf-board__item-topline strong")].filter(element => element.innerText === "HOLD").length})');
-  assert('presenter operations board keeps human gates and next actions visible', opsBoard.text.includes('핵심 역할 배정') && opsBoard.text.includes('다음 행동') && opsBoard.workstreams === 4 && opsBoard.links === 2 && opsBoard.hold === 4, JSON.stringify(opsBoard));
+  const opsBoard = await evaluate('({text:document.querySelector(".info-panel")?.innerText||"",workstreams:document.querySelectorAll(".tf-board__item").length,links:document.querySelectorAll(".tf-board__links a").length,hold:[...document.querySelectorAll(".tf-board__item-topline strong")].filter(element => element.innerText === "HOLD").length,assignment:!!document.querySelector(".tf-board__assignment"),roles:document.querySelectorAll(".tf-board__role-row").length,assignmentButton:!!document.querySelector(".tf-board__assignment-actions button")})');
+  assert('presenter operations board keeps human gates and next actions visible', opsBoard.text.includes('핵심 역할 배정') && opsBoard.text.includes('다음 행동') && opsBoard.workstreams === 4 && opsBoard.links === 2 && opsBoard.hold === 4 && opsBoard.assignment && opsBoard.roles === 7 && opsBoard.assignmentButton, JSON.stringify(opsBoard));
+  await evaluate('document.querySelector(".tf-board__assignment summary")?.click()');
+  const assignmentDraft = await evaluate('({open:document.querySelector(".tf-board__assignment")?.open||false,inputs:document.querySelectorAll(".tf-board__assignment input").length,copy:document.querySelector(".tf-board__assignment-actions button")?.innerText||"",note:document.querySelector(".tf-board__assignment-note")?.innerText||""})');
+  assert('presenter operations board offers a local assignment draft without changing approval gates', assignmentDraft.open && assignmentDraft.inputs === 15 && assignmentDraft.copy.includes('배정 초안 복사') && assignmentDraft.note.includes('0/7'), JSON.stringify(assignmentDraft));
   await evaluate('document.querySelector(".tf-board__meeting summary")?.click()');
   const meetingSteps = await evaluate('document.querySelectorAll(".tf-board__meeting li").length');
   assert('operations board exposes the first meeting sequence', meetingSteps === 6, String(meetingSteps));

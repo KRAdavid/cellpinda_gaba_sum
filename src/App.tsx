@@ -1,7 +1,7 @@
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {ACTIVE_GABA_VIDEOS, DOMESTIC_PUBLIC_GABA_VIDEOS, GABA_VIDEO_DB, PUBLIC_GABA_VIDEOS, SHARED_GABA_VIDEOS, type GabaVideoRecord} from './gabaVideos';
 import {GABA_MONITOR_SNAPSHOT} from './gabaMonitorSnapshot';
-import {TF_MEETING_STEPS, TF_WORKSTREAMS} from './tfBoard';
+import {TF_MEETING_STEPS, TF_ROLES, TF_WORKSTREAMS} from './tfBoard';
 
 type PanelKey = 'research' | 'video' | 'ops';
 type SlideLink = {href: string; label: string; panel: PanelKey};
@@ -26,6 +26,9 @@ const STORY_VISUALS = {
 } as const;
 
 type VideoFilter = 'ALL' | 'REVIEW' | GabaVideoRecord['status'];
+type TfAssignment = Record<string, {lead: string; backup: string}>;
+
+const TF_ASSIGNMENT_STORAGE_KEY = 'cellpinda-gaba-tf-assignment-draft-v1';
 
 const VIDEO_FILTERS: Array<{id: VideoFilter; label: string}> = [
   {id: 'ALL', label: '전체'},
@@ -242,6 +245,9 @@ export default function App() {
   const [videoFilter, setVideoFilter] = useState<VideoFilter>('ALL');
   const [videoQuery, setVideoQuery] = useState('');
   const [showcaseVideoIndex, setShowcaseVideoIndex] = useState(0);
+  const [tfAssignments, setTfAssignments] = useState<TfAssignment>({});
+  const [tfMeetingDraft, setTfMeetingDraft] = useState('');
+  const [tfAssignmentMessage, setTfAssignmentMessage] = useState('');
   const railRef = useRef<HTMLDivElement>(null);
   const readerStreamRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
@@ -267,6 +273,18 @@ export default function App() {
   const nextVideo = selectedVideoIndex >= 0 ? panelVideos[selectedVideoIndex + 1] ?? null : null;
 
   useEffect(() => setPreviewImageError(false), [panelVideoId]);
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(TF_ASSIGNMENT_STORAGE_KEY);
+      if (!saved) return;
+      const parsed = JSON.parse(saved) as {assignments?: TfAssignment; meeting?: string};
+      if (parsed.assignments && typeof parsed.assignments === 'object') setTfAssignments(parsed.assignments);
+      if (typeof parsed.meeting === 'string') setTfMeetingDraft(parsed.meeting);
+    } catch {
+      // A local draft is optional and must never block the public page.
+    }
+  }, []);
   const filteredPanelVideos = useMemo(() => {
     const query = videoQuery.trim().toLocaleLowerCase();
     const matchesFilter = (video: GabaVideoRecord) => videoFilter === 'ALL'
@@ -406,6 +424,47 @@ export default function App() {
       if (!document.execCommand('copy')) throw new Error('copy command failed');
     } finally {
       field.remove();
+    }
+  };
+
+  const persistTfDraft = (assignments: TfAssignment, meeting: string) => {
+    try {
+      window.localStorage.setItem(TF_ASSIGNMENT_STORAGE_KEY, JSON.stringify({assignments, meeting}));
+    } catch {
+      // Keep the in-memory draft when browser storage is unavailable.
+    }
+  };
+
+  const updateTfAssignment = (roleId: string, field: 'lead' | 'backup', value: string) => {
+    const next = {...tfAssignments, [roleId]: {...tfAssignments[roleId], [field]: value}};
+    setTfAssignments(next);
+    persistTfDraft(next, tfMeetingDraft);
+    setTfAssignmentMessage('이 브라우저에 업무 배정 초안을 저장했습니다.');
+  };
+
+  const updateTfMeetingDraft = (value: string) => {
+    setTfMeetingDraft(value);
+    persistTfDraft(tfAssignments, value);
+    setTfAssignmentMessage('이 브라우저에 첫 회의 초안을 저장했습니다.');
+  };
+
+  const copyTfAssignmentDraft = async () => {
+    const lines = [
+      'GABA 교육 TF 업무 배정 초안',
+      `첫 회의: ${tfMeetingDraft.trim() || '미정'}`,
+      '',
+      ...TF_ROLES.map(role => {
+        const assignment = tfAssignments[role.id];
+        return `- ${role.id} ${role.title}: 주 담당 ${assignment?.lead?.trim() || '미배정'} · 백업 ${assignment?.backup?.trim() || '미배정'}`;
+      }),
+      '',
+      '※ 이 내용은 브라우저에서 만든 초안이며, 공식 역할 배정·과학 검토·공개 승인을 의미하지 않습니다.',
+    ];
+    try {
+      await copyText(lines.join('\n'));
+      setTfAssignmentMessage('업무 배정 초안을 복사했습니다.');
+    } catch {
+      setTfAssignmentMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
   };
 
@@ -950,6 +1009,22 @@ export default function App() {
                 <div><strong>{GABA_MONITOR_SNAPSHOT.domesticPublicApproved}/{GABA_MONITOR_SNAPSHOT.domesticVideoTotal}</strong><span>국내 공개 승인 · DB 이력 {GABA_MONITOR_SNAPSHOT.registeredVideoApproved}건</span></div>
                 <div><strong>{GABA_MONITOR_SNAPSHOT.firstMeetingReady ? '입력됨' : '필요'}</strong><span>첫 회의 입력</span></div>
               </div>
+              <details className="tf-board__assignment">
+                <summary>팀 업무 배정 초안 만들기 <span aria-hidden="true">＋</span></summary>
+                <div className="tf-board__assignment-body">
+                  <p>주 담당자·백업·첫 회의 일시를 입력하면 이 브라우저에만 저장하고, 회의 전에 복사해 공유할 수 있습니다.</p>
+                  <div className="tf-board__role-list">
+                    {TF_ROLES.map(role => <div key={role.id} className="tf-board__role-row">
+                      <div className="tf-board__role-copy"><strong>{role.id}</strong><span>{role.title}</span><small>{role.responsibility}</small></div>
+                      <label>주 담당<input type="text" value={tfAssignments[role.id]?.lead ?? ''} onChange={event => updateTfAssignment(role.id, 'lead', event.currentTarget.value)} placeholder="미배정" /></label>
+                      <label>백업<input type="text" value={tfAssignments[role.id]?.backup ?? ''} onChange={event => updateTfAssignment(role.id, 'backup', event.currentTarget.value)} placeholder="미배정" /></label>
+                    </div>)}
+                  </div>
+                  <label className="tf-board__meeting-draft">첫 회의 일시<input type="text" value={tfMeetingDraft} onChange={event => updateTfMeetingDraft(event.currentTarget.value)} placeholder="예: 2026-09-23 10:00" /></label>
+                  <div className="tf-board__assignment-actions"><button type="button" onClick={copyTfAssignmentDraft}>배정 초안 복사</button><span aria-live="polite">{tfAssignmentMessage}</span></div>
+                  <p className="tf-board__assignment-note">현재 상단 지표와 공식 문서의 `0/7` 상태는 자동으로 바뀌지 않습니다. 실제 담당자 확정 후 킥오프 문서에 반영해야 합니다.</p>
+                </div>
+              </details>
               <div className="tf-board__list">
                 {TF_WORKSTREAMS.map(workstream => <article key={workstream.id} className="tf-board__item">
                   <div className="tf-board__item-topline"><span>{workstream.id}</span><strong>HOLD</strong></div>
