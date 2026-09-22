@@ -79,6 +79,7 @@ const required = [
   ['registered YouTube caption warnings', '자막 경고'],
   ['registered YouTube caption body health', '등록 YouTube 자막 본문'],
   ['registered YouTube caption body warnings', '본문 경고'],
+  ['registered YouTube caption body rate limit', 'HTTP 429 접근 제한'],
   ['daily review queue', '오늘 먼저 검토할 후보'],
   ['daily review queue assignment', '첫 담당'],
   ['daily review queue disclosure', '원문·자막·화자·권리 확인 전에는 공개하지 않습니다'],

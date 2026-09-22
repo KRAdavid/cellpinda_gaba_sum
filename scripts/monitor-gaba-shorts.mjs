@@ -181,6 +181,7 @@ const checkRegisteredYouTubeCaptionBodies = async captionHealth => {
   const urls = getRegisteredVideoUrls().filter(url => /youtube\.com|youtu\.be/i.test(url));
   const warnings = [];
   let available = 0;
+  let rateLimited = 0;
   const availableUrls = [];
   for (const url of urls) {
     const captionUrl = captionHealth.tracks.get(url);
@@ -197,6 +198,7 @@ const checkRegisteredYouTubeCaptionBodies = async captionHealth => {
         },
       });
       if (!response.ok) {
+        if (response.status === 429) rateLimited += 1;
         warnings.push(`${url} → 자막 본문 확인 HTTP ${response.status}`);
         continue;
       }
@@ -212,7 +214,7 @@ const checkRegisteredYouTubeCaptionBodies = async captionHealth => {
       warnings.push(`${url} → 자막 본문 확인 ${error.message}`);
     }
   }
-  return {checked: urls.length, available, availableUrls, warnings};
+  return {checked: urls.length, available, availableUrls, warnings, rateLimited};
 };
 
 const captionAuditMarkdown = ({checkedDate: date, captionHealth, captionBodyHealth}) => {
@@ -507,6 +509,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     captionBodiesAvailable: captionBodyHealth.available,
     captionBodiesChecked: captionBodyHealth.checked,
     captionBodyWarnings: captionBodyHealth.warnings.length,
+    captionBodyRateLimited: captionBodyHealth.rateLimited,
     autoPublish: 0,
   };
   const history = [...(Array.isArray(previousHistory) ? previousHistory : []).filter(point => point?.date !== date), currentHistoryPoint]
@@ -564,6 +567,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     registeredVideoCaptionBodiesChecked: captionBodyHealth.checked,
     registeredVideoCaptionBodiesAvailable: captionBodyHealth.available,
     registeredVideoCaptionBodyWarnings: captionBodyHealth.warnings.length,
+    registeredVideoCaptionBodyRateLimited: captionBodyHealth.rateLimited,
     firstMeetingReady: Boolean(kickoff.match(/^(?:회의 날짜·시간|첫 회의 날짜·시간):[^\r\n]*$/m)?.[0]?.replace(/^[^:]+:\s*/, '').trim()),
     triageUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md',
     reportUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md',
@@ -598,7 +602,7 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, runCand
     `- 권위·연구 출처 링크: ${evidenceHealth.healthy}/${evidenceHealth.checked} 접근 확인 · 출처 링크 경고 ${evidenceHealth.warnings.length}건`,
     `- 등록 YouTube 메타데이터: ${metadataHealth.healthy}/${metadataHealth.checked} 제목·채널 확인 · 메타데이터 경고 ${metadataHealth.warnings.length}건`,
     `- 등록 YouTube 자막 트랙: ${captionHealth.available}/${captionHealth.checked} watch 페이지에서 발견 · 자막 경고 ${captionHealth.warnings.length}건`,
-    `- 등록 YouTube 자막 본문: ${captionBodyHealth.available}/${captionBodyHealth.checked} 본문 확인 · 본문 경고 ${captionBodyHealth.warnings.length}건`,
+    `- 등록 YouTube 자막 본문: ${captionBodyHealth.available}/${captionBodyHealth.checked} 본문 확인 · 본문 경고 ${captionBodyHealth.warnings.length}건 · HTTP 429 접근 제한 ${captionBodyHealth.rateLimited}건`,
     `- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_${checkedDate}.md) · 트랙·본문 상태를 영상별로 보관`,
     `- 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW`,
     '',
@@ -652,6 +656,7 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, runCand
     captionBodyHealth.warnings.length
       ? captionBodyHealth.warnings.map(item => `- 경고: ${markdown(item)}`).join('\n')
       : '- 모든 등록 YouTube 자막 본문을 JSON3 응답으로 확인',
+    `- HTTP 429 접근 제한: ${captionBodyHealth.rateLimited}건 · 제한된 본문은 사람이 원문을 재생해 타임코드와 발언을 확인`,
     '- 자막 본문 확인은 텍스트 응답의 존재만 점검한다. 번역 정확성·발언 맥락·화자·과학적 타당성·권리를 승인하지 않으며, 본문 확인 전 요약과 공개 상태를 바꾸지 않는다.',
     '',
     '## 다음 15분 감리 순서',

@@ -92,7 +92,7 @@ GitHub Actions는 .github/workflows/monitor-gaba-shorts.yml에서 매일 실행�
 | 권위·연구 출처 링크 | 등록된 독립 출처 URL의 접근 상태와 경고 수를 기록하며, 자격·근거·권리·공개 승인은 별도 사람 검토로 유지 |
 | 등록 YouTube 메타데이터 | YouTube 제목·채널 응답 상태를 확인하고 경고 수를 기록 |
 | 등록 YouTube 자막 트랙 | watch 페이지의 자막 트랙 안내를 확인하고, 본문 확보와 분리해 경고 수를 기록 |
-| 등록 YouTube 자막 본문 | 자막 본문 응답의 존재를 트랙 발견과 분리해 확인하고, HTTP·형식 경고 수를 기록 |
+| 등록 YouTube 자막 본문 | 자막 본문 응답의 존재를 트랙 발견과 분리해 확인하고, HTTP·형식 경고와 HTTP 429 접근 제한 수를 기록 |
 | 공개 승인 수 | PUBLISH_GENERAL로 판정됨 · LIMITED_USE는 공개 전 제한 사용 후보로 유지 |
 | 보류·배제 수 | 사유와 재검토 조건이 남음 |
 

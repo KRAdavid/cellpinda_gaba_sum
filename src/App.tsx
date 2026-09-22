@@ -990,7 +990,7 @@ export default function App() {
       `권위·연구 출처 링크: ${snapshot.registeredEvidenceLinksHealthy}/${snapshot.registeredEvidenceLinksChecked} · 경고 ${snapshot.registeredEvidenceLinkWarnings}건`,
       `메타데이터: ${snapshot.registeredVideoMetadataHealthy}/${snapshot.registeredVideoMetadataChecked} · 경고 ${snapshot.registeredVideoMetadataWarnings}건`,
       `자막 트랙: ${snapshot.registeredVideoCaptionTracksAvailable}/${snapshot.registeredVideoCaptionTracksChecked} · 경고 ${snapshot.registeredVideoCaptionTrackWarnings}건`,
-      `자막 본문: ${snapshot.registeredVideoCaptionBodiesAvailable}/${snapshot.registeredVideoCaptionBodiesChecked} · 경고 ${snapshot.registeredVideoCaptionBodyWarnings}건`,
+      `자막 본문: ${snapshot.registeredVideoCaptionBodiesAvailable}/${snapshot.registeredVideoCaptionBodiesChecked} · 경고 ${snapshot.registeredVideoCaptionBodyWarnings}건 · HTTP 429 접근 제한 ${snapshot.registeredVideoCaptionBodyRateLimited}건`,
       `자막 상세 감사: ${snapshot.captionAuditUrl}`,
       '',
       '오늘 먼저 검토할 후보',
@@ -1639,7 +1639,7 @@ export default function App() {
                 <p>권위·연구 출처 링크 {GABA_MONITOR_SNAPSHOT.registeredEvidenceLinksHealthy}/{GABA_MONITOR_SNAPSHOT.registeredEvidenceLinksChecked} 접근 확인 · 출처 링크 경고 {GABA_MONITOR_SNAPSHOT.registeredEvidenceLinkWarnings}건</p>
                 <p>등록 YouTube 메타데이터 {GABA_MONITOR_SNAPSHOT.registeredVideoMetadataHealthy}/{GABA_MONITOR_SNAPSHOT.registeredVideoMetadataChecked} 제목·채널 확인 · 메타데이터 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoMetadataWarnings}건</p>
                 <p>등록 YouTube 자막 트랙 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTracksAvailable}/{GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTracksChecked} 발견 · 자막 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTrackWarnings}건</p>
-                <p>등록 YouTube 자막 본문 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodiesAvailable}/{GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodiesChecked} 확인 · 본문 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodyWarnings}건</p>
+                <p>등록 YouTube 자막 본문 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodiesAvailable}/{GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodiesChecked} 확인 · 본문 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodyWarnings}건 · HTTP 429 접근 제한 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodyRateLimited}건</p>
                 <div className="monitor-snapshot__history" aria-label="최근 감리 추이">
                   <div className="monitor-snapshot__history-heading"><p className="eyebrow">최근 감리 추이</p><small>최근 {GABA_MONITOR_SNAPSHOT.history.length}회</small></div>
                   <ol>

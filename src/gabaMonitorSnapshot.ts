@@ -149,6 +149,7 @@ export const GABA_MONITOR_SNAPSHOT = {
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 9,
       "captionBodyWarnings": 9,
+      "captionBodyRateLimited": 9,
       "autoPublish": 0
     }
   ],
@@ -176,6 +177,7 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoCaptionBodiesChecked": 9,
   "registeredVideoCaptionBodiesAvailable": 0,
   "registeredVideoCaptionBodyWarnings": 9,
+  "registeredVideoCaptionBodyRateLimited": 9,
   "firstMeetingReady": false,
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",

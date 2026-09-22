@@ -13,7 +13,7 @@
 - 권위·연구 출처 링크: 6/6 접근 확인 · 출처 링크 경고 0건
 - 등록 YouTube 메타데이터: 9/9 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 9/9 watch 페이지에서 발견 · 자막 경고 0건
-- 등록 YouTube 자막 본문: 0/9 본문 확인 · 본문 경고 9건
+- 등록 YouTube 자막 본문: 0/9 본문 확인 · 본문 경고 9건 · HTTP 429 접근 제한 9건
 - 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-09-23.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
@@ -64,6 +64,7 @@
 - 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 확인 HTTP 429
 - 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 확인 HTTP 429
 - 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 확인 HTTP 429
+- HTTP 429 접근 제한: 9건 · 제한된 본문은 사람이 원문을 재생해 타임코드와 발언을 확인
 - 자막 본문 확인은 텍스트 응답의 존재만 점검한다. 번역 정확성·발언 맥락·화자·과학적 타당성·권리를 승인하지 않으며, 본문 확인 전 요약과 공개 상태를 바꾸지 않는다.
 
 ## 다음 15분 감리 순서
