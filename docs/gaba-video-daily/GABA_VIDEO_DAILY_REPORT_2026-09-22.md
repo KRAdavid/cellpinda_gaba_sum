@@ -7,7 +7,7 @@
 - 채널 확인: 8/8
 - 유사 콘텐츠 검색어 확인: 4/4
 - Shorts 페이지 보완 수집: 0개 채널
-- 신규 후보: 2건
+- 신규 후보: 0건
 - 등록 영상 원문 링크: 11/11 접근 확인 · 링크 경고 0건
 - 등록 YouTube 메타데이터: 9/9 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 9/9 watch 페이지에서 발견 · 자막 경고 0건
@@ -17,8 +17,7 @@
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 상태 |
 | --- | --- | --- | --- | --- | --- |
-| PENDING-20260922-XQNQH6ZBR5s | [불안,스트레스에 긴급처방템 공개 #스트레스 #심신안정 #불안 #가바](https://www.youtube.com/watch?v=XQNQH6ZBR5s) | YouTube 검색: 가바 스트레스 Shorts | 일반 설명 후보 | VIDEO 우선 | PENDING_REVIEW |
-| PENDING-20260922-fsVwONopHQM | [숙면을 방해하는 것의 정체는 가바 부족 #수면건강 #뇌과학](https://www.youtube.com/watch?v=fsVwONopHQM) | YouTube 검색: 가바 스트레스 Shorts | 일반 설명 후보 | VIDEO 우선 | PENDING_REVIEW |
+| 없음 | 신규 후보 없음 | - | - | - |
 
 ## 채널 경고
 
