@@ -655,6 +655,10 @@ export default function App() {
   const monitorCandidates = useMemo<MonitorCandidate[]>(() => presenterMonitor ? [...presenterMonitor.pendingQueue, ...presenterMonitor.authorityQueue, ...presenterMonitor.productBrandQueue] : [], [presenterMonitor]);
   const monitorReviewCandidate = monitorCandidates.find(candidate => candidate.id === monitorReviewCandidateId) ?? null;
   const monitorReviewDraft = monitorReviewCandidate ? monitorReviewDrafts[monitorReviewCandidate.id] ?? makeEmptyVideoReviewDraft() : null;
+  const monitorReviewCandidateIdFromUrl = monitorReviewCandidate?.url.match(/(?:shorts\/|watch\?v=)([\w-]{11})/)?.[1] ?? null;
+  const monitorReviewCandidateEmbedUrl = monitorReviewCandidateIdFromUrl && monitorReviewCandidate?.url && /youtube\.com|youtu\.be/i.test(monitorReviewCandidate.url)
+    ? `https://www.youtube-nocookie.com/embed/${monitorReviewCandidateIdFromUrl}?rel=0&modestbranding=1`
+    : null;
   const monitorReviewCheckCount = monitorReviewDraft ? VIDEO_REVIEW_CHECKS.filter(check => monitorReviewDraft[check.key]).length : 0;
   const sourceReviewCompleted = RESEARCH_SOURCES.filter(source => {
     const draft = sourceReviewDrafts[source.id];
@@ -2192,6 +2196,12 @@ export default function App() {
                   <h3>{monitorReviewCandidate.title}</h3>
                   <p className="monitor-candidate-review__meta">{monitorReviewCandidate.channel} · {('priority' in monitorReviewCandidate ? monitorReviewCandidate.priority : '권위 후보 확인')}</p>
                   <p className="monitor-candidate-review__boundary">자동 수집 후보는 아직 `PENDING_REVIEW`입니다. 아래 기록은 이 브라우저의 감리 초안이며 공식 DB 등록·공개 승인 상태를 바꾸지 않습니다.</p>
+                  {monitorReviewCandidateEmbedUrl ? <section className="monitor-candidate-review__player" aria-label="자동 수집 후보 YouTube 원문 플레이어">
+                    <div><strong>페이지 안에서 원문 확인</strong><small>YouTube 공식 플레이어 · 검토 후보</small></div>
+                    <iframe src={monitorReviewCandidateEmbedUrl} title={`${monitorReviewCandidate.title} YouTube 원문 플레이어`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
+                    <p>재생은 사람 감리·권위 확인·공개 승인을 의미하지 않습니다. 원문·자막·화자·권리를 확인한 뒤 초안을 기록하세요.</p>
+                    <a href={monitorReviewCandidate.url} target="_blank" rel="noopener noreferrer">원문 링크 열기 ↗</a>
+                  </section> : null}
                   <div className="monitor-candidate-review__fields">
                     <label>담당자<input data-monitor-review-field="reviewer" type="text" value={monitorReviewDraft.reviewer} onChange={event => updateMonitorReviewDraft('reviewer', event.currentTarget.value)} placeholder="예: VIDEO 담당" /></label>
                     <label>역할<select data-monitor-review-field="role" value={monitorReviewDraft.role} onChange={event => updateMonitorReviewDraft('role', event.currentTarget.value)}>{VIDEO_REVIEW_ROLES.map(role => <option key={role} value={role}>{role}</option>)}</select></label>

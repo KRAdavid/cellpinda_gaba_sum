@@ -13,6 +13,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
       "title": "헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
+      "url": "https://www.youtube.com/watch?v=_XGO7xk24jo",
       "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
@@ -25,6 +26,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260922--azWbivGh5Y",
       "title": "잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠",
+      "url": "https://www.youtube.com/watch?v=-azWbivGh5Y",
       "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
@@ -39,6 +41,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260922-26wX746Ga6M",
       "title": "불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
+      "url": "https://www.youtube.com/watch?v=26wX746Ga6M",
       "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
@@ -52,6 +55,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260922-6QgcctlfBZU",
       "title": "Supplement GABA to reduce stress! #shorts",
+      "url": "https://www.youtube.com/watch?v=6QgcctlfBZU",
       "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
@@ -65,6 +69,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260922-7h0wzAM7Frw",
       "title": "'몽진환'은 어떤 제품일까요 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
+      "url": "https://www.youtube.com/watch?v=7h0wzAM7Frw",
       "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
@@ -79,6 +84,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260922-Lm2HJtSRBOI",
       "title": "가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)",
+      "url": "https://www.youtube.com/watch?v=Lm2HJtSRBOI",
       "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "효과·안전성 단정 신호",
@@ -91,6 +97,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260923-Z2_d_8p36rM",
       "title": "GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,",
+      "url": "https://www.youtube.com/watch?v=Z2_d_8p36rM",
       "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "효과·안전성 단정 신호",
@@ -103,6 +110,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260922-KBC6QV2NDDU",
       "title": "Boost GABA Production: Your Brain's Natural Brake #shorts",
+      "url": "https://www.youtube.com/watch?v=KBC6QV2NDDU",
       "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "일반 설명 후보",
@@ -115,6 +123,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260922-oWtoo62PLFw",
       "title": "Unlock Your Brain: Glutamate, GABA, and Natural Solutions #shorts",
+      "url": "https://www.youtube.com/watch?v=oWtoo62PLFw",
       "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "일반 설명 후보",
@@ -127,6 +136,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260922-uLMpiXWsv94",
       "title": "Unlock GABA Support: The Magnesium Glycinate Secret #shorts",
+      "url": "https://www.youtube.com/watch?v=uLMpiXWsv94",
       "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "일반 설명 후보",
@@ -141,6 +151,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260922-RH3FcwKObsY",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=RH3FcwKObsY",
       "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
@@ -155,6 +166,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260922-UBCfzr4lpYQ",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=UBCfzr4lpYQ",
       "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
@@ -169,6 +181,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260923-OeqoiWhkUfw",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=OeqoiWhkUfw",
       "channel": "이동환TV (수동 권위 키워드 검색)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
@@ -184,6 +197,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260923-vKVJvHULUZw",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=vKVJvHULUZw",
       "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
@@ -198,6 +212,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "id": "PENDING-20260923-zR6l44Oz6A8",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=zR6l44Oz6A8",
       "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [

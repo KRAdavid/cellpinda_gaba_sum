@@ -579,6 +579,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     pendingQueue: ranked.slice(0, 5).map(entry => ({
       id: entry.id,
       title: entry.title,
+      url: entry.url,
       channel: entry.channel,
       priority: entry.priority,
       signals: entry.signals,
@@ -588,6 +589,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     authorityQueue: authorityQueue.map(entry => ({
       id: entry.id,
       title: entry.title,
+      url: entry.url,
       channel: entry.channel,
       signals: entry.signals,
       publicationGate: entry.publicationGate,
@@ -597,6 +599,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     productBrandQueue: productBrandQueue.map(entry => ({
       id: entry.id,
       title: '제품성 후보 · 원문 제목은 일일 리포트에서 확인',
+      url: entry.url,
       channel: entry.channel,
       priority: entry.priority,
       signals: entry.signals,
