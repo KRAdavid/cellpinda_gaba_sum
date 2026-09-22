@@ -88,6 +88,7 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
   .story--presentation .story-rail{width:calc(100% - 40px);height:clamp(300px,calc(100svh - 470px),470px);min-height:300px;padding-bottom:12px;scroll-padding-block:4px 12px}
   .story--presentation .story-card{height:100%;min-height:0;padding:25px 23px}
 }
+
 .story-controls .story-next-button{display:inline-flex;align-items:center;justify-content:center;gap:7px}
 .video-db-tools{display:grid;gap:11px;margin-top:18px;padding:14px;border:1px solid #c6d9c8;border-radius:15px;background:#edf5eb}
 .monitor-snapshot{display:grid;gap:8px;margin-top:16px;padding:13px 14px;border:1px solid #e2c6aa;border-radius:14px;background:#fff7ef;color:#76543e}
@@ -421,5 +422,14 @@ body{background:var(--editorial-cream);color:var(--editorial-ink)}
   .story--presentation .card-label{top:17px;left:20px;right:20px;font-size:10px}
   .story--presentation .card-content h3{font-size:clamp(26px,8.2vw,34px);line-height:1.12}
   .story--presentation .card-content p{font-size:13px;line-height:1.55}
-  .story--presentation .presenter-next-hint{margin-bottom:5px;padding:0 20px}
+  .story--presentation .presenter-note{bottom:154px}
+  .story--presentation .presenter-questions{bottom:116px}
+  .story--presentation .presenter-copy-message{bottom:88px}
+  .story--presentation .presenter-next-hint{bottom:58px;margin-bottom:0;padding:0 20px}
+}
+
+/* Keep the desktop presenter utility rows readable when both optional panels are closed. */
+@media(min-width:761px){
+  .story--presentation .presenter-note{bottom:164px}
+  .story--presentation .presenter-questions{bottom:126px}
 }
