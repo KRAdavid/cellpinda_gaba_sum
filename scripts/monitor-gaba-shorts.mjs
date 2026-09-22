@@ -461,6 +461,9 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   const authorityQueue = ranked
     .filter(entry => entry.signals.includes('권위 후보 검색 발견') || entry.signals.includes('전문가 자격 확인 신호'))
     .slice(0, 5);
+  const authorityBasis = entry => entry.signals.includes('전문가 자격 확인 신호')
+    ? 'TITLE_DESCRIPTION_SIGNAL'
+    : 'KEYWORD_DISCOVERY';
   const scienceMedicalPriority = ranked.filter(item => item.priority !== 'VIDEO 우선').length;
   const educationTf = fs.existsSync(educationTfPath) ? fs.readFileSync(educationTfPath, 'utf8') : '';
   const sourceRegister = fs.existsSync(sourceRegisterPath) ? fs.readFileSync(sourceRegisterPath, 'utf8') : '';
@@ -511,6 +514,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
       title: entry.title,
       channel: entry.channel,
       signals: entry.signals,
+      authorityBasis: authorityBasis(entry),
       nextAction: '독립적인 자격·실제 화자·원문·자막·권리 확인',
     })),
     history,

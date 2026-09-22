@@ -159,6 +159,11 @@ const VIDEO_AUDIT_LABELS = {
   rightsStatus: {SOURCE_PAGE: '원문 링크 방식', CHECK_REQUIRED: '권리 확인 필요', NOT_FOR_USE: '사용하지 않음'},
   usageMode: {SOURCE_LINK: '원문 링크', EMBED_IF_ALLOWED: '허용 시 임베드', REVIEW_ONLY: '검토용', EXCLUDE: '공개 제외'},
 } as const;
+
+const AUTHORITY_BASIS_LABELS = {
+  TITLE_DESCRIPTION_SIGNAL: '전문가 표현 감지 · 자격 미확인',
+  KEYWORD_DISCOVERY: '권위 검색 발견 · 자격 미확인',
+} as const;
 const VIDEO_CLAIM_LABELS: Record<GabaVideoRecord['audit']['claimCategories'][number], string> = {
   GENERAL_PHYSIOLOGY: '일반 생리',
   ORAL_GABA_HUMAN_RESEARCH: '경구 GABA 인체 연구',
@@ -711,8 +716,8 @@ export default function App() {
       '오늘 먼저 검토할 후보',
       ...snapshot.pendingQueue.slice(0, 5).map((candidate, index) => `${index + 1}. ${candidate.title} · ${candidate.priority} · 다음 행동: ${candidate.nextAction}`),
       '',
-      '권위 후보 확인 큐',
-      ...snapshot.authorityQueue.slice(0, 5).map((candidate, index) => `${index + 1}. ${candidate.title} · ${candidate.signals.join(' · ')} · 다음 행동: ${candidate.nextAction}`),
+      '권위 후보 확인 전 큐',
+      ...snapshot.authorityQueue.slice(0, 5).map((candidate, index) => `${index + 1}. ${candidate.title} · ${AUTHORITY_BASIS_LABELS[candidate.authorityBasis]} · ${candidate.signals.join(' · ')} · 다음 행동: ${candidate.nextAction}`),
       '',
       '※ 제목·공개 설명 기반의 업무 우선순위입니다. 원문·자막·화자·근거·권리 확인 전에는 권위 승인이나 공개 승인으로 보지 않습니다.',
     ];
@@ -1327,10 +1332,10 @@ export default function App() {
                   {GABA_MONITOR_SNAPSHOT.pendingQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.pendingQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{candidate.priority}</strong><span>{candidate.title}</span></summary><div><small>상태: PENDING_REVIEW · 첫 담당: {candidate.reviewer}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>주의 신호: {candidate.signals.join(' · ')}</small><small>원문·자막·화자·권리 확인 전에는 공개하지 않습니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 검토 대기 후보가 없습니다.</p>}
                   <small>제목·공개 설명 기반 우선순위입니다. 영상 원문·자막·화자·권리 확인 전 공개 승인으로 보지 않습니다.</small>
                 </div>
-                <div className="monitor-snapshot__authority-queue" aria-label="권위 후보 확인 큐">
-                  <p className="eyebrow">권위 후보 확인</p>
-                  {GABA_MONITOR_SNAPSHOT.authorityQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.authorityQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{candidate.id.replace(/^PENDING-\d+-/, '')}</strong><span>{candidate.title}</span></summary><div><small>발견 신호: {candidate.signals.join(' · ')}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>자격·실제 화자·원문·자막·권리 확인 전에는 권위 영상으로 공개하지 않습니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 권위 후보 신호가 있는 영상이 없습니다.</p>}
-                  <small>검색어·제목 기반의 발견 신호일 뿐, 의사·과학자 자격이나 영상의 과학적 타당성을 승인하지 않습니다.</small>
+                <div className="monitor-snapshot__authority-queue" aria-label="권위 후보 확인 전 큐">
+                  <p className="eyebrow">권위 후보 확인 전</p>
+                  {GABA_MONITOR_SNAPSHOT.authorityQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.authorityQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{AUTHORITY_BASIS_LABELS[candidate.authorityBasis]}</strong><span>{candidate.title}</span></summary><div><small>확인 경로: {AUTHORITY_BASIS_LABELS[candidate.authorityBasis]}</small><small>발견 신호: {candidate.signals.join(' · ')}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>자격·실제 화자·원문·자막·권리 확인 전에는 권위 영상으로 공개하지 않습니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 권위 후보 신호가 있는 영상이 없습니다.</p>}
+                  <small>전문가 표현 감지와 검색어 발견은 서로 다른 감리 단서입니다. 둘 다 의사·과학자 자격이나 영상의 과학적 타당성을 승인하지 않습니다.</small>
                 </div>
                 {monitorReviewCandidate && monitorReviewDraft ? <section className="monitor-candidate-review" aria-label="신규 후보 감리 초안">
                   <div className="monitor-candidate-review__heading"><div><p className="eyebrow">오늘 검토 후보 입력</p><strong>{monitorReviewCandidate.id}</strong></div><button type="button" onClick={() => setMonitorReviewCandidateId(null)}>닫기</button></div>

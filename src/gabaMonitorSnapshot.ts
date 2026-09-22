@@ -78,6 +78,7 @@ export const GABA_MONITOR_SNAPSHOT = {
         "효과·안전성 단정 신호",
         "권위 후보 검색 발견"
       ],
+      "authorityBasis": "KEYWORD_DISCOVERY",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
@@ -88,6 +89,7 @@ export const GABA_MONITOR_SNAPSHOT = {
         "일반 설명 후보",
         "권위 후보 검색 발견"
       ],
+      "authorityBasis": "KEYWORD_DISCOVERY",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
@@ -98,6 +100,7 @@ export const GABA_MONITOR_SNAPSHOT = {
         "일반 설명 후보",
         "권위 후보 검색 발견"
       ],
+      "authorityBasis": "KEYWORD_DISCOVERY",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
@@ -108,6 +111,7 @@ export const GABA_MONITOR_SNAPSHOT = {
         "일반 설명 후보",
         "권위 후보 검색 발견"
       ],
+      "authorityBasis": "KEYWORD_DISCOVERY",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
@@ -118,6 +122,7 @@ export const GABA_MONITOR_SNAPSHOT = {
         "일반 설명 후보",
         "권위 후보 검색 발견"
       ],
+      "authorityBasis": "KEYWORD_DISCOVERY",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
   ],
