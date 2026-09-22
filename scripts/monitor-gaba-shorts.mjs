@@ -12,7 +12,7 @@ const videoRegisterPath = path.join(root, 'docs', 'GABA_VIDEO_REGISTER.md');
 const kickoffPath = path.join(root, 'docs', 'GABA_EDUCATION_KICKOFF.md');
 const reportArchiveDir = path.join(root, 'docs', 'gaba-video-daily');
 const writeMode = process.argv.includes('--write');
-const keywords = [/가바/i, /\bGABA\b/i];
+const keywords = [/가바/i, /\bGABA\b/i, /감마[-\s]?아미노부티르산/i, /gamma[-\s]?aminobutyric\s+acid/i];
 const discoveryQueries = [
   'GABA 신경전달물질 Shorts',
   '가바 수면 영양제 Shorts',
@@ -20,6 +20,8 @@ const discoveryQueries = [
   '가바 스트레스 Shorts',
   '의사 GABA 신경전달물질 Shorts',
   '과학자 GABA 신경전달물질 Shorts',
+  '감마아미노부티르산 의사 Shorts',
+  '감마아미노부티르산 과학자 Shorts',
 ];
 
 const sources = [
