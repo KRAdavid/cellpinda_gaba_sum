@@ -31,6 +31,7 @@ assert('English GABA keyword uses a word boundary', monitor.includes('\\bGABA\\b
 assert('known DB and register files are used for de-duplication', monitor.includes("path.join(root, 'src', 'gabaVideos.ts')") && monitor.includes('GABA_VIDEO_DB.md') && monitor.includes('watch\\?v='));
 assert('daily report is archived by date', monitor.includes('reportArchiveDir') && monitor.includes('GABA_VIDEO_DAILY_REPORT_${checkedDate}.md'));
 assert('daily monitor date uses Korea time', monitor.includes("timeZone: 'Asia/Seoul'") && monitor.includes('formatToParts') && monitor.includes("koreaDatePart('year')"));
+assert('same-day reruns preserve the accumulated candidate list', monitor.includes('collectedDate') && monitor.includes('오늘 신규 후보(누적)') && monitor.includes('이번 실행 신규 후보') && monitor.includes('newCandidatesThisRun'));
 assert('workflow runs daily and includes report archive changes', workflow.includes("cron: '0 0 * * *'") && workflow.includes('docs/gaba-video-daily'));
 assert('daily report keeps candidates in review status', report.includes('자동 공개: 0건') && report.includes('PENDING_REVIEW'));
 assert('triage classifier is present and explicitly non-approval', monitor.includes('screenCandidate') && monitor.includes('triagePath') && monitor.includes('제목 기반 주의 신호'));

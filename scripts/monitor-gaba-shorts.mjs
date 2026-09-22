@@ -340,10 +340,23 @@ const parseInboxEntries = text => text.split(/^### /m).slice(1).map(section => {
   const status = lines.find(line => line.startsWith('- 상태:'))?.replace('- 상태:', '').trim() ?? '';
   const videoMatch = lines.find(line => line.startsWith('- 영상:'))?.match(/^- 영상: \[(.*?)\]\((https?:\/\/[^)]+)\)/);
   const channel = lines.find(line => line.startsWith('- 채널:'))?.replace('- 채널:', '').trim() ?? '';
+  const collectedDate = lines.find(line => line.startsWith('- 수집일:'))?.replace('- 수집일:', '').trim() ?? '';
   const description = lines.find(line => line.startsWith('- 공개 설명(자동 수집):'))?.replace('- 공개 설명(자동 수집):', '').trim() ?? '';
   if (!id || !videoMatch) return null;
-  return {id, status, title: videoMatch[1], url: videoMatch[2], channel, description};
+  const videoId = videoMatch[2].match(/(?:shorts\/|watch\?v=)([\w-]{11})/)?.[1] ?? '';
+  return {id, status, title: videoMatch[1], url: videoMatch[2], channel, collectedDate, description, videoId};
 }).filter(Boolean);
+
+const inboxCandidateRecord = entry => {
+  const triage = screenCandidate(`${entry.title} ${entry.description}`, entry.channel);
+  return {
+    id: entry.videoId,
+    title: entry.title,
+    source: {name: entry.channel},
+    riskSignals: triage.signals,
+    reviewPriority: triage.priority,
+  };
+};
 
 const authoritySignalLabel = entry => entry.signals.includes('전문가 자격 확인 신호')
   ? '전문가 표현 감지 · 자격 미확인'
@@ -460,7 +473,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
-const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth, previousHistory}) => {
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth, previousHistory}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const priorityRank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
@@ -487,6 +500,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   const currentHistoryPoint = {
     date,
     newCandidates,
+    newCandidatesThisRun,
     pendingReview: entries.length,
     scienceMedicalPriority,
     videoPriority: entries.length - scienceMedicalPriority,
@@ -505,6 +519,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     discoveryQueries: successfulSearches,
     totalDiscoveryQueries: discoveryQueries.length,
     newCandidates,
+    newCandidatesThisRun,
     pendingReview: entries.length,
     scienceMedicalPriority,
     videoPriority: entries.length - scienceMedicalPriority,
@@ -560,7 +575,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   return `export const GABA_MONITOR_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)} as const;\n`;
 };
 
-const dailyReport = ({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
+const dailyReport = ({successfulSources, successfulSearches, candidates, runCandidateCount, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
@@ -577,7 +592,8 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, errors,
     `- 채널 확인: ${successfulSources}/${sources.length}`,
     `- 유사 콘텐츠 검색어 확인: ${successfulSearches}/${discoveryQueries.length}`,
     `- Shorts 페이지 보완 수집: ${fallbackSources.length}개 채널`,
-    `- 신규 후보: ${candidates.length}건`,
+    `- 오늘 신규 후보(누적): ${candidates.length}건`,
+    `- 이번 실행 신규 후보: ${runCandidateCount}건`,
     `- 등록 영상 원문 링크: ${linkHealth.healthy}/${linkHealth.checked} 접근 확인 · 링크 경고 ${linkHealth.warnings.length}건`,
     `- 권위·연구 출처 링크: ${evidenceHealth.healthy}/${evidenceHealth.checked} 접근 확인 · 출처 링크 경고 ${evidenceHealth.warnings.length}건`,
     `- 등록 YouTube 메타데이터: ${metadataHealth.healthy}/${metadataHealth.checked} 제목·채널 확인 · 메타데이터 경고 ${metadataHealth.warnings.length}건`,
@@ -762,10 +778,15 @@ const main = async () => {
   fs.mkdirSync(reportArchiveDir, {recursive: true});
   const captionAudit = captionAuditMarkdown({checkedDate, captionHealth, captionBodyHealth});
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_CAPTION_AUDIT_${checkedDate}.md`), captionAudit, 'utf8');
-  const report = dailyReport({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth});
+  const updatedInbox = fs.readFileSync(inboxPath, 'utf8');
+  const checkedDateKey = checkedDate.replaceAll('-', '');
+  const dailyCandidates = parseInboxEntries(updatedInbox)
+    .filter(entry => entry.status === 'PENDING_REVIEW' && (entry.collectedDate === checkedDate || entry.id.startsWith('PENDING-' + checkedDateKey + '-')))
+    .map(inboxCandidateRecord)
+    .filter(candidate => candidate.id);
+  const report = dailyReport({successfulSources, successfulSearches, candidates: dailyCandidates, runCandidateCount: candidates.length, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth});
   fs.writeFileSync(reportPath, report, 'utf8');
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
-  const updatedInbox = fs.readFileSync(inboxPath, 'utf8');
   const reviewSession = reviewSessionMarkdown({inboxText: updatedInbox, checkedDate});
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_REVIEW_SESSION_${checkedDate}.md`), reviewSession, 'utf8');
   fs.writeFileSync(triagePath, triageMarkdown({inboxText: updatedInbox, checkedDate}), 'utf8');
@@ -774,7 +795,8 @@ const main = async () => {
     checkedDate,
     successfulSources,
     successfulSearches,
-    newCandidates: candidates.length,
+    newCandidates: dailyCandidates.length,
+    newCandidatesThisRun: candidates.length,
     linkHealth,
     evidenceHealth,
     metadataHealth,
