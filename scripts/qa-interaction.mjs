@@ -106,7 +106,7 @@ try {
 
   await send('Page.navigate', {url: `${baseUrl}?card=7#story`});
   await waitForProgress('07 / 08');
-  await evaluate('document.querySelector(".story-reader-scene.is-active .reader-link")?.click()');
+  await evaluate('document.querySelector("#story-scene-research .reader-link")?.click()');
   await waitForText('#info-panel-title', '일반 GABA 연구를 읽는 방법');
   const researchPanel = await evaluate('({title:document.querySelector("#info-panel-title")?.innerText||"",source:document.querySelector(".info-panel__source")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||"",url:location.href})');
   assert('research opens in an in-page panel', researchPanel.title.includes('일반 GABA 연구') && researchPanel.source.includes('PMID 33041752') && researchPanel.external.includes('pubmed.ncbi.nlm.nih.gov') && !researchPanel.url.includes('pubmed'), JSON.stringify(researchPanel));
@@ -159,7 +159,7 @@ try {
   await evaluate('document.querySelector(".story-video-db-button")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
   const presenterDb = await evaluate('({items:document.querySelectorAll(".video-db-item").length,hasHold:document.querySelector(".video-db-list")?.innerText.includes("검토 보류")||false,detail:document.querySelector(".video-db-detail")?.innerText||"",body:document.querySelector(".video-db-list")?.innerText||"",panel:document.querySelector(".info-panel")?.innerText||"",search:!!document.querySelector(".video-db-search input"),filters:document.querySelectorAll(".video-db-filters button").length})');
-  assert('presenter video DB keeps candidate review separate from public curation', presenterDb.items === 9 && presenterDb.hasHold && !presenterDb.detail && !presenterDb.body?.includes('Molecular regulation') && presenterDb.panel.includes('국내 공개 승인 0건') && presenterDb.panel.includes('DB 승인 이력 2건'), JSON.stringify(presenterDb));
+  assert('presenter video DB keeps candidate review separate from public curation', presenterDb.items === 9 && presenterDb.hasHold && !presenterDb.detail && !presenterDb.body?.includes('Molecular regulation') && presenterDb.panel.includes('국내 공개 승인 0건') && presenterDb.panel.includes('DB 승인 이력 2건') && presenterDb.panel.includes('감리 초안 0건'), JSON.stringify(presenterDb));
   await evaluate('document.querySelector(".monitor-snapshot__queue details")?.setAttribute("open", "")');
   const monitorSnapshot = await evaluate('({summary:document.querySelector(".monitor-snapshot")?.innerText||"",links:document.querySelectorAll(".monitor-snapshot a").length,queue:document.querySelectorAll(".monitor-snapshot__queue li details").length,authorityQueue:document.querySelectorAll(".monitor-snapshot__authority-queue li details").length,openQueue:document.querySelectorAll(".monitor-snapshot__queue li details[open]").length})');
   assert('presenter video DB shows daily monitoring snapshot', monitorSnapshot.summary.includes('마지막 자동 확인') && monitorSnapshot.summary.includes('검토 대기') && monitorSnapshot.summary.includes('등록 YouTube 자막 트랙') && monitorSnapshot.summary.includes('등록 YouTube 자막 본문') && monitorSnapshot.summary.includes('본문 경고') && monitorSnapshot.summary.includes('오늘 먼저 검토할 후보') && monitorSnapshot.summary.includes('권위 후보 확인') && monitorSnapshot.summary.includes('첫 담당') && monitorSnapshot.summary.includes('다음 행동') && monitorSnapshot.summary.includes('오늘 리뷰 세션') && monitorSnapshot.queue === 5 && monitorSnapshot.authorityQueue >= 3 && monitorSnapshot.links === 3, JSON.stringify(monitorSnapshot));
