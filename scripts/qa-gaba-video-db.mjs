@@ -9,6 +9,8 @@ const recordBlocks = source.match(/\{\n    id: '[^']+'[\s\S]*?\n  \},/g) ?? [];
 const failures = [];
 
 if (recordBlocks.length < 10) failures.push(`expected at least 10 video records, found ${recordBlocks.length}`);
+if (!source.includes('SHARED_GABA_VIDEOS')) failures.push('shared YouTube review showcase is not defined');
+if (!source.includes("video.id.startsWith('SHORT-') && video.status !== 'EXCLUDE'")) failures.push('shared showcase does not exclude EXCLUDE videos');
 for (const field of requiredFields) {
   const missing = recordBlocks.filter(block => !block.includes(field)).length;
   if (missing) failures.push(`${field} missing from ${missing} record(s)`);
