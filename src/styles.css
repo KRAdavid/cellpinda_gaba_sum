@@ -249,13 +249,14 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
 .video-showcase__source-mark small{color:#52705a;font-size:11px}
 .video-showcase__source-mark--fallback{position:absolute;inset:0;display:none}
 .video-showcase__media.is-image-missing .video-showcase__source-mark--fallback{display:grid}
-.video-showcase__play{position:absolute;right:19px;bottom:18px;display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.78);border-radius:50%;background:rgba(12,57,37,.65);backdrop-filter:blur(6px);color:#fff;font-size:20px}
+.video-showcase__play{position:absolute;right:19px;bottom:18px;display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.78);border-radius:50%;background:rgba(12,57,37,.65);backdrop-filter:blur(6px);color:#fff}.video-showcase__play svg{width:18px;height:18px;transform:translateX(1px);fill:currentColor}
 .video-showcase__copy{display:flex;flex-direction:column;justify-content:center;padding:30px 34px}
 .video-showcase__meta{display:flex;justify-content:space-between;gap:12px;color:#5d8167;font-size:10px;font-weight:850;letter-spacing:.06em;text-transform:uppercase}
 .video-showcase__copy h3{margin:17px 0 7px;color:#174b35;font-size:clamp(26px,3.2vw,42px);font-weight:600;letter-spacing:-.07em;line-height:1.12}
 .video-showcase__channel{margin:0;color:#6b8671;font-size:12px;line-height:1.5}
 .video-showcase__copy>p:not(.video-showcase__channel){margin:19px 0 0;color:#526b5a;font-size:14px;line-height:1.7}
 .video-showcase__copy>p strong{color:#2b684b;font-size:11px;letter-spacing:.03em}
+.video-showcase__copy>.video-showcase__candidate-note{display:grid;gap:4px;margin:14px 0 0;padding:10px 0 0;border-top:1px solid #d0dfd0;color:#6e8373;font-size:11px;line-height:1.55}.video-showcase__candidate-note strong{color:#c4623e;font-size:10px;letter-spacing:.05em}.video-showcase__candidate-note span{color:#6e8373}
 .video-showcase__actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
 .video-showcase__actions a,.video-showcase__actions button{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;border:1px solid #75a385;border-radius:999px;background:transparent;color:#2b684b;font:inherit;font-size:11px;font-weight:800;text-decoration:none;cursor:pointer}
 .video-showcase__actions a:hover,.video-showcase__actions button:hover{background:#d9ebd9}

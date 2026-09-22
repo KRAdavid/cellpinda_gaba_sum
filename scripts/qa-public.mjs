@@ -42,6 +42,7 @@ const required = [
   ['video showcase hero copy', '원문으로 확인하세요'],
   ['video candidate boundary', '오늘 공유된 검토 후보입니다'],
   ['video audit preview', '권위 확인:'],
+  ['video candidate trust boundary', '사람 감리 전 검토 후보'],
   ['video monitor freshness', '영상 DB 자동 확인'],
   ['reel next action', '다음 장면'],
   ['reel video handoff', '영상 요약으로 이어가기'],

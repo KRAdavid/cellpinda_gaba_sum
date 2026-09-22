@@ -1578,10 +1578,11 @@ export default function App() {
             <article className="video-showcase__item" aria-live="polite">
               <button type="button" className="video-showcase__media" onClick={event => openVideoPanel(event.currentTarget, showcaseVideo.id)} aria-label={`${showcaseVideo.publicTitle ?? showcaseVideo.title} 상세 감리 보기`}>
                 {showcaseVideo.previewImage ? <><img src={showcaseVideo.previewImage} alt={showcaseVideo.previewAlt ?? `${showcaseVideo.title} YouTube Shorts 미리보기`} loading="eager" decoding="async" onError={event => {event.currentTarget.style.display = 'none'; event.currentTarget.parentElement?.classList.add('is-image-missing');}} /><div className="video-showcase__source-mark video-showcase__source-mark--fallback"><span>YouTube Shorts</span><strong>{showcaseVideo.previewLabel}</strong><small>원문 링크·대본 확인</small></div></> : <div className="video-showcase__source-mark"><span>YouTube Shorts</span><strong>{showcaseVideo.previewLabel}</strong><small>원문 링크·대본 확인</small></div>}
-                <span className="video-showcase__play" aria-hidden="true">＋</span>
+                <span className="video-showcase__play" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5.2v13.6L19 12 8 5.2Z" /></svg></span>
               </button>
               <div className="video-showcase__copy">
                 <div className="video-showcase__meta"><span>{showcaseVideo.id}</span><span className="video-showcase__status">오늘 공유 · {VIDEO_STATUS_LABELS[showcaseVideo.status]}</span></div>
+                <p className="video-showcase__candidate-note" role="note"><strong>사람 감리 전 검토 후보</strong><span>권위·근거·권리 확인 전에는 일반 GABA 근거 자료로 사용하지 않습니다.</span></p>
                 <h3>{showcaseVideo.publicTitle ?? showcaseVideo.title}</h3>
                 <p className="video-showcase__channel">{showcaseVideo.channel} · {showcaseVideo.speaker}</p>
                 <div className="video-showcase__audit" aria-label="영상 공개 감리 상태">
