@@ -327,8 +327,8 @@ const RESEARCH_SOURCES = [
     topic: '경구 GABA 인체 연구',
     title: 'Effects of Oral Gamma-Aminobutyric Acid (GABA) Administration on Stress and Sleep in Humans',
     meta: 'Hepsomali et al. · Front Neurosci. 2020 · PMID 33041752',
-    summary: '자연 유래·발효 GABA를 살핀 14개 위약대조 인체시험을 검토한 체계적 문헌고찰입니다.',
-    boundary: '스트레스와 수면 관련 지표를 살펴본 일반 GABA 문헌고찰입니다. 연구 조건은 특정 제품의 효능과 구분해 읽습니다.',
+    summary: '자연 유래·발효 GABA를 살핀 14개 위약대조 인체시험을 검토한 체계적 문헌고찰입니다. 스트레스와 수면 관련 지표를 살폈고, 스트레스 관련 근거는 제한적이고 수면 관련 근거는 매우 제한적이라고 정리합니다.',
+    boundary: '일반 GABA 섭취 연구의 결론은 조건과 한계까지 읽어야 합니다. 이 문헌고찰은 특정 제품의 효능을 입증하지 않습니다.',
     url: RESEARCH_URL,
   },
   {
@@ -506,7 +506,7 @@ function makeSlides(): Slide[] {
       id: 'research',
       label: '07 · 일반 GABA 연구',
       title: '일반 GABA 연구는 스트레스와 수면에 관한 질문을 살펴봅니다.',
-      body: '14개 위약대조 인체시험을 검토한 문헌고찰처럼, 연구 대상·섭취량·기간·비교 조건을 함께 볼 때 GABA 연구를 정확하게 이해할 수 있습니다.',
+      body: '14개 위약대조 인체시험을 검토한 문헌고찰은 스트레스 관련 근거는 제한적이고 수면 관련 근거는 매우 제한적이라고 정리합니다. 연구 대상·섭취량·기간·비교 조건까지 함께 봐야 합니다.',
       tone: 'research',
       note: '일반 GABA 연구를 읽는 기준과 상세 출처는 아래 패널에서 확인합니다.',
       presenterPrompt: '연구 대상·섭취량·기간·비교 조건을 먼저 확인해 보시겠어요?',
@@ -2012,7 +2012,7 @@ export default function App() {
             <h2 id="info-panel-title">{panelTitle}</h2>
             {openPanel === 'research' ? <>
               <p>연구 결과를 볼 때는 무엇을 살펴봤는지와 어떤 조건이었는지를 함께 확인하세요.</p>
-              <p className="info-panel__evidence">연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 검토했습니다. 연구 대상·섭취량·기간·비교 조건을 함께 확인하는 자료입니다.</p>
+              <p className="info-panel__evidence">연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 검토했습니다. 스트레스 관련 근거는 제한적이고 수면 관련 근거는 매우 제한적이라고 정리하므로, 연구 대상·섭취량·기간·비교 조건과 함께 확인해야 합니다.</p>
               <ul><li>참여자와 연구 대상이 누구였는지</li><li>섭취량과 기간이 어떻게 설정됐는지</li><li>비교 조건과 측정 방법이 무엇이었는지</li></ul>
               <p className="info-panel__boundary">이 자료는 일반 GABA 원료와 GABA 섭취 연구를 구분해 읽도록 돕는 일반 교육 자료입니다.</p>
               <details className="info-panel__research-sources">

@@ -24,6 +24,8 @@ const required = [
   ['gaba name definition', '감마아미노부티르산을 줄여 부르는 이름'],
   ['everyday hook copy', '쉽게 흥분하고 실수가 이어지는 날'],
   ['research limitation', '14개 위약대조 인체시험'],
+  ['stress evidence limitation', '스트레스 관련 근거는 제한적'],
+  ['sleep evidence limitation', '수면 관련 근거는 매우 제한적'],
   ['research citation title', 'Effects of Oral Gamma-Aminobutyric Acid'],
   ['research citation PMID', 'PMID 33041752'],
   ['research neutral summary', '스트레스와 수면 관련 지표'],
