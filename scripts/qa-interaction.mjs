@@ -103,8 +103,8 @@ try {
   assert('story chapter index jumps directly to a selected scene', directProgress.active === 'step' && directProgress.label.includes('02'), JSON.stringify(directProgress));
   await evaluate('document.querySelector(".story-reader-index button:first-child")?.click()');
   await waitForProgress('01 / 08');
-  const nextBar = await evaluate('({text:document.querySelector(".story-reader-next")?.innerText||"",button:!!document.querySelector(".story-reader-next button"),link:!!document.querySelector(".story-reader-next a"),visible:!!document.querySelector(".story-reader-next")})');
-  assert('reading flow exposes the next message action', nextBar.visible && nextBar.button && !nextBar.link && nextBar.text.includes('다음 장면') && nextBar.text.includes('02 · 충분히 쉰 날'), JSON.stringify(nextBar));
+  const nextBar = await evaluate('({text:document.querySelector(".story-reader-next")?.innerText||"",button:!!document.querySelector(".story-reader-next button"),link:!!document.querySelector(".story-reader-next a"),visible:!!document.querySelector(".story-reader-next"),mobileButton:!!document.querySelector(".story-reader-mobile-next button"),mobileText:document.querySelector(".story-reader-mobile-next")?.innerText||""})');
+  assert('reading flow exposes the next message action', nextBar.visible && nextBar.button && !nextBar.link && nextBar.text.includes('다음 장면') && nextBar.text.includes('02 · 충분히 쉰 날') && nextBar.mobileButton && nextBar.mobileText.includes('충분히 쉰 날'), JSON.stringify(nextBar));
 
   await evaluate('(() => { const story=document.getElementById("story"); window.scrollTo({top:story.offsetTop,left:0,behavior:"instant"}); return true; })()');
   await wait(160);

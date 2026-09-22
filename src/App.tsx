@@ -1938,6 +1938,13 @@ export default function App() {
         </ol>
         <p className="story-reader-index__hint">한 장면씩 읽어도 좋고,<br />원하는 장면부터 바로 봐도 좋아요.</p>
       </aside>
+      <div className="story-reader-mobile-next" aria-live="polite">
+        <div>
+          <span>{nextSlide ? '다음 메시지' : '읽기 완료'}</span>
+          <strong>{nextSlide ? nextSlide.label.replace(/^\d+\s·\s/, '') : '영상 검토 후보로 이어가기'}</strong>
+        </div>
+        {nextSlide ? <button type="button" onClick={() => goTo(active + 1)}>넘겨 보기 <span aria-hidden="true">↓</span></button> : <a href="#video-showcase">영상 보기 <span aria-hidden="true">↓</span></a>}
+      </div>
       <div className="story-reader-stream" ref={readerStreamRef}>
         {slides.map((slide, index) => <article
           key={slide.id}

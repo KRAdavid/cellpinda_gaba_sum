@@ -9,7 +9,8 @@
 | CLAIM-02 | 수면·스트레스 연구의 결과와 한계를 어떤 문장으로 보여줄 것인가? | SCIENCE + MEDICAL | AI-OPS / UX 미배정 | `GABA_SOURCE_REGISTER.md` SRC-03~05 | OPEN | 첫 회의 |
 __OLD__
 | VIDEO-02 | 자동 수집된 숏츠 후보를 어떤 절차로 공개 승인할 것인가? | PM + VIDEO + SCIENCE + MEDICAL + RIGHTS | AI-OPS / 역할별 미배정 | `GABA_VIDEO_REVIEW_RULES.md`, `GABA_VIDEO_REVIEW_LOG.md` | OPEN | 일일 검토 회의 |
-| UX-01 | GABA를 모르는 사람이 6~8장 안에 기본 개념을 이해하는가? | UX + SCIENCE | AI-OPS / UX 미배정 | 1차 스토리보드·이해도 점검 | OPEN | 스토리보드 제출 후 |
+| UX-01 | GABA를 모르는 사람이 6~8장 안에 기본 개념을 이해하는가? | UX + SCIENCE | AI-OPS / UX 미배정 | 편집형 세로 장면 읽기·일반 GABA 연구 패널·320/390/1440px QA | READY FOR FIELD | 실제 iOS·Android·A 세션 |
+| UX-02 | 모바일에서 다음 메시지로 바로 넘어가면서도 본문을 가리지 않는가? | UX + QA | AI-OPS / UX 미배정 | 하단 다음 메시지 고정 행동·390px 캡처·상호작용 QA | READY FOR FIELD | A 세션에서 행동 명확도·겹침 확인 |
 | REMOVE-01 | 현재 공개 코드에서 제품·후기·판매 흐름을 제거할 것인가? | PM + QA | AI-OPS / QA 미배정 | 변경 diff·공개 URL QA | OPEN | 범위 확정 후 |
 
 ## 기록 형식
