@@ -805,7 +805,7 @@ export default function App() {
           <div className="video-showcase__list">
             {PUBLIC_GABA_VIDEOS.map(video => <article key={video.id} className="video-showcase__item">
               <a className="video-showcase__media" href={video.url} target="_blank" rel="noopener noreferrer" aria-label={`${video.title} 공식 원문 영상 보기`}>
-                {video.previewImage ? <img src={video.previewImage} alt={video.previewAlt ?? `${video.title} 공식 원문 미리보기`} loading="lazy" decoding="async" onError={event => {event.currentTarget.style.display = 'none';}} /> : <div className="video-showcase__source-mark"><span>공식 교육기관</span><strong>{video.previewLabel}</strong><small>원문 페이지·대본 확인</small></div>}
+                {video.previewImage ? <img src={video.previewImage} alt={video.previewAlt ?? `${video.title} 공식 원문 미리보기`} loading="eager" decoding="async" onError={event => {event.currentTarget.style.display = 'none';}} /> : <div className="video-showcase__source-mark"><span>공식 교육기관</span><strong>{video.previewLabel}</strong><small>원문 페이지·대본 확인</small></div>}
                 <span className="video-showcase__play" aria-hidden="true">↗</span>
               </a>
               <div className="video-showcase__copy">
