@@ -88,6 +88,8 @@ QA 격리 보완: 상호작용 QA가 직전 브라우저의 발표 모드 URL을
 
 영업 공유 UX 보완: 카드 링크를 만든 뒤 다음 카드로 이동하면 이전 카드의 공유 URL·완료 문구가 남을 수 있는 비동기 경합을 발견했다. 카드 전환 시 공유 상태를 즉시 초기화하고 이전 공유 요청의 늦은 결과를 무시하도록 보강했으며, 320·390·1440px 매트릭스에서 카드 08 공유→09 이동→08 복귀 흐름을 자동 검증했다. 실제 기기 공유 메뉴 확인은 계속 HOLD한다.
 
+2026-09-22 문서 기준선 정합성 보완: 최신 공개 코드는 9장 일반 GABA 교육 피드인데, 일부 인수인계·회의·영업 문서가 과거 11장 제품·후기 흐름을 현재 기준처럼 기록하고 있음을 발견했다. `PUBLISHING_TF.md`, `GOAL_ACCEPTANCE_MATRIX.md`, `RELEASE_HANDOFF.md`, `GABA_EDUCATION_KICKOFF.md`, `TF_MEETING_PACK.md`, `TF_DISCUSSION_BOARD.md`, `TF_DECISION_REGISTER.md`를 현재 일반 교육 기준으로 갱신하고, `GENERAL_GABA_OPERATOR_GUIDE.md`와 `GENERAL_GABA_FIELD_SESSION.md`를 현재 사업자·현장 기준으로 추가했다. 과거 제품·후기 문서는 레거시 배너를 붙여 공개본 운영 기준에서 분리했다. 문서 QA는 35개 현재 기준 검사를 통과했으며, 사람 역할·출처·영상·실기기·현장 게이트는 계속 HOLD한다.
+
 공개 배포 재검증: 공유 상태 경합 보완본 `fa361c9`의 [Pages run 35599806242](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35599806242) 성공과 공개 URL 320·390·1440px 매트릭스 전체 통과를 확인했다. 실제 기기 공유 메뉴와 사업자 상담 3회는 여전히 별도 증거가 필요하다.
 
 모바일 카드 레일 계약 보강: 카드 레일에 `touch-action: pan-x`를 명시하고 320·390px에서 수평 overflow·touch 방향·scroll snap 설정을 자동 확인하도록 QA를 보강했다. Chrome CDP의 합성 터치 이벤트는 390px에서 실제 스와이프 전달이 안정적이지 않아 스와이프 자체를 PASS로 주장하지 않으며, iOS·Android 실기기 스와이프 확인은 계속 HOLD한다.

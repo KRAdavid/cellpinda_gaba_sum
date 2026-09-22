@@ -1,5 +1,7 @@
 # 사업자 영업 현장 검증 Quickstart
 
+> **레거시 문서:** 제품 문의 시나리오를 포함한 과거 영업 검증 문서다. 현재 일반 GABA 교육 세션은 [`GENERAL_GABA_FIELD_SESSION.md`](GENERAL_GABA_FIELD_SESSION.md)를 사용한다.
+
 이 문서는 공개 페이지의 기술 QA를 실제 사업자 상담 검증으로 연결하기 위한 진행자용 안내서다. 세션 기록은 [`SALES_SESSION_VALIDATION.md`](SALES_SESSION_VALIDATION.md)에 남기고, 문제와 결정은 [`TF_REVIEW_LOG.md`](TF_REVIEW_LOG.md)에 반영한다.
 
 ## 세션 구성

@@ -21,7 +21,8 @@ const assigned = id => {
 };
 
 const assignedRoles = coreRoles.filter(assigned);
-const firstMeetingFilled = !kickoff.match(/^회의 날짜·시간:\s*$/m);
+const firstMeetingDate = kickoff.match(/^(?:회의 날짜·시간|첫 회의 날짜·시간):[^\r\n]*$/m)?.[0]?.replace(/^[^:]+:\s*/, '').trim() ?? '';
+const firstMeetingFilled = Boolean(firstMeetingDate);
 const sourceRows = sources.split('\n').filter(line => /^\| SRC-\d+ \|/.test(line));
 const videoRows = videos.split('\n').filter(line => /^\| (?:AUTH|VID|SHORT)-\d+ \|/.test(line));
 const sourcePrechecked = sourceRows.filter(line => line.includes('| AI_PRECHECKED |')).length;

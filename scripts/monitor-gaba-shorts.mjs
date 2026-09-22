@@ -212,7 +212,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     humanSourceTotal: sourceRows.length,
     registeredVideoApproved: videoRows.filter(line => line.includes('| PUBLISH_GENERAL |')).length,
     registeredVideoTotal: videoRows.length,
-    firstMeetingReady: !/^회의 날짜·시간:\s*$/m.test(kickoff),
+    firstMeetingReady: Boolean(kickoff.match(/^(?:회의 날짜·시간|첫 회의 날짜·시간):[^\r\n]*$/m)?.[0]?.replace(/^[^:]+:\s*/, '').trim()),
     triageUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md',
     reportUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md',
     kickoffUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md',

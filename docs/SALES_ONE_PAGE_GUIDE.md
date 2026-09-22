@@ -1,5 +1,7 @@
 # 사업자용 GABA 한 페이지 사용 가이드
 
+> **레거시 문서:** 제품·후기·판매 흐름을 포함한 과거 영업 자료다. 현재 공개 일반 GABA 교육본은 [`GENERAL_GABA_OPERATOR_GUIDE.md`](GENERAL_GABA_OPERATOR_GUIDE.md)를 사용한다.
+
 고객에게 공개 페이지를 보여줄 때 바로 옆에 두고 사용하는 요약본이다. 제품 효능·섭취량·안전성·상호작용을 확정하는 문서가 아니며, 상세 기준은 [`SALES_WALKTHROUGH.md`](SALES_WALKTHROUGH.md)와 [`SALES_SESSION_VALIDATION.md`](SALES_SESSION_VALIDATION.md)를 따른다.
 
 ## 시작 링크

@@ -6,15 +6,15 @@
 
 - 채널 확인: 8/8
 - 유사 콘텐츠 검색어 확인: 4/4
-- Shorts 페이지 보완 수집: 4개 채널
-- 신규 후보: 1건
+- Shorts 페이지 보완 수집: 7개 채널
+- 신규 후보: 0건
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
 ## 신규 후보
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 상태 |
 | --- | --- | --- | --- | --- | --- |
-| PENDING-20260922-8GK06KKKUeA | [스틸녹스 장기 복용 시 뇌에 생기는 변화, GABA 수용체와 수면 구조 \| 대장동 불면증 한의원](https://www.youtube.com/watch?v=8GK06KKKUeA) | YouTube 검색: GABA 뇌 신경 Shorts | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | PENDING_REVIEW |
+| 없음 | 신규 후보 없음 | - | - | - |
 
 ## 채널 경고
 
@@ -24,10 +24,13 @@
 
 ## 수집 경로 보완
 
-- 교육하는 의사! 이동환TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- SLEEP Dr. 신원철 꿀잠튜브: RSS 404 Not Found → Shorts 페이지로 보완 수집
+- 셀럽의 건강비결: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
+- 영양과학자 양과자: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
+- 브레인튜브 Brain Doctor: RSS 404 Not Found → Shorts 페이지로 보완 수집
+- 30년 자율신경, 정이안한의원TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
+- SLEEP Dr. 신원철 꿀잠튜브: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
 - 마음 튼튼, 뇌연구소 바이탈라이즈: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 비엠한방내과: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
+- 비엠한방내과: RSS 404 Not Found → Shorts 페이지로 보완 수집
 
 ## 다음 15분 감리 순서
 

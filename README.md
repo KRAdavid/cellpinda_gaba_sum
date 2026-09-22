@@ -28,11 +28,11 @@
 
 발표 중 질문이 나오면 `자주 묻는 질문에 답하기`를 열어 GABA 기능·수면·일반 연구·영상 사용에 대한 승인 문장을 확인합니다. 필요하면 각 답변의 `답변 복사`로 전달할 수 있으며, 정보 패널에서는 `이 카드 고객용 링크 복사`로 발표자 모드가 없는 이어보기 링크를 보낼 수 있습니다. 두 기능 모두 현재 카드 흐름을 벗어나지 않으며 소비자 화면에는 표시하지 않습니다.
 
-TF 회의를 같은 순서로 진행하려면 [`docs/TF_MEETING_PACK.md`](docs/TF_MEETING_PACK.md)를 사용합니다. 역할별 질문, A/B/C 영업 시나리오, 근거 게이트, 결정 기록 형식을 한 문서에 모았습니다.
+TF 회의를 같은 순서로 진행하려면 [`docs/TF_MEETING_PACK.md`](docs/TF_MEETING_PACK.md)를 사용합니다. 제품 판매가 아닌 일반 GABA 교육 기준으로 역할별 질문, 영상 감리, 일일 모니터, 현장 검증을 모았습니다.
 
 회의에서 다룰 논점과 필요한 증거는 [`docs/TF_DISCUSSION_BOARD.md`](docs/TF_DISCUSSION_BOARD.md)에서 관리합니다. 기술 QA와 실제 사업자 평가를 분리하고, 이견·결정·다음 검증을 계속 누적합니다.
 
-회의 후 결정·담당·제출 기한은 [`docs/TF_DECISION_REGISTER.md`](docs/TF_DECISION_REGISTER.md)에서 한 줄 단위로 추적하고, A/B/C 현장 세션은 [`docs/FIELD_SESSION_PACKET.md`](docs/FIELD_SESSION_PACKET.md)의 고정 진행·관찰 기준을 사용합니다.
+회의 후 결정·담당·제출 기한은 [`docs/TF_DECISION_REGISTER.md`](docs/TF_DECISION_REGISTER.md)에서 한 줄 단위로 추적하고, A/B/C 현장 세션은 [`docs/GENERAL_GABA_FIELD_SESSION.md`](docs/GENERAL_GABA_FIELD_SESSION.md)의 고정 진행·관찰 기준을 사용합니다.
 
 실제 주 담당자·백업·결정권 배정은 [`docs/TF_ROSTER.md`](docs/TF_ROSTER.md)에서 확인하고 입력합니다. 역할 정의만으로 실제 TF 구성 완료를 선언하지 않습니다.
 
@@ -49,9 +49,9 @@ pnpm run qa:tf:strict
 
 전체 설명용 발표 북마크는 `https://kradavid.github.io/cellpinda_gaba_sum/?mode=presenter&card=1#story`로 01번부터 시작합니다. 영상 DB는 발표 모드의 `영상 DB` 버튼에서 확인합니다.
 
-실제 상담 순서와 권장·보류 표현은 [`docs/SALES_WALKTHROUGH.md`](docs/SALES_WALKTHROUGH.md)를 따릅니다.
+실제 일반 GABA 교육 설명 순서와 권장·보류 표현은 [`docs/GENERAL_GABA_OPERATOR_GUIDE.md`](docs/GENERAL_GABA_OPERATOR_GUIDE.md)를 따릅니다.
 
-상담 직전에 볼 요약본은 [`docs/SALES_ONE_PAGE_GUIDE.md`](docs/SALES_ONE_PAGE_GUIDE.md)에서 확인합니다.
+제품·후기·판매 흐름이 포함된 `SALES_*`, `PRODUCT_EVIDENCE_INTAKE.md`, `REVIEW_RIGHTS_REGISTER.md`는 레거시 보관 문서이며 현재 공개본의 운영 기준이 아닙니다.
 
 UX·영업·근거/준법·접근성·QA의 반복 검토 결과는 [`docs/TF_REVIEW_LOG.md`](docs/TF_REVIEW_LOG.md)에 기록합니다.
 
