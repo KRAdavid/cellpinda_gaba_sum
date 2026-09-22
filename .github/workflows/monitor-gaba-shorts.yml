@@ -1,0 +1,38 @@
+name: Monitor GABA Shorts candidates
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Collect new GABA Shorts candidates
+        run: npm run monitor:gaba-shorts:write
+      - name: Check for inbox changes
+        id: changes
+        run: |
+          if git diff --quiet -- docs/GABA_VIDEO_INBOX.md; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Commit review inbox
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/GABA_VIDEO_INBOX.md
+          git commit -m "chore: update GABA Shorts review inbox"
+          git push

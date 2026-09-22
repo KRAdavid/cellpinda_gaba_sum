@@ -1,6 +1,12 @@
 # 공개용 GABA 퍼블리싱 TF 팀 초대·킥오프 패킷
 
+> **범위 전환 안내:** 이번 회의는 제품 판매 TF가 아니라 일반 GABA 교육 TF로 진행합니다. 새 역할·초대·안건은 [`GABA_EDUCATION_TF.md`](GABA_EDUCATION_TF.md)와 [`GABA_EDUCATION_KICKOFF.md`](GABA_EDUCATION_KICKOFF.md)를 기준으로 합니다. 이 문서는 이전 제품·영업 중심 TF의 레거시 패킷입니다.
+
 이 문서는 실제 담당자를 모으고 첫 30분 회의를 잡기 위한 전달용 문서다. 역할 정의와 기술 QA가 끝났다는 뜻이 아니며, 아래 사람 입력과 현장 증거가 생기기 전에는 최종 사업·준법 승인을 표시하지 않는다.
+
+## AI 비서 운영 역할
+
+문서·카피·코드·QA·업무 추적은 `AI-OPS`로 배정된 Codex AI 비서가 실행한다. AI 비서는 진행 상황, 변경 파일, 검증 결과, 보류 사유를 정리해 보고한다. 제품 사실·효능·준법·후기 권리·실제 소비자 세션·최종 배포는 인간 담당자의 승인 없이는 `PASS`로 처리하지 않는다. 세부 권한은 [`AI_ASSISTANT_ASSIGNMENT.md`](AI_ASSISTANT_ASSIGNMENT.md)를 따른다.
 
 ## 초대 메시지
 

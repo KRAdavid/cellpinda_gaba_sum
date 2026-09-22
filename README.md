@@ -2,13 +2,27 @@
 
 소비자가 모바일에서 한 장씩 넘겨 보는 GABA 소개 페이지입니다.
 
-이 저장소는 기존 [cellpinda_GABA](https://github.com/KRAdavid/cellpinda_GABA) 공식 배포 사이트와 구분되는 별도 소비자용 소개 페이지입니다. 일반 GABA 연구, 셀핀다 제품 정보, 구매자 후기를 같은 근거처럼 섞지 않도록 화면에서 분리했습니다.
+권위 영상 후보는 [GABA_VIDEO_DB.md](docs/GABA_VIDEO_DB.md)에 영상별 요약과 인물 소개를 기록하고, [GABA_VIDEO_REVIEW_RULES.md](docs/GABA_VIDEO_REVIEW_RULES.md)의 권위·근거·상업성·권리 감리를 거칩니다. 새 가바·GABA 숏츠는 [GABA_VIDEO_INBOX.md](docs/GABA_VIDEO_INBOX.md)에 PENDING_REVIEW로 수집되며, 일일 운영은 [GABA_VIDEO_DAILY_MONITOR.md](docs/GABA_VIDEO_DAILY_MONITOR.md)에 정리했습니다. 자동 수집 후보는 검토 전 공개 페이지에 반영하지 않습니다.
 
-카드의 연구·제품·후기 버튼은 먼저 페이지 안의 정보 패널을 열어 설명 흐름을 유지합니다. `다음 카드`가 기본 행동이며, 원문과 스마트스토어 링크는 패널을 읽은 뒤 `외부 자료는 필요할 때만 확인`을 열어 선택하는 보조 경로입니다. 소비자 화면의 공유·발표 도구는 `더 보기` 안에 접혀 있어 카드 흐름을 우선하고, 사업자 발표 모드에서는 필요한 조작부를 바로 사용할 수 있습니다. 퍼블리싱 TF의 역할, 검토 기준, 공개 전 수용 기준은 [`docs/PUBLISHING_TF.md`](docs/PUBLISHING_TF.md)에 기록합니다.
+팀의 매일 검토 순서와 사업자 설명용 판정 문장은 [GABA_VIDEO_REVIEW_LOG.md](docs/GABA_VIDEO_REVIEW_LOG.md)에 기록합니다.
 
-사업자 설명 상황에서는 카드 컨트롤의 `발표 모드`를 사용해 한 장씩 보여줄 수 있습니다. 첫 화면의 `사업자용 설명 시작`은 현재 보고 있던 카드와 무관하게 01번부터 전체 설명을 시작하고, 고객이 제품을 먼저 물으면 발표 모드의 `제품부터 설명`, 근거 질문이 먼저 나오면 `근거부터 설명`으로 현재 화면 안에서 해당 카드로 이동할 수 있습니다. 05번 카드에서는 GABA가 감마아미노부티르산을 줄여 부르는 성분 이름이라는 점을 먼저 설명합니다. `Escape`로 발표 모드를 종료하고, 연구·제품·후기 상세는 현재 화면의 패널에서 먼저 설명합니다. `현재 카드 링크 공유`는 모바일 기본 공유 메뉴를 우선 사용하고, 지원하지 않는 환경에서는 링크를 복사합니다.
+> 현재 공개본은 **제품과 완전히 분리된 일반 GABA 교육 자료**입니다. 제품·후기·판매 정보는 공개 카드와 패널에서 다루지 않습니다. 현재 범위와 TF 운영 기준은 [`docs/GABA_EDUCATION_SCOPE.md`](docs/GABA_EDUCATION_SCOPE.md), [`docs/GABA_EDUCATION_TF.md`](docs/GABA_EDUCATION_TF.md), [`docs/GABA_EDUCATION_KICKOFF.md`](docs/GABA_EDUCATION_KICKOFF.md)에서 확인합니다.
 
-발표 중 질문이 나오면 `자주 묻는 질문에 답하기`를 열어 수면·섭취량·병용·후기에 대한 보류 문장을 확인합니다. 필요하면 각 답변의 `답변 복사`로 승인된 문장을 전달할 수 있으며, 정보 패널에서는 `이 카드 고객용 링크 복사`로 발표자 모드가 없는 이어보기 링크를 보낼 수 있습니다. 두 기능 모두 현재 카드 흐름을 벗어나지 않으며 소비자 화면에는 표시하지 않습니다.
+기존 판매·영업용 TF 문서는 과거 구현의 기록으로 보관하며, 새 공개본의 범위·문안·승인 기준은 위 일반 GABA 교육 문서와 영상 감리 문서만 기준으로 삼습니다.
+
+일반 GABA 교육 TF의 현재 준비 상태는 `pnpm run qa:education-tf`로 확인합니다. 이 명령은 AI-OPS 실행 상태와 인간 핵심 역할·과학 출처·권위 영상·제품 제외 범위를 별도로 점검합니다.
+
+영상 DB 필드·제공 Shorts 등록·공개 승인 게이트는 `pnpm run qa:video-db`로 별도 점검합니다.
+
+일반 교육 TF의 논점·결정·보류 사유는 [`docs/GABA_EDUCATION_DECISION_REGISTER.md`](docs/GABA_EDUCATION_DECISION_REGISTER.md)에 기록합니다.
+
+이 저장소는 기존 [cellpinda_GABA](https://github.com/KRAdavid/cellpinda_GABA) 공식 배포 사이트와 구분되는 별도 일반 GABA 교육 페이지입니다. 공개 화면에는 일반 생리·일반 인체 연구·권위 영상만 포함합니다.
+
+카드의 연구·영상 버튼은 먼저 페이지 안의 정보 패널을 열어 설명 흐름을 유지합니다. `다음 카드`가 기본 행동이며, 원문 링크는 패널을 읽은 뒤 `외부 자료는 필요할 때만 확인`을 열어 선택하는 보조 경로입니다. 소비자 화면의 공유·발표 도구는 `더 보기` 안에 접혀 있고, 사업자 발표 모드에서는 영상 DB와 진행 포인트를 바로 확인할 수 있습니다. 퍼블리싱 TF의 역할, 검토 기준, 공개 전 수용 기준은 [`docs/PUBLISHING_TF.md`](docs/PUBLISHING_TF.md)에 기록합니다.
+
+사업자 설명 상황에서는 카드 컨트롤의 `발표 모드`를 사용해 한 장씩 보여줄 수 있습니다. 첫 화면의 `발표자용 설명 시작`은 01번부터 일반 교육 흐름을 시작하고, 발표 중 `영상 DB`에서 승인·보류·제외 후보와 영상별 요약·인물 소개·감리 사유를 확인할 수 있습니다. 05번 카드에서는 GABA가 감마아미노부티르산을 줄여 부르는 성분 이름이라는 점을 먼저 설명합니다. `Escape`로 발표 모드를 종료하고, 연구·영상 상세는 현재 화면의 패널에서 먼저 설명합니다. `현재 카드 링크 공유`는 모바일 기본 공유 메뉴를 우선 사용하고, 지원하지 않는 환경에서는 링크를 복사합니다.
+
+발표 중 질문이 나오면 `자주 묻는 질문에 답하기`를 열어 GABA 기능·수면·일반 연구·영상 사용에 대한 승인 문장을 확인합니다. 필요하면 각 답변의 `답변 복사`로 전달할 수 있으며, 정보 패널에서는 `이 카드 고객용 링크 복사`로 발표자 모드가 없는 이어보기 링크를 보낼 수 있습니다. 두 기능 모두 현재 카드 흐름을 벗어나지 않으며 소비자 화면에는 표시하지 않습니다.
 
 TF 회의를 같은 순서로 진행하려면 [`docs/TF_MEETING_PACK.md`](docs/TF_MEETING_PACK.md)를 사용합니다. 역할별 질문, A/B/C 영업 시나리오, 근거 게이트, 결정 기록 형식을 한 문서에 모았습니다.
 
@@ -22,16 +36,14 @@ TF 회의를 같은 순서로 진행하려면 [`docs/TF_MEETING_PACK.md`](docs/T
 
 실제 TF 참가자를 모집하고 첫 회의에 초대할 때는 [`docs/TF_TEAM_INVITE.md`](docs/TF_TEAM_INVITE.md)의 전달문과 회신 양식을 사용합니다.
 
-제품 자료는 [`docs/PRODUCT_EVIDENCE_INTAKE.md`](docs/PRODUCT_EVIDENCE_INTAKE.md), 후기 사용권은 [`docs/REVIEW_RIGHTS_REGISTER.md`](docs/REVIEW_RIGHTS_REGISTER.md)에 항목별로 기록합니다.
-
-TF 배정·현장 세션·제품·후기·실기기 게이트의 현재 상태는 다음 명령으로 확인합니다. 기본 점검은 HOLD 상태를 설명하고 종료되며, 엄격 모드는 최종 승인 조건이 채워지지 않으면 실패합니다.
+TF 배정·현장 세션·영상·실기기 게이트의 현재 상태는 다음 명령으로 확인합니다. 기본 점검은 HOLD 상태를 설명하고 종료되며, 엄격 모드는 최종 승인 조건이 채워지지 않으면 실패합니다.
 
 ```bash
 pnpm run qa:tf
 pnpm run qa:tf:strict
 ```
 
-전체 설명용 발표 북마크는 `https://kradavid.github.io/cellpinda_gaba_sum/?mode=presenter&card=1#story`로 01번부터 시작합니다. 제품 문의가 먼저 나온 경우에는 `card=7`을 지정해 제품 카드부터 열 수 있습니다.
+전체 설명용 발표 북마크는 `https://kradavid.github.io/cellpinda_gaba_sum/?mode=presenter&card=1#story`로 01번부터 시작합니다. 영상 DB는 발표 모드의 `영상 DB` 버튼에서 확인합니다.
 
 실제 상담 순서와 권장·보류 표현은 [`docs/SALES_WALKTHROUGH.md`](docs/SALES_WALKTHROUGH.md)를 따릅니다.
 
@@ -55,6 +67,13 @@ npm run dev
 ```
 
 ## Deployment
+
+숏츠 후보를 로컬에서 확인하려면 다음 명령을 사용합니다. 기본 실행은 파일을 바꾸지 않으며, 검토 대기함에 기록할 때만 write 명령을 사용합니다.
+
+~~~bash
+pnpm run monitor:gaba-shorts
+pnpm run monitor:gaba-shorts:write
+~~~
 
 `main`에 push하면 GitHub Pages workflow가 `https://kradavid.github.io/cellpinda_gaba_sum/` 경로를 기준으로 정적 페이지를 빌드합니다. GitHub 저장소 설정에서 Pages의 Source가 `GitHub Actions`인지 확인해야 합니다.
 

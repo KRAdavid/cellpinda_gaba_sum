@@ -29,10 +29,9 @@ const files = {
 
 const checks = [
   ['public URL is documented', files.readme, 'https://kradavid.github.io/cellpinda_gaba_sum/'],
-  ['README documents presenter product shortcut', files.readme, '제품부터 설명'],
+  ['README documents product exclusion', files.readme, '제품·후기·판매 정보는 공개 카드와 패널에서 다루지 않습니다'],
   ['README links team invite packet', files.readme, 'docs/TF_TEAM_INVITE.md'],
-  ['README links product evidence intake', files.readme, 'docs/PRODUCT_EVIDENCE_INTAKE.md'],
-  ['README links review rights register', files.readme, 'docs/REVIEW_RIGHTS_REGISTER.md'],
+  ['README links video database', files.readme, 'GABA_VIDEO_DB.md'],
   ['README documents TF readiness command', files.readme, 'pnpm run qa:tf'],
   ['official site is identified separately', files.handoff, 'https://kradavid.github.io/cellpinda_GABA/'],
   ['meeting pack is linked from README', files.readme, 'docs/TF_MEETING_PACK.md'],

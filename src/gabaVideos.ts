@@ -1,0 +1,145 @@
+export type GabaVideoStatus =
+  | 'PUBLISH_GENERAL'
+  | 'LIMITED_USE'
+  | 'HOLD'
+  | 'EXCLUDE'
+  | 'PENDING_REVIEW'
+  | 'AUTO_FILTERED';
+
+export type GabaVideoRecord = {
+  id: string;
+  title: string;
+  url: string;
+  channel: string;
+  speaker: string;
+  summary: string;
+  personSummary: string;
+  status: GabaVideoStatus;
+  statusReason: string;
+  checkedAt: string;
+};
+
+export const GABA_VIDEO_DB: GabaVideoRecord[] = [
+  {
+    id: 'AUTH-01',
+    title: 'GABA Neurotransmitter',
+    url: 'https://dnalc.cshl.edu/view/485-GABA-Neurotransmitter.html',
+    channel: 'Cold Spring Harbor Laboratory DNA Learning Center',
+    speaker: 'Professor Trevor Robbins',
+    summary: 'GABA를 중추신경계의 대표적인 억제성 신경전달물질로 설명하고, 신경세포의 활동을 조절하는 기본 원리를 교육 영상과 transcript로 소개합니다.',
+    personSummary: 'CSHL DNA Learning Center 공개 페이지가 Professor Trevor Robbins의 GABAergic system 설명 영상으로 소개합니다. 일반 생리 설명 중심이며 제품·구매 주장은 확인되지 않습니다.',
+    status: 'PUBLISH_GENERAL',
+    statusReason: '교육기관 공개 페이지, 영상과 transcript 확인 가능, 일반 GABA 기능 중심, 제품 효능·구매 유도 없음. 원문 링크 방식으로 공개합니다.',
+    checkedAt: '2026-09-22',
+  },
+  {
+    id: 'AUTH-02',
+    title: 'Molecular regulation of synaptic inhibition',
+    url: 'https://videocast.nih.gov/watch=51064',
+    channel: 'NIH VideoCast · NINDS Director’s Seminar Series',
+    speaker: 'Wei Lu, Ph.D., NINDS, NIH',
+    summary: 'GABA가 GABAA 수용체를 통해 빠른 억제성 신호를 매개하고, 흥분성 신호와 균형을 이루며 신경 출력을 조절하는 원리를 강의 형식으로 소개합니다.',
+    personSummary: 'NIH VideoCast가 NINDS의 Wei Lu, Ph.D. 강의로 공개한 공식 연구 세미나입니다. 분자·시냅스 수준의 과학 설명이며 제품이나 구매 주장은 다루지 않습니다.',
+    status: 'PUBLISH_GENERAL',
+    statusReason: 'NIH 공식 VideoCast, 발표자·소속·강의 설명 확인 가능, GABA 일반 생리 중심. 일반 소비자에게는 핵심 구간을 선별해 원문 링크로 제공합니다.',
+    checkedAt: '2026-09-22',
+  },
+  {
+    id: 'SHORT-01',
+    title: '여에스더 “갱년기 잠 못 자면”',
+    url: 'https://www.youtube.com/shorts/Cnk0PGn9YBM',
+    channel: '셀럽의 건강비결',
+    speaker: '제목에 여에스더를 내세운 재게시 채널',
+    summary: '갱년기 수면을 도입으로 식품·GABA·수면 관련 원료를 나열하는 방식으로 소개합니다. 제목·공개 설명 기반 예비 요약입니다.',
+    personSummary: '원출연자·원본 방송·해당 발언의 원출처를 이 영상만으로 확인하지 못했습니다.',
+    status: 'EXCLUDE',
+    statusReason: '재게시 여부와 다중 건강효과 표현을 확인하기 전에는 권위 영상으로 사용하지 않습니다.',
+    checkedAt: '2026-09-22',
+  },
+  {
+    id: 'SHORT-02',
+    title: '잠자기 어렵다면 수면제 말고 이것으로 해결하세요',
+    url: 'https://www.youtube.com/shorts/RLAU1VWGsaI',
+    channel: '교육하는 의사! 이동환TV',
+    speaker: '이동환',
+    summary: '수면제 말고 GABA를 살펴보자는 대안 프레임으로 소개합니다. 정확한 발언은 원문 확인 전입니다.',
+    personSummary: '채널 공개 프로필은 가정의학과 전문의로 소개하지만, 전문성은 특정 주장이나 제품 효과의 자동 승인 근거가 아닙니다.',
+    status: 'HOLD',
+    statusReason: '수면제 대체로 읽히는 표현, 자막, 연구 근거와 사용 권리를 추가 확인해야 합니다.',
+    checkedAt: '2026-09-22',
+  },
+  {
+    id: 'SHORT-03',
+    title: '신경을 안정시켜 수면에 도움되는 가바',
+    url: 'https://www.youtube.com/shorts/vnocd9ZVJj0',
+    channel: '영양과학자 양과자',
+    speaker: '채널명 기반 화자',
+    summary: 'GABA를 신경 안정과 수면의 연결고리로 소개하고 영양제 리뷰 콘텐츠로 연결합니다. 원문 확인 전입니다.',
+    personSummary: '화자의 실명·학위·소속을 독립적인 원출처로 확인하지 못했습니다.',
+    status: 'HOLD',
+    statusReason: '보충제 추천과 약물 비교가 일반 GABA 연구와 분리되는지 확인해야 합니다.',
+    checkedAt: '2026-09-22',
+  },
+  {
+    id: 'SHORT-04',
+    title: '불면증에 가바 영양제가 좋다는 이유',
+    url: 'https://www.youtube.com/shorts/BiZXS_ojLUA',
+    channel: '브레인튜브 Brain Doctor',
+    speaker: '실제 화자 확인 필요',
+    summary: 'GABA를 뇌의 진정·안정 작용과 관련된 신경전달물질로 한 문장 정의한 뒤 불면증·영양제로 확장합니다.',
+    personSummary: '신경과·뇌 건강 콘텐츠와 연결되지만 이 쇼츠의 실제 화자와 자격은 직접 확인 전입니다.',
+    status: 'LIMITED_USE',
+    statusReason: '일반 GABA 정의 구간만 자막·타임코드 확인 후 검토할 수 있습니다.',
+    checkedAt: '2026-09-22',
+  },
+  {
+    id: 'SHORT-05',
+    title: '자율신경건강을 지켜줄 음식 - GABA 성분',
+    url: 'https://www.youtube.com/shorts/7Zsxm9Wh2Yg',
+    channel: '30년 자율신경, 정이안한의원TV',
+    speaker: '정이안',
+    summary: '자율신경 건강을 음식과 GABA 성분의 관계로 설명하는 프레임입니다. 제목·채널 설명 기반 예비 요약입니다.',
+    personSummary: '공개 프로필은 한의학 박사·한의원 원장으로 소개하지만 영상 발언과 연구 전문성은 별도 검토가 필요합니다.',
+    status: 'LIMITED_USE',
+    statusReason: 'GABA 함유 식품과 섭취 후 인체 효과를 분리 확인해야 합니다.',
+    checkedAt: '2026-09-22',
+  },
+  {
+    id: 'SHORT-06',
+    title: '영양제로 먹는 가바, 정말 효과 있을까?',
+    url: 'https://www.youtube.com/shorts/rOFkZg09AoY',
+    channel: 'SLEEP Dr. 신원철 꿀잠튜브',
+    speaker: '신원철',
+    summary: 'GABA가 뇌로 직접 가지 않는데 효과가 있는지를 질문으로 제시하고 수면 보충제의 작용과 안전성을 설명하겠다고 안내합니다.',
+    personSummary: '수면의학·신경과 분야 경력은 공개 프로필에서 확인 출발점이 있지만 영상 주장 자체는 별도 검증해야 합니다.',
+    status: 'HOLD',
+    statusReason: '부작용 없음·안전한 수면 보충제 같은 표현과 상업적 이해관계를 확인해야 합니다.',
+    checkedAt: '2026-09-22',
+  },
+  {
+    id: 'SHORT-07',
+    title: '불안 완화를 위한 GABA 활용법',
+    url: 'https://www.youtube.com/shorts/4MTqi-bapLY',
+    channel: '마음 튼튼, 뇌연구소 바이탈라이즈',
+    speaker: '공개 설명에 화자 자격 미기재',
+    summary: '몸의 긴장과 뇌 신호를 연결하고 GABA·스트레스·불안 완화를 해시태그로 제시합니다.',
+    personSummary: '실제 화자 이름·학위·면허·소속을 확인하지 못했습니다.',
+    status: 'HOLD',
+    statusReason: '불안 완화가 치료·보충제 사용 지시로 읽히는지 먼저 감리해야 합니다.',
+    checkedAt: '2026-09-22',
+  },
+  {
+    id: 'SHORT-08',
+    title: '가바는 어떤 역할을 하는 걸까?',
+    url: 'https://www.youtube.com/shorts/4xGSHxkMYew',
+    channel: '비엠한방내과',
+    speaker: '이제원',
+    summary: 'GABA의 역할을 직접 묻고 한방내과 진료 철학과 연결해 소개합니다. 제목·공개 설명 기반 예비 요약입니다.',
+    personSummary: '채널 공개 설명의 자기소개를 기반으로 하며 공식 자격·영상 화자 여부는 독립 확인 전입니다.',
+    status: 'LIMITED_USE',
+    statusReason: '일반 역할 설명과 진료·약물·보충제 조언 구간을 분리해야 합니다.',
+    checkedAt: '2026-09-22',
+  },
+];
+
+export const PUBLIC_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => video.status === 'PUBLISH_GENERAL');

@@ -27,6 +27,7 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | ROSTER-01 | 핵심 6개 역할과 11개 역할의 주 담당자·백업·결정권 입력 | TF 리드·PM | 미배정 / 미배정 | `TF_KICKOFF_INPUT.md`, `TF_ROSTER.md` | HOLD / 사용자 입력 | 입력 후 첫 회의 |
 | AUTH-01 | EVIDENCE와 사업·준법 역할의 겸임 여부 및 최종 릴리스 보류권자 확정 | TF 리드·PM | 미배정 / 미배정 | 킥오프 입력 시 결정권 확인란 | HOLD / 사용자 입력 | 첫 회의 |
+| AUTH-02 | 문서·코드·QA·TF 운영 실행을 AI-OPS에 조건부 위임 | 사용자·TF 리드 | Codex AI 비서 / 인간 PM 미배정 | `AI_ASSISTANT_ASSIGNMENT.md`, `TF_ROSTER.md` | DECIDED / 인간 승인 게이트 유지 | 인간 PM 지정 후 |
 | FIELD-01 | A/B/C 설명자·관찰자·날짜·채널·기기 지정 | 사업·영업 리드 | 미배정 / 미배정 | `TF_KICKOFF_INPUT.md`, `SALES_SESSION_VALIDATION.md` | HOLD / 사용자 입력 | 담당자 배정 후 |
 | UX-01 | 고객이 설명 없이 `다음 카드`를 선택하는지 확인 | 사업·영업 + UX·카피 | 미배정 / 미배정 | A/B/C 각 세션의 명확도 점수, 이탈 기록 | READY FOR FIELD | 첫 A 세션 |
 | UX-02 | FAQ `답변 복사`가 발표 흐름을 끊지 않는지 확인 | 사업·영업 | 미배정 / 미배정 | C 세션의 복사 성공·오해·추가 질문 | READY FOR FIELD | C 세션 |

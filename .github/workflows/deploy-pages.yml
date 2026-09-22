@@ -28,6 +28,8 @@ jobs:
         run: npm install
       - name: Verify TF documents
         run: npm run qa:docs
+      - name: Verify GABA video database
+        run: npm run qa:video-db
       - name: Build
         run: npm run build
         env:
