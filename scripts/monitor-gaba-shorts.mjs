@@ -13,7 +13,14 @@ const kickoffPath = path.join(root, 'docs', 'GABA_EDUCATION_KICKOFF.md');
 const reportArchiveDir = path.join(root, 'docs', 'gaba-video-daily');
 const writeMode = process.argv.includes('--write');
 const keywords = [/가바/i, /\bGABA\b/i];
-const discoveryQueries = ['GABA 신경전달물질 Shorts', '가바 수면 영양제 Shorts', 'GABA 뇌 신경 Shorts', '가바 스트레스 Shorts'];
+const discoveryQueries = [
+  'GABA 신경전달물질 Shorts',
+  '가바 수면 영양제 Shorts',
+  'GABA 뇌 신경 Shorts',
+  '가바 스트레스 Shorts',
+  '의사 GABA 신경전달물질 Shorts',
+  '과학자 GABA 신경전달물질 Shorts',
+];
 
 const sources = [
   {name: '셀럽의 건강비결', handle: '@Celeb_tip', channelId: 'UC86AuKBawrgBuEZIgiOo7hA', seedVideoId: 'Cnk0PGn9YBM'},
@@ -229,9 +236,14 @@ const triageRules = [
   {label: '섭취·상업성 신호', priority: 'SCIENCE/MEDICAL + RIGHTS', pattern: /영양제|건기식|수면영양제|판매|품절|상륙|복용량|함량|발효|식품|섭취|supplement|dietary supplement|sleep supplement|sold|buy|dosage|amount|fermented|food|intake|consume/i},
 ];
 
-const screenCandidate = text => {
+const authorityLeadRule = {label: '전문가 자격 확인 신호', pattern: /의사|박사|교수|과학자|전문의|doctor|scientist|professor|ph\.?d|\bMD\b|neurolog(?:y|ist)|neuroscien/i};
+const authoritySearchRule = {label: '권위 후보 검색 발견', pattern: /YouTube 검색:\s*(?:의사|과학자)\s+GABA/i};
+
+const screenCandidate = (text, context = '') => {
   const matched = triageRules.filter(rule => rule.pattern.test(text));
   const signals = matched.length ? [...new Set(matched.map(rule => rule.label))] : ['일반 설명 후보'];
+  if (authorityLeadRule.pattern.test(text)) signals.push(authorityLeadRule.label);
+  if (authoritySearchRule.pattern.test(context)) signals.push(authoritySearchRule.label);
   const priority = matched.some(rule => rule.priority === 'SCIENCE/MEDICAL 우선')
     ? 'SCIENCE/MEDICAL 우선'
     : matched.some(rule => rule.priority === 'SCIENCE/MEDICAL + RIGHTS')
@@ -259,7 +271,7 @@ const parseInboxEntries = text => text.split(/^### /m).slice(1).map(section => {
 
 const triageMarkdown = ({inboxText, checkedDate: date}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
-  const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`)})).sort((a, b) => {
+  const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)})).sort((a, b) => {
     const rank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
     return rank(a.priority) - rank(b.priority) || a.id.localeCompare(b.id);
   });
@@ -286,6 +298,7 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
     '- SCIENCE/MEDICAL 우선: 질환·치료, 약물 대체·비교, 효과·안전성 단정으로 읽힐 수 있어 일반 GABA 연구와 분리해 먼저 감리한다.',
     '- SCIENCE/MEDICAL + RIGHTS: 섭취·상업성 신호가 있어 과학·의료 주장과 이해관계·사용권을 함께 확인한다.',
     '- VIDEO 우선: 제목상 위험 신호가 적어 원문·자막·화자·Shorts 형식부터 확인한다.',
+    '- 전문가 자격 확인 신호·권위 후보 검색 발견: 자격·화자·원문을 먼저 확인할 후보라는 뜻이며 권위 승인이나 과학적 타당성 판정이 아니다.',
     '- 모든 행은 PENDING_REVIEW이며, 이 보드의 분류만으로 공개·배제하지 않는다.',
     '',
     '## 검토 대기 목록',
@@ -308,7 +321,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
   const priorityRank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
   const candidates = parseInboxEntries(inboxText)
     .filter(entry => entry.status === 'PENDING_REVIEW')
-    .map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`)}))
+    .map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
     .sort((left, right) => priorityRank(left.priority) - priorityRank(right.priority) || left.id.localeCompare(right.id))
     .slice(0, 5);
   const blocks = candidates.length
@@ -367,7 +380,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
 const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, linkHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const priorityRank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
-  const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`)}))
+  const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
     .sort((left, right) => priorityRank(left.priority) - priorityRank(right.priority) || left.id.localeCompare(right.id));
   const scienceMedicalPriority = ranked.filter(item => item.priority !== 'VIDEO 우선').length;
   const educationTf = fs.existsSync(educationTfPath) ? fs.readFileSync(educationTfPath, 'utf8') : '';
@@ -533,7 +546,7 @@ const main = async () => {
   const addCandidates = (items, source, channelId) => {
     for (const item of items) {
       if (existingIds.has(item.id) || candidates.some(candidate => candidate.id === item.id)) continue;
-      const triage = screenCandidate(`${item.title} ${item.description ?? ''}`);
+      const triage = screenCandidate(`${item.title} ${item.description ?? ''}`, source.name);
       candidates.push({...item, source, channelId, riskSignals: triage.signals, reviewPriority: triage.priority});
     }
   };

@@ -2,12 +2,12 @@ export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-22",
   "sourceChannels": 8,
   "registeredChannels": 8,
-  "discoveryQueries": 4,
-  "totalDiscoveryQueries": 4,
+  "discoveryQueries": 6,
+  "totalDiscoveryQueries": 6,
   "newCandidates": 0,
-  "pendingReview": 78,
+  "pendingReview": 81,
   "scienceMedicalPriority": 48,
-  "videoPriority": 30,
+  "videoPriority": 33,
   "pendingQueue": [
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
