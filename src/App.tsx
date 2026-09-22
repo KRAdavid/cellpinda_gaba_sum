@@ -63,7 +63,7 @@ type VideoReviewDraft = {
   updatedAt: string;
 };
 type VideoReviewDrafts = Record<string, VideoReviewDraft>;
-type MonitorCandidate = typeof GABA_MONITOR_SNAPSHOT.pendingQueue[number] | typeof GABA_MONITOR_SNAPSHOT.authorityQueue[number];
+type MonitorCandidate = typeof GABA_MONITOR_SNAPSHOT.pendingQueue[number] | typeof GABA_MONITOR_SNAPSHOT.authorityQueue[number] | typeof GABA_MONITOR_SNAPSHOT.productBrandQueue[number];
 type MonitorReviewDrafts = Record<string, VideoReviewDraft>;
 type SourceReviewDecision = 'UNDECIDED' | 'USE_GENERAL' | 'REVISE' | 'HOLD';
 type SourceReviewDraft = {
@@ -595,7 +595,7 @@ export default function App() {
   const selectedVideoReviewDraft = selectedVideo ? videoReviewDrafts[selectedVideo.id] ?? makeEmptyVideoReviewDraft() : null;
   const selectedReviewCheckCount = selectedVideoReviewDraft ? VIDEO_REVIEW_CHECKS.filter(check => selectedVideoReviewDraft[check.key]).length : 0;
   const incompleteAuditVideos = useMemo(() => panelVideos.filter(video => VIDEO_REVIEW_CHECKS.filter(check => videoReviewDrafts[video.id]?.[check.key]).length < VIDEO_REVIEW_CHECKS.length), [panelVideos, videoReviewDrafts]);
-  const monitorCandidates = useMemo<MonitorCandidate[]>(() => [...GABA_MONITOR_SNAPSHOT.pendingQueue, ...GABA_MONITOR_SNAPSHOT.authorityQueue], []);
+  const monitorCandidates = useMemo<MonitorCandidate[]>(() => [...GABA_MONITOR_SNAPSHOT.pendingQueue, ...GABA_MONITOR_SNAPSHOT.authorityQueue, ...GABA_MONITOR_SNAPSHOT.productBrandQueue], []);
   const monitorReviewCandidate = monitorCandidates.find(candidate => candidate.id === monitorReviewCandidateId) ?? null;
   const monitorReviewDraft = monitorReviewCandidate ? monitorReviewDrafts[monitorReviewCandidate.id] ?? makeEmptyVideoReviewDraft() : null;
   const monitorReviewCheckCount = monitorReviewDraft ? VIDEO_REVIEW_CHECKS.filter(check => monitorReviewDraft[check.key]).length : 0;
@@ -1170,6 +1170,7 @@ export default function App() {
       `확인일: ${snapshot.checkedAt}`,
       `수집 범위: 채널 ${snapshot.sourceChannels}/${snapshot.registeredChannels} · 검색어 ${snapshot.discoveryQueries}/${snapshot.totalDiscoveryQueries}`,
       `검토 대기: ${snapshot.pendingReview}건 · SCIENCE/MEDICAL 우선: ${snapshot.scienceMedicalPriority}건 · 오늘 신규 후보(누적): ${snapshot.newCandidates}건 · 이번 실행 신규 후보: ${snapshot.newCandidatesThisRun}건`,
+      `제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: ${snapshot.productBrandQuarantine}건`,
       `자동 공개: ${snapshot.autoPublish}건 · 자동 공개는 사람 승인 전 0건 유지`,
       `등록 영상 링크: ${snapshot.registeredVideoLinksHealthy}/${snapshot.registeredVideoLinksChecked} · 경고 ${snapshot.registeredVideoLinkWarnings}건`,
       `권위·연구 출처 링크: ${snapshot.registeredEvidenceLinksHealthy}/${snapshot.registeredEvidenceLinksChecked} · 경고 ${snapshot.registeredEvidenceLinkWarnings}건`,
@@ -1184,6 +1185,9 @@ export default function App() {
       '권위 후보 확인 전 큐',
       ...snapshot.authorityQueue.slice(0, 5).map((candidate, index) => `${index + 1}. ${candidate.title} · ${AUTHORITY_BASIS_LABELS[candidate.authorityBasis]} · ${candidate.signals.join(' · ')} · 다음 행동: ${candidate.nextAction}`),
       '',
+      '제품·브랜드 신호 격리 큐',
+      ...snapshot.productBrandQueue.slice(0, 5).map((candidate, index) => `${index + 1}. ${candidate.title} · ${candidate.signals.join(' · ')} · 일반 GABA 공개 큐에서 자동 제외 · 다음 행동: ${candidate.nextAction}`),
+      '',
       '※ 제목·공개 설명 기반의 업무 우선순위입니다. 원문·자막·화자·근거·권리 확인 전에는 권위 승인이나 공개 승인으로 보지 않습니다.',
     ];
     try {
@@ -1195,14 +1199,15 @@ export default function App() {
   };
 
   const exportMonitorQueueCsv = () => {
-    const queue = Array.from(new Map([...GABA_MONITOR_SNAPSHOT.pendingQueue, ...GABA_MONITOR_SNAPSHOT.authorityQueue].map(candidate => [candidate.id, candidate])).values());
-    const headers = ['ID', '제목', '발견 경로', '우선순위', '권위 신호 구분', '주의 신호', '첫 담당', '다음 행동', '상태'];
+    const queue = Array.from(new Map([...GABA_MONITOR_SNAPSHOT.pendingQueue, ...GABA_MONITOR_SNAPSHOT.authorityQueue, ...GABA_MONITOR_SNAPSHOT.productBrandQueue].map(candidate => [candidate.id, candidate])).values());
+    const headers = ['ID', '제목', '발견 경로', '우선순위', '권위 신호 구분', '공개 큐 분류', '주의 신호', '첫 담당', '다음 행동', '상태'];
     const rows = queue.map(candidate => [
       candidate.id,
       candidate.title,
       candidate.channel,
       'priority' in candidate ? candidate.priority : '권위 후보 확인 전',
       'authorityBasis' in candidate ? AUTHORITY_BASIS_LABELS[candidate.authorityBasis] : '',
+      candidate.publicationGate === 'PRODUCT_BRAND_QUARANTINE' ? '제품·브랜드 공개 큐 제외' : '일반 교육 검토',
       candidate.signals.join(' · '),
       'reviewer' in candidate ? candidate.reviewer : '',
       candidate.nextAction,
@@ -1962,6 +1967,11 @@ export default function App() {
                   <p className="eyebrow">권위 후보 확인 전</p>
                   {GABA_MONITOR_SNAPSHOT.authorityQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.authorityQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{AUTHORITY_BASIS_LABELS[candidate.authorityBasis]}</strong><span>{candidate.title}</span></summary><div><small>확인 경로: {AUTHORITY_BASIS_LABELS[candidate.authorityBasis]}</small><small>발견 신호: {candidate.signals.join(' · ')}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>자격·실제 화자·원문·자막·권리 확인 전에는 권위 영상으로 공개하지 않습니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 권위 후보 신호가 있는 영상이 없습니다.</p>}
                   <small>전문가 표현 감지와 검색어 발견은 서로 다른 감리 단서입니다. 둘 다 의사·과학자 자격이나 영상의 과학적 타당성을 승인하지 않습니다.</small>
+                </div>
+                <div className="monitor-snapshot__product-queue" aria-label="제품 브랜드 신호 격리 큐">
+                  <p className="eyebrow">제품·브랜드 신호 — 일반 공개 큐 제외</p>
+                  {GABA_MONITOR_SNAPSHOT.productBrandQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.productBrandQueue.map(candidate => <li key={candidate.id}><details><summary><strong>공개 큐 제외</strong><span>{candidate.title}</span></summary><div><small>상태: PENDING_REVIEW · 일반 GABA 공개 후보로 자동 사용하지 않음</small><small>발견 신호: {candidate.signals.join(' · ')}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>제품·브랜드 주장과 일반 GABA 설명을 분리한 뒤 사람이 오탐 여부와 권리를 확인합니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 제품·브랜드 신호로 격리된 후보가 없습니다.</p>}
+                  <small>이 큐는 제품 정보를 공개하기 위한 목록이 아닙니다. 일반 GABA 공개 큐와 제품성 콘텐츠를 분리하기 위한 안전 장치입니다.</small>
                 </div>
                 {monitorReviewCandidate && monitorReviewDraft ? <section className="monitor-candidate-review" aria-label="신규 후보 감리 초안">
                   <div className="monitor-candidate-review__heading"><div><p className="eyebrow">오늘 검토 후보 입력</p><strong>{monitorReviewCandidate.id}</strong></div><button type="button" onClick={() => setMonitorReviewCandidateId(null)}>닫기</button></div>

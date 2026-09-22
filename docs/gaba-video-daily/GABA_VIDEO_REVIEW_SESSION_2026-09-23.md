@@ -15,6 +15,7 @@
 - 영상: [헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=_XGO7xk24jo)
 - 발견 경로: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
 - 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
 - 첫 담당 제안: SCIENCE/MEDICAL
 - 다음 행동 제안: 질환·효과·안전성 표현 확인
 - 제목·공개 텍스트 주의 신호: 질환·치료 표현
@@ -39,6 +40,7 @@
 - 영상: [잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠](https://www.youtube.com/watch?v=-azWbivGh5Y)
 - 발견 경로: YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)
 - 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
 - 첫 담당 제안: SCIENCE/MEDICAL
 - 다음 행동 제안: 질환·효과·안전성 표현 확인
 - 제목·공개 텍스트 주의 신호: 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호
@@ -63,6 +65,7 @@
 - 영상: [불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=26wX746Ga6M)
 - 발견 경로: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
 - 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
 - 첫 담당 제안: SCIENCE/MEDICAL
 - 다음 행동 제안: 질환·효과·안전성 표현 확인
 - 제목·공개 텍스트 주의 신호: 질환·치료 표현 · 효과·안전성 단정 신호
@@ -87,6 +90,7 @@
 - 영상: [Supplement GABA to reduce stress! #shorts](https://www.youtube.com/watch?v=6QgcctlfBZU)
 - 발견 경로: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
 - 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
 - 첫 담당 제안: SCIENCE/MEDICAL
 - 다음 행동 제안: 질환·효과·안전성 표현 확인
 - 제목·공개 텍스트 주의 신호: 효과·안전성 단정 신호 · 섭취·상업성 신호
@@ -111,6 +115,7 @@
 - 영상: ['몽진환'은 어떤 제품일까요 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=7h0wzAM7Frw)
 - 발견 경로: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
 - 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
 - 첫 담당 제안: SCIENCE/MEDICAL
 - 다음 행동 제안: 질환·효과·안전성 표현 확인
 - 제목·공개 텍스트 주의 신호: 질환·치료 표현

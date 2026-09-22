@@ -4,10 +4,10 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredChannels": 8,
   "discoveryQueries": 8,
   "totalDiscoveryQueries": 8,
-  "newCandidates": 2,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 93,
-  "scienceMedicalPriority": 57,
+  "newCandidates": 3,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 94,
+  "scienceMedicalPriority": 58,
   "videoPriority": 36,
   "pendingQueue": [
     {
@@ -18,6 +18,7 @@ export const GABA_MONITOR_SNAPSHOT = {
       "signals": [
         "질환·치료 표현"
       ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     },
@@ -31,6 +32,7 @@ export const GABA_MONITOR_SNAPSHOT = {
         "효과·안전성 단정 신호",
         "섭취·상업성 신호"
       ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     },
@@ -43,6 +45,7 @@ export const GABA_MONITOR_SNAPSHOT = {
         "질환·치료 표현",
         "효과·안전성 단정 신호"
       ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     },
@@ -55,6 +58,7 @@ export const GABA_MONITOR_SNAPSHOT = {
         "효과·안전성 단정 신호",
         "섭취·상업성 신호"
       ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     },
@@ -66,6 +70,7 @@ export const GABA_MONITOR_SNAPSHOT = {
       "signals": [
         "질환·치료 표현"
       ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     }
@@ -79,6 +84,7 @@ export const GABA_MONITOR_SNAPSHOT = {
         "효과·안전성 단정 신호",
         "권위 후보 검색 발견"
       ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "authorityBasis": "KEYWORD_DISCOVERY",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
@@ -90,6 +96,7 @@ export const GABA_MONITOR_SNAPSHOT = {
         "일반 설명 후보",
         "권위 후보 검색 발견"
       ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "authorityBasis": "KEYWORD_DISCOVERY",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
@@ -101,6 +108,7 @@ export const GABA_MONITOR_SNAPSHOT = {
         "일반 설명 후보",
         "권위 후보 검색 발견"
       ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "authorityBasis": "KEYWORD_DISCOVERY",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
@@ -112,6 +120,7 @@ export const GABA_MONITOR_SNAPSHOT = {
         "일반 설명 후보",
         "권위 후보 검색 발견"
       ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "authorityBasis": "KEYWORD_DISCOVERY",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
@@ -123,10 +132,82 @@ export const GABA_MONITOR_SNAPSHOT = {
         "일반 설명 후보",
         "권위 후보 검색 발견"
       ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "authorityBasis": "KEYWORD_DISCOVERY",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
   ],
+  "productBrandQueue": [
+    {
+      "id": "PENDING-20260922-RH3FcwKObsY",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
+      "id": "PENDING-20260922-UBCfzr4lpYQ",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
+      "id": "PENDING-20260923-vKVJvHULUZw",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
+      "id": "PENDING-20260923-zR6l44Oz6A8",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
+      "id": "PENDING-20260922-FiW-43xD5Tw",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL + RIGHTS",
+      "signals": [
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    }
+  ],
+  "productBrandQuarantine": 5,
   "history": [
     {
       "date": "2026-09-22",
@@ -141,10 +222,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 2,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 93,
-      "scienceMedicalPriority": 57,
+      "newCandidates": 3,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 94,
+      "scienceMedicalPriority": 58,
       "videoPriority": 36,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 9,

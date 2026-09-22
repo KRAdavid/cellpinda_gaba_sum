@@ -39,6 +39,7 @@ assert('daily report keeps candidates in review status', report.includes('자동
 assert('triage classifier is present and explicitly non-approval', monitor.includes('screenCandidate') && monitor.includes('triagePath') && monitor.includes('제목 기반 주의 신호'));
 assert('triage classifier covers English effect and supplement signals', monitor.includes('reduce|relief') && monitor.includes('supplement') && monitor.includes('SCIENCE/MEDICAL + RIGHTS'));
 assert('triage classifier isolates product and brand signals', monitor.includes('제품·브랜드 신호') && monitor.includes('셀핀다|cellpinda|스마트스토어|smartstore'));
+assert('product and brand candidates are quarantined from the general education queue', monitor.includes('PRODUCT_BRAND_QUARANTINE') && monitor.includes('제품·브랜드 공개 큐 제외') && snapshot.includes('productBrandQueue') && app.includes('제품·브랜드 신호 — 일반 공개 큐 제외'));
 assert('workflow stages triage board changes', workflow.includes('docs/GABA_VIDEO_TRIAGE.md'));
 assert('monitor generates a presenter snapshot', monitor.includes('snapshotPath') && monitor.includes('monitorSnapshotTypeScript') && monitor.includes("path.join(root, 'src', 'gabaMonitorSnapshot.ts')"));
 assert('workflow stages presenter snapshot changes', workflow.includes('src/gabaMonitorSnapshot.ts'));

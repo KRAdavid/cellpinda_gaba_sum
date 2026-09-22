@@ -329,7 +329,10 @@ const screenCandidate = (text, context = '') => {
     : matched.some(rule => rule.priority === 'SCIENCE/MEDICAL + RIGHTS')
       ? 'SCIENCE/MEDICAL + RIGHTS'
       : 'VIDEO 우선';
-  return {signals, priority};
+  const publicationGate = signals.includes('제품·브랜드 신호')
+    ? 'PRODUCT_BRAND_QUARANTINE'
+    : 'GENERAL_EDUCATION_REVIEW';
+  return {signals, priority, publicationGate};
 };
 
 const reviewAssignment = priority => {
@@ -359,6 +362,7 @@ const inboxCandidateRecord = entry => {
     source: {name: entry.channel},
     riskSignals: triage.signals,
     reviewPriority: triage.priority,
+    publicationGate: triage.publicationGate,
   };
 };
 
@@ -377,7 +381,10 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
   const rows = ranked.length
     ? ranked.map(entry => {
       const {reviewer: firstReviewer} = reviewAssignment(entry.priority);
-      return `| ${entry.id} | [${markdown(entry.title)}](${entry.url}) | ${markdown(entry.channel)} | ${markdown(entry.signals.join(' · '))} | ${authoritySignalLabel(entry)} | ${entry.priority} | ${firstReviewer} | PENDING_REVIEW |`;
+      const publicationLabel = entry.publicationGate === 'PRODUCT_BRAND_QUARANTINE'
+        ? '제품·브랜드 공개 큐 제외'
+        : '일반 교육 검토';
+      return `| ${entry.id} | [${markdown(entry.title)}](${entry.url}) | ${markdown(entry.channel)} | ${markdown(entry.signals.join(' · '))} | ${authoritySignalLabel(entry)} | ${entry.priority} | ${publicationLabel} | ${firstReviewer} | PENDING_REVIEW |`;
     }).join('\n')
     : '| 없음 | 검토 대기 후보 없음 | - | - | - | - | - | - |';
   const scienceFirst = ranked.filter(entry => entry.priority !== 'VIDEO 우선').length;
@@ -391,6 +398,7 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
     `- 검토 대기: ${ranked.length}건`,
     `- SCIENCE/MEDICAL 또는 RIGHTS 선확인: ${scienceFirst}건`,
     `- VIDEO 원문·자막 선확인: ${ranked.length - scienceFirst}건`,
+    `- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: ${ranked.filter(entry => entry.publicationGate === 'PRODUCT_BRAND_QUARANTINE').length}건`,
     '',
     '## 우선순위 정의',
     '',
@@ -398,12 +406,13 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
     '- SCIENCE/MEDICAL + RIGHTS: 섭취·상업성 신호가 있어 과학·의료 주장과 이해관계·사용권을 함께 확인한다.',
     '- VIDEO 우선: 제목상 위험 신호가 적어 원문·자막·화자·Shorts 형식부터 확인한다.',
     '- 전문가 자격 확인 신호·권위 후보 검색 발견: 자격·화자·원문을 먼저 확인할 후보라는 뜻이며 권위 승인이나 과학적 타당성 판정이 아니다.',
-    '- 모든 행은 PENDING_REVIEW이며, 이 보드의 분류만으로 공개·배제하지 않는다.',
+    '- 제품·브랜드 신호 행은 일반 GABA 공개 큐에서 자동 제외하고, 오탐 여부와 권리·과학 범위만 사람이 확인한다.',
+    '- 그 밖의 행도 모두 PENDING_REVIEW이며, 이 보드의 분류만으로 권위·근거·최종 공개를 승인하지 않는다.',
     '',
     '## 검토 대기 목록',
     '',
-    '| ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 첫 담당 | 상태 |',
-    '| --- | --- | --- | --- | --- | --- | --- | --- |',
+    '| ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 공개 큐 분류 | 첫 담당 | 상태 |',
+    '| --- | --- | --- | --- | --- | --- | --- | --- | --- |',
     rows,
     '',
     '## 다음 행동',
@@ -432,6 +441,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
         `- 영상: [${markdown(candidate.title)}](${candidate.url})`,
         `- 발견 경로: ${markdown(candidate.channel)}`,
         `- 자동 우선순위: ${candidate.priority}`,
+        `- 공개 큐 분류: ${candidate.publicationGate === 'PRODUCT_BRAND_QUARANTINE' ? '제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외' : '일반 교육 공개 전 사람 감리'}`,
         `- 첫 담당 제안: ${assignment.reviewer}`,
         `- 다음 행동 제안: ${assignment.nextAction}`,
         `- 제목·공개 텍스트 주의 신호: ${markdown(candidate.signals.join(' · '))}`,
@@ -485,6 +495,9 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   const authorityQueue = ranked
     .filter(entry => entry.signals.includes('권위 후보 검색 발견') || entry.signals.includes('전문가 자격 확인 신호'))
     .slice(0, 5);
+  const productBrandQueue = ranked
+    .filter(entry => entry.publicationGate === 'PRODUCT_BRAND_QUARANTINE')
+    .slice(0, 5);
   const authorityBasis = entry => entry.signals.includes('전문가 자격 확인 신호')
     ? 'TITLE_DESCRIPTION_SIGNAL'
     : 'KEYWORD_DISCOVERY';
@@ -534,6 +547,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
       channel: entry.channel,
       priority: entry.priority,
       signals: entry.signals,
+      publicationGate: entry.publicationGate,
       ...reviewAssignment(entry.priority),
     })),
     authorityQueue: authorityQueue.map(entry => ({
@@ -541,9 +555,21 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
       title: entry.title,
       channel: entry.channel,
       signals: entry.signals,
+      publicationGate: entry.publicationGate,
       authorityBasis: authorityBasis(entry),
       nextAction: '독립적인 자격·실제 화자·원문·자막·권리 확인',
     })),
+    productBrandQueue: productBrandQueue.map(entry => ({
+      id: entry.id,
+      title: '제품성 후보 · 원문 제목은 일일 리포트에서 확인',
+      channel: entry.channel,
+      priority: entry.priority,
+      signals: entry.signals,
+      publicationGate: entry.publicationGate,
+      reviewer: 'SCIENCE/MEDICAL → RIGHTS',
+      nextAction: '제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인',
+    })),
+    productBrandQuarantine: ranked.filter(entry => entry.publicationGate === 'PRODUCT_BRAND_QUARANTINE').length,
     history,
     autoPublish: 0,
     humanRoleAssigned,
@@ -586,7 +612,7 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, runCand
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
   const candidateRows = candidates.length
-    ? candidates.map(item => `| PENDING-${checkedDate.replaceAll('-', '')}-${item.id} | [${markdown(item.title)}](https://www.youtube.com/watch?v=${item.id}) | ${markdown(item.source.name)} | ${markdown(item.riskSignals.join(' · '))} | ${item.reviewPriority} | PENDING_REVIEW |`).join('\n')
+    ? candidates.map(item => `| PENDING-${checkedDate.replaceAll('-', '')}-${item.id} | [${markdown(item.title)}](https://www.youtube.com/watch?v=${item.id}) | ${markdown(item.source.name)} | ${markdown(item.riskSignals.join(' · '))} | ${item.reviewPriority} | ${item.publicationGate === 'PRODUCT_BRAND_QUARANTINE' ? '제품·브랜드 공개 큐 제외' : '일반 교육 검토'} | PENDING_REVIEW |`).join('\n')
     : '| 없음 | 신규 후보 없음 | - | - | - |';
   return [
     '# GABA Shorts 일일 모니터 리포트',
@@ -600,6 +626,7 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, runCand
     `- Shorts 페이지 보완 수집: ${fallbackSources.length}개 채널`,
     `- 오늘 신규 후보(누적): ${candidates.length}건`,
     `- 이번 실행 신규 후보: ${runCandidateCount}건`,
+    `- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: ${candidates.filter(item => item.publicationGate === 'PRODUCT_BRAND_QUARANTINE').length}건`,
     `- 등록 영상 원문 링크: ${linkHealth.healthy}/${linkHealth.checked} 접근 확인 · 링크 경고 ${linkHealth.warnings.length}건`,
     `- 권위·연구 출처 링크: ${evidenceHealth.healthy}/${evidenceHealth.checked} 접근 확인 · 출처 링크 경고 ${evidenceHealth.warnings.length}건`,
     `- 등록 YouTube 메타데이터: ${metadataHealth.healthy}/${metadataHealth.checked} 제목·채널 확인 · 메타데이터 경고 ${metadataHealth.warnings.length}건`,
@@ -610,8 +637,8 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, runCand
     '',
     '## 신규 후보',
     '',
-    '| ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 상태 |',
-    '| --- | --- | --- | --- | --- | --- |',
+    '| ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |',
+    '| --- | --- | --- | --- | --- | --- | --- |',
     candidateRows,
     '',
     '## 채널 경고',
@@ -696,7 +723,7 @@ const main = async () => {
     for (const item of items) {
       if (existingIds.has(item.id) || candidates.some(candidate => candidate.id === item.id)) continue;
       const triage = screenCandidate(`${item.title} ${item.description ?? ''}`, source.name);
-      candidates.push({...item, source, channelId, riskSignals: triage.signals, reviewPriority: triage.priority});
+      candidates.push({...item, source, channelId, riskSignals: triage.signals, reviewPriority: triage.priority, publicationGate: triage.publicationGate});
     }
   };
 
@@ -770,6 +797,7 @@ const main = async () => {
     '- 공개 설명(자동 수집): ' + (item.description ? markdown(item.description).slice(0, 240) : '없음'),
     '- 제목 기반 주의 신호: ' + item.riskSignals.join(' · '),
     '- 자동 우선순위: ' + item.reviewPriority,
+    '- 공개 큐 분류: ' + (item.publicationGate === 'PRODUCT_BRAND_QUARANTINE' ? '제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외' : '일반 교육 공개 전 사람 감리'),
     '- 형식: Shorts 여부 확인 필요',
     '- 무엇을 어떻게 소개했나: 원문·자막 확인 전',
     '- 인물 소개: 확인 전',
