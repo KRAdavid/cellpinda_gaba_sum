@@ -47,7 +47,7 @@
 - 소비자 화면은 1화면 1메시지로 읽히고 하단의 다음 메시지 안내가 기본 행동이어야 한다.
 - 연구 패널은 외부 원문보다 먼저 일반 설명과 조건을 보여주고, 영상은 피드 뒤 별도 요약 섹션에서 원문으로 이어져야 한다.
 - `일반 GABA 연구`가 특정 제품 효능으로 연결되지 않아야 한다.
-- 감리 전 후보는 소비자 화면에 노출되지 않아야 한다.
+- 자동 모니터가 새로 발견한 `PENDING_REVIEW` 후보는 소비자 화면에 노출하지 않는다. 단, 사용자가 직접 제공한 국내 Shorts는 별도 `영상 검토 후보` 영역에서만 중립 요약·인물 확인·원문 링크로 소개할 수 있으며, `PUBLISH_GENERAL` 권위 영상이나 과학적 근거로 표시하지 않는다.
 - 실제 iOS·Android와 A/B/C 세션 증거가 없으면 현장 PASS로 표시하지 않는다.
 
 상세 판정은 [`GOAL_ACCEPTANCE_MATRIX.md`](GOAL_ACCEPTANCE_MATRIX.md), 영상 운영은 [`GABA_VIDEO_DAILY_MONITOR.md`](GABA_VIDEO_DAILY_MONITOR.md), 사업자 사용은 [`GENERAL_GABA_OPERATOR_GUIDE.md`](GENERAL_GABA_OPERATOR_GUIDE.md)를 기준으로 한다.
