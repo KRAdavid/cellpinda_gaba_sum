@@ -688,6 +688,7 @@ export default function App() {
               {slide.links ? <div className="card-link-group" aria-label="더 확인할 정보">{slide.links.map(link => <button key={link.panel} type="button" className="card-link" ref={element => {panelTriggerRefs.current[index] = element;}} onClick={event => openInfoPanel(index, link.panel, event.currentTarget)}>{link.label} <span aria-hidden="true">＋</span></button>)}</div> : null}
               {slide.note ? <small>{slide.note}</small> : null}
             </div>
+            {!presentationMode && index === 0 ? <p className="feed-swipe-hint" aria-label="아래로 넘겨 다음 메시지 보기">아래로 넘겨 계속 <span aria-hidden="true">↓</span></p> : null}
           </article>)}
         </div>
         <div className="story-dots" aria-hidden="true">{slides.map((slide, index) => <span key={slide.id} className={index === active ? 'active' : ''} />)}</div>

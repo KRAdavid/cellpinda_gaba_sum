@@ -116,6 +116,7 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
 .story:not(.story--presentation) .story-dots span{width:5px;height:22px;border-radius:999px;background:rgba(207,238,213,.36)}
 .story:not(.story--presentation) .story-dots span.active{width:5px;height:42px;background:#f2c19e}
 .story:not(.story--presentation) .story-share-message{display:none}
+.feed-swipe-hint{display:flex;align-items:center;gap:8px;position:absolute;right:clamp(24px,9vw,130px);bottom:26px;margin:0;color:#d8ebdc;font-size:11px;font-weight:750;letter-spacing:.04em;opacity:.86}.feed-swipe-hint span{display:grid;place-items:center;width:22px;height:22px;border:1px solid rgba(216,235,220,.7);border-radius:50%;font-size:15px;font-weight:400;line-height:1}
 @media(max-width:760px){
   .story:not(.story--presentation) .story-controls{padding:17px 20px}
   .story:not(.story--presentation) .story-rail{height:100svh;min-height:560px}
@@ -124,6 +125,7 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
   .story:not(.story--presentation) .card-content h3{font-size:clamp(30px,9.4vw,42px)}
   .story:not(.story--presentation) .card-content p{font-size:15px}
   .story:not(.story--presentation) .story-dots{right:12px}
+  .feed-swipe-hint{right:24px;bottom:23px;font-size:10px}
 }
 .info-panel__research-sources{margin-top:18px;border:1px solid #c2d8c5;border-radius:14px;background:#f0f6ed}
 .info-panel__research-sources>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;color:#315c43;font-size:13px;font-weight:800;cursor:pointer;list-style:none}
