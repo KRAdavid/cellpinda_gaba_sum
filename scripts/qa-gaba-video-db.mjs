@@ -8,6 +8,7 @@ const appSource = fs.readFileSync(path.join(root, 'src', 'App.tsx'), 'utf8');
 const requiredSeeds = ['Cnk0PGn9YBM', 'RLAU1VWGsaI', 'vnocd9ZVJj0', 'BiZXS_ojLUA', '7Zsxm9Wh2Yg', 'rOFkZg09AoY', '4MTqi-bapLY', '4xGSHxkMYew'];
 const requiredChannelIds = ['UC86AuKBawrgBuEZIgiOo7hA', 'UC9Vkx4zyHY4myJoykjtVm7A', 'UCY-mXLM6DsS9cmSwlh0tqSA', 'UCR6sR1ITtHIz8GZqJOwqxDQ', 'UCHkibO5NjXrjMO90jGjhcPQ', 'UC70hC0mVGURG6rCBibw9Wug', 'UCGZQ3Ac7xkBNL0_s5pDVCKg', 'UC-eyEDlbCD_8epmh-qCJ9oA'];
 const consumerCopyIds = ['SHORT-02', 'SHORT-03', 'SHORT-04', 'SHORT-05', 'SHORT-06', 'SHORT-07', 'SHORT-08'];
+const reviewRuleIds = ['AUTH-01', 'AUTH-02', 'VID-01', 'VID-02', 'VID-03', 'VID-04', 'SHORT-01', 'SHORT-02', 'SHORT-03', 'SHORT-04', 'SHORT-05', 'SHORT-06', 'SHORT-07', 'SHORT-08'];
 const forbiddenConsumerClaimWords = ['수면제', '영양제', '보충제', '불안 완화', '부작용 없음'];
 const publicRecordBlocks = publicSource.match(/\{\n    id: 'SHORT-[^']+'[\s\S]*?\n  \},/g) ?? [];
 const requiredFields = ['id:', 'title:', 'url:', 'channel:', 'speaker:', 'summary:', 'operatorSentence:', 'personSummary:', 'status:', 'statusReason:', 'checkedAt:', 'audit:', 'contentBasis:', 'authorityLevel:', 'evidenceLevel:', 'claimCategories:', 'rightsStatus:', 'usageMode:', 'nextAction:'];
@@ -16,6 +17,8 @@ const failures = [];
 
 if (recordBlocks.length < 10) failures.push(`expected at least 10 video records, found ${recordBlocks.length}`);
 if (!source.includes('SHARED_GABA_VIDEOS')) failures.push('shared YouTube review showcase is not defined');
+if (!source.includes('GABA_VIDEO_REVIEW_RULES')) failures.push('video-specific review rules are not defined');
+for (const id of reviewRuleIds) if (!source.includes(`'${id}':`)) failures.push(`video-specific review rule missing: ${id}`);
 if (!source.includes("video.id.startsWith('SHORT-') && video.status !== 'EXCLUDE'")) failures.push('shared showcase does not exclude EXCLUDE videos');
 if (!source.includes("ACTIVE_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => !video.id.startsWith('AUTH-'))") || !appSource.includes('const publicPanelVideos = useMemo(() => [...approvedVideos, ...SHARED_GABA_VIDEOS]') || !appSource.includes('const panelVideos = presentationMode ? activePresenterVideos : publicPanelVideos') || !appSource.includes("import('./gabaVideos')")) failures.push('overseas AUTH records are not isolated from domestic presenter and consumer queues');
 if (!appSource.includes('id="approved-video-showcase"') || !appSource.includes('사람 검토 완료 · 일반 GABA 교육') || !appSource.includes('일반 교육 공개 승인')) failures.push('domestic PUBLISH_GENERAL records are not connected to a separate approved consumer showcase');
@@ -48,6 +51,7 @@ if (!appSource.includes("const approvedForCustomerSummary = video.status === 'PU
 if (!appSource.includes('video.publicTitle') || !appSource.includes('selectedVideo.publicSummary') || !appSource.includes('selectedVideo.publicPersonSummary') || !appSource.includes('selectedVideo.publicOperatorSentence')) failures.push('consumer video surface does not use the separate public copy fields');
 if (!appSource.includes('<dt>요약 근거</dt>') || !appSource.includes('요약 근거: {VIDEO_AUDIT_LABELS.contentBasis[showcaseVideo.audit.contentBasis]}')) failures.push('consumer video surface does not expose the summary evidence basis');
 if (!appSource.includes('무엇을 어떻게 소개했나: ${selectedVideo.summary}') || !appSource.includes('인물 소개: ${selectedVideo.personSummary}') || !appSource.includes('무엇을 어떻게 소개했나: ${video.summary}') || !appSource.includes('인물 소개: ${video.personSummary}')) failures.push('meeting copy does not preserve each video summary and person introduction');
+if (!appSource.includes('영상별 감리 규칙')) failures.push('presenter detail does not expose the video-specific review rule');
 if (source.includes("status: 'PUBLISH_GENERAL',\n    statusReason: '")) {
   const publicBlocks = recordBlocks.filter(block => block.includes("status: 'PUBLISH_GENERAL'"));
   for (const block of publicBlocks) {

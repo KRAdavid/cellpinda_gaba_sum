@@ -1102,6 +1102,7 @@ export default function App() {
       `요약 근거: ${VIDEO_AUDIT_LABELS.contentBasis[selectedVideo.audit.contentBasis]} · 권위: ${VIDEO_AUDIT_LABELS.authorityLevel[selectedVideo.audit.authorityLevel]} · 근거: ${VIDEO_AUDIT_LABELS.evidenceLevel[selectedVideo.audit.evidenceLevel]}`,
       `주장 범위: ${selectedVideo.audit.claimCategories.map(category => VIDEO_CLAIM_LABELS[category]).join(' · ')}`,
       `권리·사용: ${VIDEO_AUDIT_LABELS.rightsStatus[selectedVideo.audit.rightsStatus]} · ${VIDEO_AUDIT_LABELS.usageMode[selectedVideo.audit.usageMode]}`,
+      `영상별 감리 규칙: ${selectedVideo.reviewRule ?? selectedVideo.audit.nextAction}`,
       `다음 감리 행동: ${selectedVideo.audit.nextAction}`,
       `타임코드: ${draft.timestamps.trim() || '미입력'}`,
       `발언·자막 발췌: ${(draft.transcriptExcerpt ?? '').trim() || '미입력'}`,
@@ -1148,6 +1149,7 @@ export default function App() {
         `요약 근거: ${VIDEO_AUDIT_LABELS.contentBasis[video.audit.contentBasis]} · 권위: ${VIDEO_AUDIT_LABELS.authorityLevel[video.audit.authorityLevel]} · 근거: ${VIDEO_AUDIT_LABELS.evidenceLevel[video.audit.evidenceLevel]}`,
         `주장 범위: ${video.audit.claimCategories.map(category => VIDEO_CLAIM_LABELS[category]).join(' · ')}`,
         `권리·사용: ${VIDEO_AUDIT_LABELS.rightsStatus[video.audit.rightsStatus]} · ${VIDEO_AUDIT_LABELS.usageMode[video.audit.usageMode]}`,
+        `영상별 감리 규칙: ${video.reviewRule ?? video.audit.nextAction}`,
         `다음 감리 행동: ${video.audit.nextAction}`,
         `타임코드: ${draft.timestamps.trim() || '미입력'}`,
         `발언·자막 발췌: ${(draft.transcriptExcerpt ?? '').trim() || '미입력'}`,
@@ -2261,6 +2263,7 @@ export default function App() {
                   <div><dt>사용 방식</dt><dd>{VIDEO_AUDIT_LABELS.usageMode[selectedVideo.audit.usageMode]}</dd></div>
                   <div><dt>권리</dt><dd>{VIDEO_AUDIT_LABELS.rightsStatus[selectedVideo.audit.rightsStatus]}</dd></div>
                   {presentationMode ? <div><dt>주장 범위</dt><dd>{selectedVideo.audit.claimCategories.map(category => VIDEO_CLAIM_LABELS[category]).join(' · ')}</dd></div> : null}
+                  {presentationMode ? <div><dt>영상별 감리 규칙</dt><dd>{selectedVideo.reviewRule ?? selectedVideo.audit.nextAction}</dd></div> : null}
                 </dl>
                 <p className="video-db-detail__next"><strong>{presentationMode ? '다음 감리 행동' : '확인할 점'}</strong><br />{presentationMode ? selectedVideo.audit.nextAction : '원문·자막·화자·권리 확인 전에는 영상 내용이나 효능으로 확장하지 않습니다.'}</p>
                 <p className="info-panel__status">{presentationMode ? selectedVideo.statusReason : '이 영상은 일반 GABA 교육에 활용할 수 있는지 확인 중인 검토 후보입니다.'}</p>

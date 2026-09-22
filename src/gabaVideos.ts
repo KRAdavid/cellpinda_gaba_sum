@@ -36,13 +36,14 @@ export type GabaVideoRecord = {
   summary: string;
   operatorSentence: string;
   personSummary: string;
+  reviewRule?: string;
   status: GabaVideoStatus;
   statusReason: string;
   checkedAt: string;
   audit: GabaVideoAudit;
 };
 
-export const GABA_VIDEO_DB: GabaVideoRecord[] = [
+const GABA_VIDEO_DB_RECORDS: GabaVideoRecord[] = [
   {
     id: 'AUTH-01',
     title: 'GABA Neurotransmitter',
@@ -388,6 +389,30 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     },
   },
 ];
+
+// Every registered video has one explicit review rule. The rule is an operator
+// guardrail, not a scientific conclusion or a publication approval.
+export const GABA_VIDEO_REVIEW_RULES: Record<string, string> = {
+  'AUTH-01': '일반 GABA 생리 설명만 사용하고 경구 섭취·수면·스트레스·제품 효능으로 확장하지 않는다.',
+  'AUTH-02': 'GABAA 수용체와 시냅스 억제 기전만 확인하며 섭취 결과나 의료 조언으로 번역하지 않는다.',
+  'VID-01': '수면 관련 발언은 원문·자막·근거 구간을 확인하기 전 공개 문장으로 사용하지 않는다.',
+  'VID-02': 'GABA가 실제로 설명되는 타임코드와 출처를 확인하고 다른 신경전달물질 설명과 섞지 않는다.',
+  'VID-03': '일반 GABA 정의만 분리 검토하고 약물·보충제·증상·흡수 주장은 별도 근거로 감리한다.',
+  'VID-04': '원문에서 GABA·글루타메이트 발언을 확인하고 제3자 요약·MSG·식품 주장을 일반 생리와 분리한다.',
+  'SHORT-01': '원출처·실제 화자·재사용 권리를 확인하기 전 공개·재게시·권위 영상으로 사용하지 않는다.',
+  'SHORT-02': '수면제 대체로 읽히는 표현을 사실로 전달하지 않고 일반 GABA 설명과 치료 주장을 분리한다.',
+  'SHORT-03': '화자 자격과 전체 발언을 확인한 뒤 일반 기능만 검토하고 약물·수면·보충제 주장은 보류한다.',
+  'SHORT-04': '일반 GABA 정의 구간만 자막·타임코드·실제 화자로 확인하고 불면·섭취 결과는 분리한다.',
+  'SHORT-05': 'GABA 함유 음식의 존재와 섭취 후 인체 결과를 동일시하지 않고 각각 근거를 확인한다.',
+  'SHORT-06': '경구 GABA·수면·안전성 표현을 연구 조건과 대조하고 안전성 단정·복용 권고는 보류한다.',
+  'SHORT-07': '긴장·불안 완화가 치료나 개인 효과로 읽히는지 먼저 확인하고 화자·자막·권리를 검토한다.',
+  'SHORT-08': 'GABA 일반 역할과 진료·약물·보충제 조언을 분리하고 실제 화자·원문 근거를 확인한다.',
+};
+
+export const GABA_VIDEO_DB: GabaVideoRecord[] = GABA_VIDEO_DB_RECORDS.map(video => ({
+  ...video,
+  reviewRule: GABA_VIDEO_REVIEW_RULES[video.id] ?? video.operatorSentence,
+}));
 
 export const PUBLIC_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => video.status === 'PUBLISH_GENERAL');
 
