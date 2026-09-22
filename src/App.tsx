@@ -726,7 +726,7 @@ export default function App() {
         {openPanel ? <div className="info-layer" role="presentation" onMouseDown={event => {if (event.target === event.currentTarget) closePanel();}}>
           <aside className="info-panel" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title">
             <div className="info-panel__topline"><span>카드 흐름 안에서 확인</span><button ref={panelCloseRef} type="button" onClick={() => closePanel()} aria-label="정보 패널 닫기">×</button></div>
-            <p className="eyebrow">{openPanel === 'research' ? '일반 GABA 연구' : openPanel === 'video' ? (presentationMode ? '권위 영상 DB' : '영상 검토 DB') : '발표자 운영'}</p>
+            <p className="eyebrow">{openPanel === 'research' ? '일반 GABA 연구' : openPanel === 'video' ? (presentationMode ? '영상 DB 감리' : '영상 검토 DB') : '발표자 운영'}</p>
             <h2 id="info-panel-title">{panelTitle}</h2>
             {openPanel === 'research' ? <>
               <p>연구 결과를 볼 때는 무엇을 살펴봤는지와 어떤 조건이었는지를 함께 확인하세요.</p>
@@ -748,7 +748,7 @@ export default function App() {
               </details>
             </> : null}
             {openPanel === 'video' ? <>
-              <p>{presentationMode ? '발표자용 영상 DB입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 감리한 뒤 공개 여부를 결정합니다.' : '오늘 공유하신 국내 YouTube Shorts를 원문 확인용으로 소개합니다. 영상의 권위와 주장은 감리 상태를 따로 확인해 주세요.'}</p>
+              <p>{presentationMode ? '발표자용 영상 DB 감리 화면입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 확인하고, 영상별 권위 수준과 공개 여부를 따로 결정합니다.' : '오늘 공유하신 국내 YouTube Shorts를 원문 확인용으로 소개합니다. 영상의 권위와 주장은 감리 상태를 따로 확인해 주세요.'}</p>
               <p className="info-panel__status">{presentationMode ? `감리 대장 ${GABA_VIDEO_DB.length}건 · 현재 국내 큐 ${filteredPanelVideos.length}건 · DB 승인 이력 ${PUBLIC_GABA_VIDEOS.length}건 · 국내 공개 승인 ${DOMESTIC_PUBLIC_GABA_VIDEOS.length}건` : `오늘 공유 영상 ${SHARED_GABA_VIDEOS.length}건 · 원문 확인 필요`}</p>
               {presentationMode ? <div className="monitor-snapshot">
                 <p className="eyebrow">일일 감리 상태</p>

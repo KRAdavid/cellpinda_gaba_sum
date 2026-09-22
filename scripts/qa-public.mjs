@@ -46,7 +46,7 @@ const required = [
   ['video audit fields', '확인 기반'],
   ['video audit next action', '다음 감리 행동'],
   ['official video preview', '공식 원문 페이지 미리보기'],
-  ['video audit database', '권위 영상 DB'],
+  ['video audit database', '영상 DB 감리'],
   ['presenter guidance', '발표자용 진행 포인트'],
   ['presenter prompt guidance', '고객에게 물어보기'],
   ['presenter boundary guidance', '이어서 말할 때'],
