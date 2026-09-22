@@ -39,6 +39,8 @@ assert('monitor checks registered video source links', monitor.includes('checkRe
 assert('daily report exposes registered link health', report.includes('등록 영상 원문 링크') && report.includes('링크 경고'));
 assert('monitor checks registered YouTube metadata separately', monitor.includes('checkRegisteredYouTubeMetadata') && monitor.includes('registeredVideoMetadataChecked') && monitor.includes('registeredVideoMetadataWarnings'));
 assert('daily report separates metadata health from content approval', report.includes('등록 YouTube 메타데이터') && report.includes('메타데이터 경고') && report.includes('영상 내용·화자 권위·과학적 타당성·권리를 승인하지 않는다'));
+assert('monitor checks caption track availability without approving transcripts', monitor.includes('checkRegisteredYouTubeCaptionTracks') && monitor.includes('registeredVideoCaptionTracksAvailable') && monitor.includes('자막 본문 확보') && monitor.includes('사람 검토 전'));
+assert('daily report exposes caption track boundary', report.includes('등록 YouTube 자막 트랙') && report.includes('자막 경고') && report.includes('자막 트랙 발견은 자막 본문 확보'));
 assert('triage board exists and keeps human review boundary', triage.includes('GABA 숏츠 감리 우선순위 보드') && triage.includes('공개 승인을 판정하지 않는다') && triage.includes('PENDING_REVIEW'));
 assert('inbox has no duplicate video IDs', new Set(inboxIds).size === inboxIds.length);
 
