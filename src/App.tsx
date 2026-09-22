@@ -2470,6 +2470,11 @@ export default function App() {
                 {showcaseVideoEmbedUrl ? <iframe src={showcaseVideoEmbedUrl} title={`${showcaseVideo.title} YouTube Shorts 원문 플레이어`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /> : <div className="video-showcase__source-mark"><span>YouTube Shorts</span><strong>{showcaseVideo.previewLabel}</strong><small>상세 감리에서 원문 확인</small></div>}
                 <p className="video-showcase__player-note">플레이어 재생은 사람 감리·권위 확인·공개 승인을 의미하지 않습니다.</p>
               </section>
+              <div className="video-showcase__reel-controls" aria-label="영상 릴 이동">
+                <button type="button" onClick={() => selectShowcaseVideo(showcaseVideoIndex - 1)} disabled={showcaseVideoIndex === 0}>← 이전</button>
+                <span><strong>{String(showcaseVideoIndex + 1).padStart(2, '0')} / {String(SHARED_GABA_VIDEOS.length).padStart(2, '0')}</strong><small>다음 영상으로 이어보기</small></span>
+                <button type="button" data-next-video-reel onClick={() => selectShowcaseVideo(showcaseVideoIndex + 1)} disabled={showcaseVideoIndex === SHARED_GABA_VIDEOS.length - 1}>다음 영상 →</button>
+              </div>
               <div className="video-showcase__copy">
                 <div className="video-showcase__meta"><span>{showcaseVideo.id}</span><span className="video-showcase__status">오늘 공유 · {PUBLIC_VIDEO_STATUS_LABEL}</span></div>
                 <p className="video-showcase__candidate-note" role="note"><strong>사람 감리 전 검토 후보</strong><span>권위·근거·권리 확인 전에는 일반 GABA 근거 자료로 사용하지 않습니다.</span></p>
