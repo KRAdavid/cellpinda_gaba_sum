@@ -9,6 +9,7 @@ const requiredSeeds = ['Cnk0PGn9YBM', 'RLAU1VWGsaI', 'vnocd9ZVJj0', 'BiZXS_ojLUA
 const requiredChannelIds = ['UC86AuKBawrgBuEZIgiOo7hA', 'UC9Vkx4zyHY4myJoykjtVm7A', 'UCY-mXLM6DsS9cmSwlh0tqSA', 'UCR6sR1ITtHIz8GZqJOwqxDQ', 'UCHkibO5NjXrjMO90jGjhcPQ', 'UC70hC0mVGURG6rCBibw9Wug', 'UCGZQ3Ac7xkBNL0_s5pDVCKg', 'UC-eyEDlbCD_8epmh-qCJ9oA'];
 const consumerCopyIds = ['SHORT-02', 'SHORT-03', 'SHORT-04', 'SHORT-05', 'SHORT-06', 'SHORT-07', 'SHORT-08'];
 const forbiddenConsumerClaimWords = ['수면제', '영양제', '보충제', '불안 완화', '부작용 없음'];
+const publicRecordBlocks = publicSource.match(/\{\n    id: 'SHORT-[^']+'[\s\S]*?\n  \},/g) ?? [];
 const requiredFields = ['id:', 'title:', 'url:', 'channel:', 'speaker:', 'summary:', 'operatorSentence:', 'personSummary:', 'status:', 'statusReason:', 'checkedAt:', 'audit:', 'contentBasis:', 'authorityLevel:', 'evidenceLevel:', 'claimCategories:', 'rightsStatus:', 'usageMode:', 'nextAction:'];
 const recordBlocks = source.match(/\{\n    id: '[^']+'[\s\S]*?\n  \},/g) ?? [];
 const failures = [];
@@ -21,6 +22,13 @@ if (!appSource.includes('id="approved-video-showcase"') || !appSource.includes('
 const consumerCopyBlock = publicSource;
 for (const id of consumerCopyIds) if (!consumerCopyBlock.includes(`'${id}'`)) failures.push(`consumer-safe copy missing: ${id}`);
 for (const word of forbiddenConsumerClaimWords) if (consumerCopyBlock.includes(word)) failures.push(`consumer-safe copy contains forbidden claim word: ${word}`);
+for (const block of publicRecordBlocks) {
+  const id = block.match(/id: '(SHORT-[^']+)'/)?.[1] ?? 'unknown';
+  for (const field of ['publicTitle:', 'publicSummary:', 'publicPersonSummary:', 'publicOperatorSentence:']) {
+    if (!block.includes(field)) failures.push(`${field} missing from public-safe ${id}`);
+  }
+}
+if (!consumerCopyBlock.includes('공식 채널 프로필은') || !consumerCopyBlock.includes('인물 확인용이며') || !consumerCopyBlock.includes('자동 승인하지 않습니다')) failures.push('public person summaries do not preserve source-qualified authority boundaries');
 for (const field of requiredFields) {
   const missing = recordBlocks.filter(block => !block.includes(field)).length;
   if (missing) failures.push(`${field} missing from ${missing} record(s)`);
