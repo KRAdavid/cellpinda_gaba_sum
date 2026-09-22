@@ -71,11 +71,12 @@ try {
   await send('Page.navigate', {url: baseUrl});
   await wait(900);
 
-  const initial = await evaluate('(() => { const cards=[...document.querySelectorAll(".story-card")]; return {title:document.title,width:innerWidth,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,cards:cards.length,progress:document.querySelector(".story-controls span")?.innerText||"",body:document.body.innerText}; })()');
+  const initial = await evaluate('(() => { const cards=[...document.querySelectorAll(".story-card")]; return {title:document.title,width:innerWidth,height:innerHeight,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,cards:cards.length,progress:document.querySelector(".story-controls span")?.innerText||"",storyTop:document.querySelector("#story")?.getBoundingClientRect().top||0,introTop:document.querySelector(".intro")?.getBoundingClientRect().top||0,body:document.body.innerText}; })()');
   assert('page identity is general GABA education', initial.title.includes('일반 GABA 교육'));
   assert('mobile viewport has no horizontal overflow', initial.width === viewportWidth && initial.docWidth === initial.clientWidth && initial.docWidth <= initial.width, JSON.stringify(initial));
   assert('consumer page contains no product or review content', !initial.body.includes('셀핀다 제품') && !initial.body.includes('구매자 후기') && !initial.body.includes('스마트스토어'));
   assert('consumer page hides presenter monitoring snapshot', !initial.body.includes('일일 감리 상태') && !initial.body.includes('검토 대기'));
+  assert('consumer root enters the vertical feed immediately', Math.abs(initial.storyTop) < 2 && initial.introTop >= initial.height - 2, JSON.stringify(initial));
   assert('story has nine one-message cards', initial.cards === 9 && initial.progress === '01 / 09', JSON.stringify(initial));
   const rail = await evaluate('(() => { const el=document.querySelector(".story-rail"), style=getComputedStyle(el); return {touchAction:style.touchAction,snap:style.scrollSnapType,overflowX:style.overflowX,overflowY:style.overflowY,scrollWidth:el.scrollWidth,clientWidth:el.clientWidth,scrollHeight:el.scrollHeight,clientHeight:el.clientHeight,scrollTop:el.scrollTop}; })()');
   assert('mobile rail declares vertical touch and snap', rail.touchAction === 'pan-y' && rail.snap.includes('y') && rail.overflowY === 'auto' && rail.overflowX === 'hidden' && rail.scrollHeight > rail.clientHeight && rail.scrollWidth === rail.clientWidth, JSON.stringify(rail));

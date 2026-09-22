@@ -606,27 +606,28 @@ export default function App() {
   const panelSource = panelSourceIndex ?? active;
   const panelNext = slides[Math.min(slides.length - 1, panelSource + 1)];
   const panelNextAction = panelSource < slides.length - 1 ? `다음 카드: ${panelNext.label} →` : '카드 흐름으로 돌아가기';
+  const introSection = <section className="intro" aria-labelledby="page-title">
+    <div className="intro-copy">
+      <p className="eyebrow">일반 GABA 교육 · 제품 정보 제외</p>
+      <h1 id="page-title">GABA를<br /><em>한 장씩</em><br />알아보세요.</h1>
+      <p className="intro-body">일상에서 느끼는 뇌의 과부하부터 GABA의 일반 기능과 연구 한계까지, 한 장에 한 메시지씩 확인해 보세요.</p>
+      <p className="separation-note">이 페이지는 제품 판매나 개인별 섭취 판단을 위한 자료가 아닙니다. GABA가 무엇인지 이해하기 위한 일반 교육 흐름입니다.</p>
+      <div className="intro-entry-actions">
+        <a className="text-button intro-primary-button" href="#story">전체 카드부터 보기 <span aria-hidden="true">↓</span></a>
+        <button type="button" className="text-button intro-presentation-button" onClick={event => enterPresentation(event.currentTarget, 0)}>발표자용 설명 시작 <span aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+    <div className="intro-orbit" aria-hidden="true"><span>GABA</span><i>일상<br />이해</i></div>
+  </section>;
 
   return <>
-    <header className="site-header">
+    <header className={`site-header${presentationMode ? '' : ' site-header--consumer'}`}>
       <a className="brand" href="#top">GABA<span>.</span></a>
       <p>일반 GABA 교육 자료</p>
     </header>
 
-    <main id="top">
-      <section className="intro" aria-labelledby="page-title">
-        <div className="intro-copy">
-          <p className="eyebrow">일반 GABA 교육 · 제품 정보 제외</p>
-          <h1 id="page-title">GABA를<br /><em>한 장씩</em><br />알아보세요.</h1>
-          <p className="intro-body">일상에서 느끼는 뇌의 과부하부터 GABA의 일반 기능과 연구 한계까지, 한 장에 한 메시지씩 확인해 보세요.</p>
-          <p className="separation-note">이 페이지는 제품 판매나 개인별 섭취 판단을 위한 자료가 아닙니다. GABA가 무엇인지 이해하기 위한 일반 교육 흐름입니다.</p>
-          <div className="intro-entry-actions">
-            <a className="text-button intro-primary-button" href="#story">전체 카드부터 보기 <span aria-hidden="true">↓</span></a>
-            <button type="button" className="text-button intro-presentation-button" onClick={event => enterPresentation(event.currentTarget, 0)}>발표자용 설명 시작 <span aria-hidden="true">↗</span></button>
-          </div>
-        </div>
-        <div className="intro-orbit" aria-hidden="true"><span>GABA</span><i>일상<br />이해</i></div>
-      </section>
+    <main id="top" className={presentationMode ? 'presenter-main' : 'consumer-main'}>
+      {presentationMode ? introSection : null}
 
       <section id="story" ref={presentationRef} className={`story${presentationMode ? ' story--presentation' : ''}`} role={presentationMode ? 'dialog' : undefined} aria-labelledby="story-title" aria-modal={presentationMode ? 'true' : undefined} aria-keyshortcuts={presentationMode ? 'ArrowLeft ArrowRight PageUp PageDown Home End Escape' : undefined}>
         <div className="story-heading">
@@ -803,6 +804,8 @@ export default function App() {
           </aside>
         </div> : null}
       </section>
+
+      {!presentationMode ? introSection : null}
 
       <section className="guardrail" aria-label="정보 구분 안내">
         <div><span>01</span><h2>일반 생리</h2><p>GABA가 신경전달물질로 어떤 역할을 하는지 설명합니다.</p></div>
