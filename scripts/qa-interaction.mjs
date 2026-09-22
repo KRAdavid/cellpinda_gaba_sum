@@ -171,6 +171,11 @@ try {
   await evaluate('document.querySelector(".monitor-snapshot__queue details")?.setAttribute("open", "")');
   const monitorSnapshot = await evaluate('({summary:document.querySelector(".monitor-snapshot")?.innerText||"",links:document.querySelectorAll(".monitor-snapshot a").length,queue:document.querySelectorAll(".monitor-snapshot__queue li details").length,authorityQueue:document.querySelectorAll(".monitor-snapshot__authority-queue li details").length,openQueue:document.querySelectorAll(".monitor-snapshot__queue li details[open]").length})');
   assert('presenter video DB shows daily monitoring snapshot', monitorSnapshot.summary.includes('마지막 자동 확인') && monitorSnapshot.summary.includes('검토 대기') && monitorSnapshot.summary.includes('등록 YouTube 자막 트랙') && monitorSnapshot.summary.includes('등록 YouTube 자막 본문') && monitorSnapshot.summary.includes('본문 경고') && monitorSnapshot.summary.includes('오늘 먼저 검토할 후보') && monitorSnapshot.summary.includes('권위 후보 확인') && monitorSnapshot.summary.includes('첫 담당') && monitorSnapshot.summary.includes('다음 행동') && monitorSnapshot.summary.includes('오늘 리뷰 세션') && monitorSnapshot.queue === 5 && monitorSnapshot.authorityQueue >= 3 && monitorSnapshot.links === 3, JSON.stringify(monitorSnapshot));
+  assert('presenter daily monitoring snapshot offers a meeting brief copy', await evaluate('!!document.querySelector(".monitor-snapshot__copy")'), 'missing copy control');
+  await evaluate('document.querySelector(".monitor-snapshot__copy")?.click()');
+  await wait(180);
+  const monitorCopyState = await evaluate('document.querySelector(".monitor-snapshot__copy-message")?.innerText||""');
+  assert('presenter daily monitoring brief copy is wired', monitorCopyState.includes('회의용 일일 감리 요약을 복사했습니다.') || monitorCopyState.includes('복사에 실패했습니다'), monitorCopyState);
   await evaluate('document.querySelector(".video-db-filters button:nth-child(4)")?.click()');
   await wait(180);
   const holdFilter = await evaluate('({items:document.querySelectorAll(".video-db-item").length,active:document.querySelector(".video-db-filters button:nth-child(4)")?.getAttribute("aria-pressed")||""})');

@@ -288,6 +288,7 @@ export default function App() {
   const [tfAssignmentMessage, setTfAssignmentMessage] = useState('');
   const [videoReviewDrafts, setVideoReviewDrafts] = useState<VideoReviewDrafts>({});
   const [videoReviewMessage, setVideoReviewMessage] = useState('');
+  const [monitorCopyMessage, setMonitorCopyMessage] = useState('');
   const railRef = useRef<HTMLDivElement>(null);
   const readerStreamRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
@@ -572,6 +573,35 @@ export default function App() {
       setVideoReviewMessage('작성된 감리 초안을 모두 복사했습니다.');
     } catch {
       setVideoReviewMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
+  };
+
+  const copyDailyMonitorBrief = async () => {
+    const snapshot = GABA_MONITOR_SNAPSHOT;
+    const lines = [
+      'GABA Shorts 일일 감리 요약',
+      `확인일: ${snapshot.checkedAt}`,
+      `수집 범위: 채널 ${snapshot.sourceChannels}/${snapshot.registeredChannels} · 검색어 ${snapshot.discoveryQueries}/${snapshot.totalDiscoveryQueries}`,
+      `검토 대기: ${snapshot.pendingReview}건 · SCIENCE/MEDICAL 우선: ${snapshot.scienceMedicalPriority}건 · 신규 후보: ${snapshot.newCandidates}건`,
+      `자동 공개: ${snapshot.autoPublish}건 · 자동 공개는 사람 승인 전 0건 유지`,
+      `등록 영상 링크: ${snapshot.registeredVideoLinksHealthy}/${snapshot.registeredVideoLinksChecked} · 경고 ${snapshot.registeredVideoLinkWarnings}건`,
+      `메타데이터: ${snapshot.registeredVideoMetadataHealthy}/${snapshot.registeredVideoMetadataChecked} · 경고 ${snapshot.registeredVideoMetadataWarnings}건`,
+      `자막 트랙: ${snapshot.registeredVideoCaptionTracksAvailable}/${snapshot.registeredVideoCaptionTracksChecked} · 경고 ${snapshot.registeredVideoCaptionTrackWarnings}건`,
+      `자막 본문: ${snapshot.registeredVideoCaptionBodiesAvailable}/${snapshot.registeredVideoCaptionBodiesChecked} · 경고 ${snapshot.registeredVideoCaptionBodyWarnings}건`,
+      '',
+      '오늘 먼저 검토할 후보',
+      ...snapshot.pendingQueue.slice(0, 5).map((candidate, index) => `${index + 1}. ${candidate.title} · ${candidate.priority} · 다음 행동: ${candidate.nextAction}`),
+      '',
+      '권위 후보 확인 큐',
+      ...snapshot.authorityQueue.slice(0, 5).map((candidate, index) => `${index + 1}. ${candidate.title} · ${candidate.signals.join(' · ')} · 다음 행동: ${candidate.nextAction}`),
+      '',
+      '※ 제목·공개 설명 기반의 업무 우선순위입니다. 원문·자막·화자·근거·권리 확인 전에는 권위 승인이나 공개 승인으로 보지 않습니다.',
+    ];
+    try {
+      await copyText(lines.join('\n'));
+      setMonitorCopyMessage('회의용 일일 감리 요약을 복사했습니다.');
+    } catch {
+      setMonitorCopyMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
   };
 
@@ -1088,7 +1118,8 @@ export default function App() {
               <p className="info-panel__status">{presentationMode ? `감리 대장 ${GABA_VIDEO_DB.length}건 · 현재 국내 큐 ${filteredPanelVideos.length}건 · DB 승인 이력 ${PUBLIC_GABA_VIDEOS.length}건 · 국내 공개 승인 ${DOMESTIC_PUBLIC_GABA_VIDEOS.length}건 · 감리 초안 ${Object.keys(videoReviewDrafts).length}건` : `오늘 공유 영상 ${SHARED_GABA_VIDEOS.length}건 · 원문 확인 필요`}</p>
               {presentationMode ? <div className="video-review-summary" aria-label="감리 초안 전체 복사"><span>현재 브라우저 감리 초안 {Object.keys(videoReviewDrafts).length}건</span><button type="button" disabled={!Object.keys(videoReviewDrafts).length} onClick={copyAllVideoReviewDrafts}>작성 초안 전체 복사</button><small aria-live="polite">{videoReviewMessage}</small></div> : null}
               {presentationMode ? <div className="monitor-snapshot">
-                <p className="eyebrow">일일 감리 상태</p>
+                <div className="monitor-snapshot__heading"><p className="eyebrow">일일 감리 상태</p><button type="button" className="monitor-snapshot__copy" onClick={copyDailyMonitorBrief}>회의용 요약 복사</button></div>
+                <small className="monitor-snapshot__copy-message" aria-live="polite">{monitorCopyMessage}</small>
                 <p><strong>{GABA_MONITOR_SNAPSHOT.checkedAt}</strong> 마지막 자동 확인 · 채널 {GABA_MONITOR_SNAPSHOT.sourceChannels}/{GABA_MONITOR_SNAPSHOT.registeredChannels} · 검색어 {GABA_MONITOR_SNAPSHOT.discoveryQueries}/{GABA_MONITOR_SNAPSHOT.totalDiscoveryQueries}</p>
                 <p>검토 대기 {GABA_MONITOR_SNAPSHOT.pendingReview}건 · SCIENCE/MEDICAL 우선 {GABA_MONITOR_SNAPSHOT.scienceMedicalPriority}건 · 신규 후보 {GABA_MONITOR_SNAPSHOT.newCandidates}건 · 자동 공개 {GABA_MONITOR_SNAPSHOT.autoPublish}건</p>
                 <p>등록 영상 원문 링크 {GABA_MONITOR_SNAPSHOT.registeredVideoLinksHealthy}/{GABA_MONITOR_SNAPSHOT.registeredVideoLinksChecked} 접근 확인 · 링크 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoLinkWarnings}건</p>
