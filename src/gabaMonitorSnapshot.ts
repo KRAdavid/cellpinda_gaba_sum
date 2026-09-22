@@ -5,7 +5,7 @@ export const GABA_MONITOR_SNAPSHOT = {
   "discoveryQueries": 8,
   "totalDiscoveryQueries": 8,
   "newCandidates": 13,
-  "newCandidatesThisRun": 2,
+  "newCandidatesThisRun": 0,
   "pendingReview": 104,
   "scienceMedicalPriority": 67,
   "videoPriority": 37,
@@ -226,7 +226,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "date": "2026-09-23",
       "newCandidates": 13,
-      "newCandidatesThisRun": 2,
+      "newCandidatesThisRun": 0,
       "pendingReview": 104,
       "scienceMedicalPriority": 67,
       "videoPriority": 37,
