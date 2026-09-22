@@ -241,6 +241,7 @@ export default function App() {
   const [previewImageError, setPreviewImageError] = useState(false);
   const [videoFilter, setVideoFilter] = useState<VideoFilter>('ALL');
   const [videoQuery, setVideoQuery] = useState('');
+  const [showcaseVideoIndex, setShowcaseVideoIndex] = useState(0);
   const railRef = useRef<HTMLDivElement>(null);
   const readerStreamRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
@@ -259,6 +260,7 @@ export default function App() {
   const activePhase = STORY_PHASES.find(phase => active >= phase.start && active <= phase.end) ?? STORY_PHASES[0];
   const nextSlide = slides[active + 1];
   const publicVideo = SHARED_GABA_VIDEOS[0] ?? null;
+  const showcaseVideo = SHARED_GABA_VIDEOS[showcaseVideoIndex] ?? SHARED_GABA_VIDEOS[0] ?? null;
   const panelVideos = presentationMode ? ACTIVE_GABA_VIDEOS : SHARED_GABA_VIDEOS;
   const selectedVideo = panelVideoId ? panelVideos.find(video => video.id === panelVideoId) ?? GABA_VIDEO_DB.find(video => video.id === panelVideoId) ?? null : null;
   const selectedVideoIndex = selectedVideo ? panelVideos.findIndex(video => video.id === selectedVideo.id) : -1;
@@ -560,6 +562,12 @@ export default function App() {
     setVideoQuery('');
     setPanelShareMessage('');
     setOpenPanel('video');
+  };
+
+  const selectShowcaseVideo = (index: number) => {
+    const nextIndex = Math.max(0, Math.min(SHARED_GABA_VIDEOS.length - 1, index));
+    setShowcaseVideoIndex(nextIndex);
+    setPreviewImageError(false);
   };
 
   const enterPresentation = (returnElement?: HTMLElement | null, startIndex = active) => {
@@ -978,27 +986,40 @@ export default function App() {
               <button type="button" className="video-showcase__db-button" onClick={event => openVideoPanel(event.currentTarget)}>영상 DB 상세 감리 보기 <span aria-hidden="true">↗</span></button>
             </div>
           </div>
-          <div className="video-showcase__list">
-            {SHARED_GABA_VIDEOS.map(video => <article key={video.id} className="video-showcase__item">
-              <button type="button" className="video-showcase__media" onClick={event => openVideoPanel(event.currentTarget, video.id)} aria-label={`${video.title} 상세 감리 보기`}>
-                {video.previewImage ? <><img src={video.previewImage} alt={video.previewAlt ?? `${video.title} YouTube Shorts 미리보기`} loading="eager" decoding="async" onError={event => {event.currentTarget.style.display = 'none'; event.currentTarget.parentElement?.classList.add('is-image-missing');}} /><div className="video-showcase__source-mark video-showcase__source-mark--fallback"><span>YouTube Shorts</span><strong>{video.previewLabel}</strong><small>원문 링크·대본 확인</small></div></> : <div className="video-showcase__source-mark"><span>YouTube Shorts</span><strong>{video.previewLabel}</strong><small>원문 링크·대본 확인</small></div>}
+          {showcaseVideo ? <div className="video-showcase__flow">
+            <nav className="video-showcase__index" aria-label="오늘 공유 영상 순서">
+              <div className="video-showcase__index-heading"><span>오늘의 검토 흐름</span><strong>{String(showcaseVideoIndex + 1).padStart(2, '0')} / {String(SHARED_GABA_VIDEOS.length).padStart(2, '0')}</strong></div>
+              <div className="video-showcase__index-list">
+                {SHARED_GABA_VIDEOS.map((video, index) => <button key={video.id} type="button" className={`video-showcase__index-button${index === showcaseVideoIndex ? ' is-active' : ''}`} onClick={() => selectShowcaseVideo(index)} aria-current={index === showcaseVideoIndex ? 'step' : undefined}>
+                  <span>{String(index + 1).padStart(2, '0')}</span><strong>{video.channel}</strong><small>{VIDEO_STATUS_LABELS[video.status]}</small>
+                </button>)}
+              </div>
+              <p>한 편씩 확인하고, 필요한 경우에만 상세 감리에서 원문을 엽니다.</p>
+            </nav>
+            <article className="video-showcase__item" aria-live="polite">
+              <button type="button" className="video-showcase__media" onClick={event => openVideoPanel(event.currentTarget, showcaseVideo.id)} aria-label={`${showcaseVideo.title} 상세 감리 보기`}>
+                {showcaseVideo.previewImage ? <><img src={showcaseVideo.previewImage} alt={showcaseVideo.previewAlt ?? `${showcaseVideo.title} YouTube Shorts 미리보기`} loading="eager" decoding="async" onError={event => {event.currentTarget.style.display = 'none'; event.currentTarget.parentElement?.classList.add('is-image-missing');}} /><div className="video-showcase__source-mark video-showcase__source-mark--fallback"><span>YouTube Shorts</span><strong>{showcaseVideo.previewLabel}</strong><small>원문 링크·대본 확인</small></div></> : <div className="video-showcase__source-mark"><span>YouTube Shorts</span><strong>{showcaseVideo.previewLabel}</strong><small>원문 링크·대본 확인</small></div>}
                 <span className="video-showcase__play" aria-hidden="true">＋</span>
               </button>
               <div className="video-showcase__copy">
-                <div className="video-showcase__meta"><span>{video.id}</span><span className="video-showcase__status">오늘 공유 · {VIDEO_STATUS_LABELS[video.status]}</span></div>
-                <h3>{video.title}</h3>
-                <p className="video-showcase__channel">{video.channel} · {video.speaker}</p>
+                <div className="video-showcase__meta"><span>{showcaseVideo.id}</span><span className="video-showcase__status">오늘 공유 · {VIDEO_STATUS_LABELS[showcaseVideo.status]}</span></div>
+                <h3>{showcaseVideo.title}</h3>
+                <p className="video-showcase__channel">{showcaseVideo.channel} · {showcaseVideo.speaker}</p>
                 <div className="video-showcase__audit" aria-label="영상 공개 감리 상태">
-                  <span>권위 확인: {VIDEO_AUDIT_LABELS.authorityLevel[video.audit.authorityLevel]}</span>
-                  <span>근거: {VIDEO_AUDIT_LABELS.evidenceLevel[video.audit.evidenceLevel]}</span>
-                  <span>사용: {VIDEO_AUDIT_LABELS.usageMode[video.audit.usageMode]}</span>
+                  <span>권위 확인: {VIDEO_AUDIT_LABELS.authorityLevel[showcaseVideo.audit.authorityLevel]}</span>
+                  <span>근거: {VIDEO_AUDIT_LABELS.evidenceLevel[showcaseVideo.audit.evidenceLevel]}</span>
+                  <span>사용: {VIDEO_AUDIT_LABELS.usageMode[showcaseVideo.audit.usageMode]}</span>
                 </div>
-                <p><strong>무엇을 어떻게 소개했나 · 예비</strong><br />{video.summary}</p>
-                <p><strong>인물 소개</strong><br />{video.personSummary}</p>
-                <div className="video-showcase__actions"><button type="button" onClick={event => openVideoPanel(event.currentTarget, video.id)}>상세 감리 먼저 보기 <span aria-hidden="true">＋</span></button><span className="video-showcase__source-note">원문 링크는 상세 패널에서 선택</span></div>
+                <p><strong>무엇을 어떻게 소개했나 · 예비</strong><br />{showcaseVideo.summary}</p>
+                <p><strong>인물 소개</strong><br />{showcaseVideo.personSummary}</p>
+                <div className="video-showcase__actions"><button type="button" onClick={event => openVideoPanel(event.currentTarget, showcaseVideo.id)}>상세 감리 먼저 보기 <span aria-hidden="true">＋</span></button><span className="video-showcase__source-note">원문 링크는 상세 패널에서 선택</span></div>
+                <div className="video-showcase__pager" aria-label="영상 이동">
+                  <button type="button" onClick={() => selectShowcaseVideo(showcaseVideoIndex - 1)} disabled={showcaseVideoIndex === 0}>이전 영상</button>
+                  <button type="button" onClick={() => selectShowcaseVideo(showcaseVideoIndex + 1)} disabled={showcaseVideoIndex === SHARED_GABA_VIDEOS.length - 1}>다음 영상 <span aria-hidden="true">→</span></button>
+                </div>
               </div>
-            </article>)}
-          </div>
+            </article>
+          </div> : null}
         </div>
       </section> : null}
 
