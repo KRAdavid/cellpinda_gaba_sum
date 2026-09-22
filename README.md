@@ -49,6 +49,8 @@ pnpm run qa:tf
 pnpm run qa:tf:strict
 ```
 
+발표자용 영상 DB의 `최근 감리 추이`는 최근 자동 실행 14회까지 신규 후보·검토 대기 건수·자막 본문 확보 상태를 누적해 보여줍니다. 같은 날짜의 재실행은 기존 기록을 중복 생성하지 않고 갱신하며, 이 추이는 공개 승인이나 과학적 타당성 판정이 아닙니다.
+
 전체 설명용 발표 북마크는 `https://kradavid.github.io/cellpinda_gaba_sum/?mode=presenter&card=1#story`로 01번부터 시작합니다. 영상 DB는 발표 모드의 `영상 DB` 버튼에서 확인합니다.
 
 실제 일반 GABA 교육 설명 순서와 권장·보류 표현은 [`docs/GENERAL_GABA_OPERATOR_GUIDE.md`](docs/GENERAL_GABA_OPERATOR_GUIDE.md)를 따릅니다.

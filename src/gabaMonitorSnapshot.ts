@@ -121,6 +121,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
   ],
+  "history": [
+    {
+      "date": "2026-09-22",
+      "newCandidates": 0,
+      "pendingReview": 91,
+      "scienceMedicalPriority": 55,
+      "videoPriority": 36,
+      "captionBodiesAvailable": 0,
+      "captionBodiesChecked": 9,
+      "captionBodyWarnings": 9,
+      "autoPublish": 0
+    }
+  ],
   "autoPublish": 0,
   "humanRoleAssigned": 0,
   "humanRoleTotal": 7,

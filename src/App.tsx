@@ -1172,6 +1172,21 @@ export default function App() {
                 <p>등록 YouTube 메타데이터 {GABA_MONITOR_SNAPSHOT.registeredVideoMetadataHealthy}/{GABA_MONITOR_SNAPSHOT.registeredVideoMetadataChecked} 제목·채널 확인 · 메타데이터 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoMetadataWarnings}건</p>
                 <p>등록 YouTube 자막 트랙 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTracksAvailable}/{GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTracksChecked} 발견 · 자막 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTrackWarnings}건</p>
                 <p>등록 YouTube 자막 본문 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodiesAvailable}/{GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodiesChecked} 확인 · 본문 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodyWarnings}건</p>
+                <div className="monitor-snapshot__history" aria-label="최근 감리 추이">
+                  <div className="monitor-snapshot__history-heading"><p className="eyebrow">최근 감리 추이</p><small>최근 {GABA_MONITOR_SNAPSHOT.history.length}회</small></div>
+                  <ol>
+                    {[...GABA_MONITOR_SNAPSHOT.history].slice(-7).reverse().map((point, index, visibleHistory) => {
+                      const olderPoint = visibleHistory[index + 1];
+                      const pendingDelta = olderPoint ? point.pendingReview - olderPoint.pendingReview : 0;
+                      return <li key={point.date}>
+                        <span>{point.date.slice(5)}</span>
+                        <strong>{point.newCandidates} 신규</strong>
+                        <small>대기 {point.pendingReview}{olderPoint ? ` (${pendingDelta > 0 ? '+' : ''}${pendingDelta})` : ''} · 자막 본문 {point.captionBodiesAvailable}/{point.captionBodiesChecked}</small>
+                      </li>;
+                    })}
+                  </ol>
+                  <small>괄호 안 숫자는 직전 감리 대비 검토 대기 건수 변화입니다. 추이는 공개 승인이나 과학적 타당성을 의미하지 않습니다.</small>
+                </div>
                 <div className="monitor-snapshot__queue" aria-label="오늘 먼저 검토할 후보">
                   <p className="eyebrow">오늘 먼저 검토할 후보</p>
                   {GABA_MONITOR_SNAPSHOT.pendingQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.pendingQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{candidate.priority}</strong><span>{candidate.title}</span></summary><div><small>상태: PENDING_REVIEW · 첫 담당: {candidate.reviewer}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>주의 신호: {candidate.signals.join(' · ')}</small><small>원문·자막·화자·권리 확인 전에는 공개하지 않습니다.</small></div></details></li>)}</ol> : <p>현재 검토 대기 후보가 없습니다.</p>}

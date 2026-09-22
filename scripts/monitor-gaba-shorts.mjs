@@ -284,6 +284,19 @@ const parseShortsPage = html => html.split(/"shortsLockupViewModel"\s*:/i).slice
 const markdown = value => value.replaceAll('|', '\\|').replaceAll('[', '\\[').replaceAll(']', '\\]').replaceAll('\r', ' ').replaceAll('\n', ' ');
 const checkedDate = new Date().toISOString().slice(0, 10);
 
+const readPreviousMonitorHistory = () => {
+  if (!fs.existsSync(snapshotPath)) return [];
+  const source = fs.readFileSync(snapshotPath, 'utf8');
+  const match = source.match(/export const GABA_MONITOR_SNAPSHOT = (\{[\s\S]*\}) as const;/);
+  if (!match) return [];
+  try {
+    const snapshot = JSON.parse(match[1]);
+    return Array.isArray(snapshot.history) ? snapshot.history : [];
+  } catch {
+    return [];
+  }
+};
+
 const triageRules = [
   {label: '질환·치료 표현', priority: 'SCIENCE/MEDICAL 우선', pattern: /불면증|우울증|ADHD|치매|알츠하이머|공황|PTSD|불안장애|치료|예방|진단|결핍|신약|정신질환|insomnia|depression|ADHD|alzheimer|panic|PTSD|anxiety|treat(?:ment)?|prevent(?:ion)?|diagnos(?:is|e)|deficien(?:cy|t)|clinical trial/i},
   {label: '약물 대체·비교', priority: 'SCIENCE/MEDICAL 우선', pattern: /수면제|졸피뎀|자낙스|약.*대체|대체.*약|sleep(?:ing)?\s*pill|zolpidem|xanax|instead of (?:a )?(?:sleeping )?pill|replace(?:ment)?/i},
@@ -433,7 +446,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
-const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth, previousHistory}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const priorityRank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
@@ -454,6 +467,20 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   const sourceRows = sourceRegister.split('\n').filter(line => /^\| SRC-\d+ \|/.test(line));
   const videoRows = videoRegister.split('\n').filter(line => /^\| (?:AUTH|VID|SHORT)-\d+ \|/.test(line));
   const domesticVideoRows = videoRows.filter(line => !line.startsWith('| AUTH-'));
+  const currentHistoryPoint = {
+    date,
+    newCandidates,
+    pendingReview: entries.length,
+    scienceMedicalPriority,
+    videoPriority: entries.length - scienceMedicalPriority,
+    captionBodiesAvailable: captionBodyHealth.available,
+    captionBodiesChecked: captionBodyHealth.checked,
+    captionBodyWarnings: captionBodyHealth.warnings.length,
+    autoPublish: 0,
+  };
+  const history = [...(Array.isArray(previousHistory) ? previousHistory : []).filter(point => point?.date !== date), currentHistoryPoint]
+    .sort((left, right) => left.date.localeCompare(right.date))
+    .slice(-14);
   const snapshot = {
     checkedAt: date,
     sourceChannels: successfulSources,
@@ -479,6 +506,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
       signals: entry.signals,
       nextAction: '독립적인 자격·실제 화자·원문·자막·권리 확인',
     })),
+    history,
     autoPublish: 0,
     humanRoleAssigned,
     humanRoleTotal: coreRoles.length,
@@ -605,6 +633,7 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, errors,
 
 const main = async () => {
   const existing = fs.existsSync(inboxPath) ? fs.readFileSync(inboxPath, 'utf8') : '';
+  const previousHistory = readPreviousMonitorHistory();
   const knownFiles = [
     inboxPath,
     path.join(root, 'src', 'gabaVideos.ts'),
@@ -733,6 +762,7 @@ const main = async () => {
     metadataHealth,
     captionHealth,
     captionBodyHealth,
+    previousHistory,
   }), 'utf8');
   console.log('- wrote: daily report to docs/GABA_VIDEO_DAILY_REPORT.md');
   console.log('- archived: docs/gaba-video-daily/GABA_VIDEO_DAILY_REPORT_' + checkedDate + '.md');
