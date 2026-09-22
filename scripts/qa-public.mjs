@@ -71,7 +71,7 @@ const required = [
   ['presenter TF next action', '다음 행동'],
   ['presenter TF meeting sequence', '첫 회의 진행 순서'],
   ['in-page flow continuity', '현재 페이지의 흐름은 유지됩니다'],
-  ['in-page next destination', '다음 카드:'],
+  ['in-page next destination', '다음 장면'],
   ['consumer next action', 'story-next-button'],
   ['consumer secondary controls disclosure', 'story-secondary-controls'],
   ['external link disclosure', '외부 자료는 필요할 때만 확인'],

@@ -36,14 +36,14 @@ const files = {
 
 const checks = [
   ['public URL is documented', files.readme, 'https://kradavid.github.io/cellpinda_gaba_sum/'],
-  ['README documents product exclusion', files.readme, '제품·후기·판매 정보는 공개 카드와 패널에서 다루지 않습니다'],
+  ['README documents product exclusion', files.readme, '제품·후기·판매 정보는 공개 읽기 흐름과 패널에서 다루지 않습니다'],
   ['README links current operator guide', files.readme, 'docs/GENERAL_GABA_OPERATOR_GUIDE.md'],
   ['README links current field session', files.readme, 'docs/GENERAL_GABA_FIELD_SESSION.md'],
   ['README links video database', files.readme, 'GABA_VIDEO_DB.md'],
   ['README documents readiness command', files.readme, 'pnpm run qa:education-tf'],
   ['official site is identified separately', files.handoff, 'https://kradavid.github.io/cellpinda_GABA/'],
   ['publishing TF is general education only', files.publishing, '제품명·가격·구성·섭취량·후기·판매 링크는 이 공개 교육본의 범위에 포함하지 않는다'],
-  ['publishing TF records eight-message reel flow', files.publishing, '8장 풀스크린 세로 릴스 피드'],
+  ['publishing TF records eight-scene reading flow', files.publishing, '8개 장면 세로 읽기 흐름'],
   ['kickoff is product-free', files.kickoff, '제품·후기·판매 문구를 결정하는 회의가 아니다'],
   ['kickoff includes video audit questions', files.kickoff, '화자·발언·근거·권리'],
   ['operator guide defines eight-message route', files.operator, '8장 설명 흐름'],

@@ -65,7 +65,7 @@ try {
 
   await send('Page.navigate', {url: `${baseUrl}?card=6#story`});
   await wait(900);
-  await evaluate('document.querySelector("#story-card-research .card-link")?.click()');
+  await evaluate('document.querySelector("#story-scene-research .reader-link")?.click()');
   await wait(180);
   await capture('cellpinda-research-panel-390-current.png');
 } finally {

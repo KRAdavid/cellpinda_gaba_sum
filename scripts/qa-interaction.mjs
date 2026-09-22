@@ -32,7 +32,8 @@ const evaluate = async expression => (await send('Runtime.evaluate', {expression
 const waitForProgress = async expected => {
   const deadline = Date.now() + 4000;
   while (Date.now() < deadline) {
-    if (await evaluate('document.querySelector(".story-controls span")?.innerText') === expected) return;
+    const progress = await evaluate('(() => { const reader=document.querySelector(".story-reader-heading__count strong")?.innerText; return reader ? `${reader} / 08` : document.querySelector(".story-controls span")?.innerText || ""; })()');
+    if (progress === expected) return;
     await wait(80);
   }
   throw new Error(`Timed out waiting for progress ${expected}`);
@@ -71,42 +72,40 @@ try {
   await send('Page.navigate', {url: baseUrl});
   await wait(900);
 
-  const initial = await evaluate('(() => { const cards=[...document.querySelectorAll(".story-card")]; return {title:document.title,width:innerWidth,height:innerHeight,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,cards:cards.length,progress:document.querySelector(".story-controls span")?.innerText||"",storyTop:document.querySelector("#story")?.getBoundingClientRect().top||0,introTop:document.querySelector(".intro")?.getBoundingClientRect().top||0,body:document.body.innerText}; })()');
+  const initial = await evaluate('(() => { const scenes=[...document.querySelectorAll(".story-reader-scene")]; return {title:document.title,width:innerWidth,height:innerHeight,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,scenes:scenes.length,legacyCards:document.querySelectorAll(".story-card").length,progress:(document.querySelector(".story-reader-heading__count strong")?.innerText||"")+" / 08",storyTop:document.querySelector("#story")?.getBoundingClientRect().top||0,heading:!!document.querySelector(".story-reader-heading"),body:document.body.innerText}; })()');
   assert('page identity is general GABA education', initial.title.includes('일반 GABA 교육'));
   assert('mobile viewport has no horizontal overflow', initial.width === viewportWidth && initial.docWidth === initial.clientWidth && initial.docWidth <= initial.width, JSON.stringify(initial));
   assert('consumer page contains no product or review content', !initial.body.includes('셀핀다 제품') && !initial.body.includes('구매자 후기') && !initial.body.includes('스마트스토어'));
   assert('consumer page hides presenter monitoring snapshot', !initial.body.includes('일일 감리 상태') && !initial.body.includes('검토 대기'));
-  assert('consumer root enters the vertical feed immediately', Math.abs(initial.storyTop) < 2 && initial.introTop >= initial.height - 2, JSON.stringify(initial));
-  assert('story has eight one-message cards', initial.cards === 8 && initial.progress === '01 / 08', JSON.stringify(initial));
-  const rail = await evaluate('(() => { const el=document.querySelector(".story-rail"), style=getComputedStyle(el); return {touchAction:style.touchAction,snap:style.scrollSnapType,overflowX:style.overflowX,overflowY:style.overflowY,scrollWidth:el.scrollWidth,clientWidth:el.clientWidth,scrollHeight:el.scrollHeight,clientHeight:el.clientHeight,scrollTop:el.scrollTop}; })()');
-  assert('mobile rail declares vertical touch and snap', rail.touchAction === 'pan-y' && rail.snap.includes('y') && rail.overflowY === 'auto' && rail.overflowX === 'hidden' && rail.scrollHeight > rail.clientHeight && rail.scrollWidth === rail.clientWidth, JSON.stringify(rail));
-  const feedSurface = await evaluate('(() => { const story=document.querySelector("#story"), rail=document.querySelector(".story-rail"), card=document.querySelector(".story-card"), progress=document.querySelector(".story-progress"), storyStyle=getComputedStyle(story), railStyle=getComputedStyle(rail), cardStyle=getComputedStyle(card), progressStyle=getComputedStyle(progress); return {storyHeight:story?.getBoundingClientRect().height||0,railHeight:rail?.getBoundingClientRect().height||0,cardWidth:card?.getBoundingClientRect().width||0,cardHeight:card?.getBoundingClientRect().height||0,viewport:innerHeight,contentWidth:document.documentElement.clientWidth,heading:getComputedStyle(document.querySelector(".story-heading")).display,progressButtons:document.querySelectorAll(".story-progress button").length,progressDisplay:progressStyle.display,vertical:railStyle.flexDirection === "column",visual:cardStyle.backgroundImage.includes("gaba-overload"),storyPadding:storyStyle.padding,railHeightStyle:railStyle.height}; })()');
-  assert('consumer feed is full-screen and visually focused', feedSurface.storyHeight >= viewportHeight - 2 && feedSurface.railHeight >= viewportHeight - 2 && feedSurface.cardHeight >= viewportHeight - 2 && feedSurface.cardWidth >= feedSurface.contentWidth - 20 && feedSurface.heading === 'flex' && feedSurface.progressButtons === 8 && feedSurface.progressDisplay === 'grid' && feedSurface.vertical && feedSurface.visual && feedSurface.storyPadding === '0px', JSON.stringify(feedSurface));
-  await evaluate('document.querySelector(".story-progress button:nth-child(2)")?.click()');
+  assert('consumer root enters the vertical reading flow immediately', Math.abs(initial.storyTop) < 2 && initial.heading && initial.scenes === 8, JSON.stringify(initial));
+  assert('story has eight one-message scenes', initial.scenes === 8 && initial.legacyCards === 0 && initial.progress === '01 / 08', JSON.stringify(initial));
+  const readerLayout = await evaluate('(() => { const story=document.querySelector("#story"), stream=document.querySelector(".story-reader-stream"), scene=document.querySelector(".story-reader-scene"), index=document.querySelector(".story-reader-index"), storyStyle=getComputedStyle(story), streamStyle=getComputedStyle(stream), sceneStyle=getComputedStyle(scene); return {storyHeight:story?.getBoundingClientRect().height||0,streamHeight:stream?.getBoundingClientRect().height||0,sceneWidth:scene?.getBoundingClientRect().width||0,contentWidth:document.documentElement.clientWidth,index:!!index,scenes:document.querySelectorAll(".story-reader-scene").length,layout:streamStyle.display,storyBackground:storyStyle.backgroundColor,sceneBorder:sceneStyle.borderBottomWidth}; })()');
+  assert('consumer reading flow uses open scenes instead of stacked cards', readerLayout.scenes === 8 && readerLayout.index && readerLayout.streamHeight > viewportHeight && readerLayout.sceneWidth < readerLayout.contentWidth && readerLayout.storyBackground !== 'rgb(22, 59, 44)', JSON.stringify(readerLayout));
+  await evaluate('document.querySelector(".story-reader-index li:nth-child(2) button")?.click()');
   await waitForProgress('02 / 08');
-  const directProgress = await evaluate('({active:document.querySelector(".story-progress button:nth-child(2)")?.getAttribute("aria-current")||"",label:document.querySelector(".story-progress button:nth-child(2)")?.getAttribute("aria-label")||""})');
-  assert('story progress rail jumps directly to a selected scene', directProgress.active === 'step' && directProgress.label.includes('02번 장면'), JSON.stringify(directProgress));
-  await evaluate('document.querySelector(".story-progress button:first-child")?.click()');
+  const directProgress = await evaluate('({active:document.querySelector(".story-reader-index li:nth-child(2) button")?.getAttribute("aria-current")||"",label:document.querySelector(".story-reader-index li:nth-child(2) button")?.innerText||""})');
+  assert('story chapter index jumps directly to a selected scene', directProgress.active === 'step' && directProgress.label.includes('02'), JSON.stringify(directProgress));
+  await evaluate('document.querySelector(".story-reader-index button:first-child")?.click()');
   await waitForProgress('01 / 08');
-  const nextBar = await evaluate('({text:document.querySelector(".reel-next-bar")?.innerText||"",button:!!document.querySelector(".reel-next-button"),link:!!document.querySelector(".reel-next-link"),visible:!!document.querySelector(".reel-next-bar")})');
-  assert('reel feed exposes the next message action', nextBar.visible && nextBar.button && !nextBar.link && nextBar.text.includes('아래로 넘겨 계속') && nextBar.text.includes('02 · 충분히 쉰 날'), JSON.stringify(nextBar));
+  const nextBar = await evaluate('({text:document.querySelector(".story-reader-next")?.innerText||"",button:!!document.querySelector(".story-reader-next button"),link:!!document.querySelector(".story-reader-next a"),visible:!!document.querySelector(".story-reader-next")})');
+  assert('reading flow exposes the next message action', nextBar.visible && nextBar.button && !nextBar.link && nextBar.text.includes('다음 장면') && nextBar.text.includes('02 · 충분히 쉰 날'), JSON.stringify(nextBar));
 
-  await evaluate('(() => { const story=document.getElementById("story"); window.scrollTo({top:story.offsetTop,left:0,behavior:"instant"}); const el=document.querySelector(".story-rail"); el.scrollTo({top:0,behavior:"auto"}); return true; })()');
+  await evaluate('(() => { const story=document.getElementById("story"); window.scrollTo({top:story.offsetTop,left:0,behavior:"instant"}); return true; })()');
   await wait(160);
-  await evaluate('(() => { const el=document.querySelector(".story-rail"), second=el.querySelectorAll(".story-card")[1]; const target=second ? second.getBoundingClientRect().top - el.getBoundingClientRect().top + el.scrollTop - 4 : 0; el.scrollTo({top:Math.max(0,target),behavior:"auto"}); return true; })()');
+  await evaluate('document.querySelectorAll(".story-reader-scene")[1]?.scrollIntoView({block:"start",behavior:"auto"})');
   await wait(1800);
-  const swiped = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText||"",scrollTop:document.querySelector(".story-rail")?.scrollTop||0})');
-  assert('mobile vertical swipe-compatible scroll advances the active card', swiped.progress === '02 / 08' && swiped.scrollTop > rail.scrollTop, JSON.stringify({before:rail,after:swiped}));
-  const nextBarAfterSwipe = await evaluate('document.querySelector(".reel-next-bar")?.innerText||""');
+  const swiped = await evaluate('({progress:(document.querySelector(".story-reader-heading__count strong")?.innerText||"")+" / 08",sceneTop:document.querySelectorAll(".story-reader-scene")[1]?.getBoundingClientRect().top||999})');
+  assert('mobile vertical reading advances the active scene', swiped.progress === '02 / 08' && Math.abs(swiped.sceneTop) < 90, JSON.stringify(swiped));
+  const nextBarAfterSwipe = await evaluate('document.querySelector(".story-reader-next")?.innerText||""');
   assert('reel feed previews the following message', nextBarAfterSwipe.includes('다음 장면') && nextBarAfterSwipe.includes('03 · 뇌 과부하 상태'), nextBarAfterSwipe);
 
-  await evaluate('document.querySelector(".story-next-button")?.click()');
+  await evaluate('document.querySelector(".story-reader-next button")?.click()');
   await waitForProgress('03 / 08');
   assert('consumer next action advances the story', true);
 
   await send('Page.navigate', {url: `${baseUrl}?card=7#story`});
   await waitForProgress('07 / 08');
-  await evaluate('document.querySelector(".story-card[aria-current=\\"true\\"] .card-link")?.click()');
+  await evaluate('document.querySelector(".story-reader-scene.is-active .reader-link")?.click()');
   await waitForText('#info-panel-title', '일반 GABA 연구를 읽는 방법');
   const researchPanel = await evaluate('({title:document.querySelector("#info-panel-title")?.innerText||"",source:document.querySelector(".info-panel__source")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||"",url:location.href})');
   assert('research opens in an in-page panel', researchPanel.title.includes('일반 GABA 연구') && researchPanel.source.includes('PMID 33041752') && researchPanel.external.includes('pubmed.ncbi.nlm.nih.gov') && !researchPanel.url.includes('pubmed'), JSON.stringify(researchPanel));
@@ -115,8 +114,8 @@ try {
   await evaluate('document.querySelector(".info-panel__next")?.click()');
   await waitForProgress('08 / 08');
   assert('research panel next action continues the card flow', true);
-  const finalReelAction = await evaluate('({text:document.querySelector(".reel-next-bar")?.innerText||"",href:document.querySelector(".reel-next-link")?.getAttribute("href")||""})');
-  assert('last reel message hands off to the video section', finalReelAction.text.includes('영상 검토 후보') && finalReelAction.href === '#video-showcase', JSON.stringify(finalReelAction));
+  const finalReelAction = await evaluate('({text:document.querySelector(".story-reader-next")?.innerText||"",href:document.querySelector(".story-reader-next a")?.getAttribute("href")||""})');
+  assert('last reading scene hands off to the video section', finalReelAction.text.includes('영상 검토 후보') && finalReelAction.href === '#video-showcase', JSON.stringify(finalReelAction));
 
   await evaluate('document.querySelector(".video-showcase__item:nth-child(2)")?.scrollIntoView({block:"center",behavior:"instant"})');
   await wait(700);
