@@ -14,6 +14,7 @@ const routeUrl = (params, hash = '') => {
 };
 const presenterUrl = routeUrl({mode: 'presenter', card: '1'}, 'story');
 const researchUrl = routeUrl({card: '6'}, 'story');
+const presenterResearchUrl = routeUrl({mode: 'presenter', card: '7'}, 'story');
 
 const targetResponse = await fetch(`${cdpUrl}/json/new?${baseUrl}`, {method: 'PUT'});
 if (!targetResponse.ok) throw new Error(`Could not create Chrome target at ${cdpUrl}.`);
@@ -77,6 +78,14 @@ try {
   await evaluate('document.querySelector("#story-scene-research .reader-link")?.click()');
   await wait(180);
   await capture('cellpinda-research-panel-390-current.png');
+
+  await send('Page.navigate', {url: presenterResearchUrl});
+  await wait(900);
+  await evaluate('document.querySelector(".story-card--research .card-link")?.click()');
+  await wait(180);
+  await evaluate('document.querySelector(".source-review-draft")?.setAttribute("open", "")');
+  await wait(180);
+  await capture('cellpinda-source-review-panel-390-current.png');
 } finally {
   socket.close();
 }

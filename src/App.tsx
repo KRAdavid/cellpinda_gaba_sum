@@ -45,6 +45,18 @@ type VideoReviewDraft = {
 type VideoReviewDrafts = Record<string, VideoReviewDraft>;
 type MonitorCandidate = typeof GABA_MONITOR_SNAPSHOT.pendingQueue[number] | typeof GABA_MONITOR_SNAPSHOT.authorityQueue[number];
 type MonitorReviewDrafts = Record<string, VideoReviewDraft>;
+type SourceReviewDecision = 'UNDECIDED' | 'USE_GENERAL' | 'REVISE' | 'HOLD';
+type SourceReviewDraft = {
+  reviewer: string;
+  role: 'SCIENCE' | 'MEDICAL';
+  decision: SourceReviewDecision;
+  scopeChecked: boolean;
+  limitationChecked: boolean;
+  sentenceChecked: boolean;
+  notes: string;
+  updatedAt: string;
+};
+type SourceReviewDrafts = Record<string, SourceReviewDraft>;
 type ReviewHandoffPacket = {
   packetType: 'GABA_EDUCATION_REVIEW_HANDOFF';
   version: 1;
@@ -53,6 +65,7 @@ type ReviewHandoffPacket = {
   scope: {videoDb: number; monitorCandidates: number; tfRoles: number};
   videoReviewDrafts: VideoReviewDrafts;
   monitorReviewDrafts: MonitorReviewDrafts;
+  sourceReviewDrafts: SourceReviewDrafts;
   tfAssignments: TfAssignment;
   tfMeetingDraft: string;
   boundary: string;
@@ -61,6 +74,7 @@ type ReviewHandoffPacket = {
 const TF_ASSIGNMENT_STORAGE_KEY = 'cellpinda-gaba-tf-assignment-draft-v1';
 const VIDEO_REVIEW_STORAGE_KEY = 'cellpinda-gaba-video-review-draft-v1';
 const MONITOR_REVIEW_STORAGE_KEY = 'cellpinda-gaba-monitor-review-draft-v1';
+const SOURCE_REVIEW_STORAGE_KEY = 'cellpinda-gaba-source-review-draft-v1';
 const REVIEW_HANDOFF_PACKET_TYPE = 'GABA_EDUCATION_REVIEW_HANDOFF';
 const VIDEO_REVIEW_ROLES = ['VIDEO', 'SCIENCE', 'MEDICAL', 'RIGHTS', 'PM'] as const;
 const VIDEO_REVIEW_CHECKS = [
@@ -89,6 +103,17 @@ const makeEmptyVideoReviewDraft = (): VideoReviewDraft => ({
   claimScopeChecked: false,
   timestamps: '',
   transcriptExcerpt: '',
+  notes: '',
+  updatedAt: '',
+});
+
+const makeEmptySourceReviewDraft = (): SourceReviewDraft => ({
+  reviewer: '',
+  role: 'SCIENCE',
+  decision: 'UNDECIDED',
+  scopeChecked: false,
+  limitationChecked: false,
+  sentenceChecked: false,
   notes: '',
   updatedAt: '',
 });
@@ -128,6 +153,26 @@ const normaliseTfAssignments = (value: unknown): TfAssignment => {
       backup: typeof rawAssignment.backup === 'string' ? rawAssignment.backup : '',
     }]];
   })) as TfAssignment;
+};
+
+const normaliseSourceReviewDrafts = (value: unknown): SourceReviewDrafts => {
+  if (!isRecord(value)) return {};
+  const allowedDecisions = new Set<SourceReviewDecision>(['UNDECIDED', 'USE_GENERAL', 'REVISE', 'HOLD']);
+  return Object.fromEntries(Object.entries(value).flatMap(([id, rawDraft]) => {
+    if (!isRecord(rawDraft) || !id.trim()) return [];
+    const blank = makeEmptySourceReviewDraft();
+    const draft: SourceReviewDraft = {
+      reviewer: typeof rawDraft.reviewer === 'string' ? rawDraft.reviewer : blank.reviewer,
+      role: rawDraft.role === 'MEDICAL' ? 'MEDICAL' : 'SCIENCE',
+      decision: typeof rawDraft.decision === 'string' && allowedDecisions.has(rawDraft.decision as SourceReviewDecision) ? rawDraft.decision as SourceReviewDecision : blank.decision,
+      scopeChecked: rawDraft.scopeChecked === true,
+      limitationChecked: rawDraft.limitationChecked === true,
+      sentenceChecked: rawDraft.sentenceChecked === true,
+      notes: typeof rawDraft.notes === 'string' ? rawDraft.notes : blank.notes,
+      updatedAt: typeof rawDraft.updatedAt === 'string' ? rawDraft.updatedAt : blank.updatedAt,
+    };
+    return [[id, draft]];
+  })) as SourceReviewDrafts;
 };
 
 const VIDEO_FILTERS: Array<{id: VideoFilter; label: string}> = [
@@ -389,6 +434,8 @@ export default function App() {
   const [videoReviewDrafts, setVideoReviewDrafts] = useState<VideoReviewDrafts>({});
   const [videoReviewMessage, setVideoReviewMessage] = useState('');
   const [reviewHandoffMessage, setReviewHandoffMessage] = useState('');
+  const [sourceReviewDrafts, setSourceReviewDrafts] = useState<SourceReviewDrafts>({});
+  const [sourceReviewMessage, setSourceReviewMessage] = useState('');
   const [monitorCopyMessage, setMonitorCopyMessage] = useState('');
   const [monitorReviewDrafts, setMonitorReviewDrafts] = useState<MonitorReviewDrafts>({});
   const [monitorReviewCandidateId, setMonitorReviewCandidateId] = useState<string | null>(null);
@@ -435,6 +482,10 @@ export default function App() {
   const monitorReviewCandidate = monitorCandidates.find(candidate => candidate.id === monitorReviewCandidateId) ?? null;
   const monitorReviewDraft = monitorReviewCandidate ? monitorReviewDrafts[monitorReviewCandidate.id] ?? makeEmptyVideoReviewDraft() : null;
   const monitorReviewCheckCount = monitorReviewDraft ? VIDEO_REVIEW_CHECKS.filter(check => monitorReviewDraft[check.key]).length : 0;
+  const sourceReviewCompleted = RESEARCH_SOURCES.filter(source => {
+    const draft = sourceReviewDrafts[source.id];
+    return Boolean(draft?.scopeChecked && draft.limitationChecked && draft.sentenceChecked);
+  }).length;
 
   useEffect(() => setPreviewImageError(false), [panelVideoId]);
 
@@ -469,6 +520,17 @@ export default function App() {
       if (parsed && typeof parsed === 'object') setMonitorReviewDrafts(parsed);
     } catch {
       // A local monitor draft is optional and must never block the public page.
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(SOURCE_REVIEW_STORAGE_KEY);
+      if (!saved) return;
+      const parsed = normaliseSourceReviewDrafts(JSON.parse(saved));
+      if (parsed && typeof parsed === 'object') setSourceReviewDrafts(parsed);
+    } catch {
+      // A local source review draft is optional and must never block the public page.
     }
   }, []);
   const filteredPanelVideos = useMemo(() => {
@@ -642,6 +704,14 @@ export default function App() {
     }
   };
 
+  const persistSourceReviewDrafts = (drafts: SourceReviewDrafts) => {
+    try {
+      window.localStorage.setItem(SOURCE_REVIEW_STORAGE_KEY, JSON.stringify(drafts));
+    } catch {
+      // Keep the in-memory source review draft when browser storage is unavailable.
+    }
+  };
+
   const updateVideoReviewDraft = <K extends keyof VideoReviewDraft>(field: K, value: VideoReviewDraft[K]) => {
     if (!selectedVideo) return;
     const current = videoReviewDrafts[selectedVideo.id] ?? makeEmptyVideoReviewDraft();
@@ -665,6 +735,46 @@ export default function App() {
     setMonitorReviewDrafts(next);
     persistMonitorReviewDrafts(next);
     setMonitorReviewMessage('이 브라우저에 신규 후보 감리 초안을 저장했습니다.');
+  };
+
+  const updateSourceReviewDraft = <K extends keyof SourceReviewDraft>(sourceId: string, field: K, value: SourceReviewDraft[K]) => {
+    const current = sourceReviewDrafts[sourceId] ?? makeEmptySourceReviewDraft();
+    const nextDraft = {...current, [field]: value, updatedAt: new Date().toISOString()};
+    const next = {...sourceReviewDrafts, [sourceId]: nextDraft};
+    setSourceReviewDrafts(next);
+    persistSourceReviewDrafts(next);
+    setSourceReviewMessage('이 브라우저에 과학 출처 검토 초안을 저장했습니다.');
+  };
+
+  const copySourceReviewDrafts = async () => {
+    const lines = [
+      '일반 GABA 과학 출처 검토 초안',
+      `완료 ${sourceReviewCompleted}/${RESEARCH_SOURCES.length}건`,
+      '',
+      ...RESEARCH_SOURCES.map(source => {
+        const draft = sourceReviewDrafts[source.id] ?? makeEmptySourceReviewDraft();
+        const checks = [
+          ['원문·범위', draft.scopeChecked],
+          ['한계·금지 범위', draft.limitationChecked],
+          ['공개 문장', draft.sentenceChecked],
+        ].map(([label, value]) => `- ${label}: ${value ? '확인' : '미확인'}`).join('\n');
+        return [
+          `${source.id} · ${source.topic}`,
+          `검토자: ${draft.reviewer.trim() || '미입력'} · 역할: ${draft.role}`,
+          `결정 초안: ${draft.decision === 'USE_GENERAL' ? '일반 교육 사용 검토' : draft.decision === 'REVISE' ? '문장 수정 필요' : draft.decision === 'HOLD' ? '보류' : '아직 결정하지 않음'}`,
+          checks,
+          `메모: ${draft.notes.trim() || '미입력'}`,
+          '',
+        ].join('\n');
+      }),
+      '※ 브라우저 로컬 초안이며 출처 등록부의 HUMAN_REVIEWED 상태나 공개 승인을 변경하지 않습니다.',
+    ];
+    try {
+      await copyText(lines.join('\n'));
+      setSourceReviewMessage('과학 출처 검토 초안을 복사했습니다.');
+    } catch {
+      setSourceReviewMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
   };
 
   const copyMonitorReviewDraft = async () => {
@@ -806,6 +916,7 @@ export default function App() {
       scope: {videoDb: GABA_VIDEO_DB.length, monitorCandidates: monitorCandidates.length, tfRoles: TF_ROLES.length},
       videoReviewDrafts,
       monitorReviewDrafts,
+      sourceReviewDrafts,
       tfAssignments,
       tfMeetingDraft,
       boundary: '브라우저 로컬 감리·회의 초안의 팀 전달용 사본이며 공식 DB 상태·공개 승인·과학/의학·권리 판정을 의미하지 않습니다.',
@@ -825,19 +936,23 @@ export default function App() {
       }
       const importedVideoDrafts = normaliseReviewDrafts(parsed.videoReviewDrafts);
       const importedMonitorDrafts = normaliseReviewDrafts(parsed.monitorReviewDrafts);
+      const importedSourceDrafts = normaliseSourceReviewDrafts(parsed.sourceReviewDrafts);
       const importedAssignments = normaliseTfAssignments(parsed.tfAssignments);
       const nextVideoDrafts = {...videoReviewDrafts, ...importedVideoDrafts};
       const nextMonitorDrafts = {...monitorReviewDrafts, ...importedMonitorDrafts};
+      const nextSourceDrafts = {...sourceReviewDrafts, ...importedSourceDrafts};
       const nextAssignments = {...tfAssignments, ...importedAssignments};
       const nextMeetingDraft = typeof parsed.tfMeetingDraft === 'string' ? parsed.tfMeetingDraft : tfMeetingDraft;
       setVideoReviewDrafts(nextVideoDrafts);
       setMonitorReviewDrafts(nextMonitorDrafts);
+      setSourceReviewDrafts(nextSourceDrafts);
       setTfAssignments(nextAssignments);
       setTfMeetingDraft(nextMeetingDraft);
       persistVideoReviewDrafts(nextVideoDrafts);
       persistMonitorReviewDrafts(nextMonitorDrafts);
+      persistSourceReviewDrafts(nextSourceDrafts);
       persistTfDraft(nextAssignments, nextMeetingDraft);
-      setReviewHandoffMessage(`감리 패킷을 병합했습니다. 영상 ${Object.keys(importedVideoDrafts).length}건 · 신규 후보 ${Object.keys(importedMonitorDrafts).length}건`);
+      setReviewHandoffMessage(`감리 패킷을 병합했습니다. 영상 ${Object.keys(importedVideoDrafts).length}건 · 신규 후보 ${Object.keys(importedMonitorDrafts).length}건 · 출처 ${Object.keys(importedSourceDrafts).length}건`);
     } catch {
       setReviewHandoffMessage('불러오지 못했습니다. 이 사이트에서 저장한 감리 패킷 JSON인지 확인해 주세요.');
     }
@@ -1486,6 +1601,30 @@ export default function App() {
                   </article>)}
                 </div>
               </details>
+              {presentationMode ? <details className="source-review-draft">
+                <summary><span>과학 출처 사람 검토 초안</span><strong>{sourceReviewCompleted}/{RESEARCH_SOURCES.length} 완료 <span aria-hidden="true">＋</span></strong></summary>
+                <div className="source-review-draft__body">
+                  <p className="source-review-draft__note">SCIENCE·MEDICAL 담당자가 원문 범위·한계·공개 문장을 확인하는 브라우저 로컬 초안입니다. 입력만으로 `HUMAN_REVIEWED`나 공개 승인이 되지 않습니다.</p>
+                  <div className="source-review-list">
+                    {RESEARCH_SOURCES.map(source => {
+                      const draft = sourceReviewDrafts[source.id] ?? makeEmptySourceReviewDraft();
+                      const completed = draft.scopeChecked && draft.limitationChecked && draft.sentenceChecked;
+                      return <article key={source.id} className={completed ? 'is-complete' : ''}>
+                        <div className="source-review-list__heading"><strong>{source.id} · {source.topic}</strong><small>{completed ? '3/3 확인' : '검토 필요'}</small></div>
+                        <p>{source.title}</p>
+                        <div className="source-review-draft__fields">
+                          <label>검토자<input data-source-review-field={`${source.id}-reviewer`} type="text" value={draft.reviewer} onChange={event => updateSourceReviewDraft(source.id, 'reviewer', event.currentTarget.value)} placeholder="예: SCIENCE 담당" /></label>
+                          <label>역할<select data-source-review-field={`${source.id}-role`} value={draft.role} onChange={event => updateSourceReviewDraft(source.id, 'role', event.currentTarget.value as SourceReviewDraft['role'])}><option value="SCIENCE">SCIENCE</option><option value="MEDICAL">MEDICAL</option></select></label>
+                          <label>결정 초안<select data-source-review-field={`${source.id}-decision`} value={draft.decision} onChange={event => updateSourceReviewDraft(source.id, 'decision', event.currentTarget.value as SourceReviewDecision)}><option value="UNDECIDED">아직 결정하지 않음</option><option value="USE_GENERAL">일반 교육 사용 검토</option><option value="REVISE">문장 수정 필요</option><option value="HOLD">보류</option></select></label>
+                        </div>
+                        <fieldset className="source-review-draft__checks"><legend>확인 체크</legend><label><input type="checkbox" data-source-review-check={`${source.id}-scope`} checked={draft.scopeChecked} onClick={() => updateSourceReviewDraft(source.id, 'scopeChecked', !draft.scopeChecked)} onChange={() => undefined} /> 원문·연구 범위</label><label><input type="checkbox" data-source-review-check={`${source.id}-limitation`} checked={draft.limitationChecked} onClick={() => updateSourceReviewDraft(source.id, 'limitationChecked', !draft.limitationChecked)} onChange={() => undefined} /> 한계·금지 범위</label><label><input type="checkbox" data-source-review-check={`${source.id}-sentence`} checked={draft.sentenceChecked} onClick={() => updateSourceReviewDraft(source.id, 'sentenceChecked', !draft.sentenceChecked)} onChange={() => undefined} /> 공개 문장</label></fieldset>
+                        <label className="source-review-draft__notes">검토 메모<textarea data-source-review-field={`${source.id}-notes`} value={draft.notes} onChange={event => updateSourceReviewDraft(source.id, 'notes', event.currentTarget.value)} placeholder="원문 확인 범위, 문장 수정, 이견을 기록하세요." rows={2} /></label>
+                      </article>;
+                    })}
+                  </div>
+                  <div className="source-review-draft__actions"><button type="button" data-source-review-copy onClick={copySourceReviewDrafts}>출처 검토 초안 전체 복사</button><span aria-live="polite">{sourceReviewMessage}</span></div>
+                </div>
+              </details> : null}
             </> : null}
             {openPanel === 'video' ? <>
               <p>{presentationMode ? '발표자용 영상 DB 감리 화면입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 확인하고, 영상별 권위 수준과 공개 여부를 따로 결정합니다.' : '오늘 공유하신 국내 YouTube Shorts를 원문 확인용으로 소개합니다. 영상의 권위와 주장은 감리 상태를 따로 확인해 주세요.'}</p>

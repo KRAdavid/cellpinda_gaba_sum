@@ -43,6 +43,8 @@
 
 사업자는 [`GENERAL_GABA_OPERATOR_GUIDE.md`](GENERAL_GABA_OPERATOR_GUIDE.md)의 발표 링크와 8장 순서를 사용한다. 영상 요약 섹션과 영상 DB에서 후보를 찾을 때는 상태·검색·감리 필드를 먼저 확인하고, `PUBLISH_GENERAL`이 아닌 영상은 승인 영상처럼 소개하지 않는다. TF 운영 보드의 `팀 업무 배정 초안 만들기`는 주 담당·백업·첫 회의 일시를 회의용으로 복사하는 보조 도구이며, 브라우저 로컬 초안일 뿐 공식 역할 배정이나 공개 승인 기록이 아니다.
 
+일반 연구 출처는 연구 패널 안의 `과학 출처 사람 검토 초안`에서 SCIENCE·MEDICAL 담당자가 출처별 원문 범위·한계·공개 문장 확인과 메모를 남긴다. 이 초안은 브라우저 로컬 저장 및 감리 패킷 전달용이며 `HUMAN_REVIEWED`, 등록부 상태, 공개 승인을 자동으로 만들지 않는다.
+
 TF 회의는 [`GABA_EDUCATION_KICKOFF.md`](GABA_EDUCATION_KICKOFF.md), 반복 논의는 [`TF_DISCUSSION_BOARD.md`](TF_DISCUSSION_BOARD.md), 실제 사용성은 [`GENERAL_GABA_FIELD_SESSION.md`](GENERAL_GABA_FIELD_SESSION.md)에 기록한다.
 
 ## 릴리스 검증

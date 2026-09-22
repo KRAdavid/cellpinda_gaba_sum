@@ -79,6 +79,9 @@ try {
   await wait(900);
   await evaluate('localStorage.removeItem("cellpinda-gaba-video-review-draft-v1")');
   await evaluate('localStorage.removeItem("cellpinda-gaba-monitor-review-draft-v1")');
+  await evaluate('localStorage.removeItem("cellpinda-gaba-source-review-draft-v1")');
+  await send('Page.reload');
+  await wait(900);
 
   const initial = await evaluate('(() => { const scenes=[...document.querySelectorAll(".story-reader-scene")]; return {title:document.title,width:innerWidth,height:innerHeight,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,scenes:scenes.length,legacyCards:document.querySelectorAll(".story-card").length,progress:(document.querySelector(".story-reader-heading__count strong")?.innerText||"")+" / 08",storyTop:document.querySelector("#story")?.getBoundingClientRect().top||0,heading:!!document.querySelector(".story-reader-heading"),body:document.body.innerText}; })()');
   assert('page identity is general GABA education', initial.title.includes('일반 GABA 교육'));
@@ -181,6 +184,24 @@ try {
   await wait(180);
   const fullBriefCopyState = await evaluate('document.querySelector(".presenter-copy-message")?.innerText||""');
   assert('presenter can copy the complete product-free education flow', fullBriefCopyState.includes('전체 교육 흐름 설명문을 복사했습니다.') || fullBriefCopyState.includes('복사에 실패했습니다'), fullBriefCopyState);
+  await send('Page.navigate', {url: routeUrl({mode: 'presenter', card: '7'})});
+  await waitForPresentation('07 / 08');
+  await evaluate('document.querySelector(".story-card--research .card-link")?.click()');
+  await waitForText('#info-panel-title', '일반 GABA 연구를 읽는 방법');
+  await evaluate('document.querySelector(".source-review-draft")?.setAttribute("open", "")');
+  const sourceReviewPanel = await evaluate('({open:!!document.querySelector(".source-review-draft[open]"),sources:document.querySelectorAll(".source-review-list article").length,checks:document.querySelectorAll(".source-review-draft__checks input[type=checkbox]").length,progress:document.querySelector(".source-review-draft summary")?.innerText||"",boundary:document.querySelector(".source-review-draft__note")?.innerText||"",copy:!!document.querySelector("[data-source-review-copy]")})');
+  assert('presenter research panel exposes five source review drafts with human gate', sourceReviewPanel.open && sourceReviewPanel.sources === 5 && sourceReviewPanel.checks === 15 && sourceReviewPanel.progress.includes('0/5') && sourceReviewPanel.boundary.includes('HUMAN_REVIEWED') && sourceReviewPanel.copy, JSON.stringify(sourceReviewPanel));
+  await evaluate('(() => { const setValue=(selector,value) => { const field=document.querySelector(selector); const prototype=field?.tagName === "TEXTAREA" ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype; const setter=Object.getOwnPropertyDescriptor(prototype,"value")?.set; setter?.call(field,value); field?.dispatchEvent(new Event("input",{bubbles:true})); field?.dispatchEvent(new Event("change",{bubbles:true})); }; setValue("[data-source-review-field=SRC-01-reviewer]","SCIENCE 담당"); setValue("[data-source-review-field=SRC-01-notes]","원문 범위와 공개 문장 확인 필요"); document.querySelector("[data-source-review-check=SRC-01-scope]")?.click(); document.querySelector("[data-source-review-check=SRC-01-limitation]")?.click(); document.querySelector("[data-source-review-check=SRC-01-sentence]")?.click(); return true; })()');
+  await wait(180);
+  const savedSourceDraft = await evaluate('(() => { const raw=localStorage.getItem("cellpinda-gaba-source-review-draft-v1"); const saved=raw ? JSON.parse(raw) : {}; const draft=saved["SRC-01"]||{}; return {reviewer:draft.reviewer||"",notes:draft.notes||"",scope:!!draft.scopeChecked,limitation:!!draft.limitationChecked,sentence:!!draft.sentenceChecked,decision:draft.decision||"",progress:document.querySelector(".source-review-draft summary")?.innerText||""}; })()');
+  assert('source review draft persists locally without changing the official register', savedSourceDraft.reviewer === 'SCIENCE 담당' && savedSourceDraft.notes.includes('공개 문장') && savedSourceDraft.scope && savedSourceDraft.limitation && savedSourceDraft.sentence && savedSourceDraft.decision === 'UNDECIDED' && savedSourceDraft.progress.includes('1/5'), JSON.stringify(savedSourceDraft));
+  await evaluate('document.querySelector("[data-source-review-copy]")?.click()');
+  await wait(180);
+  const sourceReviewCopyState = await evaluate('document.querySelector(".source-review-draft__actions")?.innerText||""');
+  assert('source review draft copy is wired', sourceReviewCopyState.includes('과학 출처 검토 초안을 복사했습니다.') || sourceReviewCopyState.includes('복사에 실패했습니다'), sourceReviewCopyState);
+  await press('Escape', 'Escape', 27);
+  await send('Page.navigate', {url: routeUrl({mode: 'presenter', card: '1'})});
+  await waitForPresentation('01 / 08');
   await evaluate('document.querySelector(".story-video-db-button")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
   const presenterDb = await evaluate('({items:document.querySelectorAll(".video-db-item").length,hasHold:document.querySelector(".video-db-list")?.innerText.includes("검토 보류")||false,detail:document.querySelector(".video-db-detail")?.innerText||"",body:document.querySelector(".video-db-list")?.innerText||"",panel:document.querySelector(".info-panel")?.innerText||"",search:!!document.querySelector(".video-db-search input"),filters:document.querySelectorAll(".video-db-filters button").length})');

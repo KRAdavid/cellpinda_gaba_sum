@@ -28,6 +28,8 @@ const required = [
   ['research citation PMID', 'PMID 33041752'],
   ['research neutral summary', '스트레스와 수면 관련 지표'],
   ['research source disclosure', '근거 출처 5건'],
+  ['presenter source review draft', '과학 출처 사람 검토 초안'],
+  ['presenter source review copy', '출처 검토 초안 전체 복사'],
   ['general physiology source', 'Synaptic inhibition and γ-aminobutyric acid'],
   ['GABA tone source', 'GABA tone regulation and its cognitive functions'],
   ['stress human trial source', 'Oral intake of γ-aminobutyric acid affects mood'],
