@@ -46,6 +46,13 @@ type VideoReviewDrafts = Record<string, VideoReviewDraft>;
 const TF_ASSIGNMENT_STORAGE_KEY = 'cellpinda-gaba-tf-assignment-draft-v1';
 const VIDEO_REVIEW_STORAGE_KEY = 'cellpinda-gaba-video-review-draft-v1';
 const VIDEO_REVIEW_ROLES = ['VIDEO', 'SCIENCE', 'MEDICAL', 'RIGHTS', 'PM'] as const;
+const VIDEO_REVIEW_CHECKS = [
+  {key: 'sourceChecked', label: '원문·영상'},
+  {key: 'transcriptChecked', label: '자막·대본'},
+  {key: 'speakerChecked', label: '화자·자격'},
+  {key: 'rightsChecked', label: '권리·사용'},
+  {key: 'claimScopeChecked', label: '주장 범위·연구'},
+] as const;
 const VIDEO_REVIEW_DECISIONS: Array<{id: VideoReviewDecision; label: string}> = [
   {id: 'UNDECIDED', label: '아직 결정하지 않음'},
   {id: 'HOLD', label: '보류'},
@@ -315,6 +322,7 @@ export default function App() {
   const selectedVideoIndex = selectedVideo ? panelVideos.findIndex(video => video.id === selectedVideo.id) : -1;
   const nextVideo = selectedVideoIndex >= 0 ? panelVideos[selectedVideoIndex + 1] ?? null : null;
   const selectedVideoReviewDraft = selectedVideo ? videoReviewDrafts[selectedVideo.id] ?? makeEmptyVideoReviewDraft() : null;
+  const selectedReviewCheckCount = selectedVideoReviewDraft ? VIDEO_REVIEW_CHECKS.filter(check => selectedVideoReviewDraft[check.key]).length : 0;
 
   useEffect(() => setPreviewImageError(false), [panelVideoId]);
 
@@ -1241,9 +1249,15 @@ export default function App() {
                 <p className="info-panel__status">{presentationMode ? selectedVideo.statusReason : '이 영상은 일반 GABA 교육에 활용할 수 있는지 확인 중인 검토 후보입니다.'}</p>
                 <p className="video-db-detail__meta">확인일 {selectedVideo.checkedAt} · 채널 {selectedVideo.channel} · 화자 {selectedVideo.speaker}{selectedVideo.sourceChannelUrl ? <> · <a href={selectedVideo.sourceChannelUrl} target="_blank" rel="noopener noreferrer">채널 원문 보기 ↗</a></> : null}{selectedVideo.authorityEvidenceUrl ? <> · <a href={selectedVideo.authorityEvidenceUrl} target="_blank" rel="noopener noreferrer">화자·소속 확인 출처 ↗</a></> : null}{selectedVideo.researchEvidenceUrl ? <> · <a href={selectedVideo.researchEvidenceUrl} target="_blank" rel="noopener noreferrer">관련 연구 기록 ↗</a></> : null}</p>
                 {presentationMode && selectedVideoReviewDraft ? <details className="video-review-draft">
-                  <summary>이 영상 감리 기록 초안 <span aria-hidden="true">＋</span></summary>
+                  <summary><span>이 영상 감리 기록 초안</span><strong>{selectedReviewCheckCount}/5 확인 <span aria-hidden="true">＋</span></strong></summary>
                   <div className="video-review-draft__body">
                     <p className="video-review-draft__note">원문·자막·화자·권리·주장 범위를 팀원이 확인하며 남기는 브라우저 로컬 초안입니다. 입력만으로 공개 승인이나 DB 상태는 바뀌지 않습니다.</p>
+                    <ol className="video-review-progress" aria-label="영상별 감리 진행 상태">
+                      {VIDEO_REVIEW_CHECKS.map(check => {
+                        const checked = selectedVideoReviewDraft[check.key];
+                        return <li key={check.key} className={checked ? 'is-checked' : ''}><span aria-hidden="true">{checked ? '✓' : '·'}</span><strong>{check.label}</strong><small>{checked ? '확인됨' : '확인 필요'}</small></li>;
+                      })}
+                    </ol>
                     <div className="video-review-draft__fields">
                       <label>담당자<input data-review-field="reviewer" type="text" value={selectedVideoReviewDraft.reviewer} onChange={event => updateVideoReviewDraft('reviewer', event.currentTarget.value)} placeholder="예: 홍길동" /></label>
                       <label>역할<select data-review-field="role" value={selectedVideoReviewDraft.role} onChange={event => updateVideoReviewDraft('role', event.currentTarget.value)}>{VIDEO_REVIEW_ROLES.map(role => <option key={role} value={role}>{role}</option>)}</select></label>
