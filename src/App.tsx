@@ -617,12 +617,12 @@ export default function App() {
       <section id="story" ref={presentationRef} className={`story${presentationMode ? ' story--presentation' : ''}`} role={presentationMode ? 'dialog' : undefined} aria-labelledby="story-title" aria-modal={presentationMode ? 'true' : undefined} aria-keyshortcuts={presentationMode ? 'ArrowLeft ArrowRight PageUp PageDown Home End Escape' : undefined}>
         <div className="story-heading">
           <div>
-            <p className="eyebrow">1 page · 1 message</p>
-            <h2 id="story-title">GABA를<br />나누어 이해하기</h2>
+            <p className="eyebrow">장면마다 한 메시지</p>
+            <h2 id="story-title">GABA를<br />8개의 장면으로</h2>
           </div>
           <p>{presentationMode ? <>← → 또는 PageUp/PageDown으로 넘기고<br />Esc로 발표 모드를 종료하세요.</> : <>모바일에서는 위아래로 넘겨 보세요.<br />일상·기능·연구·영상은 각각 다른 정보입니다.</>}</p>
         </div>
-        <nav ref={phaseNavRef} className="story-sequence" aria-label="카드 흐름 단계">
+        <nav ref={phaseNavRef} className="story-sequence" aria-label="장면 흐름 단계">
           {STORY_PHASES.map((phase, index) => <span key={phase.id} data-phase={phase.id} className={phase.id === activePhase.id ? 'is-active' : ''} aria-current={phase.id === activePhase.id ? 'step' : undefined}>
             {phase.label}{index < STORY_PHASES.length - 1 ? <i aria-hidden="true">→</i> : null}
           </span>)}
@@ -632,8 +632,8 @@ export default function App() {
           <div>
             {presentationMode ? <button type="button" className="story-start-button story-video-db-button" onClick={event => openVideoPanel(event.currentTarget)}>영상 DB</button> : null}
             {presentationMode ? <button type="button" className="story-start-button story-ops-board-button" onClick={event => openInfoPanel(active, 'ops', event.currentTarget)}>운영 보드</button> : null}
-            <button type="button" className="story-nav-button story-prev-button" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="이전 카드"><span aria-hidden="true">←</span><span className="nav-label">이전 카드</span></button>
-            <button type="button" className="story-nav-button story-next-button" onClick={() => goTo(active + 1)} disabled={active === slides.length - 1} aria-label="다음 카드"><span className="nav-label">다음 카드</span><span aria-hidden="true">→</span></button>
+            <button type="button" className="story-nav-button story-prev-button" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="이전 장면"><span aria-hidden="true">←</span><span className="nav-label">이전 장면</span></button>
+            <button type="button" className="story-nav-button story-next-button" onClick={() => goTo(active + 1)} disabled={active === slides.length - 1} aria-label="다음 장면"><span className="nav-label">다음 장면</span><span aria-hidden="true">→</span></button>
             {presentationMode ? <>
               <button type="button" className="story-share-button" onClick={shareCardLink}>현재 카드 링크 공유</button>
               <button type="button" className="story-presentation-toggle" onClick={exitPresentation}>발표 모드 종료</button>
@@ -652,7 +652,7 @@ export default function App() {
           <details className="presenter-questions"><summary>자주 묻는 질문에 답하기</summary><div className="presenter-questions__list">{PRESENTER_QUESTIONS.map(question => <div key={question.label}><div className="presenter-questions__heading"><strong>{question.label}</strong><button type="button" className="presenter-answer-copy" onClick={() => copyPresenterAnswer(question.label, question.answer)}>답변 복사</button></div><p>{question.answer}</p></div>)}</div></details>
           <p className="presenter-copy-message" aria-live="polite">{presenterCopyMessage}</p>
         </> : null}
-        <div className="story-rail" ref={railRef} onScroll={syncActiveFromRail} tabIndex={0} role="region" aria-roledescription="세로 피드" aria-label="GABA 소개 카드 흐름">
+        <div className="story-rail" ref={railRef} onScroll={syncActiveFromRail} tabIndex={0} role="region" aria-roledescription="세로 피드" aria-label="GABA 소개 장면 흐름">
           {slides.map((slide, index) => <article
             key={slide.id}
             id={`story-card-${slide.id}`}
@@ -681,10 +681,10 @@ export default function App() {
         <div className="story-dots" aria-hidden="true">{slides.map((slide, index) => <span key={slide.id} className={index === active ? 'active' : ''} />)}</div>
         {!presentationMode ? <div className="reel-next-bar" aria-live="polite">
           <div className="reel-next-bar__copy">
-            <span>{active === 0 ? '아래로 넘겨 계속' : nextSlide ? '다음 메시지' : '다음 섹션'}</span>
+            <span>{active === 0 ? '아래로 넘겨 계속' : nextSlide ? '다음 장면' : '다음 섹션'}</span>
             <strong>{nextSlide ? nextSlide.label : '권위 영상 요약'}</strong>
           </div>
-          {nextSlide ? <button type="button" className="reel-next-button" onClick={() => goTo(active + 1)} aria-label={`다음 메시지 ${nextSlide.label} 보기`}>다음 메시지 <span aria-hidden="true">↓</span></button> : <a className="reel-next-link" href="#video-showcase">영상 요약으로 이어가기 <span aria-hidden="true">↓</span></a>}
+          {nextSlide ? <button type="button" className="reel-next-button" onClick={() => goTo(active + 1)} aria-label={`다음 장면 ${nextSlide.label} 보기`}>다음 장면 <span aria-hidden="true">↓</span></button> : <a className="reel-next-link" href="#video-showcase">영상 요약으로 이어가기 <span aria-hidden="true">↓</span></a>}
         </div> : null}
         {openPanel ? <div className="info-layer" role="presentation" onMouseDown={event => {if (event.target === event.currentTarget) closePanel();}}>
           <aside className="info-panel" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title">
