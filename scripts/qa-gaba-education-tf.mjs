@@ -24,6 +24,8 @@ const assignedRoles = coreRoles.filter(assigned);
 const firstMeetingDate = kickoff.match(/^(?:회의 날짜·시간|첫 회의 날짜·시간):[^\r\n]*$/m)?.[0]?.replace(/^[^:]+:\s*/, '').trim() ?? '';
 const firstMeetingFilled = Boolean(firstMeetingDate);
 const sourceRows = sources.split('\n').filter(line => /^\| SRC-\d+ \|/.test(line));
+const sourceUrls = sourceRows.map(line => line.match(/\]\((https?:[^)]+)\)/)?.[1]).filter(Boolean);
+const duplicateSourceUrls = sourceUrls.filter((url, index) => sourceUrls.indexOf(url) !== index);
 const videoRows = videos.split('\n').filter(line => /^\| (?:AUTH|VID|SHORT)-\d+ \|/.test(line));
 const sourcePrechecked = sourceRows.filter(line => line.includes('| AI_PRECHECKED |')).length;
 const sourceHumanReviewed = sourceRows.filter(line => line.includes('| HUMAN_REVIEWED |')).length;
@@ -48,6 +50,7 @@ const strict = process.argv.includes('--strict');
 const ready = assignedRoles.length === coreRoles.length
   && firstMeetingFilled
   && sourceHumanReviewed > 0
+  && duplicateSourceUrls.length === 0
   && registeredShorts === shortIds.length
   && videoRulesReady
   && monitorReady
@@ -66,6 +69,7 @@ console.log('- AI-OPS 실행 권한: 활성');
 console.log(`- 첫 회의 입력: ${firstMeetingFilled ? '입력됨' : '필요'}`);
 console.log(`- 과학 출처 AI 사전 확인: ${sourcePrechecked}/${sourceRows.length}`);
 console.log(`- 과학 출처 사람 검토: ${sourceHumanReviewed}/${sourceRows.length}`);
+console.log(`- 과학 출처 원문 중복: ${duplicateSourceUrls.length ? duplicateSourceUrls.join(', ') : '없음'}`);
 console.log('- 국내 공개 승인 영상 점검: ' + domesticPublishReady + '/' + domesticVideoRows.length);
 console.log(`- 제품·후기·판매 제외 범위: ${scopeReady ? '확인' : 'HOLD'}`);
 console.log(`- 현재 판정: ${ready ? '1차 제작 착수 가능' : '킥오프·출처·영상 입력 필요'}`);
@@ -73,6 +77,7 @@ console.log(`- 현재 판정: ${ready ? '1차 제작 착수 가능' : '킥오프
 if (!assignedRoles.length || assignedRoles.length < coreRoles.length) console.log('- 다음 조치: docs/GABA_EDUCATION_KICKOFF.md에 핵심 역할·백업을 입력');
 if (!firstMeetingFilled) console.log('- 다음 조치: 첫 회의 날짜·시간과 첫 검토 자료를 입력');
 if (!sourceHumanReviewed) console.log('- 다음 조치: AI_PRECHECKED 출처를 지정된 과학·의료 담당자가 HUMAN_REVIEWED로 확인');
+if (duplicateSourceUrls.length) console.log('- 다음 조치: 동일 원문을 여러 출처처럼 세지 않도록 등록부를 정리');
 if (!videoReady) console.log('- 다음 조치: 영상별 원문·자막·권리·과학 감리를 완료하고 승인 판정을 기록');
 if (registeredShorts < shortIds.length) console.log('- 다음 조치: 제공 쇼츠 8건을 docs/GABA_VIDEO_DB.md에 등록');
 if (!videoRulesReady) console.log('- 다음 조치: 영상별 권위·근거·상업성·권리 감리 규칙을 확인');

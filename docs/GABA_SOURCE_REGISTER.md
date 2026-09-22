@@ -9,7 +9,7 @@
 | SRC-01 | GABA 일반 정의 | [Synaptic inhibition and GABA · PubMed 23574805](https://pubmed.ncbi.nlm.nih.gov/23574805/) | 일반 생리학 리뷰 | GABA를 억제성 시냅스의 주요 신경전달물질로 설명 | 일반 생리와 소비자용 비유를 구분; 경구 섭취·제품 효능으로 확장하지 않음 | AI-OPS 사전 확인 · 사람 검토 미배정 | AI_PRECHECKED |
 | SRC-02 | 신경 신호 조절 | [GABA tone regulation · PubMed 37495761](https://pubmed.ncbi.nlm.nih.gov/37495761/) | 신경과학 리뷰 | phasic inhibition과 tonic GABA current가 신경활동을 조절하는 기전 | 기전 설명을 식품 섭취 결과나 제품 효과로 연결하지 않음 | AI-OPS 사전 확인 · 사람 검토 미배정 | AI_PRECHECKED |
 | SRC-03 | 수면과 GABA 일반 연구 | [Oral GABA, stress and sleep · PubMed 33041752](https://pubmed.ncbi.nlm.nih.gov/33041752/) | 체계적 문헌고찰 | 자연 유래·발효 GABA를 살핀 14개 위약대조 인체시험의 범위와 한계 | 스트레스 근거 제한적, 수면 근거 매우 제한적; 특정 제품 효능 아님 | AI-OPS 사전 확인 · 사람 검토 미배정 | AI_PRECHECKED |
-| SRC-04 | 스트레스와 GABA 일반 연구 | [Oral GABA, stress and sleep · PubMed 33041752](https://pubmed.ncbi.nlm.nih.gov/33041752/) | 체계적 문헌고찰 | 경구 GABA의 스트레스 관련 인체 연구 결과를 제한적으로 검토 | 개인별 결과·안전성·제품 효능으로 확정하지 않음 | AI-OPS 사전 확인 · 사람 검토 미배정 | AI_PRECHECKED |
+| SRC-04 | 스트레스와 GABA 일반 연구 | [Oral intake of GABA during mental stress · PubMed 22203366](https://pubmed.ncbi.nlm.nih.gov/22203366/) | 무작위·단일맹검·위약대조 교차 인체시험 | 정신적 과제를 이용한 스트레스 조건에서 경구 GABA의 기분·중추신경계 활동을 살핌 | 단일 시험의 조건부 결과이며 개인별 효과·안전성·제품 효능으로 확정하지 않음 | AI-OPS 사전 확인 · 사람 검토 미배정 | AI_PRECHECKED |
 | SRC-05 | 수면의 생리와 회복 | [About Sleep · NICHD](https://www.nichd.nih.gov/health/topics/sleep/conditioninfo) | NIH 공공기관 건강정보 | 수면이 학습·기억·대사·면역과 연결되고 수면 중 뇌가 활동함을 설명 | 수면 생리 자료이며 GABA 섭취 효과를 입증하지 않음 | AI-OPS 사전 확인 · 사람 검토 미배정 | AI_PRECHECKED |
 
 ## 사용 규칙

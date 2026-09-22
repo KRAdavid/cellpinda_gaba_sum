@@ -68,11 +68,11 @@ const RESEARCH_SOURCES = [
   {
     id: 'SRC-04',
     topic: '스트레스와 GABA 일반 연구',
-    title: 'Effects of Oral Gamma-Aminobutyric Acid (GABA) Administration on Stress and Sleep in Humans',
-    meta: 'Hepsomali et al. · Front Neurosci. 2020 · PMID 33041752',
-    summary: '경구 GABA가 스트레스 관련 지표에 미치는 영향을 살핀 인체시험을 조건별로 검토한 문헌고찰입니다.',
-    boundary: '일반 GABA 연구의 결과를 개인의 스트레스 상태나 특정 제품의 효과로 확정하지 않습니다.',
-    url: RESEARCH_URL,
+    title: 'Oral intake of γ-aminobutyric acid affects mood and activities of central nervous system during stressed condition induced by mental tasks',
+    meta: 'Yoto et al. · Amino Acids. 2012 · PMID 22203366',
+    summary: '정신적 과제를 이용한 스트레스 조건에서 경구 GABA를 살핀 무작위·위약대조 교차 연구입니다.',
+    boundary: '단일 인체시험의 조건부 결과이며 개인의 스트레스·기분이나 특정 제품의 효과로 확정하지 않습니다.',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/22203366/',
   },
   {
     id: 'SRC-05',
@@ -145,7 +145,7 @@ function makeSlides(): Slide[] {
     {
       id: 'hook',
       label: '01 · 쉽게 흥분한 날',
-      title: '화가 많아 쉽게 흥분하고, 실수한 적이 있다면 알아둘 성분이 있습니다.',
+      title: '쉽게 흥분하고 실수가 이어지는 날, 알아둘 성분이 있습니다.',
       body: '그날의 감정이나 실수를 하나의 원인으로 단정하지 않고, 몸과 뇌가 쉬는 시간부터 살펴봅니다.',
       tone: 'deep',
       visual: STORY_VISUALS.overload,
