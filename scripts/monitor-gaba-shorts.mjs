@@ -304,7 +304,9 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
 
 const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, linkHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
-  const ranked = entries.map(entry => screenCandidate(`${entry.title} ${entry.description}`));
+  const priorityRank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
+  const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`)}))
+    .sort((left, right) => priorityRank(left.priority) - priorityRank(right.priority) || left.id.localeCompare(right.id));
   const scienceMedicalPriority = ranked.filter(item => item.priority !== 'VIDEO 우선').length;
   const educationTf = fs.existsSync(educationTfPath) ? fs.readFileSync(educationTfPath, 'utf8') : '';
   const sourceRegister = fs.existsSync(sourceRegisterPath) ? fs.readFileSync(sourceRegisterPath, 'utf8') : '';
@@ -328,6 +330,13 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     pendingReview: entries.length,
     scienceMedicalPriority,
     videoPriority: entries.length - scienceMedicalPriority,
+    pendingQueue: ranked.slice(0, 5).map(entry => ({
+      id: entry.id,
+      title: entry.title,
+      channel: entry.channel,
+      priority: entry.priority,
+      signals: entry.signals,
+    })),
     autoPublish: 0,
     humanRoleAssigned,
     humanRoleTotal: coreRoles.length,

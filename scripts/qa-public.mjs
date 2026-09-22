@@ -72,6 +72,7 @@ const required = [
   ['registered YouTube caption warnings', '자막 경고'],
   ['registered YouTube caption body health', '등록 YouTube 자막 본문'],
   ['registered YouTube caption body warnings', '본문 경고'],
+  ['daily review queue', '오늘 먼저 검토할 후보'],
   ['daily monitoring source link', '감리 우선순위 보드 원문'],
   ['presenter TF operations board', 'TF 운영 보드'],
   ['presenter TF next action', '다음 행동'],

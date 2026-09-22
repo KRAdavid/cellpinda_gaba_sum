@@ -4,10 +4,60 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredChannels": 8,
   "discoveryQueries": 4,
   "totalDiscoveryQueries": 4,
-  "newCandidates": 0,
-  "pendingReview": 75,
-  "scienceMedicalPriority": 46,
+  "newCandidates": 2,
+  "pendingReview": 77,
+  "scienceMedicalPriority": 48,
   "videoPriority": 29,
+  "pendingQueue": [
+    {
+      "id": "PENDING-20260922-_XGO7xk24jo",
+      "title": "헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
+      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현"
+      ]
+    },
+    {
+      "id": "PENDING-20260922--azWbivGh5Y",
+      "title": "잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠",
+      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호"
+      ]
+    },
+    {
+      "id": "PENDING-20260922-6QgcctlfBZU",
+      "title": "Supplement GABA to reduce stress! #shorts",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호"
+      ]
+    },
+    {
+      "id": "PENDING-20260922-7h0wzAM7Frw",
+      "title": "'몽진환'은 어떤 제품일까요 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현"
+      ]
+    },
+    {
+      "id": "PENDING-20260922-8GK06KKKUeA",
+      "title": "스틸녹스 장기 복용 시 뇌에 생기는 변화, GABA 수용체와 수면 구조 \\| 대장동 불면증 한의원",
+      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현"
+      ]
+    }
+  ],
   "autoPublish": 0,
   "humanRoleAssigned": 0,
   "humanRoleTotal": 7,
