@@ -6,6 +6,14 @@ const baseUrl = process.env.QA_URL ?? 'http://127.0.0.1:55124/';
 const cdpUrl = process.env.CDP_URL ?? 'http://127.0.0.1:9223';
 const outputDir = process.env.QA_SCREENSHOT_DIR ?? path.join(process.cwd(), 'qa-screenshots');
 fs.mkdirSync(outputDir, {recursive: true});
+const routeUrl = (params, hash = '') => {
+  const url = new URL(baseUrl);
+  Object.entries(params).forEach(([key, value]) => url.searchParams.set(key, value));
+  url.hash = hash;
+  return url.toString();
+};
+const presenterUrl = routeUrl({mode: 'presenter', card: '1'}, 'story');
+const researchUrl = routeUrl({card: '6'}, 'story');
 
 const targetResponse = await fetch(`${cdpUrl}/json/new?${baseUrl}`, {method: 'PUT'});
 if (!targetResponse.ok) throw new Error(`Could not create Chrome target at ${cdpUrl}.`);
@@ -59,11 +67,12 @@ try {
   await wait(900);
   await capture('cellpinda-video-showcase-1440-current.png');
 
-  await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
+  await send('Emulation.setDeviceMetricsOverride', {width: 390, height: 844, deviceScaleFactor: 1, mobile: true});
+  await send('Page.navigate', {url: presenterUrl});
   await wait(900);
   await capture('cellpinda-presenter-390-current.png');
 
-  await send('Page.navigate', {url: `${baseUrl}?card=6#story`});
+  await send('Page.navigate', {url: researchUrl});
   await wait(900);
   await evaluate('document.querySelector("#story-scene-research .reader-link")?.click()');
   await wait(180);

@@ -404,3 +404,22 @@ body{background:var(--editorial-cream);color:var(--editorial-ink)}
 
 .monitor-snapshot__heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.monitor-snapshot__heading .eyebrow{min-width:0}.monitor-snapshot__copy{flex:0 0 auto;min-height:28px;padding:5px 9px;border:1px solid #d7b795;border-radius:999px;background:#fff;color:#76543e;font:inherit;font-size:10px;font-weight:800;cursor:pointer}.monitor-snapshot__copy:hover{background:#fffaf3;color:#5d3f30}.monitor-snapshot__copy:focus-visible{outline:3px solid var(--editorial-coral);outline-offset:3px}.monitor-snapshot__copy-message{display:block;min-height:0;color:#8a6047;font-size:10px;line-height:1.45}
 @media(max-width:760px){.monitor-snapshot__heading{align-items:flex-start}.monitor-snapshot__copy{font-size:9px}}
+
+/* Presenter mobile: keep the title, controls, and one teaching frame in a clear vertical rhythm. */
+@media(max-width:760px){
+  .story--presentation{padding:14px 0 20px;overflow:hidden}
+  .story--presentation .story-heading{display:grid;align-items:start;gap:5px;padding:0 20px 8px}
+  .story--presentation .story-heading h2{max-width:190px;font-size:28px;line-height:1.04}
+  .story--presentation .story-heading>p{max-width:260px;margin:0;font-size:10px;line-height:1.35}
+  .story--presentation .story-sequence{padding:0 20px 8px;min-height:24px}
+  .story--presentation .story-controls{gap:7px;padding:0 20px 8px}
+  .story--presentation .story-controls>div{grid-template-columns:repeat(6,minmax(0,1fr));gap:5px}
+  .story--presentation .story-controls>div>*{font-size:10px!important}
+  .story--presentation .story-rail{height:100dvh;min-height:100dvh}
+  .story--presentation .story-rail{display:block}
+  .story--presentation .story-card{height:100%;min-height:0;flex:none;justify-content:flex-start;padding:clamp(260px,34svh,290px) 20px 18px}
+  .story--presentation .card-label{top:17px;left:20px;right:20px;font-size:10px}
+  .story--presentation .card-content h3{font-size:clamp(26px,8.2vw,34px);line-height:1.12}
+  .story--presentation .card-content p{font-size:13px;line-height:1.55}
+  .story--presentation .presenter-next-hint{margin-bottom:5px;padding:0 20px}
+}
