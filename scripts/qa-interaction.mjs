@@ -127,6 +127,13 @@ try {
   const finalReelAction = await evaluate('({text:document.querySelector(".story-reader-next")?.innerText||"",href:document.querySelector(".story-reader-next a")?.getAttribute("href")||""})');
   assert('last reading scene hands off to the video section', finalReelAction.text.includes('영상 검토 후보') && finalReelAction.href === '#video-showcase', JSON.stringify(finalReelAction));
 
+  await evaluate('document.querySelector(".site-footer__research-button")?.click()');
+  await waitForText('#info-panel-title', '일반 GABA 연구를 읽는 방법');
+  const footerResearch = await evaluate('({title:document.querySelector("#info-panel-title")?.innerText||"",url:location.href,external:document.querySelector(".info-panel__external")?.getAttribute("href")||"",footerButton:document.querySelector(".site-footer__research-button")?.innerText||""})');
+  assert('footer research action keeps the reader in-page before external source choice', footerResearch.title.includes('일반 GABA 연구') && !footerResearch.url.includes('pubmed') && footerResearch.external.includes('pubmed.ncbi.nlm.nih.gov') && footerResearch.footerButton.includes('먼저 읽기'), JSON.stringify(footerResearch));
+  await evaluate('document.querySelector(".info-panel__topline button")?.click()');
+  await wait(120);
+
   await evaluate('document.querySelector(".video-showcase__item")?.scrollIntoView({block:"center",behavior:"instant"})');
   await wait(700);
   const videoShowcase = await evaluate('({section:!!document.querySelector("#video-showcase"),title:document.querySelector("#video-showcase-title")?.innerText||"",items:document.querySelectorAll(".video-showcase__index-button").length,summaries:document.querySelectorAll(".video-showcase__copy").length,links:[...document.querySelectorAll(".video-showcase__actions a")].map(link=>link.getAttribute("href")||""),actionButtons:document.querySelectorAll(".video-showcase__actions button").length,preview:document.querySelectorAll(".video-showcase__media img, .video-showcase__media > .video-showcase__source-mark:not(.video-showcase__source-mark--fallback)").length,previewImageLoaded:[...document.querySelectorAll(".video-showcase__media img")].every(image => image.complete && image.naturalWidth > 0),mediaButtons:document.querySelectorAll(".video-showcase__media").length,body:document.querySelector("#video-showcase")?.innerText||""})');

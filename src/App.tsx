@@ -1435,7 +1435,7 @@ export default function App() {
 
     <footer className="site-footer">
       <p>일반 GABA 교육 자료 · 일반 기능과 연구 조건을 구분해 확인합니다.</p>
-      <a href={RESEARCH_URL} target="_blank" rel="noopener noreferrer">일반 연구 출처 보기 ↗</a>
+      <button type="button" className="site-footer__research-button" onClick={event => openInfoPanel(active, 'research', event.currentTarget)}>일반 연구 출처 먼저 읽기 ↗</button>
     </footer>
   </>;
 }

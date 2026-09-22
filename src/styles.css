@@ -452,3 +452,4 @@ body{background:var(--editorial-cream);color:var(--editorial-ink)}
 
 .monitor-snapshot>*,.monitor-snapshot p,.monitor-snapshot small{min-width:0;overflow-wrap:anywhere}
 @media(max-width:760px){.monitor-snapshot__history li small{white-space:normal;overflow:visible;text-overflow:clip}}
+.site-footer__research-button{border:0;background:transparent;color:#2b684b;font:inherit;font-size:12px;font-weight:750;cursor:pointer;text-decoration:underline;text-underline-offset:4px}.site-footer__research-button:hover{color:#e2764d}.site-footer__research-button:focus-visible{outline:3px solid #e07a4d;outline-offset:4px}@media(max-width:760px){.site-footer__research-button{display:block;margin-top:12px}}
