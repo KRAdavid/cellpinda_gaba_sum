@@ -259,6 +259,15 @@ try {
   await waitForText('.video-db-detail', '인물 소개');
   const selected = await evaluate('({detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||""})');
   assert('video DB selection shows summary, person introduction, operator sentence, and next audit action', selected.detail.includes('무엇을 어떻게 소개했나') && selected.detail.includes('인물 소개') && selected.detail.includes('사업자 설명 한 문장') && selected.detail.includes('고객 설명 3문장 복사') && selected.detail.includes('다음 감리 행동') && selected.external.includes('youtube.com/shorts/RLAU1VWGsaI'), JSON.stringify(selected));
+  await evaluate('document.querySelector("[data-copy-video-review-link]")?.click()');
+  await wait(180);
+  const reviewLinkCopyState = await evaluate('document.querySelector(".video-db-detail__operator")?.innerText||""');
+  assert('presenter can request a direct internal review link for the selected video', reviewLinkCopyState.includes('이 영상 감리 링크 복사') && (reviewLinkCopyState.includes('이 영상 감리 링크를 복사했습니다.') || reviewLinkCopyState.includes('복사에 실패했습니다')), reviewLinkCopyState);
+  await send('Page.navigate', {url: routeUrl({mode: 'presenter', card: '1', video: 'SHORT-02'}, 'video-showcase')});
+  await waitForPresentation('01 / 08');
+  await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
+  const directVideoReview = await evaluate('({title:document.querySelector(".video-db-detail h3")?.innerText||"",selected:document.querySelector(".video-db-item.is-selected")?.innerText||"",url:location.href})');
+  assert('direct video review link opens the requested presenter panel and video', directVideoReview.title.includes('잠자기 어렵다면') && directVideoReview.selected.includes('SHORT-02') && directVideoReview.url.includes('video=SHORT-02'), JSON.stringify(directVideoReview));
   await evaluate('document.querySelector(".video-review-draft summary")?.click()');
   const reviewDraft = await evaluate('({open:document.querySelector(".video-review-draft")?.open||false,fields:document.querySelectorAll(".video-review-draft__fields [data-review-field]").length,checks:document.querySelectorAll(".video-review-draft__checks input[type=checkbox]").length,transcript:document.querySelector(".video-review-draft__transcript textarea")?.getAttribute("placeholder")||"",progress:document.querySelector(".video-review-progress")?.innerText||"",summary:document.querySelector(".video-review-draft summary")?.innerText||"",notes:document.querySelector(".video-review-draft__notes textarea")?.getAttribute("placeholder")||"",boundary:document.querySelector(".video-review-draft__note")?.innerText||""})');
   assert('presenter video DB offers a local per-video review draft', reviewDraft.open && reviewDraft.fields === 4 && reviewDraft.checks === 5 && reviewDraft.transcript.includes('원문에서 확인') && reviewDraft.progress.includes('원문·영상') && reviewDraft.progress.includes('확인 필요') && reviewDraft.summary.includes('0/5 확인') && reviewDraft.notes.includes('확인한 발언') && reviewDraft.boundary.includes('공개 승인'), JSON.stringify(reviewDraft));

@@ -653,12 +653,22 @@ export default function App() {
     const params = new URLSearchParams(window.location.search);
     const requested = Number(params.get('card'));
     const presenterRequested = params.get('mode') === 'presenter' || params.get('presenter') === '1';
+    const requestedVideoId = params.get('video');
     if (presenterRequested) {
       presentationModeRef.current = true;
       setPresentationMode(true);
     }
     if (Number.isInteger(requested) && requested >= 1 && requested <= slides.length) {
       window.requestAnimationFrame(() => goTo(requested - 1));
+    }
+    if (presenterRequested && requestedVideoId && GABA_VIDEO_DB.some(video => video.id === requestedVideoId)) {
+      window.requestAnimationFrame(() => {
+        setPanelSourceIndex(Number.isInteger(requested) && requested >= 1 && requested <= slides.length ? requested - 1 : 0);
+        setPanelVideoId(requestedVideoId);
+        setVideoFilter('ALL');
+        setVideoQuery('');
+        setOpenPanel('video');
+      });
     }
   }, [slides.length]);
 
@@ -1154,6 +1164,24 @@ export default function App() {
     try {
       await copyText(brief);
       setVideoCopyMessage('고객 설명 3문장을 복사했습니다.');
+    } catch {
+      setVideoCopyMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
+  };
+
+  const getPresenterVideoLink = (videoId: string) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('mode', 'presenter');
+    url.searchParams.set('card', String(active + 1));
+    url.searchParams.set('video', videoId);
+    url.hash = 'video-showcase';
+    return url.toString();
+  };
+
+  const copyVideoReviewLink = async (video: GabaVideoRecord) => {
+    try {
+      await copyText(getPresenterVideoLink(video.id));
+      setVideoCopyMessage('이 영상 감리 링크를 복사했습니다.');
     } catch {
       setVideoCopyMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
@@ -1722,7 +1750,7 @@ export default function App() {
                   <p><strong>무엇을 어떻게 소개했나</strong><br />{presentationMode ? selectedVideo.summary : selectedVideo.publicSummary ?? selectedVideo.summary}</p>
                   <p><strong>인물 소개</strong><br />{presentationMode ? selectedVideo.personSummary : selectedVideo.publicPersonSummary ?? selectedVideo.personSummary}</p>
                 </div>
-                <div className="video-db-detail__operator"><strong>사업자 설명 한 문장</strong><p>{presentationMode ? selectedVideo.operatorSentence : selectedVideo.publicOperatorSentence ?? selectedVideo.operatorSentence}</p>{presentationMode ? <><div className="video-db-detail__operator-actions"><button type="button" onClick={() => copyVideoOperatorSentence(selectedVideo)}>설명 문장 복사</button><button type="button" onClick={() => copyVideoCustomerBrief(selectedVideo)}>고객 설명 3문장 복사</button></div><span aria-live="polite">{videoCopyMessage}</span></> : null}</div>
+                <div className="video-db-detail__operator"><strong>사업자 설명 한 문장</strong><p>{presentationMode ? selectedVideo.operatorSentence : selectedVideo.publicOperatorSentence ?? selectedVideo.operatorSentence}</p>{presentationMode ? <><div className="video-db-detail__operator-actions"><button type="button" onClick={() => copyVideoOperatorSentence(selectedVideo)}>설명 문장 복사</button><button type="button" onClick={() => copyVideoCustomerBrief(selectedVideo)}>고객 설명 3문장 복사</button><button type="button" data-copy-video-review-link onClick={() => copyVideoReviewLink(selectedVideo)}>이 영상 감리 링크 복사</button></div><span aria-live="polite">{videoCopyMessage}</span></> : null}</div>
                 <dl className="video-db-audit" aria-label="영상 감리 필드">
                   <div><dt>요약 근거</dt><dd>{VIDEO_AUDIT_LABELS.contentBasis[selectedVideo.audit.contentBasis]}</dd></div>
                   <div><dt>권위</dt><dd>{VIDEO_AUDIT_LABELS.authorityLevel[selectedVideo.audit.authorityLevel]}</dd></div>
