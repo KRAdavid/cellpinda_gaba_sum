@@ -4,9 +4,9 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredChannels": 8,
   "discoveryQueries": 6,
   "totalDiscoveryQueries": 6,
-  "newCandidates": 0,
-  "pendingReview": 91,
-  "scienceMedicalPriority": 55,
+  "newCandidates": 2,
+  "pendingReview": 93,
+  "scienceMedicalPriority": 57,
   "videoPriority": 36,
   "pendingQueue": [
     {
@@ -140,9 +140,9 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 0,
-      "pendingReview": 91,
-      "scienceMedicalPriority": 55,
+      "newCandidates": 2,
+      "pendingReview": 93,
+      "scienceMedicalPriority": 57,
       "videoPriority": 36,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 9,
