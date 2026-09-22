@@ -528,6 +528,7 @@ export default function App() {
   const [panelShareMessage, setPanelShareMessage] = useState('');
   const [presenterCopyMessage, setPresenterCopyMessage] = useState('');
   const [videoCopyMessage, setVideoCopyMessage] = useState('');
+  const [showcaseShareMessage, setShowcaseShareMessage] = useState('');
   const [previewImageError, setPreviewImageError] = useState(false);
   const [videoFilter, setVideoFilter] = useState<VideoFilter>('ALL');
   const [videoQuery, setVideoQuery] = useState('');
@@ -566,6 +567,7 @@ export default function App() {
   const railScrollFrameRef = useRef<number | null>(null);
   const readerScrollFrameRef = useRef<number | null>(null);
   const phaseNavRef = useRef<HTMLElement>(null);
+  const showcaseShareRequestRef = useRef(0);
   const activePhase = STORY_PHASES.find(phase => active >= phase.start && active <= phase.end) ?? STORY_PHASES[0];
   const nextSlide = slides[active + 1];
   const approvedVideos = useMemo(() => DOMESTIC_PUBLIC_GABA_VIDEOS.map(video => {
@@ -801,6 +803,16 @@ export default function App() {
         setVideoQuery('');
         setOpenPanel('video');
       });
+    }
+    if (!presenterRequested && requestedVideoId) {
+      const sharedVideoIndex = SHARED_GABA_VIDEOS.findIndex(video => video.id === requestedVideoId);
+      if (sharedVideoIndex >= 0) {
+        window.requestAnimationFrame(() => {
+          setShowcaseVideoIndex(sharedVideoIndex);
+          setShowcaseShareMessage('');
+          if (window.location.hash === '#video-showcase') document.getElementById('video-showcase')?.scrollIntoView({behavior: 'auto', block: 'start'});
+        });
+      }
     }
   }, [slides.length]);
 
@@ -1398,6 +1410,40 @@ export default function App() {
     }
   };
 
+  const getCustomerVideoLink = (videoId: string) => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('mode');
+    url.searchParams.delete('presenter');
+    url.searchParams.delete('card');
+    url.searchParams.set('video', videoId);
+    url.hash = 'video-showcase';
+    return url.toString();
+  };
+
+  const shareShowcaseVideo = async () => {
+    if (!showcaseVideo) return;
+    const shareRequest = ++showcaseShareRequestRef.current;
+    const link = getCustomerVideoLink(showcaseVideo.id);
+    try {
+      if (navigator.share) {
+        await navigator.share({title: 'GABA 영상 검토 후보', text: '이 영상부터 GABA 일반 교육 흐름을 확인해 보세요.', url: link});
+        if (shareRequest === showcaseShareRequestRef.current) setShowcaseShareMessage('이 영상부터 보는 고객용 링크를 공유했습니다.');
+        return;
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') {
+        if (shareRequest === showcaseShareRequestRef.current) setShowcaseShareMessage('영상 링크 공유를 취소했습니다.');
+        return;
+      }
+    }
+    try {
+      await copyText(link);
+      if (shareRequest === showcaseShareRequestRef.current) setShowcaseShareMessage('이 영상부터 보는 고객용 링크를 복사했습니다.');
+    } catch {
+      if (shareRequest === showcaseShareRequestRef.current) setShowcaseShareMessage('영상 링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
+  };
+
   const getCustomerCardLink = (index: number) => {
     const url = new URL(window.location.href);
     url.searchParams.set('card', String(index + 1));
@@ -1522,8 +1568,16 @@ export default function App() {
 
   const selectShowcaseVideo = (index: number) => {
     const nextIndex = Math.max(0, Math.min(SHARED_GABA_VIDEOS.length - 1, index));
+    const nextVideo = SHARED_GABA_VIDEOS[nextIndex];
     setShowcaseVideoIndex(nextIndex);
+    setShowcaseShareMessage('');
     setPreviewImageError(false);
+    if (nextVideo) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('video', nextVideo.id);
+      url.hash = 'video-showcase';
+      window.history.replaceState({}, '', url);
+    }
   };
 
   const selectApprovedVideo = (index: number) => {
@@ -2200,7 +2254,7 @@ export default function App() {
                 </div>
                 <p><strong>무엇을 어떻게 소개했나 · 예비</strong><br />{showcaseVideo.publicSummary ?? showcaseVideo.summary}</p>
                 <p><strong>인물 소개</strong><br />{showcaseVideo.publicPersonSummary ?? showcaseVideo.personSummary}</p>
-                <div className="video-showcase__actions"><button type="button" onClick={event => openVideoPanel(event.currentTarget, showcaseVideo.id)}>상세 감리 먼저 보기 <span aria-hidden="true">＋</span></button><span className="video-showcase__source-note">원문 링크는 상세 패널에서 선택</span></div>
+                <div className="video-showcase__actions"><button type="button" onClick={event => openVideoPanel(event.currentTarget, showcaseVideo.id)}>상세 감리 먼저 보기 <span aria-hidden="true">＋</span></button><button type="button" data-share-video-link onClick={shareShowcaseVideo}>이 영상 링크 공유 <span aria-hidden="true">↗</span></button><span className="video-showcase__source-note">원문 링크는 상세 패널에서 선택</span><span className="video-showcase__share-message" aria-live="polite">{showcaseShareMessage}</span></div>
                 <div className="video-showcase__pager" aria-label="영상 이동">
                   <button type="button" onClick={() => selectShowcaseVideo(showcaseVideoIndex - 1)} disabled={showcaseVideoIndex === 0}>이전 영상</button>
                   <button type="button" onClick={() => selectShowcaseVideo(showcaseVideoIndex + 1)} disabled={showcaseVideoIndex === SHARED_GABA_VIDEOS.length - 1}>다음 영상 <span aria-hidden="true">→</span></button>

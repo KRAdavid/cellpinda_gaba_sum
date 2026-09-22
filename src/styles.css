@@ -76,7 +76,7 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
 .video-review-summary button:disabled{cursor:not-allowed;opacity:.45}
 .video-review-summary small{color:#8a6047;font-size:10px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.video-showcase__source-note{display:inline-flex;align-items:center;min-height:34px;color:#64806c;font-size:10px;letter-spacing:.02em}
+.video-showcase__source-note{display:inline-flex;align-items:center;min-height:34px;color:#64806c;font-size:10px;letter-spacing:.02em}.video-showcase__share-message{display:inline-flex;align-items:center;min-height:34px;color:#c4623e;font-size:10px;line-height:1.4}
 @media(max-width:760px){.video-db-audit{grid-template-columns:1fr}}
 
 /* Reels-style vertical feed: one readable message per viewport-sized card. */

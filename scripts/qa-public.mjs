@@ -41,6 +41,8 @@ const required = [
   ['shared YouTube Shorts showcase', '오늘 공유하신 국내 YouTube Shorts'],
   ['separate video showcase', '별도 섹션 · 영상 요약'],
   ['video showcase in-page-first action', '상세 감리 먼저 보기'],
+  ['video showcase share action', '이 영상 링크 공유'],
+  ['video showcase deep-link state', 'searchParams.set("video"'],
   ['video showcase source-link guard', '원문 링크는 상세 패널에서 선택'],
   ['video showcase hero copy', '원문으로 확인하세요'],
   ['video candidate boundary', '오늘 공유된 검토 후보입니다'],
