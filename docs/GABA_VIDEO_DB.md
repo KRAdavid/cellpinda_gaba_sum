@@ -151,7 +151,7 @@
 - 영상: [영양제로 먹는 가바(GABA), 정말 효과 있을까? 부작용 없는 천연 수면 보충제의 비밀](https://www.youtube.com/shorts/rOFkZg09AoY)
 - 채널: SLEEP Dr. 신원철 꿀잠튜브 · @sleepdoctor1
 - 무엇을 어떻게 소개했나: 공개 설명은 GABA가 뇌로 직접 가지 않는데 효과가 있는가를 질문으로 제시하고 수면 보충제의 작용·안전성·부작용 없는 수면을 설명하겠다고 안내한다. 제목·설명 기반 예비 요약이다.
-- 인물 소개: [대한수면연구학회 공식 소개](https://www.sleepnet.or.kr/about/greeting)는 신원철을 학회 회장·강동경희대학교병원 신경과 소속으로 소개하며, [국립의과학지식센터 연구 기록](https://library.nih.go.kr/ncmiklib/elib/kom/articleDtl.do?pk_pb_seq=PB07234096)은 현미쌀눈 유래 GABA 수면 연구 공저자로 등록한다. 이 경력·연구 기록은 이 쇼츠의 화자·발언·상업성·제품 효능을 자동 승인하지 않는다.
+- 인물 소개: [대한수면연구학회 공식 학술행사 안내](https://www.sleepnet.or.kr/workshop/monthly/view?idx=150)는 신원철을 강동경희대학교병원 신경과 소속으로 표시하고, [KCI 논문 기록](https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002182911)은 그를 현미쌀눈 유래 GABA 수면 연구의 공저자로 등록한다. 이 출처들은 인물·소속·연구 경력 확인용이며, 이 쇼츠의 실제 화자·발언·상업성·제품 효능을 자동 승인하지 않는다.
 - 근거 감리: 수면 전문성은 높게 볼 수 있지만 부작용 없음·안전한 천연 수면 보충제는 일반화할 수 없다. 경구 GABA 연구의 제한성과 개인별 주의사항을 함께 확인해야 한다.
 - 상업·권리: 꿀잠 관련 사이트·블로그·멤버십 링크가 있어 상업적 이해관계를 표시한다. 권리·협찬 관계 미확인.
 - 사이트 사용: 전체 영상을 권위 근거로 바로 임베드하지 않는다. 상업성·표현·자막 감리 후 일반 연구의 한계와 함께 제한 사용 여부를 결정. 현재 HOLD.

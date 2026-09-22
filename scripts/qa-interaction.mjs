@@ -151,7 +151,7 @@ try {
   await evaluate('document.querySelectorAll(".video-db-item__select")[5]?.click()');
   await waitForText('.video-db-detail', 'SLEEP Dr.');
   const sleepEvidence = await evaluate('({detail:document.querySelector(".video-db-detail")?.innerText||"",links:[...document.querySelectorAll(".video-db-detail__meta a")].map(link=>link.getAttribute("href")||"")})');
-  assert('consumer video detail keeps separate affiliation and research evidence', sleepEvidence.detail.includes('인물 소개') && sleepEvidence.links.some(link => link.includes('sleepnet.or.kr')) && sleepEvidence.links.some(link => link.includes('library.nih.go.kr')), JSON.stringify(sleepEvidence));
+  assert('consumer video detail keeps separate affiliation and research evidence', sleepEvidence.detail.includes('인물 소개') && sleepEvidence.links.some(link => link.includes('sleepnet.or.kr')) && sleepEvidence.links.some(link => link.includes('kci.go.kr')), JSON.stringify(sleepEvidence));
   await evaluate('document.querySelectorAll(".video-db-item__select")[1]?.click()');
   await waitForText('.video-db-detail', '브레인튜브');
   await evaluate('document.querySelector(".info-panel__next")?.click()');
