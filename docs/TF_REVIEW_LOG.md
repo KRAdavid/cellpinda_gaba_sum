@@ -279,6 +279,8 @@ TF 실제 배정 게이트 보완: 역할과 토론 논점은 정의됐지만 �
 
 일반 GABA 근거 출처 층위 보강: 기존 연구 패널이 경구 GABA 체계적 문헌고찰 1건에 집중되어 일반 생리·기전·수면 생리와 섭취 인체 연구의 경계가 한눈에 보이지 않았다. PubMed의 억제성 시냅스 리뷰(PMID 23574805), GABA tone 리뷰(PMID 37495761), 경구 GABA 체계적 문헌고찰(PMID 33041752), NIH NICHD 수면 자료를 `SRC-01~05`에 AI_PRECHECKED로 등록하고, 연구 패널 안에 4개 출처와 각 한계를 접어서 표시했다. 출처는 사람 과학·의료 검토 전이므로 HUMAN_REVIEWED나 제품 효능 근거로 표시하지 않는다. `src/App.tsx`, `src/styles.css`, `docs/GABA_SOURCE_REGISTER.md`, `scripts/qa-gaba-education-tf.mjs`, `scripts/qa-public.mjs`, `scripts/qa-interaction.mjs`를 반영했고, 320·390·1440px에서 출처 패널·다음 카드·외부 링크 보조 흐름을 확인했다. 결정은 **AI 사전 확인 PASS / 사람 검토 HOLD**다.
 
+출처 패널 모바일 여백 보완: 390px 캡처에서 펼친 출처 목록의 하단이 고정 `다음 카드` CTA와 시각적으로 겹칠 수 있어, 출처 목록에 안전 여백을 추가했다. 출처를 읽는 흐름은 페이지 안에 유지하고, 외부 원문 링크는 각 출처의 선택 행동으로 남긴다. `pnpm run qa:public`과 상호작용 QA에서 연구 출처 4건·다음 카드·외부 링크 경계를 재확인했다. 결정은 **기술·시각 PASS / 실기기 HOLD**다.
+
 ## 의사결정 원칙
 
 1. 관심은 소비자가 공감할 수 있는 일상 장면에서 만든다.
