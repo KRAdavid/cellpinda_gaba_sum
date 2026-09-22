@@ -127,8 +127,10 @@ const checkRegisteredEvidenceLinks = async () => checkUrlHealth(
 const checkRegisteredYouTubeMetadata = async () => {
   const urls = getRegisteredVideoUrls().filter(url => /youtube\.com|youtu\.be/i.test(url));
   const warnings = [];
+  const records = [];
   let healthy = 0;
   for (const url of urls) {
+    const videoId = url.match(/(?:shorts\/|watch\?v=)([\w-]{11})/)?.[1] ?? '';
     try {
       const endpoint = 'https://www.youtube.com/oembed?url=' + encodeURIComponent(url) + '&format=json';
       const response = await fetch(endpoint, {
@@ -136,16 +138,23 @@ const checkRegisteredYouTubeMetadata = async () => {
       });
       if (!response.ok) {
         warnings.push(`${url} → HTTP ${response.status}`);
+        records.push({videoId, url, title: '', authorName: '', authorUrl: '', status: `HTTP ${response.status}`});
         continue;
       }
       const metadata = await response.json();
-      if (metadata.title && metadata.author_name) healthy += 1;
-      else warnings.push(`${url} → 제목·채널 메타데이터 없음`);
+      if (metadata.title && metadata.author_name) {
+        healthy += 1;
+        records.push({videoId, url, title: metadata.title, authorName: metadata.author_name, authorUrl: metadata.author_url ?? '', status: '제목·채널 확인'});
+      } else {
+        warnings.push(`${url} → 제목·채널 메타데이터 없음`);
+        records.push({videoId, url, title: metadata.title ?? '', authorName: metadata.author_name ?? '', authorUrl: metadata.author_url ?? '', status: '제목·채널 확인 필요'});
+      }
     } catch (error) {
       warnings.push(`${url} → ${error.message}`);
+      records.push({videoId, url, title: '', authorName: '', authorUrl: '', status: `접근 오류: ${error.message}`});
     }
   }
-  return {checked: urls.length, healthy, warnings};
+  return {checked: urls.length, healthy, warnings, records};
 };
 
 const extractCaptionTrackUrl = html => {
@@ -248,6 +257,30 @@ const captionAuditMarkdown = ({checkedDate: date, captionHealth, captionBodyHeal
     '- 자막 트랙 발견은 watch 페이지에 자막 안내가 있었다는 뜻이며, 본문 확보·번역 정확성·화자 일치를 뜻하지 않는다.',
     '- 자막 본문 확인은 텍스트 응답의 존재만 확인하며, 영상의 주장이나 일반 GABA 연구와의 일치를 승인하지 않는다.',
     '- HTTP 429·본문 형식 오류·접근 제한은 경고로 남기고, 사람은 원문을 직접 재생해 타임코드와 발언을 기록한다.',
+    '',
+  ].join('\n');
+};
+
+const metadataAuditMarkdown = ({checkedDate: date, metadataHealth}) => {
+  const rows = metadataHealth.records.length
+    ? metadataHealth.records.map(record => `| ${record.videoId || '확인 필요'} | [원문 보기](${record.url}) | ${markdown(record.title || '확인 필요')} | ${markdown(record.authorName || '확인 필요')} | ${markdown(record.status)} | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |`).join('\n')
+    : '| 없음 | 등록 YouTube 링크 없음 | - | - | - | - |';
+  return [
+    '# GABA 영상 YouTube 메타데이터 감사',
+    '',
+    `> 자동 생성일: ${date} · oEmbed 제목·채널 확인 기록이며 영상 내용·화자·과학적 타당성·자막·권리·공개 승인을 의미하지 않는다.`,
+    '',
+    '## 영상별 확인',
+    '',
+    '| 영상 ID | 원문 | oEmbed 제목 | oEmbed 채널 | 상태 | 해석 경계 |',
+    '| --- | --- | --- | --- | --- | --- |',
+    rows,
+    '',
+    '## 다음 사람 감리',
+    '',
+    '- 제목·채널 메타데이터와 DB의 예비 기록이 일치하는지 확인한 뒤에도 원문을 직접 재생해 발언·타임코드를 기록한다.',
+    '- oEmbed 채널명은 실제 화자·자격을 확인하는 독립 출처가 아니다. 화자·소속은 공식 기관·병원·학회·개인 공식 프로필로 별도 확인한다.',
+    '- 자막 본문이 확보되지 않은 영상은 `TITLE_AND_PUBLIC_DESCRIPTION` 예비 요약을 유지하고 공개 승인하지 않는다.',
     '',
   ].join('\n');
 };
@@ -601,6 +634,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     triageUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md',
     reportUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md',
     reviewSessionUrl: `https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_${date}.md`,
+    metadataAuditUrl: `https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_${date}.md`,
     captionAuditUrl: `https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_${date}.md`,
     kickoffUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md',
     sourceRegisterUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md',
@@ -833,6 +867,8 @@ const main = async () => {
     console.log('- wrote: ' + candidates.length + ' candidate(s) to docs/GABA_VIDEO_INBOX.md');
   }
   fs.mkdirSync(reportArchiveDir, {recursive: true});
+  const metadataAudit = metadataAuditMarkdown({checkedDate, metadataHealth});
+  fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_METADATA_AUDIT_${checkedDate}.md`), metadataAudit, 'utf8');
   const captionAudit = captionAuditMarkdown({checkedDate, captionHealth, captionBodyHealth});
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_CAPTION_AUDIT_${checkedDate}.md`), captionAudit, 'utf8');
   const updatedInbox = fs.readFileSync(inboxPath, 'utf8');
