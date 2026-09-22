@@ -25,7 +25,7 @@ const STORY_VISUALS = {
   neural: `${import.meta.env.BASE_URL}images/gaba-neural-signal.png`,
 } as const;
 
-type VideoFilter = 'ALL' | 'REVIEW' | 'PROFILE' | GabaVideoRecord['status'];
+type VideoFilter = 'ALL' | 'REVIEW' | 'PROFILE' | 'INCOMPLETE' | GabaVideoRecord['status'];
 type TfAssignment = Record<string, {lead: string; backup: string}>;
 type VideoReviewDecision = 'UNDECIDED' | 'HOLD' | 'LIMITED_USE' | 'PUBLISH_GENERAL' | 'EXCLUDE';
 type VideoReviewDraft = {
@@ -82,6 +82,7 @@ const VIDEO_FILTERS: Array<{id: VideoFilter; label: string}> = [
   {id: 'HOLD', label: '보류'},
   {id: 'LIMITED_USE', label: '제한 사용'},
   {id: 'EXCLUDE', label: '배제'},
+  {id: 'INCOMPLETE', label: '감리 진행 필요'},
   {id: 'PROFILE', label: '인물 출처 있음'},
 ];
 
@@ -350,17 +351,20 @@ export default function App() {
   }, []);
   const filteredPanelVideos = useMemo(() => {
     const query = videoQuery.trim().toLocaleLowerCase();
+    const reviewProgress = (video: GabaVideoRecord) => VIDEO_REVIEW_CHECKS.filter(check => videoReviewDrafts[video.id]?.[check.key]).length;
     const matchesFilter = (video: GabaVideoRecord) => videoFilter === 'ALL'
       || (videoFilter === 'REVIEW' && video.status !== 'PUBLISH_GENERAL')
+      || (videoFilter === 'INCOMPLETE' && reviewProgress(video) < VIDEO_REVIEW_CHECKS.length)
       || (videoFilter === 'PROFILE' && Boolean(video.authorityEvidenceUrl) && video.audit.authorityLevel !== 'UNVERIFIED')
       || video.status === videoFilter;
     return [...panelVideos]
       .filter(video => matchesFilter(video))
       .filter(video => !query || [video.id, video.title, video.channel, video.speaker].join(' ').toLocaleLowerCase().includes(query));
-  }, [panelVideos, videoFilter, videoQuery]);
+  }, [panelVideos, videoFilter, videoQuery, videoReviewDrafts]);
 
   const videoFilterCount = (filter: VideoFilter) => panelVideos.filter(video => filter === 'ALL'
     || (filter === 'REVIEW' && video.status !== 'PUBLISH_GENERAL')
+    || (filter === 'INCOMPLETE' && VIDEO_REVIEW_CHECKS.filter(check => videoReviewDrafts[video.id]?.[check.key]).length < VIDEO_REVIEW_CHECKS.length)
     || (filter === 'PROFILE' && Boolean(video.authorityEvidenceUrl) && video.audit.authorityLevel !== 'UNVERIFIED')
     || video.status === filter).length;
 

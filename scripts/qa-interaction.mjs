@@ -184,7 +184,13 @@ try {
   await evaluate('document.querySelector(".video-db-filters button:nth-child(4)")?.click()');
   await wait(180);
   const holdFilter = await evaluate('({items:document.querySelectorAll(".video-db-item").length,active:document.querySelector(".video-db-filters button:nth-child(4)")?.getAttribute("aria-pressed")||""})');
-  assert('presenter video DB filters review status before selection', presenterDb.search && presenterDb.filters === 7 && holdFilter.items === 5 && holdFilter.active === 'true', JSON.stringify({presenterDb,holdFilter}));
+  assert('presenter video DB filters review status before selection', presenterDb.search && presenterDb.filters === 8 && holdFilter.items === 5 && holdFilter.active === 'true', JSON.stringify({presenterDb,holdFilter}));
+  await evaluate('document.querySelector(".video-db-filters button:nth-child(7)")?.click()');
+  await wait(180);
+  const incompleteFilter = await evaluate('({items:document.querySelectorAll(".video-db-item").length,active:document.querySelector(".video-db-filters button:nth-child(7)")?.innerText||""})');
+  assert('presenter video DB can isolate unfinished audit drafts', incompleteFilter.items === 9 && incompleteFilter.active.includes('감리 진행 필요'), JSON.stringify(incompleteFilter));
+  await evaluate('document.querySelector(".video-db-filters button:first-child")?.click()');
+  await wait(120);
   await evaluate('document.querySelector(".video-db-filters button:last-child")?.click()');
   await wait(180);
   const profileFilter = await evaluate('({items:document.querySelectorAll(".video-db-item").length,active:document.querySelector(".video-db-filters button:last-child")?.innerText||"",label:document.querySelector(".video-db-filters")?.getAttribute("aria-label")||""})');
