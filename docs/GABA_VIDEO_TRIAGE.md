@@ -4,9 +4,9 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 88건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 52건
-- VIDEO 원문·자막 선확인: 36건
+- 검토 대기: 89건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 54건
+- VIDEO 원문·자막 선확인: 35건
 
 ## 우선순위 정의
 
@@ -50,12 +50,13 @@
 | PENDING-20260922-QSYjYh5WbXg | [PTSD의 공포 기억, 시간으로 사라지지 않는 이유는?  GABA의 비밀! #PTSD #공포기억 #GABA #항우울제 #신약개발 #불안장애 #정신질환치료 #외상후스트레스장애](https://www.youtube.com/watch?v=QSYjYh5WbXg) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-QyfuUa3-hCU | [알츠하이머병 도움주는 가바효능 #shorts #가바 #가바효능](https://www.youtube.com/watch?v=QyfuUa3-hCU) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-r8WfXk8I2ac | [가바(GABA) 결핍 치유할 수 있는 약 shorts (원본 영상 참조)](https://www.youtube.com/watch?v=r8WfXk8I2ac) | YouTube 검색: 가바 스트레스 (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
-| PENDING-20260922-RH3FcwKObsY | [셀핀다 김치유산균 발효가바 GABA100% #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=RH3FcwKObsY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20260922-RH3FcwKObsY | [셀핀다 김치유산균 발효가바 GABA100% #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=RH3FcwKObsY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-RnecceSCteY | [이명? 불면증? 가바가 도와줍니다. #GABA  #불면증  #이명  #수면영양제  #수면에좋은영양제  #자연수면  #스트레스완화  #이명완화  #수면장애  #뇌건강](https://www.youtube.com/watch?v=RnecceSCteY) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 질환·치료 표현 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-TKa-m-2N7S8 | ['몽진환' 뇌 건강과 수면의 혁신  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=TKa-m-2N7S8) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
-| PENDING-20260922-UBCfzr4lpYQ | [셀핀다 김치유산균 발효가바 GABA100% #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=UBCfzr4lpYQ) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20260922-UBCfzr4lpYQ | [셀핀다 김치유산균 발효가바 GABA100% #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=UBCfzr4lpYQ) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-uMvnOXGibs8 | [How the GABA Neurotransmitter Affects Sleep and Anxiety](https://www.youtube.com/watch?v=uMvnOXGibs8) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-vHEV9BWlK3k | [불면증 해결 GABA가 중요한 이유](https://www.youtube.com/watch?v=vHEV9BWlK3k) | YouTube 검색: 가바 스트레스 (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20260922-XJ5bvJlr5h4 | [#제품제공 꿀잠캠프 번개 이벤트에 당첨되어 굿슬립가바 365를 엄마에게 선물했어요💜  #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애](https://www.youtube.com/watch?v=XJ5bvJlr5h4) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-yBZnNfh49z4 | [왜 GABA는 섭취해도 효과가 없을까 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=yBZnNfh49z4) | YouTube 검색: GABA 신경전달물질 (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-2elwFVwzW_M | [신경전달물질(GABA) 가바가 많은 음식정리!! Foods rich in the neurotransmitter (GABA)!!#건강정보 #지식 #건강#꿀팁 #정보 #health #](https://www.youtube.com/watch?v=2elwFVwzW_M) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-5j1WKvZI-Tc | [가바(GABA) 섭취할 수 있는 음식들 shorts (원본 영상 참조)](https://www.youtube.com/watch?v=5j1WKvZI-Tc) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
@@ -65,6 +66,7 @@
 | PENDING-20260922-CO5X5xkrTqw | [쉬어도 항상 피곤한 이유 #만성피로 #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #명절 #선물 #갱년기 #뇌건강](https://www.youtube.com/watch?v=CO5X5xkrTqw) | YouTube 검색: 가바 스트레스 (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-dxiwxKTwNDc | [#shorts 건기식 가바](https://www.youtube.com/watch?v=dxiwxKTwNDc) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-eLhrE53l-EM | [하루 4-5시간 자는 분들 꼭 보세요!!  #수면영양제 #수면 #수면영양제 #가바 #식물성멜라토닌](https://www.youtube.com/watch?v=eLhrE53l-EM) | YouTube 검색: 가바 수면 (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
+| PENDING-20260922-FiW-43xD5Tw | [“잠은 자는데 피곤한 이유”   #가바#GABA#가바효능#스트레스관리#수면관리#멘탈관리#예민함완화#일상관리#셀핀다 #신현준 #정준호](https://www.youtube.com/watch?v=FiW-43xD5Tw) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 제품·브랜드 신호 | SCIENCE/MEDICAL + RIGHTS | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-fYZ-ewaCzAo | [나만 알고 싶은 해외 품절 대란템, 드디어 한국 상륙?!  #가바 #수면건강 #멘탈관리 #스트레스해소](https://www.youtube.com/watch?v=fYZ-ewaCzAo) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-GF3TB_mNi28 | [GABA가 많은식품 TOP 10과 함량](https://www.youtube.com/watch?v=GF3TB_mNi28) | YouTube 검색: GABA 신경전달물질 (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-k-IFzGrps_U | [현대인에게 꼭 필요한 뇌건강 영양제 GABA](https://www.youtube.com/watch?v=k-IFzGrps_U) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
@@ -81,7 +83,6 @@
 | PENDING-20260922-BCqeJxZ4z4U | [\\[귀멸의 칼날 뇌 유형 분석 시리즈\\]  5. 겁쟁이 젠이츠는 왜 최강이 될까? (가바 & 아세틸콜린 뇌 분석)](https://www.youtube.com/watch?v=BCqeJxZ4z4U) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-BnmGGVn-N74 | [GABA에서 알아둬야 할 2가지 #shorts #gaba #glutamate](https://www.youtube.com/watch?v=BnmGGVn-N74) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-DcBwGT0Jcb8 | [GABA가 알코올에 대한 뇌의 반응에 미치는 영향](https://www.youtube.com/watch?v=DcBwGT0Jcb8) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
-| PENDING-20260922-FiW-43xD5Tw | [“잠은 자는데 피곤한 이유”   #가바#GABA#가바효능#스트레스관리#수면관리#멘탈관리#예민함완화#일상관리#셀핀다 #신현준 #정준호](https://www.youtube.com/watch?v=FiW-43xD5Tw) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-fsVwONopHQM | [숙면을 방해하는 것의 정체는 가바 부족 #수면건강 #뇌과학](https://www.youtube.com/watch?v=fsVwONopHQM) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-fUdVqexJ0p8 | [킹받는 순간 뇌를 강제 휴식 모드로 바꾸는 치트키 #GABA초콜릿 #멘탈관리 #가바초콜릿](https://www.youtube.com/watch?v=fUdVqexJ0p8) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-gudlewKnA8c | [GABA Makes New Brain Cells](https://www.youtube.com/watch?v=gudlewKnA8c) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |

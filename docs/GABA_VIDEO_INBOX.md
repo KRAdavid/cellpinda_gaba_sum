@@ -1578,3 +1578,21 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-XJ5bvJlr5h4
+
+- 상태: PENDING_REVIEW
+- 영상: [#제품제공 꿀잠캠프 번개 이벤트에 당첨되어 굿슬립가바 365를 엄마에게 선물했어요💜  #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애](https://www.youtube.com/watch?v=XJ5bvJlr5h4)
+- 채널: YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 효과·안전성 단정 신호 · 섭취·상업성 신호
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS

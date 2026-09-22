@@ -7,7 +7,7 @@
 - 채널 확인: 8/8
 - 유사 콘텐츠 검색어 확인: 6/6
 - Shorts 페이지 보완 수집: 0개 채널
-- 신규 후보: 4건
+- 신규 후보: 1건
 - 등록 영상 원문 링크: 11/11 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 4/6 접근 확인 · 출처 링크 경고 2건
 - 등록 YouTube 메타데이터: 9/9 제목·채널 확인 · 메타데이터 경고 0건
@@ -20,10 +20,7 @@
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 상태 |
 | --- | --- | --- | --- | --- | --- |
-| PENDING-20260922-RnecceSCteY | [이명? 불면증? 가바가 도와줍니다. #GABA  #불면증  #이명  #수면영양제  #수면에좋은영양제  #자연수면  #스트레스완화  #이명완화  #수면장애  #뇌건강](https://www.youtube.com/watch?v=RnecceSCteY) | YouTube 검색: GABA 신경전달물질 Shorts | 질환·치료 표현 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | PENDING_REVIEW |
-| PENDING-20260922-9O1RXkL8vpc | [테아닌 가바 트립토판 락티움 한포한에 다들어가있어서 진짜 꿀잠자요](https://www.youtube.com/watch?v=9O1RXkL8vpc) | YouTube 검색: 가바 수면 영양제 Shorts | 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | PENDING_REVIEW |
-| PENDING-20260922-3F-Ijan5bJM | [가바가 면역력에 미치는 영향](https://www.youtube.com/watch?v=3F-Ijan5bJM) | YouTube 검색: 가바 수면 영양제 Shorts | 일반 설명 후보 | VIDEO 우선 | PENDING_REVIEW |
-| PENDING-20260922-asu3inHqnhg | [How GABA Helps Stress & Anxiety?🧘‍♂️#shorts #bodybuilding #bodybuilder #FITNESS #health #relax](https://www.youtube.com/watch?v=asu3inHqnhg) | YouTube 검색: 가바 스트레스 Shorts | 질환·치료 표현 · 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | PENDING_REVIEW |
+| PENDING-20260922-XJ5bvJlr5h4 | [#제품제공 꿀잠캠프 번개 이벤트에 당첨되어 굿슬립가바 365를 엄마에게 선물했어요💜  #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애](https://www.youtube.com/watch?v=XJ5bvJlr5h4) | YouTube 검색: 가바 수면 영양제 Shorts | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | PENDING_REVIEW |
 
 ## 채널 경고
 
