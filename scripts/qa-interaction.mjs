@@ -133,13 +133,13 @@ try {
   await evaluate('document.querySelector(".story-video-db-button")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
   const presenterDb = await evaluate('({items:document.querySelectorAll(".video-db-item").length,hasHold:document.querySelector(".video-db-list")?.innerText.includes("검토 보류")||false,detail:document.querySelector(".video-db-detail")?.innerText||"",search:!!document.querySelector(".video-db-search input"),filters:document.querySelectorAll(".video-db-filters button").length})');
-  assert('presenter video DB keeps candidate review separate from public curation', presenterDb.items === 10 && presenterDb.hasHold && !presenterDb.detail, JSON.stringify(presenterDb));
+  assert('presenter video DB keeps candidate review separate from public curation', presenterDb.items === 11 && presenterDb.hasHold && !presenterDb.detail, JSON.stringify(presenterDb));
   const monitorSnapshot = await evaluate('({summary:document.querySelector(".monitor-snapshot")?.innerText||"",links:document.querySelectorAll(".monitor-snapshot a").length})');
   assert('presenter video DB shows daily monitoring snapshot', monitorSnapshot.summary.includes('마지막 자동 확인') && monitorSnapshot.summary.includes('검토 대기') && monitorSnapshot.links === 2, JSON.stringify(monitorSnapshot));
   await evaluate('document.querySelector(".video-db-filters button:nth-child(4)")?.click()');
   await wait(180);
   const holdFilter = await evaluate('({items:document.querySelectorAll(".video-db-item").length,active:document.querySelector(".video-db-filters button:nth-child(4)")?.getAttribute("aria-pressed")||""})');
-  assert('presenter video DB filters review status before selection', presenterDb.search && presenterDb.filters === 6 && holdFilter.items === 4 && holdFilter.active === 'true', JSON.stringify({presenterDb,holdFilter}));
+  assert('presenter video DB filters review status before selection', presenterDb.search && presenterDb.filters === 6 && holdFilter.items === 5 && holdFilter.active === 'true', JSON.stringify({presenterDb,holdFilter}));
   await evaluate('document.querySelector(".video-db-filters button:first-child")?.click()');
   await wait(120);
   await evaluate('(() => { const input=document.querySelector(".video-db-search input"); if (!input) return false; const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value")?.set; setter?.call(input,"Wei Lu"); input.dispatchEvent(new Event("input",{bubbles:true})); return true; })()');

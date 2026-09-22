@@ -13,7 +13,7 @@
 | 별도 공개 URL·저장소 | 기술 PASS | GitHub Pages 및 별도 저장소 |
 | 소비자 흐름 | 기술·시각 PASS / 실기기 HOLD | 8장 풀스크린 세로 릴스 피드, 다음 메시지 미리보기·영상 섹션 연결, 320·390·1440px Chrome QA |
 | 일반 GABA 연구 | AI 사전 확인 PASS / 사람 검토 HOLD | 연구 패널 4개 출처, 일반 연구와 제품 효능 경계 |
-| 권위 영상 | 공개 승인 2건 / 관리 DB 10건 | `src/gabaVideos.ts`, `PUBLISH_GENERAL` 게이트 |
+| 권위 영상 | 공개 승인 2건 / 관리 DB 11건 | `src/gabaVideos.ts`, `PUBLISH_GENERAL` 게이트 |
 | 제공 Shorts 8건 | 검토 기록 완료 / 대부분 HOLD·LIMITED_USE·EXCLUDE | 영상별 요약·인물 소개·감리 필드 |
 | 일일 유사 콘텐츠 모니터 | 기술 PASS / 사람 감리 HOLD | 8개 채널·4개 검색어·일일 리포트·PENDING_REVIEW |
 | 발표자 운영 | 기술 PASS / 실제 TF 배정 HOLD | 영상 DB·감리 스냅샷·운영 보드 |

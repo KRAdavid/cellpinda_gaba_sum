@@ -1164,3 +1164,39 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-XQNQH6ZBR5s
+
+- 상태: PENDING_REVIEW
+- 영상: [불안,스트레스에 긴급처방템 공개 #스트레스 #심신안정 #불안 #가바](https://www.youtube.com/watch?v=XQNQH6ZBR5s)
+- 채널: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-fsVwONopHQM
+
+- 상태: PENDING_REVIEW
+- 영상: [숙면을 방해하는 것의 정체는 가바 부족 #수면건강 #뇌과학](https://www.youtube.com/watch?v=fsVwONopHQM)
+- 채널: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS

@@ -4,9 +4,9 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 65건
+- 검토 대기: 67건
 - SCIENCE/MEDICAL 또는 RIGHTS 선확인: 38건
-- VIDEO 원문·자막 선확인: 27건
+- VIDEO 원문·자막 선확인: 29건
 
 ## 우선순위 정의
 
@@ -66,6 +66,7 @@
 | PENDING-20260922-BCqeJxZ4z4U | [\\[귀멸의 칼날 뇌 유형 분석 시리즈\\]  5. 겁쟁이 젠이츠는 왜 최강이 될까? (가바 & 아세틸콜린 뇌 분석)](https://www.youtube.com/watch?v=BCqeJxZ4z4U) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-DcBwGT0Jcb8 | [GABA가 알코올에 대한 뇌의 반응에 미치는 영향](https://www.youtube.com/watch?v=DcBwGT0Jcb8) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-FiW-43xD5Tw | [“잠은 자는데 피곤한 이유”   #가바#GABA#가바효능#스트레스관리#수면관리#멘탈관리#예민함완화#일상관리#셀핀다 #신현준 #정준호](https://www.youtube.com/watch?v=FiW-43xD5Tw) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
+| PENDING-20260922-fsVwONopHQM | [숙면을 방해하는 것의 정체는 가바 부족 #수면건강 #뇌과학](https://www.youtube.com/watch?v=fsVwONopHQM) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-fUdVqexJ0p8 | [킹받는 순간 뇌를 강제 휴식 모드로 바꾸는 치트키 #GABA초콜릿 #멘탈관리 #가바초콜릿](https://www.youtube.com/watch?v=fUdVqexJ0p8) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-gudlewKnA8c | [GABA Makes New Brain Cells](https://www.youtube.com/watch?v=gudlewKnA8c) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-jQuqzVDij7k | [GABA: The Calming Neurotransmitter#youtubeshorts #psychology](https://www.youtube.com/watch?v=jQuqzVDij7k) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
@@ -83,6 +84,7 @@
 | PENDING-20260922-whfAiIaj6xY | [뇌의 흥분을 가라앉히는 가바](https://www.youtube.com/watch?v=whfAiIaj6xY) | YouTube 검색: GABA 신경전달물질 (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-XlIVQqC8eUQ | [글루탐산 대 GABA! #건강 #사실 #과학 #단편 #당신을 위한 #의사 #동기부여 #뇌 #행복 #스트레스](https://www.youtube.com/watch?v=XlIVQqC8eUQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-XQfVcYi5M_o | [GABA는 핵심 신경전달물질입니다! #신경전달물질 #간호학](https://www.youtube.com/watch?v=XQfVcYi5M_o) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
+| PENDING-20260922-XQNQH6ZBR5s | [불안,스트레스에 긴급처방템 공개 #스트레스 #심신안정 #불안 #가바](https://www.youtube.com/watch?v=XQNQH6ZBR5s) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-ZKbV53P9goM | [GABA #불안완화 #수면영양소 #멘탈케어 #신경안정 #1분건강](https://www.youtube.com/watch?v=ZKbV53P9goM) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 
 ## 다음 행동

@@ -25,6 +25,7 @@ const required = [
   ['research limitation', '14개 위약대조 인체시험'],
   ['research citation title', 'Effects of Oral Gamma-Aminobutyric Acid'],
   ['research citation PMID', 'PMID 33041752'],
+  ['research neutral summary', '스트레스와 수면 관련 지표'],
   ['research source disclosure', '근거 출처 4건'],
   ['general physiology source', 'Synaptic inhibition and γ-aminobutyric acid'],
   ['GABA tone source', 'GABA tone regulation and its cognitive functions'],
@@ -85,12 +86,18 @@ const forbiddenMetadata = [
   ['smartstore metadata', '스마트스토어'],
 ];
 
+const forbiddenPublicCopy = [
+  ['negative stress evidence wording', '스트레스 근거는 제한적이고'],
+  ['negative sleep evidence wording', '수면 근거는 매우 제한적이며'],
+];
+
 const failures = [];
 if (!index.includes('favicon.svg')) failures.push('missing favicon link');
 if (!fs.existsSync(path.join(dist, 'favicon.svg'))) failures.push('missing favicon asset');
 for (const [label, value] of required) if (!assetText.includes(value)) failures.push(`missing required ${label}: ${value}`);
 for (const [label, value] of requiredMetadata) if (!index.includes(value)) failures.push(`missing required ${label}: ${value}`);
 for (const [label, value] of forbiddenMetadata) if (index.includes(value)) failures.push(`found forbidden ${label}: ${value}`);
+for (const [label, value] of forbiddenPublicCopy) if (assetText.includes(value)) failures.push(`found forbidden public copy ${label}: ${value}`);
 for (const asset of requiredPublicAssets) if (!fs.existsSync(path.join(dist, asset))) failures.push(`missing required visual asset: ${asset}`);
 
 if (failures.length) {

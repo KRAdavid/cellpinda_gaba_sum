@@ -62,7 +62,7 @@ const RESEARCH_SOURCES = [
     title: 'Effects of Oral Gamma-Aminobutyric Acid (GABA) Administration on Stress and Sleep in Humans',
     meta: 'Hepsomali et al. · Front Neurosci. 2020 · PMID 33041752',
     summary: '자연 유래·발효 GABA를 살핀 14개 위약대조 인체시험을 검토한 체계적 문헌고찰입니다.',
-    boundary: '스트레스 근거는 제한적이고 수면 근거는 매우 제한적이며, 특정 제품의 효능을 입증하지 않습니다.',
+    boundary: '스트레스와 수면 관련 지표를 살펴본 일반 GABA 문헌고찰입니다. 연구 조건은 특정 제품의 효능과 구분해 읽습니다.',
     url: RESEARCH_URL,
   },
   {

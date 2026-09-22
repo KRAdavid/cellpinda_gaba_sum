@@ -6,7 +6,7 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | CONTENT-01 | 일상 도입 오해 방지 | 기술 문장 유지, 현장 관찰 | `src/App.tsx`, A 세션 패킷 | UX + MEDICAL | A/B/C 각 이해도 4점 이상 | READY FOR FIELD |
 | CONTENT-02 | GABA 일반 기능·연구 경계 | 일반 GABA 연구 표기 유지 | `GABA_SOURCE_REGISTER.md`, 연구 패널 | SCIENCE + MEDICAL | 출처 사람 검토 | HOLD |
-| VIDEO-01 | 영상별 감리 구조 | 요약·인물·권위·근거·권리 필드 적용 | `src/gabaVideos.ts`, `GABA_VIDEO_DB.md` | VIDEO + RIGHTS | 10건 원문·권리 기록 | HOLD |
+| VIDEO-01 | 영상별 감리 구조 | 요약·인물·권위·근거·권리 필드 적용 | `src/gabaVideos.ts`, `GABA_VIDEO_DB.md` | VIDEO + RIGHTS | 11건 원문·권리 기록 | HOLD |
 | VIDEO-02 | 제공 Shorts 8건 | 공개 승인 전 검토 상태 유지 | `GABA_VIDEO_REVIEW_LOG.md` | VIDEO | 타임코드·자막·주장 판정 | HOLD |
 | OPS-01 | 매일 유사 후보 운영 | 09:00 KST 자동 수집·PENDING_REVIEW | GitHub Actions·일일 리포트 | AI-OPS + VIDEO | 사람 감리 3일 연속 기록 | READY FOR FIELD |
 | OPS-02 | 사업자 영상 탐색 | 필터·검색·설명 문장 복사 제공 | 발표 모드 QA | UX + QA | 실제 세션 오선택 0건 | READY FOR FIELD |
