@@ -292,8 +292,10 @@ export const ACTIVE_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => !video.id.starts
 // The consumer showcase now uses the Shorts shared by the user today. These are
 // link-only review candidates, not general-efficacy endorsements. EXCLUDE records
 // stay out of the consumer surface until their source and rights are resolved.
+const SHARED_GABA_VIDEO_ORDER = ['SHORT-08', 'SHORT-04', 'SHORT-05', 'SHORT-02', 'SHORT-03', 'SHORT-06', 'SHORT-07'];
 export const SHARED_GABA_VIDEOS = GABA_VIDEO_DB
   .filter(video => video.id.startsWith('SHORT-') && video.status !== 'EXCLUDE')
+  .sort((left, right) => SHARED_GABA_VIDEO_ORDER.indexOf(left.id) - SHARED_GABA_VIDEO_ORDER.indexOf(right.id))
   .map(video => {
     const videoId = video.url.match(/\/shorts\/([^?&#/]+)/)?.[1];
     return {

@@ -121,9 +121,9 @@ try {
   const publicVideo = await evaluate('({items:document.querySelectorAll(".video-db-item").length,detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||"",preview:!!document.querySelector(".video-db-preview") && (!!document.querySelector(".video-db-preview img") || !!document.querySelector(".video-db-preview__source-mark")),body:document.querySelector(".info-panel")?.innerText||""})');
   assert('consumer video detail remains available from the separate showcase', publicVideo.items === 7 && publicVideo.detail.includes('인물 소개') && publicVideo.detail.includes('확인 기반') && publicVideo.detail.includes('권위') && publicVideo.preview && publicVideo.external.includes('youtube.com/shorts/') && !publicVideo.body.includes('dnalc.cshl.edu') && !publicVideo.body.includes('videocast.nih.gov'), JSON.stringify(publicVideo));
   await evaluate('document.querySelectorAll(".video-db-item__select")[1]?.click()');
-  await waitForText('.video-db-detail', '양과자');
+  await waitForText('.video-db-detail', '브레인튜브');
   const secondPublicVideo = await evaluate('({detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||""})');
-  assert('consumer can inspect the second shared YouTube video', secondPublicVideo.detail.includes('양과자') && secondPublicVideo.external.includes('youtube.com/shorts/vnocd9ZVJj0'), JSON.stringify(secondPublicVideo));
+  assert('consumer can inspect the second shared YouTube video', secondPublicVideo.detail.includes('브레인튜브') && secondPublicVideo.external.includes('youtube.com/shorts/BiZXS_ojLUA'), JSON.stringify(secondPublicVideo));
   await press('Escape', 'Escape', 27);
 
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
