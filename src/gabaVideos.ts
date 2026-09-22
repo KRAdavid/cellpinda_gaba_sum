@@ -27,6 +27,7 @@ export type GabaVideoRecord = {
   sourceChannelUrl?: string;
   speaker: string;
   authorityEvidenceUrl?: string;
+  researchEvidenceUrl?: string;
   summary: string;
   operatorSentence: string;
   personSummary: string;
@@ -139,7 +140,8 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     speaker: '이동환',
     summary: '수면제 말고 GABA를 살펴보자는 대안 프레임으로 소개합니다. 정확한 발언은 원문 확인 전입니다.',
     operatorSentence: '수면제 대체로 오해될 수 있어 원문과 자막 확인 전에는 소개하지 않는 후보입니다.',
-    personSummary: '채널 공개 프로필은 가정의학과 전문의로 소개하지만, 전문성은 특정 주장이나 제품 효과의 자동 승인 근거가 아닙니다.',
+    personSummary: '직무스트레스연구소 공식 프로필은 이동환을 가정의학과 전문의·직무스트레스연구소 대표로 소개합니다. 이 출처는 인물·경력 확인용이며 수면제 대체 표현, 영상 발언, GABA 연구·제품 효능을 승인하지 않습니다.',
+    authorityEvidenceUrl: 'https://www.stressmanagement.co.kr/page/49jdfx45',
     status: 'HOLD',
     statusReason: '수면제 대체로 읽히는 표현, 자막, 연구 근거와 사용 권리를 추가 확인해야 합니다.',
     checkedAt: '2026-09-22',
@@ -185,7 +187,8 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     speaker: '실제 화자 확인 필요',
     summary: 'GABA를 뇌의 진정·안정 작용과 관련된 신경전달물질로 한 문장 정의한 뒤 불면증·영양제로 확장합니다.',
     operatorSentence: '일반 GABA 정의 구간만 확인한 뒤 제한적으로 검토할 수 있는 후보입니다.',
-    personSummary: '신경과·뇌 건강 콘텐츠와 연결되지만 이 쇼츠의 실제 화자와 자격은 직접 확인 전입니다.',
+    personSummary: '서울정형외과·신경과 공식 사이트는 손유리를 병원 대표로 표시하며 신경과 진료기관 정보를 제공합니다. 이 출처는 실제 쇼츠 화자·자격·GABA 발언의 범위를 대신 확인하지 않습니다.',
+    authorityEvidenceUrl: 'https://www.seoulsangok.com/',
     status: 'LIMITED_USE',
     statusReason: '일반 GABA 정의 구간만 자막·타임코드 확인 후 검토할 수 있습니다.',
     checkedAt: '2026-09-22',
@@ -232,8 +235,9 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     speaker: '신원철',
     summary: 'GABA가 뇌로 직접 가지 않는데 효과가 있는지를 질문으로 제시하고 수면 보충제의 작용과 안전성을 설명하겠다고 안내합니다.',
     operatorSentence: '경구 GABA와 수면·안전성 주장을 원문과 연구 조건으로 다시 확인해야 하는 후보입니다.',
-    personSummary: '국립의과학지식센터에 신원철이 현미쌀눈 유래 GABA 수면 연구의 공저자로 등록되어 있어 수면 연구 경력의 확인 출발점이 있습니다. 연구 경력은 이 쇼츠의 화자·발언·상업성·제품 효능을 자동 승인하지 않습니다.',
-    authorityEvidenceUrl: 'https://library.nih.go.kr/ncmiklib/elib/kom/articleDtl.do?pk_pb_seq=PB07234096',
+    personSummary: '국립의과학지식센터에 신원철이 현미쌀눈 유래 GABA 수면 연구의 공저자로 등록되어 있고, 대한수면연구학회 공식 소개는 그를 회장·강동경희대학교병원 신경과 소속으로 소개합니다. 연구·소속 경력은 이 쇼츠의 화자·발언·상업성·제품 효능을 자동 승인하지 않습니다.',
+    authorityEvidenceUrl: 'https://www.sleepnet.or.kr/about/greeting',
+    researchEvidenceUrl: 'https://library.nih.go.kr/ncmiklib/elib/kom/articleDtl.do?pk_pb_seq=PB07234096',
     status: 'HOLD',
     statusReason: '부작용 없음·안전한 수면 보충제 같은 표현과 상업적 이해관계를 확인해야 합니다.',
     checkedAt: '2026-09-22',
