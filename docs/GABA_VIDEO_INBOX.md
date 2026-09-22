@@ -4,7 +4,7 @@
 
 ## 운영 상태
 
-- 마지막 확인: 2026-09-22 로컬 수동 실행
+- 마지막 확인: 2026-09-23 자동 모니터 실행
 - 상태값: PENDING_REVIEW → HOLD / LIMITED_USE / PUBLISH_GENERAL / EXCLUDE
 - 검토 규칙: docs/GABA_VIDEO_REVIEW_RULES.md
 - 상세 DB: docs/GABA_VIDEO_DB.md
@@ -1681,6 +1681,44 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 제목 기반 주의 신호: 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호
 - 자동 우선순위: SCIENCE/MEDICAL 우선
 - 공개 큐 분류: 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260923-ov9HdDI0Dmw
+
+- 상태: PENDING_REVIEW
+- 영상: [수면 영양제 비교, 마그네슘, 멜라토닌, GABA의 선택법](https://www.youtube.com/watch?v=ov9HdDI0Dmw)
+- 채널: YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-23
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260923-rUqPUDKWEwM
+
+- 상태: PENDING_REVIEW
+- 영상: [잠이 얕다면, 가바를 기억하세요 수면의 질, GABA, 50~60대 여성, 영양제, 숙면, 뒤척임, 중장년 건강, 밤잠, 피로 회복](https://www.youtube.com/watch?v=rUqPUDKWEwM)
+- 채널: YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-23
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 섭취·상업성 신호
+- 자동 우선순위: SCIENCE/MEDICAL + RIGHTS
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
 - 형식: Shorts 여부 확인 필요
 - 무엇을 어떻게 소개했나: 원문·자막 확인 전
 - 인물 소개: 확인 전

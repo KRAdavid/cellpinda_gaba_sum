@@ -4,9 +4,9 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 94건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 58건
-- VIDEO 원문·자막 선확인: 36건
+- 검토 대기: 96건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 59건
+- VIDEO 원문·자막 선확인: 37건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 5건
 
 ## 우선순위 정의
@@ -80,6 +80,7 @@
 | PENDING-20260922-mMAAXffih4I | [내몸의 가바(GABA) 생성 증가~! #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=mMAAXffih4I) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-nH7RK5N8fdA | [긴장된 상태에서 영양제를 섭취하면? #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=nH7RK5N8fdA) | YouTube 검색: 가바 스트레스 (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-Zj10FyJYXkg | [일본인들이 꼭 챙겨먹는 뇌건강 영양제 GABA](https://www.youtube.com/watch?v=Zj10FyJYXkg) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
+| PENDING-20260923-rUqPUDKWEwM | [잠이 얕다면, 가바를 기억하세요 수면의 질, GABA, 50~60대 여성, 영양제, 숙면, 뒤척임, 중장년 건강, 밤잠, 피로 회복](https://www.youtube.com/watch?v=rUqPUDKWEwM) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-13ZJkFP-m18 | [가바!!!알려드림~#shorts](https://www.youtube.com/watch?v=13ZJkFP-m18) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-3F-Ijan5bJM | [가바가 면역력에 미치는 영향](https://www.youtube.com/watch?v=3F-Ijan5bJM) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-5T63eBvjUUQ | [\\[365건강밥상\\] NO. 231 스트레스로 지친신경을 차분하게 진정시키고 불안감을 낮추는 GABA음식 #영양식 #음식 #신경안정 #불안감 #스트레스 #365건강밥상 #shorts](https://www.youtube.com/watch?v=5T63eBvjUUQ) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
@@ -116,6 +117,7 @@
 | PENDING-20260922-XQfVcYi5M_o | [GABA는 핵심 신경전달물질입니다! #신경전달물질 #간호학](https://www.youtube.com/watch?v=XQfVcYi5M_o) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-XQNQH6ZBR5s | [불안,스트레스에 긴급처방템 공개 #스트레스 #심신안정 #불안 #가바](https://www.youtube.com/watch?v=XQNQH6ZBR5s) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-ZKbV53P9goM | [GABA #불안완화 #수면영양소 #멘탈케어 #신경안정 #1분건강](https://www.youtube.com/watch?v=ZKbV53P9goM) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20260923-ov9HdDI0Dmw | [수면 영양제 비교, 마그네슘, 멜라토닌, GABA의 선택법](https://www.youtube.com/watch?v=ov9HdDI0Dmw) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 
 ## 다음 행동
 

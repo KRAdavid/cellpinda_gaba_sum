@@ -36,6 +36,7 @@ assert('daily report is archived by date', monitor.includes('reportArchiveDir') 
 assert('daily monitor appends an idempotent review-log record', monitor.includes('appendDailyReviewLog') && monitor.includes('자동 모니터 실행 기록') && monitor.includes('reviewLogPath') && reviewLog.includes('GABA 영상 일일 검토·토론 로그'));
 assert('daily monitor date uses Korea time', monitor.includes("timeZone: 'Asia/Seoul'") && monitor.includes('formatToParts') && monitor.includes("koreaDatePart('year')"));
 assert('same-day reruns preserve the accumulated candidate list', monitor.includes('collectedDate') && monitor.includes('오늘 신규 후보(누적)') && monitor.includes('이번 실행 신규 후보') && monitor.includes('newCandidatesThisRun'));
+assert('inbox refreshes its last-run date on write', monitor.includes('const refreshedInbox = existing.replace') && monitor.includes('마지막 확인: ${checkedDate} 자동 모니터 실행') && /- 마지막 확인: \d{4}-\d{2}-\d{2} 자동 모니터 실행/.test(inbox));
 assert('workflow runs daily and includes report archive changes', workflow.includes("cron: '0 0 * * *'") && workflow.includes('docs/gaba-video-daily'));
 assert('daily report keeps candidates in review status', report.includes('자동 공개: 0건') && report.includes('PENDING_REVIEW'));
 assert('triage classifier is present and explicitly non-approval', monitor.includes('screenCandidate') && monitor.includes('triagePath') && monitor.includes('제목 기반 주의 신호'));

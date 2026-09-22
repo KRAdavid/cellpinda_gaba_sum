@@ -756,7 +756,7 @@ const appendDailyReviewLog = ({checkedDate: date, successfulSources, successfulS
 };
 
 const main = async () => {
-  const existing = fs.existsSync(inboxPath) ? fs.readFileSync(inboxPath, 'utf8') : '';
+  let existing = fs.existsSync(inboxPath) ? fs.readFileSync(inboxPath, 'utf8') : '';
   const previousHistory = readPreviousMonitorHistory();
   const knownFiles = [
     inboxPath,
@@ -839,6 +839,12 @@ const main = async () => {
   if (errors.length) errors.forEach(error => console.log('- warning: ' + error));
 
   if (!writeMode) return;
+
+  const refreshedInbox = existing.replace(/^- 마지막 확인: .*$/m, `- 마지막 확인: ${checkedDate} 자동 모니터 실행`);
+  if (refreshedInbox !== existing) {
+    existing = refreshedInbox;
+    fs.writeFileSync(inboxPath, existing, 'utf8');
+  }
 
   if (candidates.length > 0) {
     const blocks = candidates.map(item => [
