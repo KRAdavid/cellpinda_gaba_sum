@@ -1847,7 +1847,6 @@ export default function App() {
     </div>
     <div className="story-reader-tools">
       <button type="button" onClick={shareCardLink}>현재 장면 링크 공유 <span aria-hidden="true">↗</span></button>
-      <button type="button" onClick={event => enterPresentation(event.currentTarget, active)}>발표자용 화면 <span aria-hidden="true">→</span></button>
     </div>
     <p className="story-share-message" aria-live="polite">{shareMessage}</p>
     {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="고객에게 전달할 장면 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>링크 복사</button></div> : null}
@@ -1960,7 +1959,6 @@ export default function App() {
             </> : <details className="story-secondary-controls">
               <summary>더 보기 <span aria-hidden="true">＋</span></summary>
               <button type="button" className="story-share-button" onClick={shareCardLink}>현재 장면 링크 공유</button>
-              <button type="button" className="story-presentation-toggle" onClick={event => enterPresentation(event.currentTarget)}>발표 모드</button>
             </details>}
           </div>
         </div>
@@ -2425,8 +2423,6 @@ export default function App() {
           </div> : null}
         </div>
       </section> : null}
-
-      {!presentationMode ? introSection : null}
 
       <section className="guardrail" aria-label="정보 구분 안내">
         <div><span>01</span><h2>일반 생리</h2><p>GABA가 신경전달물질로 어떤 역할을 하는지 설명합니다.</p></div>
