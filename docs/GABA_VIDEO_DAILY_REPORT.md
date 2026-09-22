@@ -10,11 +10,11 @@
 - 오늘 신규 후보(누적): 11건
 - 이번 실행 신규 후보: 0건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 3건
-- 등록 영상 원문 링크: 13/13 접근 확인 · 링크 경고 0건
-- 권위·연구 출처 링크: 8/8 접근 확인 · 출처 링크 경고 0건
-- 등록 YouTube 메타데이터: 11/11 제목·채널 확인 · 메타데이터 경고 0건
-- 등록 YouTube 자막 트랙: 11/11 watch 페이지에서 발견 · 자막 경고 0건
-- 등록 YouTube 자막 본문: 0/11 본문 확인 · 본문 경고 11건 · HTTP 429 접근 제한 11건
+- 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
+- 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
+- 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
+- 등록 YouTube 자막 트랙: 12/12 watch 페이지에서 발견 · 자막 경고 0건
+- 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 12건
 - 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-09-23.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
@@ -68,6 +68,7 @@
 - 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 자막 본문 확인 HTTP 429
 - 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 자막 본문 확인 HTTP 429
 - 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 자막 본문 확인 HTTP 429
 - 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 확인 HTTP 429
 - 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 확인 HTTP 429
 - 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 자막 본문 확인 HTTP 429
@@ -76,7 +77,7 @@
 - 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 확인 HTTP 429
 - 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 확인 HTTP 429
 - 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 확인 HTTP 429
-- HTTP 429 접근 제한: 11건 · 제한된 본문은 사람이 원문을 재생해 타임코드와 발언을 확인
+- HTTP 429 접근 제한: 12건 · 제한된 본문은 사람이 원문을 재생해 타임코드와 발언을 확인
 - 자막 본문 확인은 텍스트 응답의 존재만 점검한다. 번역 정확성·발언 맥락·화자·과학적 타당성·권리를 승인하지 않으며, 본문 확인 전 요약과 공개 상태를 바꾸지 않는다.
 
 ## 다음 15분 감리 순서
