@@ -1,7 +1,6 @@
 import {useEffect, useMemo, useRef, useState, type ChangeEvent} from 'react';
-import {ACTIVE_GABA_VIDEOS, DOMESTIC_PUBLIC_GABA_VIDEOS, GABA_VIDEO_DB, PUBLIC_GABA_VIDEOS, SHARED_GABA_VIDEOS, type GabaVideoRecord} from './gabaVideos';
-import {GABA_MONITOR_SNAPSHOT} from './gabaMonitorSnapshot';
-import {TF_DISCUSSION_ITEMS, TF_MEETING_STEPS, TF_ROLES, TF_WORKSTREAMS} from './tfBoard';
+import {DOMESTIC_PUBLIC_GABA_VIDEOS, SHARED_GABA_VIDEOS} from './gabaPublicVideos';
+import type {GabaVideoRecord} from './gabaVideos';
 
 type PanelKey = 'research' | 'video' | 'ops';
 type SlideLink = {href: string; label: string; panel: PanelKey};
@@ -63,7 +62,18 @@ type VideoReviewDraft = {
   updatedAt: string;
 };
 type VideoReviewDrafts = Record<string, VideoReviewDraft>;
-type MonitorCandidate = typeof GABA_MONITOR_SNAPSHOT.pendingQueue[number] | typeof GABA_MONITOR_SNAPSHOT.authorityQueue[number] | typeof GABA_MONITOR_SNAPSHOT.productBrandQueue[number];
+type MonitorSnapshot = typeof import('./gabaMonitorSnapshot')['GABA_MONITOR_SNAPSHOT'];
+type MonitorCandidate = MonitorSnapshot['pendingQueue'][number] | MonitorSnapshot['authorityQueue'][number] | MonitorSnapshot['productBrandQueue'][number];
+type PresenterData = {
+  activeVideos: GabaVideoRecord[];
+  videoDb: GabaVideoRecord[];
+  approvedVideos: GabaVideoRecord[];
+  monitor: MonitorSnapshot;
+  tfRoles: typeof import('./tfBoard')['TF_ROLES'];
+  tfDiscussionItems: typeof import('./tfBoard')['TF_DISCUSSION_ITEMS'];
+  tfMeetingSteps: typeof import('./tfBoard')['TF_MEETING_STEPS'];
+  tfWorkstreams: typeof import('./tfBoard')['TF_WORKSTREAMS'];
+};
 type MonitorReviewDrafts = Record<string, VideoReviewDraft>;
 type SourceReviewDecision = 'UNDECIDED' | 'USE_GENERAL' | 'REVISE' | 'HOLD';
 type SourceReviewDraft = {
@@ -479,7 +489,7 @@ function makeSlides(): Slide[] {
       tone: 'green-dark',
       visual: STORY_VISUALS.neural,
       presenterPrompt: 'GABA가 무엇을 뜻하는지부터 짧게 확인한 뒤 기능으로 넘어가겠습니다.',
-      presenterBoundary: 'GABA라는 생리 성분의 설명이며 보충제 효능으로 연결하지 않습니다.',
+      presenterBoundary: 'GABA라는 생리 성분의 설명이며 개인의 섭취 결과로 연결하지 않습니다.',
     },
     {
       id: 'function',
@@ -523,6 +533,7 @@ export default function App() {
   const [panelSourceIndex, setPanelSourceIndex] = useState<number | null>(null);
   const [panelVideoId, setPanelVideoId] = useState<string | null>(null);
   const [presentationMode, setPresentationMode] = useState(false);
+  const [presenterData, setPresenterData] = useState<PresenterData | null>(null);
   const [shareMessage, setShareMessage] = useState('');
   const [shareUrl, setShareUrl] = useState('');
   const [panelShareMessage, setPanelShareMessage] = useState('');
@@ -570,6 +581,14 @@ export default function App() {
   const showcaseShareRequestRef = useRef(0);
   const activePhase = STORY_PHASES.find(phase => active >= phase.start && active <= phase.end) ?? STORY_PHASES[0];
   const nextSlide = slides[active + 1];
+  const activePresenterVideos = presenterData?.activeVideos ?? [];
+  const presenterVideoDb = presenterData?.videoDb ?? [];
+  const presenterApprovedVideos = presenterData?.approvedVideos ?? [];
+  const presenterMonitor = presenterData?.monitor;
+  const presenterTfRoles = presenterData?.tfRoles ?? [];
+  const presenterTfDiscussionItems = presenterData?.tfDiscussionItems ?? [];
+  const presenterTfMeetingSteps = presenterData?.tfMeetingSteps ?? [];
+  const presenterTfWorkstreams = presenterData?.tfWorkstreams ?? [];
   const approvedVideos = useMemo(() => DOMESTIC_PUBLIC_GABA_VIDEOS.map(video => {
     const videoId = video.url.match(/\/shorts\/([^?&#/]+)/)?.[1];
     return {
@@ -583,8 +602,8 @@ export default function App() {
   const approvedVideo = approvedVideos[approvedVideoIndex] ?? approvedVideos[0] ?? null;
   const publicVideo = publicPanelVideos[0] ?? null;
   const showcaseVideo = SHARED_GABA_VIDEOS[showcaseVideoIndex] ?? SHARED_GABA_VIDEOS[0] ?? null;
-  const panelVideos = presentationMode ? ACTIVE_GABA_VIDEOS : publicPanelVideos;
-  const selectedVideo = panelVideoId ? panelVideos.find(video => video.id === panelVideoId) ?? GABA_VIDEO_DB.find(video => video.id === panelVideoId) ?? null : null;
+  const panelVideos = presentationMode ? activePresenterVideos : publicPanelVideos;
+  const selectedVideo = panelVideoId ? panelVideos.find(video => video.id === panelVideoId) ?? presenterVideoDb.find(video => video.id === panelVideoId) ?? null : null;
   const selectedVideoId = selectedVideo?.url.match(/(?:shorts\/|watch\?v=)([\w-]{11})/)?.[1] ?? null;
   const selectedVideoEmbedUrl = selectedVideoId && /youtube\.com|youtu\.be/i.test(selectedVideo?.url ?? '')
     ? `https://www.youtube-nocookie.com/embed/${selectedVideoId}?rel=0&modestbranding=1`
@@ -616,7 +635,7 @@ export default function App() {
       })
       .slice(0, 3);
   }, [videoReviewDrafts]);
-  const monitorCandidates = useMemo<MonitorCandidate[]>(() => [...GABA_MONITOR_SNAPSHOT.pendingQueue, ...GABA_MONITOR_SNAPSHOT.authorityQueue, ...GABA_MONITOR_SNAPSHOT.productBrandQueue], []);
+  const monitorCandidates = useMemo<MonitorCandidate[]>(() => presenterMonitor ? [...presenterMonitor.pendingQueue, ...presenterMonitor.authorityQueue, ...presenterMonitor.productBrandQueue] : [], [presenterMonitor]);
   const monitorReviewCandidate = monitorCandidates.find(candidate => candidate.id === monitorReviewCandidateId) ?? null;
   const monitorReviewDraft = monitorReviewCandidate ? monitorReviewDrafts[monitorReviewCandidate.id] ?? makeEmptyVideoReviewDraft() : null;
   const monitorReviewCheckCount = monitorReviewDraft ? VIDEO_REVIEW_CHECKS.filter(check => monitorReviewDraft[check.key]).length : 0;
@@ -816,7 +835,7 @@ export default function App() {
     if (Number.isInteger(requested) && requested >= 1 && requested <= slides.length) {
       window.requestAnimationFrame(() => goTo(requested - 1));
     }
-    if (presenterRequested && requestedVideoId && GABA_VIDEO_DB.some(video => video.id === requestedVideoId)) {
+    if (presenterRequested && requestedVideoId && presenterData?.videoDb.some(video => video.id === requestedVideoId)) {
       window.requestAnimationFrame(() => {
         setPanelSourceIndex(Number.isInteger(requested) && requested >= 1 && requested <= slides.length ? requested - 1 : 0);
         setPanelVideoId(requestedVideoId);
@@ -835,7 +854,35 @@ export default function App() {
         });
       }
     }
-  }, [slides.length]);
+  }, [slides.length, presenterData]);
+
+  useEffect(() => {
+    if (!presentationMode) {
+      setPresenterData(null);
+      return;
+    }
+    let cancelled = false;
+    Promise.all([
+      import('./gabaVideos'),
+      import('./gabaMonitorSnapshot'),
+      import('./tfBoard'),
+    ]).then(([videos, monitor, board]) => {
+      if (cancelled) return;
+      setPresenterData({
+        activeVideos: videos.ACTIVE_GABA_VIDEOS,
+        videoDb: videos.GABA_VIDEO_DB,
+        approvedVideos: videos.PUBLIC_GABA_VIDEOS,
+        monitor: monitor.GABA_MONITOR_SNAPSHOT,
+        tfRoles: board.TF_ROLES,
+        tfDiscussionItems: board.TF_DISCUSSION_ITEMS,
+        tfMeetingSteps: board.TF_MEETING_STEPS,
+        tfWorkstreams: board.TF_WORKSTREAMS,
+      });
+    }).catch(() => {
+      if (!cancelled) setPresenterData(null);
+    });
+    return () => { cancelled = true; };
+  }, [presentationMode]);
 
   const copyText = async (text: string) => {
     try {
@@ -1039,7 +1086,7 @@ export default function App() {
   };
 
   const copyAllVideoReviewDrafts = async () => {
-    const entries = GABA_VIDEO_DB
+    const entries = presenterVideoDb
       .filter(video => videoReviewDrafts[video.id])
       .map(video => ({video, draft: videoReviewDrafts[video.id]}));
     if (!entries.length) {
@@ -1079,7 +1126,7 @@ export default function App() {
 
   const exportVideoDbCsv = () => {
     const headers = ['ID', '원본 제목', '소비자 제목', '영상 URL', '채널', '화자', '상태', '상태 사유', '무엇을 어떻게 소개했나', '인물 소개', '요약 근거', '권위', '근거', '주장 범위', '권리', '사용 방식', '다음 감리 행동', '확인일'];
-    const rows = ACTIVE_GABA_VIDEOS.map(video => [
+    const rows = activePresenterVideos.map(video => [
       video.id,
       video.title,
       video.publicTitle ?? '',
@@ -1099,17 +1146,21 @@ export default function App() {
       video.audit.nextAction,
       video.checkedAt,
     ]);
-    downloadCsvFile(`gaba-video-db-${GABA_MONITOR_SNAPSHOT.checkedAt}.csv`, [headers, ...rows]);
+    downloadCsvFile(`gaba-video-db-${presenterMonitor?.checkedAt ?? 'pending'}.csv`, [headers, ...rows]);
     setVideoReviewMessage('영상 DB CSV를 내려받았습니다. 공개 승인 상태는 바뀌지 않습니다.');
   };
 
   const exportReviewHandoff = () => {
+    if (!presenterMonitor) {
+      setReviewHandoffMessage('발표자 자료를 불러오는 중입니다. 잠시 후 다시 시도해 주세요.');
+      return;
+    }
     const packet: ReviewHandoffPacket = {
       packetType: REVIEW_HANDOFF_PACKET_TYPE,
       version: 1,
       exportedAt: new Date().toISOString(),
-      checkedAt: GABA_MONITOR_SNAPSHOT.checkedAt,
-      scope: {videoDb: GABA_VIDEO_DB.length, monitorCandidates: monitorCandidates.length, tfRoles: TF_ROLES.length},
+      checkedAt: presenterMonitor.checkedAt,
+      scope: {videoDb: presenterVideoDb.length, monitorCandidates: monitorCandidates.length, tfRoles: presenterTfRoles.length},
       videoReviewDrafts,
       monitorReviewDrafts,
       sourceReviewDrafts,
@@ -1119,7 +1170,7 @@ export default function App() {
       fieldSessionDrafts,
       boundary: '브라우저 로컬 감리·회의 초안의 팀 전달용 사본이며 공식 DB 상태·공개 승인·과학/의학·권리 판정을 의미하지 않습니다.',
     };
-    downloadJsonFile(`gaba-education-review-handoff-${GABA_MONITOR_SNAPSHOT.checkedAt}.json`, packet);
+    downloadJsonFile(`gaba-education-review-handoff-${presenterMonitor.checkedAt}.json`, packet);
     setReviewHandoffMessage('감리 패킷 JSON을 저장했습니다. 공식 승인 상태는 바뀌지 않습니다.');
   };
 
@@ -1185,7 +1236,11 @@ export default function App() {
   };
 
   const copyDailyMonitorBrief = async () => {
-    const snapshot = GABA_MONITOR_SNAPSHOT;
+    if (!presenterMonitor) {
+      setMonitorCopyMessage('발표자 자료를 불러오는 중입니다. 잠시 후 다시 시도해 주세요.');
+      return;
+    }
+    const snapshot = presenterMonitor;
     const lines = [
       'GABA Shorts 일일 감리 요약',
       `확인일: ${snapshot.checkedAt}`,
@@ -1220,7 +1275,11 @@ export default function App() {
   };
 
   const exportMonitorQueueCsv = () => {
-    const queue = Array.from(new Map([...GABA_MONITOR_SNAPSHOT.pendingQueue, ...GABA_MONITOR_SNAPSHOT.authorityQueue, ...GABA_MONITOR_SNAPSHOT.productBrandQueue].map(candidate => [candidate.id, candidate])).values());
+    if (!presenterMonitor) {
+      setMonitorCopyMessage('발표자 자료를 불러오는 중입니다. 잠시 후 다시 시도해 주세요.');
+      return;
+    }
+    const queue = Array.from(new Map([...presenterMonitor.pendingQueue, ...presenterMonitor.authorityQueue, ...presenterMonitor.productBrandQueue].map(candidate => [candidate.id, candidate])).values());
     const headers = ['ID', '제목', '발견 경로', '우선순위', '권위 신호 구분', '공개 큐 분류', '주의 신호', '첫 담당', '다음 행동', '상태'];
     const rows = queue.map(candidate => [
       candidate.id,
@@ -1234,7 +1293,7 @@ export default function App() {
       candidate.nextAction,
       'PENDING_REVIEW',
     ]);
-    downloadCsvFile(`gaba-shorts-review-queue-${GABA_MONITOR_SNAPSHOT.checkedAt}.csv`, [headers, ...rows]);
+    downloadCsvFile(`gaba-shorts-review-queue-${presenterMonitor.checkedAt}.csv`, [headers, ...rows]);
     setMonitorCopyMessage('감리 큐 CSV를 내려받았습니다. 후보는 공개 승인되지 않았습니다.');
   };
 
@@ -1274,7 +1333,7 @@ export default function App() {
       'GABA 교육 TF 업무 배정 초안',
       `첫 회의: ${tfMeetingDraft.trim() || '미정'}`,
       '',
-      ...TF_ROLES.map(role => {
+      ...presenterTfRoles.map(role => {
         const assignment = tfAssignments[role.id];
         return `- ${role.id} ${role.title}: 주 담당 ${assignment?.lead?.trim() || '미배정'} · 백업 ${assignment?.backup?.trim() || '미배정'}`;
       }),
@@ -1292,7 +1351,7 @@ export default function App() {
   const copyTfDiscussionBrief = async () => {
     const lines = [
       '일반 GABA 교육 TF 오늘의 토론 논점',
-      ...TF_DISCUSSION_ITEMS.map((item, index) => {
+      ...presenterTfDiscussionItems.map((item, index) => {
         const draft = tfDiscussionDrafts[item.id] ?? makeEmptyTfDiscussionDraft();
         const decision = TF_DISCUSSION_DECISIONS.find(option => option.id === draft.decision)?.label ?? '아직 결정하지 않음';
         return [
@@ -1962,7 +2021,7 @@ export default function App() {
             </> : null}
             {openPanel === 'video' ? <>
               <p>{presentationMode ? '발표자용 영상 DB 감리 화면입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 확인하고, 영상별 권위 수준과 공개 여부를 따로 결정합니다.' : '오늘 공유하신 국내 YouTube Shorts를 원문 확인용으로 소개합니다. 영상의 권위와 주장은 감리 상태를 따로 확인해 주세요.'}</p>
-              <p className="info-panel__status">{presentationMode ? `감리 대장 ${GABA_VIDEO_DB.length}건 · 현재 국내 큐 ${filteredPanelVideos.length}건 · DB 승인 이력 ${PUBLIC_GABA_VIDEOS.length}건 · 국내 공개 승인 ${DOMESTIC_PUBLIC_GABA_VIDEOS.length}건 · 등록 영상 초안 ${Object.keys(videoReviewDrafts).length}건 · 신규 후보 초안 ${Object.keys(monitorReviewDrafts).length}건` : `오늘 공유 영상 ${SHARED_GABA_VIDEOS.length}건 · 원문 확인 필요`}</p>
+              <p className="info-panel__status">{presentationMode ? presenterData ? `감리 대장 ${presenterVideoDb.length}건 · 현재 국내 큐 ${filteredPanelVideos.length}건 · DB 승인 이력 ${presenterApprovedVideos.length}건 · 국내 공개 승인 ${DOMESTIC_PUBLIC_GABA_VIDEOS.length}건 · 등록 영상 초안 ${Object.keys(videoReviewDrafts).length}건 · 신규 후보 초안 ${Object.keys(monitorReviewDrafts).length}건` : '발표자용 감리 자료를 불러오는 중입니다.' : `오늘 공유 영상 ${SHARED_GABA_VIDEOS.length}건 · 원문 확인 필요`}</p>
               {presentationMode ? <div className="video-review-summary" aria-label="감리 목록 복사"><span>감리 초안 {Object.keys(videoReviewDrafts).length}건 · 미완료 {incompleteAuditVideos.length}건</span><button type="button" disabled={!Object.keys(videoReviewDrafts).length} onClick={copyAllVideoReviewDrafts}>작성 초안 전체 복사</button><button type="button" disabled={!incompleteAuditVideos.length} onClick={copyIncompleteVideoAuditQueue}>미완료 목록 복사</button><button type="button" data-export-video-db-csv onClick={exportVideoDbCsv}>영상 DB CSV 내려받기</button><button type="button" data-export-review-packet onClick={exportReviewHandoff}>감리 패킷 JSON 저장</button><button type="button" data-import-review-packet onClick={() => reviewHandoffInputRef.current?.click()}>감리 패킷 불러오기</button><input ref={reviewHandoffInputRef} className="sr-only" type="file" accept="application/json,.json" aria-label="감리 패킷 JSON 불러오기" onChange={importReviewHandoff} /><small aria-live="polite">{videoReviewMessage}</small><small aria-live="polite">{reviewHandoffMessage}</small></div> : null}
               {presentationMode ? <section className="video-review-batch" aria-label="오늘 먼저 감리할 등록 영상">
                 <div className="video-review-batch__heading"><div><p className="eyebrow">오늘 먼저 감리할 등록 영상</p><small>오늘 공유된 후보 중 상태·미완료 기록을 기준으로 자동 정렬</small></div><strong>{reviewPriorityVideos.length}건</strong></div>
@@ -1981,17 +2040,17 @@ export default function App() {
               {presentationMode ? <div className="monitor-snapshot">
                 <div className="monitor-snapshot__heading"><p className="eyebrow">일일 감리 상태</p><div className="monitor-snapshot__actions"><button type="button" className="monitor-snapshot__copy" onClick={copyDailyMonitorBrief}>회의용 요약 복사</button><button type="button" className="monitor-snapshot__copy" data-export-monitor-csv onClick={exportMonitorQueueCsv}>감리 큐 CSV 내려받기</button></div></div>
                 <small className="monitor-snapshot__copy-message" aria-live="polite">{monitorCopyMessage}</small>
-                <p><strong>{GABA_MONITOR_SNAPSHOT.checkedAt}</strong> 마지막 자동 확인 · 채널 {GABA_MONITOR_SNAPSHOT.sourceChannels}/{GABA_MONITOR_SNAPSHOT.registeredChannels} · 검색어 {GABA_MONITOR_SNAPSHOT.discoveryQueries}/{GABA_MONITOR_SNAPSHOT.totalDiscoveryQueries}</p>
-                <p>검토 대기 {GABA_MONITOR_SNAPSHOT.pendingReview}건 · SCIENCE/MEDICAL 우선 {GABA_MONITOR_SNAPSHOT.scienceMedicalPriority}건 · 오늘 신규 후보 {GABA_MONITOR_SNAPSHOT.newCandidates}건 · 이번 실행 {GABA_MONITOR_SNAPSHOT.newCandidatesThisRun}건 · 자동 공개 {GABA_MONITOR_SNAPSHOT.autoPublish}건</p>
-                <p>등록 영상 원문 링크 {GABA_MONITOR_SNAPSHOT.registeredVideoLinksHealthy}/{GABA_MONITOR_SNAPSHOT.registeredVideoLinksChecked} 접근 확인 · 링크 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoLinkWarnings}건</p>
-                <p>권위·연구 출처 링크 {GABA_MONITOR_SNAPSHOT.registeredEvidenceLinksHealthy}/{GABA_MONITOR_SNAPSHOT.registeredEvidenceLinksChecked} 접근 확인 · 출처 링크 경고 {GABA_MONITOR_SNAPSHOT.registeredEvidenceLinkWarnings}건</p>
-                <p>등록 YouTube 메타데이터 {GABA_MONITOR_SNAPSHOT.registeredVideoMetadataHealthy}/{GABA_MONITOR_SNAPSHOT.registeredVideoMetadataChecked} 제목·채널 확인 · 메타데이터 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoMetadataWarnings}건</p>
-                <p>등록 YouTube 자막 트랙 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTracksAvailable}/{GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTracksChecked} 발견 · 자막 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTrackWarnings}건</p>
-                <p>등록 YouTube 자막 본문 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodiesAvailable}/{GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodiesChecked} 확인 · 본문 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodyWarnings}건 · HTTP 429 접근 제한 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodyRateLimited}건</p>
+                <p><strong>{presenterMonitor?.checkedAt ?? '—'}</strong> 마지막 자동 확인 · 채널 {presenterMonitor?.sourceChannels ?? 0}/{presenterMonitor?.registeredChannels ?? 0} · 검색어 {presenterMonitor?.discoveryQueries ?? 0}/{presenterMonitor?.totalDiscoveryQueries ?? 0}</p>
+                <p>검토 대기 {presenterMonitor?.pendingReview ?? 0}건 · SCIENCE/MEDICAL 우선 {presenterMonitor?.scienceMedicalPriority ?? 0}건 · 오늘 신규 후보 {presenterMonitor?.newCandidates ?? 0}건 · 이번 실행 {presenterMonitor?.newCandidatesThisRun ?? 0}건 · 자동 공개 {presenterMonitor?.autoPublish ?? 0}건</p>
+                <p>등록 영상 원문 링크 {presenterMonitor?.registeredVideoLinksHealthy ?? 0}/{presenterMonitor?.registeredVideoLinksChecked ?? 0} 접근 확인 · 링크 경고 {presenterMonitor?.registeredVideoLinkWarnings ?? 0}건</p>
+                <p>권위·연구 출처 링크 {presenterMonitor?.registeredEvidenceLinksHealthy ?? 0}/{presenterMonitor?.registeredEvidenceLinksChecked ?? 0} 접근 확인 · 출처 링크 경고 {presenterMonitor?.registeredEvidenceLinkWarnings ?? 0}건</p>
+                <p>등록 YouTube 메타데이터 {presenterMonitor?.registeredVideoMetadataHealthy ?? 0}/{presenterMonitor?.registeredVideoMetadataChecked ?? 0} 제목·채널 확인 · 메타데이터 경고 {presenterMonitor?.registeredVideoMetadataWarnings ?? 0}건</p>
+                <p>등록 YouTube 자막 트랙 {presenterMonitor?.registeredVideoCaptionTracksAvailable ?? 0}/{presenterMonitor?.registeredVideoCaptionTracksChecked ?? 0} 발견 · 자막 경고 {presenterMonitor?.registeredVideoCaptionTrackWarnings ?? 0}건</p>
+                <p>등록 YouTube 자막 본문 {presenterMonitor?.registeredVideoCaptionBodiesAvailable ?? 0}/{presenterMonitor?.registeredVideoCaptionBodiesChecked ?? 0} 확인 · 본문 경고 {presenterMonitor?.registeredVideoCaptionBodyWarnings ?? 0}건 · HTTP 429 접근 제한 {presenterMonitor?.registeredVideoCaptionBodyRateLimited ?? 0}건</p>
                 <div className="monitor-snapshot__history" aria-label="최근 감리 추이">
-                  <div className="monitor-snapshot__history-heading"><p className="eyebrow">최근 감리 추이</p><small>최근 {GABA_MONITOR_SNAPSHOT.history.length}회</small></div>
+                  <div className="monitor-snapshot__history-heading"><p className="eyebrow">최근 감리 추이</p><small>최근 {presenterMonitor?.history.length ?? 0}회</small></div>
                   <ol>
-                    {[...GABA_MONITOR_SNAPSHOT.history].slice(-7).reverse().map((point, index, visibleHistory) => {
+                    {[...(presenterMonitor?.history ?? [])].slice(-7).reverse().map((point, index, visibleHistory) => {
                       const olderPoint = visibleHistory[index + 1];
                       const pendingDelta = olderPoint ? point.pendingReview - olderPoint.pendingReview : 0;
                       return <li key={point.date}>
@@ -2005,17 +2064,17 @@ export default function App() {
                 </div>
                 <div className="monitor-snapshot__queue" aria-label="오늘 먼저 검토할 후보">
                   <p className="eyebrow">오늘 먼저 검토할 후보</p>
-                  {GABA_MONITOR_SNAPSHOT.pendingQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.pendingQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{candidate.priority}</strong><span>{candidate.title}</span></summary><div><small>상태: PENDING_REVIEW · 첫 담당: {candidate.reviewer}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>주의 신호: {candidate.signals.join(' · ')}</small><small>원문·자막·화자·권리 확인 전에는 공개하지 않습니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 검토 대기 후보가 없습니다.</p>}
+                  {presenterMonitor?.pendingQueue.length ? <ol>{presenterMonitor.pendingQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{candidate.priority}</strong><span>{candidate.title}</span></summary><div><small>상태: PENDING_REVIEW · 첫 담당: {candidate.reviewer}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>주의 신호: {candidate.signals.join(' · ')}</small><small>원문·자막·화자·권리 확인 전에는 공개하지 않습니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 검토 대기 후보가 없습니다.</p>}
                   <small>제목·공개 설명 기반 우선순위입니다. 영상 원문·자막·화자·권리 확인 전 공개 승인으로 보지 않습니다.</small>
                 </div>
                 <div className="monitor-snapshot__authority-queue" aria-label="권위 후보 확인 전 큐">
                   <p className="eyebrow">권위 후보 확인 전</p>
-                  {GABA_MONITOR_SNAPSHOT.authorityQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.authorityQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{AUTHORITY_BASIS_LABELS[candidate.authorityBasis]}</strong><span>{candidate.title}</span></summary><div><small>확인 경로: {AUTHORITY_BASIS_LABELS[candidate.authorityBasis]}</small><small>발견 신호: {candidate.signals.join(' · ')}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>자격·실제 화자·원문·자막·권리 확인 전에는 권위 영상으로 공개하지 않습니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 권위 후보 신호가 있는 영상이 없습니다.</p>}
+                  {presenterMonitor?.authorityQueue.length ? <ol>{presenterMonitor.authorityQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{AUTHORITY_BASIS_LABELS[candidate.authorityBasis]}</strong><span>{candidate.title}</span></summary><div><small>확인 경로: {AUTHORITY_BASIS_LABELS[candidate.authorityBasis]}</small><small>발견 신호: {candidate.signals.join(' · ')}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>자격·실제 화자·원문·자막·권리 확인 전에는 권위 영상으로 공개하지 않습니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 권위 후보 신호가 있는 영상이 없습니다.</p>}
                   <small>전문가 표현 감지와 검색어 발견은 서로 다른 감리 단서입니다. 둘 다 의사·과학자 자격이나 영상의 과학적 타당성을 승인하지 않습니다.</small>
                 </div>
                 <div className="monitor-snapshot__product-queue" aria-label="제품 브랜드 신호 격리 큐">
                   <p className="eyebrow">제품·브랜드 신호 — 일반 공개 큐 제외</p>
-                  {GABA_MONITOR_SNAPSHOT.productBrandQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.productBrandQueue.map(candidate => <li key={candidate.id}><details><summary><strong>공개 큐 제외</strong><span>{candidate.title}</span></summary><div><small>상태: PENDING_REVIEW · 일반 GABA 공개 후보로 자동 사용하지 않음</small><small>발견 신호: {candidate.signals.join(' · ')}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>제품·브랜드 주장과 일반 GABA 설명을 분리한 뒤 사람이 오탐 여부와 권리를 확인합니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 제품·브랜드 신호로 격리된 후보가 없습니다.</p>}
+                  {presenterMonitor?.productBrandQueue.length ? <ol>{presenterMonitor.productBrandQueue.map(candidate => <li key={candidate.id}><details><summary><strong>공개 큐 제외</strong><span>{candidate.title}</span></summary><div><small>상태: PENDING_REVIEW · 일반 GABA 공개 후보로 자동 사용하지 않음</small><small>발견 신호: {candidate.signals.join(' · ')}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>제품·브랜드 주장과 일반 GABA 설명을 분리한 뒤 사람이 오탐 여부와 권리를 확인합니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 제품·브랜드 신호로 격리된 후보가 없습니다.</p>}
                   <small>이 큐는 제품 정보를 공개하기 위한 목록이 아닙니다. 일반 GABA 공개 큐와 제품성 콘텐츠를 분리하기 위한 안전 장치입니다.</small>
                 </div>
                 {monitorReviewCandidate && monitorReviewDraft ? <section className="monitor-candidate-review" aria-label="신규 후보 감리 초안">
@@ -2034,7 +2093,7 @@ export default function App() {
                   <label className="monitor-candidate-review__notes">팀 메모<textarea data-monitor-review-field="notes" value={monitorReviewDraft.notes} onChange={event => updateMonitorReviewDraft('notes', event.currentTarget.value)} placeholder="확인한 근거, 이견, 다음 질문을 기록하세요." rows={3} /></label>
                   <div className="monitor-candidate-review__actions"><button type="button" data-monitor-review-copy onClick={copyMonitorReviewDraft}>후보 감리 초안 복사</button><span aria-live="polite">{monitorReviewMessage}</span></div>
                 </section> : null}
-                <div className="monitor-snapshot__links"><a href={GABA_MONITOR_SNAPSHOT.triageUrl} target="_blank" rel="noopener noreferrer">감리 우선순위 보드 원문 ↗</a><a href={GABA_MONITOR_SNAPSHOT.reportUrl} target="_blank" rel="noopener noreferrer">일일 리포트 ↗</a><a href={GABA_MONITOR_SNAPSHOT.reviewSessionUrl} target="_blank" rel="noopener noreferrer">오늘 리뷰 세션 ↗</a><a href={GABA_MONITOR_SNAPSHOT.captionAuditUrl} target="_blank" rel="noopener noreferrer">자막 감사 기록 ↗</a></div>
+                <div className="monitor-snapshot__links"><a href={presenterMonitor?.triageUrl ?? '#'} target="_blank" rel="noopener noreferrer">감리 우선순위 보드 원문 ↗</a><a href={presenterMonitor?.reportUrl ?? '#'} target="_blank" rel="noopener noreferrer">일일 리포트 ↗</a><a href={presenterMonitor?.reviewSessionUrl ?? '#'} target="_blank" rel="noopener noreferrer">오늘 리뷰 세션 ↗</a><a href={presenterMonitor?.captionAuditUrl ?? '#'} target="_blank" rel="noopener noreferrer">자막 감사 기록 ↗</a></div>
               </div> : null}
               {presentationMode ? <div className="video-db-tools">
                 <label className="video-db-search">영상 DB 검색
@@ -2118,17 +2177,17 @@ export default function App() {
             {openPanel === 'ops' ? <>
               <p>이 보드는 공개 소비자용 내용이 아니라, 일반 GABA 교육 자료를 검토·회의·배포하는 사업자용 운영 화면입니다.</p>
               <div className="tf-board__metrics" aria-label="TF 운영 현황">
-                <div><strong>{GABA_MONITOR_SNAPSHOT.humanRoleAssigned}/{GABA_MONITOR_SNAPSHOT.humanRoleTotal}</strong><span>핵심 역할 배정</span></div>
-                <div><strong>{GABA_MONITOR_SNAPSHOT.humanSourceReviewed}/{GABA_MONITOR_SNAPSHOT.humanSourceTotal}</strong><span>출처 사람 검토</span></div>
-                <div><strong>{GABA_MONITOR_SNAPSHOT.domesticPublicApproved}/{GABA_MONITOR_SNAPSHOT.domesticVideoTotal}</strong><span>국내 공개 승인 · DB 이력 {GABA_MONITOR_SNAPSHOT.registeredVideoApproved}건</span></div>
-                <div><strong>{GABA_MONITOR_SNAPSHOT.firstMeetingReady ? '입력됨' : '필요'}</strong><span>첫 회의 입력</span></div>
+                <div><strong>{presenterMonitor?.humanRoleAssigned ?? 0}/{presenterMonitor?.humanRoleTotal ?? 0}</strong><span>핵심 역할 배정</span></div>
+                <div><strong>{presenterMonitor?.humanSourceReviewed ?? 0}/{presenterMonitor?.humanSourceTotal ?? 0}</strong><span>출처 사람 검토</span></div>
+                <div><strong>{presenterMonitor?.domesticPublicApproved ?? 0}/{presenterMonitor?.domesticVideoTotal ?? 0}</strong><span>국내 공개 승인 · DB 이력 {presenterMonitor?.registeredVideoApproved ?? 0}건</span></div>
+                <div><strong>{presenterMonitor?.firstMeetingReady ? '입력됨' : '필요'}</strong><span>첫 회의 입력</span></div>
               </div>
               <details className="tf-board__assignment">
                 <summary>팀 업무 배정 초안 만들기 <span aria-hidden="true">＋</span></summary>
                 <div className="tf-board__assignment-body">
                   <p>주 담당자·백업·첫 회의 일시를 입력하면 이 브라우저에만 저장하고, 회의 전에 복사해 공유할 수 있습니다.</p>
                   <div className="tf-board__role-list">
-                    {TF_ROLES.map(role => <div key={role.id} className="tf-board__role-row">
+                    {presenterTfRoles.map(role => <div key={role.id} className="tf-board__role-row">
                       <div className="tf-board__role-copy"><strong>{role.id}</strong><span>{role.title}</span><small>{role.responsibility}</small></div>
                       <label>주 담당<input type="text" value={tfAssignments[role.id]?.lead ?? ''} onChange={event => updateTfAssignment(role.id, 'lead', event.currentTarget.value)} placeholder="미배정" /></label>
                       <label>백업<input type="text" value={tfAssignments[role.id]?.backup ?? ''} onChange={event => updateTfAssignment(role.id, 'backup', event.currentTarget.value)} placeholder="미배정" /></label>
@@ -2171,11 +2230,11 @@ export default function App() {
                 </div>
               </details>
               <details className="tf-board__discussion">
-                <summary>오늘의 토론 논점 보기 · 기록 {Object.keys(tfDiscussionDrafts).length}/{TF_DISCUSSION_ITEMS.length} <span aria-hidden="true">＋</span></summary>
+                <summary>오늘의 토론 논점 보기 · 기록 {Object.keys(tfDiscussionDrafts).length}/{presenterTfDiscussionItems.length} <span aria-hidden="true">＋</span></summary>
                 <div className="tf-board__discussion-body">
                   <p>각 논점은 문제 → 관점 → 증거 → 결정 또는 HOLD → 다음 담당·기한·종료 조건 순서로 회의합니다. 아래 기록은 이 브라우저에 저장되며, 회의용 복사·감리 패킷에 포함할 수 있습니다. 기술 QA와 사람 검토를 섞지 않습니다.</p>
                   <div className="tf-board__discussion-list">
-                    {TF_DISCUSSION_ITEMS.map(item => {
+                    {presenterTfDiscussionItems.map(item => {
                       const draft = tfDiscussionDrafts[item.id] ?? makeEmptyTfDiscussionDraft();
                       const decisionLabel = TF_DISCUSSION_DECISIONS.find(option => option.id === draft.decision)?.label ?? '아직 결정하지 않음';
                       return <article key={item.id} className="tf-board__discussion-item">
@@ -2203,7 +2262,7 @@ export default function App() {
                 </div>
               </details>
               <div className="tf-board__list">
-                {TF_WORKSTREAMS.map(workstream => <article key={workstream.id} className="tf-board__item">
+                {presenterTfWorkstreams.map(workstream => <article key={workstream.id} className="tf-board__item">
                   <div className="tf-board__item-topline"><span>{workstream.id}</span><strong>HOLD</strong></div>
                   <h3>{workstream.title}</h3>
                   <p><b>담당:</b> {workstream.owner}</p>
@@ -2211,9 +2270,9 @@ export default function App() {
                   <p className="tf-board__exit"><b>종료 조건:</b> {workstream.exit}</p>
                 </article>)}
               </div>
-              <details className="tf-board__meeting"><summary>첫 회의 진행 순서 <span aria-hidden="true">＋</span></summary><ol>{TF_MEETING_STEPS.map(step => <li key={step}>{step}</li>)}</ol></details>
+              <details className="tf-board__meeting"><summary>첫 회의 진행 순서 <span aria-hidden="true">＋</span></summary><ol>{presenterTfMeetingSteps.map(step => <li key={step}>{step}</li>)}</ol></details>
               <p className="info-panel__boundary">AI-OPS는 문서·코드·QA·업무 추적을 실행하지만, 과학·의학·권리·현장·최종 공개 승인을 대신하지 않습니다.</p>
-              <div className="tf-board__links"><a href={GABA_MONITOR_SNAPSHOT.kickoffUrl} target="_blank" rel="noopener noreferrer">첫 회의 준비서 ↗</a><a href={GABA_MONITOR_SNAPSHOT.sourceRegisterUrl} target="_blank" rel="noopener noreferrer">과학 출처 등록부 ↗</a></div>
+              <div className="tf-board__links"><a href={presenterMonitor?.kickoffUrl ?? '#'} target="_blank" rel="noopener noreferrer">첫 회의 준비서 ↗</a><a href={presenterMonitor?.sourceRegisterUrl ?? '#'} target="_blank" rel="noopener noreferrer">과학 출처 등록부 ↗</a></div>
             </> : null}
             <div className="info-panel__actions"><button type="button" className="info-panel__next" onClick={openPanel === 'video' && !presentationMode && nextVideo ? continueToNextVideo : continueToNextCard}>{openPanel === 'video' && !presentationMode && selectedVideo ? videoNextAction : panelNextAction}</button></div>
             <p className="info-panel__flow-note">현재 페이지의 흐름은 유지됩니다. 외부 링크는 원문 확인이 필요할 때만 선택하세요.</p>
@@ -2277,7 +2336,7 @@ export default function App() {
             <div>
               <p>오늘 공유하신 국내 YouTube Shorts를 히어로 샷과 요약 버전으로 소개합니다. 아래 내용은 원문 확인 전 예비 정리이며, 각 영상의 원문 링크에서 전체 맥락을 확인할 수 있습니다.</p>
               <p className="video-showcase__boundary">오늘 공유된 검토 후보입니다. 화자 자격·발언 근거·권리 상태를 별도로 감리하며, 일반 GABA 연구나 특정 제품의 효능을 보증하지 않습니다.</p>
-              <p className="video-showcase__freshness">영상 DB 자동 확인 {GABA_MONITOR_SNAPSHOT.checkedAt} · 공개 승인은 사람 검토 후</p>
+              <p className="video-showcase__freshness">영상 후보는 원문 확인 전 검토 대상으로 표시됩니다 · 공개 승인은 사람 검토 후</p>
               <button type="button" className="video-showcase__db-button" onClick={event => openVideoPanel(event.currentTarget)}>영상 DB 상세 감리 보기 <span aria-hidden="true">↗</span></button>
             </div>
           </div>

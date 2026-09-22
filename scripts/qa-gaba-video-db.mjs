@@ -3,6 +3,7 @@ import path from 'node:path';
 
 const root = process.cwd();
 const source = fs.readFileSync(path.join(root, 'src', 'gabaVideos.ts'), 'utf8');
+const publicSource = fs.readFileSync(path.join(root, 'src', 'gabaPublicVideos.ts'), 'utf8');
 const appSource = fs.readFileSync(path.join(root, 'src', 'App.tsx'), 'utf8');
 const requiredSeeds = ['Cnk0PGn9YBM', 'RLAU1VWGsaI', 'vnocd9ZVJj0', 'BiZXS_ojLUA', '7Zsxm9Wh2Yg', 'rOFkZg09AoY', '4MTqi-bapLY', '4xGSHxkMYew'];
 const consumerCopyIds = ['SHORT-02', 'SHORT-03', 'SHORT-04', 'SHORT-05', 'SHORT-06', 'SHORT-07', 'SHORT-08'];
@@ -14,9 +15,9 @@ const failures = [];
 if (recordBlocks.length < 10) failures.push(`expected at least 10 video records, found ${recordBlocks.length}`);
 if (!source.includes('SHARED_GABA_VIDEOS')) failures.push('shared YouTube review showcase is not defined');
 if (!source.includes("video.id.startsWith('SHORT-') && video.status !== 'EXCLUDE'")) failures.push('shared showcase does not exclude EXCLUDE videos');
-if (!source.includes("ACTIVE_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => !video.id.startsWith('AUTH-'))") || !appSource.includes('const publicPanelVideos = useMemo(() => [...approvedVideos, ...SHARED_GABA_VIDEOS]') || !appSource.includes('const panelVideos = presentationMode ? ACTIVE_GABA_VIDEOS : publicPanelVideos')) failures.push('overseas AUTH records are not isolated from domestic presenter and consumer queues');
+if (!source.includes("ACTIVE_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => !video.id.startsWith('AUTH-'))") || !appSource.includes('const publicPanelVideos = useMemo(() => [...approvedVideos, ...SHARED_GABA_VIDEOS]') || !appSource.includes('const panelVideos = presentationMode ? activePresenterVideos : publicPanelVideos') || !appSource.includes("import('./gabaVideos')")) failures.push('overseas AUTH records are not isolated from domestic presenter and consumer queues');
 if (!appSource.includes('id="approved-video-showcase"') || !appSource.includes('사람 검토 완료 · 일반 GABA 교육') || !appSource.includes('일반 교육 공개 승인')) failures.push('domestic PUBLISH_GENERAL records are not connected to a separate approved consumer showcase');
-const consumerCopyBlock = source.match(/const CONSUMER_GABA_VIDEO_COPY[\s\S]*?\n};\n\nexport const SHARED_GABA_VIDEOS/)?.[0] ?? '';
+const consumerCopyBlock = publicSource;
 for (const id of consumerCopyIds) if (!consumerCopyBlock.includes(`'${id}'`)) failures.push(`consumer-safe copy missing: ${id}`);
 for (const word of forbiddenConsumerClaimWords) if (consumerCopyBlock.includes(word)) failures.push(`consumer-safe copy contains forbidden claim word: ${word}`);
 for (const field of requiredFields) {

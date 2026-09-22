@@ -51,7 +51,7 @@ const required = [
   ['approved video showcase gate', '사람 검토 완료 · 일반 GABA 교육'],
   ['approved video publication status', '일반 교육 공개 승인'],
   ['approved video source-link guard', '상세 패널에서 원문 확인'],
-  ['video monitor freshness', '영상 DB 자동 확인'],
+  ['video monitor freshness', '영상 후보는 원문 확인 전 검토 대상으로 표시됩니다'],
   ['reel next action', '다음 장면'],
   ['reel video handoff', '영상 요약으로 이어가기'],
   ['video person summary', '인물 소개'],
@@ -128,6 +128,14 @@ const forbiddenPublicCopy = [
   ['negative sleep evidence wording', '수면 근거는 매우 제한적이며'],
 ];
 
+const forbiddenPublicBundleTerms = [
+  ['raw product candidate title', '몽진환'],
+  ['raw product candidate source', '케이지바이오'],
+  ['raw product candidate label', '제품성 후보'],
+  ['raw supplement claim', '수면제'],
+  ['raw supplement claim', '영양제'],
+];
+
 const failures = [];
 if (!index.includes('favicon.svg')) failures.push('missing favicon link');
 if (!fs.existsSync(path.join(dist, 'favicon.svg'))) failures.push('missing favicon asset');
@@ -135,6 +143,7 @@ for (const [label, value] of required) if (!assetText.includes(value)) failures.
 for (const [label, value] of requiredMetadata) if (!index.includes(value)) failures.push(`missing required ${label}: ${value}`);
 for (const [label, value] of forbiddenMetadata) if (index.includes(value)) failures.push(`found forbidden ${label}: ${value}`);
 for (const [label, value] of forbiddenPublicCopy) if (assetText.includes(value)) failures.push(`found forbidden public copy ${label}: ${value}`);
+for (const [label, value] of forbiddenPublicBundleTerms) if (assetText.includes(value)) failures.push(`found forbidden public bundle term ${label}: ${value}`);
 for (const asset of requiredPublicAssets) if (!fs.existsSync(path.join(dist, asset))) failures.push(`missing required visual asset: ${asset}`);
 
 if (failures.length) {
