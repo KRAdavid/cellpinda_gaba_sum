@@ -12,12 +12,18 @@ type Slide = {
   title: string;
   body: string;
   tone: string;
+  visual?: string;
   note?: string;
   presenterPrompt: string;
   presenterBoundary: string;
   link?: SlideLink;
   links?: SlideLink[];
 };
+
+const STORY_VISUALS = {
+  overload: `${import.meta.env.BASE_URL}images/gaba-overload.png`,
+  neural: `${import.meta.env.BASE_URL}images/gaba-neural-signal.png`,
+} as const;
 
 type VideoFilter = 'ALL' | 'REVIEW' | GabaVideoRecord['status'];
 
@@ -115,6 +121,7 @@ function makeSlides(): Slide[] {
       title: '화가 많아 쉽게 흥분하고, 실수한 적이 있다면 알아둘 성분이 있습니다.',
       body: '그날의 감정이나 실수를 하나의 원인으로 단정하지 않고, 몸과 뇌가 쉬는 시간부터 살펴봅니다.',
       tone: 'deep',
+      visual: STORY_VISUALS.overload,
       presenterPrompt: '최근 작은 일에 반응이 커졌거나 실수가 이어진 날이 있었나요?',
       presenterBoundary: '일상 장면을 공감하기 위한 도입이며 감정·질환·성분 부족을 진단하는 카드가 아닙니다.',
     },
@@ -133,6 +140,7 @@ function makeSlides(): Slide[] {
       title: '반대로 뇌가 과부하인 날에는 몸이 쉬어도 생각이 계속 다음 일로 달려갑니다.',
       body: '같은 문장을 다시 읽고, 알림에 쉽게 끌리고, 사소한 일에도 반응이 커지는 모습으로 공감할 수 있습니다.',
       tone: 'warm',
+      visual: STORY_VISUALS.overload,
       presenterPrompt: '몸은 쉬고 있는데 머리가 계속 켜져 있었던 순간이 있었나요?',
       presenterBoundary: '뇌 과부하를 일상의 표현으로 사용하며, 개인의 상태를 의료적으로 판단하지 않습니다.',
     },
@@ -152,6 +160,7 @@ function makeSlides(): Slide[] {
       title: '이때 자주 등장하는 성분이 GABA입니다.',
       body: 'GABA는 감마아미노부티르산을 줄여 부르는 이름입니다. 우리 몸과 뇌에서 자연스럽게 쓰이는 신경전달물질을 가리키는 일반 용어입니다.',
       tone: 'green-dark',
+      visual: STORY_VISUALS.neural,
       presenterPrompt: 'GABA가 무엇을 뜻하는지부터 짧게 확인한 뒤 기능으로 넘어가겠습니다.',
       presenterBoundary: 'GABA라는 생리 성분의 설명이며 보충제 효능으로 연결하지 않습니다.',
     },
@@ -161,6 +170,7 @@ function makeSlides(): Slide[] {
       title: 'GABA는 신경 신호를 낮추는 방향으로 작용하는 대표적인 억제성 신경전달물질입니다.',
       body: '쉽게 말하면 뇌의 신호가 계속 커지지 않도록 조절하는 쪽에 가깝습니다. 흥분을 켜는 신호와 억제하는 신호의 균형 속에서 이해해야 합니다.',
       tone: 'research',
+      visual: STORY_VISUALS.neural,
       note: '“뇌의 브레이크”는 이해를 위한 비유이며, 개인의 감정·수면·집중을 진단하는 표현이 아닙니다.',
       presenterPrompt: '가속 페달과 브레이크가 함께 있어야 속도를 조절할 수 있다는 비유로 설명해 보세요.',
       presenterBoundary: '일반적인 신경생리 기능 설명이며 GABA를 섭취하면 뇌가 즉시 안정된다는 뜻이 아닙니다.',
@@ -638,6 +648,7 @@ export default function App() {
             inert={index === active ? undefined : true}
             aria-current={index === active ? 'true' : undefined}
             aria-labelledby={`slide-${slide.id}`}
+            style={slide.visual ? {backgroundImage: `url("${slide.visual}")`} : undefined}
           >
             <div className="card-label"><span>{slide.label}</span><span>{String(index + 1).padStart(2, '0')}</span></div>
             <div className="card-content">

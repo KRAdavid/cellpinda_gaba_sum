@@ -11,6 +11,7 @@ if (!fs.existsSync(indexPath)) {
 }
 
 const index = fs.readFileSync(indexPath, 'utf8');
+const requiredPublicAssets = ['images/gaba-overload.png', 'images/gaba-neural-signal.png'];
 const assetPaths = [...index.matchAll(/(?:src|href)="([^"]+\.(?:js|css))"/g)].map(match => match[1]);
 const assetText = assetPaths.map(assetPath => {
   const filePath = path.join(dist, assetPath.replace(/^\//, '').replace(/^cellpinda_gaba_sum\//, ''));
@@ -75,6 +76,7 @@ if (!fs.existsSync(path.join(dist, 'favicon.svg'))) failures.push('missing favic
 for (const [label, value] of required) if (!assetText.includes(value)) failures.push(`missing required ${label}: ${value}`);
 for (const [label, value] of requiredMetadata) if (!index.includes(value)) failures.push(`missing required ${label}: ${value}`);
 for (const [label, value] of forbiddenMetadata) if (index.includes(value)) failures.push(`found forbidden ${label}: ${value}`);
+for (const asset of requiredPublicAssets) if (!fs.existsSync(path.join(dist, asset))) failures.push(`missing required visual asset: ${asset}`);
 
 if (failures.length) {
   console.error('Public bundle QA failed:');

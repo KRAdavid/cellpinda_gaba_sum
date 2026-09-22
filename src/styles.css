@@ -89,6 +89,39 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
 .video-db-filters button:hover,.video-db-filters button.is-active{border-color:#2b7c59;background:#2b7c59;color:#fff}
 .video-db-filters button:hover span,.video-db-filters button.is-active span{background:rgba(255,255,255,.2);color:#fff}
 @media(max-width:760px){.video-db-tools{padding:12px}.video-db-filters{gap:6px}.video-db-filters button{font-size:10px;padding-inline:8px}.tf-board__metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Consumer feed mode: the lesson itself becomes the interface. Presenter tools stay in their separate mode. */
+.story:not(.story--presentation){position:relative;min-height:100svh;padding:0;background:#102f24}
+.story:not(.story--presentation) .story-heading,.story:not(.story--presentation) .story-sequence{display:none}
+.story:not(.story--presentation) .story-controls{position:absolute;z-index:5;inset:0 0 auto;display:flex;max-width:none;padding:20px clamp(20px,5vw,72px);color:#d5efda;pointer-events:none}
+.story:not(.story--presentation) .story-controls>div{display:flex;align-items:center;margin-left:auto;pointer-events:auto}
+.story:not(.story--presentation) .story-controls .story-prev-button,.story:not(.story--presentation) .story-controls .story-share-button,.story:not(.story--presentation) .story-controls .story-presentation-toggle,.story:not(.story--presentation) .story-controls .story-secondary-controls{display:none}
+.story:not(.story--presentation) .story-controls .story-next-button{width:48px;height:48px;border-color:rgba(232,248,233,.72);background:rgba(11,39,28,.24);font-size:0;backdrop-filter:blur(8px)}
+.story:not(.story--presentation) .story-controls .story-next-button:after{content:'↓';font-size:25px;font-weight:400;line-height:1}
+.story:not(.story--presentation) .story-controls .story-next-button:disabled{opacity:.5}
+.story:not(.story--presentation) .story-rail{width:100%;max-width:none;height:max(620px,100svh);min-height:620px;margin:0;padding:0;display:grid;grid-auto-rows:100%;gap:0;scroll-padding:0;scroll-snap-type:y mandatory;background:#102f24}
+.story:not(.story--presentation) .story-card{width:100%;height:100%;min-height:0;padding:clamp(112px,18vh,190px) clamp(24px,9vw,130px) clamp(72px,11vh,118px);border:0;border-radius:0;background-position:center;background-size:cover}
+.story:not(.story--presentation) .story-card:before{background:linear-gradient(180deg,rgba(8,36,25,.12) 0%,rgba(8,36,25,.05) 32%,rgba(5,29,20,.9) 82%,#071e15 100%)}
+.story:not(.story--presentation) .story-card--visual:after{position:absolute;inset:0;content:'';background:linear-gradient(90deg,rgba(6,29,20,.12),transparent 65%);pointer-events:none}
+.story:not(.story--presentation) .card-label{top:88px;left:clamp(24px,9vw,130px);right:clamp(24px,9vw,130px);color:#d4ecd7;font-size:11px}
+.story:not(.story--presentation) .card-content{max-width:680px}
+.story:not(.story--presentation) .card-content h3{max-width:680px;margin-bottom:16px;font-size:clamp(32px,5.2vw,68px);line-height:1.13;letter-spacing:-.075em}
+.story:not(.story--presentation) .card-content p{max-width:560px;color:#d8ebdc;font-size:clamp(15px,1.5vw,19px);line-height:1.7}
+.story:not(.story--presentation) .card-content small{max-width:560px}
+.story:not(.story--presentation) .card-link{background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
+.story:not(.story--presentation) .story-dots{position:absolute;z-index:5;top:50%;right:clamp(17px,3vw,40px);display:flex;width:auto;max-width:none;flex-direction:column;gap:7px;padding:0;transform:translateY(-50%)}
+.story:not(.story--presentation) .story-dots span{width:5px;height:22px;border-radius:999px;background:rgba(207,238,213,.36)}
+.story:not(.story--presentation) .story-dots span.active{width:5px;height:42px;background:#f2c19e}
+.story:not(.story--presentation) .story-share-message{display:none}
+@media(max-width:760px){
+  .story:not(.story--presentation) .story-controls{padding:17px 20px}
+  .story:not(.story--presentation) .story-rail{height:100svh;min-height:560px}
+  .story:not(.story--presentation) .story-card{padding:112px 24px 78px}
+  .story:not(.story--presentation) .card-label{top:76px;left:24px;right:24px}
+  .story:not(.story--presentation) .card-content h3{font-size:clamp(30px,9.4vw,42px)}
+  .story:not(.story--presentation) .card-content p{font-size:15px}
+  .story:not(.story--presentation) .story-dots{right:12px}
+}
 .info-panel__research-sources{margin-top:18px;border:1px solid #c2d8c5;border-radius:14px;background:#f0f6ed}
 .info-panel__research-sources>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;color:#315c43;font-size:13px;font-weight:800;cursor:pointer;list-style:none}
 .info-panel__research-sources>summary::-webkit-details-marker{display:none}
