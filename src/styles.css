@@ -458,6 +458,53 @@ body{background:var(--editorial-cream);color:var(--editorial-ink)}
 .monitor-snapshot__history ol{display:grid;gap:5px;margin:0;padding:0;list-style:none}
 .monitor-snapshot__history li{display:grid;grid-template-columns:38px 45px minmax(0,1fr);gap:6px;align-items:baseline;padding:6px 7px;border:1px solid #ead5bf;background:rgba(255,255,255,.42);color:#76543e;font-size:10px;line-height:1.4}
 .monitor-snapshot__history li>span{color:#8a6047;font-variant-numeric:tabular-nums}
+
+/* Presenter v3: one focused teaching canvas, with utilities below it. */
+.story--presentation{display:flex;flex-direction:column;justify-content:flex-start;gap:0;padding:clamp(24px,4vw,46px) clamp(24px,6vw,88px) 24px;overflow-y:auto;overflow-x:hidden}
+.story--presentation .story-heading{position:relative;inset:auto;display:flex;align-items:flex-end;justify-content:space-between;flex:0 0 auto;width:100%;padding:0 0 18px;pointer-events:auto}
+.story--presentation .story-heading h2{font-size:clamp(30px,4vw,56px);line-height:1.08}
+.story--presentation .story-heading>p{max-width:300px;margin:0;font-size:12px;line-height:1.65}
+.story--presentation .story-sequence{position:relative;inset:auto;display:flex;justify-content:flex-start;flex:0 0 auto;width:100%;min-height:25px;padding:0 0 13px;overflow:auto}
+.story--presentation .story-progress{top:50%;right:clamp(8px,1.6vw,24px)}
+.story--presentation .story-controls{position:relative;inset:auto;display:flex;flex:0 0 auto;width:100%;padding:0 0 13px}
+.story--presentation .story-controls>div{flex-wrap:wrap;justify-content:flex-end}
+.story--presentation .story-share-message{position:relative;inset:auto;flex:0 0 auto;min-height:0;margin:0 0 6px;text-align:right}
+.story--presentation .story-share-row{position:relative;inset:auto;align-self:flex-end;flex:0 0 auto;margin:0 0 10px}
+.story--presentation .story-rail{order:5;display:block;width:100%;height:clamp(360px,58svh,560px);min-height:360px;flex:0 0 auto;margin:0;padding:0;overflow:hidden}
+.story--presentation .story-card{display:flex;width:100%;height:100%;min-height:0;justify-content:flex-end;padding:clamp(30px,5vw,70px);border:1px solid rgba(215,240,220,.2);border-radius:0;box-shadow:0 20px 50px rgba(3,22,14,.16)}
+.story--presentation .story-card:after{top:12%;bottom:12%;left:clamp(18px,3vw,42px)}
+.story--presentation .card-label{top:clamp(28px,4vw,56px);right:clamp(30px,5vw,70px);left:clamp(30px,5vw,70px)}
+.story--presentation .card-content{align-self:flex-end;max-width:720px;margin:0}
+.story--presentation .card-content h3{max-width:720px;font-size:clamp(32px,4.4vw,64px);line-height:1.1}
+.story--presentation .card-content p{max-width:600px;font-size:15px;line-height:1.75}
+.story--presentation .story-dots{display:none}
+.story--presentation .presenter-next-hint{order:6;position:relative;inset:auto;width:100%;margin:11px 0 0;padding:0;color:rgba(215,240,220,.78);font-size:11px}
+.story--presentation .presenter-note,.story--presentation .presenter-questions{order:7;position:relative;inset:auto;width:100%;margin:9px 0 0;padding:0;color:#d8ebdc}
+.story--presentation .presenter-questions{order:8}
+.story--presentation .presenter-copy-message{order:9;position:relative;inset:auto;width:100%;margin:6px 0 0;padding:0;text-align:left}
+.story--presentation .presenter-note summary,.story--presentation .presenter-questions summary{min-height:32px;display:inline-flex;align-items:center}
+
+@media(max-width:760px){
+  .story--presentation{padding:17px 20px 20px}
+  .story--presentation .story-heading{display:flex;gap:14px;align-items:flex-start;padding-bottom:10px}
+  .story--presentation .story-heading h2{max-width:190px;font-size:27px;line-height:1.06}
+  .story--presentation .story-heading>p{display:block;max-width:145px;margin:0;font-size:9px;line-height:1.45;text-align:right}
+  .story--presentation .story-sequence{gap:8px;padding-bottom:9px;font-size:9px}
+  .story--presentation .story-controls{gap:7px;padding-bottom:10px}
+  .story--presentation .story-controls>div{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));width:100%;gap:5px}
+  .story--presentation .story-controls>div>*{width:100%!important;min-width:0!important;margin:0;font-size:10px!important}
+  .story--presentation .story-controls .story-start-button{grid-column:span 2}
+  .story--presentation .story-controls .story-nav-button,.story--presentation .story-controls .story-share-button,.story--presentation .story-controls .story-presentation-toggle{grid-column:span 3}
+  .story--presentation .story-controls>span{font-size:22px}
+  .story--presentation .story-rail{height:clamp(360px,55svh,480px);min-height:360px}
+  .story--presentation .story-card{padding:26px 21px 24px}
+  .story--presentation .card-label{top:22px;right:21px;left:21px;font-size:9px}
+  .story--presentation .card-label span:last-child{font-size:52px}
+  .story--presentation .card-content h3{font-size:clamp(28px,8.6vw,38px);line-height:1.12}
+  .story--presentation .card-content p{font-size:13px;line-height:1.62}
+  .story--presentation .presenter-next-hint{margin-top:9px;font-size:10px}
+  .story--presentation .presenter-note,.story--presentation .presenter-questions{margin-top:5px;font-size:11px}
+}
 .monitor-snapshot__history li strong{color:#5d3f30;font-size:10px}
 .monitor-snapshot__history li small{min-width:0;color:#977b63;font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .monitor-snapshot__history>small{color:#977b63;font-size:10px;line-height:1.45}

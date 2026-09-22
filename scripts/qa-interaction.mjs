@@ -185,6 +185,8 @@ try {
   await waitForPresentation('01 / 08');
   const presenterEntry = await evaluate('({presentation:!!document.querySelector(".story--presentation"),button:!!document.querySelector(".story-video-db-button"),opsButton:!!document.querySelector(".story-ops-board-button"),sceneCopy:!!document.querySelector(".presenter-note__actions button"),product:document.body.innerText.includes("셀핀다 제품")})');
   assert('presenter mode exposes the video DB, operations controls, and scene copy', presenterEntry.presentation && presenterEntry.button && presenterEntry.opsButton && presenterEntry.sceneCopy && !presenterEntry.product, JSON.stringify(presenterEntry));
+  const presenterLayout = await evaluate('(() => { const scene=document.querySelector(".story--presentation .story-card:not(.story-card--presentation-hidden)"); const rail=document.querySelector(".story--presentation .story-rail"); return {label:scene?.querySelector(".card-label")?.innerText||"",title:scene?.querySelector(".card-content h3")?.innerText||"",railHeight:rail?.getBoundingClientRect().height||0,railOverflow:rail ? getComputedStyle(rail).overflow : "",radius:scene ? getComputedStyle(scene).borderRadius : ""}; })()');
+  assert('presenter keeps one focused teaching scene in a non-stacked canvas', presenterLayout.label.includes('01') && presenterLayout.title.includes('쉽게 흥분하고') && presenterLayout.railHeight >= 300 && presenterLayout.railOverflow.includes('hidden') && presenterLayout.radius === '0px', JSON.stringify(presenterLayout));
   await evaluate('document.querySelector(".presenter-note summary")?.click()');
   await evaluate('document.querySelector(".presenter-note__actions button")?.click()');
   await wait(180);

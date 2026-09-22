@@ -834,7 +834,15 @@ export default function App() {
       setPresentationMode(true);
     }
     if (Number.isInteger(requested) && requested >= 1 && requested <= slides.length) {
-      window.requestAnimationFrame(() => goTo(requested - 1));
+      const requestedIndex = requested - 1;
+      // Resolve a direct scene URL before any reader scroll listener can infer a
+      // different scene from the old page position. Presenter mode renders one
+      // focused scene, so it does not need a scroll command at all.
+      programmaticTargetRef.current = null;
+      setActive(requestedIndex);
+      if (!presenterRequested) {
+        window.requestAnimationFrame(() => slideRefs.current[requestedIndex]?.scrollIntoView({behavior: 'auto', block: 'start'}));
+      }
     }
     if (presenterRequested && requestedVideoId && presenterData?.videoDb.some(video => video.id === requestedVideoId)) {
       window.requestAnimationFrame(() => {
