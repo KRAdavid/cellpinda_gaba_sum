@@ -297,6 +297,7 @@ export const PUBLIC_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => video.status ===
 // Keep overseas authority records for audit history, but do not surface them in
 // the current presenter queue after the domestic-video curation decision.
 export const ACTIVE_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => !video.id.startsWith('AUTH-'));
+export const DOMESTIC_PUBLIC_GABA_VIDEOS = ACTIVE_GABA_VIDEOS.filter(video => video.status === 'PUBLISH_GENERAL');
 
 // The consumer showcase now uses the Shorts shared by the user today. These are
 // link-only review candidates, not general-efficacy endorsements. EXCLUDE records
