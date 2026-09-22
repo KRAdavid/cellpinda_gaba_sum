@@ -1236,3 +1236,75 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-BnmGGVn-N74
+
+- 상태: PENDING_REVIEW
+- 영상: [GABA에서 알아둬야 할 2가지 #shorts #gaba #glutamate](https://www.youtube.com/watch?v=BnmGGVn-N74)
+- 채널: YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-nf82RLV00rQ
+
+- 상태: PENDING_REVIEW
+- 영상: [60대 불면 고민? 취침 전에 먹어야 효과 나는 영양제 4가지 #60대불면 #마그네슘 #테아닌 #GABA #shorts](https://www.youtube.com/watch?v=nf82RLV00rQ)
+- 채널: YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 효과·안전성 단정 신호 · 섭취·상업성 신호
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-ormp4vjA_bc
+
+- 상태: PENDING_REVIEW
+- 영상: [Why is GABA So Important?](https://www.youtube.com/watch?v=ormp4vjA_bc)
+- 채널: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-7h0wzAM7Frw
+
+- 상태: PENDING_REVIEW
+- 영상: ['몽진환'은 어떤 제품일까요 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=7h0wzAM7Frw)
+- 채널: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 질환·치료 표현
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
