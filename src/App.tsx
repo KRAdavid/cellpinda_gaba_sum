@@ -67,6 +67,15 @@ const RESEARCH_SOURCES = [
   },
   {
     id: 'SRC-04',
+    topic: '스트레스와 GABA 일반 연구',
+    title: 'Effects of Oral Gamma-Aminobutyric Acid (GABA) Administration on Stress and Sleep in Humans',
+    meta: 'Hepsomali et al. · Front Neurosci. 2020 · PMID 33041752',
+    summary: '경구 GABA가 스트레스 관련 지표에 미치는 영향을 살핀 인체시험을 조건별로 검토한 문헌고찰입니다.',
+    boundary: '일반 GABA 연구의 결과를 개인의 스트레스 상태나 특정 제품의 효과로 확정하지 않습니다.',
+    url: RESEARCH_URL,
+  },
+  {
+    id: 'SRC-05',
     topic: '수면과 회복',
     title: 'About Sleep',
     meta: 'NICHD · National Institutes of Health',
@@ -711,7 +720,7 @@ export default function App() {
               <ul><li>참여자와 연구 대상이 누구였는지</li><li>섭취량과 기간이 어떻게 설정됐는지</li><li>비교 조건과 측정 방법이 무엇이었는지</li></ul>
               <p className="info-panel__boundary">이 자료는 일반 GABA 원료와 GABA 섭취 연구를 구분해 읽도록 돕는 일반 교육 자료입니다.</p>
               <details className="info-panel__research-sources">
-                <summary>근거 출처 4건 펼쳐 보기 <span aria-hidden="true">＋</span></summary>
+                <summary>근거 출처 5건 펼쳐 보기 <span aria-hidden="true">＋</span></summary>
                 <div className="research-source-list">
                   {RESEARCH_SOURCES.map(source => <article key={source.id}>
                     <p className="research-source-list__topic">{source.id} · {source.topic}</p>

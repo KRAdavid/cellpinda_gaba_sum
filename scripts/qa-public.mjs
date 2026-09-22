@@ -26,7 +26,7 @@ const required = [
   ['research citation title', 'Effects of Oral Gamma-Aminobutyric Acid'],
   ['research citation PMID', 'PMID 33041752'],
   ['research neutral summary', '스트레스와 수면 관련 지표'],
-  ['research source disclosure', '근거 출처 4건'],
+  ['research source disclosure', '근거 출처 5건'],
   ['general physiology source', 'Synaptic inhibition and γ-aminobutyric acid'],
   ['GABA tone source', 'GABA tone regulation and its cognitive functions'],
   ['sleep physiology source', 'About Sleep'],
