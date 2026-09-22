@@ -213,6 +213,7 @@ try {
   await waitForPresentation('01 / 08');
   await evaluate('document.querySelector(".story-video-db-button")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
+  await waitForText('.video-db-list', 'SHORT-01');
   const presenterDb = await evaluate('({items:document.querySelectorAll(".video-db-item").length,hasHold:document.querySelector(".video-db-list")?.innerText.includes("검토 보류")||false,detail:document.querySelector(".video-db-detail")?.innerText||"",body:document.querySelector(".video-db-list")?.innerText||"",panel:document.querySelector(".info-panel")?.innerText||"",search:!!document.querySelector(".video-db-search input"),filters:document.querySelectorAll(".video-db-filters button").length})');
   assert('presenter video DB keeps candidate review separate from public curation', presenterDb.items === 9 && presenterDb.hasHold && !presenterDb.detail && !presenterDb.body?.includes('Molecular regulation') && presenterDb.panel.includes('국내 공개 승인 0건') && presenterDb.panel.includes('DB 승인 이력 2건') && presenterDb.panel.includes('감리 초안 0건'), JSON.stringify(presenterDb));
   const reviewBatch = await evaluate('({count:document.querySelectorAll(".video-review-batch li").length,buttons:document.querySelectorAll("[data-review-batch-video]").length,ids:[...document.querySelectorAll("[data-review-batch-video]")].map(button=>button.getAttribute("data-review-batch-video")||""),text:document.querySelector(".video-review-batch")?.innerText||""})');

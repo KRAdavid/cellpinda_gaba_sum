@@ -2111,7 +2111,7 @@ export default function App() {
                   <h3>{presentationMode ? video.title : video.publicTitle ?? video.title}</h3>
                   <p>{video.channel}</p>
                   <button type="button" className="video-db-item__select" aria-pressed={panelVideoId === video.id} onClick={() => setPanelVideoId(video.id)}>{panelVideoId === video.id ? '선택된 영상' : '이 영상 검토'}</button>
-                </article>) : <p className="info-panel__flow-note">현재 조건에 맞는 영상이 없습니다. 검색어를 지우거나 다른 상태를 선택하세요.</p>}
+                </article>) : <p className="info-panel__flow-note">{presentationMode && !presenterData ? '발표자용 감리 자료를 불러오는 중입니다.' : '현재 조건에 맞는 영상이 없습니다. 검색어를 지우거나 다른 상태를 선택하세요.'}</p>}
               </div>
               {selectedVideo ? <div className="video-db-detail">
                 <p className="eyebrow">선택 영상 상세 · {VIDEO_STATUS_LABELS[selectedVideo.status]}</p>
