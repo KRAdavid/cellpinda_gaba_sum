@@ -1537,10 +1537,11 @@ export default function App() {
 
   const copyVideoCustomerBrief = async (video: GabaVideoRecord) => {
     const approvedForCustomerSummary = video.status === 'PUBLISH_GENERAL';
+    const customerStatus = approvedForCustomerSummary ? '일반 교육 공개 승인' : PUBLIC_VIDEO_STATUS_LABEL;
     const brief = [
       approvedForCustomerSummary ? `이 영상은 ${video.title}을(를) 다룹니다.` : '이 영상은 GABA 관련 영상 검토 후보입니다.',
       approvedForCustomerSummary ? video.summary : '현재 요약은 제목·공개 설명 기반의 예비 정보이며, 원문·자막·발언 구간 확인 전입니다.',
-      `${video.operatorSentence} 현재 상태는 ${VIDEO_STATUS_LABELS[video.status]}이며, 이 내용을 특정 제품의 효능이나 개인의 결과로 확대해 설명하지 않습니다.`,
+      `${video.operatorSentence} 현재 상태는 ${customerStatus}이며, 이 내용을 특정 제품의 효능이나 개인의 결과로 확대해 설명하지 않습니다.`,
     ].join(' ');
     try {
       await copyText(brief);

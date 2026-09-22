@@ -11,6 +11,7 @@ if (!fs.existsSync(indexPath)) {
 }
 
 const index = fs.readFileSync(indexPath, 'utf8');
+const appSource = fs.readFileSync(path.join(root, 'src', 'App.tsx'), 'utf8');
 const requiredPublicAssets = ['images/gaba-overload.png', 'images/gaba-neural-signal.png'];
 const assetPaths = [...index.matchAll(/(?:src|href)="([^"]+\.(?:js|css))"/g)].map(match => match[1]);
 const assetText = assetPaths.map(assetPath => {
@@ -147,6 +148,7 @@ if (!index.includes('favicon.svg')) failures.push('missing favicon link');
 if (!fs.existsSync(path.join(dist, 'favicon.svg'))) failures.push('missing favicon asset');
 for (const [label, value] of required) if (!assetText.includes(value)) failures.push(`missing required ${label}: ${value}`);
 for (const [label, value] of requiredMetadata) if (!index.includes(value)) failures.push(`missing required ${label}: ${value}`);
+if (!appSource.includes('const customerStatus = approvedForCustomerSummary ?') || !appSource.includes('현재 상태는 ${customerStatus}')) failures.push('customer brief does not neutralize unapproved status for customer-facing copy');
 for (const [label, value] of forbiddenMetadata) if (index.includes(value)) failures.push(`found forbidden ${label}: ${value}`);
 for (const [label, value] of forbiddenPublicCopy) if (assetText.includes(value)) failures.push(`found forbidden public copy ${label}: ${value}`);
 for (const [label, value] of forbiddenPublicBundleTerms) if (assetText.includes(value)) failures.push(`found forbidden public bundle term ${label}: ${value}`);
