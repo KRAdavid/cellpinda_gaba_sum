@@ -805,6 +805,28 @@ export default function App() {
     }
   };
 
+  const copyPresenterFullBrief = async () => {
+    const lines = [
+      '일반 GABA 교육 3분 설명 흐름',
+      '※ 제품·후기·판매 정보 없이 GABA의 일반 기능과 연구 범위를 설명하는 발표용 초안입니다.',
+      '',
+      ...slides.flatMap((slide, index) => [
+        `${String(index + 1).padStart(2, '0')}. ${slide.label}`,
+        `핵심 메시지: ${slide.title}`,
+        `설명: ${slide.body}`,
+        `설명 경계: ${slide.presenterBoundary}`,
+        '',
+      ]),
+      '발표 마무리 경계: 일반 GABA 연구는 연구 조건과 한계를 함께 설명하며 특정 제품의 효능·개인의 진단·치료로 확장하지 않습니다.',
+    ];
+    try {
+      await copyText(lines.join('\n'));
+      setPresenterCopyMessage('전체 교육 흐름 설명문을 복사했습니다.');
+    } catch {
+      setPresenterCopyMessage('전체 설명문 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
+  };
+
   const copyVideoOperatorSentence = async (video: GabaVideoRecord) => {
     try {
       await copyText(video.operatorSentence);
@@ -1208,7 +1230,7 @@ export default function App() {
         {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="고객에게 전달할 장면 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>고객용 링크 복사</button></div> : null}
         {presentationMode ? <>
           <p className="presenter-next-hint" aria-live="polite">{nextSlide ? <>다음 설명: <strong>{nextSlide.label}</strong></> : '마지막 설명 장면입니다.'}</p>
-          <details className="presenter-note"><summary>발표자용 진행 포인트</summary><div className="presenter-note__grid"><div><strong>고객에게 물어보기</strong><p>{slides[active].presenterPrompt}</p></div><div><strong>이어서 말할 때</strong><p>{slides[active].presenterBoundary}</p></div></div><div className="presenter-note__actions"><button type="button" onClick={copyPresenterSceneBrief}>현재 장면 설명문 복사</button></div></details>
+          <details className="presenter-note"><summary>발표자용 진행 포인트</summary><div className="presenter-note__grid"><div><strong>고객에게 물어보기</strong><p>{slides[active].presenterPrompt}</p></div><div><strong>이어서 말할 때</strong><p>{slides[active].presenterBoundary}</p></div></div><div className="presenter-note__actions"><button type="button" onClick={copyPresenterSceneBrief}>현재 장면 설명문 복사</button><button type="button" data-presenter-full-copy onClick={copyPresenterFullBrief}>전체 교육 흐름 복사</button></div></details>
           <details className="presenter-questions"><summary>자주 묻는 질문에 답하기</summary><div className="presenter-questions__list">{PRESENTER_QUESTIONS.map(question => <div key={question.label}><div className="presenter-questions__heading"><strong>{question.label}</strong><button type="button" className="presenter-answer-copy" onClick={() => copyPresenterAnswer(question.label, question.answer)}>답변 복사</button></div><p>{question.answer}</p></div>)}</div></details>
           <p className="presenter-copy-message" aria-live="polite">{presenterCopyMessage}</p>
         </> : null}

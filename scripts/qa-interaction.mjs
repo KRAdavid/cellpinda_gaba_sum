@@ -177,6 +177,10 @@ try {
   await wait(180);
   const sceneCopyState = await evaluate('document.querySelector(".presenter-copy-message")?.innerText||""');
   assert('presenter can copy a product-free scene explanation', sceneCopyState.includes('현재 장면 설명문을 복사했습니다.') || sceneCopyState.includes('복사에 실패했습니다'), sceneCopyState);
+  await evaluate('document.querySelector("[data-presenter-full-copy]")?.click()');
+  await wait(180);
+  const fullBriefCopyState = await evaluate('document.querySelector(".presenter-copy-message")?.innerText||""');
+  assert('presenter can copy the complete product-free education flow', fullBriefCopyState.includes('전체 교육 흐름 설명문을 복사했습니다.') || fullBriefCopyState.includes('복사에 실패했습니다'), fullBriefCopyState);
   await evaluate('document.querySelector(".story-video-db-button")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
   const presenterDb = await evaluate('({items:document.querySelectorAll(".video-db-item").length,hasHold:document.querySelector(".video-db-list")?.innerText.includes("검토 보류")||false,detail:document.querySelector(".video-db-detail")?.innerText||"",body:document.querySelector(".video-db-list")?.innerText||"",panel:document.querySelector(".info-panel")?.innerText||"",search:!!document.querySelector(".video-db-search input"),filters:document.querySelectorAll(".video-db-filters button").length})');
