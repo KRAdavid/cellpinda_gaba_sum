@@ -78,7 +78,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
   },
   {
     id: 'SHORT-01',
-    title: '여에스더 “갱년기 잠 못 자면”',
+    title: '여에스더 "갱년기 잠 못 자면 노화 빨라져요" 수면제보다 안전한 영양제',
     url: 'https://www.youtube.com/shorts/Cnk0PGn9YBM',
     channel: '셀럽의 건강비결',
     speaker: '제목에 여에스더를 내세운 재게시 채널',
@@ -100,7 +100,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
   },
   {
     id: 'SHORT-02',
-    title: '잠자기 어렵다면 수면제 말고 이것으로 해결하세요',
+    title: '잠자기 어렵다면 수면제 말고 이것으로 해결하세요. #가바',
     url: 'https://www.youtube.com/shorts/RLAU1VWGsaI',
     channel: '교육하는 의사! 이동환TV',
     speaker: '이동환',
@@ -122,7 +122,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
   },
   {
     id: 'SHORT-03',
-    title: '신경을 안정시켜 수면에 도움되는 가바',
+    title: "신경을 안정시켜 수면에 도움되는 '가바' (GABA, 졸피뎀, 자낙스, 가바수용체)",
     url: 'https://www.youtube.com/shorts/vnocd9ZVJj0',
     channel: '영양과학자 양과자',
     speaker: '채널명 기반 화자',
@@ -166,7 +166,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
   },
   {
     id: 'SHORT-05',
-    title: '자율신경건강을 지켜줄 음식 - GABA 성분',
+    title: '자율신경건강을 지켜줄 음식 - GABA 성분 #shorts',
     url: 'https://www.youtube.com/shorts/7Zsxm9Wh2Yg',
     channel: '30년 자율신경, 정이안한의원TV',
     speaker: '정이안',
@@ -188,7 +188,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
   },
   {
     id: 'SHORT-06',
-    title: '영양제로 먹는 가바, 정말 효과 있을까?',
+    title: '영양제로 먹는 가바(GABA), 정말 효과 있을까? 부작용 없는 천연 수면 보충제의 비밀',
     url: 'https://www.youtube.com/shorts/rOFkZg09AoY',
     channel: 'SLEEP Dr. 신원철 꿀잠튜브',
     speaker: '신원철',
@@ -232,9 +232,9 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
   },
   {
     id: 'SHORT-08',
-    title: '가바는 어떤 역할을 하는 걸까?',
+    title: '가바는 어떤 역할을 하는 걸까? #gaba',
     url: 'https://www.youtube.com/shorts/4xGSHxkMYew',
-    channel: '비엠한방내과',
+    channel: '비엠한방내과 [bm_k_clinic]',
     speaker: '이제원',
     summary: 'GABA의 역할을 직접 묻고 한방내과 진료 철학과 연결해 소개합니다. 제목·공개 설명 기반 예비 요약입니다.',
     operatorSentence: '일반 역할 설명과 진료·약물·보충제 조언을 분리 확인해야 하는 후보입니다.',
