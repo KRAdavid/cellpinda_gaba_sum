@@ -63,6 +63,38 @@ const fetchText = async url => {
   throw lastError;
 };
 
+const getRegisteredVideoUrls = () => {
+  const sourcePath = path.join(root, 'src', 'gabaVideos.ts');
+  if (!fs.existsSync(sourcePath)) return [];
+  const source = fs.readFileSync(sourcePath, 'utf8');
+  return [...new Set([...source.matchAll(/\n\s+url: '([^']+)'/g)].map(match => match[1]))];
+};
+
+const checkRegisteredVideoLinks = async () => {
+  const urls = getRegisteredVideoUrls();
+  const warnings = [];
+  let healthy = 0;
+  for (const url of urls) {
+    try {
+      let response = await fetch(url, {
+        method: 'HEAD',
+        headers: {'user-agent': 'cellpinda-gaba-sum/1.0 (educational source check)', 'accept-language': 'ko-KR,ko;q=0.9,en;q=0.8'},
+      });
+      if ([405, 429, 500, 502, 503, 504].includes(response.status)) {
+        response = await fetch(url, {
+          headers: {'user-agent': 'cellpinda-gaba-sum/1.0 (educational source check)', 'accept-language': 'ko-KR,ko;q=0.9,en;q=0.8'},
+        });
+        response.body?.cancel();
+      }
+      if (response.ok) healthy += 1;
+      else warnings.push(`${url} → HTTP ${response.status}`);
+    } catch (error) {
+      warnings.push(`${url} → ${error.message}`);
+    }
+  }
+  return {checked: urls.length, healthy, warnings};
+};
+
 const findChannelId = html => {
   const patterns = [
     /<meta[^>]+itemprop=["']channelId["'][^>]+content=["'](UC[\w-]+)["']/i,
@@ -180,7 +212,7 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
-const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates}) => {
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, linkHealth}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const ranked = entries.map(entry => screenCandidate(`${entry.title} ${entry.description}`));
   const scienceMedicalPriority = ranked.filter(item => item.priority !== 'VIDEO 우선').length;
@@ -212,6 +244,9 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     humanSourceTotal: sourceRows.length,
     registeredVideoApproved: videoRows.filter(line => line.includes('| PUBLISH_GENERAL |')).length,
     registeredVideoTotal: videoRows.length,
+    registeredVideoLinksChecked: linkHealth.checked,
+    registeredVideoLinksHealthy: linkHealth.healthy,
+    registeredVideoLinkWarnings: linkHealth.warnings.length,
     firstMeetingReady: Boolean(kickoff.match(/^(?:회의 날짜·시간|첫 회의 날짜·시간):[^\r\n]*$/m)?.[0]?.replace(/^[^:]+:\s*/, '').trim()),
     triageUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md',
     reportUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md',
@@ -221,7 +256,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   return `export const GABA_MONITOR_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)} as const;\n`;
 };
 
-const dailyReport = ({successfulSources, successfulSearches, candidates, errors, fallbackSources}) => {
+const dailyReport = ({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
@@ -239,6 +274,7 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, errors,
     `- 유사 콘텐츠 검색어 확인: ${successfulSearches}/${discoveryQueries.length}`,
     `- Shorts 페이지 보완 수집: ${fallbackSources.length}개 채널`,
     `- 신규 후보: ${candidates.length}건`,
+    `- 등록 영상 원문 링크: ${linkHealth.healthy}/${linkHealth.checked} 접근 확인 · 링크 경고 ${linkHealth.warnings.length}건`,
     `- 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW`,
     '',
     '## 신규 후보',
@@ -258,6 +294,12 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, errors,
     fallbackSources.length
       ? fallbackSources.map(item => `- ${markdown(item)}`).join('\n')
       : '- RSS 보완 수집 없음',
+    '',
+    '## 등록 영상 원문 링크 상태',
+    '',
+    linkHealth.warnings.length
+      ? linkHealth.warnings.map(item => `- 경고: ${markdown(item)}`).join('\n')
+      : '- 등록 영상 원문 링크에서 HTTP 경고 없음',
     '',
     '## 다음 15분 감리 순서',
     '',
@@ -336,9 +378,12 @@ const main = async () => {
     }
   }
 
+  const linkHealth = await checkRegisteredVideoLinks();
+
   console.log('GABA Shorts monitor (' + checkedDate + ')');
   console.log('- sources: ' + successfulSources + '/' + sources.length);
   console.log('- new candidates: ' + candidates.length);
+  console.log('- registered video links: ' + linkHealth.healthy + '/' + linkHealth.checked + ' healthy');
   if (errors.length) errors.forEach(error => console.log('- warning: ' + error));
 
   if (!writeMode) return;
@@ -369,7 +414,7 @@ const main = async () => {
     console.log('- wrote: ' + candidates.length + ' candidate(s) to docs/GABA_VIDEO_INBOX.md');
   }
   fs.mkdirSync(reportArchiveDir, {recursive: true});
-  const report = dailyReport({successfulSources, successfulSearches, candidates, errors, fallbackSources});
+  const report = dailyReport({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth});
   fs.writeFileSync(reportPath, report, 'utf8');
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
   const updatedInbox = fs.readFileSync(inboxPath, 'utf8');
@@ -380,6 +425,7 @@ const main = async () => {
     successfulSources,
     successfulSearches,
     newCandidates: candidates.length,
+    linkHealth,
   }), 'utf8');
   console.log('- wrote: daily report to docs/GABA_VIDEO_DAILY_REPORT.md');
   console.log('- archived: docs/gaba-video-daily/GABA_VIDEO_DAILY_REPORT_' + checkedDate + '.md');

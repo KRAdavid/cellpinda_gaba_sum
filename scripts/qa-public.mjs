@@ -49,6 +49,8 @@ const required = [
   ['panel customer copy control', '이 카드 고객용 링크 복사'],
   ['daily monitoring snapshot', '일일 감리 상태'],
   ['daily monitoring last check', '마지막 자동 확인'],
+  ['registered video link health', '등록 영상 원문 링크'],
+  ['registered video link warnings', '링크 경고'],
   ['daily monitoring source link', '감리 우선순위 보드 원문'],
   ['presenter TF operations board', 'TF 운영 보드'],
   ['presenter TF next action', '다음 행동'],

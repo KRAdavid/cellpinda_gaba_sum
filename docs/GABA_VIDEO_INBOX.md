@@ -1074,3 +1074,57 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-nRk_N7CiSyU
+
+- 상태: PENDING_REVIEW
+- 영상: [가바농도 높이는 방법은? #불면증 #수면부족 #공황장애 #가바 #GABA #가바생성 #스트레스완화 #천연신경안정제 #몽진환 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=nRk_N7CiSyU)
+- 채널: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 질환·치료 표현
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-pCe_kMnu3L4
+
+- 상태: PENDING_REVIEW
+- 영상: [가바GABA  스트레스와 불안을 이기는 비결](https://www.youtube.com/watch?v=pCe_kMnu3L4)
+- 채널: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-5T63eBvjUUQ
+
+- 상태: PENDING_REVIEW
+- 영상: [\[365건강밥상\] NO. 231 스트레스로 지친신경을 차분하게 진정시키고 불안감을 낮추는 GABA음식 #영양식 #음식 #신경안정 #불안감 #스트레스 #365건강밥상 #shorts](https://www.youtube.com/watch?v=5T63eBvjUUQ)
+- 채널: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
