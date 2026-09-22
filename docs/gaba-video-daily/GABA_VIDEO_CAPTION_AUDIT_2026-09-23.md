@@ -7,6 +7,7 @@
 | 영상 ID | 원문 | 자막 트랙 | 자막 본문 | 사람 확인 다음 행동 |
 | --- | --- | --- | --- | --- |
 | z-VLanhugWI | [원문 보기](https://www.youtube.com/watch?v=z-VLanhugWI&t=152s) | 발견 | 경고: 자막 본문 확인 HTTP 429 | 원문 재생·자막·발언 구간을 사람이 확인 |
+| zfW2JC3gMcU | [원문 보기](https://www.youtube.com/watch?v=zfW2JC3gMcU) | 발견 | 경고: 자막 본문 확인 HTTP 429 | 원문 재생·자막·발언 구간을 사람이 확인 |
 | Cnk0PGn9YBM | [원문 보기](https://www.youtube.com/shorts/Cnk0PGn9YBM) | 발견 | 경고: 자막 본문 확인 HTTP 429 | 원문 재생·자막·발언 구간을 사람이 확인 |
 | RLAU1VWGsaI | [원문 보기](https://www.youtube.com/shorts/RLAU1VWGsaI) | 발견 | 경고: 자막 본문 확인 HTTP 429 | 원문 재생·자막·발언 구간을 사람이 확인 |
 | vnocd9ZVJj0 | [원문 보기](https://www.youtube.com/shorts/vnocd9ZVJj0) | 발견 | 경고: 자막 본문 확인 HTTP 429 | 원문 재생·자막·발언 구간을 사람이 확인 |

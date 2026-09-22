@@ -215,7 +215,7 @@ try {
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
   await waitForText('.video-db-list', 'SHORT-01');
   const presenterDb = await evaluate('({items:document.querySelectorAll(".video-db-item").length,hasHold:document.querySelector(".video-db-list")?.innerText.includes("검토 보류")||false,detail:document.querySelector(".video-db-detail")?.innerText||"",body:document.querySelector(".video-db-list")?.innerText||"",panel:document.querySelector(".info-panel")?.innerText||"",search:!!document.querySelector(".video-db-search input"),filters:document.querySelectorAll(".video-db-filters button").length})');
-  assert('presenter video DB keeps candidate review separate from public curation', presenterDb.items === 9 && presenterDb.hasHold && !presenterDb.detail && !presenterDb.body?.includes('Molecular regulation') && presenterDb.panel.includes('국내 공개 승인 0건') && presenterDb.panel.includes('DB 승인 이력 2건') && presenterDb.panel.includes('감리 초안 0건'), JSON.stringify(presenterDb));
+  assert('presenter video DB keeps candidate review separate from public curation', presenterDb.items === 10 && presenterDb.hasHold && !presenterDb.detail && !presenterDb.body?.includes('Molecular regulation') && presenterDb.panel.includes('국내 공개 승인 0건') && presenterDb.panel.includes('DB 승인 이력 2건') && presenterDb.panel.includes('감리 초안 0건'), JSON.stringify(presenterDb));
   const reviewBatch = await evaluate('({count:document.querySelectorAll(".video-review-batch li").length,buttons:document.querySelectorAll("[data-review-batch-video]").length,ids:[...document.querySelectorAll("[data-review-batch-video]")].map(button=>button.getAttribute("data-review-batch-video")||""),text:document.querySelector(".video-review-batch")?.innerText||""})');
   assert('presenter video DB offers a three-item priority review batch', reviewBatch.count === 3 && reviewBatch.buttons === 3 && reviewBatch.ids.every(id => id.startsWith('SHORT-')) && reviewBatch.text.includes('5개 확인 항목') && reviewBatch.text.includes('사람의 공개 판단'), JSON.stringify(reviewBatch));
   await evaluate('document.querySelector("[data-review-batch-video]")?.click()');
@@ -254,17 +254,17 @@ try {
   await evaluate('document.querySelector(".video-db-filters button:nth-child(4)")?.click()');
   await wait(180);
   const holdFilter = await evaluate('({items:document.querySelectorAll(".video-db-item").length,active:document.querySelector(".video-db-filters button:nth-child(4)")?.getAttribute("aria-pressed")||""})');
-  assert('presenter video DB filters review status before selection', presenterDb.search && presenterDb.filters === 8 && holdFilter.items === 5 && holdFilter.active === 'true', JSON.stringify({presenterDb,holdFilter}));
+  assert('presenter video DB filters review status before selection', presenterDb.search && presenterDb.filters === 8 && holdFilter.items === 6 && holdFilter.active === 'true', JSON.stringify({presenterDb,holdFilter}));
   await evaluate('document.querySelector(".video-db-filters button:nth-child(7)")?.click()');
   await wait(180);
   const incompleteFilter = await evaluate('({items:document.querySelectorAll(".video-db-item").length,active:document.querySelector(".video-db-filters button:nth-child(7)")?.innerText||""})');
-  assert('presenter video DB can isolate unfinished audit drafts', incompleteFilter.items === 9 && incompleteFilter.active.includes('감리 진행 필요'), JSON.stringify(incompleteFilter));
+  assert('presenter video DB can isolate unfinished audit drafts', incompleteFilter.items === 10 && incompleteFilter.active.includes('감리 진행 필요'), JSON.stringify(incompleteFilter));
   await evaluate('document.querySelector(".video-db-filters button:first-child")?.click()');
   await wait(120);
   await evaluate('document.querySelector(".video-db-filters button:last-child")?.click()');
   await wait(180);
   const profileFilter = await evaluate('({items:document.querySelectorAll(".video-db-item").length,active:document.querySelector(".video-db-filters button:last-child")?.innerText||"",label:document.querySelector(".video-db-filters")?.getAttribute("aria-label")||""})');
-  assert('presenter video DB can prioritize candidates with person evidence', profileFilter.items === 5 && profileFilter.active.includes('인물 출처 있음') && profileFilter.label.includes('인물 출처'), JSON.stringify(profileFilter));
+  assert('presenter video DB can prioritize candidates with person evidence', profileFilter.items === 6 && profileFilter.active.includes('인물 출처 있음') && profileFilter.label.includes('인물 출처'), JSON.stringify(profileFilter));
   await evaluate('document.querySelector(".video-db-filters button:first-child")?.click()');
   await wait(120);
   await evaluate('(() => { const input=document.querySelector(".video-db-search input"); if (!input) return false; const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value")?.set; setter?.call(input,"이동환"); input.dispatchEvent(new Event("input",{bubbles:true})); return true; })()');
@@ -298,7 +298,7 @@ try {
   const copyReviewState = await evaluate('document.querySelector(".video-review-draft__actions")?.innerText||""');
   assert('presenter review draft copy action is wired', copyReviewState.includes('감리 기록 초안을 복사했습니다.') || copyReviewState.includes('복사에 실패했습니다'), copyReviewState);
   const reviewSummary = await evaluate('({count:document.querySelector(".video-review-summary")?.innerText||"",buttons:document.querySelectorAll(".video-review-summary button").length,disabled:document.querySelector(".video-review-summary button")?.disabled??true,exportButton:!!document.querySelector("[data-export-video-db-csv]"),handoffExportButton:!!document.querySelector("[data-export-review-packet]"),handoffImportButton:!!document.querySelector("[data-import-review-packet]")})');
-  assert('presenter review draft summary exposes batch copy, DB export, and handoff controls', reviewSummary.count.includes('감리 초안 1건') && reviewSummary.count.includes('미완료 9건') && reviewSummary.buttons === 5 && reviewSummary.disabled === false && reviewSummary.exportButton && reviewSummary.handoffExportButton && reviewSummary.handoffImportButton, JSON.stringify(reviewSummary));
+  assert('presenter review draft summary exposes batch copy, DB export, and handoff controls', reviewSummary.count.includes('감리 초안 1건') && reviewSummary.count.includes('미완료 10건') && reviewSummary.buttons === 5 && reviewSummary.disabled === false && reviewSummary.exportButton && reviewSummary.handoffExportButton && reviewSummary.handoffImportButton, JSON.stringify(reviewSummary));
   await evaluate('document.querySelector(".video-review-summary button")?.click()');
   await wait(180);
   const batchCopyState = await evaluate('document.querySelector(".video-review-summary")?.innerText||""');

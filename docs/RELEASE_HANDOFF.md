@@ -32,7 +32,7 @@ YouTube Shorts 후보는 상세 감리 패널 안에서 `youtube-nocookie` 공�
 
 ## 영상 운영 상태
 
-- 관리 DB 11건, 제공 Shorts 8건
+- 관리 DB 12건, 제공 Shorts 8건, 국내 연구기관 채널 후보 VID-02 1건
 - DB 승인 이력 2건(해외 AUTH, 현재 국내 공개 섹션 미노출)
 - 현재 국내 공개 승인 영상 0건
 - 신규 후보는 `PENDING_REVIEW`로만 수집

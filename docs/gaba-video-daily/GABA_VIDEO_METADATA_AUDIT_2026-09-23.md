@@ -7,6 +7,7 @@
 | 영상 ID | 원문 | oEmbed 제목 | oEmbed 채널 | 상태 | 해석 경계 |
 | --- | --- | --- | --- | --- | --- |
 | z-VLanhugWI | [원문 보기](https://www.youtube.com/watch?v=z-VLanhugWI&t=152s) | \[에스더쇼 미니강연\] 수면에 도움이 되는 성분, 가바(GABA)를 아시나요? (여에스더 박사) | 의학채널 비온뒤 | 제목·채널 확인 | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |
+| zfW2JC3gMcU | [원문 보기](https://www.youtube.com/watch?v=zfW2JC3gMcU) | 신경전달물질은 우리 몸을 어떻게 지배할까? | 국가과학기술연구회(nst) | 제목·채널 확인 | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |
 | Cnk0PGn9YBM | [원문 보기](https://www.youtube.com/shorts/Cnk0PGn9YBM) | 여에스더 "갱년기 잠 못 자면 노화 빨라져요" 수면제보다 안전한 영양제 | 셀럽의 건강비결 | 제목·채널 확인 | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |
 | RLAU1VWGsaI | [원문 보기](https://www.youtube.com/shorts/RLAU1VWGsaI) | 잠자기 어렵다면 수면제 말고  이것 으로 해결하세요. #가바 | 교육하는 의사! 이동환TV | 제목·채널 확인 | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |
 | vnocd9ZVJj0 | [원문 보기](https://www.youtube.com/shorts/vnocd9ZVJj0) | 신경을 안정시켜 수면에 도움되는  '가바' (GABA, 졸피뎀, 자낙스, 가바수용체) | 영양과학자 양과자 | 제목·채널 확인 | 제목·채널 확인은 영상 내용·화자 권위·자막·권리 승인이 아님 |
