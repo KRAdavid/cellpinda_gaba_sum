@@ -1333,6 +1333,7 @@ export default function App() {
       `메타데이터: ${snapshot.registeredVideoMetadataHealthy}/${snapshot.registeredVideoMetadataChecked} · 경고 ${snapshot.registeredVideoMetadataWarnings}건`,
       `자막 트랙: ${snapshot.registeredVideoCaptionTracksAvailable}/${snapshot.registeredVideoCaptionTracksChecked} · 경고 ${snapshot.registeredVideoCaptionTrackWarnings}건`,
       `자막 본문: ${snapshot.registeredVideoCaptionBodiesAvailable}/${snapshot.registeredVideoCaptionBodiesChecked} · 경고 ${snapshot.registeredVideoCaptionBodyWarnings}건 · HTTP 429 접근 제한 ${snapshot.registeredVideoCaptionBodyRateLimited}건`,
+      `팀 리뷰 로그: ${snapshot.reviewLogUrl}`,
       `메타데이터 상세 감사: ${snapshot.metadataAuditUrl}`,
       `자막 상세 감사: ${snapshot.captionAuditUrl}`,
       '',
@@ -2214,7 +2215,7 @@ export default function App() {
                   <label className="monitor-candidate-review__notes">팀 메모<textarea data-monitor-review-field="notes" value={monitorReviewDraft.notes} onChange={event => updateMonitorReviewDraft('notes', event.currentTarget.value)} placeholder="확인한 근거, 이견, 다음 질문을 기록하세요." rows={3} /></label>
                   <div className="monitor-candidate-review__actions"><button type="button" data-monitor-review-copy onClick={copyMonitorReviewDraft}>후보 감리 초안 복사</button><span aria-live="polite">{monitorReviewMessage}</span></div>
                 </section> : null}
-                <div className="monitor-snapshot__links"><a href={presenterMonitor?.triageUrl ?? '#'} target="_blank" rel="noopener noreferrer">감리 우선순위 보드 원문 ↗</a><a href={presenterMonitor?.reportUrl ?? '#'} target="_blank" rel="noopener noreferrer">일일 리포트 ↗</a><a href={presenterMonitor?.reviewSessionUrl ?? '#'} target="_blank" rel="noopener noreferrer">오늘 리뷰 세션 ↗</a><a href={presenterMonitor?.metadataAuditUrl ?? '#'} target="_blank" rel="noopener noreferrer">메타데이터 감사 기록 ↗</a><a href={presenterMonitor?.captionAuditUrl ?? '#'} target="_blank" rel="noopener noreferrer">자막 감사 기록 ↗</a></div>
+                <div className="monitor-snapshot__links"><a href={presenterMonitor?.triageUrl ?? '#'} target="_blank" rel="noopener noreferrer">감리 우선순위 보드 원문 ↗</a><a href={presenterMonitor?.reportUrl ?? '#'} target="_blank" rel="noopener noreferrer">일일 리포트 ↗</a><a href={presenterMonitor?.reviewLogUrl ?? '#'} target="_blank" rel="noopener noreferrer">팀 리뷰 로그 ↗</a><a href={presenterMonitor?.reviewSessionUrl ?? '#'} target="_blank" rel="noopener noreferrer">오늘 리뷰 세션 ↗</a><a href={presenterMonitor?.metadataAuditUrl ?? '#'} target="_blank" rel="noopener noreferrer">메타데이터 감사 기록 ↗</a><a href={presenterMonitor?.captionAuditUrl ?? '#'} target="_blank" rel="noopener noreferrer">자막 감사 기록 ↗</a></div>
               </div> : null}
               {presentationMode ? <div className="video-db-tools">
                 <label className="video-db-search">영상 DB 검색

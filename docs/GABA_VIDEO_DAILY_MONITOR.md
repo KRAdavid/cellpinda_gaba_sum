@@ -67,7 +67,7 @@ GitHub Actions는 .github/workflows/monitor-gaba-shorts.yml에서 매일 실행�
 
 같은 패널의 `권위 후보 확인 전` 큐에는 권위 검색어로 발견됐거나 제목·설명에 전문가 자격 표현이 감지된 후보를 별도로 표시한다. 각 후보에 `전문가 표현 감지 · 자격 미확인` 또는 `권위 검색 발견 · 자격 미확인`을 구분해 표시하므로, 검색 결과를 실제 권위 확인 결과와 섞지 않는다. 두 신호 모두 권위 자료를 우선 찾기 위한 보조 단서이며, 실제 자격·화자·원문·자막·권리 검토 전에는 권위 영상으로 공개하지 않는다.
 
-같은 상위 후보와 사람 검토 체크리스트는 `docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_YYYY-MM-DD.md`로 날짜별 보관한다. 등록 영상별 제목·채널 메타데이터는 `docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_YYYY-MM-DD.md`, 자막 트랙·본문 접근 결과는 `docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_YYYY-MM-DD.md`로 함께 보관한다. 발표자 화면의 `오늘 리뷰 세션`·`메타데이터 감사 기록`·`자막 감사 기록` 링크에서 팀 토론·원문 확인 문서를 열 수 있으며, 체크가 끝나도 영상 DB와 검토 로그에 최종 판정을 기록하기 전에는 공개 상태를 바꾸지 않는다.
+같은 상위 후보와 사람 검토 체크리스트는 `docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_YYYY-MM-DD.md`로 날짜별 보관한다. 등록 영상별 제목·채널 메타데이터는 `docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_YYYY-MM-DD.md`, 자막 트랙·본문 접근 결과는 `docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_YYYY-MM-DD.md`로 함께 보관한다. 발표자 화면의 `팀 리뷰 로그` 링크는 날짜별 실행 기록과 최종 판단이 누적되는 기준 문서로 연결하고, `오늘 리뷰 세션`·`메타데이터 감사 기록`·`자막 감사 기록` 링크에서 당일 팀 토론·원문 확인 문서를 연다. 체크가 끝나도 영상 DB와 검토 로그에 최종 판정을 기록하기 전에는 공개 상태를 바꾸지 않는다.
 
 ## 자동 수집이 하지 않는 일
 
