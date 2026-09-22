@@ -15,6 +15,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "humanSourceTotal": 5,
   "registeredVideoApproved": 2,
   "registeredVideoTotal": 11,
+  "domesticPublicApproved": 0,
+  "domesticVideoTotal": 9,
   "registeredVideoLinksChecked": 11,
   "registeredVideoLinksHealthy": 11,
   "registeredVideoLinkWarnings": 0,

@@ -137,7 +137,7 @@ try {
   await evaluate('document.querySelector(".story-video-db-button")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
   const presenterDb = await evaluate('({items:document.querySelectorAll(".video-db-item").length,hasHold:document.querySelector(".video-db-list")?.innerText.includes("검토 보류")||false,detail:document.querySelector(".video-db-detail")?.innerText||"",body:document.querySelector(".video-db-list")?.innerText||"",panel:document.querySelector(".info-panel")?.innerText||"",search:!!document.querySelector(".video-db-search input"),filters:document.querySelectorAll(".video-db-filters button").length})');
-  assert('presenter video DB keeps candidate review separate from public curation', presenterDb.items === 9 && presenterDb.hasHold && !presenterDb.detail && !presenterDb.body?.includes('Molecular regulation') && presenterDb.panel.includes('국내 공개 승인 0건'), JSON.stringify(presenterDb));
+  assert('presenter video DB keeps candidate review separate from public curation', presenterDb.items === 9 && presenterDb.hasHold && !presenterDb.detail && !presenterDb.body?.includes('Molecular regulation') && presenterDb.panel.includes('국내 공개 승인 0건') && presenterDb.panel.includes('DB 승인 이력 2건'), JSON.stringify(presenterDb));
   const monitorSnapshot = await evaluate('({summary:document.querySelector(".monitor-snapshot")?.innerText||"",links:document.querySelectorAll(".monitor-snapshot a").length})');
   assert('presenter video DB shows daily monitoring snapshot', monitorSnapshot.summary.includes('마지막 자동 확인') && monitorSnapshot.summary.includes('검토 대기') && monitorSnapshot.links === 2, JSON.stringify(monitorSnapshot));
   await evaluate('document.querySelector(".video-db-filters button:nth-child(4)")?.click()');
@@ -153,7 +153,7 @@ try {
   await evaluate('document.querySelector(".video-db-item__select")?.click()');
   await waitForText('.video-db-detail', '인물 소개');
   const selected = await evaluate('({detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||""})');
-  assert('video DB selection shows summary, person introduction, operator sentence, and next audit action', selected.detail.includes('무엇을 어떻게 소개했나') && selected.detail.includes('인물 소개') && selected.detail.includes('사업자 설명 한 문장') && selected.detail.includes('다음 감리 행동') && selected.external.includes('youtube.com/shorts/RLAU1VWGsaI'), JSON.stringify(selected));
+  assert('video DB selection shows summary, person introduction, operator sentence, and next audit action', selected.detail.includes('무엇을 어떻게 소개했나') && selected.detail.includes('인물 소개') && selected.detail.includes('사업자 설명 한 문장') && selected.detail.includes('고객 설명 3문장 복사') && selected.detail.includes('다음 감리 행동') && selected.external.includes('youtube.com/shorts/RLAU1VWGsaI'), JSON.stringify(selected));
   await press('Escape', 'Escape', 27);
   await evaluate('document.querySelector(".story-ops-board-button")?.click()');
   await waitForText('#info-panel-title', 'TF 운영 보드');

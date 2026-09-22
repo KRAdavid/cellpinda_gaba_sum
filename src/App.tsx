@@ -388,6 +388,20 @@ export default function App() {
     }
   };
 
+  const copyVideoCustomerBrief = async (video: GabaVideoRecord) => {
+    const brief = [
+      `이 영상은 ${video.title}을(를) 다룹니다.`,
+      video.summary,
+      `${video.operatorSentence} 현재 상태는 ${VIDEO_STATUS_LABELS[video.status]}이며, 이 내용을 특정 제품의 효능이나 개인의 결과로 확대해 설명하지 않습니다.`,
+    ].join(' ');
+    try {
+      await copyText(brief);
+      setVideoCopyMessage('고객 설명 3문장을 복사했습니다.');
+    } catch {
+      setVideoCopyMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
+  };
+
   const getCustomerCardLink = (index: number) => {
     const url = new URL(window.location.href);
     url.searchParams.set('card', String(index + 1));
@@ -774,7 +788,7 @@ export default function App() {
                   <p><strong>무엇을 어떻게 소개했나</strong><br />{selectedVideo.summary}</p>
                   <p><strong>인물 소개</strong><br />{selectedVideo.personSummary}</p>
                 </div>
-                <div className="video-db-detail__operator"><strong>사업자 설명 한 문장</strong><p>{selectedVideo.operatorSentence}</p>{presentationMode ? <><button type="button" onClick={() => copyVideoOperatorSentence(selectedVideo)}>설명 문장 복사</button><span aria-live="polite">{videoCopyMessage}</span></> : null}</div>
+                <div className="video-db-detail__operator"><strong>사업자 설명 한 문장</strong><p>{selectedVideo.operatorSentence}</p>{presentationMode ? <><div className="video-db-detail__operator-actions"><button type="button" onClick={() => copyVideoOperatorSentence(selectedVideo)}>설명 문장 복사</button><button type="button" onClick={() => copyVideoCustomerBrief(selectedVideo)}>고객 설명 3문장 복사</button></div><span aria-live="polite">{videoCopyMessage}</span></> : null}</div>
                 <dl className="video-db-audit" aria-label="영상 감리 필드">
                   <div><dt>확인 기반</dt><dd>{VIDEO_AUDIT_LABELS.contentBasis[selectedVideo.audit.contentBasis]}</dd></div>
                   <div><dt>권위</dt><dd>{VIDEO_AUDIT_LABELS.authorityLevel[selectedVideo.audit.authorityLevel]}</dd></div>
@@ -794,7 +808,7 @@ export default function App() {
               <div className="tf-board__metrics" aria-label="TF 운영 현황">
                 <div><strong>{GABA_MONITOR_SNAPSHOT.humanRoleAssigned}/{GABA_MONITOR_SNAPSHOT.humanRoleTotal}</strong><span>핵심 역할 배정</span></div>
                 <div><strong>{GABA_MONITOR_SNAPSHOT.humanSourceReviewed}/{GABA_MONITOR_SNAPSHOT.humanSourceTotal}</strong><span>출처 사람 검토</span></div>
-                <div><strong>{GABA_MONITOR_SNAPSHOT.registeredVideoApproved}/{GABA_MONITOR_SNAPSHOT.registeredVideoTotal}</strong><span>영상 공개 승인</span></div>
+                <div><strong>{GABA_MONITOR_SNAPSHOT.domesticPublicApproved}/{GABA_MONITOR_SNAPSHOT.domesticVideoTotal}</strong><span>국내 공개 승인 · DB 이력 {GABA_MONITOR_SNAPSHOT.registeredVideoApproved}건</span></div>
                 <div><strong>{GABA_MONITOR_SNAPSHOT.firstMeetingReady ? '입력됨' : '필요'}</strong><span>첫 회의 입력</span></div>
               </div>
               <div className="tf-board__list">

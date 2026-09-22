@@ -272,6 +272,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   }).length;
   const sourceRows = sourceRegister.split('\n').filter(line => /^\| SRC-\d+ \|/.test(line));
   const videoRows = videoRegister.split('\n').filter(line => /^\| (?:AUTH|VID|SHORT)-\d+ \|/.test(line));
+  const domesticVideoRows = videoRows.filter(line => !line.startsWith('| AUTH-'));
   const snapshot = {
     checkedAt: date,
     sourceChannels: successfulSources,
@@ -289,6 +290,8 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     humanSourceTotal: sourceRows.length,
     registeredVideoApproved: videoRows.filter(line => line.includes('| PUBLISH_GENERAL |')).length,
     registeredVideoTotal: videoRows.length,
+    domesticPublicApproved: domesticVideoRows.filter(line => line.includes('| PUBLISH_GENERAL |')).length,
+    domesticVideoTotal: domesticVideoRows.length,
     registeredVideoLinksChecked: linkHealth.checked,
     registeredVideoLinksHealthy: linkHealth.healthy,
     registeredVideoLinkWarnings: linkHealth.warnings.length,

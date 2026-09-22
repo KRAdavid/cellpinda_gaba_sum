@@ -37,8 +37,10 @@ const monitorReady = videoMonitor.includes('매일 09:00 KST')
 const reviewLogReady = videoLog.includes('15분 일일 검토 순서')
   && videoLog.includes('PUBLISH_GENERAL')
   && videoLog.includes('LIMITED_USE');
-const publishReady = videoRows.filter(line => line.includes('| PUBLISH_GENERAL |')).length;
-const videoReady = publishReady;
+const dbPublishHistory = videoRows.filter(line => line.includes('| PUBLISH_GENERAL |')).length;
+const domesticVideoRows = videoRows.filter(line => !line.startsWith('| AUTH-'));
+const domesticPublishReady = domesticVideoRows.filter(line => line.includes('| PUBLISH_GENERAL |')).length;
+const videoReady = domesticPublishReady;
 const scopeReady = scope.includes('제품 판매가 아닌 일반 GABA 교육 자료')
   && scope.includes('셀핀다 제품명·SKU·가격·구성·섭취량·구매 링크')
   && scope.includes('일반 GABA 연구');
@@ -54,7 +56,8 @@ const ready = assignedRoles.length === coreRoles.length
 
 console.log('GABA education TF readiness report');
 console.log('- 제공 쇼츠 DB 등록: ' + registeredShorts + '/' + shortIds.length);
-console.log('- 공개 승인 영상: ' + publishReady + '/' + videoRows.length);
+console.log('- DB 승인 이력: ' + dbPublishHistory + '/' + videoRows.length + ' (해외 AUTH 포함)');
+console.log('- 국내 공개 승인: ' + domesticPublishReady + '/' + domesticVideoRows.length);
 console.log('- 영상 감리 규칙: ' + (videoRulesReady ? '확인' : 'HOLD'));
 console.log('- 일일 모니터 파이프라인: ' + (monitorReady ? '준비' : 'HOLD'));
 console.log('- 일일 팀 검토 로그: ' + (reviewLogReady ? '준비' : 'HOLD'));
@@ -63,7 +66,7 @@ console.log('- AI-OPS 실행 권한: 활성');
 console.log(`- 첫 회의 입력: ${firstMeetingFilled ? '입력됨' : '필요'}`);
 console.log(`- 과학 출처 AI 사전 확인: ${sourcePrechecked}/${sourceRows.length}`);
 console.log(`- 과학 출처 사람 검토: ${sourceHumanReviewed}/${sourceRows.length}`);
-console.log('- 공개 승인 영상 점검: ' + videoReady + '/' + videoRows.length);
+console.log('- 국내 공개 승인 영상 점검: ' + domesticPublishReady + '/' + domesticVideoRows.length);
 console.log(`- 제품·후기·판매 제외 범위: ${scopeReady ? '확인' : 'HOLD'}`);
 console.log(`- 현재 판정: ${ready ? '1차 제작 착수 가능' : '킥오프·출처·영상 입력 필요'}`);
 
