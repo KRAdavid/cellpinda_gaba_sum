@@ -1230,7 +1230,7 @@ export default function App() {
                 </div>
                 <div className="video-db-detail__operator"><strong>사업자 설명 한 문장</strong><p>{presentationMode ? selectedVideo.operatorSentence : selectedVideo.publicOperatorSentence ?? selectedVideo.operatorSentence}</p>{presentationMode ? <><div className="video-db-detail__operator-actions"><button type="button" onClick={() => copyVideoOperatorSentence(selectedVideo)}>설명 문장 복사</button><button type="button" onClick={() => copyVideoCustomerBrief(selectedVideo)}>고객 설명 3문장 복사</button></div><span aria-live="polite">{videoCopyMessage}</span></> : null}</div>
                 <dl className="video-db-audit" aria-label="영상 감리 필드">
-                  <div><dt>확인 기반</dt><dd>{VIDEO_AUDIT_LABELS.contentBasis[selectedVideo.audit.contentBasis]}</dd></div>
+                  <div><dt>요약 근거</dt><dd>{VIDEO_AUDIT_LABELS.contentBasis[selectedVideo.audit.contentBasis]}</dd></div>
                   <div><dt>권위</dt><dd>{VIDEO_AUDIT_LABELS.authorityLevel[selectedVideo.audit.authorityLevel]}</dd></div>
                   <div><dt>근거</dt><dd>{VIDEO_AUDIT_LABELS.evidenceLevel[selectedVideo.audit.evidenceLevel]}</dd></div>
                   <div><dt>사용 방식</dt><dd>{VIDEO_AUDIT_LABELS.usageMode[selectedVideo.audit.usageMode]}</dd></div>
@@ -1364,6 +1364,7 @@ export default function App() {
                 <div className="video-showcase__audit" aria-label="영상 공개 감리 상태">
                   <span>권위 확인: {VIDEO_AUDIT_LABELS.authorityLevel[showcaseVideo.audit.authorityLevel]}</span>
                   <span>근거: {VIDEO_AUDIT_LABELS.evidenceLevel[showcaseVideo.audit.evidenceLevel]}</span>
+                  <span>요약 근거: {VIDEO_AUDIT_LABELS.contentBasis[showcaseVideo.audit.contentBasis]}</span>
                   <span>사용: {VIDEO_AUDIT_LABELS.usageMode[showcaseVideo.audit.usageMode]}</span>
                 </div>
                 <p><strong>무엇을 어떻게 소개했나 · 예비</strong><br />{showcaseVideo.publicSummary ?? showcaseVideo.summary}</p>

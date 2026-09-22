@@ -47,7 +47,7 @@ const required = [
   ['reel video handoff', '영상 요약으로 이어가기'],
   ['video person summary', '인물 소개'],
   ['video operator sentence', '사업자 설명 한 문장'],
-  ['video audit fields', '확인 기반'],
+  ['video audit fields', '요약 근거'],
   ['video audit next action', '다음 감리 행동'],
   ['official video preview', '공식 원문 페이지 미리보기'],
   ['video audit database', '영상 DB 감리'],
