@@ -250,6 +250,8 @@ export default function App() {
   const publicVideo = SHARED_GABA_VIDEOS[0] ?? null;
   const panelVideos = presentationMode ? ACTIVE_GABA_VIDEOS : SHARED_GABA_VIDEOS;
   const selectedVideo = panelVideoId ? panelVideos.find(video => video.id === panelVideoId) ?? GABA_VIDEO_DB.find(video => video.id === panelVideoId) ?? null : null;
+  const selectedVideoIndex = selectedVideo ? panelVideos.findIndex(video => video.id === selectedVideo.id) : -1;
+  const nextVideo = selectedVideoIndex >= 0 ? panelVideos[selectedVideoIndex + 1] ?? null : null;
   useEffect(() => setPreviewImageError(false), [panelVideoId]);
   const filteredPanelVideos = useMemo(() => {
     const query = videoQuery.trim().toLocaleLowerCase();
@@ -468,6 +470,17 @@ export default function App() {
     });
   };
 
+  const continueToNextVideo = () => {
+    if (!nextVideo) return;
+    setPanelVideoId(nextVideo.id);
+    setVideoCopyMessage('');
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        panelRef.current?.querySelector<HTMLElement>('.video-db-detail h3')?.focus();
+      });
+    });
+  };
+
   const openInfoPanel = (index: number, panel: PanelKey, returnElement?: HTMLElement | null) => {
     panelReturnRef.current = returnElement ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setPanelSourceIndex(index);
@@ -591,6 +604,7 @@ export default function App() {
   const panelSource = panelSourceIndex ?? active;
   const panelNext = slides[Math.min(slides.length - 1, panelSource + 1)];
   const panelNextAction = panelSource < slides.length - 1 ? `다음 카드: ${panelNext.label} →` : '카드 흐름으로 돌아가기';
+  const videoNextAction = nextVideo ? `다음 영상: ${nextVideo.id} →` : '영상 목록으로 돌아가기';
   const introSection = <section className="intro" aria-labelledby="page-title">
     <div className="intro-copy">
       <p className="eyebrow">일반 GABA 교육 · 제품 정보 제외</p>
@@ -742,7 +756,7 @@ export default function App() {
               </div>
               {selectedVideo ? <div className="video-db-detail">
                 <p className="eyebrow">선택 영상 상세 · {VIDEO_STATUS_LABELS[selectedVideo.status]}</p>
-                <h3>{selectedVideo.title}</h3>
+                <h3 tabIndex={-1}>{selectedVideo.title}</h3>
                 {selectedVideo.previewImage || selectedVideo.previewLabel ? <figure className={'video-db-preview' + (!selectedVideo.previewImage || previewImageError ? ' video-db-preview--source' : '')}>
                   {selectedVideo.previewImage && !previewImageError ? <img src={selectedVideo.previewImage} alt={selectedVideo.previewAlt ?? `${selectedVideo.title} 공식 원문 미리보기`} loading="lazy" decoding="async" onError={() => setPreviewImageError(true)} /> : <div className="video-db-preview__source-mark"><span>공식 교육기관</span><strong>{selectedVideo.previewLabel}</strong><small>원문 페이지·대본 확인</small></div>}
                   <figcaption>공식 원문 페이지 미리보기 · 영상 재생과 전체 맥락은 원문에서 확인합니다.</figcaption>
@@ -787,7 +801,7 @@ export default function App() {
               <p className="info-panel__boundary">AI-OPS는 문서·코드·QA·업무 추적을 실행하지만, 과학·의학·권리·현장·최종 공개 승인을 대신하지 않습니다.</p>
               <div className="tf-board__links"><a href={GABA_MONITOR_SNAPSHOT.kickoffUrl} target="_blank" rel="noopener noreferrer">첫 회의 준비서 ↗</a><a href={GABA_MONITOR_SNAPSHOT.sourceRegisterUrl} target="_blank" rel="noopener noreferrer">과학 출처 등록부 ↗</a></div>
             </> : null}
-            <div className="info-panel__actions"><button type="button" className="info-panel__next" onClick={continueToNextCard}>{panelNextAction}</button></div>
+            <div className="info-panel__actions"><button type="button" className="info-panel__next" onClick={openPanel === 'video' && !presentationMode && nextVideo ? continueToNextVideo : continueToNextCard}>{openPanel === 'video' && !presentationMode && selectedVideo ? videoNextAction : panelNextAction}</button></div>
             <p className="info-panel__flow-note">현재 페이지의 흐름은 유지됩니다. 외부 링크는 원문 확인이 필요할 때만 선택하세요.</p>
             {openPanel === 'research' ? <div className="info-panel__source"><strong>출처</strong><p className="info-panel__source-title">Effects of Oral Gamma-Aminobutyric Acid (GABA) Administration on Stress and Sleep in Humans: A Systematic Review</p><p className="info-panel__source-meta">Hepsomali et al. · Front Neurosci. 2020;14:923 · PMID 33041752</p></div> : null}
             {presentationMode ? <div className="info-panel__customer-link"><button type="button" className="info-panel__customer-copy" onClick={copyPanelCardLink}>이 카드 고객용 링크 복사</button><p>복사한 링크는 발표자 모드 없이 이 카드에서 열립니다.</p><p className="info-panel__customer-message" aria-live="polite">{panelShareMessage}</p></div> : null}

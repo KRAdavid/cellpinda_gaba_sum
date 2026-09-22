@@ -124,6 +124,10 @@ try {
   await waitForText('.video-db-detail', '브레인튜브');
   const secondPublicVideo = await evaluate('({detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||""})');
   assert('consumer can inspect the second shared YouTube video', secondPublicVideo.detail.includes('브레인튜브') && secondPublicVideo.external.includes('youtube.com/shorts/BiZXS_ojLUA'), JSON.stringify(secondPublicVideo));
+  await evaluate('document.querySelector(".info-panel__next")?.click()');
+  await waitForText('.video-db-detail', '30년 자율신경');
+  const nextPublicVideo = await evaluate('({detail:document.querySelector(".video-db-detail")?.innerText||"",button:document.querySelector(".info-panel__next")?.innerText||""})');
+  assert('consumer can continue to the next video without leaving the page', nextPublicVideo.detail.includes('30년 자율신경') && nextPublicVideo.button.includes('다음 영상'), JSON.stringify(nextPublicVideo));
   await press('Escape', 'Escape', 27);
 
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
