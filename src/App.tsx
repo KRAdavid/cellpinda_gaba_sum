@@ -819,6 +819,8 @@ export default function App() {
             </div>
             <div>
               <p>오늘 공유하신 국내 YouTube Shorts를 히어로 샷과 요약 버전으로 소개합니다. 아래 내용은 원문 확인 전 예비 정리이며, 각 영상의 원문 링크에서 전체 맥락을 확인할 수 있습니다.</p>
+              <p className="video-showcase__boundary">오늘 공유된 검토 후보입니다. 화자 자격·발언 근거·권리 상태를 별도로 감리하며, 일반 GABA 연구나 특정 제품의 효능을 보증하지 않습니다.</p>
+              <p className="video-showcase__freshness">영상 DB 자동 확인 {GABA_MONITOR_SNAPSHOT.checkedAt} · 공개 승인은 사람 검토 후</p>
               <button type="button" className="video-showcase__db-button" onClick={event => openVideoPanel(event.currentTarget)}>영상 DB 상세 감리 보기 <span aria-hidden="true">↗</span></button>
             </div>
           </div>

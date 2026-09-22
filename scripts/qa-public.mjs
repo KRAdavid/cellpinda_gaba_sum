@@ -36,6 +36,8 @@ const required = [
   ['separate video showcase', '별도 섹션 · 영상 요약'],
   ['video showcase YouTube link', 'YouTube 원문 영상 보기'],
   ['video showcase hero copy', '원문으로 확인하세요'],
+  ['video candidate boundary', '오늘 공유된 검토 후보입니다'],
+  ['video monitor freshness', '영상 DB 자동 확인'],
   ['reel next action', '다음 장면'],
   ['reel video handoff', '영상 요약으로 이어가기'],
   ['video person summary', '인물 소개'],
