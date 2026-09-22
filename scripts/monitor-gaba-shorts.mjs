@@ -382,6 +382,9 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   const priorityRank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
     .sort((left, right) => priorityRank(left.priority) - priorityRank(right.priority) || left.id.localeCompare(right.id));
+  const authorityQueue = ranked
+    .filter(entry => entry.signals.includes('권위 후보 검색 발견') || entry.signals.includes('전문가 자격 확인 신호'))
+    .slice(0, 5);
   const scienceMedicalPriority = ranked.filter(item => item.priority !== 'VIDEO 우선').length;
   const educationTf = fs.existsSync(educationTfPath) ? fs.readFileSync(educationTfPath, 'utf8') : '';
   const sourceRegister = fs.existsSync(sourceRegisterPath) ? fs.readFileSync(sourceRegisterPath, 'utf8') : '';
@@ -412,6 +415,13 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
       priority: entry.priority,
       signals: entry.signals,
       ...reviewAssignment(entry.priority),
+    })),
+    authorityQueue: authorityQueue.map(entry => ({
+      id: entry.id,
+      title: entry.title,
+      channel: entry.channel,
+      signals: entry.signals,
+      nextAction: '독립적인 자격·실제 화자·원문·자막·권리 확인',
     })),
     autoPublish: 0,
     humanRoleAssigned,

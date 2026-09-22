@@ -7,7 +7,7 @@
 - 채널 확인: 8/8
 - 유사 콘텐츠 검색어 확인: 6/6
 - Shorts 페이지 보완 수집: 0개 채널
-- 신규 후보: 0건
+- 신규 후보: 3건
 - 등록 영상 원문 링크: 11/11 접근 확인 · 링크 경고 0건
 - 등록 YouTube 메타데이터: 9/9 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 9/9 watch 페이지에서 발견 · 자막 경고 0건
@@ -18,7 +18,9 @@
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 상태 |
 | --- | --- | --- | --- | --- | --- |
-| 없음 | 신규 후보 없음 | - | - | - |
+| PENDING-20260922-VrZ8WPrQ_GY | [월경 전 감정 무너지는 이유 \| 에스트로겐 세로토닌 GABA 기전 \| 이태원 월경전증후군 한의원](https://www.youtube.com/watch?v=VrZ8WPrQ_GY) | YouTube 검색: 의사 GABA 신경전달물질 Shorts | 일반 설명 후보 · 권위 후보 검색 발견 | VIDEO 우선 | PENDING_REVIEW |
+| PENDING-20260922-uLMpiXWsv94 | [Unlock GABA Support: The Magnesium Glycinate Secret #shorts](https://www.youtube.com/watch?v=uLMpiXWsv94) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts | 일반 설명 후보 · 권위 후보 검색 발견 | VIDEO 우선 | PENDING_REVIEW |
+| PENDING-20260922-Lm2HJtSRBOI | [가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)](https://www.youtube.com/watch?v=Lm2HJtSRBOI) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts | 효과·안전성 단정 신호 · 권위 후보 검색 발견 | SCIENCE/MEDICAL 우선 | PENDING_REVIEW |
 
 ## 채널 경고
 

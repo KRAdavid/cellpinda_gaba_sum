@@ -4,10 +4,10 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredChannels": 8,
   "discoveryQueries": 6,
   "totalDiscoveryQueries": 6,
-  "newCandidates": 0,
-  "pendingReview": 81,
-  "scienceMedicalPriority": 48,
-  "videoPriority": 33,
+  "newCandidates": 3,
+  "pendingReview": 84,
+  "scienceMedicalPriority": 49,
+  "videoPriority": 35,
   "pendingQueue": [
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
@@ -66,6 +66,58 @@ export const GABA_MONITOR_SNAPSHOT = {
       ],
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
+    }
+  ],
+  "authorityQueue": [
+    {
+      "id": "PENDING-20260922-Lm2HJtSRBOI",
+      "title": "가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)",
+      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "권위 후보 검색 발견"
+      ],
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
+      "id": "PENDING-20260922-KBC6QV2NDDU",
+      "title": "Boost GABA Production: Your Brain's Natural Brake #shorts",
+      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "일반 설명 후보",
+        "권위 후보 검색 발견"
+      ],
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
+      "id": "PENDING-20260922-oWtoo62PLFw",
+      "title": "Unlock Your Brain: Glutamate, GABA, and Natural Solutions #shorts",
+      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "일반 설명 후보",
+        "권위 후보 검색 발견"
+      ],
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
+      "id": "PENDING-20260922-uLMpiXWsv94",
+      "title": "Unlock GABA Support: The Magnesium Glycinate Secret #shorts",
+      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "일반 설명 후보",
+        "권위 후보 검색 발견"
+      ],
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
+      "id": "PENDING-20260922-VrZ8WPrQ_GY",
+      "title": "월경 전 감정 무너지는 이유 \\| 에스트로겐 세로토닌 GABA 기전 \\| 이태원 월경전증후군 한의원",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "일반 설명 후보",
+        "권위 후보 검색 발견"
+      ],
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
   ],
   "autoPublish": 0,
