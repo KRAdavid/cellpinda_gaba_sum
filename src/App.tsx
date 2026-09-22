@@ -567,7 +567,6 @@ export default function App() {
   const [monitorReviewCandidateId, setMonitorReviewCandidateId] = useState<string | null>(null);
   const [monitorReviewMessage, setMonitorReviewMessage] = useState('');
   const railRef = useRef<HTMLDivElement>(null);
-  const readerStreamRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
   const panelTriggerRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const panelRef = useRef<HTMLElement>(null);
@@ -580,7 +579,6 @@ export default function App() {
   const shareRequestRef = useRef(0);
   const programmaticTargetRef = useRef<number | null>(null);
   const railScrollFrameRef = useRef<number | null>(null);
-  const readerScrollFrameRef = useRef<number | null>(null);
   const phaseNavRef = useRef<HTMLElement>(null);
   const showcaseShareRequestRef = useRef(0);
   const activePhase = STORY_PHASES.find(phase => active >= phase.start && active <= phase.end) ?? STORY_PHASES[0];
@@ -811,39 +809,13 @@ export default function App() {
     if (presentationModeRef.current && rail && target) {
       rail.scrollTo({top: target.offsetTop, behavior});
     } else {
-      target?.scrollIntoView({behavior, inline: 'nearest', block: 'start'});
+      document.getElementById('story-scene-hook')?.scrollIntoView({behavior, block: 'start'});
     }
     const settleDelay = behavior === 'auto' ? 80 : 850;
     window.setTimeout(() => {
       if (programmaticTargetRef.current === next) programmaticTargetRef.current = null;
     }, settleDelay);
   };
-
-  useEffect(() => {
-    if (presentationMode) return;
-    const syncReader = () => {
-      if (programmaticTargetRef.current !== null) return;
-      if (readerScrollFrameRef.current !== null) cancelAnimationFrame(readerScrollFrameRef.current);
-      readerScrollFrameRef.current = requestAnimationFrame(() => {
-        readerScrollFrameRef.current = null;
-        const focusLine = window.innerHeight * 0.32;
-        const scenes = slideRefs.current
-          .map((slide, index) => ({slide, index, rect: slide?.getBoundingClientRect()}))
-          .filter(({rect}) => rect && rect.height > 0);
-        const focused = scenes.find(({rect}) => rect && rect.top <= focusLine && rect.bottom >= focusLine)
-          ?? scenes.sort((left, right) => Math.abs(left.rect!.top - focusLine) - Math.abs(right.rect!.top - focusLine))[0];
-        if (focused) setActive(focused.index);
-      });
-    };
-    window.addEventListener('scroll', syncReader, {passive: true});
-    window.addEventListener('resize', syncReader);
-    window.requestAnimationFrame(syncReader);
-    return () => {
-      window.removeEventListener('scroll', syncReader);
-      window.removeEventListener('resize', syncReader);
-      if (readerScrollFrameRef.current !== null) cancelAnimationFrame(readerScrollFrameRef.current);
-    };
-  }, [presentationMode, slides.length]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -856,13 +828,12 @@ export default function App() {
     }
     if (Number.isInteger(requested) && requested >= 1 && requested <= slides.length) {
       const requestedIndex = requested - 1;
-      // Resolve a direct scene URL before any reader scroll listener can infer a
-      // different scene from the old page position. Presenter mode renders one
-      // focused scene, so it does not need a scroll command at all.
+      // Resolve a direct scene URL before rendering the single-page reader stage.
+      // Presenter mode renders one focused scene, so it does not need a scroll command.
       programmaticTargetRef.current = null;
       setActive(requestedIndex);
       if (!presenterRequested) {
-        window.requestAnimationFrame(() => slideRefs.current[requestedIndex]?.scrollIntoView({behavior: 'auto', block: 'start'}));
+        window.requestAnimationFrame(() => document.getElementById('story-scene-hook')?.scrollIntoView({behavior: 'auto', block: 'start'}));
       }
     }
     if (presenterRequested && requestedVideoId && presenterData?.videoDb.some(video => video.id === requestedVideoId)) {
@@ -1954,13 +1925,15 @@ export default function App() {
         </div>
         {nextSlide ? <button type="button" onClick={() => goTo(active + 1)}>넘겨 보기 <span aria-hidden="true">↓</span></button> : <a href="#video-showcase">영상 보기 <span aria-hidden="true">↓</span></a>}
       </div>
-      <div className="story-reader-stream" ref={readerStreamRef}>
+      <div id="story-scene-hook" className="story-reader-stream" aria-live="polite">
         {slides.map((slide, index) => <article
           key={slide.id}
           id={`story-scene-${slide.id}`}
           ref={element => {slideRefs.current[index] = element;}}
           data-index={index}
-          className={`story-reader-scene story-reader-scene--${slide.tone}${index === active ? ' is-active' : ''}`}
+          className={`story-reader-scene story-reader-scene--${slide.tone}${index === active ? ' is-active' : ' story-reader-scene--hidden'}`}
+          aria-hidden={index === active ? undefined : true}
+          inert={index === active ? undefined : true}
           aria-labelledby={`reader-slide-${slide.id}`}
         >
           <div className="story-reader-scene__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
