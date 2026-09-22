@@ -79,7 +79,7 @@ try {
 
   await evaluate('(() => { const story=document.getElementById("story"); window.scrollTo({top:story.offsetTop,left:0,behavior:"instant"}); const el=document.querySelector(".story-rail"); el.scrollTo({top:0,behavior:"auto"}); return true; })()');
   await wait(160);
-  await evaluate('(() => { const el=document.querySelector(".story-rail"), card=el.querySelector(".story-card"); el.scrollBy({top:card?.getBoundingClientRect().height + 16,behavior:"auto"}); return true; })()');
+  await evaluate('(() => { const el=document.querySelector(".story-rail"), second=el.querySelectorAll(".story-card")[1]; const target=second ? second.getBoundingClientRect().top - el.getBoundingClientRect().top + el.scrollTop - 4 : 0; el.scrollTo({top:Math.max(0,target),behavior:"auto"}); return true; })()');
   await wait(700);
   const swiped = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText||"",scrollTop:document.querySelector(".story-rail")?.scrollTop||0})');
   assert('mobile vertical swipe-compatible scroll advances the active card', swiped.progress === '02 / 09' && swiped.scrollTop > rail.scrollTop, JSON.stringify({before:rail,after:swiped}));

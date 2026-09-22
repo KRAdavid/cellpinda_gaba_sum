@@ -103,3 +103,48 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-JplmiSi14ZU
+
+- 상태: PENDING_REVIEW
+- 영상: [전문가들이 권하는 우울증 관리법 5가지  #우울증해소 #뇌건강 #gaba](https://www.youtube.com/watch?v=JplmiSi14ZU)
+- 채널: 마음 튼튼, 뇌연구소 바이탈라이즈 (@vitalize866)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-LZlMCiGHa-Y
+
+- 상태: PENDING_REVIEW
+- 영상: [바이탈라이즈소개영상 #adhd #gaba #adhd치료 #뇌건강](https://www.youtube.com/watch?v=LZlMCiGHa-Y)
+- 채널: 마음 튼튼, 뇌연구소 바이탈라이즈 (@vitalize866)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-gTYVGt3Hvas
+
+- 상태: PENDING_REVIEW
+- 영상: [ADHD와 가바(GABA)놀라운 연관성!](https://www.youtube.com/watch?v=gTYVGt3Hvas)
+- 채널: 마음 튼튼, 뇌연구소 바이탈라이즈 (@vitalize866)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS

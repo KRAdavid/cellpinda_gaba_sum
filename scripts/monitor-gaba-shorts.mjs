@@ -4,6 +4,7 @@ import path from 'node:path';
 const root = process.cwd();
 const inboxPath = path.join(root, 'docs', 'GABA_VIDEO_INBOX.md');
 const reportPath = path.join(root, 'docs', 'GABA_VIDEO_DAILY_REPORT.md');
+const reportArchiveDir = path.join(root, 'docs', 'gaba-video-daily');
 const writeMode = process.argv.includes('--write');
 const keywords = [/가바/i, /GABA/i];
 
@@ -79,10 +80,20 @@ const parseFeed = xml => [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/gi)].map(m
   return {id, title, description, published, updated};
 }).filter(item => item.id && keywords.some(keyword => keyword.test(item.title)));
 
+const parseShortsPage = html => html.split(/"shortsLockupViewModel"\s*:/i).slice(1).map(chunk => {
+  const window = chunk.slice(0, 14000);
+  const id = window.match(/"videoId":"([\w-]{11})"/)?.[1] ?? '';
+  const rawTitle = window.match(/"accessibilityText":"((?:\\.|[^"])*)"/)?.[1] ?? '';
+  let title = rawTitle;
+  try { title = JSON.parse('"' + rawTitle + '"'); } catch { /* keep the escaped title */ }
+  title = title.replace(/,\s*조회수[^-]*-\s*Shorts 동영상 재생.*$/i, '').trim();
+  return {id, title, description: '', published: '', updated: ''};
+}).filter(item => item.id && keywords.some(keyword => keyword.test(item.title)));
+
 const markdown = value => value.replaceAll('|', '\\|').replaceAll('\r', ' ').replaceAll('\n', ' ');
 const checkedDate = new Date().toISOString().slice(0, 10);
 
-const dailyReport = ({successfulSources, candidates, errors}) => {
+const dailyReport = ({successfulSources, candidates, errors, fallbackSources}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
@@ -97,6 +108,7 @@ const dailyReport = ({successfulSources, candidates, errors}) => {
     '## 오늘의 실행 요약',
     '',
     `- 채널 확인: ${successfulSources}/${sources.length}`,
+    `- Shorts 페이지 보완 수집: ${fallbackSources.length}개 채널`,
     `- 신규 후보: ${candidates.length}건`,
     `- 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW`,
     '',
@@ -112,6 +124,12 @@ const dailyReport = ({successfulSources, candidates, errors}) => {
     '| --- | --- | --- |',
     warningRows,
     '',
+    '## 수집 경로 보완',
+    '',
+    fallbackSources.length
+      ? fallbackSources.map(item => `- ${markdown(item)}`).join('\n')
+      : '- RSS 보완 수집 없음',
+    '',
     '## 다음 15분 감리 순서',
     '',
     '1. VIDEO: 실제 Shorts 형식·원문·자막·발언 타임코드 확인',
@@ -125,10 +143,28 @@ const dailyReport = ({successfulSources, candidates, errors}) => {
 
 const main = async () => {
   const existing = fs.existsSync(inboxPath) ? fs.readFileSync(inboxPath, 'utf8') : '';
-  const existingIds = new Set([...existing.matchAll(/(?:shorts\/|video\/)([\w-]{11})/g)].map(match => match[1]));
+  const knownFiles = [
+    inboxPath,
+    path.join(root, 'src', 'gabaVideos.ts'),
+    path.join(root, 'docs', 'GABA_VIDEO_DB.md'),
+    path.join(root, 'docs', 'GABA_VIDEO_REGISTER.md'),
+  ];
+  const knownText = knownFiles
+    .filter(file => fs.existsSync(file))
+    .map(file => fs.readFileSync(file, 'utf8'))
+    .join('\n');
+  const existingIds = new Set([...knownText.matchAll(/(?:shorts\/|video\/|watch\?v=)([\w-]{11})/g)].map(match => match[1]));
   const candidates = [];
   const errors = [];
+  const fallbackSources = [];
   let successfulSources = 0;
+
+  const addCandidates = (items, source, channelId) => {
+    for (const item of items) {
+      if (existingIds.has(item.id) || candidates.some(candidate => candidate.id === item.id)) continue;
+      candidates.push({...item, source, channelId});
+    }
+  };
 
   for (const source of sources) {
     try {
@@ -143,11 +179,15 @@ const main = async () => {
         channelId = findChannelId(channelPage);
       }
       if (!channelId) throw new Error('channel ID not found');
-      const feed = await fetchText('https://www.youtube.com/feeds/videos.xml?channel_id=' + channelId);
-      successfulSources += 1;
-      for (const item of parseFeed(feed)) {
-        if (existingIds.has(item.id) || candidates.some(candidate => candidate.id === item.id)) continue;
-        candidates.push({...item, source, channelId});
+      try {
+        const feed = await fetchText('https://www.youtube.com/feeds/videos.xml?channel_id=' + channelId);
+        successfulSources += 1;
+        addCandidates(parseFeed(feed), source, channelId);
+      } catch (feedError) {
+        const shortsPage = await fetchText('https://www.youtube.com/@' + encodeURIComponent(source.handle.slice(1)) + '/shorts');
+        successfulSources += 1;
+        fallbackSources.push(`${source.name}: RSS ${feedError.message} → Shorts 페이지로 보완 수집`);
+        addCandidates(parseShortsPage(shortsPage), source, channelId);
       }
     } catch (error) {
       errors.push(source.name + ': ' + error.message);
@@ -183,8 +223,12 @@ const main = async () => {
     fs.writeFileSync(inboxPath, existing + separator + '\n' + blocks, 'utf8');
     console.log('- wrote: ' + candidates.length + ' candidate(s) to docs/GABA_VIDEO_INBOX.md');
   }
-  fs.writeFileSync(reportPath, dailyReport({successfulSources, candidates, errors}), 'utf8');
+  fs.mkdirSync(reportArchiveDir, {recursive: true});
+  const report = dailyReport({successfulSources, candidates, errors, fallbackSources});
+  fs.writeFileSync(reportPath, report, 'utf8');
+  fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
   console.log('- wrote: daily report to docs/GABA_VIDEO_DAILY_REPORT.md');
+  console.log('- archived: docs/gaba-video-daily/GABA_VIDEO_DAILY_REPORT_' + checkedDate + '.md');
 };
 
 main().catch(error => {
