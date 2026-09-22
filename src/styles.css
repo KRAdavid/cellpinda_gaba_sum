@@ -164,6 +164,8 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
 .video-showcase__source-mark span{color:#47715a;font-size:10px;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
 .video-showcase__source-mark strong{max-width:330px;font-size:clamp(24px,3vw,38px);letter-spacing:-.06em;line-height:1.15}
 .video-showcase__source-mark small{color:#52705a;font-size:11px}
+.video-showcase__source-mark--fallback{position:absolute;inset:0;display:none}
+.video-showcase__media.is-image-missing .video-showcase__source-mark--fallback{display:grid}
 .video-showcase__play{position:absolute;right:19px;bottom:18px;display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.78);border-radius:50%;background:rgba(12,57,37,.65);backdrop-filter:blur(6px);color:#fff;font-size:20px}
 .video-showcase__copy{display:flex;flex-direction:column;justify-content:center;padding:30px 34px}
 .video-showcase__meta{display:flex;justify-content:space-between;gap:12px;color:#5d8167;font-size:10px;font-weight:850;letter-spacing:.06em;text-transform:uppercase}
