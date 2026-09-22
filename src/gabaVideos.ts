@@ -24,6 +24,7 @@ export type GabaVideoRecord = {
   previewAlt?: string;
   previewLabel?: string;
   channel: string;
+  sourceChannelUrl?: string;
   speaker: string;
   summary: string;
   operatorSentence: string;
@@ -110,6 +111,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     title: '여에스더 "갱년기 잠 못 자면 노화 빨라져요" 수면제보다 안전한 영양제',
     url: 'https://www.youtube.com/shorts/Cnk0PGn9YBM',
     channel: '셀럽의 건강비결',
+    sourceChannelUrl: 'https://www.youtube.com/@Celeb_tip',
     speaker: '제목에 여에스더를 내세운 재게시 채널',
     summary: '갱년기 수면을 도입으로 식품·GABA·수면 관련 원료를 나열하는 방식으로 소개합니다. 제목·공개 설명 기반 예비 요약입니다.',
     operatorSentence: '원출처와 발언을 확인하기 전에는 고객 설명 자료로 사용하지 않는 후보입니다.',
@@ -132,6 +134,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     title: '잠자기 어렵다면 수면제 말고 이것으로 해결하세요. #가바',
     url: 'https://www.youtube.com/shorts/RLAU1VWGsaI',
     channel: '교육하는 의사! 이동환TV',
+    sourceChannelUrl: 'https://www.youtube.com/@doctorLeeTV',
     speaker: '이동환',
     summary: '수면제 말고 GABA를 살펴보자는 대안 프레임으로 소개합니다. 정확한 발언은 원문 확인 전입니다.',
     operatorSentence: '수면제 대체로 오해될 수 있어 원문과 자막 확인 전에는 소개하지 않는 후보입니다.',
@@ -154,6 +157,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     title: "신경을 안정시켜 수면에 도움되는 '가바' (GABA, 졸피뎀, 자낙스, 가바수용체)",
     url: 'https://www.youtube.com/shorts/vnocd9ZVJj0',
     channel: '영양과학자 양과자',
+    sourceChannelUrl: 'https://www.youtube.com/@snack-yang',
     speaker: '채널명 기반 화자',
     summary: 'GABA를 신경 안정과 수면의 연결고리로 소개하고 영양제 리뷰 콘텐츠로 연결합니다. 원문 확인 전입니다.',
     operatorSentence: '신경 안정·수면과 보충제 연결이 있어 화자와 전체 발언 확인이 필요한 후보입니다.',
@@ -176,6 +180,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     title: '불면증에 가바 영양제가 좋다는 이유',
     url: 'https://www.youtube.com/shorts/BiZXS_ojLUA',
     channel: '브레인튜브 Brain Doctor',
+    sourceChannelUrl: 'https://www.youtube.com/@%EB%B8%8C%EB%A0%88%EC%9D%B8%ED%8A%9C%EB%B8%8CBrainDoctor',
     speaker: '실제 화자 확인 필요',
     summary: 'GABA를 뇌의 진정·안정 작용과 관련된 신경전달물질로 한 문장 정의한 뒤 불면증·영양제로 확장합니다.',
     operatorSentence: '일반 GABA 정의 구간만 확인한 뒤 제한적으로 검토할 수 있는 후보입니다.',
@@ -198,6 +203,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     title: '자율신경건강을 지켜줄 음식 - GABA 성분 #shorts',
     url: 'https://www.youtube.com/shorts/7Zsxm9Wh2Yg',
     channel: '30년 자율신경, 정이안한의원TV',
+    sourceChannelUrl: 'https://www.youtube.com/@JeongianTV',
     speaker: '정이안',
     summary: '자율신경 건강을 음식과 GABA 성분의 관계로 설명하는 프레임입니다. 제목·채널 설명 기반 예비 요약입니다.',
     operatorSentence: '음식 속 GABA와 섭취 후 효과를 분리 확인하기 전에는 공개 설명에 사용하지 않는 후보입니다.',
@@ -220,6 +226,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     title: '영양제로 먹는 가바(GABA), 정말 효과 있을까? 부작용 없는 천연 수면 보충제의 비밀',
     url: 'https://www.youtube.com/shorts/rOFkZg09AoY',
     channel: 'SLEEP Dr. 신원철 꿀잠튜브',
+    sourceChannelUrl: 'https://www.youtube.com/@sleepdoctor1',
     speaker: '신원철',
     summary: 'GABA가 뇌로 직접 가지 않는데 효과가 있는지를 질문으로 제시하고 수면 보충제의 작용과 안전성을 설명하겠다고 안내합니다.',
     operatorSentence: '경구 GABA와 수면·안전성 주장을 원문과 연구 조건으로 다시 확인해야 하는 후보입니다.',
@@ -242,6 +249,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     title: '불안 완화를 위한 GABA 활용법',
     url: 'https://www.youtube.com/shorts/4MTqi-bapLY',
     channel: '마음 튼튼, 뇌연구소 바이탈라이즈',
+    sourceChannelUrl: 'https://www.youtube.com/@vitalize866',
     speaker: '공개 설명에 화자 자격 미기재',
     summary: '몸의 긴장과 뇌 신호를 연결하고 GABA·스트레스·불안 완화를 해시태그로 제시합니다.',
     operatorSentence: '불안 완화로 읽힐 수 있어 화자·자막·근거를 확인하기 전에는 사용하지 않는 후보입니다.',
@@ -264,6 +272,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     title: '가바는 어떤 역할을 하는 걸까? #gaba',
     url: 'https://www.youtube.com/shorts/4xGSHxkMYew',
     channel: '비엠한방내과 [bm_k_clinic]',
+    sourceChannelUrl: 'https://www.youtube.com/@bm_k_clinic',
     speaker: '이제원',
     summary: 'GABA의 역할을 직접 묻고 한방내과 진료 철학과 연결해 소개합니다. 제목·공개 설명 기반 예비 요약입니다.',
     operatorSentence: '일반 역할 설명과 진료·약물·보충제 조언을 분리 확인해야 하는 후보입니다.',
