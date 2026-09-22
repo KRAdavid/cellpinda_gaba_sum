@@ -4,10 +4,10 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredChannels": 8,
   "discoveryQueries": 8,
   "totalDiscoveryQueries": 8,
-  "newCandidates": 6,
+  "newCandidates": 11,
   "newCandidatesThisRun": 0,
-  "pendingReview": 97,
-  "scienceMedicalPriority": 60,
+  "pendingReview": 102,
+  "scienceMedicalPriority": 65,
   "videoPriority": 37,
   "pendingQueue": [
     {
@@ -89,6 +89,18 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
+      "id": "PENDING-20260923-Z2_d_8p36rM",
+      "title": "GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,",
+      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "KEYWORD_DISCOVERY",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
       "id": "PENDING-20260922-KBC6QV2NDDU",
       "title": "Boost GABA Production: Your Brain's Natural Brake #shorts",
       "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
@@ -116,18 +128,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "id": "PENDING-20260922-uLMpiXWsv94",
       "title": "Unlock GABA Support: The Magnesium Glycinate Secret #shorts",
       "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "일반 설명 후보",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
-      "id": "PENDING-20260922-VrZ8WPrQ_GY",
-      "title": "월경 전 감정 무너지는 이유 \\| 에스트로겐 세로토닌 GABA 기전 \\| 이태원 월경전증후군 한의원",
-      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "일반 설명 후보",
         "권위 후보 검색 발견"
@@ -167,6 +167,21 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
     },
     {
+      "id": "PENDING-20260923-OeqoiWhkUfw",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "channel": "이동환TV (수동 권위 키워드 검색)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "약물 대체·비교",
+        "효과·안전성 단정 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
       "id": "PENDING-20260923-vKVJvHULUZw",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
       "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
@@ -193,21 +208,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL → RIGHTS",
       "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
-      "id": "PENDING-20260922-FiW-43xD5Tw",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL + RIGHTS",
-      "signals": [
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
     }
   ],
-  "productBrandQuarantine": 5,
+  "productBrandQuarantine": 6,
   "history": [
     {
       "date": "2026-09-22",
@@ -222,10 +225,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 6,
+      "newCandidates": 11,
       "newCandidatesThisRun": 0,
-      "pendingReview": 97,
-      "scienceMedicalPriority": 60,
+      "pendingReview": 102,
+      "scienceMedicalPriority": 65,
       "videoPriority": 37,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 10,

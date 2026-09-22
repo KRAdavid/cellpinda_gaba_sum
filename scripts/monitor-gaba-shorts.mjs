@@ -347,7 +347,7 @@ const triageRules = [
   {label: '약물 대체·비교', priority: 'SCIENCE/MEDICAL 우선', pattern: /수면제|졸피뎀|자낙스|약.*대체|대체.*약|sleep(?:ing)?\s*pill|zolpidem|xanax|instead of (?:a )?(?:sleeping )?pill|replace(?:ment)?/i},
   {label: '효과·안전성 단정 신호', priority: 'SCIENCE/MEDICAL 우선', pattern: /부작용\s*없|안전|황금 복용량|특효|효과|해결|꿀잠|치유|도움되는|side[-\s]?effect[-\s]?free|safe(?:ly)?|dosage|effective|effect|reduce|relief|cure|help(?:s|ful)?|calm(?:ing)?|sleep better/i},
   {label: '섭취·상업성 신호', priority: 'SCIENCE/MEDICAL + RIGHTS', pattern: /영양제|건기식|수면영양제|판매|품절|상륙|복용량|함량|발효|식품|섭취|supplement|dietary supplement|sleep supplement|sold|buy|dosage|amount|fermented|food|intake|consume/i},
-  {label: '제품·브랜드 신호', priority: 'SCIENCE/MEDICAL + RIGHTS', pattern: /셀핀다|cellpinda|스마트스토어|smartstore|제품\s*(?:소개|추천|구매)|product\s*(?:review|recommend|buy)/i},
+  {label: '제품·브랜드 신호', priority: 'SCIENCE/MEDICAL + RIGHTS', pattern: /셀핀다|cellpinda|스마트스토어|smartstore|국산\s*제품|제품\s*(?:소개|추천|구매|정보)|product\s*(?:review|recommend|buy)/i},
 ];
 
 const authorityLeadRule = {label: '전문가 자격 확인 신호', pattern: /의사|박사|교수|과학자|전문의|doctor|scientist|professor|ph\.?d|\bMD\b|neurolog(?:y|ist)|neuroscien/i};
@@ -382,7 +382,8 @@ const parseInboxEntries = text => text.split(/^### /m).slice(1).map(section => {
   const videoMatch = lines.find(line => line.startsWith('- 영상:'))?.match(/^- 영상: \[(.*?)\]\((https?:\/\/[^)]+)\)/);
   const channel = lines.find(line => line.startsWith('- 채널:'))?.replace('- 채널:', '').trim() ?? '';
   const collectedDate = lines.find(line => line.startsWith('- 수집일:'))?.replace('- 수집일:', '').trim() ?? '';
-  const description = lines.find(line => line.startsWith('- 공개 설명(자동 수집):'))?.replace('- 공개 설명(자동 수집):', '').trim() ?? '';
+  const descriptionLine = lines.find(line => line.startsWith('- 공개 설명')) ?? '';
+  const description = descriptionLine.replace(/^- 공개 설명(?:\([^)]*\))?:/, '').trim();
   if (!id || !videoMatch) return null;
   const videoId = videoMatch[2].match(/(?:shorts\/|watch\?v=)([\w-]{11})/)?.[1] ?? '';
   return {id, status, title: videoMatch[1], url: videoMatch[2], channel, collectedDate, description, videoId};
@@ -738,7 +739,6 @@ const appendDailyReviewLog = ({checkedDate: date, successfulSources, successfulS
   if (!fs.existsSync(reviewLogPath)) return;
   const existing = fs.readFileSync(reviewLogPath, 'utf8');
   const marker = `## ${date} 자동 모니터 실행 기록`;
-  if (existing.includes(marker)) return;
   const productBrandCandidates = candidates.filter(item => item.publicationGate === 'PRODUCT_BRAND_QUARANTINE').length;
   const block = [
     marker,
@@ -752,7 +752,15 @@ const appendDailyReviewLog = ({checkedDate: date, successfulSources, successfulS
     `자막 본문·화자·과학 주장·권리 확인 전에는 요약·권위·공개 상태를 승격하지 않는다. 다음 행동은 일일 리뷰 세션에서 원문 타임코드와 사람 담당자를 지정하는 것이다.`,
     '',
   ].join('\n');
-  fs.writeFileSync(reviewLogPath, `${existing.trimEnd()}\n\n${block}`, 'utf8');
+  const markerIndex = existing.indexOf(marker);
+  if (markerIndex < 0) {
+    fs.writeFileSync(reviewLogPath, `${existing.trimEnd()}\n\n${block}`, 'utf8');
+    return;
+  }
+  const nextSectionIndex = existing.indexOf('\n## ', markerIndex + marker.length);
+  const prefix = existing.slice(0, markerIndex).trimEnd();
+  const suffix = nextSectionIndex >= 0 ? existing.slice(nextSectionIndex).trimStart() : '';
+  fs.writeFileSync(reviewLogPath, [prefix, block, suffix].filter(Boolean).join('\n\n') + '\n', 'utf8');
 };
 
 const main = async () => {

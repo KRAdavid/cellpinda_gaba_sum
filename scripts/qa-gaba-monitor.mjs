@@ -34,14 +34,16 @@ assert('English GABA keyword uses a word boundary', monitor.includes('\\bGABA\\b
 assert('known DB and register files are used for de-duplication', monitor.includes("path.join(root, 'src', 'gabaVideos.ts')") && monitor.includes('GABA_VIDEO_DB.md') && monitor.includes('watch\\?v='));
 assert('daily report is archived by date', monitor.includes('reportArchiveDir') && monitor.includes('GABA_VIDEO_DAILY_REPORT_${checkedDate}.md'));
 assert('daily monitor appends an idempotent review-log record', monitor.includes('appendDailyReviewLog') && monitor.includes('자동 모니터 실행 기록') && monitor.includes('reviewLogPath') && reviewLog.includes('GABA 영상 일일 검토·토론 로그'));
+assert('same-day monitor refreshes only its dated review-log block', monitor.includes('nextSectionIndex') && monitor.includes('markerIndex') && monitor.includes('suffix'));
 assert('daily monitor date uses Korea time', monitor.includes("timeZone: 'Asia/Seoul'") && monitor.includes('formatToParts') && monitor.includes("koreaDatePart('year')"));
 assert('same-day reruns preserve the accumulated candidate list', monitor.includes('collectedDate') && monitor.includes('오늘 신규 후보(누적)') && monitor.includes('이번 실행 신규 후보') && monitor.includes('newCandidatesThisRun'));
 assert('inbox refreshes its last-run date on write', monitor.includes('const refreshedInbox = existing.replace') && monitor.includes('마지막 확인: ${checkedDate} 자동 모니터 실행') && /- 마지막 확인: \d{4}-\d{2}-\d{2} 자동 모니터 실행/.test(inbox));
 assert('workflow runs daily and includes report archive changes', workflow.includes("cron: '0 0 * * *'") && workflow.includes('docs/gaba-video-daily'));
 assert('daily report keeps candidates in review status', report.includes('자동 공개: 0건') && report.includes('PENDING_REVIEW'));
+assert('manual discovery descriptions enter the same triage path', monitor.includes("line.startsWith('- 공개 설명')") && inbox.includes('공개 설명(검색 결과)'));
 assert('triage classifier is present and explicitly non-approval', monitor.includes('screenCandidate') && monitor.includes('triagePath') && monitor.includes('제목 기반 주의 신호'));
 assert('triage classifier covers English effect and supplement signals', monitor.includes('reduce|relief') && monitor.includes('supplement') && monitor.includes('SCIENCE/MEDICAL + RIGHTS'));
-assert('triage classifier isolates product and brand signals', monitor.includes('제품·브랜드 신호') && monitor.includes('셀핀다|cellpinda|스마트스토어|smartstore'));
+assert('triage classifier isolates product and brand signals', monitor.includes('제품·브랜드 신호') && monitor.includes('셀핀다|cellpinda|스마트스토어|smartstore') && monitor.includes('국산\\s*제품') && monitor.includes('제품\\s*(?:소개|추천|구매|정보)'));
 assert('product and brand candidates are quarantined from the general education queue', monitor.includes('PRODUCT_BRAND_QUARANTINE') && monitor.includes('제품·브랜드 공개 큐 제외') && snapshot.includes('productBrandQueue') && app.includes('제품·브랜드 신호 — 일반 공개 큐 제외'));
 assert('workflow stages triage board changes', workflow.includes('docs/GABA_VIDEO_TRIAGE.md'));
 assert('monitor generates a presenter snapshot', monitor.includes('snapshotPath') && monitor.includes('monitorSnapshotTypeScript') && monitor.includes("path.join(root, 'src', 'gabaMonitorSnapshot.ts')"));

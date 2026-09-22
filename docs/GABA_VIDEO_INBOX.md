@@ -1633,6 +1633,44 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
 
+### PENDING-20260923-OeqoiWhkUfw
+
+- 상태: PENDING_REVIEW
+- 영상: [이것 먹고 눕자 마자 잠들었어요. 수면제 없이 불면증 없애고 꿀잠자는 법. 가바(GABA) 국산 제품](https://www.youtube.com/watch?v=OeqoiWhkUfw)
+- 채널: 이동환TV (수동 권위 키워드 검색)
+- 공개일: 확인 필요
+- 수집일: 2026-09-23
+- 키워드 일치: 수동 권위 키워드 검색 · GABA · 의사
+- 공개 설명(검색 결과): 제목과 설명에 수면제·불면증·GABA 국산 제품 표현이 함께 표시됨
+- 제목 기반 주의 신호: 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 검색 결과 기반 예비 기록이며 원문·자막·타임코드 확인 전
+- 인물 소개: 검색 결과에 전문의 소개가 보이지만 실제 화자·자격 원출처 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260923-R14wnRPxOJ8
+
+- 상태: PENDING_REVIEW
+- 영상: [뇌영양제 가바(GABA) 꼭 먹어야 한다면 이렇게 해보세요](https://www.youtube.com/watch?v=R14wnRPxOJ8)
+- 채널: 채널명·실제 화자 확인 필요 (수동 권위 키워드 검색)
+- 공개일: 확인 필요
+- 수집일: 2026-09-23
+- 키워드 일치: 수동 권위 키워드 검색 · GABA · 뇌영양제
+- 공개 설명(검색 결과): 공개 챕터에 신경전달물질과 억제성 신경전달물질 GABA가 표시되며 제목에는 불안·불면·우울증 표현이 포함됨
+- 제목 기반 주의 신호: 증상·치료 표현 신호 · 섭취·상업성 신호
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 검색 결과·공개 챕터 기반 예비 기록이며 원문·자막·타임코드 확인 전
+- 인물 소개: 실제 화자·자격·소속 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
 ### PENDING-20260923-AKcZw2nqU0w
 
 - 상태: PENDING_REVIEW
@@ -1737,6 +1775,63 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 공개 설명(자동 수집): 없음
 - 제목 기반 주의 신호: 섭취·상업성 신호
 - 자동 우선순위: SCIENCE/MEDICAL + RIGHTS
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260923--mdFIIg6pPU
+
+- 상태: PENDING_REVIEW
+- 영상: [GABA 복용량 #shorts](https://www.youtube.com/watch?v=-mdFIIg6pPU)
+- 채널: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-23
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 섭취·상업성 신호
+- 자동 우선순위: SCIENCE/MEDICAL + RIGHTS
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260923-FRV6QF6E0Qk
+
+- 상태: PENDING_REVIEW
+- 영상: [불안에 대한 GABA 보충제 복용량 #반바지](https://www.youtube.com/watch?v=FRV6QF6E0Qk)
+- 채널: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-23
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 섭취·상업성 신호
+- 자동 우선순위: SCIENCE/MEDICAL + RIGHTS
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260923-Z2_d_8p36rM
+
+- 상태: PENDING_REVIEW
+- 영상: [GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,](https://www.youtube.com/watch?v=Z2_d_8p36rM)
+- 채널: YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-23
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 효과·안전성 단정 신호 · 권위 후보 검색 발견
+- 자동 우선순위: SCIENCE/MEDICAL 우선
 - 공개 큐 분류: 일반 교육 공개 전 사람 감리
 - 형식: Shorts 여부 확인 필요
 - 무엇을 어떻게 소개했나: 원문·자막 확인 전
