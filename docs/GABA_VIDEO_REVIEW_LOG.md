@@ -32,6 +32,7 @@
 | 2026-09-22 | PENDING-20260922-FTuAYRiR5R4 | 설명란 키워드만 일치 | 확인 전 | 자동 필터 제외 | 미검토 | AUTO_FILTERED | 필요 시 수동 재검토 | VIDEO |
 | 2026-09-22 | PENDING-20260922-chP79gjqQX4 | 설명란 키워드만 일치 | 확인 전 | 자동 필터 제외 | 미검토 | AUTO_FILTERED | 필요 시 수동 재검토 | VIDEO |
 | 2026-09-22 | PENDING-20260922-JplmiSi14ZU · LZlMCiGHa-Y · gTYVGt3Hvas | 제목에 GABA가 포함된 Shorts 페이지 신규 후보 3건 | 채널은 확인했으나 화자·자격은 개별 확인 전 | 미검토 | Shorts 페이지 보완 수집, 원문·권리 확인 전 | PENDING_REVIEW | VIDEO → SCIENCE/MEDICAL → RIGHTS 순서로 감리 | VIDEO / 다음 일일 검토 |
+| 2026-09-22 | 검색 발견 후보 16건 | GABA 생리·수면·뇌·스트레스 맥락의 검색 결과 Shorts | 검색 결과만으로 화자·자격 미확인 | 미검토 | 검색 발견, 원문·권리 확인 전 | PENDING_REVIEW | 무관 키워드·상업·치료·안전성 표현을 먼저 걸러낸 뒤 VIDEO → SCIENCE/MEDICAL → RIGHTS 감리 | VIDEO / 다음 일일 검토 |
 
 AI-OPS 모니터 보완 기록: 2026-09-22 실행에서 8개 채널을 확인했고, RSS가 응답하지 않은 3개 채널은 Shorts 페이지로 보완 수집했다. 기존 `src/gabaVideos.ts`·`GABA_VIDEO_DB.md`·`GABA_VIDEO_REGISTER.md`·검토 대기함을 함께 중복 검사해 이미 등록된 `4MTqi-bapLY`가 새 후보로 재등록되지 않도록 차단했다. 이 기록은 팀의 과학·의학·권리 승인이나 공개 판정을 대신하지 않는다.
 

@@ -6,7 +6,8 @@ const inboxPath = path.join(root, 'docs', 'GABA_VIDEO_INBOX.md');
 const reportPath = path.join(root, 'docs', 'GABA_VIDEO_DAILY_REPORT.md');
 const reportArchiveDir = path.join(root, 'docs', 'gaba-video-daily');
 const writeMode = process.argv.includes('--write');
-const keywords = [/가바/i, /GABA/i];
+const keywords = [/가바/i, /\bGABA\b/i];
+const discoveryQueries = ['GABA 신경전달물질 Shorts', '가바 수면 영양제 Shorts', 'GABA 뇌 신경 Shorts', '가바 스트레스 Shorts'];
 
 const sources = [
   {name: '셀럽의 건강비결', handle: '@Celeb_tip', channelId: 'UC86AuKBawrgBuEZIgiOo7hA', seedVideoId: 'Cnk0PGn9YBM'},
@@ -93,7 +94,7 @@ const parseShortsPage = html => html.split(/"shortsLockupViewModel"\s*:/i).slice
 const markdown = value => value.replaceAll('|', '\\|').replaceAll('\r', ' ').replaceAll('\n', ' ');
 const checkedDate = new Date().toISOString().slice(0, 10);
 
-const dailyReport = ({successfulSources, candidates, errors, fallbackSources}) => {
+const dailyReport = ({successfulSources, successfulSearches, candidates, errors, fallbackSources}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
@@ -108,6 +109,7 @@ const dailyReport = ({successfulSources, candidates, errors, fallbackSources}) =
     '## 오늘의 실행 요약',
     '',
     `- 채널 확인: ${successfulSources}/${sources.length}`,
+    `- 유사 콘텐츠 검색어 확인: ${successfulSearches}/${discoveryQueries.length}`,
     `- Shorts 페이지 보완 수집: ${fallbackSources.length}개 채널`,
     `- 신규 후보: ${candidates.length}건`,
     `- 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW`,
@@ -158,6 +160,7 @@ const main = async () => {
   const errors = [];
   const fallbackSources = [];
   let successfulSources = 0;
+  let successfulSearches = 0;
 
   const addCandidates = (items, source, channelId) => {
     for (const item of items) {
@@ -194,6 +197,17 @@ const main = async () => {
     }
   }
 
+  for (const query of discoveryQueries) {
+    try {
+      const html = await fetchText('https://www.youtube.com/results?search_query=' + encodeURIComponent(query));
+      successfulSearches += 1;
+      const source = {name: 'YouTube 검색: ' + query, handle: 'keyword-discovery', channelId: ''};
+      addCandidates(parseShortsPage(html).slice(0, 12), source, '');
+    } catch (error) {
+      errors.push('검색어 ' + query + ': ' + error.message);
+    }
+  }
+
   console.log('GABA Shorts monitor (' + checkedDate + ')');
   console.log('- sources: ' + successfulSources + '/' + sources.length);
   console.log('- new candidates: ' + candidates.length);
@@ -224,7 +238,7 @@ const main = async () => {
     console.log('- wrote: ' + candidates.length + ' candidate(s) to docs/GABA_VIDEO_INBOX.md');
   }
   fs.mkdirSync(reportArchiveDir, {recursive: true});
-  const report = dailyReport({successfulSources, candidates, errors, fallbackSources});
+  const report = dailyReport({successfulSources, successfulSearches, candidates, errors, fallbackSources});
   fs.writeFileSync(reportPath, report, 'utf8');
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
   console.log('- wrote: daily report to docs/GABA_VIDEO_DAILY_REPORT.md');

@@ -13,12 +13,15 @@ const assert = (label, condition) => {
   console.log(`PASS ${label}`);
 };
 
-const sourceCount = [...monitor.matchAll(/\{name: '/g)].length;
+const sourceSection = monitor.match(/const sources = \[([\s\S]*?)\];/)?.[1] ?? '';
+const sourceCount = [...sourceSection.matchAll(/\{name: '/g)].length;
 const inboxIds = [...inbox.matchAll(/(?:shorts\/|watch\?v=)([\w-]{11})/g)].map(match => match[1]);
 
 assert('eight registered source channels are present', sourceCount === 8);
 assert('RSS feed collection is present', monitor.includes('feeds/videos.xml?channel_id='));
 assert('Shorts page fallback collection is present', monitor.includes('/shorts') && monitor.includes('parseShortsPage'));
+assert('similar-content keyword discovery is present', monitor.includes('discoveryQueries') && monitor.includes('search_query'));
+assert('English GABA keyword uses a word boundary', monitor.includes('\\bGABA\\b'));
 assert('known DB and register files are used for de-duplication', monitor.includes("path.join(root, 'src', 'gabaVideos.ts')") && monitor.includes('GABA_VIDEO_DB.md') && monitor.includes('watch\\?v='));
 assert('daily report is archived by date', monitor.includes('reportArchiveDir') && monitor.includes('GABA_VIDEO_DAILY_REPORT_${checkedDate}.md'));
 assert('workflow runs daily and includes report archive changes', workflow.includes("cron: '0 0 * * *'") && workflow.includes('docs/gaba-video-daily'));

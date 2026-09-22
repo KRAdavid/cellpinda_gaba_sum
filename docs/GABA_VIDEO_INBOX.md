@@ -148,3 +148,483 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-9NsomOoK1EY
+
+- 상태: PENDING_REVIEW
+- 영상: [가바(GABA) 영양제, 부작용 없이 꿀잠 자는 황금 복용량](https://www.youtube.com/watch?v=9NsomOoK1EY)
+- 채널: YouTube 검색: 가바 수면 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-eLhrE53l-EM
+
+- 상태: PENDING_REVIEW
+- 영상: [하루 4-5시간 자는 분들 꼭 보세요!!  #수면영양제 #수면 #수면영양제 #가바 #식물성멜라토닌](https://www.youtube.com/watch?v=eLhrE53l-EM)
+- 채널: YouTube 검색: 가바 수면 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-k7j_fPAFpVs
+
+- 상태: PENDING_REVIEW
+- 영상: [스트레스를 낮추는 가바(GABA) 식품 5가지 #류한의원](https://www.youtube.com/watch?v=k7j_fPAFpVs)
+- 채널: YouTube 검색: 가바 수면 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-nyCTu29SLNs
+
+- 상태: PENDING_REVIEW
+- 영상: [지친 뇌를 회복시키는 GABA](https://www.youtube.com/watch?v=nyCTu29SLNs)
+- 채널: YouTube 검색: 가바 수면 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-whfAiIaj6xY
+
+- 상태: PENDING_REVIEW
+- 영상: [뇌의 흥분을 가라앉히는 가바](https://www.youtube.com/watch?v=whfAiIaj6xY)
+- 채널: YouTube 검색: GABA 신경전달물질 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-C2r9CxZoZk4
+
+- 상태: PENDING_REVIEW
+- 영상: [가바(GABA) 물질 뇌기능활성화하여 치매예방에 특효 #가바 #gaba #꾸지뽕](https://www.youtube.com/watch?v=C2r9CxZoZk4)
+- 채널: YouTube 검색: GABA 신경전달물질 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-mmevbPZCPmc
+
+- 상태: PENDING_REVIEW
+- 영상: [뇌 신경 흥분을 억제하는 물질 "GABA" 의 균형이 무너지면?](https://www.youtube.com/watch?v=mmevbPZCPmc)
+- 채널: YouTube 검색: GABA 신경전달물질 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-GF3TB_mNi28
+
+- 상태: PENDING_REVIEW
+- 영상: [GABA가 많은식품 TOP 10과 함량](https://www.youtube.com/watch?v=GF3TB_mNi28)
+- 채널: YouTube 검색: GABA 신경전달물질 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-yBZnNfh49z4
+
+- 상태: PENDING_REVIEW
+- 영상: [왜 GABA는 섭취해도 효과가 없을까 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=yBZnNfh49z4)
+- 채널: YouTube 검색: GABA 신경전달물질 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-k03ABffKVEQ
+
+- 상태: PENDING_REVIEW
+- 영상: [“밤마다 머릿속이 복잡하다면… ‘이 물질’이 뇌를 잠재웁니다”#가바#수면영양제#뇌진정물질#불면증극복#뇌건강](https://www.youtube.com/watch?v=k03ABffKVEQ)
+- 채널: YouTube 검색: GABA 신경전달물질 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-vHEV9BWlK3k
+
+- 상태: PENDING_REVIEW
+- 영상: [불면증 해결 GABA가 중요한 이유](https://www.youtube.com/watch?v=vHEV9BWlK3k)
+- 채널: YouTube 검색: 가바 스트레스 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-aCIUqeDh9qA
+
+- 상태: PENDING_REVIEW
+- 영상: [스트레스 만땅이라면? 비타민B와 GABA를 함께! #수험생영양제 #수험생 #수험생비타민 #스트레스](https://www.youtube.com/watch?v=aCIUqeDh9qA)
+- 채널: YouTube 검색: 가바 스트레스 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-bQ0QQHpUzdI
+
+- 상태: PENDING_REVIEW
+- 영상: [불면증과 우울감을 치료해주는 "가바" 내가 찾던 바로 이건 가바!#폭력성#짜증#우울증#평화#신경전달물질#현미](https://www.youtube.com/watch?v=bQ0QQHpUzdI)
+- 채널: YouTube 검색: 가바 스트레스 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-nH7RK5N8fdA
+
+- 상태: PENDING_REVIEW
+- 영상: [긴장된 상태에서 영양제를 섭취하면? #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=nH7RK5N8fdA)
+- 채널: YouTube 검색: 가바 스트레스 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-CO5X5xkrTqw
+
+- 상태: PENDING_REVIEW
+- 영상: [쉬어도 항상 피곤한 이유 #만성피로 #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #명절 #선물 #갱년기 #뇌건강](https://www.youtube.com/watch?v=CO5X5xkrTqw)
+- 채널: YouTube 검색: 가바 스트레스 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-r8WfXk8I2ac
+
+- 상태: PENDING_REVIEW
+- 영상: [가바(GABA) 결핍 치유할 수 있는 약 shorts (원본 영상 참조)](https://www.youtube.com/watch?v=r8WfXk8I2ac)
+- 채널: YouTube 검색: 가바 스트레스 (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-2elwFVwzW_M
+
+- 상태: PENDING_REVIEW
+- 영상: [신경전달물질(GABA) 가바가 많은 음식정리!! Foods rich in the neurotransmitter (GABA)!!#건강정보 #지식 #건강#꿀팁 #정보 #health #](https://www.youtube.com/watch?v=2elwFVwzW_M)
+- 채널: YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-qBoG9UmxXoA
+
+- 상태: PENDING_REVIEW
+- 영상: [가바 (GABA) 결핍일 때 오는 증상 shorts (원본 영상 참조)](https://www.youtube.com/watch?v=qBoG9UmxXoA)
+- 채널: YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-Zj10FyJYXkg
+
+- 상태: PENDING_REVIEW
+- 영상: [일본인들이 꼭 챙겨먹는 뇌건강 영양제 GABA](https://www.youtube.com/watch?v=Zj10FyJYXkg)
+- 채널: YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-5j1WKvZI-Tc
+
+- 상태: PENDING_REVIEW
+- 영상: [가바(GABA) 섭취할 수 있는 음식들 shorts (원본 영상 참조)](https://www.youtube.com/watch?v=5j1WKvZI-Tc)
+- 채널: YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-oOGrUqRMH50
+
+- 상태: PENDING_REVIEW
+- 영상: [L-테아닌이 GABA보다 빠르게 작용하는 메커니즘](https://www.youtube.com/watch?v=oOGrUqRMH50)
+- 채널: YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-8C2Vh86rHXY
+
+- 상태: PENDING_REVIEW
+- 영상: [수면 영양제 성분 가바(GABA)에 대해 알아봅시다. #shorts #수면](https://www.youtube.com/watch?v=8C2Vh86rHXY)
+- 채널: YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-95zYZag0tg0
+
+- 상태: PENDING_REVIEW
+- 영상: [천연물로 GABA를 생성할 수 있다면?  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=95zYZag0tg0)
+- 채널: YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-dxiwxKTwNDc
+
+- 상태: PENDING_REVIEW
+- 영상: [#shorts 건기식 가바](https://www.youtube.com/watch?v=dxiwxKTwNDc)
+- 채널: YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-fYZ-ewaCzAo
+
+- 상태: PENDING_REVIEW
+- 영상: [나만 알고 싶은 해외 품절 대란템, 드디어 한국 상륙?!  #가바 #수면건강 #멘탈관리 #스트레스해소](https://www.youtube.com/watch?v=fYZ-ewaCzAo)
+- 채널: YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-nLCXzRT0yis
+
+- 상태: PENDING_REVIEW
+- 영상: [뇌가 스스로 진화한다? 노화를 거스르는 GABA의 비밀](https://www.youtube.com/watch?v=nLCXzRT0yis)
+- 채널: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-mMAAXffih4I
+
+- 상태: PENDING_REVIEW
+- 영상: [내몸의 가바(GABA) 생성 증가~! #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=mMAAXffih4I)
+- 채널: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-k-IFzGrps_U
+
+- 상태: PENDING_REVIEW
+- 영상: [현대인에게 꼭 필요한 뇌건강 영양제 GABA](https://www.youtube.com/watch?v=k-IFzGrps_U)
+- 채널: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-QyfuUa3-hCU
+
+- 상태: PENDING_REVIEW
+- 영상: [알츠하이머병 도움주는 가바효능 #shorts #가바 #가바효능](https://www.youtube.com/watch?v=QyfuUa3-hCU)
+- 채널: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-QSYjYh5WbXg
+
+- 상태: PENDING_REVIEW
+- 영상: [PTSD의 공포 기억, 시간으로 사라지지 않는 이유는?  GABA의 비밀! #PTSD #공포기억 #GABA #항우울제 #신약개발 #불안장애 #정신질환치료 #외상후스트레스장애](https://www.youtube.com/watch?v=QSYjYh5WbXg)
+- 채널: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-ZKbV53P9goM
+
+- 상태: PENDING_REVIEW
+- 영상: [GABA #불안완화 #수면영양소 #멘탈케어 #신경안정 #1분건강](https://www.youtube.com/watch?v=ZKbV53P9goM)
+- 채널: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-FiW-43xD5Tw
+
+- 상태: PENDING_REVIEW
+- 영상: [“잠은 자는데 피곤한 이유”   #가바#GABA#가바효능#스트레스관리#수면관리#멘탈관리#예민함완화#일상관리#셀핀다 #신현준 #정준호](https://www.youtube.com/watch?v=FiW-43xD5Tw)
+- 채널: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
