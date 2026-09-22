@@ -595,6 +595,27 @@ export default function App() {
   const selectedVideoReviewDraft = selectedVideo ? videoReviewDrafts[selectedVideo.id] ?? makeEmptyVideoReviewDraft() : null;
   const selectedReviewCheckCount = selectedVideoReviewDraft ? VIDEO_REVIEW_CHECKS.filter(check => selectedVideoReviewDraft[check.key]).length : 0;
   const incompleteAuditVideos = useMemo(() => panelVideos.filter(video => VIDEO_REVIEW_CHECKS.filter(check => videoReviewDrafts[video.id]?.[check.key]).length < VIDEO_REVIEW_CHECKS.length), [panelVideos, videoReviewDrafts]);
+  const reviewPriorityVideos = useMemo(() => {
+    const statusRank: Record<GabaVideoRecord['status'], number> = {
+      LIMITED_USE: 0,
+      HOLD: 1,
+      PENDING_REVIEW: 2,
+      PUBLISH_GENERAL: 3,
+      AUTO_FILTERED: 8,
+      EXCLUDE: 9,
+    };
+    const reviewProgress = (video: GabaVideoRecord) => VIDEO_REVIEW_CHECKS.filter(check => videoReviewDrafts[video.id]?.[check.key]).length;
+    return [...SHARED_GABA_VIDEOS]
+      .filter(video => video.status !== 'EXCLUDE')
+      .sort((left, right) => {
+        const leftProgress = reviewProgress(left);
+        const rightProgress = reviewProgress(right);
+        return Number(leftProgress === VIDEO_REVIEW_CHECKS.length) - Number(rightProgress === VIDEO_REVIEW_CHECKS.length)
+          || statusRank[left.status] - statusRank[right.status]
+          || left.id.localeCompare(right.id);
+      })
+      .slice(0, 3);
+  }, [videoReviewDrafts]);
   const monitorCandidates = useMemo<MonitorCandidate[]>(() => [...GABA_MONITOR_SNAPSHOT.pendingQueue, ...GABA_MONITOR_SNAPSHOT.authorityQueue, ...GABA_MONITOR_SNAPSHOT.productBrandQueue], []);
   const monitorReviewCandidate = monitorCandidates.find(candidate => candidate.id === monitorReviewCandidateId) ?? null;
   const monitorReviewDraft = monitorReviewCandidate ? monitorReviewDrafts[monitorReviewCandidate.id] ?? makeEmptyVideoReviewDraft() : null;
@@ -1551,6 +1572,16 @@ export default function App() {
     });
   };
 
+  const selectReviewBatchVideo = (videoId: string) => {
+    setPanelVideoId(videoId);
+    setVideoCopyMessage('');
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        panelRef.current?.querySelector<HTMLElement>('.video-db-detail h3')?.focus();
+      });
+    });
+  };
+
   const openInfoPanel = (index: number, panel: PanelKey, returnElement?: HTMLElement | null) => {
     panelReturnRef.current = returnElement ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setPanelSourceIndex(index);
@@ -1933,6 +1964,20 @@ export default function App() {
               <p>{presentationMode ? '발표자용 영상 DB 감리 화면입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 확인하고, 영상별 권위 수준과 공개 여부를 따로 결정합니다.' : '오늘 공유하신 국내 YouTube Shorts를 원문 확인용으로 소개합니다. 영상의 권위와 주장은 감리 상태를 따로 확인해 주세요.'}</p>
               <p className="info-panel__status">{presentationMode ? `감리 대장 ${GABA_VIDEO_DB.length}건 · 현재 국내 큐 ${filteredPanelVideos.length}건 · DB 승인 이력 ${PUBLIC_GABA_VIDEOS.length}건 · 국내 공개 승인 ${DOMESTIC_PUBLIC_GABA_VIDEOS.length}건 · 등록 영상 초안 ${Object.keys(videoReviewDrafts).length}건 · 신규 후보 초안 ${Object.keys(monitorReviewDrafts).length}건` : `오늘 공유 영상 ${SHARED_GABA_VIDEOS.length}건 · 원문 확인 필요`}</p>
               {presentationMode ? <div className="video-review-summary" aria-label="감리 목록 복사"><span>감리 초안 {Object.keys(videoReviewDrafts).length}건 · 미완료 {incompleteAuditVideos.length}건</span><button type="button" disabled={!Object.keys(videoReviewDrafts).length} onClick={copyAllVideoReviewDrafts}>작성 초안 전체 복사</button><button type="button" disabled={!incompleteAuditVideos.length} onClick={copyIncompleteVideoAuditQueue}>미완료 목록 복사</button><button type="button" data-export-video-db-csv onClick={exportVideoDbCsv}>영상 DB CSV 내려받기</button><button type="button" data-export-review-packet onClick={exportReviewHandoff}>감리 패킷 JSON 저장</button><button type="button" data-import-review-packet onClick={() => reviewHandoffInputRef.current?.click()}>감리 패킷 불러오기</button><input ref={reviewHandoffInputRef} className="sr-only" type="file" accept="application/json,.json" aria-label="감리 패킷 JSON 불러오기" onChange={importReviewHandoff} /><small aria-live="polite">{videoReviewMessage}</small><small aria-live="polite">{reviewHandoffMessage}</small></div> : null}
+              {presentationMode ? <section className="video-review-batch" aria-label="오늘 먼저 감리할 등록 영상">
+                <div className="video-review-batch__heading"><div><p className="eyebrow">오늘 먼저 감리할 등록 영상</p><small>오늘 공유된 후보 중 상태·미완료 기록을 기준으로 자동 정렬</small></div><strong>{reviewPriorityVideos.length}건</strong></div>
+                <ol>
+                  {reviewPriorityVideos.map((video, index) => {
+                    const completed = VIDEO_REVIEW_CHECKS.filter(check => videoReviewDrafts[video.id]?.[check.key]).length;
+                    return <li key={video.id}>
+                      <div className="video-review-batch__copy"><span>{String(index + 1).padStart(2, '0')}</span><strong>{video.publicTitle ?? video.title}</strong><small>{VIDEO_STATUS_LABELS[video.status]} · {completed}/5 확인</small></div>
+                      <p>{video.audit.nextAction}</p>
+                      <button type="button" data-review-batch-video={video.id} onClick={() => selectReviewBatchVideo(video.id)}>이 영상 감리 시작</button>
+                    </li>;
+                  })}
+                </ol>
+                <p className="video-review-batch__boundary">5개 확인 항목을 모두 마친 뒤에도 사람의 공개 판단이 필요합니다. 자동 정렬은 권위·과학적 타당성·권리를 승인하지 않습니다.</p>
+              </section> : null}
               {presentationMode ? <div className="monitor-snapshot">
                 <div className="monitor-snapshot__heading"><p className="eyebrow">일일 감리 상태</p><div className="monitor-snapshot__actions"><button type="button" className="monitor-snapshot__copy" onClick={copyDailyMonitorBrief}>회의용 요약 복사</button><button type="button" className="monitor-snapshot__copy" data-export-monitor-csv onClick={exportMonitorQueueCsv}>감리 큐 CSV 내려받기</button></div></div>
                 <small className="monitor-snapshot__copy-message" aria-live="polite">{monitorCopyMessage}</small>
