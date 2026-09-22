@@ -2062,7 +2062,7 @@ export default function App() {
         </div> : null}
         </> : consumerStory}
         {openPanel ? <div className="info-layer" role="presentation" onMouseDown={event => {if (event.target === event.currentTarget) closePanel();}}>
-          <aside className={`info-panel${openPanel === 'ops' ? ' info-panel--ops' : ''}`} ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title">
+          <aside className={`info-panel${openPanel === 'ops' ? ' info-panel--ops' : ''}${openPanel === 'video' && !presentationMode ? ' info-panel--consumer-video' : ''}`} ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title">
             <div className="info-panel__topline"><span>{presentationMode ? '장면 흐름 안에서 확인' : '읽기 흐름 안에서 확인'}</span><button ref={panelCloseRef} type="button" onClick={() => closePanel()} aria-label="정보 패널 닫기">×</button></div>
             <p className="eyebrow">{openPanel === 'research' ? '일반 GABA 연구' : openPanel === 'video' ? (presentationMode ? '영상 DB 감리' : '영상 검토 DB') : '발표자 운영'}</p>
             <h2 id="info-panel-title">{panelTitle}</h2>
