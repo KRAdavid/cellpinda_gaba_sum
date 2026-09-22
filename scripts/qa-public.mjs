@@ -72,6 +72,7 @@ const required = [
   ['presenter prompt guidance', '고객에게 물어보기'],
   ['presenter boundary guidance', '이어서 말할 때'],
   ['presenter question guidance', '자주 묻는 질문에 답하기'],
+  ['presenter video candidate boundary', '공개 승인 전 후보는 소비자 화면의 별도 영상 섹션에서'],
   ['presenter answer copy control', '답변 복사'],
   ['presenter next-scene hint', '다음 설명:'],
   ['presenter keyboard support', 'PageUp/PageDown'],
