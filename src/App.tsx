@@ -614,6 +614,15 @@ export default function App() {
   const selectedVideoReviewDraft = selectedVideo ? videoReviewDrafts[selectedVideo.id] ?? makeEmptyVideoReviewDraft() : null;
   const selectedReviewCheckCount = selectedVideoReviewDraft ? VIDEO_REVIEW_CHECKS.filter(check => selectedVideoReviewDraft[check.key]).length : 0;
   const incompleteAuditVideos = useMemo(() => panelVideos.filter(video => VIDEO_REVIEW_CHECKS.filter(check => videoReviewDrafts[video.id]?.[check.key]).length < VIDEO_REVIEW_CHECKS.length), [panelVideos, videoReviewDrafts]);
+  const releaseReadyVideos = useMemo(() => activePresenterVideos.filter(video => {
+    const draft = videoReviewDrafts[video.id];
+    return Boolean(draft
+      && draft.decision === 'PUBLISH_GENERAL'
+      && draft.reviewer.trim()
+      && draft.timestamps.trim()
+      && draft.transcriptExcerpt.trim()
+      && VIDEO_REVIEW_CHECKS.every(check => draft[check.key]));
+  }), [activePresenterVideos, videoReviewDrafts]);
   const reviewPriorityVideos = useMemo(() => {
     const statusRank: Record<GabaVideoRecord['status'], number> = {
       LIMITED_USE: 0,
@@ -1169,6 +1178,45 @@ export default function App() {
     ]);
     downloadCsvFile(`gaba-video-db-${presenterMonitor?.checkedAt ?? 'pending'}.csv`, [headers, ...rows]);
     setVideoReviewMessage('영상 DB CSV를 내려받았습니다. 공개 승인 상태는 바뀌지 않습니다.');
+  };
+
+  const exportPublicationRequest = () => {
+    if (!releaseReadyVideos.length) {
+      setVideoReviewMessage('공개 요청 조건을 충족한 영상이 없습니다. 5개 확인 항목과 사람 판정을 먼저 완료해 주세요.');
+      return;
+    }
+    const packet = {
+      packetType: 'GABA_EDUCATION_PUBLICATION_REQUEST',
+      version: 1,
+      requestedAt: new Date().toISOString(),
+      checkedAt: presenterMonitor?.checkedAt ?? 'pending',
+      items: releaseReadyVideos.map(video => {
+        const draft = videoReviewDrafts[video.id]!;
+        return {
+          id: video.id,
+          url: video.url,
+          title: video.title,
+          publicTitle: video.publicTitle ?? video.title,
+          publicSummary: video.publicSummary ?? video.summary,
+          publicPersonSummary: video.publicPersonSummary ?? video.personSummary,
+          publicOperatorSentence: video.publicOperatorSentence ?? video.operatorSentence,
+          channel: video.channel,
+          speaker: video.speaker,
+          currentStatus: video.status,
+          reviewer: draft.reviewer.trim(),
+          role: draft.role,
+          decision: draft.decision,
+          timestamps: draft.timestamps.trim(),
+          transcriptExcerpt: draft.transcriptExcerpt.trim(),
+          notes: draft.notes.trim(),
+          checks: Object.fromEntries(VIDEO_REVIEW_CHECKS.map(check => [check.key, Boolean(draft[check.key])])),
+          boundary: '이 파일은 PUBLISH_GENERAL 적용을 요청하는 사람 검토 결과이며, 공식 DB 상태·공개 배포는 별도 확인 후 반영합니다.',
+        };
+      }),
+      boundary: 'AI-OPS는 이 요청 파일만으로 자동 공개하지 않습니다. PM·SCIENCE/MEDICAL·RIGHTS가 원문·주장·권리·공개 문장을 다시 확인한 뒤 사람이 공식 DB와 배포를 반영합니다.',
+    };
+    downloadJsonFile(`gaba-education-publication-request-${packet.checkedAt}.json`, packet);
+    setVideoReviewMessage(`공개 요청 패킷을 저장했습니다. ${releaseReadyVideos.length}건을 사람 최종 확인으로 전달합니다.`);
   };
 
   const exportReviewHandoff = () => {
@@ -2065,6 +2113,10 @@ export default function App() {
               <p>{presentationMode ? '발표자용 영상 DB 감리 화면입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 확인하고, 영상별 권위 수준과 공개 여부를 따로 결정합니다.' : '오늘 공유하신 국내 YouTube Shorts를 원문 확인용으로 소개합니다. 영상의 권위와 주장은 감리 상태를 따로 확인해 주세요.'}</p>
               <p className="info-panel__status">{presentationMode ? presenterData ? `감리 대장 ${presenterVideoDb.length}건 · 현재 국내 큐 ${filteredPanelVideos.length}건 · DB 승인 이력 ${presenterApprovedVideos.length}건 · 국내 공개 승인 ${DOMESTIC_PUBLIC_GABA_VIDEOS.length}건 · 등록 영상 초안 ${Object.keys(videoReviewDrafts).length}건 · 신규 후보 초안 ${Object.keys(monitorReviewDrafts).length}건` : '발표자용 감리 자료를 불러오는 중입니다.' : `오늘 공유 영상 ${SHARED_GABA_VIDEOS.length}건 · 원문 확인 필요`}</p>
               {presentationMode ? <div className="video-review-summary" aria-label="감리 목록 복사"><span>감리 초안 {Object.keys(videoReviewDrafts).length}건 · 미완료 {incompleteAuditVideos.length}건</span><button type="button" disabled={!Object.keys(videoReviewDrafts).length} onClick={copyAllVideoReviewDrafts}>작성 초안 전체 복사</button><button type="button" disabled={!incompleteAuditVideos.length} onClick={copyIncompleteVideoAuditQueue}>미완료 목록 복사</button><button type="button" data-export-video-db-csv onClick={exportVideoDbCsv}>영상 DB CSV 내려받기</button><button type="button" data-export-review-packet onClick={exportReviewHandoff}>감리 패킷 JSON 저장</button><button type="button" data-import-review-packet onClick={() => reviewHandoffInputRef.current?.click()}>감리 패킷 불러오기</button><input ref={reviewHandoffInputRef} className="sr-only" type="file" accept="application/json,.json" aria-label="감리 패킷 JSON 불러오기" onChange={importReviewHandoff} /><small aria-live="polite">{videoReviewMessage}</small><small aria-live="polite">{reviewHandoffMessage}</small></div> : null}
+              {presentationMode ? <section className="video-publication-request" aria-label="일반 교육 공개 요청">
+                <div><p className="eyebrow">다음 단계 · 사람 최종 확인</p><strong>{releaseReadyVideos.length}건 공개 요청 가능</strong><small>5개 확인 항목·담당자·타임코드·발언 발췌·공개 판정이 모두 입력된 국내 영상만 포함합니다.</small></div>
+                <button type="button" data-export-publication-request disabled={!releaseReadyVideos.length} onClick={exportPublicationRequest}>공개 요청 패킷 저장</button>
+              </section> : null}
               {presentationMode ? <section className="video-review-batch" aria-label="오늘 먼저 감리할 등록 영상">
                 <div className="video-review-batch__heading"><div><p className="eyebrow">오늘 먼저 감리할 등록 영상</p><small>{activePresenterVideos.length ? `국내 등록 영상 ${activePresenterVideos.length}건 중 상태·미완료 기록을 기준으로 자동 정렬` : '오늘 공유된 후보 중 상태·미완료 기록을 기준으로 자동 정렬'}</small></div><strong>{reviewPriorityVideos.length}건</strong></div>
                 <ol>
