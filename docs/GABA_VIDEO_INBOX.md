@@ -1128,3 +1128,39 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-bquifROEFMI
+
+- 상태: PENDING_REVIEW
+- 영상: [천연 GABA 섭취는 효과가 있을까? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=bquifROEFMI)
+- 채널: YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260922-WCvW1eVl9WY
+
+- 상태: PENDING_REVIEW
+- 영상: [누우면 생각이 많아지는 이유 🌙 #협찬 #파마코가바멜라](https://www.youtube.com/watch?v=WCvW1eVl9WY)
+- 채널: YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-22
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS

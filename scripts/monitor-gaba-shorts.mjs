@@ -95,6 +95,30 @@ const checkRegisteredVideoLinks = async () => {
   return {checked: urls.length, healthy, warnings};
 };
 
+const checkRegisteredYouTubeMetadata = async () => {
+  const urls = getRegisteredVideoUrls().filter(url => /youtube\.com|youtu\.be/i.test(url));
+  const warnings = [];
+  let healthy = 0;
+  for (const url of urls) {
+    try {
+      const endpoint = 'https://www.youtube.com/oembed?url=' + encodeURIComponent(url) + '&format=json';
+      const response = await fetch(endpoint, {
+        headers: {'user-agent': 'cellpinda-gaba-sum/1.0 (educational metadata check)', 'accept-language': 'ko-KR,ko;q=0.9,en;q=0.8'},
+      });
+      if (!response.ok) {
+        warnings.push(`${url} → HTTP ${response.status}`);
+        continue;
+      }
+      const metadata = await response.json();
+      if (metadata.title && metadata.author_name) healthy += 1;
+      else warnings.push(`${url} → 제목·채널 메타데이터 없음`);
+    } catch (error) {
+      warnings.push(`${url} → ${error.message}`);
+    }
+  }
+  return {checked: urls.length, healthy, warnings};
+};
+
 const findChannelId = html => {
   const patterns = [
     /<meta[^>]+itemprop=["']channelId["'][^>]+content=["'](UC[\w-]+)["']/i,
@@ -212,7 +236,7 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
-const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, linkHealth}) => {
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, linkHealth, metadataHealth}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const ranked = entries.map(entry => screenCandidate(`${entry.title} ${entry.description}`));
   const scienceMedicalPriority = ranked.filter(item => item.priority !== 'VIDEO 우선').length;
@@ -247,6 +271,9 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     registeredVideoLinksChecked: linkHealth.checked,
     registeredVideoLinksHealthy: linkHealth.healthy,
     registeredVideoLinkWarnings: linkHealth.warnings.length,
+    registeredVideoMetadataChecked: metadataHealth.checked,
+    registeredVideoMetadataHealthy: metadataHealth.healthy,
+    registeredVideoMetadataWarnings: metadataHealth.warnings.length,
     firstMeetingReady: Boolean(kickoff.match(/^(?:회의 날짜·시간|첫 회의 날짜·시간):[^\r\n]*$/m)?.[0]?.replace(/^[^:]+:\s*/, '').trim()),
     triageUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md',
     reportUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md',
@@ -256,7 +283,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   return `export const GABA_MONITOR_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)} as const;\n`;
 };
 
-const dailyReport = ({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth}) => {
+const dailyReport = ({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth, metadataHealth}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
@@ -275,6 +302,7 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, errors,
     `- Shorts 페이지 보완 수집: ${fallbackSources.length}개 채널`,
     `- 신규 후보: ${candidates.length}건`,
     `- 등록 영상 원문 링크: ${linkHealth.healthy}/${linkHealth.checked} 접근 확인 · 링크 경고 ${linkHealth.warnings.length}건`,
+    `- 등록 YouTube 메타데이터: ${metadataHealth.healthy}/${metadataHealth.checked} 제목·채널 확인 · 메타데이터 경고 ${metadataHealth.warnings.length}건`,
     `- 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW`,
     '',
     '## 신규 후보',
@@ -300,6 +328,13 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, errors,
     linkHealth.warnings.length
       ? linkHealth.warnings.map(item => `- 경고: ${markdown(item)}`).join('\n')
       : '- 등록 영상 원문 링크에서 HTTP 경고 없음',
+    '',
+    '## 등록 YouTube 메타데이터 상태',
+    '',
+    metadataHealth.warnings.length
+      ? metadataHealth.warnings.map(item => `- 경고: ${markdown(item)}`).join('\n')
+      : '- 제목·채널 메타데이터 HTTP 경고 없음',
+    '- 메타데이터 확인은 제목·채널 존재 여부만 점검하며, 영상 내용·화자 권위·과학적 타당성·권리를 승인하지 않는다.',
     '',
     '## 다음 15분 감리 순서',
     '',
@@ -379,11 +414,13 @@ const main = async () => {
   }
 
   const linkHealth = await checkRegisteredVideoLinks();
+  const metadataHealth = await checkRegisteredYouTubeMetadata();
 
   console.log('GABA Shorts monitor (' + checkedDate + ')');
   console.log('- sources: ' + successfulSources + '/' + sources.length);
   console.log('- new candidates: ' + candidates.length);
   console.log('- registered video links: ' + linkHealth.healthy + '/' + linkHealth.checked + ' healthy');
+  console.log('- registered YouTube metadata: ' + metadataHealth.healthy + '/' + metadataHealth.checked + ' healthy');
   if (errors.length) errors.forEach(error => console.log('- warning: ' + error));
 
   if (!writeMode) return;
@@ -414,7 +451,7 @@ const main = async () => {
     console.log('- wrote: ' + candidates.length + ' candidate(s) to docs/GABA_VIDEO_INBOX.md');
   }
   fs.mkdirSync(reportArchiveDir, {recursive: true});
-  const report = dailyReport({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth});
+  const report = dailyReport({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth, metadataHealth});
   fs.writeFileSync(reportPath, report, 'utf8');
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
   const updatedInbox = fs.readFileSync(inboxPath, 'utf8');
@@ -426,6 +463,7 @@ const main = async () => {
     successfulSearches,
     newCandidates: candidates.length,
     linkHealth,
+    metadataHealth,
   }), 'utf8');
   console.log('- wrote: daily report to docs/GABA_VIDEO_DAILY_REPORT.md');
   console.log('- archived: docs/gaba-video-daily/GABA_VIDEO_DAILY_REPORT_' + checkedDate + '.md');
