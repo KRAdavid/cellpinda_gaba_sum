@@ -77,7 +77,7 @@ try {
   assert('consumer page contains no product or review content', !initial.body.includes('셀핀다 제품') && !initial.body.includes('구매자 후기') && !initial.body.includes('스마트스토어'));
   assert('consumer page hides presenter monitoring snapshot', !initial.body.includes('일일 감리 상태') && !initial.body.includes('검토 대기'));
   assert('consumer root enters the vertical feed immediately', Math.abs(initial.storyTop) < 2 && initial.introTop >= initial.height - 2, JSON.stringify(initial));
-  assert('story has nine one-message cards', initial.cards === 9 && initial.progress === '01 / 09', JSON.stringify(initial));
+  assert('story has eight one-message cards', initial.cards === 8 && initial.progress === '01 / 08', JSON.stringify(initial));
   const rail = await evaluate('(() => { const el=document.querySelector(".story-rail"), style=getComputedStyle(el); return {touchAction:style.touchAction,snap:style.scrollSnapType,overflowX:style.overflowX,overflowY:style.overflowY,scrollWidth:el.scrollWidth,clientWidth:el.clientWidth,scrollHeight:el.scrollHeight,clientHeight:el.clientHeight,scrollTop:el.scrollTop}; })()');
   assert('mobile rail declares vertical touch and snap', rail.touchAction === 'pan-y' && rail.snap.includes('y') && rail.overflowY === 'auto' && rail.overflowX === 'hidden' && rail.scrollHeight > rail.clientHeight && rail.scrollWidth === rail.clientWidth, JSON.stringify(rail));
   const feedSurface = await evaluate('(() => { const story=document.querySelector("#story"), rail=document.querySelector(".story-rail"), card=document.querySelector(".story-card"), dots=document.querySelector(".story-dots"), storyStyle=getComputedStyle(story), railStyle=getComputedStyle(rail), cardStyle=getComputedStyle(card), dotStyle=getComputedStyle(dots); return {storyHeight:story?.getBoundingClientRect().height||0,railHeight:rail?.getBoundingClientRect().height||0,cardWidth:card?.getBoundingClientRect().width||0,cardHeight:card?.getBoundingClientRect().height||0,viewport:innerHeight,contentWidth:document.documentElement.clientWidth,heading:getComputedStyle(document.querySelector(".story-heading")).display,dotsDirection:dotStyle.flexDirection,visual:cardStyle.backgroundImage.includes("gaba-overload"),storyPadding:storyStyle.padding,railHeightStyle:railStyle.height}; })()');
@@ -90,14 +90,14 @@ try {
   await evaluate('(() => { const el=document.querySelector(".story-rail"), second=el.querySelectorAll(".story-card")[1]; const target=second ? second.getBoundingClientRect().top - el.getBoundingClientRect().top + el.scrollTop - 4 : 0; el.scrollTo({top:Math.max(0,target),behavior:"auto"}); return true; })()');
   await wait(700);
   const swiped = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText||"",scrollTop:document.querySelector(".story-rail")?.scrollTop||0})');
-  assert('mobile vertical swipe-compatible scroll advances the active card', swiped.progress === '02 / 09' && swiped.scrollTop > rail.scrollTop, JSON.stringify({before:rail,after:swiped}));
+  assert('mobile vertical swipe-compatible scroll advances the active card', swiped.progress === '02 / 08' && swiped.scrollTop > rail.scrollTop, JSON.stringify({before:rail,after:swiped}));
 
   await evaluate('document.querySelector(".story-next-button")?.click()');
-  await waitForProgress('03 / 09');
+  await waitForProgress('03 / 08');
   assert('consumer next action advances the story', true);
 
   await send('Page.navigate', {url: `${baseUrl}?card=7#story`});
-  await waitForProgress('07 / 09');
+  await waitForProgress('07 / 08');
   await evaluate('document.querySelector(".story-card[aria-current=\\"true\\"] .card-link")?.click()');
   await waitForText('#info-panel-title', '일반 GABA 연구를 읽는 방법');
   const researchPanel = await evaluate('({title:document.querySelector("#info-panel-title")?.innerText||"",source:document.querySelector(".info-panel__source")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||"",url:location.href})');
@@ -105,13 +105,17 @@ try {
   const researchSources = await evaluate('({summary:document.querySelector(".info-panel__research-sources summary")?.innerText||"",items:document.querySelectorAll(".research-source-list article").length})');
   assert('research panel keeps multiple evidence sources in-page', researchSources.summary.includes('근거 출처 4건') && researchSources.items === 4, JSON.stringify(researchSources));
   await evaluate('document.querySelector(".info-panel__next")?.click()');
-  await waitForProgress('08 / 09');
+  await waitForProgress('08 / 08');
   assert('research panel next action continues the card flow', true);
 
-  await evaluate('document.querySelector(".story-card[aria-current=\\"true\\"] .card-link")?.click()');
+  await evaluate('document.querySelector(".video-showcase__item:nth-child(2)")?.scrollIntoView({block:"center",behavior:"instant"})');
+  await wait(700);
+  const videoShowcase = await evaluate('({section:!!document.querySelector("#video-showcase"),title:document.querySelector("#video-showcase-title")?.innerText||"",items:document.querySelectorAll(".video-showcase__item").length,summaries:document.querySelectorAll(".video-showcase__copy").length,links:[...document.querySelectorAll(".video-showcase__actions a")].map(link=>link.getAttribute("href")||""),preview:document.querySelectorAll(".video-showcase__media img, .video-showcase__source-mark").length,previewImageLoaded:[...document.querySelectorAll(".video-showcase__media img")].every(image => image.complete && image.naturalWidth > 0),body:document.querySelector("#video-showcase")?.innerText||""})');
+  assert('consumer video summaries live in a separate showcase section', videoShowcase.section && videoShowcase.title.includes('원문으로 확인') && videoShowcase.items === 2 && videoShowcase.summaries === 2 && videoShowcase.links.some(link => link.includes('dnalc.cshl.edu')) && videoShowcase.links.some(link => link.includes('videocast.nih.gov')) && videoShowcase.preview === 2 && videoShowcase.previewImageLoaded && videoShowcase.body.includes('무엇을 어떻게 소개했나') && videoShowcase.body.includes('인물 소개'), JSON.stringify(videoShowcase));
+  await evaluate('document.querySelector(".video-showcase__actions button")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
   const publicVideo = await evaluate('({items:document.querySelectorAll(".video-db-item").length,detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||"",preview:!!document.querySelector(".video-db-preview") && (!!document.querySelector(".video-db-preview img") || !!document.querySelector(".video-db-preview__source-mark")),body:document.querySelector(".info-panel")?.innerText||""})');
-  assert('consumer video panel shows approved sources only', publicVideo.items === 2 && publicVideo.detail.includes('인물 소개') && publicVideo.detail.includes('확인 기반') && publicVideo.detail.includes('권위') && publicVideo.preview && publicVideo.external.includes('dnalc.cshl.edu') && !publicVideo.body.includes('잠자기 어렵다면 수면제'), JSON.stringify(publicVideo));
+  assert('consumer video detail remains available from the separate showcase', publicVideo.items === 2 && publicVideo.detail.includes('인물 소개') && publicVideo.detail.includes('확인 기반') && publicVideo.detail.includes('권위') && publicVideo.preview && publicVideo.external.includes('dnalc.cshl.edu') && !publicVideo.body.includes('잠자기 어렵다면 수면제'), JSON.stringify(publicVideo));
   await evaluate('document.querySelectorAll(".video-db-item__select")[1]?.click()');
   await waitForText('.video-db-detail', 'Wei Lu');
   const secondPublicVideo = await evaluate('({detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||""})');
@@ -119,7 +123,7 @@ try {
   await press('Escape', 'Escape', 27);
 
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
-  await waitForPresentation('01 / 09');
+  await waitForPresentation('01 / 08');
   const presenterEntry = await evaluate('({presentation:!!document.querySelector(".story--presentation"),button:!!document.querySelector(".story-video-db-button"),opsButton:!!document.querySelector(".story-ops-board-button"),product:document.body.innerText.includes("셀핀다 제품")})');
   assert('presenter mode exposes the video DB and operations controls', presenterEntry.presentation && presenterEntry.button && presenterEntry.opsButton && !presenterEntry.product, JSON.stringify(presenterEntry));
   await evaluate('document.querySelector(".story-video-db-button")?.click()');
@@ -154,7 +158,7 @@ try {
   assert('operations board exposes the first meeting sequence', meetingSteps === 6, String(meetingSteps));
   await press('Escape', 'Escape', 27);
   await press('ArrowRight', 'ArrowRight', 39);
-  await waitForProgress('02 / 09');
+  await waitForProgress('02 / 08');
   assert('presenter keyboard advances one educational card', true);
   await press('Escape', 'Escape', 27);
   const finalState = await evaluate('({presentation:!!document.querySelector(".story--presentation"),url:location.href})');

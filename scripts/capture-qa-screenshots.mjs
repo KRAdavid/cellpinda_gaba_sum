@@ -46,6 +46,10 @@ try {
   await wait(900);
   await capture('cellpinda-consumer-390-current.png');
 
+  await send('Page.navigate', {url: `${baseUrl}#video-showcase`});
+  await wait(900);
+  await capture('cellpinda-video-showcase-390-current.png');
+
   await send('Page.navigate', {url: `${baseUrl}?mode=presenter&card=1#story`});
   await wait(900);
   await capture('cellpinda-presenter-390-current.png');

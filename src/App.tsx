@@ -109,8 +109,7 @@ const STORY_PHASES = [
   {id: 'rest', label: '회복', start: 3, end: 3},
   {id: 'ingredient', label: 'GABA 기능', start: 4, end: 5},
   {id: 'research', label: '일반 연구', start: 6, end: 6},
-  {id: 'video', label: '권위 영상', start: 7, end: 7},
-  {id: 'finish', label: '한 문장 정리', start: 8, end: 8},
+  {id: 'finish', label: '한 문장 정리', start: 7, end: 7},
 ] as const;
 
 const PRESENTER_QUESTIONS = [
@@ -133,7 +132,6 @@ const PRESENTER_QUESTIONS = [
 ] as const;
 
 function makeSlides(): Slide[] {
-  const publicVideo = PUBLIC_GABA_VIDEOS[0];
   return [
     {
       id: 'hook',
@@ -198,36 +196,23 @@ function makeSlides(): Slide[] {
     {
       id: 'research',
       label: '07 · 일반 GABA 연구',
-      title: '연구는 가능성을 보여주지만, 결론은 조건과 한계까지 읽어야 합니다.',
-      body: '일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 검토한 문헌고찰에서 스트레스 관련 근거는 제한적이고 수면 관련 근거는 매우 제한적이었습니다.',
+      title: '일반 GABA 연구는 스트레스와 수면에 관한 질문을 살펴봅니다.',
+      body: '14개 위약대조 인체시험을 검토한 문헌고찰처럼, 연구 대상·섭취량·기간·비교 조건을 함께 볼 때 GABA 연구를 정확하게 이해할 수 있습니다.',
       tone: 'research',
-      note: '일반 GABA 연구 결과는 특정 제품의 효능을 입증하지 않습니다.',
+      note: '일반 GABA 연구를 읽는 기준과 상세 출처는 아래 패널에서 확인합니다.',
       presenterPrompt: '연구 대상·섭취량·기간·비교 조건을 먼저 확인해 보시겠어요?',
       presenterBoundary: '일반 GABA 연구라는 표기를 고정하고 개인 결과로 확장하지 않습니다.',
       link: {href: RESEARCH_URL, label: '일반 GABA 연구 읽기', panel: 'research'},
     },
     {
-      id: 'video',
-      label: '08 · 권위 있는 설명 영상',
-      title: '과학자·의사가 설명한 GABA 영상을 같은 기준으로 확인해 보세요.',
-      body: `${PUBLIC_GABA_VIDEOS.length}건의 공개 승인 영상을 원문·인물·발언·권리 기준으로 큐레이션했습니다. 영상도 연구를 대신하지 않으며, 공개 후보와 승인 자료를 구분합니다.`,
-      tone: 'evening',
-      presenterPrompt: '영상의 권위보다 먼저 원문·발언 구간·근거·권리 상태를 함께 보시겠어요?',
-      presenterBoundary: '권위자의 설명도 개인별 결과를 보증하지 않습니다.',
-      link: {href: publicVideo?.url ?? '', label: '공개 승인 영상 확인하기', panel: 'video'},
-    },
-    {
       id: 'finish',
-      label: '09 · 한 문장 정리',
+      label: '08 · 한 문장 정리',
       title: 'GABA는 뇌의 신호 균형을 이해할 때 만나는 성분입니다.',
-      body: '무엇인지, 어떤 기능으로 알려졌는지, 일반 연구가 어디까지 말하는지를 차례로 확인하면 과장 없이 이해할 수 있습니다.',
+      body: '무엇인지, 어떤 기능으로 알려졌는지, 일반 연구가 무엇을 살펴보는지를 차례로 확인하면 과장 없이 이해할 수 있습니다. 권위 영상 요약은 아래 별도 섹션에서 이어집니다.',
       tone: 'finish',
       presenterPrompt: 'GABA를 오늘 한 문장으로 설명한다면 어떻게 말하시겠어요?',
       presenterBoundary: '마지막도 교육적 요약으로 끝내며 구매나 효능 약속으로 연결하지 않습니다.',
-      links: [
-        {href: RESEARCH_URL, label: '일반 GABA 연구 다시 보기', panel: 'research'},
-        {href: publicVideo?.url ?? '', label: '권위 영상 다시 보기', panel: 'video'},
-      ],
+      link: {href: RESEARCH_URL, label: '일반 GABA 연구 다시 보기', panel: 'research'},
     },
   ];
 }
@@ -493,10 +478,10 @@ export default function App() {
     setOpenPanel(panel);
   };
 
-  const openVideoPanel = (returnElement?: HTMLElement | null) => {
+  const openVideoPanel = (returnElement?: HTMLElement | null, videoId?: string) => {
     panelReturnRef.current = returnElement ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setPanelSourceIndex(active);
-    setPanelVideoId(null);
+    setPanelVideoId(videoId ?? null);
     setVideoFilter('ALL');
     setVideoQuery('');
     setPanelShareMessage('');
@@ -702,9 +687,9 @@ export default function App() {
             <h2 id="info-panel-title">{panelTitle}</h2>
             {openPanel === 'research' ? <>
               <p>연구 결과를 볼 때는 무엇을 살펴봤는지와 어떤 조건이었는지를 함께 확인하세요.</p>
-              <p className="info-panel__evidence">연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 검토했습니다. 스트레스 관련 근거는 제한적이고 수면 관련 근거는 매우 제한적이었습니다.</p>
+              <p className="info-panel__evidence">연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 검토했습니다. 연구 대상·섭취량·기간·비교 조건을 함께 확인하는 자료입니다.</p>
               <ul><li>참여자와 연구 대상이 누구였는지</li><li>섭취량과 기간이 어떻게 설정됐는지</li><li>비교 조건과 측정 방법이 무엇이었는지</li></ul>
-              <p className="info-panel__boundary">이 자료는 일반 GABA 원료 또는 GABA 섭취 연구입니다. 개인별 결과를 보장하는 자료가 아닙니다.</p>
+              <p className="info-panel__boundary">이 자료는 일반 GABA 원료와 GABA 섭취 연구를 구분해 읽도록 돕는 일반 교육 자료입니다.</p>
               <details className="info-panel__research-sources">
                 <summary>근거 출처 4건 펼쳐 보기 <span aria-hidden="true">＋</span></summary>
                 <div className="research-source-list">
@@ -773,7 +758,7 @@ export default function App() {
                 <p className="info-panel__status">{selectedVideo.statusReason}</p>
                 <p className="video-db-detail__meta">확인일 {selectedVideo.checkedAt} · 채널 {selectedVideo.channel} · 화자 {selectedVideo.speaker}</p>
               </div> : null}
-              <p className="info-panel__boundary">영상의 설명은 일반 GABA 교육을 돕는 보조 자료이며, 개인별 효과나 의료적 판단을 대신하지 않습니다.</p>
+              <p className="info-panel__boundary">영상의 설명은 일반 GABA 교육을 돕는 보조 자료이며, 공식 원문과 함께 맥락을 확인합니다.</p>
             </> : null}
             {openPanel === 'ops' ? <>
               <p>이 보드는 공개 소비자용 내용이 아니라, 일반 GABA 교육 자료를 검토·회의·배포하는 사업자용 운영 화면입니다.</p>
@@ -805,6 +790,37 @@ export default function App() {
         </div> : null}
       </section>
 
+      {!presentationMode ? <section id="video-showcase" className="video-showcase" aria-labelledby="video-showcase-title">
+        <div className="video-showcase__inner">
+          <div className="video-showcase__heading">
+            <div>
+              <p className="eyebrow">별도 섹션 · 영상 요약</p>
+              <h2 id="video-showcase-title">영상은 짧게 보고,<br /><em>원문으로 확인하세요.</em></h2>
+            </div>
+            <div>
+              <p>공개 승인된 일반 GABA 설명 영상만 히어로 샷과 요약 버전으로 소개합니다. 영상은 일반 생리 이해를 돕는 보조 자료이며, 각 영상의 원문 링크에서 전체 맥락을 확인할 수 있습니다.</p>
+              <button type="button" className="video-showcase__db-button" onClick={event => openVideoPanel(event.currentTarget)}>영상 DB 상세 감리 보기 <span aria-hidden="true">↗</span></button>
+            </div>
+          </div>
+          <div className="video-showcase__list">
+            {PUBLIC_GABA_VIDEOS.map(video => <article key={video.id} className="video-showcase__item">
+              <a className="video-showcase__media" href={video.url} target="_blank" rel="noopener noreferrer" aria-label={`${video.title} 공식 원문 영상 보기`}>
+                {video.previewImage ? <img src={video.previewImage} alt={video.previewAlt ?? `${video.title} 공식 원문 미리보기`} loading="lazy" decoding="async" onError={event => {event.currentTarget.style.display = 'none';}} /> : <div className="video-showcase__source-mark"><span>공식 교육기관</span><strong>{video.previewLabel}</strong><small>원문 페이지·대본 확인</small></div>}
+                <span className="video-showcase__play" aria-hidden="true">↗</span>
+              </a>
+              <div className="video-showcase__copy">
+                <div className="video-showcase__meta"><span>{video.id}</span><span>일반 교육 공개 승인</span></div>
+                <h3>{video.title}</h3>
+                <p className="video-showcase__channel">{video.channel} · {video.speaker}</p>
+                <p><strong>무엇을 어떻게 소개했나</strong><br />{video.summary}</p>
+                <p><strong>인물 소개</strong><br />{video.personSummary}</p>
+                <div className="video-showcase__actions"><a href={video.url} target="_blank" rel="noopener noreferrer">공식 원문에서 영상 보기 ↗</a><button type="button" onClick={event => openVideoPanel(event.currentTarget, video.id)}>상세 감리 보기</button></div>
+              </div>
+            </article>)}
+          </div>
+        </div>
+      </section> : null}
+
       {!presentationMode ? introSection : null}
 
       <section className="guardrail" aria-label="정보 구분 안내">
@@ -815,7 +831,7 @@ export default function App() {
     </main>
 
     <footer className="site-footer">
-      <p>일반 GABA 교육 자료 · 의료정보나 개인별 결과를 보증하지 않습니다.</p>
+      <p>일반 GABA 교육 자료 · 일반 기능과 연구 조건을 구분해 확인합니다.</p>
       <a href={RESEARCH_URL} target="_blank" rel="noopener noreferrer">일반 연구 출처 보기 ↗</a>
     </footer>
   </>;
