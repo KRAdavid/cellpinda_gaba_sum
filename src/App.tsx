@@ -537,6 +537,44 @@ export default function App() {
     }
   };
 
+  const copyAllVideoReviewDrafts = async () => {
+    const entries = GABA_VIDEO_DB
+      .filter(video => videoReviewDrafts[video.id])
+      .map(video => ({video, draft: videoReviewDrafts[video.id]}));
+    if (!entries.length) {
+      setVideoReviewMessage('복사할 감리 초안이 없습니다.');
+      return;
+    }
+    const lines = ['GABA 영상 감리 기록 초안 모음', `작성 초안 ${entries.length}건`, ''];
+    entries.forEach(({video, draft}, index) => {
+      if (!draft) return;
+      const checked = [
+        ['원문/영상', draft.sourceChecked],
+        ['자막/대본', draft.transcriptChecked],
+        ['화자·자격', draft.speakerChecked],
+        ['권리·사용 방식', draft.rightsChecked],
+        ['주장 범위·연구 구분', draft.claimScopeChecked],
+      ].map(([label, value]) => `- ${label}: ${value ? '확인' : '미확인'}`).join('\n');
+      lines.push(
+        `${index + 1}. ${video.id} · ${video.title}`,
+        `담당자: ${draft.reviewer.trim() || '미입력'} · 역할: ${draft.role}`,
+        `결정 초안: ${VIDEO_REVIEW_DECISIONS.find(item => item.id === draft.decision)?.label ?? '아직 결정하지 않음'}`,
+        `타임코드: ${draft.timestamps.trim() || '미입력'}`,
+        '확인 체크',
+        checked,
+        `팀 메모: ${draft.notes.trim() || '미입력'}`,
+        '',
+      );
+    });
+    lines.push('※ 브라우저 로컬 초안이며 공식 공개 승인·과학/의학·권리 판정을 의미하지 않습니다.');
+    try {
+      await copyText(lines.join('\n'));
+      setVideoReviewMessage('작성된 감리 초안을 모두 복사했습니다.');
+    } catch {
+      setVideoReviewMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
+  };
+
   const updateTfAssignment = (roleId: string, field: 'lead' | 'backup', value: string) => {
     const next = {...tfAssignments, [roleId]: {...tfAssignments[roleId], [field]: value}};
     setTfAssignments(next);
@@ -1044,6 +1082,7 @@ export default function App() {
             {openPanel === 'video' ? <>
               <p>{presentationMode ? '발표자용 영상 DB 감리 화면입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 확인하고, 영상별 권위 수준과 공개 여부를 따로 결정합니다.' : '오늘 공유하신 국내 YouTube Shorts를 원문 확인용으로 소개합니다. 영상의 권위와 주장은 감리 상태를 따로 확인해 주세요.'}</p>
               <p className="info-panel__status">{presentationMode ? `감리 대장 ${GABA_VIDEO_DB.length}건 · 현재 국내 큐 ${filteredPanelVideos.length}건 · DB 승인 이력 ${PUBLIC_GABA_VIDEOS.length}건 · 국내 공개 승인 ${DOMESTIC_PUBLIC_GABA_VIDEOS.length}건 · 감리 초안 ${Object.keys(videoReviewDrafts).length}건` : `오늘 공유 영상 ${SHARED_GABA_VIDEOS.length}건 · 원문 확인 필요`}</p>
+              {presentationMode ? <div className="video-review-summary" aria-label="감리 초안 전체 복사"><span>현재 브라우저 감리 초안 {Object.keys(videoReviewDrafts).length}건</span><button type="button" disabled={!Object.keys(videoReviewDrafts).length} onClick={copyAllVideoReviewDrafts}>작성 초안 전체 복사</button><small aria-live="polite">{videoReviewMessage}</small></div> : null}
               {presentationMode ? <div className="monitor-snapshot">
                 <p className="eyebrow">일일 감리 상태</p>
                 <p><strong>{GABA_MONITOR_SNAPSHOT.checkedAt}</strong> 마지막 자동 확인 · 채널 {GABA_MONITOR_SNAPSHOT.sourceChannels}/{GABA_MONITOR_SNAPSHOT.registeredChannels} · 검색어 {GABA_MONITOR_SNAPSHOT.discoveryQueries}/{GABA_MONITOR_SNAPSHOT.totalDiscoveryQueries}</p>
