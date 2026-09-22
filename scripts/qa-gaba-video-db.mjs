@@ -24,7 +24,11 @@ for (const field of requiredFields) {
 }
 for (const seed of requiredSeeds) if (!source.includes(seed)) failures.push(`provided Shorts seed missing: ${seed}`);
 if (!source.includes("status: 'PUBLISH_GENERAL'")) failures.push('no PUBLISH_GENERAL record found');
-if (!source.includes('https://www.sleepnet.or.kr/workshop/monthly/view?idx=150') || !source.includes('https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002182911')) failures.push('SHORT-06 authority and research evidence links are not the verified official records');
+if (!source.includes('https://www.sleepnet.or.kr/workshop/monthly/view?idx=150') || !source.includes('https://e-jsm.org/upload/jsm-13-2-60.pdf')) failures.push('SHORT-06 authority and research evidence links are not the verified official records');
+if (!source.includes('https://mediahub.seoul.go.kr/archives/1135642')) failures.push('SHORT-05 authority evidence link is not the current Seoul official profile record');
+const short05Block = source.match(/\{\n    id: 'SHORT-05'[\s\S]*?\n  \},/)?.[0] ?? '';
+const short06Block = source.match(/\{\n    id: 'SHORT-06'[\s\S]*?\n  \},/)?.[0] ?? '';
+if (!short05Block.includes("status: 'LIMITED_USE'") || !short06Block.includes("status: 'HOLD'")) failures.push('official source-link upgrades must not bypass SHORT-05/06 video-content review gates');
 if (!source.includes('https://www.youtube.com/@doctorLeeTV/about') || !source.includes('https://www.youtube.com/@%EB%B8%8C%EB%A0%88%EC%9D%B8%ED%8A%9C%EB%B8%8CBrainDoctor/about')) failures.push('SHORT-02/04 authority evidence links are not the current official profile pages');
 if (!source.includes("PUBLIC_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => video.status === 'PUBLISH_GENERAL')")) failures.push('public list is not restricted to PUBLISH_GENERAL');
 if (!appSource.includes("const approvedForCustomerSummary = video.status === 'PUBLISH_GENERAL';") || !appSource.includes('현재 요약은 제목·공개 설명 기반의 예비 정보이며')) failures.push('customer copy does not gate unapproved video summaries');
