@@ -84,6 +84,8 @@ const required = [
   ['presenter TF discussion queue', '오늘의 토론 논점 보기'],
   ['presenter TF discussion evidence', '필요 증거'],
   ['presenter TF discussion copy', '회의 논점 복사'],
+  ['presenter video DB csv export', '영상 DB CSV 내려받기'],
+  ['presenter review queue csv export', '감리 큐 CSV 내려받기'],
   ['in-page flow continuity', '현재 페이지의 흐름은 유지됩니다'],
   ['in-page next destination', '다음 장면'],
   ['consumer next action', 'story-next-button'],

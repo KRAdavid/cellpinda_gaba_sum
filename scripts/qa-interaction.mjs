@@ -159,7 +159,7 @@ try {
   await evaluate('document.querySelectorAll(".video-db-item__select")[5]?.click()');
   await waitForText('.video-db-detail', 'SLEEP Dr.');
   const sleepEvidence = await evaluate('({detail:document.querySelector(".video-db-detail")?.innerText||"",links:[...document.querySelectorAll(".video-db-detail__meta a")].map(link=>link.getAttribute("href")||"")})');
-  assert('consumer video detail keeps separate affiliation and research evidence', sleepEvidence.detail.includes('인물 소개') && sleepEvidence.links.some(link => link.includes('sleepnet.or.kr')) && sleepEvidence.links.some(link => link.includes('kci.go.kr')), JSON.stringify(sleepEvidence));
+  assert('consumer video detail keeps separate affiliation and research evidence', sleepEvidence.detail.includes('인물 소개') && sleepEvidence.links.some(link => link.includes('sleepnet.or.kr')) && sleepEvidence.links.some(link => link.includes('e-jsm.org')), JSON.stringify(sleepEvidence));
   await evaluate('document.querySelectorAll(".video-db-item__select")[1]?.click()');
   await waitForText('.video-db-detail', '브레인튜브');
   await evaluate('document.querySelector(".info-panel__next")?.click()');
@@ -188,11 +188,15 @@ try {
   await evaluate('document.querySelector(".monitor-snapshot__queue details")?.setAttribute("open", "")');
   const monitorSnapshot = await evaluate('({summary:document.querySelector(".monitor-snapshot")?.innerText||"",links:document.querySelectorAll(".monitor-snapshot a").length,queue:document.querySelectorAll(".monitor-snapshot__queue li details").length,authorityQueue:document.querySelectorAll(".monitor-snapshot__authority-queue li details").length,history:document.querySelectorAll(".monitor-snapshot__history li").length,openQueue:document.querySelectorAll(".monitor-snapshot__queue li details[open]").length})');
   assert('presenter video DB shows daily monitoring snapshot', monitorSnapshot.summary.includes('마지막 자동 확인') && monitorSnapshot.summary.includes('검토 대기') && monitorSnapshot.summary.includes('권위·연구 출처 링크') && monitorSnapshot.summary.includes('등록 YouTube 자막 트랙') && monitorSnapshot.summary.includes('등록 YouTube 자막 본문') && monitorSnapshot.summary.includes('본문 경고') && monitorSnapshot.summary.includes('오늘 먼저 검토할 후보') && monitorSnapshot.summary.includes('권위 후보 확인 전') && monitorSnapshot.summary.includes('전문가 표현 감지') && monitorSnapshot.summary.includes('최근 감리 추이') && monitorSnapshot.summary.includes('첫 담당') && monitorSnapshot.summary.includes('다음 행동') && monitorSnapshot.summary.includes('오늘 리뷰 세션') && monitorSnapshot.summary.includes('자막 감사 기록') && monitorSnapshot.queue === 5 && monitorSnapshot.history >= 1 && monitorSnapshot.authorityQueue >= 3 && monitorSnapshot.links === 4, JSON.stringify(monitorSnapshot));
-  assert('presenter daily monitoring snapshot offers a meeting brief copy', await evaluate('!!document.querySelector(".monitor-snapshot__copy")'), 'missing copy control');
+  assert('presenter daily monitoring snapshot offers meeting and CSV controls', await evaluate('!!document.querySelector(".monitor-snapshot__copy") && !!document.querySelector("[data-export-monitor-csv]")'), 'missing copy/export controls');
   await evaluate('document.querySelector(".monitor-snapshot__copy")?.click()');
   await wait(180);
   const monitorCopyState = await evaluate('document.querySelector(".monitor-snapshot__copy-message")?.innerText||""');
   assert('presenter daily monitoring brief copy is wired', monitorCopyState.includes('회의용 일일 감리 요약을 복사했습니다.') || monitorCopyState.includes('복사에 실패했습니다'), monitorCopyState);
+  await evaluate('document.querySelector("[data-export-monitor-csv]")?.click()');
+  await wait(180);
+  const monitorExportState = await evaluate('document.querySelector(".monitor-snapshot__copy-message")?.innerText||""');
+  assert('presenter monitoring queue can be exported for a meeting', monitorExportState.includes('감리 큐 CSV를 내려받았습니다.') || monitorExportState.includes('다운로드'), monitorExportState);
   await evaluate('document.querySelector(".monitor-snapshot__queue details")?.setAttribute("open", "")');
   await evaluate('document.querySelector(".monitor-candidate-review-button")?.click()');
   await wait(180);
@@ -245,8 +249,8 @@ try {
   await wait(180);
   const copyReviewState = await evaluate('document.querySelector(".video-review-draft__actions")?.innerText||""');
   assert('presenter review draft copy action is wired', copyReviewState.includes('감리 기록 초안을 복사했습니다.') || copyReviewState.includes('복사에 실패했습니다'), copyReviewState);
-  const reviewSummary = await evaluate('({count:document.querySelector(".video-review-summary")?.innerText||"",buttons:document.querySelectorAll(".video-review-summary button").length,disabled:document.querySelector(".video-review-summary button")?.disabled??true})');
-  assert('presenter review draft summary exposes batch copy', reviewSummary.count.includes('감리 초안 1건') && reviewSummary.count.includes('미완료 9건') && reviewSummary.buttons === 2 && reviewSummary.disabled === false, JSON.stringify(reviewSummary));
+  const reviewSummary = await evaluate('({count:document.querySelector(".video-review-summary")?.innerText||"",buttons:document.querySelectorAll(".video-review-summary button").length,disabled:document.querySelector(".video-review-summary button")?.disabled??true,exportButton:!!document.querySelector("[data-export-video-db-csv]")})');
+  assert('presenter review draft summary exposes batch copy and DB export', reviewSummary.count.includes('감리 초안 1건') && reviewSummary.count.includes('미완료 9건') && reviewSummary.buttons === 3 && reviewSummary.disabled === false && reviewSummary.exportButton, JSON.stringify(reviewSummary));
   await evaluate('document.querySelector(".video-review-summary button")?.click()');
   await wait(180);
   const batchCopyState = await evaluate('document.querySelector(".video-review-summary")?.innerText||""');
@@ -255,6 +259,10 @@ try {
   await wait(180);
   const incompleteCopyState = await evaluate('document.querySelector(".video-review-summary")?.innerText||""');
   assert('presenter can copy the unfinished audit queue for a meeting', incompleteCopyState.includes('미완료 감리 목록을 복사했습니다.') || incompleteCopyState.includes('복사에 실패했습니다'), incompleteCopyState);
+  await evaluate('document.querySelector("[data-export-video-db-csv]")?.click()');
+  await wait(180);
+  const videoExportState = await evaluate('document.querySelector(".video-review-summary")?.innerText||""');
+  assert('presenter video DB can be exported for a meeting', videoExportState.includes('영상 DB CSV를 내려받았습니다.') || videoExportState.includes('다운로드'), videoExportState);
   await press('Escape', 'Escape', 27);
   await evaluate('document.querySelector(".story-ops-board-button")?.click()');
   await waitForText('#info-panel-title', 'TF 운영 보드');

@@ -173,6 +173,22 @@ const VIDEO_CLAIM_LABELS: Record<GabaVideoRecord['audit']['claimCategories'][num
   UNREVIEWED: '미검토',
 };
 
+const csvCell = (value: unknown) => `"${String(value ?? '').replace(/"/g, '""').replace(/\r?\n/g, ' ')}"`;
+
+const downloadCsvFile = (filename: string, rows: unknown[][]) => {
+  const csv = rows.map(row => row.map(csvCell).join(',')).join('\r\n');
+  const blob = new Blob([`\uFEFF${csv}`], {type: 'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.style.display = 'none';
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 0);
+};
+
 const STORY_PHASES = [
   {id: 'everyday', label: '일상 상태', start: 0, end: 2},
   {id: 'rest', label: '회복', start: 3, end: 3},
@@ -678,6 +694,32 @@ export default function App() {
     }
   };
 
+  const exportVideoDbCsv = () => {
+    const headers = ['ID', '원본 제목', '소비자 제목', '영상 URL', '채널', '화자', '상태', '상태 사유', '무엇을 어떻게 소개했나', '인물 소개', '요약 근거', '권위', '근거', '주장 범위', '권리', '사용 방식', '다음 감리 행동', '확인일'];
+    const rows = ACTIVE_GABA_VIDEOS.map(video => [
+      video.id,
+      video.title,
+      video.publicTitle ?? '',
+      video.url,
+      video.channel,
+      video.speaker,
+      VIDEO_STATUS_LABELS[video.status],
+      video.statusReason,
+      video.publicSummary ?? video.summary,
+      video.publicPersonSummary ?? video.personSummary,
+      VIDEO_AUDIT_LABELS.contentBasis[video.audit.contentBasis],
+      VIDEO_AUDIT_LABELS.authorityLevel[video.audit.authorityLevel],
+      VIDEO_AUDIT_LABELS.evidenceLevel[video.audit.evidenceLevel],
+      video.audit.claimCategories.map(category => VIDEO_CLAIM_LABELS[category]).join(' · '),
+      VIDEO_AUDIT_LABELS.rightsStatus[video.audit.rightsStatus],
+      VIDEO_AUDIT_LABELS.usageMode[video.audit.usageMode],
+      video.audit.nextAction,
+      video.checkedAt,
+    ]);
+    downloadCsvFile(`gaba-video-db-${GABA_MONITOR_SNAPSHOT.checkedAt}.csv`, [headers, ...rows]);
+    setVideoReviewMessage('영상 DB CSV를 내려받았습니다. 공개 승인 상태는 바뀌지 않습니다.');
+  };
+
   const copyIncompleteVideoAuditQueue = async () => {
     const lines = [
       'GABA 영상 감리 진행 필요 목록',
@@ -727,6 +769,24 @@ export default function App() {
     } catch {
       setMonitorCopyMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
+  };
+
+  const exportMonitorQueueCsv = () => {
+    const queue = Array.from(new Map([...GABA_MONITOR_SNAPSHOT.pendingQueue, ...GABA_MONITOR_SNAPSHOT.authorityQueue].map(candidate => [candidate.id, candidate])).values());
+    const headers = ['ID', '제목', '발견 경로', '우선순위', '권위 신호 구분', '주의 신호', '첫 담당', '다음 행동', '상태'];
+    const rows = queue.map(candidate => [
+      candidate.id,
+      candidate.title,
+      candidate.channel,
+      'priority' in candidate ? candidate.priority : '권위 후보 확인 전',
+      'authorityBasis' in candidate ? AUTHORITY_BASIS_LABELS[candidate.authorityBasis] : '',
+      candidate.signals.join(' · '),
+      'reviewer' in candidate ? candidate.reviewer : '',
+      candidate.nextAction,
+      'PENDING_REVIEW',
+    ]);
+    downloadCsvFile(`gaba-shorts-review-queue-${GABA_MONITOR_SNAPSHOT.checkedAt}.csv`, [headers, ...rows]);
+    setMonitorCopyMessage('감리 큐 CSV를 내려받았습니다. 후보는 공개 승인되지 않았습니다.');
   };
 
   const updateTfAssignment = (roleId: string, field: 'lead' | 'backup', value: string) => {
@@ -1301,9 +1361,9 @@ export default function App() {
             {openPanel === 'video' ? <>
               <p>{presentationMode ? '발표자용 영상 DB 감리 화면입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 확인하고, 영상별 권위 수준과 공개 여부를 따로 결정합니다.' : '오늘 공유하신 국내 YouTube Shorts를 원문 확인용으로 소개합니다. 영상의 권위와 주장은 감리 상태를 따로 확인해 주세요.'}</p>
               <p className="info-panel__status">{presentationMode ? `감리 대장 ${GABA_VIDEO_DB.length}건 · 현재 국내 큐 ${filteredPanelVideos.length}건 · DB 승인 이력 ${PUBLIC_GABA_VIDEOS.length}건 · 국내 공개 승인 ${DOMESTIC_PUBLIC_GABA_VIDEOS.length}건 · 등록 영상 초안 ${Object.keys(videoReviewDrafts).length}건 · 신규 후보 초안 ${Object.keys(monitorReviewDrafts).length}건` : `오늘 공유 영상 ${SHARED_GABA_VIDEOS.length}건 · 원문 확인 필요`}</p>
-              {presentationMode ? <div className="video-review-summary" aria-label="감리 목록 복사"><span>감리 초안 {Object.keys(videoReviewDrafts).length}건 · 미완료 {incompleteAuditVideos.length}건</span><button type="button" disabled={!Object.keys(videoReviewDrafts).length} onClick={copyAllVideoReviewDrafts}>작성 초안 전체 복사</button><button type="button" disabled={!incompleteAuditVideos.length} onClick={copyIncompleteVideoAuditQueue}>미완료 목록 복사</button><small aria-live="polite">{videoReviewMessage}</small></div> : null}
+              {presentationMode ? <div className="video-review-summary" aria-label="감리 목록 복사"><span>감리 초안 {Object.keys(videoReviewDrafts).length}건 · 미완료 {incompleteAuditVideos.length}건</span><button type="button" disabled={!Object.keys(videoReviewDrafts).length} onClick={copyAllVideoReviewDrafts}>작성 초안 전체 복사</button><button type="button" disabled={!incompleteAuditVideos.length} onClick={copyIncompleteVideoAuditQueue}>미완료 목록 복사</button><button type="button" data-export-video-db-csv onClick={exportVideoDbCsv}>영상 DB CSV 내려받기</button><small aria-live="polite">{videoReviewMessage}</small></div> : null}
               {presentationMode ? <div className="monitor-snapshot">
-                <div className="monitor-snapshot__heading"><p className="eyebrow">일일 감리 상태</p><button type="button" className="monitor-snapshot__copy" onClick={copyDailyMonitorBrief}>회의용 요약 복사</button></div>
+                <div className="monitor-snapshot__heading"><p className="eyebrow">일일 감리 상태</p><div className="monitor-snapshot__actions"><button type="button" className="monitor-snapshot__copy" onClick={copyDailyMonitorBrief}>회의용 요약 복사</button><button type="button" className="monitor-snapshot__copy" data-export-monitor-csv onClick={exportMonitorQueueCsv}>감리 큐 CSV 내려받기</button></div></div>
                 <small className="monitor-snapshot__copy-message" aria-live="polite">{monitorCopyMessage}</small>
                 <p><strong>{GABA_MONITOR_SNAPSHOT.checkedAt}</strong> 마지막 자동 확인 · 채널 {GABA_MONITOR_SNAPSHOT.sourceChannels}/{GABA_MONITOR_SNAPSHOT.registeredChannels} · 검색어 {GABA_MONITOR_SNAPSHOT.discoveryQueries}/{GABA_MONITOR_SNAPSHOT.totalDiscoveryQueries}</p>
                 <p>검토 대기 {GABA_MONITOR_SNAPSHOT.pendingReview}건 · SCIENCE/MEDICAL 우선 {GABA_MONITOR_SNAPSHOT.scienceMedicalPriority}건 · 신규 후보 {GABA_MONITOR_SNAPSHOT.newCandidates}건 · 자동 공개 {GABA_MONITOR_SNAPSHOT.autoPublish}건</p>
