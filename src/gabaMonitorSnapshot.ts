@@ -4,7 +4,7 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredChannels": 8,
   "discoveryQueries": 4,
   "totalDiscoveryQueries": 4,
-  "newCandidates": 1,
+  "newCandidates": 0,
   "pendingReview": 78,
   "scienceMedicalPriority": 48,
   "videoPriority": 30,
