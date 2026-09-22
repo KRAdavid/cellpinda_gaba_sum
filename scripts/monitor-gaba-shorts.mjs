@@ -5,6 +5,7 @@ const root = process.cwd();
 const inboxPath = path.join(root, 'docs', 'GABA_VIDEO_INBOX.md');
 const reportPath = path.join(root, 'docs', 'GABA_VIDEO_DAILY_REPORT.md');
 const triagePath = path.join(root, 'docs', 'GABA_VIDEO_TRIAGE.md');
+const snapshotPath = path.join(root, 'src', 'gabaMonitorSnapshot.ts');
 const reportArchiveDir = path.join(root, 'docs', 'gaba-video-daily');
 const writeMode = process.argv.includes('--write');
 const keywords = [/가바/i, /\bGABA\b/i];
@@ -175,6 +176,27 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates}) => {
+  const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
+  const ranked = entries.map(entry => screenCandidate(`${entry.title} ${entry.description}`));
+  const scienceMedicalPriority = ranked.filter(item => item.priority !== 'VIDEO 우선').length;
+  const snapshot = {
+    checkedAt: date,
+    sourceChannels: successfulSources,
+    registeredChannels: sources.length,
+    discoveryQueries: successfulSearches,
+    totalDiscoveryQueries: discoveryQueries.length,
+    newCandidates,
+    pendingReview: entries.length,
+    scienceMedicalPriority,
+    videoPriority: entries.length - scienceMedicalPriority,
+    autoPublish: 0,
+    triageUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md',
+    reportUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md',
+  };
+  return `export const GABA_MONITOR_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)} as const;\n`;
+};
+
 const dailyReport = ({successfulSources, successfulSearches, candidates, errors, fallbackSources}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
@@ -328,9 +350,17 @@ const main = async () => {
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
   const updatedInbox = fs.readFileSync(inboxPath, 'utf8');
   fs.writeFileSync(triagePath, triageMarkdown({inboxText: updatedInbox, checkedDate}), 'utf8');
+  fs.writeFileSync(snapshotPath, monitorSnapshotTypeScript({
+    inboxText: updatedInbox,
+    checkedDate,
+    successfulSources,
+    successfulSearches,
+    newCandidates: candidates.length,
+  }), 'utf8');
   console.log('- wrote: daily report to docs/GABA_VIDEO_DAILY_REPORT.md');
   console.log('- archived: docs/gaba-video-daily/GABA_VIDEO_DAILY_REPORT_' + checkedDate + '.md');
   console.log('- wrote: triage board to docs/GABA_VIDEO_TRIAGE.md');
+  console.log('- wrote: monitor snapshot to src/gabaMonitorSnapshot.ts');
 };
 
 main().catch(error => {

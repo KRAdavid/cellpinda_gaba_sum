@@ -1,5 +1,6 @@
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {GABA_VIDEO_DB, PUBLIC_GABA_VIDEOS, type GabaVideoRecord} from './gabaVideos';
+import {GABA_MONITOR_SNAPSHOT} from './gabaMonitorSnapshot';
 
 type PanelKey = 'research' | 'video';
 type SlideLink = {href: string; label: string; panel: PanelKey};
@@ -674,6 +675,12 @@ export default function App() {
             {openPanel === 'video' ? <>
               <p>{presentationMode ? '발표자용 영상 DB입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 감리한 뒤 공개 여부를 결정합니다.' : '공개 승인된 일반 GABA 설명 영상만 보여드립니다. 영상의 권위와 주장의 근거를 따로 확인하고, 원문 보기는 보조 행동으로 제공합니다.'}</p>
               <p className="info-panel__status">{presentationMode ? `관리 중 DB ${GABA_VIDEO_DB.length}건 · 공개 승인 ${PUBLIC_GABA_VIDEOS.length}건 · 현재 보기 ${filteredPanelVideos.length}건` : `현재 공개 승인 영상 ${PUBLIC_GABA_VIDEOS.length}건`}</p>
+              {presentationMode ? <div className="monitor-snapshot">
+                <p className="eyebrow">일일 감리 상태</p>
+                <p><strong>{GABA_MONITOR_SNAPSHOT.checkedAt}</strong> 마지막 자동 확인 · 채널 {GABA_MONITOR_SNAPSHOT.sourceChannels}/{GABA_MONITOR_SNAPSHOT.registeredChannels} · 검색어 {GABA_MONITOR_SNAPSHOT.discoveryQueries}/{GABA_MONITOR_SNAPSHOT.totalDiscoveryQueries}</p>
+                <p>검토 대기 {GABA_MONITOR_SNAPSHOT.pendingReview}건 · SCIENCE/MEDICAL 우선 {GABA_MONITOR_SNAPSHOT.scienceMedicalPriority}건 · 신규 후보 {GABA_MONITOR_SNAPSHOT.newCandidates}건 · 자동 공개 {GABA_MONITOR_SNAPSHOT.autoPublish}건</p>
+                <div className="monitor-snapshot__links"><a href={GABA_MONITOR_SNAPSHOT.triageUrl} target="_blank" rel="noopener noreferrer">감리 우선순위 보드 원문 ↗</a><a href={GABA_MONITOR_SNAPSHOT.reportUrl} target="_blank" rel="noopener noreferrer">일일 리포트 ↗</a></div>
+              </div> : null}
               {presentationMode ? <div className="video-db-tools">
                 <label className="video-db-search">영상 DB 검색
                   <input type="search" value={videoQuery} onChange={event => setVideoQuery(event.currentTarget.value)} placeholder="제목·채널·화자·ID" aria-label="영상 DB 검색" />

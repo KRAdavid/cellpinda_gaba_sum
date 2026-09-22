@@ -7,6 +7,7 @@ const monitor = read('scripts/monitor-gaba-shorts.mjs');
 const workflow = read('.github/workflows/monitor-gaba-shorts.yml');
 const report = read('docs/GABA_VIDEO_DAILY_REPORT.md');
 const inbox = read('docs/GABA_VIDEO_INBOX.md');
+const snapshot = read('src/gabaMonitorSnapshot.ts');
 const triagePath = path.join(root, 'docs', 'GABA_VIDEO_TRIAGE.md');
 const triage = fs.existsSync(triagePath) ? fs.readFileSync(triagePath, 'utf8') : '';
 
@@ -30,6 +31,9 @@ assert('workflow runs daily and includes report archive changes', workflow.inclu
 assert('daily report keeps candidates in review status', report.includes('자동 공개: 0건') && report.includes('PENDING_REVIEW'));
 assert('triage classifier is present and explicitly non-approval', monitor.includes('screenCandidate') && monitor.includes('triagePath') && monitor.includes('제목 기반 주의 신호'));
 assert('workflow stages triage board changes', workflow.includes('docs/GABA_VIDEO_TRIAGE.md'));
+assert('monitor generates a presenter snapshot', monitor.includes('snapshotPath') && monitor.includes('monitorSnapshotTypeScript') && monitor.includes("path.join(root, 'src', 'gabaMonitorSnapshot.ts')"));
+assert('workflow stages presenter snapshot changes', workflow.includes('src/gabaMonitorSnapshot.ts'));
+assert('presenter snapshot keeps publication gated', snapshot.includes('GABA_MONITOR_SNAPSHOT') && snapshot.includes('pendingReview') && snapshot.includes('autoPublish') && snapshot.includes('"autoPublish": 0'));
 assert('triage board exists and keeps human review boundary', triage.includes('GABA 숏츠 감리 우선순위 보드') && triage.includes('공개 승인을 판정하지 않는다') && triage.includes('PENDING_REVIEW'));
 assert('inbox has no duplicate video IDs', new Set(inboxIds).size === inboxIds.length);
 
