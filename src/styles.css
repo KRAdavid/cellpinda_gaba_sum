@@ -224,3 +224,6 @@ body{background:var(--editorial-cream);color:var(--editorial-ink)}
 .video-showcase__boundary{margin:18px 0 0!important;padding-left:14px;border-left:2px solid var(--editorial-coral);color:#76543e!important;font-size:13px!important;line-height:1.7!important}.video-showcase__freshness{margin:13px 0 0!important;color:#64806c!important;font-size:11px!important;letter-spacing:.04em;line-height:1.5!important}
 @media(max-width:760px){.video-showcase__boundary{margin-top:15px!important;padding-left:11px;font-size:12px!important}.video-showcase__freshness{font-size:10px!important}}
 .video-db-detail__meta a{color:#2b684b;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:760px){.site-header--consumer .brand{color:#fff}.story-heading h2{max-width:112px;font-size:15px;line-height:1.08}.story-sequence{top:76px}.story-controls{top:112px}.story--presentation .story-sequence{top:76px}.story--presentation .story-controls{top:112px}}
+.story-sequence{text-shadow:0 1px 12px rgba(5,26,18,.62)}
+@media(min-width:761px){.card-content{width:min(100%,700px)}.card-content h3{max-width:700px;font-size:clamp(37px,4.6vw,68px)}}
