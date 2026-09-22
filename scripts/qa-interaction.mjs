@@ -65,6 +65,8 @@ const assert = (label, condition, detail = '') => {
 };
 
 try {
+  await send('Network.enable');
+  await send('Network.setCacheDisabled', {cacheDisabled: true});
   await send('Emulation.setDeviceMetricsOverride', {width: viewportWidth, height: viewportHeight, deviceScaleFactor: 1, mobile: viewportWidth <= 760});
   await send('Page.navigate', {url: baseUrl});
   await wait(900);

@@ -64,5 +64,4 @@ body{overflow-x:hidden}.site-header p{min-width:0}.intro{overflow:hidden}.intro-
 .video-db-filters button span{display:inline-block;min-width:16px;margin-left:5px;padding:1px 4px;border-radius:999px;background:#d9e9d9;color:#315c43;font-size:10px}
 .video-db-filters button:hover,.video-db-filters button.is-active{border-color:#2b7c59;background:#2b7c59;color:#fff}
 .video-db-filters button:hover span,.video-db-filters button.is-active span{background:rgba(255,255,255,.2);color:#fff}
-.video-db-item{content-visibility:auto;contain-intrinsic-size:0 116px}
 @media(max-width:760px){.video-db-tools{padding:12px}.video-db-filters{gap:6px}.video-db-filters button{font-size:10px;padding-inline:8px}}
