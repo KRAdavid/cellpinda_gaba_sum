@@ -19,7 +19,7 @@
 영상 DB 필드·제공 Shorts 등록·공개 승인 게이트는 `pnpm run qa:video-db`로 별도 점검합니다.
 발표자용 영상 상세에는 영상별로 `무엇을 어떻게 소개했나`, 인물 소개, 사업자 설명 한 문장, 요약 근거, 권위·근거 등급, 주장 범위, 권리 상태, 사용 방식, 다음 감리 행동을 함께 표시하며 사업자 설명 한 문장 또는 고객 설명 3문장을 복사할 수 있습니다.
 
-일반 교육 TF의 논점·결정·보류 사유는 [`docs/GABA_EDUCATION_DECISION_REGISTER.md`](docs/GABA_EDUCATION_DECISION_REGISTER.md)에 기록합니다.
+일반 교육 TF의 논점·결정·보류 사유는 [`docs/GABA_EDUCATION_DECISION_REGISTER.md`](docs/GABA_EDUCATION_DECISION_REGISTER.md)에 기록합니다. 실제 구성원 초대와 첫 업무 배정은 [`docs/GABA_EDUCATION_TEAM_INVITE.md`](docs/GABA_EDUCATION_TEAM_INVITE.md)를 사용합니다.
 
 이 저장소는 기존 [cellpinda_GABA](https://github.com/KRAdavid/cellpinda_GABA) 공식 배포 사이트와 구분되는 별도 일반 GABA 교육 페이지입니다. 공개 화면에는 일반 생리·일반 인체 연구·영상 검토 후보가 포함되며, 사람 검토를 마친 권위 영상만 승인 영상으로 별도 판정합니다.
 
