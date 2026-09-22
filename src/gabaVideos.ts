@@ -284,3 +284,22 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
 ];
 
 export const PUBLIC_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => video.status === 'PUBLISH_GENERAL');
+
+// Keep overseas authority records for audit history, but do not surface them in
+// the current presenter queue after the domestic-video curation decision.
+export const ACTIVE_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => !video.id.startsWith('AUTH-'));
+
+// The consumer showcase now uses the Shorts shared by the user today. These are
+// link-only review candidates, not general-efficacy endorsements. EXCLUDE records
+// stay out of the consumer surface until their source and rights are resolved.
+export const SHARED_GABA_VIDEOS = GABA_VIDEO_DB
+  .filter(video => video.id.startsWith('SHORT-') && video.status !== 'EXCLUDE')
+  .map(video => {
+    const videoId = video.url.match(/\/shorts\/([^?&#/]+)/)?.[1];
+    return {
+      ...video,
+      previewImage: videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : video.previewImage,
+      previewAlt: `${video.title} YouTube Shorts 미리보기`,
+      previewLabel: 'YouTube Shorts · 오늘 공유 영상',
+    };
+  });
