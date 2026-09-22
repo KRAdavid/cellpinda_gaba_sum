@@ -54,7 +54,7 @@ const sharedVideos: GabaVideoRecord[] = [
     title: '음식과 GABA의 관계를 설명하는 영상 후보',
     publicTitle: '음식과 GABA의 관계를 설명하는 영상 후보',
     publicSummary: '음식과 GABA 성분의 관계를 설명하는 방식의 영상입니다. 음식 속 성분과 사람에게 나타나는 결과는 따로 확인합니다.',
-    publicPersonSummary: '화자의 소속·경력 확인 출처가 있으나, 영상 발언과 GABA 연구 근거를 자동 승인하는 자료는 아닙니다.',
+    publicPersonSummary: '화자의 소속·경력 확인 출처가 있으나, 영상 발언과 GABA 연구 근거를 자동 승인하는 자료는 아닙니다. 인물 프로필의 이용 조건도 영상 원문·이미지·문구의 상업적 재사용 권리를 뜻하지 않습니다.',
     publicOperatorSentence: '음식 속 GABA와 일반 인체 연구를 구분해 원문·자막·근거를 확인합니다.',
     url: 'https://www.youtube.com/shorts/7Zsxm9Wh2Yg',
     previewImage: 'https://i.ytimg.com/vi/7Zsxm9Wh2Yg/hqdefault.jpg',
@@ -70,7 +70,7 @@ const sharedVideos: GabaVideoRecord[] = [
     status: 'LIMITED_USE',
     statusReason: '음식 속 성분 설명과 섭취 후 인체 결과를 분리해 확인해야 합니다.',
     checkedAt: '2026-09-23',
-    audit: {contentBasis: 'TITLE_AND_PUBLIC_DESCRIPTION', authorityLevel: 'PARTIAL', evidenceLevel: 'C', claimCategories: ['GENERAL_PHYSIOLOGY', 'ORAL_GABA_HUMAN_RESEARCH'], rightsStatus: 'CHECK_REQUIRED', usageMode: 'REVIEW_ONLY', nextAction: '음식 속 GABA와 경구 섭취 연구·개인 효과 주장을 분리'},
+    audit: {contentBasis: 'TITLE_AND_PUBLIC_DESCRIPTION', authorityLevel: 'PARTIAL', evidenceLevel: 'C', claimCategories: ['GENERAL_PHYSIOLOGY', 'ORAL_GABA_HUMAN_RESEARCH'], rightsStatus: 'CHECK_REQUIRED', usageMode: 'REVIEW_ONLY', nextAction: '음식 속 GABA와 경구 섭취 연구·개인 효과 주장을 분리하고, 인물 프로필은 이용 조건상 인물 확인용으로만 사용한다. 영상 원문·문구·이미지의 권리는 별도로 확인한다.'},
   },
   {
     id: 'SHORT-02',

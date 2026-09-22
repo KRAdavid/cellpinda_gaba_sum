@@ -215,7 +215,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     speaker: '정이안',
     summary: '자율신경 건강을 음식과 GABA 성분의 관계로 설명하는 프레임입니다. 제목·채널 설명 기반 예비 요약입니다.',
     operatorSentence: '음식 속 GABA와 섭취 후 효과를 분리 확인하기 전에는 공개 설명에 사용하지 않는 후보입니다.',
-    personSummary: '서울시 공식 소개 자료는 정이안을 한의학 박사·한의원 원장·동국대 외래교수로 소개합니다. 이 확인은 영상 발언과 GABA 연구 근거를 승인하는 자료가 아닙니다.',
+    personSummary: '서울시 공식 소개 자료는 정이안을 한의학 박사·한의원 원장·동국대 외래교수로 소개합니다. 이 확인은 영상 발언과 GABA 연구 근거를 승인하는 자료가 아닙니다. 해당 프로필의 이용 조건도 영상 원문·이미지·문구의 상업적 재사용 권리로 해석하지 않습니다.',
     authorityEvidenceUrl: 'https://mediahub.seoul.go.kr/archives/1135642',
     status: 'LIMITED_USE',
     statusReason: 'GABA 함유 식품과 섭취 후 인체 효과를 분리 확인해야 합니다.',
@@ -227,7 +227,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
       claimCategories: ['GENERAL_PHYSIOLOGY', 'ORAL_GABA_HUMAN_RESEARCH', 'PRODUCT_COMMERCIAL'],
       rightsStatus: 'CHECK_REQUIRED',
       usageMode: 'REVIEW_ONLY',
-      nextAction: '음식 속 GABA와 경구 섭취 연구·개인 효과 주장을 분리',
+      nextAction: '음식 속 GABA와 경구 섭취 연구·개인 효과 주장을 분리하고, 서울시 프로필은 인물 확인용으로만 사용한다. 프로필 문구·이미지의 재가공·상업 활용은 원문 이용 조건과 영상 권리를 별도로 확인한다.',
     },
   },
   {
