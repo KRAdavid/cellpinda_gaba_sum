@@ -381,6 +381,7 @@ export default function App() {
   const [videoFilter, setVideoFilter] = useState<VideoFilter>('ALL');
   const [videoQuery, setVideoQuery] = useState('');
   const [showcaseVideoIndex, setShowcaseVideoIndex] = useState(0);
+  const [approvedVideoIndex, setApprovedVideoIndex] = useState(0);
   const [tfAssignments, setTfAssignments] = useState<TfAssignment>({});
   const [tfMeetingDraft, setTfMeetingDraft] = useState('');
   const [tfAssignmentMessage, setTfAssignmentMessage] = useState('');
@@ -410,9 +411,20 @@ export default function App() {
   const phaseNavRef = useRef<HTMLElement>(null);
   const activePhase = STORY_PHASES.find(phase => active >= phase.start && active <= phase.end) ?? STORY_PHASES[0];
   const nextSlide = slides[active + 1];
-  const publicVideo = SHARED_GABA_VIDEOS[0] ?? null;
+  const approvedVideos = useMemo(() => DOMESTIC_PUBLIC_GABA_VIDEOS.map(video => {
+    const videoId = video.url.match(/\/shorts\/([^?&#/]+)/)?.[1];
+    return {
+      ...video,
+      previewImage: video.previewImage ?? (videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : undefined),
+      previewAlt: video.previewAlt ?? `${video.title} 원문 미리보기`,
+      previewLabel: video.previewLabel ?? '사람 검토 완료 · 일반 GABA 교육',
+    };
+  }), []);
+  const publicPanelVideos = useMemo(() => [...approvedVideos, ...SHARED_GABA_VIDEOS], [approvedVideos]);
+  const approvedVideo = approvedVideos[approvedVideoIndex] ?? approvedVideos[0] ?? null;
+  const publicVideo = publicPanelVideos[0] ?? null;
   const showcaseVideo = SHARED_GABA_VIDEOS[showcaseVideoIndex] ?? SHARED_GABA_VIDEOS[0] ?? null;
-  const panelVideos = presentationMode ? ACTIVE_GABA_VIDEOS : SHARED_GABA_VIDEOS;
+  const panelVideos = presentationMode ? ACTIVE_GABA_VIDEOS : publicPanelVideos;
   const selectedVideo = panelVideoId ? panelVideos.find(video => video.id === panelVideoId) ?? GABA_VIDEO_DB.find(video => video.id === panelVideoId) ?? null : null;
   const selectedVideoIndex = selectedVideo ? panelVideos.findIndex(video => video.id === selectedVideo.id) : -1;
   const nextVideo = selectedVideoIndex >= 0 ? panelVideos[selectedVideoIndex + 1] ?? null : null;
@@ -1155,6 +1167,12 @@ export default function App() {
     setPreviewImageError(false);
   };
 
+  const selectApprovedVideo = (index: number) => {
+    const nextIndex = Math.max(0, Math.min(approvedVideos.length - 1, index));
+    setApprovedVideoIndex(nextIndex);
+    setPreviewImageError(false);
+  };
+
   const enterPresentation = (returnElement?: HTMLElement | null, startIndex = active) => {
     const start = Math.max(0, Math.min(slides.length - 1, startIndex));
     presentationReturnRef.current = returnElement ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
@@ -1661,6 +1679,49 @@ export default function App() {
           </aside>
         </div> : null}
       </section>
+
+      {!presentationMode && approvedVideo ? <section id="approved-video-showcase" className="approved-video-showcase video-showcase" aria-labelledby="approved-video-showcase-title">
+        <div className="video-showcase__inner">
+          <div className="video-showcase__heading">
+            <div>
+              <p className="eyebrow">사람 검토 완료 · 일반 GABA 교육</p>
+              <h2 id="approved-video-showcase-title">검토를 마친 영상만,<br /><em>일반 교육으로 이어집니다.</em></h2>
+            </div>
+            <div>
+              <p>원문·자막·화자·근거·권리 확인을 마친 국내 영상만 이 영역에 자동으로 연결합니다.</p>
+              <p className="video-showcase__boundary">이 영역의 공개는 특정 제품의 효능이나 치료 결과를 보증하지 않으며, 일반 GABA 교육 범위에 한정합니다.</p>
+              <p className="video-showcase__freshness">공개 승인 기준 {approvedVideo.checkedAt} · 상태 {VIDEO_STATUS_LABELS[approvedVideo.status]}</p>
+            </div>
+          </div>
+          <div className="video-showcase__flow">
+            <nav className="video-showcase__index" aria-label="검토 완료 영상 순서">
+              <div className="video-showcase__index-heading"><span>검토 완료 영상</span><strong>{String(approvedVideoIndex + 1).padStart(2, '0')} / {String(approvedVideos.length).padStart(2, '0')}</strong></div>
+              <div className="video-showcase__index-list">
+                {approvedVideos.map((video, index) => <button key={video.id} type="button" className={`video-showcase__index-button${index === approvedVideoIndex ? ' is-active' : ''}`} onClick={() => selectApprovedVideo(index)} aria-current={index === approvedVideoIndex ? 'step' : undefined}>
+                  <span>{String(index + 1).padStart(2, '0')}</span><strong>{video.channel}</strong><small>일반 교육 공개 승인</small>
+                </button>)}
+              </div>
+              <p>공개 승인된 영상도 원문과 일반 연구의 범위를 구분해 읽습니다.</p>
+            </nav>
+            <article className="video-showcase__item" aria-live="polite">
+              <button type="button" className="video-showcase__media" onClick={event => openVideoPanel(event.currentTarget, approvedVideo.id)} aria-label={`${approvedVideo.publicTitle ?? approvedVideo.title} 상세 감리 보기`}>
+                {approvedVideo.previewImage ? <><img src={approvedVideo.previewImage} alt={approvedVideo.previewAlt ?? `${approvedVideo.title} 원문 미리보기`} loading="lazy" decoding="async" onError={event => {event.currentTarget.style.display = 'none'; event.currentTarget.parentElement?.classList.add('is-image-missing');}} /><div className="video-showcase__source-mark video-showcase__source-mark--fallback"><span>공식 원문</span><strong>{approvedVideo.previewLabel}</strong><small>상세 패널에서 원문 확인</small></div></> : <div className="video-showcase__source-mark"><span>공식 원문</span><strong>{approvedVideo.previewLabel}</strong><small>상세 패널에서 원문 확인</small></div>}
+                <span className="video-showcase__play" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5.2v13.6L19 12 8 5.2Z" /></svg></span>
+              </button>
+              <div className="video-showcase__copy">
+                <div className="video-showcase__meta"><span>{approvedVideo.id}</span><span className="video-showcase__status">일반 교육 공개 승인</span></div>
+                <h3>{approvedVideo.publicTitle ?? approvedVideo.title}</h3>
+                <p className="video-showcase__channel">{approvedVideo.channel} · {approvedVideo.speaker}</p>
+                <div className="video-showcase__audit" aria-label="검토 완료 영상 상태"><span>권위: {VIDEO_AUDIT_LABELS.authorityLevel[approvedVideo.audit.authorityLevel]}</span><span>근거: {VIDEO_AUDIT_LABELS.evidenceLevel[approvedVideo.audit.evidenceLevel]}</span><span>요약 근거: {VIDEO_AUDIT_LABELS.contentBasis[approvedVideo.audit.contentBasis]}</span><span>사용: {VIDEO_AUDIT_LABELS.usageMode[approvedVideo.audit.usageMode]}</span></div>
+                <p><strong>무엇을 어떻게 소개했나</strong><br />{approvedVideo.publicSummary ?? approvedVideo.summary}</p>
+                <p><strong>인물 소개</strong><br />{approvedVideo.publicPersonSummary ?? approvedVideo.personSummary}</p>
+                <div className="video-showcase__actions"><button type="button" onClick={event => openVideoPanel(event.currentTarget, approvedVideo.id)}>상세 감리 보기 <span aria-hidden="true">＋</span></button><span className="video-showcase__source-note">원문 링크는 상세 패널에서 선택</span></div>
+                <div className="video-showcase__pager" aria-label="검토 완료 영상 이동"><button type="button" onClick={() => selectApprovedVideo(approvedVideoIndex - 1)} disabled={approvedVideoIndex === 0}>이전 영상</button><button type="button" onClick={() => selectApprovedVideo(approvedVideoIndex + 1)} disabled={approvedVideoIndex === approvedVideos.length - 1}>다음 영상 <span aria-hidden="true">→</span></button></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section> : null}
 
       {!presentationMode ? <section id="video-showcase" className="video-showcase" aria-labelledby="video-showcase-title">
         <div className="video-showcase__inner">
