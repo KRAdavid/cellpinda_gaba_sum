@@ -1253,6 +1253,7 @@ export default function App() {
       `메타데이터: ${snapshot.registeredVideoMetadataHealthy}/${snapshot.registeredVideoMetadataChecked} · 경고 ${snapshot.registeredVideoMetadataWarnings}건`,
       `자막 트랙: ${snapshot.registeredVideoCaptionTracksAvailable}/${snapshot.registeredVideoCaptionTracksChecked} · 경고 ${snapshot.registeredVideoCaptionTrackWarnings}건`,
       `자막 본문: ${snapshot.registeredVideoCaptionBodiesAvailable}/${snapshot.registeredVideoCaptionBodiesChecked} · 경고 ${snapshot.registeredVideoCaptionBodyWarnings}건 · HTTP 429 접근 제한 ${snapshot.registeredVideoCaptionBodyRateLimited}건`,
+      `메타데이터 상세 감사: ${snapshot.metadataAuditUrl}`,
       `자막 상세 감사: ${snapshot.captionAuditUrl}`,
       '',
       '오늘 먼저 검토할 후보',
