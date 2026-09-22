@@ -859,7 +859,7 @@ export default function App() {
                 <p className="video-showcase__channel">{video.channel} · {video.speaker}</p>
                 <p><strong>무엇을 어떻게 소개했나 · 예비</strong><br />{video.summary}</p>
                 <p><strong>인물 소개</strong><br />{video.personSummary}</p>
-                <div className="video-showcase__actions"><a href={video.url} target="_blank" rel="noopener noreferrer">YouTube 원문 영상 보기 ↗</a><button type="button" onClick={event => openVideoPanel(event.currentTarget, video.id)}>상세 감리 보기</button></div>
+                <div className="video-showcase__actions"><button type="button" onClick={event => openVideoPanel(event.currentTarget, video.id)}>상세 감리 먼저 보기 <span aria-hidden="true">＋</span></button><span className="video-showcase__source-note">원문 링크는 상세 패널에서 선택</span></div>
               </div>
             </article>)}
           </div>
