@@ -1,7 +1,7 @@
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {ACTIVE_GABA_VIDEOS, DOMESTIC_PUBLIC_GABA_VIDEOS, GABA_VIDEO_DB, PUBLIC_GABA_VIDEOS, SHARED_GABA_VIDEOS, type GabaVideoRecord} from './gabaVideos';
 import {GABA_MONITOR_SNAPSHOT} from './gabaMonitorSnapshot';
-import {TF_MEETING_STEPS, TF_ROLES, TF_WORKSTREAMS} from './tfBoard';
+import {TF_DISCUSSION_ITEMS, TF_MEETING_STEPS, TF_ROLES, TF_WORKSTREAMS} from './tfBoard';
 
 type PanelKey = 'research' | 'video' | 'ops';
 type SlideLink = {href: string; label: string; panel: PanelKey};
@@ -286,6 +286,7 @@ export default function App() {
   const [tfAssignments, setTfAssignments] = useState<TfAssignment>({});
   const [tfMeetingDraft, setTfMeetingDraft] = useState('');
   const [tfAssignmentMessage, setTfAssignmentMessage] = useState('');
+  const [tfDiscussionMessage, setTfDiscussionMessage] = useState('');
   const [videoReviewDrafts, setVideoReviewDrafts] = useState<VideoReviewDrafts>({});
   const [videoReviewMessage, setVideoReviewMessage] = useState('');
   const [monitorCopyMessage, setMonitorCopyMessage] = useState('');
@@ -640,12 +641,51 @@ export default function App() {
     }
   };
 
+  const copyTfDiscussionBrief = async () => {
+    const lines = [
+      '일반 GABA 교육 TF 오늘의 토론 논점',
+      ...TF_DISCUSSION_ITEMS.map((item, index) => [
+        `${index + 1}. ${item.id} · ${item.issue}`,
+        `상태: ${item.status} · 다음 담당: ${item.nextOwner}`,
+        `필요 증거: ${item.evidence}`,
+        `종료 조건: ${item.exit}`,
+      ].join('\n')),
+      '',
+      '토론 순서: 문제 → 관점 → 증거 → 결정 또는 HOLD → 다음 담당·기한·종료 조건',
+      '※ 제품·후기·판매 문구가 아닌 일반 GABA 교육 범위의 팀 토론 초안입니다.',
+    ];
+    try {
+      await copyText(lines.join('\n\n'));
+      setTfDiscussionMessage('오늘의 토론 논점을 복사했습니다.');
+    } catch {
+      setTfDiscussionMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
+  };
+
   const copyPresenterAnswer = async (label: string, answer: string) => {
     try {
       await copyText(answer);
       setPresenterCopyMessage(`${label} 답변을 복사했습니다.`);
     } catch {
       setPresenterCopyMessage(`${label} 답변 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.`);
+    }
+  };
+
+  const copyPresenterSceneBrief = async () => {
+    const slide = slides[active];
+    const lines = [
+      `일반 GABA 교육 설명문 · ${slide.label}`,
+      `핵심 메시지: ${slide.title}`,
+      `설명: ${slide.body}`,
+      `설명 경계: ${slide.presenterBoundary}`,
+      '',
+      '※ 일반 교육용 설명문이며 개인 진단·치료·특정 제품의 효능을 의미하지 않습니다.',
+    ];
+    try {
+      await copyText(lines.join('\n'));
+      setPresenterCopyMessage('현재 장면 설명문을 복사했습니다.');
+    } catch {
+      setPresenterCopyMessage('설명문 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
   };
 
@@ -1052,7 +1092,7 @@ export default function App() {
         {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="고객에게 전달할 장면 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>고객용 링크 복사</button></div> : null}
         {presentationMode ? <>
           <p className="presenter-next-hint" aria-live="polite">{nextSlide ? <>다음 설명: <strong>{nextSlide.label}</strong></> : '마지막 설명 장면입니다.'}</p>
-          <details className="presenter-note"><summary>발표자용 진행 포인트</summary><div className="presenter-note__grid"><div><strong>고객에게 물어보기</strong><p>{slides[active].presenterPrompt}</p></div><div><strong>이어서 말할 때</strong><p>{slides[active].presenterBoundary}</p></div></div></details>
+          <details className="presenter-note"><summary>발표자용 진행 포인트</summary><div className="presenter-note__grid"><div><strong>고객에게 물어보기</strong><p>{slides[active].presenterPrompt}</p></div><div><strong>이어서 말할 때</strong><p>{slides[active].presenterBoundary}</p></div></div><div className="presenter-note__actions"><button type="button" onClick={copyPresenterSceneBrief}>현재 장면 설명문 복사</button></div></details>
           <details className="presenter-questions"><summary>자주 묻는 질문에 답하기</summary><div className="presenter-questions__list">{PRESENTER_QUESTIONS.map(question => <div key={question.label}><div className="presenter-questions__heading"><strong>{question.label}</strong><button type="button" className="presenter-answer-copy" onClick={() => copyPresenterAnswer(question.label, question.answer)}>답변 복사</button></div><p>{question.answer}</p></div>)}</div></details>
           <p className="presenter-copy-message" aria-live="polite">{presenterCopyMessage}</p>
         </> : null}
@@ -1230,6 +1270,22 @@ export default function App() {
                   <label className="tf-board__meeting-draft">첫 회의 일시<input type="text" value={tfMeetingDraft} onChange={event => updateTfMeetingDraft(event.currentTarget.value)} placeholder="예: 2026-09-23 10:00" /></label>
                   <div className="tf-board__assignment-actions"><button type="button" onClick={copyTfAssignmentDraft}>배정 초안 복사</button><span aria-live="polite">{tfAssignmentMessage}</span></div>
                   <p className="tf-board__assignment-note">현재 상단 지표와 공식 문서의 `0/7` 상태는 자동으로 바뀌지 않습니다. 실제 담당자 확정 후 킥오프 문서에 반영해야 합니다.</p>
+                </div>
+              </details>
+              <details className="tf-board__discussion">
+                <summary>오늘의 토론 논점 보기 <span aria-hidden="true">＋</span></summary>
+                <div className="tf-board__discussion-body">
+                  <p>각 논점은 문제 → 관점 → 증거 → 결정 또는 HOLD → 다음 담당·기한·종료 조건 순서로 회의합니다. 기술 QA와 사람 검토를 섞지 않습니다.</p>
+                  <div className="tf-board__discussion-list">
+                    {TF_DISCUSSION_ITEMS.map(item => <article key={item.id} className="tf-board__discussion-item">
+                      <div className="tf-board__discussion-topline"><strong>{item.id}</strong><span>{item.status}</span></div>
+                      <h3>{item.issue}</h3>
+                      <p><b>필요 증거:</b> {item.evidence}</p>
+                      <p><b>다음 담당:</b> {item.nextOwner}</p>
+                      <p><b>종료 조건:</b> {item.exit}</p>
+                    </article>)}
+                  </div>
+                  <div className="tf-board__discussion-actions"><button type="button" onClick={copyTfDiscussionBrief}>회의 논점 복사</button><span aria-live="polite">{tfDiscussionMessage}</span></div>
                 </div>
               </details>
               <div className="tf-board__list">

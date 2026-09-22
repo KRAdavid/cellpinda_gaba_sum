@@ -162,8 +162,13 @@ try {
 
   await send('Page.navigate', {url: routeUrl({mode: 'presenter', card: '1'})});
   await waitForPresentation('01 / 08');
-  const presenterEntry = await evaluate('({presentation:!!document.querySelector(".story--presentation"),button:!!document.querySelector(".story-video-db-button"),opsButton:!!document.querySelector(".story-ops-board-button"),product:document.body.innerText.includes("셀핀다 제품")})');
-  assert('presenter mode exposes the video DB and operations controls', presenterEntry.presentation && presenterEntry.button && presenterEntry.opsButton && !presenterEntry.product, JSON.stringify(presenterEntry));
+  const presenterEntry = await evaluate('({presentation:!!document.querySelector(".story--presentation"),button:!!document.querySelector(".story-video-db-button"),opsButton:!!document.querySelector(".story-ops-board-button"),sceneCopy:!!document.querySelector(".presenter-note__actions button"),product:document.body.innerText.includes("셀핀다 제품")})');
+  assert('presenter mode exposes the video DB, operations controls, and scene copy', presenterEntry.presentation && presenterEntry.button && presenterEntry.opsButton && presenterEntry.sceneCopy && !presenterEntry.product, JSON.stringify(presenterEntry));
+  await evaluate('document.querySelector(".presenter-note summary")?.click()');
+  await evaluate('document.querySelector(".presenter-note__actions button")?.click()');
+  await wait(180);
+  const sceneCopyState = await evaluate('document.querySelector(".presenter-copy-message")?.innerText||""');
+  assert('presenter can copy a product-free scene explanation', sceneCopyState.includes('현재 장면 설명문을 복사했습니다.') || sceneCopyState.includes('복사에 실패했습니다'), sceneCopyState);
   await evaluate('document.querySelector(".story-video-db-button")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
   const presenterDb = await evaluate('({items:document.querySelectorAll(".video-db-item").length,hasHold:document.querySelector(".video-db-list")?.innerText.includes("검토 보류")||false,detail:document.querySelector(".video-db-detail")?.innerText||"",body:document.querySelector(".video-db-list")?.innerText||"",panel:document.querySelector(".info-panel")?.innerText||"",search:!!document.querySelector(".video-db-search input"),filters:document.querySelectorAll(".video-db-filters button").length})');
@@ -212,11 +217,18 @@ try {
   await press('Escape', 'Escape', 27);
   await evaluate('document.querySelector(".story-ops-board-button")?.click()');
   await waitForText('#info-panel-title', 'TF 운영 보드');
-  const opsBoard = await evaluate('({text:document.querySelector(".info-panel")?.innerText||"",workstreams:document.querySelectorAll(".tf-board__item").length,links:document.querySelectorAll(".tf-board__links a").length,hold:[...document.querySelectorAll(".tf-board__item-topline strong")].filter(element => element.innerText === "HOLD").length,assignment:!!document.querySelector(".tf-board__assignment"),roles:document.querySelectorAll(".tf-board__role-row").length,assignmentButton:!!document.querySelector(".tf-board__assignment-actions button")})');
-  assert('presenter operations board keeps human gates and next actions visible', opsBoard.text.includes('핵심 역할 배정') && opsBoard.text.includes('다음 행동') && opsBoard.workstreams === 4 && opsBoard.links === 2 && opsBoard.hold === 4 && opsBoard.assignment && opsBoard.roles === 7 && opsBoard.assignmentButton, JSON.stringify(opsBoard));
+  const opsBoard = await evaluate('({text:document.querySelector(".info-panel")?.innerText||"",workstreams:document.querySelectorAll(".tf-board__item").length,links:document.querySelectorAll(".tf-board__links a").length,hold:[...document.querySelectorAll(".tf-board__item-topline strong")].filter(element => element.innerText === "HOLD").length,assignment:!!document.querySelector(".tf-board__assignment"),roles:document.querySelectorAll(".tf-board__role-row").length,assignmentButton:!!document.querySelector(".tf-board__assignment-actions button"),discussion:!!document.querySelector(".tf-board__discussion"),discussionItems:document.querySelectorAll(".tf-board__discussion-item").length})');
+  assert('presenter operations board keeps human gates, next actions, and discussion queue visible', opsBoard.text.includes('핵심 역할 배정') && opsBoard.text.includes('다음 행동') && opsBoard.workstreams === 4 && opsBoard.links === 2 && opsBoard.hold === 4 && opsBoard.assignment && opsBoard.roles === 7 && opsBoard.assignmentButton && opsBoard.discussion && opsBoard.discussionItems === 4, JSON.stringify(opsBoard));
   await evaluate('document.querySelector(".tf-board__assignment summary")?.click()');
   const assignmentDraft = await evaluate('({open:document.querySelector(".tf-board__assignment")?.open||false,inputs:document.querySelectorAll(".tf-board__assignment input").length,copy:document.querySelector(".tf-board__assignment-actions button")?.innerText||"",note:document.querySelector(".tf-board__assignment-note")?.innerText||""})');
   assert('presenter operations board offers a local assignment draft without changing approval gates', assignmentDraft.open && assignmentDraft.inputs === 15 && assignmentDraft.copy.includes('배정 초안 복사') && assignmentDraft.note.includes('0/7'), JSON.stringify(assignmentDraft));
+  await evaluate('document.querySelector(".tf-board__discussion summary")?.click()');
+  const discussion = await evaluate('({open:document.querySelector(".tf-board__discussion")?.open||false,items:document.querySelectorAll(".tf-board__discussion-item").length,copy:document.querySelector(".tf-board__discussion-actions button")?.innerText||"",text:document.querySelector(".tf-board__discussion")?.innerText||""})');
+  assert('operations board exposes evidence-backed team discussion items', discussion.open && discussion.items === 4 && discussion.copy.includes('회의 논점 복사') && discussion.text.includes('필요 증거') && discussion.text.includes('종료 조건'), JSON.stringify(discussion));
+  await evaluate('document.querySelector(".tf-board__discussion-actions button")?.click()');
+  await wait(180);
+  const discussionCopyState = await evaluate('document.querySelector(".tf-board__discussion-actions span")?.innerText||""');
+  assert('team discussion queue can be copied for the meeting', discussionCopyState.includes('오늘의 토론 논점을 복사했습니다.') || discussionCopyState.includes('복사에 실패했습니다'), discussionCopyState);
   await evaluate('document.querySelector(".tf-board__meeting summary")?.click()');
   const meetingSteps = await evaluate('document.querySelectorAll(".tf-board__meeting li").length');
   assert('operations board exposes the first meeting sequence', meetingSteps === 6, String(meetingSteps));

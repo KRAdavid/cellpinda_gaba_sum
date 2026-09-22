@@ -12,6 +12,15 @@ export type TfRole = {
   responsibility: string;
 };
 
+export type TfDiscussionItem = {
+  id: string;
+  issue: string;
+  evidence: string;
+  nextOwner: string;
+  status: 'OPEN' | 'READY FOR FIELD' | 'IN TEST' | 'DECIDED' | 'VERIFIED' | 'HOLD';
+  exit: string;
+};
+
 export const TF_ROLES: TfRole[] = [
   {id: 'PM', title: '편집 PM·회의 진행', responsibility: '범위·우선순위·회의 결정·공개 기준'},
   {id: 'SCIENCE', title: 'GABA 과학 근거 리드', responsibility: '정의·기전·연구 설계·근거 수준'},
@@ -60,4 +69,39 @@ export const TF_MEETING_STEPS = [
   '수면·스트레스 연구의 허용 문장과 보류 문장 결정',
   '영상 후보의 원문·권리·공개 판정 담당 지정',
   '다음 회의일·담당자·종료 조건 기록',
+];
+
+export const TF_DISCUSSION_ITEMS: TfDiscussionItem[] = [
+  {
+    id: 'CONTENT-02',
+    issue: 'GABA 기능 설명이 일반 생리 범위를 지키는가',
+    evidence: 'SRC-01~05 원문·문장 범위 사람 검토',
+    nextOwner: 'SCIENCE + MEDICAL',
+    status: 'HOLD',
+    exit: 'SRC 출처 검토 완료',
+  },
+  {
+    id: 'VIDEO-02',
+    issue: '매일 새 후보가 실제 다음 감리로 이어지는가',
+    evidence: '일일 리포트와 리뷰 세션 3일 비교',
+    nextOwner: 'VIDEO + PM',
+    status: 'READY FOR FIELD',
+    exit: '3일 연속 담당·판정 기록',
+  },
+  {
+    id: 'OPS-01',
+    issue: '발표자가 10초 안에 후보를 찾는가',
+    evidence: '검색·필터 현장 세션',
+    nextOwner: 'UX + QA',
+    status: 'READY FOR FIELD',
+    exit: 'A/B/C에서 오선택 0건',
+  },
+  {
+    id: 'UX-01',
+    issue: '소비자가 한 장면씩 읽고 외부로 먼저 이탈하지 않는가',
+    evidence: '320/390px 실기기와 A 세션',
+    nextOwner: 'UX + QA',
+    status: 'READY FOR FIELD',
+    exit: '장면 건너뜀·외부 선행 이탈 0건',
+  },
 ];
