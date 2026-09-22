@@ -38,6 +38,7 @@ type VideoReviewDraft = {
   rightsChecked: boolean;
   claimScopeChecked: boolean;
   timestamps: string;
+  transcriptExcerpt: string;
   notes: string;
   updatedAt: string;
 };
@@ -71,6 +72,7 @@ const makeEmptyVideoReviewDraft = (): VideoReviewDraft => ({
   rightsChecked: false,
   claimScopeChecked: false,
   timestamps: '',
+  transcriptExcerpt: '',
   notes: '',
   updatedAt: '',
 });
@@ -539,6 +541,7 @@ export default function App() {
       `담당자: ${draft.reviewer.trim() || '미입력'} · 역할: ${draft.role}`,
       `결정 초안: ${VIDEO_REVIEW_DECISIONS.find(item => item.id === draft.decision)?.label ?? '아직 결정하지 않음'}`,
       `타임코드: ${draft.timestamps.trim() || '미입력'}`,
+      `발언·자막 발췌: ${(draft.transcriptExcerpt ?? '').trim() || '미입력'}`,
       '',
       '확인 체크',
       checked,
@@ -578,6 +581,7 @@ export default function App() {
         `담당자: ${draft.reviewer.trim() || '미입력'} · 역할: ${draft.role}`,
         `결정 초안: ${VIDEO_REVIEW_DECISIONS.find(item => item.id === draft.decision)?.label ?? '아직 결정하지 않음'}`,
         `타임코드: ${draft.timestamps.trim() || '미입력'}`,
+        `발언·자막 발췌: ${(draft.transcriptExcerpt ?? '').trim() || '미입력'}`,
         '확인 체크',
         checked,
         `팀 메모: ${draft.notes.trim() || '미입력'}`,
@@ -1289,6 +1293,7 @@ export default function App() {
                       <label>결정 초안<select data-review-field="decision" value={selectedVideoReviewDraft.decision} onChange={event => updateVideoReviewDraft('decision', event.currentTarget.value as VideoReviewDecision)}>{VIDEO_REVIEW_DECISIONS.map(decision => <option key={decision.id} value={decision.id}>{decision.label}</option>)}</select></label>
                       <label>확인 타임코드<input data-review-field="timestamps" type="text" value={selectedVideoReviewDraft.timestamps} onChange={event => updateVideoReviewDraft('timestamps', event.currentTarget.value)} placeholder="예: 00:12–00:28" /></label>
                     </div>
+                    <label className="video-review-draft__transcript">확인한 발언·자막 발췌<textarea data-review-field="transcriptExcerpt" value={selectedVideoReviewDraft.transcriptExcerpt ?? ''} onChange={event => updateVideoReviewDraft('transcriptExcerpt', event.currentTarget.value)} placeholder="예: 원문에서 확인한 문장을 그대로 기록하세요." rows={3} /></label>
                     <fieldset className="video-review-draft__checks">
                       <legend>확인 체크</legend>
                       <label><input type="checkbox" checked={selectedVideoReviewDraft.sourceChecked} onClick={() => updateVideoReviewDraft('sourceChecked', !selectedVideoReviewDraft.sourceChecked)} onChange={() => undefined} /> 원문/영상 확인</label>
