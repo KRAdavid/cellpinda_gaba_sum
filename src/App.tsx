@@ -27,8 +27,46 @@ const STORY_VISUALS = {
 
 type VideoFilter = 'ALL' | 'REVIEW' | GabaVideoRecord['status'];
 type TfAssignment = Record<string, {lead: string; backup: string}>;
+type VideoReviewDecision = 'UNDECIDED' | 'HOLD' | 'LIMITED_USE' | 'PUBLISH_GENERAL' | 'EXCLUDE';
+type VideoReviewDraft = {
+  reviewer: string;
+  role: string;
+  decision: VideoReviewDecision;
+  sourceChecked: boolean;
+  transcriptChecked: boolean;
+  speakerChecked: boolean;
+  rightsChecked: boolean;
+  claimScopeChecked: boolean;
+  timestamps: string;
+  notes: string;
+  updatedAt: string;
+};
+type VideoReviewDrafts = Record<string, VideoReviewDraft>;
 
 const TF_ASSIGNMENT_STORAGE_KEY = 'cellpinda-gaba-tf-assignment-draft-v1';
+const VIDEO_REVIEW_STORAGE_KEY = 'cellpinda-gaba-video-review-draft-v1';
+const VIDEO_REVIEW_ROLES = ['VIDEO', 'SCIENCE', 'MEDICAL', 'RIGHTS', 'PM'] as const;
+const VIDEO_REVIEW_DECISIONS: Array<{id: VideoReviewDecision; label: string}> = [
+  {id: 'UNDECIDED', label: '아직 결정하지 않음'},
+  {id: 'HOLD', label: '보류'},
+  {id: 'LIMITED_USE', label: '제한 사용 검토'},
+  {id: 'PUBLISH_GENERAL', label: '일반 교육 공개 검토'},
+  {id: 'EXCLUDE', label: '사용 제외'},
+];
+
+const makeEmptyVideoReviewDraft = (): VideoReviewDraft => ({
+  reviewer: '',
+  role: 'VIDEO',
+  decision: 'UNDECIDED',
+  sourceChecked: false,
+  transcriptChecked: false,
+  speakerChecked: false,
+  rightsChecked: false,
+  claimScopeChecked: false,
+  timestamps: '',
+  notes: '',
+  updatedAt: '',
+});
 
 const VIDEO_FILTERS: Array<{id: VideoFilter; label: string}> = [
   {id: 'ALL', label: '전체'},
@@ -248,6 +286,8 @@ export default function App() {
   const [tfAssignments, setTfAssignments] = useState<TfAssignment>({});
   const [tfMeetingDraft, setTfMeetingDraft] = useState('');
   const [tfAssignmentMessage, setTfAssignmentMessage] = useState('');
+  const [videoReviewDrafts, setVideoReviewDrafts] = useState<VideoReviewDrafts>({});
+  const [videoReviewMessage, setVideoReviewMessage] = useState('');
   const railRef = useRef<HTMLDivElement>(null);
   const readerStreamRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
@@ -271,6 +311,7 @@ export default function App() {
   const selectedVideo = panelVideoId ? panelVideos.find(video => video.id === panelVideoId) ?? GABA_VIDEO_DB.find(video => video.id === panelVideoId) ?? null : null;
   const selectedVideoIndex = selectedVideo ? panelVideos.findIndex(video => video.id === selectedVideo.id) : -1;
   const nextVideo = selectedVideoIndex >= 0 ? panelVideos[selectedVideoIndex + 1] ?? null : null;
+  const selectedVideoReviewDraft = selectedVideo ? videoReviewDrafts[selectedVideo.id] ?? makeEmptyVideoReviewDraft() : null;
 
   useEffect(() => setPreviewImageError(false), [panelVideoId]);
 
@@ -283,6 +324,17 @@ export default function App() {
       if (typeof parsed.meeting === 'string') setTfMeetingDraft(parsed.meeting);
     } catch {
       // A local draft is optional and must never block the public page.
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(VIDEO_REVIEW_STORAGE_KEY);
+      if (!saved) return;
+      const parsed = JSON.parse(saved) as VideoReviewDrafts;
+      if (parsed && typeof parsed === 'object') setVideoReviewDrafts(parsed);
+    } catch {
+      // A local review draft is optional and must never block the public page.
     }
   }, []);
   const filteredPanelVideos = useMemo(() => {
@@ -432,6 +484,56 @@ export default function App() {
       window.localStorage.setItem(TF_ASSIGNMENT_STORAGE_KEY, JSON.stringify({assignments, meeting}));
     } catch {
       // Keep the in-memory draft when browser storage is unavailable.
+    }
+  };
+
+  const persistVideoReviewDrafts = (drafts: VideoReviewDrafts) => {
+    try {
+      window.localStorage.setItem(VIDEO_REVIEW_STORAGE_KEY, JSON.stringify(drafts));
+    } catch {
+      // Keep the in-memory draft when browser storage is unavailable.
+    }
+  };
+
+  const updateVideoReviewDraft = <K extends keyof VideoReviewDraft>(field: K, value: VideoReviewDraft[K]) => {
+    if (!selectedVideo) return;
+    const current = videoReviewDrafts[selectedVideo.id] ?? makeEmptyVideoReviewDraft();
+    const nextDraft = {...current, [field]: value, updatedAt: new Date().toISOString()};
+    const next = {...videoReviewDrafts, [selectedVideo.id]: nextDraft};
+    setVideoReviewDrafts(next);
+    persistVideoReviewDrafts(next);
+    setVideoReviewMessage('이 브라우저에 감리 기록 초안을 저장했습니다.');
+  };
+
+  const copyVideoReviewDraft = async () => {
+    if (!selectedVideo || !selectedVideoReviewDraft) return;
+    const draft = selectedVideoReviewDraft;
+    const checked = [
+      ['원문/영상', draft.sourceChecked],
+      ['자막/대본', draft.transcriptChecked],
+      ['화자·자격', draft.speakerChecked],
+      ['권리·사용 방식', draft.rightsChecked],
+      ['주장 범위·연구 구분', draft.claimScopeChecked],
+    ].map(([label, value]) => `- ${label}: ${value ? '확인' : '미확인'}`).join('\n');
+    const lines = [
+      `GABA 영상 감리 기록 초안 · ${selectedVideo.id}`,
+      `원본 제목: ${selectedVideo.title}`,
+      `담당자: ${draft.reviewer.trim() || '미입력'} · 역할: ${draft.role}`,
+      `결정 초안: ${VIDEO_REVIEW_DECISIONS.find(item => item.id === draft.decision)?.label ?? '아직 결정하지 않음'}`,
+      `타임코드: ${draft.timestamps.trim() || '미입력'}`,
+      '',
+      '확인 체크',
+      checked,
+      '',
+      `팀 메모: ${draft.notes.trim() || '미입력'}`,
+      '',
+      '※ 브라우저 로컬 초안이며 공식 공개 승인·과학/의학·권리 판정을 의미하지 않습니다.',
+    ];
+    try {
+      await copyText(lines.join('\n'));
+      setVideoReviewMessage('감리 기록 초안을 복사했습니다.');
+    } catch {
+      setVideoReviewMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
   };
 
@@ -1003,6 +1105,29 @@ export default function App() {
                 <p className="video-db-detail__next"><strong>다음 감리 행동</strong><br />{presentationMode ? selectedVideo.audit.nextAction : '원문·자막·화자·권리 확인 전에는 영상 내용이나 효능으로 확장하지 않습니다.'}</p>
                 <p className="info-panel__status">{presentationMode ? selectedVideo.statusReason : '이 영상은 일반 GABA 교육에 활용할 수 있는지 확인 중인 검토 후보입니다.'}</p>
                 <p className="video-db-detail__meta">확인일 {selectedVideo.checkedAt} · 채널 {selectedVideo.channel} · 화자 {selectedVideo.speaker}{selectedVideo.sourceChannelUrl ? <> · <a href={selectedVideo.sourceChannelUrl} target="_blank" rel="noopener noreferrer">채널 원문 보기 ↗</a></> : null}{selectedVideo.authorityEvidenceUrl ? <> · <a href={selectedVideo.authorityEvidenceUrl} target="_blank" rel="noopener noreferrer">화자·소속 확인 출처 ↗</a></> : null}{selectedVideo.researchEvidenceUrl ? <> · <a href={selectedVideo.researchEvidenceUrl} target="_blank" rel="noopener noreferrer">관련 연구 기록 ↗</a></> : null}</p>
+                {presentationMode && selectedVideoReviewDraft ? <details className="video-review-draft">
+                  <summary>이 영상 감리 기록 초안 <span aria-hidden="true">＋</span></summary>
+                  <div className="video-review-draft__body">
+                    <p className="video-review-draft__note">원문·자막·화자·권리·주장 범위를 팀원이 확인하며 남기는 브라우저 로컬 초안입니다. 입력만으로 공개 승인이나 DB 상태는 바뀌지 않습니다.</p>
+                    <div className="video-review-draft__fields">
+                      <label>담당자<input data-review-field="reviewer" type="text" value={selectedVideoReviewDraft.reviewer} onChange={event => updateVideoReviewDraft('reviewer', event.currentTarget.value)} placeholder="예: 홍길동" /></label>
+                      <label>역할<select data-review-field="role" value={selectedVideoReviewDraft.role} onChange={event => updateVideoReviewDraft('role', event.currentTarget.value)}>{VIDEO_REVIEW_ROLES.map(role => <option key={role} value={role}>{role}</option>)}</select></label>
+                      <label>결정 초안<select data-review-field="decision" value={selectedVideoReviewDraft.decision} onChange={event => updateVideoReviewDraft('decision', event.currentTarget.value as VideoReviewDecision)}>{VIDEO_REVIEW_DECISIONS.map(decision => <option key={decision.id} value={decision.id}>{decision.label}</option>)}</select></label>
+                      <label>확인 타임코드<input data-review-field="timestamps" type="text" value={selectedVideoReviewDraft.timestamps} onChange={event => updateVideoReviewDraft('timestamps', event.currentTarget.value)} placeholder="예: 00:12–00:28" /></label>
+                    </div>
+                    <fieldset className="video-review-draft__checks">
+                      <legend>확인 체크</legend>
+                      <label><input type="checkbox" checked={selectedVideoReviewDraft.sourceChecked} onClick={() => updateVideoReviewDraft('sourceChecked', !selectedVideoReviewDraft.sourceChecked)} onChange={() => undefined} /> 원문/영상 확인</label>
+                      <label><input type="checkbox" checked={selectedVideoReviewDraft.transcriptChecked} onClick={() => updateVideoReviewDraft('transcriptChecked', !selectedVideoReviewDraft.transcriptChecked)} onChange={() => undefined} /> 자막/대본 확인</label>
+                      <label><input type="checkbox" checked={selectedVideoReviewDraft.speakerChecked} onClick={() => updateVideoReviewDraft('speakerChecked', !selectedVideoReviewDraft.speakerChecked)} onChange={() => undefined} /> 화자·자격 확인</label>
+                      <label><input type="checkbox" checked={selectedVideoReviewDraft.rightsChecked} onClick={() => updateVideoReviewDraft('rightsChecked', !selectedVideoReviewDraft.rightsChecked)} onChange={() => undefined} /> 권리·사용 방식 확인</label>
+                      <label><input type="checkbox" checked={selectedVideoReviewDraft.claimScopeChecked} onClick={() => updateVideoReviewDraft('claimScopeChecked', !selectedVideoReviewDraft.claimScopeChecked)} onChange={() => undefined} /> 주장 범위·연구 구분 확인</label>
+                    </fieldset>
+                    <label className="video-review-draft__notes">팀 메모<textarea data-review-field="notes" value={selectedVideoReviewDraft.notes} onChange={event => updateVideoReviewDraft('notes', event.currentTarget.value)} placeholder="확인한 발언, 근거, 이견, 다음 질문을 기록하세요." rows={4} /></label>
+                    <div className="video-review-draft__actions"><button type="button" onClick={copyVideoReviewDraft}>감리 기록 초안 복사</button><span aria-live="polite">{videoReviewMessage}</span></div>
+                    <small className="video-review-draft__saved">{selectedVideoReviewDraft.updatedAt ? `마지막 저장 ${selectedVideoReviewDraft.updatedAt.replace('T', ' ').replace('Z', '')}` : '아직 입력하지 않았습니다.'}</small>
+                  </div>
+                </details> : null}
               </div> : null}
               <p className="info-panel__boundary">{presentationMode ? '공유 영상의 요약은 감리 전 예비 정리입니다. 원문·자막·인물·권리 상태를 확인하고 일반 GABA 연구나 제품 효능과 구분해 읽습니다.' : '소비자 화면에서는 원본의 건강·상업 주장을 재전달하지 않고, 일반 GABA 교육과 영상 검토 상태만 안내합니다. 전체 맥락은 상세 패널의 원문 선택에서 확인하세요.'}</p>
             </> : null}
