@@ -74,15 +74,15 @@ try {
   assert('mobile viewport has no horizontal overflow', initial.width === viewportWidth && initial.docWidth === initial.clientWidth && initial.docWidth <= initial.width, JSON.stringify(initial));
   assert('consumer page contains no product or review content', !initial.body.includes('셀핀다 제품') && !initial.body.includes('구매자 후기') && !initial.body.includes('스마트스토어'));
   assert('story has nine one-message cards', initial.cards === 9 && initial.progress === '01 / 09', JSON.stringify(initial));
-  const rail = await evaluate('(() => { const el=document.querySelector(".story-rail"), style=getComputedStyle(el); return {touchAction:style.touchAction,snap:style.scrollSnapType,overflow:style.overflowX,scrollWidth:el.scrollWidth,clientWidth:el.clientWidth,scrollLeft:el.scrollLeft}; })()');
-  assert('mobile rail declares horizontal touch and snap', rail.touchAction === 'pan-x' && rail.snap.includes('x') && rail.overflow === 'auto' && rail.scrollWidth > rail.clientWidth, JSON.stringify(rail));
+  const rail = await evaluate('(() => { const el=document.querySelector(".story-rail"), style=getComputedStyle(el); return {touchAction:style.touchAction,snap:style.scrollSnapType,overflowX:style.overflowX,overflowY:style.overflowY,scrollWidth:el.scrollWidth,clientWidth:el.clientWidth,scrollHeight:el.scrollHeight,clientHeight:el.clientHeight,scrollTop:el.scrollTop}; })()');
+  assert('mobile rail declares vertical touch and snap', rail.touchAction === 'pan-y' && rail.snap.includes('y') && rail.overflowY === 'auto' && rail.overflowX === 'hidden' && rail.scrollHeight > rail.clientHeight && rail.scrollWidth === rail.clientWidth, JSON.stringify(rail));
 
-  await evaluate('(() => { const story=document.getElementById("story"); window.scrollTo({top:story.offsetTop,left:0,behavior:"instant"}); const el=document.querySelector(".story-rail"); el.scrollTo({left:0,behavior:"auto"}); return true; })()');
+  await evaluate('(() => { const story=document.getElementById("story"); window.scrollTo({top:story.offsetTop,left:0,behavior:"instant"}); const el=document.querySelector(".story-rail"); el.scrollTo({top:0,behavior:"auto"}); return true; })()');
   await wait(160);
-  await evaluate('document.querySelector(".story-rail").scrollBy({left:340,behavior:"auto"})');
+  await evaluate('(() => { const el=document.querySelector(".story-rail"), card=el.querySelector(".story-card"); el.scrollBy({top:card?.getBoundingClientRect().height + 16,behavior:"auto"}); return true; })()');
   await wait(700);
-  const swiped = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText||"",scrollLeft:document.querySelector(".story-rail")?.scrollLeft||0})');
-  assert('mobile horizontal swipe-compatible scroll advances the active card', swiped.progress === '02 / 09' && swiped.scrollLeft > rail.scrollLeft, JSON.stringify({before:rail,after:swiped}));
+  const swiped = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText||"",scrollTop:document.querySelector(".story-rail")?.scrollTop||0})');
+  assert('mobile vertical swipe-compatible scroll advances the active card', swiped.progress === '02 / 09' && swiped.scrollTop > rail.scrollTop, JSON.stringify({before:rail,after:swiped}));
 
   await evaluate('document.querySelector(".story-next-button")?.click()');
   await waitForProgress('03 / 09');

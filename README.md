@@ -4,6 +4,8 @@
 
 권위 영상 후보는 [GABA_VIDEO_DB.md](docs/GABA_VIDEO_DB.md)에 영상별 요약과 인물 소개를 기록하고, [GABA_VIDEO_REVIEW_RULES.md](docs/GABA_VIDEO_REVIEW_RULES.md)의 권위·근거·상업성·권리 감리를 거칩니다. 새 가바·GABA 숏츠는 [GABA_VIDEO_INBOX.md](docs/GABA_VIDEO_INBOX.md)에 PENDING_REVIEW로 수집되며, 일일 운영은 [GABA_VIDEO_DAILY_MONITOR.md](docs/GABA_VIDEO_DAILY_MONITOR.md)에 정리했습니다. 자동 수집 후보는 검토 전 공개 페이지에 반영하지 않습니다.
 
+매일 실행 요약과 채널 경고·신규 후보·다음 감리 순서는 [`docs/GABA_VIDEO_DAILY_REPORT.md`](docs/GABA_VIDEO_DAILY_REPORT.md)에 자동 기록됩니다.
+
 팀의 매일 검토 순서와 사업자 설명용 판정 문장은 [GABA_VIDEO_REVIEW_LOG.md](docs/GABA_VIDEO_REVIEW_LOG.md)에 기록합니다.
 
 > 현재 공개본은 **제품과 완전히 분리된 일반 GABA 교육 자료**입니다. 제품·후기·판매 정보는 공개 카드와 패널에서 다루지 않습니다. 현재 범위와 TF 운영 기준은 [`docs/GABA_EDUCATION_SCOPE.md`](docs/GABA_EDUCATION_SCOPE.md), [`docs/GABA_EDUCATION_TF.md`](docs/GABA_EDUCATION_TF.md), [`docs/GABA_EDUCATION_KICKOFF.md`](docs/GABA_EDUCATION_KICKOFF.md)에서 확인합니다.

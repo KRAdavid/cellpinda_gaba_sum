@@ -3,6 +3,7 @@ import path from 'node:path';
 
 const root = process.cwd();
 const inboxPath = path.join(root, 'docs', 'GABA_VIDEO_INBOX.md');
+const reportPath = path.join(root, 'docs', 'GABA_VIDEO_DAILY_REPORT.md');
 const writeMode = process.argv.includes('--write');
 const keywords = [/가바/i, /GABA/i];
 
@@ -81,6 +82,47 @@ const parseFeed = xml => [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/gi)].map(m
 const markdown = value => value.replaceAll('|', '\\|').replaceAll('\r', ' ').replaceAll('\n', ' ');
 const checkedDate = new Date().toISOString().slice(0, 10);
 
+const dailyReport = ({successfulSources, candidates, errors}) => {
+  const warningRows = errors.length
+    ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
+    : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
+  const candidateRows = candidates.length
+    ? candidates.map(item => `| PENDING-${checkedDate.replaceAll('-', '')}-${item.id} | [${markdown(item.title)}](https://www.youtube.com/watch?v=${item.id}) | ${markdown(item.source.name)} | PENDING_REVIEW |`).join('\n')
+    : '| 없음 | 신규 후보 없음 | - | - |';
+  return [
+    '# GABA Shorts 일일 모니터 리포트',
+    '',
+    `> 자동 생성일: ${checkedDate} · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.`,
+    '',
+    '## 오늘의 실행 요약',
+    '',
+    `- 채널 확인: ${successfulSources}/${sources.length}`,
+    `- 신규 후보: ${candidates.length}건`,
+    `- 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW`,
+    '',
+    '## 신규 후보',
+    '',
+    '| ID | 영상 | 채널 | 상태 |',
+    '| --- | --- | --- | --- |',
+    candidateRows,
+    '',
+    '## 채널 경고',
+    '',
+    '| 구분 | 내용 | 다음 조치 |',
+    '| --- | --- | --- |',
+    warningRows,
+    '',
+    '## 다음 15분 감리 순서',
+    '',
+    '1. VIDEO: 실제 Shorts 형식·원문·자막·발언 타임코드 확인',
+    '2. SCIENCE/MEDICAL: 일반 GABA 생리와 수면·스트레스·치료·보충제 주장을 분리',
+    '3. RIGHTS: 원문 링크·임베드·인용 가능 범위 확인',
+    '4. PM/UX: 소비자 카드에서 한 메시지로 전달 가능한지와 다음 카드 흐름 확인',
+    '5. 공개 판정: PUBLISH_GENERAL이 아니면 공개 페이지에 반영하지 않음',
+    '',
+  ].join('\n');
+};
+
 const main = async () => {
   const existing = fs.existsSync(inboxPath) ? fs.readFileSync(inboxPath, 'utf8') : '';
   const existingIds = new Set([...existing.matchAll(/(?:shorts\/|video\/)([\w-]{11})/g)].map(match => match[1]));
@@ -117,9 +159,10 @@ const main = async () => {
   console.log('- new candidates: ' + candidates.length);
   if (errors.length) errors.forEach(error => console.log('- warning: ' + error));
 
-  if (!writeMode || candidates.length === 0) return;
+  if (!writeMode) return;
 
-  const blocks = candidates.map(item => [
+  if (candidates.length > 0) {
+    const blocks = candidates.map(item => [
     '### PENDING-' + checkedDate.replaceAll('-', '') + '-' + item.id,
     '',
     '- 상태: PENDING_REVIEW',
@@ -135,10 +178,13 @@ const main = async () => {
     '- 상업·권리 감리: 미검토',
     '- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS',
     '',
-  ].join('\n')).join('\n');
-  const separator = existing.endsWith('\n') ? '' : '\n';
-  fs.writeFileSync(inboxPath, existing + separator + '\n' + blocks, 'utf8');
-  console.log('- wrote: ' + candidates.length + ' candidate(s) to docs/GABA_VIDEO_INBOX.md');
+    ].join('\n')).join('\n');
+    const separator = existing.endsWith('\n') ? '' : '\n';
+    fs.writeFileSync(inboxPath, existing + separator + '\n' + blocks, 'utf8');
+    console.log('- wrote: ' + candidates.length + ' candidate(s) to docs/GABA_VIDEO_INBOX.md');
+  }
+  fs.writeFileSync(reportPath, dailyReport({successfulSources, candidates, errors}), 'utf8');
+  console.log('- wrote: daily report to docs/GABA_VIDEO_DAILY_REPORT.md');
 };
 
 main().catch(error => {

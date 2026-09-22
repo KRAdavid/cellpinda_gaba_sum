@@ -10,6 +10,8 @@
 YouTube 채널 RSS/공개 채널 페이지
         ↓ 매일 09:00 KST 후보 수집
 docs/GABA_VIDEO_INBOX.md (PENDING_REVIEW)
+        ↓ 실행 요약·채널 경고·오늘의 액션
+docs/GABA_VIDEO_DAILY_REPORT.md
         ↓ VIDEO: 원문·자막·화자 확인
 SCIENCE/MEDICAL: 주장·근거·의료 표현 감리
         ↓ RIGHTS: 임베드·링크·인용 확인
@@ -30,6 +32,8 @@ pnpm run monitor:gaba-shorts:write
 GitHub Actions는 .github/workflows/monitor-gaba-shorts.yml에서 매일 실행한다. 예약 실행이 멈추지 않도록 저장소의 Actions·Pages 권한과 기본 브랜치를 확인한다.
 
 수집 결과의 팀 토론과 승인·보류·배제 기록은 GABA_VIDEO_REVIEW_LOG.md에 남긴다. 자동 수집 후보를 공개 페이지로 옮길 때는 이 로그의 종료 조건을 모두 채운다.
+
+매일 실행한 채널 성공률·경고·신규 후보·다음 15분 감리 순서는 `GABA_VIDEO_DAILY_REPORT.md`에 자동 기록한다. 이 리포트는 공개 승인 자료가 아니며, 팀의 당일 검토 입력으로만 사용한다.
 
 ## 자동 수집이 하지 않는 일
 

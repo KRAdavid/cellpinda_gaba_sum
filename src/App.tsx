@@ -200,19 +200,19 @@ export default function App() {
       railScrollFrameRef.current = null;
       const rail = railRef.current;
       if (!rail) return;
-      if (rail.scrollLeft <= 1) {
+      if (rail.scrollTop <= 1) {
         setActive(0);
         return;
       }
       const railRect = rail.getBoundingClientRect();
-      const railCenter = railRect.left + railRect.width / 2;
+      const railCenter = railRect.top + railRect.height / 2;
       const centered = slideRefs.current
         .map((slide, index) => ({slide, index}))
         .filter(({slide}) => slide && slide.getBoundingClientRect().width > 0)
         .sort((left, right) => {
           const leftRect = left.slide!.getBoundingClientRect();
           const rightRect = right.slide!.getBoundingClientRect();
-          return Math.abs(leftRect.left + leftRect.width / 2 - railCenter) - Math.abs(rightRect.left + rightRect.width / 2 - railCenter);
+          return Math.abs(leftRect.top + leftRect.height / 2 - railCenter) - Math.abs(rightRect.top + rightRect.height / 2 - railCenter);
         })[0];
       if (centered) setActive(centered.index);
     });
@@ -233,7 +233,7 @@ export default function App() {
     }
     setActive(next);
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    slideRefs.current[next]?.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', inline: 'center', block: 'nearest'});
+    slideRefs.current[next]?.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', inline: 'nearest', block: 'start'});
     window.setTimeout(() => {
       if (programmaticTargetRef.current === next) programmaticTargetRef.current = null;
     }, reduceMotion ? 80 : 850);
@@ -413,7 +413,7 @@ export default function App() {
     window.requestAnimationFrame(() => {
       presentationModeRef.current = false;
       setActive(currentActive);
-      slideRefs.current[currentActive]?.scrollIntoView({behavior: 'auto', inline: 'center', block: 'nearest'});
+      slideRefs.current[currentActive]?.scrollIntoView({behavior: 'auto', inline: 'nearest', block: 'start'});
       if (returnElement?.isConnected) returnElement.focus();
       presentationReturnRef.current = null;
     });
@@ -520,7 +520,7 @@ export default function App() {
             <p className="eyebrow">1 page · 1 message</p>
             <h2 id="story-title">GABA를<br />나누어 이해하기</h2>
           </div>
-          <p>{presentationMode ? <>← → 또는 PageUp/PageDown으로 넘기고<br />Esc로 발표 모드를 종료하세요.</> : <>모바일에서는 좌우로 밀어 보세요.<br />일상·기능·연구·영상은 각각 다른 정보입니다.</>}</p>
+          <p>{presentationMode ? <>← → 또는 PageUp/PageDown으로 넘기고<br />Esc로 발표 모드를 종료하세요.</> : <>모바일에서는 위아래로 넘겨 보세요.<br />일상·기능·연구·영상은 각각 다른 정보입니다.</>}</p>
         </div>
         <nav ref={phaseNavRef} className="story-sequence" aria-label="카드 흐름 단계">
           {STORY_PHASES.map((phase, index) => <span key={phase.id} data-phase={phase.id} className={phase.id === activePhase.id ? 'is-active' : ''} aria-current={phase.id === activePhase.id ? 'step' : undefined}>
@@ -551,7 +551,7 @@ export default function App() {
           <details className="presenter-questions"><summary>자주 묻는 질문에 답하기</summary><div className="presenter-questions__list">{PRESENTER_QUESTIONS.map(question => <div key={question.label}><div className="presenter-questions__heading"><strong>{question.label}</strong><button type="button" className="presenter-answer-copy" onClick={() => copyPresenterAnswer(question.label, question.answer)}>답변 복사</button></div><p>{question.answer}</p></div>)}</div></details>
           <p className="presenter-copy-message" aria-live="polite">{presenterCopyMessage}</p>
         </> : null}
-        <div className="story-rail" ref={railRef} onScroll={syncActiveFromRail} tabIndex={0} role="region" aria-roledescription="carousel" aria-label="GABA 소개 카드 흐름">
+        <div className="story-rail" ref={railRef} onScroll={syncActiveFromRail} tabIndex={0} role="region" aria-roledescription="세로 피드" aria-label="GABA 소개 카드 흐름">
           {slides.map((slide, index) => <article
             key={slide.id}
             id={`story-card-${slide.id}`}
