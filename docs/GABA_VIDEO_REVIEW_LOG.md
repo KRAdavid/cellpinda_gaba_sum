@@ -224,3 +224,4 @@ SHORT-02 이동환·SHORT-04 손유리 후보를 대상으로 기관·병원·�
 
 [서울대학교병원 공식 프로필](https://raredisease.snuh.or.kr/doctors/adult/lee-seung-hoon/)로 인물·소속을 보조 확인했지만, 영상 전체가 MSG·뇌 구조·신경전달물질을 함께 다루고 실제 화자·발언·자막·권리 조건을 아직 확인하지 않았다. `VID-04`는 `HOLD / TITLE_AND_PUBLIC_DESCRIPTION`으로 유지하며, `32:31~35:35` 후보 구간을 사람이 직접 확인하기 전 소비자 공개 영상이나 일반 GABA 근거 영상으로 연결하지 않는다. 결정은 **국내 의료진 후보 보강 PASS / 원문 감리·권리·공개 승인 HOLD**다.
 
+

@@ -62,18 +62,18 @@
 
 ## 등록 YouTube 자막 트랙 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 429 Too Many Requests
+- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 429 Too Many Requests
+- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 429 Too Many Requests
+- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 429 Too Many Requests
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 429 Too Many Requests
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 429 Too Many Requests
+- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 429 Too Many Requests
+- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 429 Too Many Requests
+- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 429 Too Many Requests
+- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 429 Too Many Requests
+- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 429 Too Many Requests
+- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 429 Too Many Requests
 - 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 의미하지 않는다. 사람 검토 전 요약과 공개 상태는 바꾸지 않는다.
 
 ## 등록 YouTube 자막 본문 상태
