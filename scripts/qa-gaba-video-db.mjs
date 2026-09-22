@@ -21,6 +21,7 @@ if (source.includes("status: 'PUBLISH_GENERAL',\n    statusReason: '")) {
   for (const block of publicBlocks) {
     if (!/교육|일반|NIH|CSHL/.test(block)) failures.push(`public record lacks general-education evidence marker: ${block.match(/id: '([^']+)'/)?.[1] ?? 'unknown'}`);
     if (!block.includes('statusReason:') || !block.includes('checkedAt:')) failures.push(`public record lacks audit fields: ${block.match(/id: '([^']+)'/)?.[1] ?? 'unknown'}`);
+    if ((!block.includes('previewImage:') || !block.includes('previewAlt:')) && !block.includes('previewLabel:')) failures.push(`public record lacks official preview metadata: ${block.match(/id: '([^']+)'/)?.[1] ?? 'unknown'}`);
   }
 }
 

@@ -109,8 +109,8 @@ try {
 
   await evaluate('document.querySelector(".story-card[aria-current=\\"true\\"] .card-link")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
-  const publicVideo = await evaluate('({items:document.querySelectorAll(".video-db-item").length,detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||"",body:document.querySelector(".info-panel")?.innerText||""})');
-  assert('consumer video panel shows approved sources only', publicVideo.items === 2 && publicVideo.detail.includes('인물 소개') && publicVideo.detail.includes('확인 기반') && publicVideo.detail.includes('권위') && publicVideo.external.includes('dnalc.cshl.edu') && !publicVideo.body.includes('잠자기 어렵다면 수면제'), JSON.stringify(publicVideo));
+  const publicVideo = await evaluate('({items:document.querySelectorAll(".video-db-item").length,detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||"",preview:!!document.querySelector(".video-db-preview") && (!!document.querySelector(".video-db-preview img") || !!document.querySelector(".video-db-preview__source-mark")),body:document.querySelector(".info-panel")?.innerText||""})');
+  assert('consumer video panel shows approved sources only', publicVideo.items === 2 && publicVideo.detail.includes('인물 소개') && publicVideo.detail.includes('확인 기반') && publicVideo.detail.includes('권위') && publicVideo.preview && publicVideo.external.includes('dnalc.cshl.edu') && !publicVideo.body.includes('잠자기 어렵다면 수면제'), JSON.stringify(publicVideo));
   await evaluate('document.querySelectorAll(".video-db-item__select")[1]?.click()');
   await waitForText('.video-db-detail', 'Wei Lu');
   const secondPublicVideo = await evaluate('({detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||""})');

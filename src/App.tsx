@@ -244,6 +244,7 @@ export default function App() {
   const [panelShareMessage, setPanelShareMessage] = useState('');
   const [presenterCopyMessage, setPresenterCopyMessage] = useState('');
   const [videoCopyMessage, setVideoCopyMessage] = useState('');
+  const [previewImageError, setPreviewImageError] = useState(false);
   const [videoFilter, setVideoFilter] = useState<VideoFilter>('ALL');
   const [videoQuery, setVideoQuery] = useState('');
   const railRef = useRef<HTMLDivElement>(null);
@@ -264,6 +265,7 @@ export default function App() {
   const publicVideo = PUBLIC_GABA_VIDEOS[0] ?? null;
   const panelVideos = presentationMode ? GABA_VIDEO_DB : PUBLIC_GABA_VIDEOS;
   const selectedVideo = panelVideoId ? GABA_VIDEO_DB.find(video => video.id === panelVideoId) ?? null : null;
+  useEffect(() => setPreviewImageError(false), [panelVideoId]);
   const filteredPanelVideos = useMemo(() => {
     const query = videoQuery.trim().toLocaleLowerCase();
     const matchesFilter = (video: GabaVideoRecord) => videoFilter === 'ALL'
@@ -749,6 +751,10 @@ export default function App() {
               {selectedVideo ? <div className="video-db-detail">
                 <p className="eyebrow">선택 영상 상세 · {VIDEO_STATUS_LABELS[selectedVideo.status]}</p>
                 <h3>{selectedVideo.title}</h3>
+                {selectedVideo.previewImage || selectedVideo.previewLabel ? <figure className={'video-db-preview' + (!selectedVideo.previewImage || previewImageError ? ' video-db-preview--source' : '')}>
+                  {selectedVideo.previewImage && !previewImageError ? <img src={selectedVideo.previewImage} alt={selectedVideo.previewAlt ?? `${selectedVideo.title} 공식 원문 미리보기`} loading="lazy" decoding="async" onError={() => setPreviewImageError(true)} /> : <div className="video-db-preview__source-mark"><span>공식 교육기관</span><strong>{selectedVideo.previewLabel}</strong><small>원문 페이지·대본 확인</small></div>}
+                  <figcaption>공식 원문 페이지 미리보기 · 영상 재생과 전체 맥락은 원문에서 확인합니다.</figcaption>
+                </figure> : null}
                 <div className="video-db-detail__summary">
                   <p><strong>무엇을 어떻게 소개했나</strong><br />{selectedVideo.summary}</p>
                   <p><strong>인물 소개</strong><br />{selectedVideo.personSummary}</p>

@@ -20,6 +20,9 @@ export type GabaVideoRecord = {
   id: string;
   title: string;
   url: string;
+  previewImage?: string;
+  previewAlt?: string;
+  previewLabel?: string;
   channel: string;
   speaker: string;
   summary: string;
@@ -36,6 +39,7 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     id: 'AUTH-01',
     title: 'GABA Neurotransmitter',
     url: 'https://dnalc.cshl.edu/view/485-GABA-Neurotransmitter.html',
+    previewLabel: 'CSHL DNA Learning Center · 공식 교육 영상 페이지',
     channel: 'Cold Spring Harbor Laboratory DNA Learning Center',
     speaker: 'Professor Trevor Robbins',
     summary: 'GABA를 중추신경계의 대표적인 억제성 신경전달물질로 설명하고, 신경세포의 활동을 조절하는 기본 원리를 교육 영상과 transcript로 소개합니다.',
@@ -58,6 +62,9 @@ export const GABA_VIDEO_DB: GabaVideoRecord[] = [
     id: 'AUTH-02',
     title: 'Molecular regulation of synaptic inhibition',
     url: 'https://videocast.nih.gov/watch=51064',
+    previewImage: 'https://nihcit.rev.vbrick.com/api/v2/media/videos/thumbnails/481c6ac0-a2b8-4155-9eb5-5586edb95d83.jpg',
+    previewAlt: 'NIH VideoCast GABA 시냅스 억제 강의 미리보기',
+    previewLabel: 'NIH VideoCast · 공식 연구 세미나',
     channel: 'NIH VideoCast · NINDS Director’s Seminar Series',
     speaker: 'Wei Lu, Ph.D., NINDS, NIH',
     summary: 'GABA가 GABAA 수용체를 통해 빠른 억제성 신호를 매개하고, 흥분성 신호와 균형을 이루며 신경 출력을 조절하는 원리를 강의 형식으로 소개합니다.',
