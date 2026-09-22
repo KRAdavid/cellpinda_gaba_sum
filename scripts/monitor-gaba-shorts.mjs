@@ -9,6 +9,7 @@ const snapshotPath = path.join(root, 'src', 'gabaMonitorSnapshot.ts');
 const educationTfPath = path.join(root, 'docs', 'GABA_EDUCATION_TF.md');
 const sourceRegisterPath = path.join(root, 'docs', 'GABA_SOURCE_REGISTER.md');
 const videoRegisterPath = path.join(root, 'docs', 'GABA_VIDEO_REGISTER.md');
+const reviewLogPath = path.join(root, 'docs', 'GABA_VIDEO_REVIEW_LOG.md');
 const kickoffPath = path.join(root, 'docs', 'GABA_EDUCATION_KICKOFF.md');
 const reportArchiveDir = path.join(root, 'docs', 'gaba-video-daily');
 const writeMode = process.argv.includes('--write');
@@ -699,6 +700,27 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, runCand
   ].join('\n');
 };
 
+const appendDailyReviewLog = ({checkedDate: date, successfulSources, successfulSearches, candidates, runCandidateCount, pendingReview, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
+  if (!fs.existsSync(reviewLogPath)) return;
+  const existing = fs.readFileSync(reviewLogPath, 'utf8');
+  const marker = `## ${date} 자동 모니터 실행 기록`;
+  if (existing.includes(marker)) return;
+  const productBrandCandidates = candidates.filter(item => item.publicationGate === 'PRODUCT_BRAND_QUARANTINE').length;
+  const block = [
+    marker,
+    '',
+    `자동 모니터가 ${successfulSources}/${sources.length}개 채널과 ${successfulSearches}/${discoveryQueries.length}개 검색어를 확인했다. 오늘 누적 신규 후보는 ${candidates.length}건, 이번 실행 신규 후보는 ${runCandidateCount}건이며 전체 검토 대기는 ${pendingReview}건이다.`,
+    '',
+    `제품·브랜드 신호 후보 ${productBrandCandidates}건은 일반 GABA 공개 큐에서 자동 제외했으며, 모든 후보는 사람의 VIDEO·SCIENCE/MEDICAL·RIGHTS 감리 전 PENDING_REVIEW로 유지한다. 자동 공개는 0건이다.`,
+    '',
+    `등록 원문 링크 ${linkHealth.healthy}/${linkHealth.checked}, 권위·연구 출처 링크 ${evidenceHealth.healthy}/${evidenceHealth.checked}, YouTube 메타데이터 ${metadataHealth.healthy}/${metadataHealth.checked}, 자막 트랙 ${captionHealth.available}/${captionHealth.checked}, 자막 본문 ${captionBodyHealth.available}/${captionBodyHealth.checked}를 확인했다.`,
+    '',
+    `자막 본문·화자·과학 주장·권리 확인 전에는 요약·권위·공개 상태를 승격하지 않는다. 다음 행동은 일일 리뷰 세션에서 원문 타임코드와 사람 담당자를 지정하는 것이다.`,
+    '',
+  ].join('\n');
+  fs.writeFileSync(reviewLogPath, `${existing.trimEnd()}\n\n${block}`, 'utf8');
+};
+
 const main = async () => {
   const existing = fs.existsSync(inboxPath) ? fs.readFileSync(inboxPath, 'utf8') : '';
   const previousHistory = readPreviousMonitorHistory();
@@ -819,12 +841,26 @@ const main = async () => {
     .filter(entry => entry.status === 'PENDING_REVIEW' && (entry.collectedDate === checkedDate || entry.id.startsWith('PENDING-' + checkedDateKey + '-')))
     .map(inboxCandidateRecord)
     .filter(candidate => candidate.id);
+  const pendingReview = parseInboxEntries(updatedInbox).filter(entry => entry.status === 'PENDING_REVIEW').length;
   const report = dailyReport({successfulSources, successfulSearches, candidates: dailyCandidates, runCandidateCount: candidates.length, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth});
   fs.writeFileSync(reportPath, report, 'utf8');
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
   const reviewSession = reviewSessionMarkdown({inboxText: updatedInbox, checkedDate});
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_REVIEW_SESSION_${checkedDate}.md`), reviewSession, 'utf8');
   fs.writeFileSync(triagePath, triageMarkdown({inboxText: updatedInbox, checkedDate}), 'utf8');
+  appendDailyReviewLog({
+    checkedDate,
+    successfulSources,
+    successfulSearches,
+    candidates: dailyCandidates,
+    runCandidateCount: candidates.length,
+    pendingReview,
+    linkHealth,
+    evidenceHealth,
+    metadataHealth,
+    captionHealth,
+    captionBodyHealth,
+  });
   fs.writeFileSync(snapshotPath, monitorSnapshotTypeScript({
     inboxText: updatedInbox,
     checkedDate,
