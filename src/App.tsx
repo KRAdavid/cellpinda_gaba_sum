@@ -1661,6 +1661,23 @@ export default function App() {
     setOpenPanel('video');
   };
 
+  const openTodayVideoReview = () => {
+    panelReturnRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setPanelSourceIndex(active);
+    setPanelVideoId(reviewPriorityVideos[0]?.id ?? null);
+    setVideoFilter('ALL');
+    setVideoQuery('');
+    setPanelShareMessage('');
+    setOpenPanel('video');
+  };
+
+  const revealOpsSection = (selector: string) => {
+    const details = document.querySelector<HTMLDetailsElement>(selector);
+    if (!details) return;
+    details.open = true;
+    window.requestAnimationFrame(() => details.scrollIntoView({block: 'nearest', behavior: 'smooth'}));
+  };
+
   const selectShowcaseVideo = (index: number) => {
     const nextIndex = Math.max(0, Math.min(SHARED_GABA_VIDEOS.length - 1, index));
     const nextVideo = SHARED_GABA_VIDEOS[nextIndex];
@@ -2176,6 +2193,15 @@ export default function App() {
             </> : null}
             {openPanel === 'ops' ? <>
               <p>이 보드는 공개 소비자용 내용이 아니라, 일반 GABA 교육 자료를 검토·회의·배포하는 사업자용 운영 화면입니다.</p>
+              <section className="tf-board__today" aria-label="오늘 바로 할 일">
+                <div className="tf-board__today-heading"><div><p className="eyebrow">오늘 바로 할 일</p><strong>15분 시작 순서</strong></div><span>자동 정렬 → 사람 판정</span></div>
+                <ol>
+                  <li><span>01</span><div><strong>감리 우선 영상</strong><small>{reviewPriorityVideos[0] ? `${reviewPriorityVideos[0].id} · ${reviewPriorityVideos[0].publicTitle ?? reviewPriorityVideos[0].title}` : '현재 감리 대상 없음'}</small></div><button type="button" data-today-task="video" disabled={!reviewPriorityVideos.length} onClick={openTodayVideoReview}>감리 시작</button></li>
+                  <li><span>02</span><div><strong>과학 출처 5건</strong><small>{sourceReviewCompleted}/{RESEARCH_SOURCES.length}건 사람 검토 초안</small></div><button type="button" data-today-task="research" onClick={() => openInfoPanel(active, 'research')}>출처 열기</button></li>
+                  <li><span>03</span><div><strong>팀 배정·토론</strong><small>{presenterMonitor?.humanRoleAssigned ?? 0}/{presenterMonitor?.humanRoleTotal ?? 0} 역할 · 첫 회의 {presenterMonitor?.firstMeetingReady ? '입력됨' : '필요'}</small></div><button type="button" data-today-task="assignment" onClick={() => revealOpsSection('.tf-board__assignment')}>배정 열기</button></li>
+                </ol>
+                <p className="tf-board__today-note">자동화는 후보를 정렬할 뿐입니다. 공개 판정은 원문·자막·화자·권리·주장 범위를 확인한 사람이 남깁니다.</p>
+              </section>
               <div className="tf-board__metrics" aria-label="TF 운영 현황">
                 <div><strong>{presenterMonitor?.humanRoleAssigned ?? 0}/{presenterMonitor?.humanRoleTotal ?? 0}</strong><span>핵심 역할 배정</span></div>
                 <div><strong>{presenterMonitor?.humanSourceReviewed ?? 0}/{presenterMonitor?.humanSourceTotal ?? 0}</strong><span>출처 사람 검토</span></div>
