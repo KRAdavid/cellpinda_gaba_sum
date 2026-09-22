@@ -39,6 +39,7 @@ const required = [
   ['stress human trial PMID', 'PMID 22203366'],
   ['sleep physiology source', 'About Sleep'],
   ['inhibitory neurotransmitter explanation', '억제성 신경전달물질'],
+  ['everyday GABA function explanation', '뇌의 신호가 너무 커지지 않도록 브레이크처럼 조절합니다'],
   ['video status curation', '일반 교육 공개 승인'],
   ['shared YouTube Shorts showcase', '오늘 공유하신 국내 YouTube Shorts'],
   ['separate video showcase', '별도 섹션 · 영상 요약'],
