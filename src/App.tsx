@@ -30,6 +30,23 @@ type TfAssignment = Record<string, {lead: string; backup: string}>;
 type TfDiscussionDecision = 'UNDECIDED' | 'CONTINUE' | 'HOLD' | 'DECIDED';
 type TfDiscussionDraft = {owner: string; due: string; decision: TfDiscussionDecision; notes: string; updatedAt: string};
 type TfDiscussionDrafts = Record<string, TfDiscussionDraft>;
+type FieldSessionScenarioId = 'A' | 'B' | 'C';
+type FieldSessionClarity = '' | '1' | '2' | '3' | '4' | '5';
+type FieldSessionExit = 'UNRECORDED' | 'NONE' | 'YES';
+type FieldSessionDraft = {
+  facilitator: string;
+  observer: string;
+  device: string;
+  clarity: FieldSessionClarity;
+  firstActionSeconds: string;
+  externalExit: FieldSessionExit;
+  misunderstanding: string;
+  nextAction: string;
+  owner: string;
+  due: string;
+  updatedAt: string;
+};
+type FieldSessionDrafts = Record<FieldSessionScenarioId, FieldSessionDraft>;
 type VideoReviewDecision = 'UNDECIDED' | 'HOLD' | 'LIMITED_USE' | 'PUBLISH_GENERAL' | 'EXCLUDE';
 type VideoReviewDraft = {
   reviewer: string;
@@ -72,11 +89,13 @@ type ReviewHandoffPacket = {
   tfAssignments: TfAssignment;
   tfMeetingDraft: string;
   tfDiscussionDrafts: TfDiscussionDrafts;
+  fieldSessionDrafts: FieldSessionDrafts;
   boundary: string;
 };
 
 const TF_ASSIGNMENT_STORAGE_KEY = 'cellpinda-gaba-tf-assignment-draft-v1';
 const TF_DISCUSSION_STORAGE_KEY = 'cellpinda-gaba-tf-discussion-draft-v1';
+const FIELD_SESSION_STORAGE_KEY = 'cellpinda-gaba-field-session-draft-v1';
 const VIDEO_REVIEW_STORAGE_KEY = 'cellpinda-gaba-video-review-draft-v1';
 const MONITOR_REVIEW_STORAGE_KEY = 'cellpinda-gaba-monitor-review-draft-v1';
 const SOURCE_REVIEW_STORAGE_KEY = 'cellpinda-gaba-source-review-draft-v1';
@@ -101,6 +120,19 @@ const TF_DISCUSSION_DECISIONS: Array<{id: TfDiscussionDecision; label: string}> 
   {id: 'CONTINUE', label: '계속 검토'},
   {id: 'HOLD', label: 'HOLD'},
   {id: 'DECIDED', label: '결정 기록'},
+];
+const FIELD_SESSION_SCENARIOS: Array<{id: FieldSessionScenarioId; title: string; goal: string}> = [
+  {id: 'A', title: '처음 보는 사람의 전체 흐름', goal: '01→08에서 GABA 이름·기능·연구 읽는 기준을 이해하는지 확인'},
+  {id: 'B', title: '권위 영상 질문', goal: '승인 영상·검토 후보·원문 링크의 차이를 구분하는지 확인'},
+  {id: 'C', title: '연구 질문', goal: '일반 GABA 연구와 개인·제품 효능을 구분하는지 확인'},
+];
+const FIELD_SESSION_CLARITY_OPTIONS: Array<{id: FieldSessionClarity; label: string}> = [
+  {id: '', label: '아직 기록하지 않음'},
+  {id: '1', label: '1점'},
+  {id: '2', label: '2점'},
+  {id: '3', label: '3점'},
+  {id: '4', label: '4점'},
+  {id: '5', label: '5점'},
 ];
 
 const makeEmptyVideoReviewDraft = (): VideoReviewDraft => ({
@@ -189,6 +221,44 @@ const normaliseTfDiscussionDrafts = (value: unknown): TfDiscussionDrafts => {
     };
     return [[id, draft]];
   })) as TfDiscussionDrafts;
+};
+
+const makeEmptyFieldSessionDraft = (): FieldSessionDraft => ({
+  facilitator: '',
+  observer: '',
+  device: '',
+  clarity: '',
+  firstActionSeconds: '',
+  externalExit: 'UNRECORDED',
+  misunderstanding: '',
+  nextAction: '',
+  owner: '',
+  due: '',
+  updatedAt: '',
+});
+
+const normaliseFieldSessionDrafts = (value: unknown): Partial<FieldSessionDrafts> => {
+  if (!isRecord(value)) return {};
+  const clarityValues = new Set<FieldSessionClarity>(['', '1', '2', '3', '4', '5']);
+  const exitValues = new Set<FieldSessionExit>(['UNRECORDED', 'NONE', 'YES']);
+  return Object.fromEntries(Object.entries(value).flatMap(([id, rawDraft]) => {
+    if (!['A', 'B', 'C'].includes(id) || !isRecord(rawDraft)) return [];
+    const blank = makeEmptyFieldSessionDraft();
+    const draft: FieldSessionDraft = {
+      facilitator: typeof rawDraft.facilitator === 'string' ? rawDraft.facilitator : blank.facilitator,
+      observer: typeof rawDraft.observer === 'string' ? rawDraft.observer : blank.observer,
+      device: typeof rawDraft.device === 'string' ? rawDraft.device : blank.device,
+      clarity: typeof rawDraft.clarity === 'string' && clarityValues.has(rawDraft.clarity as FieldSessionClarity) ? rawDraft.clarity as FieldSessionClarity : blank.clarity,
+      firstActionSeconds: typeof rawDraft.firstActionSeconds === 'string' ? rawDraft.firstActionSeconds : blank.firstActionSeconds,
+      externalExit: typeof rawDraft.externalExit === 'string' && exitValues.has(rawDraft.externalExit as FieldSessionExit) ? rawDraft.externalExit as FieldSessionExit : blank.externalExit,
+      misunderstanding: typeof rawDraft.misunderstanding === 'string' ? rawDraft.misunderstanding : blank.misunderstanding,
+      nextAction: typeof rawDraft.nextAction === 'string' ? rawDraft.nextAction : blank.nextAction,
+      owner: typeof rawDraft.owner === 'string' ? rawDraft.owner : blank.owner,
+      due: typeof rawDraft.due === 'string' ? rawDraft.due : blank.due,
+      updatedAt: typeof rawDraft.updatedAt === 'string' ? rawDraft.updatedAt : blank.updatedAt,
+    };
+    return [[id, draft]];
+  })) as Partial<FieldSessionDrafts>;
 };
 
 const normaliseSourceReviewDrafts = (value: unknown): SourceReviewDrafts => {
@@ -469,6 +539,8 @@ export default function App() {
   const [tfDiscussionMessage, setTfDiscussionMessage] = useState('');
   const [tfDiscussionDrafts, setTfDiscussionDrafts] = useState<TfDiscussionDrafts>({});
   const [tfDiscussionDraftMessage, setTfDiscussionDraftMessage] = useState('');
+  const [fieldSessionDrafts, setFieldSessionDrafts] = useState<FieldSessionDrafts>(() => ({A: makeEmptyFieldSessionDraft(), B: makeEmptyFieldSessionDraft(), C: makeEmptyFieldSessionDraft()}));
+  const [fieldSessionMessage, setFieldSessionMessage] = useState('');
   const [videoReviewDrafts, setVideoReviewDrafts] = useState<VideoReviewDrafts>({});
   const [videoReviewMessage, setVideoReviewMessage] = useState('');
   const [reviewHandoffMessage, setReviewHandoffMessage] = useState('');
@@ -552,6 +624,17 @@ export default function App() {
       if (parsed && typeof parsed === 'object') setTfDiscussionDrafts(parsed);
     } catch {
       // A local discussion draft is optional and must never block the public page.
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(FIELD_SESSION_STORAGE_KEY);
+      if (!saved) return;
+      const parsed = normaliseFieldSessionDrafts(JSON.parse(saved));
+      setFieldSessionDrafts(current => ({...current, ...parsed}));
+    } catch {
+      // A local field-session draft is optional and must never block the public page.
     }
   }, []);
 
@@ -757,6 +840,14 @@ export default function App() {
       window.localStorage.setItem(TF_DISCUSSION_STORAGE_KEY, JSON.stringify(drafts));
     } catch {
       // Keep the in-memory discussion draft when browser storage is unavailable.
+    }
+  };
+
+  const persistFieldSessionDrafts = (drafts: FieldSessionDrafts) => {
+    try {
+      window.localStorage.setItem(FIELD_SESSION_STORAGE_KEY, JSON.stringify(drafts));
+    } catch {
+      // Keep the in-memory field-session draft when browser storage is unavailable.
     }
   };
 
@@ -992,6 +1083,7 @@ export default function App() {
       tfAssignments,
       tfMeetingDraft,
       tfDiscussionDrafts,
+      fieldSessionDrafts,
       boundary: '브라우저 로컬 감리·회의 초안의 팀 전달용 사본이며 공식 DB 상태·공개 승인·과학/의학·권리 판정을 의미하지 않습니다.',
     };
     downloadJsonFile(`gaba-education-review-handoff-${GABA_MONITOR_SNAPSHOT.checkedAt}.json`, packet);
@@ -1012,11 +1104,13 @@ export default function App() {
       const importedSourceDrafts = normaliseSourceReviewDrafts(parsed.sourceReviewDrafts);
       const importedAssignments = normaliseTfAssignments(parsed.tfAssignments);
       const importedDiscussionDrafts = normaliseTfDiscussionDrafts(parsed.tfDiscussionDrafts);
+      const importedFieldSessionDrafts = normaliseFieldSessionDrafts(parsed.fieldSessionDrafts);
       const nextVideoDrafts = {...videoReviewDrafts, ...importedVideoDrafts};
       const nextMonitorDrafts = {...monitorReviewDrafts, ...importedMonitorDrafts};
       const nextSourceDrafts = {...sourceReviewDrafts, ...importedSourceDrafts};
       const nextAssignments = {...tfAssignments, ...importedAssignments};
       const nextDiscussionDrafts = {...tfDiscussionDrafts, ...importedDiscussionDrafts};
+      const nextFieldSessionDrafts = {...fieldSessionDrafts, ...importedFieldSessionDrafts};
       const nextMeetingDraft = typeof parsed.tfMeetingDraft === 'string' ? parsed.tfMeetingDraft : tfMeetingDraft;
       setVideoReviewDrafts(nextVideoDrafts);
       setMonitorReviewDrafts(nextMonitorDrafts);
@@ -1024,12 +1118,14 @@ export default function App() {
       setTfAssignments(nextAssignments);
       setTfMeetingDraft(nextMeetingDraft);
       setTfDiscussionDrafts(nextDiscussionDrafts);
+      setFieldSessionDrafts(nextFieldSessionDrafts);
       persistVideoReviewDrafts(nextVideoDrafts);
       persistMonitorReviewDrafts(nextMonitorDrafts);
       persistSourceReviewDrafts(nextSourceDrafts);
       persistTfDraft(nextAssignments, nextMeetingDraft);
       persistTfDiscussionDrafts(nextDiscussionDrafts);
-      setReviewHandoffMessage(`감리 패킷을 병합했습니다. 영상 ${Object.keys(importedVideoDrafts).length}건 · 신규 후보 ${Object.keys(importedMonitorDrafts).length}건 · 출처 ${Object.keys(importedSourceDrafts).length}건 · 토론 ${Object.keys(importedDiscussionDrafts).length}건`);
+      persistFieldSessionDrafts(nextFieldSessionDrafts);
+      setReviewHandoffMessage(`감리 패킷을 병합했습니다. 영상 ${Object.keys(importedVideoDrafts).length}건 · 신규 후보 ${Object.keys(importedMonitorDrafts).length}건 · 출처 ${Object.keys(importedSourceDrafts).length}건 · 토론 ${Object.keys(importedDiscussionDrafts).length}건 · 현장 ${Object.keys(importedFieldSessionDrafts).length}건`);
     } catch {
       setReviewHandoffMessage('불러오지 못했습니다. 이 사이트에서 저장한 감리 패킷 JSON인지 확인해 주세요.');
     }
@@ -1126,6 +1222,15 @@ export default function App() {
     setTfDiscussionDraftMessage('토론 기록 초안을 저장했습니다.');
   };
 
+  const updateFieldSessionDraft = <K extends keyof FieldSessionDraft>(scenarioId: FieldSessionScenarioId, field: K, value: FieldSessionDraft[K]) => {
+    const current = fieldSessionDrafts[scenarioId] ?? makeEmptyFieldSessionDraft();
+    const nextDraft = {...current, [field]: value, updatedAt: new Date().toISOString()};
+    const next = {...fieldSessionDrafts, [scenarioId]: nextDraft};
+    setFieldSessionDrafts(next);
+    persistFieldSessionDrafts(next);
+    setFieldSessionMessage('현장 세션 기록을 저장했습니다. 실제 현장 PASS는 별도 검증이 필요합니다.');
+  };
+
   const copyTfAssignmentDraft = async () => {
     const lines = [
       'GABA 교육 TF 업무 배정 초안',
@@ -1170,6 +1275,35 @@ export default function App() {
       setTfDiscussionMessage('오늘의 토론 논점을 복사했습니다.');
     } catch {
       setTfDiscussionMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+    }
+  };
+
+  const copyFieldSessionDrafts = async () => {
+    const lines = [
+      '일반 GABA 교육 A/B/C 현장 세션 기록 초안',
+      '※ 고객 이름·연락처·건강 상태·복용 약은 기록하지 않습니다. 이 기록은 현장 검증 입력이며 최종 승인이나 사업 성과를 의미하지 않습니다.',
+      '',
+      ...FIELD_SESSION_SCENARIOS.map(scenario => {
+        const draft = fieldSessionDrafts[scenario.id] ?? makeEmptyFieldSessionDraft();
+        const clarity = FIELD_SESSION_CLARITY_OPTIONS.find(option => option.id === draft.clarity)?.label ?? '아직 기록하지 않음';
+        const exit = draft.externalExit === 'NONE' ? '없음' : draft.externalExit === 'YES' ? '있음' : '아직 기록하지 않음';
+        return [
+          `${scenario.id}. ${scenario.title}`,
+          `목표: ${scenario.goal}`,
+          `설명자: ${draft.facilitator.trim() || '미입력'} · 관찰자: ${draft.observer.trim() || '미입력'} · 기기/브라우저: ${draft.device.trim() || '미입력'}`,
+          `다음 행동 명확도: ${clarity} · 첫 다음 행동: ${draft.firstActionSeconds.trim() || '미입력'}초 · 외부 선행 이탈: ${exit}`,
+          `오해·문제: ${draft.misunderstanding.trim() || '미입력'}`,
+          `다음 액션: ${draft.nextAction.trim() || '미입력'} · 담당: ${draft.owner.trim() || '미입력'} · 기한: ${draft.due.trim() || '미입력'}`,
+          '',
+        ].join('\n');
+      }),
+      '판정 기준: A/B/C 각 명확도 4점 이상 · 외부 선행 이탈 0건 · 검토 전 영상 공개 오해 0건 · P0 오류 0건',
+    ];
+    try {
+      await copyText(lines.join('\n'));
+      setFieldSessionMessage('A/B/C 현장 기록 초안을 복사했습니다. 실제 세션 결과는 별도 반영해야 합니다.');
+    } catch {
+      setFieldSessionMessage('복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
   };
 
@@ -1894,6 +2028,37 @@ export default function App() {
                   <label className="tf-board__meeting-draft">첫 회의 일시<input type="text" value={tfMeetingDraft} onChange={event => updateTfMeetingDraft(event.currentTarget.value)} placeholder="예: 2026-09-23 10:00" /></label>
                   <div className="tf-board__assignment-actions"><button type="button" onClick={copyTfAssignmentDraft}>배정 초안 복사</button><span aria-live="polite">{tfAssignmentMessage}</span></div>
                   <p className="tf-board__assignment-note">현재 상단 지표와 공식 문서의 `0/7` 상태는 자동으로 바뀌지 않습니다. 실제 담당자 확정 후 킥오프 문서에 반영해야 합니다.</p>
+                </div>
+              </details>
+              <details className="tf-board__field-session">
+                <summary>A/B/C 현장 검증 기록 · {FIELD_SESSION_SCENARIOS.filter(scenario => Boolean(fieldSessionDrafts[scenario.id]?.updatedAt)).length}/{FIELD_SESSION_SCENARIOS.length} <span aria-hidden="true">＋</span></summary>
+                <div className="tf-board__field-session-body">
+                  <p>실제 소비자·사업자 세션의 관찰 입력을 남기는 작업 공간입니다. 고객 개인정보·건강 상태·복용 약은 기록하지 않습니다. 기록만으로 현장 PASS나 최종 승인을 선언하지 않습니다.</p>
+                  <div className="tf-board__field-session-list">
+                    {FIELD_SESSION_SCENARIOS.map(scenario => {
+                      const draft = fieldSessionDrafts[scenario.id] ?? makeEmptyFieldSessionDraft();
+                      return <article key={scenario.id} className="tf-board__field-session-item">
+                        <div className="tf-board__field-session-topline"><strong>{scenario.id}</strong><span>{draft.updatedAt ? '기록됨' : '기록 필요'}</span></div>
+                        <h3>{scenario.title}</h3>
+                        <p>{scenario.goal}</p>
+                        <div className="tf-board__field-session-fields">
+                          <label>설명자<input data-field-session={`${scenario.id}-facilitator`} type="text" value={draft.facilitator} onChange={event => updateFieldSessionDraft(scenario.id, 'facilitator', event.currentTarget.value)} placeholder="식별자만 입력" /></label>
+                          <label>관찰자<input data-field-session={`${scenario.id}-observer`} type="text" value={draft.observer} onChange={event => updateFieldSessionDraft(scenario.id, 'observer', event.currentTarget.value)} placeholder="식별자만 입력" /></label>
+                          <label>기기·브라우저<input data-field-session={`${scenario.id}-device`} type="text" value={draft.device} onChange={event => updateFieldSessionDraft(scenario.id, 'device', event.currentTarget.value)} placeholder="예: iPhone · Safari" /></label>
+                          <label>다음 행동 명확도<select data-field-session={`${scenario.id}-clarity`} value={draft.clarity} onChange={event => updateFieldSessionDraft(scenario.id, 'clarity', event.currentTarget.value as FieldSessionClarity)}>{FIELD_SESSION_CLARITY_OPTIONS.map(option => <option key={option.id} value={option.id}>{option.label}</option>)}</select></label>
+                          <label>첫 행동까지(초)<input data-field-session={`${scenario.id}-firstActionSeconds`} type="text" value={draft.firstActionSeconds} onChange={event => updateFieldSessionDraft(scenario.id, 'firstActionSeconds', event.currentTarget.value)} placeholder="예: 12" /></label>
+                          <label>외부 선행 이탈<select data-field-session={`${scenario.id}-externalExit`} value={draft.externalExit} onChange={event => updateFieldSessionDraft(scenario.id, 'externalExit', event.currentTarget.value as FieldSessionExit)}><option value="UNRECORDED">아직 기록하지 않음</option><option value="NONE">없음</option><option value="YES">있음</option></select></label>
+                        </div>
+                        <label>오해·문제<textarea data-field-session={`${scenario.id}-misunderstanding`} value={draft.misunderstanding} onChange={event => updateFieldSessionDraft(scenario.id, 'misunderstanding', event.currentTarget.value)} placeholder="오해가 생긴 장면·문장·P0 오류를 기록하세요." rows={2} /></label>
+                        <div className="tf-board__field-session-fields tf-board__field-session-fields--followup">
+                          <label>다음 액션<input data-field-session={`${scenario.id}-nextAction`} type="text" value={draft.nextAction} onChange={event => updateFieldSessionDraft(scenario.id, 'nextAction', event.currentTarget.value)} placeholder="예: 05번 문장 재검토" /></label>
+                          <label>담당·기한<input data-field-session={`${scenario.id}-owner`} type="text" value={draft.owner} onChange={event => updateFieldSessionDraft(scenario.id, 'owner', event.currentTarget.value)} placeholder="예: UX · 다음 회의 전" /></label>
+                        </div>
+                        <small aria-live="polite">{draft.updatedAt ? `마지막 저장 ${draft.updatedAt.replace('T', ' ').replace('Z', '')}` : fieldSessionMessage || '아직 기록하지 않았습니다.'}</small>
+                      </article>;
+                    })}
+                  </div>
+                  <div className="tf-board__field-session-actions"><button type="button" onClick={copyFieldSessionDrafts}>현장 기록 초안 복사</button><span aria-live="polite">{fieldSessionMessage}</span></div>
                 </div>
               </details>
               <details className="tf-board__discussion">

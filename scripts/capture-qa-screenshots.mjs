@@ -79,6 +79,9 @@ try {
   await capture('cellpinda-presenter-390-current.png');
   await evaluate('document.querySelector(".story-ops-board-button")?.click()');
   await wait(180);
+  await evaluate('document.querySelector(".tf-board__field-session")?.setAttribute("open", "")');
+  await wait(180);
+  await capture('cellpinda-field-session-390-current.png');
   await evaluate('document.querySelector(".tf-board__discussion")?.setAttribute("open", "")');
   await evaluate('document.querySelector(".tf-board__discussion-draft")?.setAttribute("open", "")');
   await wait(180);
