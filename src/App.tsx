@@ -585,6 +585,7 @@ export default function App() {
       `검토 대기: ${snapshot.pendingReview}건 · SCIENCE/MEDICAL 우선: ${snapshot.scienceMedicalPriority}건 · 신규 후보: ${snapshot.newCandidates}건`,
       `자동 공개: ${snapshot.autoPublish}건 · 자동 공개는 사람 승인 전 0건 유지`,
       `등록 영상 링크: ${snapshot.registeredVideoLinksHealthy}/${snapshot.registeredVideoLinksChecked} · 경고 ${snapshot.registeredVideoLinkWarnings}건`,
+      `권위·연구 출처 링크: ${snapshot.registeredEvidenceLinksHealthy}/${snapshot.registeredEvidenceLinksChecked} · 경고 ${snapshot.registeredEvidenceLinkWarnings}건`,
       `메타데이터: ${snapshot.registeredVideoMetadataHealthy}/${snapshot.registeredVideoMetadataChecked} · 경고 ${snapshot.registeredVideoMetadataWarnings}건`,
       `자막 트랙: ${snapshot.registeredVideoCaptionTracksAvailable}/${snapshot.registeredVideoCaptionTracksChecked} · 경고 ${snapshot.registeredVideoCaptionTrackWarnings}건`,
       `자막 본문: ${snapshot.registeredVideoCaptionBodiesAvailable}/${snapshot.registeredVideoCaptionBodiesChecked} · 경고 ${snapshot.registeredVideoCaptionBodyWarnings}건`,
@@ -1123,6 +1124,7 @@ export default function App() {
                 <p><strong>{GABA_MONITOR_SNAPSHOT.checkedAt}</strong> 마지막 자동 확인 · 채널 {GABA_MONITOR_SNAPSHOT.sourceChannels}/{GABA_MONITOR_SNAPSHOT.registeredChannels} · 검색어 {GABA_MONITOR_SNAPSHOT.discoveryQueries}/{GABA_MONITOR_SNAPSHOT.totalDiscoveryQueries}</p>
                 <p>검토 대기 {GABA_MONITOR_SNAPSHOT.pendingReview}건 · SCIENCE/MEDICAL 우선 {GABA_MONITOR_SNAPSHOT.scienceMedicalPriority}건 · 신규 후보 {GABA_MONITOR_SNAPSHOT.newCandidates}건 · 자동 공개 {GABA_MONITOR_SNAPSHOT.autoPublish}건</p>
                 <p>등록 영상 원문 링크 {GABA_MONITOR_SNAPSHOT.registeredVideoLinksHealthy}/{GABA_MONITOR_SNAPSHOT.registeredVideoLinksChecked} 접근 확인 · 링크 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoLinkWarnings}건</p>
+                <p>권위·연구 출처 링크 {GABA_MONITOR_SNAPSHOT.registeredEvidenceLinksHealthy}/{GABA_MONITOR_SNAPSHOT.registeredEvidenceLinksChecked} 접근 확인 · 출처 링크 경고 {GABA_MONITOR_SNAPSHOT.registeredEvidenceLinkWarnings}건</p>
                 <p>등록 YouTube 메타데이터 {GABA_MONITOR_SNAPSHOT.registeredVideoMetadataHealthy}/{GABA_MONITOR_SNAPSHOT.registeredVideoMetadataChecked} 제목·채널 확인 · 메타데이터 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoMetadataWarnings}건</p>
                 <p>등록 YouTube 자막 트랙 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTracksAvailable}/{GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTracksChecked} 발견 · 자막 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTrackWarnings}건</p>
                 <p>등록 YouTube 자막 본문 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodiesAvailable}/{GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodiesChecked} 확인 · 본문 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodyWarnings}건</p>

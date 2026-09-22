@@ -77,19 +77,28 @@ const getRegisteredVideoUrls = () => {
   return [...new Set([...source.matchAll(/\n\s+url: '([^']+)'/g)].map(match => match[1]))];
 };
 
-const checkRegisteredVideoLinks = async () => {
-  const urls = getRegisteredVideoUrls();
+const getRegisteredEvidenceUrls = () => {
+  const sourcePath = path.join(root, 'src', 'gabaVideos.ts');
+  if (!fs.existsSync(sourcePath)) return [];
+  const source = fs.readFileSync(sourcePath, 'utf8');
+  return [...new Set([
+    ...[...source.matchAll(/\n\s+authorityEvidenceUrl: '([^']+)'/g)].map(match => match[1]),
+    ...[...source.matchAll(/\n\s+researchEvidenceUrl: '([^']+)'/g)].map(match => match[1]),
+  ])];
+};
+
+const checkUrlHealth = async (urls, userAgent) => {
   const warnings = [];
   let healthy = 0;
   for (const url of urls) {
     try {
       let response = await fetch(url, {
         method: 'HEAD',
-        headers: {'user-agent': 'cellpinda-gaba-sum/1.0 (educational source check)', 'accept-language': 'ko-KR,ko;q=0.9,en;q=0.8'},
+        headers: {'user-agent': userAgent, 'accept-language': 'ko-KR,ko;q=0.9,en;q=0.8'},
       });
       if ([405, 429, 500, 502, 503, 504].includes(response.status)) {
         response = await fetch(url, {
-          headers: {'user-agent': 'cellpinda-gaba-sum/1.0 (educational source check)', 'accept-language': 'ko-KR,ko;q=0.9,en;q=0.8'},
+          headers: {'user-agent': userAgent, 'accept-language': 'ko-KR,ko;q=0.9,en;q=0.8'},
         });
         response.body?.cancel();
       }
@@ -101,6 +110,16 @@ const checkRegisteredVideoLinks = async () => {
   }
   return {checked: urls.length, healthy, warnings};
 };
+
+const checkRegisteredVideoLinks = async () => checkUrlHealth(
+  getRegisteredVideoUrls(),
+  'cellpinda-gaba-sum/1.0 (educational source check)',
+);
+
+const checkRegisteredEvidenceLinks = async () => checkUrlHealth(
+  getRegisteredEvidenceUrls(),
+  'cellpinda-gaba-sum/1.0 (authority evidence check)',
+);
 
 const checkRegisteredYouTubeMetadata = async () => {
   const urls = getRegisteredVideoUrls().filter(url => /youtube\.com|youtu\.be/i.test(url));
@@ -377,7 +396,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
-const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, linkHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const priorityRank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
@@ -435,6 +454,9 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     registeredVideoLinksChecked: linkHealth.checked,
     registeredVideoLinksHealthy: linkHealth.healthy,
     registeredVideoLinkWarnings: linkHealth.warnings.length,
+    registeredEvidenceLinksChecked: evidenceHealth.checked,
+    registeredEvidenceLinksHealthy: evidenceHealth.healthy,
+    registeredEvidenceLinkWarnings: evidenceHealth.warnings.length,
     registeredVideoMetadataChecked: metadataHealth.checked,
     registeredVideoMetadataHealthy: metadataHealth.healthy,
     registeredVideoMetadataWarnings: metadataHealth.warnings.length,
@@ -454,7 +476,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   return `export const GABA_MONITOR_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)} as const;\n`;
 };
 
-const dailyReport = ({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
+const dailyReport = ({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
@@ -473,6 +495,7 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, errors,
     `- Shorts 페이지 보완 수집: ${fallbackSources.length}개 채널`,
     `- 신규 후보: ${candidates.length}건`,
     `- 등록 영상 원문 링크: ${linkHealth.healthy}/${linkHealth.checked} 접근 확인 · 링크 경고 ${linkHealth.warnings.length}건`,
+    `- 권위·연구 출처 링크: ${evidenceHealth.healthy}/${evidenceHealth.checked} 접근 확인 · 출처 링크 경고 ${evidenceHealth.warnings.length}건`,
     `- 등록 YouTube 메타데이터: ${metadataHealth.healthy}/${metadataHealth.checked} 제목·채널 확인 · 메타데이터 경고 ${metadataHealth.warnings.length}건`,
     `- 등록 YouTube 자막 트랙: ${captionHealth.available}/${captionHealth.checked} watch 페이지에서 발견 · 자막 경고 ${captionHealth.warnings.length}건`,
     `- 등록 YouTube 자막 본문: ${captionBodyHealth.available}/${captionBodyHealth.checked} 본문 확인 · 본문 경고 ${captionBodyHealth.warnings.length}건`,
@@ -501,6 +524,13 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, errors,
     linkHealth.warnings.length
       ? linkHealth.warnings.map(item => `- 경고: ${markdown(item)}`).join('\n')
       : '- 등록 영상 원문 링크에서 HTTP 경고 없음',
+    '',
+    '## 권위·연구 출처 링크 상태',
+    '',
+    evidenceHealth.warnings.length
+      ? evidenceHealth.warnings.map(item => `- 경고: ${markdown(item)}`).join('\n')
+      : '- 등록된 권위·연구 출처 링크에서 HTTP 경고 없음',
+    '- 이 점검은 등록된 출처 URL의 접근 상태만 확인한다. 링크 접근 가능 여부는 인물 자격·영상 화자 일치·연구 내용·과학적 타당성·권리·공개 승인을 의미하지 않는다.',
     '',
     '## 등록 YouTube 메타데이터 상태',
     '',
@@ -601,6 +631,7 @@ const main = async () => {
   }
 
   const linkHealth = await checkRegisteredVideoLinks();
+  const evidenceHealth = await checkRegisteredEvidenceLinks();
   const metadataHealth = await checkRegisteredYouTubeMetadata();
   const captionHealth = await checkRegisteredYouTubeCaptionTracks();
   const captionBodyHealth = await checkRegisteredYouTubeCaptionBodies(captionHealth);
@@ -609,6 +640,7 @@ const main = async () => {
   console.log('- sources: ' + successfulSources + '/' + sources.length);
   console.log('- new candidates: ' + candidates.length);
   console.log('- registered video links: ' + linkHealth.healthy + '/' + linkHealth.checked + ' healthy');
+  console.log('- registered authority/research evidence links: ' + evidenceHealth.healthy + '/' + evidenceHealth.checked + ' healthy');
   console.log('- registered YouTube metadata: ' + metadataHealth.healthy + '/' + metadataHealth.checked + ' healthy');
   console.log('- registered YouTube caption tracks: ' + captionHealth.available + '/' + captionHealth.checked + ' available');
   console.log('- registered YouTube caption bodies: ' + captionBodyHealth.available + '/' + captionBodyHealth.checked + ' available');
@@ -642,7 +674,7 @@ const main = async () => {
     console.log('- wrote: ' + candidates.length + ' candidate(s) to docs/GABA_VIDEO_INBOX.md');
   }
   fs.mkdirSync(reportArchiveDir, {recursive: true});
-  const report = dailyReport({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth, metadataHealth, captionHealth, captionBodyHealth});
+  const report = dailyReport({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth});
   fs.writeFileSync(reportPath, report, 'utf8');
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
   const updatedInbox = fs.readFileSync(inboxPath, 'utf8');
@@ -656,6 +688,7 @@ const main = async () => {
     successfulSearches,
     newCandidates: candidates.length,
     linkHealth,
+    evidenceHealth,
     metadataHealth,
     captionHealth,
     captionBodyHealth,
