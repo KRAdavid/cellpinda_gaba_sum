@@ -119,10 +119,19 @@ const checkRegisteredYouTubeMetadata = async () => {
   return {checked: urls.length, healthy, warnings};
 };
 
+const extractCaptionTrackUrl = html => {
+  const raw = html.match(/"captionTracks"\s*:\s*\[\s*\{\s*"baseUrl"\s*:\s*"((?:\\.|[^"])*)"/i)?.[1] ?? '';
+  if (!raw) return '';
+  try { return JSON.parse('"' + raw + '"'); } catch {
+    return raw.replace(/\\u0026/g, '&').replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+  }
+};
+
 const checkRegisteredYouTubeCaptionTracks = async () => {
   const urls = getRegisteredVideoUrls().filter(url => /youtube\.com|youtu\.be/i.test(url));
   const warnings = [];
   let available = 0;
+  const tracks = new Map();
   for (const url of urls) {
     const videoId = url.match(/(?:shorts\/|watch\?v=)([\w-]{11})/)?.[1];
     if (!videoId) {
@@ -131,10 +140,46 @@ const checkRegisteredYouTubeCaptionTracks = async () => {
     }
     try {
       const html = await fetchText('https://www.youtube.com/watch?v=' + videoId);
+      const captionUrl = extractCaptionTrackUrl(html);
       if (html.includes('playerCaptionsTracklistRenderer') || html.includes('"captionTracks"')) available += 1;
+      if (captionUrl) tracks.set(url, captionUrl);
       else warnings.push(`${url} → watch 페이지 자막 트랙 없음`);
     } catch (error) {
       warnings.push(`${url} → ${error.message}`);
+    }
+  }
+  return {checked: urls.length, available, warnings, tracks};
+};
+
+const checkRegisteredYouTubeCaptionBodies = async captionHealth => {
+  const urls = getRegisteredVideoUrls().filter(url => /youtube\.com|youtu\.be/i.test(url));
+  const warnings = [];
+  let available = 0;
+  for (const url of urls) {
+    const captionUrl = captionHealth.tracks.get(url);
+    if (!captionUrl) {
+      warnings.push(`${url} → 자막 본문 요청 URL 없음`);
+      continue;
+    }
+    try {
+      const endpoint = captionUrl + (captionUrl.includes('?') ? '&' : '?') + 'fmt=json3';
+      const response = await fetch(endpoint, {
+        headers: {
+          'user-agent': 'cellpinda-gaba-sum/1.0 (educational caption health check)',
+          'accept-language': 'ko-KR,ko;q=0.9,en;q=0.8',
+        },
+      });
+      if (!response.ok) {
+        warnings.push(`${url} → 자막 본문 확인 HTTP ${response.status}`);
+        continue;
+      }
+      const payload = await response.json();
+      const hasText = Array.isArray(payload.events)
+        && payload.events.some(event => Array.isArray(event.segs) && event.segs.some(segment => segment.utf8?.trim()));
+      if (hasText) available += 1;
+      else warnings.push(`${url} → 자막 본문이 비어 있거나 JSON3 형식이 아님`);
+    } catch (error) {
+      warnings.push(`${url} → 자막 본문 확인 ${error.message}`);
     }
   }
   return {checked: urls.length, available, warnings};
@@ -257,7 +302,7 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
-const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, linkHealth, metadataHealth, captionHealth}) => {
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, linkHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const ranked = entries.map(entry => screenCandidate(`${entry.title} ${entry.description}`));
   const scienceMedicalPriority = ranked.filter(item => item.priority !== 'VIDEO 우선').length;
@@ -301,6 +346,9 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     registeredVideoCaptionTracksChecked: captionHealth.checked,
     registeredVideoCaptionTracksAvailable: captionHealth.available,
     registeredVideoCaptionTrackWarnings: captionHealth.warnings.length,
+    registeredVideoCaptionBodiesChecked: captionBodyHealth.checked,
+    registeredVideoCaptionBodiesAvailable: captionBodyHealth.available,
+    registeredVideoCaptionBodyWarnings: captionBodyHealth.warnings.length,
     firstMeetingReady: Boolean(kickoff.match(/^(?:회의 날짜·시간|첫 회의 날짜·시간):[^\r\n]*$/m)?.[0]?.replace(/^[^:]+:\s*/, '').trim()),
     triageUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md',
     reportUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md',
@@ -310,7 +358,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   return `export const GABA_MONITOR_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)} as const;\n`;
 };
 
-const dailyReport = ({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth, metadataHealth, captionHealth}) => {
+const dailyReport = ({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
@@ -331,6 +379,7 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, errors,
     `- 등록 영상 원문 링크: ${linkHealth.healthy}/${linkHealth.checked} 접근 확인 · 링크 경고 ${linkHealth.warnings.length}건`,
     `- 등록 YouTube 메타데이터: ${metadataHealth.healthy}/${metadataHealth.checked} 제목·채널 확인 · 메타데이터 경고 ${metadataHealth.warnings.length}건`,
     `- 등록 YouTube 자막 트랙: ${captionHealth.available}/${captionHealth.checked} watch 페이지에서 발견 · 자막 경고 ${captionHealth.warnings.length}건`,
+    `- 등록 YouTube 자막 본문: ${captionBodyHealth.available}/${captionBodyHealth.checked} 본문 확인 · 본문 경고 ${captionBodyHealth.warnings.length}건`,
     `- 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW`,
     '',
     '## 신규 후보',
@@ -370,6 +419,13 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, errors,
       ? captionHealth.warnings.map(item => `- 경고: ${markdown(item)}`).join('\n')
       : '- 모든 등록 YouTube watch 페이지에서 자막 트랙 안내 발견',
     '- 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 의미하지 않는다. 사람 검토 전 요약과 공개 상태는 바꾸지 않는다.',
+    '',
+    '## 등록 YouTube 자막 본문 상태',
+    '',
+    captionBodyHealth.warnings.length
+      ? captionBodyHealth.warnings.map(item => `- 경고: ${markdown(item)}`).join('\n')
+      : '- 모든 등록 YouTube 자막 본문을 JSON3 응답으로 확인',
+    '- 자막 본문 확인은 텍스트 응답의 존재만 점검한다. 번역 정확성·발언 맥락·화자·과학적 타당성·권리를 승인하지 않으며, 본문 확인 전 요약과 공개 상태를 바꾸지 않는다.',
     '',
     '## 다음 15분 감리 순서',
     '',
@@ -451,6 +507,7 @@ const main = async () => {
   const linkHealth = await checkRegisteredVideoLinks();
   const metadataHealth = await checkRegisteredYouTubeMetadata();
   const captionHealth = await checkRegisteredYouTubeCaptionTracks();
+  const captionBodyHealth = await checkRegisteredYouTubeCaptionBodies(captionHealth);
 
   console.log('GABA Shorts monitor (' + checkedDate + ')');
   console.log('- sources: ' + successfulSources + '/' + sources.length);
@@ -458,6 +515,7 @@ const main = async () => {
   console.log('- registered video links: ' + linkHealth.healthy + '/' + linkHealth.checked + ' healthy');
   console.log('- registered YouTube metadata: ' + metadataHealth.healthy + '/' + metadataHealth.checked + ' healthy');
   console.log('- registered YouTube caption tracks: ' + captionHealth.available + '/' + captionHealth.checked + ' available');
+  console.log('- registered YouTube caption bodies: ' + captionBodyHealth.available + '/' + captionBodyHealth.checked + ' available');
   if (errors.length) errors.forEach(error => console.log('- warning: ' + error));
 
   if (!writeMode) return;
@@ -488,7 +546,7 @@ const main = async () => {
     console.log('- wrote: ' + candidates.length + ' candidate(s) to docs/GABA_VIDEO_INBOX.md');
   }
   fs.mkdirSync(reportArchiveDir, {recursive: true});
-  const report = dailyReport({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth, metadataHealth, captionHealth});
+  const report = dailyReport({successfulSources, successfulSearches, candidates, errors, fallbackSources, linkHealth, metadataHealth, captionHealth, captionBodyHealth});
   fs.writeFileSync(reportPath, report, 'utf8');
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
   const updatedInbox = fs.readFileSync(inboxPath, 'utf8');
@@ -502,6 +560,7 @@ const main = async () => {
     linkHealth,
     metadataHealth,
     captionHealth,
+    captionBodyHealth,
   }), 'utf8');
   console.log('- wrote: daily report to docs/GABA_VIDEO_DAILY_REPORT.md');
   console.log('- archived: docs/gaba-video-daily/GABA_VIDEO_DAILY_REPORT_' + checkedDate + '.md');

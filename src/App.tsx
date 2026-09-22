@@ -881,6 +881,7 @@ export default function App() {
                 <p>등록 영상 원문 링크 {GABA_MONITOR_SNAPSHOT.registeredVideoLinksHealthy}/{GABA_MONITOR_SNAPSHOT.registeredVideoLinksChecked} 접근 확인 · 링크 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoLinkWarnings}건</p>
                 <p>등록 YouTube 메타데이터 {GABA_MONITOR_SNAPSHOT.registeredVideoMetadataHealthy}/{GABA_MONITOR_SNAPSHOT.registeredVideoMetadataChecked} 제목·채널 확인 · 메타데이터 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoMetadataWarnings}건</p>
                 <p>등록 YouTube 자막 트랙 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTracksAvailable}/{GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTracksChecked} 발견 · 자막 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionTrackWarnings}건</p>
+                <p>등록 YouTube 자막 본문 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodiesAvailable}/{GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodiesChecked} 확인 · 본문 경고 {GABA_MONITOR_SNAPSHOT.registeredVideoCaptionBodyWarnings}건</p>
                 <div className="monitor-snapshot__links"><a href={GABA_MONITOR_SNAPSHOT.triageUrl} target="_blank" rel="noopener noreferrer">감리 우선순위 보드 원문 ↗</a><a href={GABA_MONITOR_SNAPSHOT.reportUrl} target="_blank" rel="noopener noreferrer">일일 리포트 ↗</a></div>
               </div> : null}
               {presentationMode ? <div className="video-db-tools">

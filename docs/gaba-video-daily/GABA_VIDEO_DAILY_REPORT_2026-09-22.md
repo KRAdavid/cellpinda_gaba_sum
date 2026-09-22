@@ -7,17 +7,18 @@
 - 채널 확인: 8/8
 - 유사 콘텐츠 검색어 확인: 4/4
 - Shorts 페이지 보완 수집: 0개 채널
-- 신규 후보: 1건
+- 신규 후보: 0건
 - 등록 영상 원문 링크: 11/11 접근 확인 · 링크 경고 0건
 - 등록 YouTube 메타데이터: 9/9 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 9/9 watch 페이지에서 발견 · 자막 경고 0건
+- 등록 YouTube 자막 본문: 0/9 본문 확인 · 본문 경고 9건
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
 ## 신규 후보
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 상태 |
 | --- | --- | --- | --- | --- | --- |
-| PENDING-20260922-RQRD6srJ8NQ | [현준 형님! 이게 진짜 되네?? 이거 신기하네~ #가바 #gaba #멘탈관리 #스트레스관리](https://www.youtube.com/watch?v=RQRD6srJ8NQ) | YouTube 검색: 가바 스트레스 Shorts | 일반 설명 후보 | VIDEO 우선 | PENDING_REVIEW |
+| 없음 | 신규 후보 없음 | - | - | - |
 
 ## 채널 경고
 
@@ -42,6 +43,19 @@
 
 - 모든 등록 YouTube watch 페이지에서 자막 트랙 안내 발견
 - 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 의미하지 않는다. 사람 검토 전 요약과 공개 상태는 바꾸지 않는다.
+
+## 등록 YouTube 자막 본문 상태
+
+- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 확인 HTTP 429
+- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 확인 HTTP 429
+- 자막 본문 확인은 텍스트 응답의 존재만 점검한다. 번역 정확성·발언 맥락·화자·과학적 타당성·권리를 승인하지 않으며, 본문 확인 전 요약과 공개 상태를 바꾸지 않는다.
 
 ## 다음 15분 감리 순서
 
