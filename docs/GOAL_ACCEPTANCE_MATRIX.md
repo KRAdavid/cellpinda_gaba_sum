@@ -11,7 +11,7 @@
 | GABA 정의·일반 기능 | 감마아미노부티르산 이름과 억제성 신경전달물질 설명 | AI 사전 확인 PASS | SCIENCE/MEDICAL 사람 승인 |
 | 일반 연구 근거 | 4개 인페이지 출처, 연구 조건·제한 문장 | AI 사전 확인 PASS / 사람 HOLD | 등록부 출처 사람 검토 완료 |
 | 연구와 제품 효능 분리 | `일반 GABA 연구` 라벨·경계 문구·제품 정보 비노출 | 기술 PASS | 전체 광고 인상 사람 승인 |
-| 권위 영상 자료 | 승인 영상 2건, VIDEO DB 11건, 영상별 요약·인물 소개·감리 필드 | 기술 PASS / 사람 HOLD | 원문·자막·화자·권리 확인 후 승인 |
+| 권위 영상 자료 | DB 승인 이력 2건(해외 AUTH, 공개 미노출), 국내 공개 승인 0건, VIDEO DB 11건 | 기술 PASS / 사람 HOLD | 국내 후보의 원문·자막·화자·권리 확인 후 승인 |
 | Shorts 체계화 | 제공 Shorts 8건 등록, `PUBLISH_GENERAL`·`LIMITED_USE`·`HOLD`·`EXCLUDE` 구분 | 기술 PASS | 각 후보의 사람 감리 로그와 타임코드 완료 |
 | 매일 유사 콘텐츠 모니터 | 8개 채널·4개 검색어·RSS/Shorts fallback·날짜별 리포트 | 기술 PASS / 운영 HOLD | 실제 담당자가 매일 감리하고 승인 기록을 남김 |
 | 자동 공개 방지 | 신규 후보 `PENDING_REVIEW`, 스냅샷 `autoPublish: 0` | PASS | 사람 승인 없는 공개 0건 유지 |
