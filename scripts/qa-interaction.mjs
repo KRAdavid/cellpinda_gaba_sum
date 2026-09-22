@@ -251,8 +251,8 @@ try {
   await wait(180);
   const copyReviewState = await evaluate('document.querySelector(".video-review-draft__actions")?.innerText||""');
   assert('presenter review draft copy action is wired', copyReviewState.includes('감리 기록 초안을 복사했습니다.') || copyReviewState.includes('복사에 실패했습니다'), copyReviewState);
-  const reviewSummary = await evaluate('({count:document.querySelector(".video-review-summary")?.innerText||"",buttons:document.querySelectorAll(".video-review-summary button").length,disabled:document.querySelector(".video-review-summary button")?.disabled??true,exportButton:!!document.querySelector("[data-export-video-db-csv]")})');
-  assert('presenter review draft summary exposes batch copy and DB export', reviewSummary.count.includes('감리 초안 1건') && reviewSummary.count.includes('미완료 9건') && reviewSummary.buttons === 3 && reviewSummary.disabled === false && reviewSummary.exportButton, JSON.stringify(reviewSummary));
+  const reviewSummary = await evaluate('({count:document.querySelector(".video-review-summary")?.innerText||"",buttons:document.querySelectorAll(".video-review-summary button").length,disabled:document.querySelector(".video-review-summary button")?.disabled??true,exportButton:!!document.querySelector("[data-export-video-db-csv]"),handoffExportButton:!!document.querySelector("[data-export-review-packet]"),handoffImportButton:!!document.querySelector("[data-import-review-packet]")})');
+  assert('presenter review draft summary exposes batch copy, DB export, and handoff controls', reviewSummary.count.includes('감리 초안 1건') && reviewSummary.count.includes('미완료 9건') && reviewSummary.buttons === 5 && reviewSummary.disabled === false && reviewSummary.exportButton && reviewSummary.handoffExportButton && reviewSummary.handoffImportButton, JSON.stringify(reviewSummary));
   await evaluate('document.querySelector(".video-review-summary button")?.click()');
   await wait(180);
   const batchCopyState = await evaluate('document.querySelector(".video-review-summary")?.innerText||""');
@@ -265,6 +265,14 @@ try {
   await wait(180);
   const videoExportState = await evaluate('document.querySelector(".video-review-summary")?.innerText||""');
   assert('presenter video DB can be exported for a meeting', videoExportState.includes('영상 DB CSV를 내려받았습니다.') || videoExportState.includes('다운로드'), videoExportState);
+  await evaluate('document.querySelector("[data-export-review-packet]")?.click()');
+  await wait(180);
+  const handoffExportState = await evaluate('document.querySelector(".video-review-summary")?.innerText||""');
+  assert('presenter review drafts can be saved as a handoff packet', handoffExportState.includes('감리 패킷 JSON을 저장했습니다.'), handoffExportState);
+  await evaluate(`(() => { const input=document.querySelector('[data-import-review-packet]')?.parentElement?.querySelector('input[type=file]'); if (!input) return false; const packet={packetType:'GABA_EDUCATION_REVIEW_HANDOFF',version:1,exportedAt:new Date().toISOString(),checkedAt:'2026-09-23',scope:{videoDb:11,monitorCandidates:1,tfRoles:7},videoReviewDrafts:{'SHORT-02':{reviewer:'handoff teammate',role:'SCIENCE',decision:'HOLD',sourceChecked:true,transcriptChecked:false,speakerChecked:false,rightsChecked:false,claimScopeChecked:false,timestamps:'00:40–00:55',transcriptExcerpt:'handoff excerpt',notes:'handoff note',updatedAt:new Date().toISOString()}},monitorReviewDrafts:{},tfAssignments:{},tfMeetingDraft:'handoff meeting'}; const file=new File([JSON.stringify(packet)],'handoff.json',{type:'application/json'}); const transfer=new DataTransfer(); transfer.items.add(file); Object.defineProperty(input,'files',{configurable:true,value:transfer.files}); input.dispatchEvent(new Event('change',{bubbles:true})); return true; })()`);
+  await wait(260);
+  const handoffImportState = await evaluate('document.querySelector(".video-review-summary")?.innerText||""');
+  assert('presenter review drafts can merge a handoff packet without changing official status', handoffImportState.includes('감리 패킷을 병합했습니다.') && handoffImportState.includes('영상 1건'), handoffImportState);
   await press('Escape', 'Escape', 27);
   await evaluate('document.querySelector(".story-ops-board-button")?.click()');
   await waitForText('#info-panel-title', 'TF 운영 보드');

@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useRef, useState} from 'react';
+import {useEffect, useMemo, useRef, useState, type ChangeEvent} from 'react';
 import {ACTIVE_GABA_VIDEOS, DOMESTIC_PUBLIC_GABA_VIDEOS, GABA_VIDEO_DB, PUBLIC_GABA_VIDEOS, SHARED_GABA_VIDEOS, type GabaVideoRecord} from './gabaVideos';
 import {GABA_MONITOR_SNAPSHOT} from './gabaMonitorSnapshot';
 import {TF_DISCUSSION_ITEMS, TF_MEETING_STEPS, TF_ROLES, TF_WORKSTREAMS} from './tfBoard';
@@ -45,10 +45,23 @@ type VideoReviewDraft = {
 type VideoReviewDrafts = Record<string, VideoReviewDraft>;
 type MonitorCandidate = typeof GABA_MONITOR_SNAPSHOT.pendingQueue[number] | typeof GABA_MONITOR_SNAPSHOT.authorityQueue[number];
 type MonitorReviewDrafts = Record<string, VideoReviewDraft>;
+type ReviewHandoffPacket = {
+  packetType: 'GABA_EDUCATION_REVIEW_HANDOFF';
+  version: 1;
+  exportedAt: string;
+  checkedAt: string;
+  scope: {videoDb: number; monitorCandidates: number; tfRoles: number};
+  videoReviewDrafts: VideoReviewDrafts;
+  monitorReviewDrafts: MonitorReviewDrafts;
+  tfAssignments: TfAssignment;
+  tfMeetingDraft: string;
+  boundary: string;
+};
 
 const TF_ASSIGNMENT_STORAGE_KEY = 'cellpinda-gaba-tf-assignment-draft-v1';
 const VIDEO_REVIEW_STORAGE_KEY = 'cellpinda-gaba-video-review-draft-v1';
 const MONITOR_REVIEW_STORAGE_KEY = 'cellpinda-gaba-monitor-review-draft-v1';
+const REVIEW_HANDOFF_PACKET_TYPE = 'GABA_EDUCATION_REVIEW_HANDOFF';
 const VIDEO_REVIEW_ROLES = ['VIDEO', 'SCIENCE', 'MEDICAL', 'RIGHTS', 'PM'] as const;
 const VIDEO_REVIEW_CHECKS = [
   {key: 'sourceChecked', label: '원문·영상'},
@@ -79,6 +92,43 @@ const makeEmptyVideoReviewDraft = (): VideoReviewDraft => ({
   notes: '',
   updatedAt: '',
 });
+
+const isRecord = (value: unknown): value is Record<string, unknown> => Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+
+const normaliseReviewDrafts = (value: unknown): VideoReviewDrafts => {
+  if (!isRecord(value)) return {};
+  const allowedDecisions = new Set<VideoReviewDecision>(['UNDECIDED', 'HOLD', 'LIMITED_USE', 'PUBLISH_GENERAL', 'EXCLUDE']);
+  return Object.fromEntries(Object.entries(value).flatMap(([id, rawDraft]) => {
+    if (!isRecord(rawDraft) || !id.trim()) return [];
+    const blank = makeEmptyVideoReviewDraft();
+    const draft: VideoReviewDraft = {
+      reviewer: typeof rawDraft.reviewer === 'string' ? rawDraft.reviewer : blank.reviewer,
+      role: typeof rawDraft.role === 'string' ? rawDraft.role : blank.role,
+      decision: typeof rawDraft.decision === 'string' && allowedDecisions.has(rawDraft.decision as VideoReviewDecision) ? rawDraft.decision as VideoReviewDecision : blank.decision,
+      sourceChecked: rawDraft.sourceChecked === true,
+      transcriptChecked: rawDraft.transcriptChecked === true,
+      speakerChecked: rawDraft.speakerChecked === true,
+      rightsChecked: rawDraft.rightsChecked === true,
+      claimScopeChecked: rawDraft.claimScopeChecked === true,
+      timestamps: typeof rawDraft.timestamps === 'string' ? rawDraft.timestamps : blank.timestamps,
+      transcriptExcerpt: typeof rawDraft.transcriptExcerpt === 'string' ? rawDraft.transcriptExcerpt : blank.transcriptExcerpt,
+      notes: typeof rawDraft.notes === 'string' ? rawDraft.notes : blank.notes,
+      updatedAt: typeof rawDraft.updatedAt === 'string' ? rawDraft.updatedAt : blank.updatedAt,
+    };
+    return [[id, draft]];
+  })) as VideoReviewDrafts;
+};
+
+const normaliseTfAssignments = (value: unknown): TfAssignment => {
+  if (!isRecord(value)) return {};
+  return Object.fromEntries(Object.entries(value).flatMap(([id, rawAssignment]) => {
+    if (!isRecord(rawAssignment) || !id.trim()) return [];
+    return [[id, {
+      lead: typeof rawAssignment.lead === 'string' ? rawAssignment.lead : '',
+      backup: typeof rawAssignment.backup === 'string' ? rawAssignment.backup : '',
+    }]];
+  })) as TfAssignment;
+};
 
 const VIDEO_FILTERS: Array<{id: VideoFilter; label: string}> = [
   {id: 'ALL', label: '전체'},
@@ -178,6 +228,19 @@ const csvCell = (value: unknown) => `"${String(value ?? '').replace(/"/g, '""').
 const downloadCsvFile = (filename: string, rows: unknown[][]) => {
   const csv = rows.map(row => row.map(csvCell).join(',')).join('\r\n');
   const blob = new Blob([`\uFEFF${csv}`], {type: 'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.style.display = 'none';
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 0);
+};
+
+const downloadJsonFile = (filename: string, value: unknown) => {
+  const blob = new Blob([JSON.stringify(value, null, 2)], {type: 'application/json;charset=utf-8'});
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement('a');
   anchor.href = url;
@@ -324,6 +387,7 @@ export default function App() {
   const [tfDiscussionMessage, setTfDiscussionMessage] = useState('');
   const [videoReviewDrafts, setVideoReviewDrafts] = useState<VideoReviewDrafts>({});
   const [videoReviewMessage, setVideoReviewMessage] = useState('');
+  const [reviewHandoffMessage, setReviewHandoffMessage] = useState('');
   const [monitorCopyMessage, setMonitorCopyMessage] = useState('');
   const [monitorReviewDrafts, setMonitorReviewDrafts] = useState<MonitorReviewDrafts>({});
   const [monitorReviewCandidateId, setMonitorReviewCandidateId] = useState<string | null>(null);
@@ -338,6 +402,7 @@ export default function App() {
   const presentationModeRef = useRef(false);
   const presentationReturnRef = useRef<HTMLElement | null>(null);
   const panelReturnRef = useRef<HTMLElement | null>(null);
+  const reviewHandoffInputRef = useRef<HTMLInputElement>(null);
   const shareRequestRef = useRef(0);
   const programmaticTargetRef = useRef<number | null>(null);
   const railScrollFrameRef = useRef<number | null>(null);
@@ -718,6 +783,52 @@ export default function App() {
     ]);
     downloadCsvFile(`gaba-video-db-${GABA_MONITOR_SNAPSHOT.checkedAt}.csv`, [headers, ...rows]);
     setVideoReviewMessage('영상 DB CSV를 내려받았습니다. 공개 승인 상태는 바뀌지 않습니다.');
+  };
+
+  const exportReviewHandoff = () => {
+    const packet: ReviewHandoffPacket = {
+      packetType: REVIEW_HANDOFF_PACKET_TYPE,
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      checkedAt: GABA_MONITOR_SNAPSHOT.checkedAt,
+      scope: {videoDb: GABA_VIDEO_DB.length, monitorCandidates: monitorCandidates.length, tfRoles: TF_ROLES.length},
+      videoReviewDrafts,
+      monitorReviewDrafts,
+      tfAssignments,
+      tfMeetingDraft,
+      boundary: '브라우저 로컬 감리·회의 초안의 팀 전달용 사본이며 공식 DB 상태·공개 승인·과학/의학·권리 판정을 의미하지 않습니다.',
+    };
+    downloadJsonFile(`gaba-education-review-handoff-${GABA_MONITOR_SNAPSHOT.checkedAt}.json`, packet);
+    setReviewHandoffMessage('감리 패킷 JSON을 저장했습니다. 공식 승인 상태는 바뀌지 않습니다.');
+  };
+
+  const importReviewHandoff = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.currentTarget.files?.[0];
+    event.currentTarget.value = '';
+    if (!file) return;
+    try {
+      const parsed = JSON.parse(await file.text()) as unknown;
+      if (!isRecord(parsed) || parsed.packetType !== REVIEW_HANDOFF_PACKET_TYPE || parsed.version !== 1) {
+        throw new Error('unsupported packet');
+      }
+      const importedVideoDrafts = normaliseReviewDrafts(parsed.videoReviewDrafts);
+      const importedMonitorDrafts = normaliseReviewDrafts(parsed.monitorReviewDrafts);
+      const importedAssignments = normaliseTfAssignments(parsed.tfAssignments);
+      const nextVideoDrafts = {...videoReviewDrafts, ...importedVideoDrafts};
+      const nextMonitorDrafts = {...monitorReviewDrafts, ...importedMonitorDrafts};
+      const nextAssignments = {...tfAssignments, ...importedAssignments};
+      const nextMeetingDraft = typeof parsed.tfMeetingDraft === 'string' ? parsed.tfMeetingDraft : tfMeetingDraft;
+      setVideoReviewDrafts(nextVideoDrafts);
+      setMonitorReviewDrafts(nextMonitorDrafts);
+      setTfAssignments(nextAssignments);
+      setTfMeetingDraft(nextMeetingDraft);
+      persistVideoReviewDrafts(nextVideoDrafts);
+      persistMonitorReviewDrafts(nextMonitorDrafts);
+      persistTfDraft(nextAssignments, nextMeetingDraft);
+      setReviewHandoffMessage(`감리 패킷을 병합했습니다. 영상 ${Object.keys(importedVideoDrafts).length}건 · 신규 후보 ${Object.keys(importedMonitorDrafts).length}건`);
+    } catch {
+      setReviewHandoffMessage('불러오지 못했습니다. 이 사이트에서 저장한 감리 패킷 JSON인지 확인해 주세요.');
+    }
   };
 
   const copyIncompleteVideoAuditQueue = async () => {
@@ -1361,7 +1472,7 @@ export default function App() {
             {openPanel === 'video' ? <>
               <p>{presentationMode ? '발표자용 영상 DB 감리 화면입니다. 공개 후보를 원문·자막·인물·근거·권리 기준으로 확인하고, 영상별 권위 수준과 공개 여부를 따로 결정합니다.' : '오늘 공유하신 국내 YouTube Shorts를 원문 확인용으로 소개합니다. 영상의 권위와 주장은 감리 상태를 따로 확인해 주세요.'}</p>
               <p className="info-panel__status">{presentationMode ? `감리 대장 ${GABA_VIDEO_DB.length}건 · 현재 국내 큐 ${filteredPanelVideos.length}건 · DB 승인 이력 ${PUBLIC_GABA_VIDEOS.length}건 · 국내 공개 승인 ${DOMESTIC_PUBLIC_GABA_VIDEOS.length}건 · 등록 영상 초안 ${Object.keys(videoReviewDrafts).length}건 · 신규 후보 초안 ${Object.keys(monitorReviewDrafts).length}건` : `오늘 공유 영상 ${SHARED_GABA_VIDEOS.length}건 · 원문 확인 필요`}</p>
-              {presentationMode ? <div className="video-review-summary" aria-label="감리 목록 복사"><span>감리 초안 {Object.keys(videoReviewDrafts).length}건 · 미완료 {incompleteAuditVideos.length}건</span><button type="button" disabled={!Object.keys(videoReviewDrafts).length} onClick={copyAllVideoReviewDrafts}>작성 초안 전체 복사</button><button type="button" disabled={!incompleteAuditVideos.length} onClick={copyIncompleteVideoAuditQueue}>미완료 목록 복사</button><button type="button" data-export-video-db-csv onClick={exportVideoDbCsv}>영상 DB CSV 내려받기</button><small aria-live="polite">{videoReviewMessage}</small></div> : null}
+              {presentationMode ? <div className="video-review-summary" aria-label="감리 목록 복사"><span>감리 초안 {Object.keys(videoReviewDrafts).length}건 · 미완료 {incompleteAuditVideos.length}건</span><button type="button" disabled={!Object.keys(videoReviewDrafts).length} onClick={copyAllVideoReviewDrafts}>작성 초안 전체 복사</button><button type="button" disabled={!incompleteAuditVideos.length} onClick={copyIncompleteVideoAuditQueue}>미완료 목록 복사</button><button type="button" data-export-video-db-csv onClick={exportVideoDbCsv}>영상 DB CSV 내려받기</button><button type="button" data-export-review-packet onClick={exportReviewHandoff}>감리 패킷 JSON 저장</button><button type="button" data-import-review-packet onClick={() => reviewHandoffInputRef.current?.click()}>감리 패킷 불러오기</button><input ref={reviewHandoffInputRef} className="sr-only" type="file" accept="application/json,.json" aria-label="감리 패킷 JSON 불러오기" onChange={importReviewHandoff} /><small aria-live="polite">{videoReviewMessage}</small><small aria-live="polite">{reviewHandoffMessage}</small></div> : null}
               {presentationMode ? <div className="monitor-snapshot">
                 <div className="monitor-snapshot__heading"><p className="eyebrow">일일 감리 상태</p><div className="monitor-snapshot__actions"><button type="button" className="monitor-snapshot__copy" onClick={copyDailyMonitorBrief}>회의용 요약 복사</button><button type="button" className="monitor-snapshot__copy" data-export-monitor-csv onClick={exportMonitorQueueCsv}>감리 큐 CSV 내려받기</button></div></div>
                 <small className="monitor-snapshot__copy-message" aria-live="polite">{monitorCopyMessage}</small>
