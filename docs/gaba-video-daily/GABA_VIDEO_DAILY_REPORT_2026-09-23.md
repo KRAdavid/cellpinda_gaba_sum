@@ -7,14 +7,14 @@
 - 채널 확인: 8/8
 - 유사 콘텐츠 검색어 확인: 8/8
 - Shorts 페이지 보완 수집: 0개 채널
-- 오늘 신규 후보(누적): 11건
-- 이번 실행 신규 후보: 0건
+- 오늘 신규 후보(누적): 13건
+- 이번 실행 신규 후보: 2건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 3건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
-- 등록 YouTube 자막 트랙: 12/12 watch 페이지에서 발견 · 자막 경고 0건
-- 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 12건
+- 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
+- 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
 - 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-09-23.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
@@ -33,6 +33,8 @@
 | PENDING-20260923--mdFIIg6pPU | [GABA 복용량 #shorts](https://www.youtube.com/watch?v=-mdFIIg6pPU) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260923-FRV6QF6E0Qk | [불안에 대한 GABA 보충제 복용량 #반바지](https://www.youtube.com/watch?v=FRV6QF6E0Qk) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260923-Z2_d_8p36rM | [GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,](https://www.youtube.com/watch?v=Z2_d_8p36rM) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 권위 후보 검색 발견 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260923-QjuVqvwkdMU | [GABA Neurotransmitter and Anxiety With Dr. Asa](https://www.youtube.com/watch?v=QjuVqvwkdMU) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260923-cvtfqT_nkow | [소화 없이 바로 흡수, 가바, 아미노산까지 한번에. 영양 핵심 정리. #Shorts #쇼츠 #건강 #음식 #건강정보 #시니어건강  #이슈 #지식 #꿀팁 #food #kfood](https://www.youtube.com/watch?v=cvtfqT_nkow) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -60,24 +62,35 @@
 
 ## 등록 YouTube 자막 트랙 상태
 
-- 모든 등록 YouTube watch 페이지에서 자막 트랙 안내 발견
+- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → watch 페이지 자막 트랙 없음
 - 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 의미하지 않는다. 사람 검토 전 요약과 공개 상태는 바꾸지 않는다.
 
 ## 등록 YouTube 자막 본문 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 자막 본문 확인 HTTP 429
-- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 자막 본문 확인 HTTP 429
-- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 자막 본문 확인 HTTP 429
-- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 자막 본문 확인 HTTP 429
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 확인 HTTP 429
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 확인 HTTP 429
-- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 자막 본문 확인 HTTP 429
-- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 자막 본문 확인 HTTP 429
-- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 자막 본문 확인 HTTP 429
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 확인 HTTP 429
-- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 확인 HTTP 429
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 확인 HTTP 429
-- HTTP 429 접근 제한: 12건 · 제한된 본문은 사람이 원문을 재생해 타임코드와 발언을 확인
+- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 요청 URL 없음
+- HTTP 429 접근 제한: 0건 · 제한된 본문은 사람이 원문을 재생해 타임코드와 발언을 확인
 - 자막 본문 확인은 텍스트 응답의 존재만 점검한다. 번역 정확성·발언 맥락·화자·과학적 타당성·권리를 승인하지 않으며, 본문 확인 전 요약과 공개 상태를 바꾸지 않는다.
 
 ## 다음 15분 감리 순서

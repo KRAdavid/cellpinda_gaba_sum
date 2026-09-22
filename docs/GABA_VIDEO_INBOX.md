@@ -1839,3 +1839,41 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260923-QjuVqvwkdMU
+
+- 상태: PENDING_REVIEW
+- 영상: [GABA Neurotransmitter and Anxiety With Dr. Asa](https://www.youtube.com/watch?v=QjuVqvwkdMU)
+- 채널: YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-23
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 질환·치료 표현
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260923-cvtfqT_nkow
+
+- 상태: PENDING_REVIEW
+- 영상: [소화 없이 바로 흡수, 가바, 아미노산까지 한번에. 영양 핵심 정리. #Shorts #쇼츠 #건강 #음식 #건강정보 #시니어건강  #이슈 #지식 #꿀팁 #food #kfood](https://www.youtube.com/watch?v=cvtfqT_nkow)
+- 채널: YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-23
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 섭취·상업성 신호
+- 자동 우선순위: SCIENCE/MEDICAL + RIGHTS
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
