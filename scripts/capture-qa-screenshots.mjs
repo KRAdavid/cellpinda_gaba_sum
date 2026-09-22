@@ -58,7 +58,7 @@ try {
   await send('Page.navigate', {url: `${baseUrl}#video-showcase`});
   await wait(900);
   await capture('cellpinda-video-showcase-390-current.png');
-  await evaluate('document.querySelector(".video-showcase__media")?.click()');
+  await evaluate('document.querySelector("[data-open-video-review]")?.click()');
   await wait(240);
   await evaluate('document.querySelector(".video-db-detail")?.scrollIntoView({block:"center",behavior:"auto"})');
   await wait(180);
