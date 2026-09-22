@@ -4,7 +4,7 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredChannels": 8,
   "discoveryQueries": 4,
   "totalDiscoveryQueries": 4,
-  "newCandidates": 2,
+  "newCandidates": 0,
   "pendingReview": 77,
   "scienceMedicalPriority": 48,
   "videoPriority": 29,
@@ -16,7 +16,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현"
-      ]
+      ],
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
       "id": "PENDING-20260922--azWbivGh5Y",
@@ -27,7 +29,9 @@ export const GABA_MONITOR_SNAPSHOT = {
         "질환·치료 표현",
         "효과·안전성 단정 신호",
         "섭취·상업성 신호"
-      ]
+      ],
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
       "id": "PENDING-20260922-6QgcctlfBZU",
@@ -37,7 +41,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       "signals": [
         "효과·안전성 단정 신호",
         "섭취·상업성 신호"
-      ]
+      ],
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
       "id": "PENDING-20260922-7h0wzAM7Frw",
@@ -46,7 +52,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현"
-      ]
+      ],
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
       "id": "PENDING-20260922-8GK06KKKUeA",
@@ -55,7 +63,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현"
-      ]
+      ],
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
     }
   ],
   "autoPublish": 0,

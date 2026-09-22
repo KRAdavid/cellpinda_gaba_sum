@@ -240,6 +240,12 @@ const screenCandidate = text => {
   return {signals, priority};
 };
 
+const reviewAssignment = priority => {
+  if (priority === 'VIDEO 우선') return {reviewer: 'VIDEO', nextAction: '원문·자막·화자 확인'};
+  if (priority === 'SCIENCE/MEDICAL + RIGHTS') return {reviewer: 'SCIENCE/MEDICAL → RIGHTS', nextAction: '주장·이해관계·사용권 확인'};
+  return {reviewer: 'SCIENCE/MEDICAL', nextAction: '질환·효과·안전성 표현 확인'};
+};
+
 const parseInboxEntries = text => text.split(/^### /m).slice(1).map(section => {
   const lines = section.split('\n');
   const id = lines[0].trim();
@@ -259,11 +265,7 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
   });
   const rows = ranked.length
     ? ranked.map(entry => {
-      const firstReviewer = entry.priority === 'VIDEO 우선'
-        ? 'VIDEO'
-        : entry.priority === 'SCIENCE/MEDICAL + RIGHTS'
-          ? 'SCIENCE/MEDICAL → RIGHTS'
-          : 'SCIENCE/MEDICAL';
+      const {reviewer: firstReviewer} = reviewAssignment(entry.priority);
       return `| ${entry.id} | [${markdown(entry.title)}](${entry.url}) | ${markdown(entry.channel)} | ${markdown(entry.signals.join(' · '))} | ${entry.priority} | ${firstReviewer} | PENDING_REVIEW |`;
     }).join('\n')
     : '| 없음 | 검토 대기 후보 없음 | - | - | - | - | - |';
@@ -336,6 +338,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
       channel: entry.channel,
       priority: entry.priority,
       signals: entry.signals,
+      ...reviewAssignment(entry.priority),
     })),
     autoPublish: 0,
     humanRoleAssigned,
