@@ -358,6 +358,7 @@ const VIDEO_STATUS_LABELS: Record<GabaVideoRecord['status'], string> = {
   PENDING_REVIEW: '검토 대기',
   AUTO_FILTERED: '자동 필터 제외',
 };
+const PUBLIC_VIDEO_STATUS_LABEL = '원문 확인 전';
 const VIDEO_AUDIT_LABELS = {
   contentBasis: {
     ORIGINAL_PAGE_TRANSCRIPT: '원문 페이지·대본 확인',
@@ -2202,7 +2203,7 @@ export default function App() {
               </div> : null}
               <div className="video-db-list" aria-label="GABA 영상 DB 목록">
                 {filteredPanelVideos.length ? filteredPanelVideos.map(video => <article key={video.id} className={'video-db-item' + (panelVideoId === video.id ? ' is-selected' : '')}>
-                  <div className="video-db-item__topline"><span>{video.id}</span><strong>{VIDEO_STATUS_LABELS[video.status]}</strong></div>
+                  <div className="video-db-item__topline"><span>{video.id}</span><strong>{presentationMode ? VIDEO_STATUS_LABELS[video.status] : PUBLIC_VIDEO_STATUS_LABEL}</strong></div>
                   <h3>{presentationMode ? video.title : video.publicTitle ?? video.title}</h3>
                   <p>{video.channel}</p>
                   <button type="button" className="video-db-item__select" aria-pressed={panelVideoId === video.id} onClick={() => setPanelVideoId(video.id)}>{panelVideoId === video.id ? '선택된 영상' : presentationMode ? '이 영상 검토' : '상세 보기'}</button>
@@ -2450,7 +2451,7 @@ export default function App() {
               <div className="video-showcase__index-heading"><span>오늘의 검토 흐름</span><strong>{String(showcaseVideoIndex + 1).padStart(2, '0')} / {String(SHARED_GABA_VIDEOS.length).padStart(2, '0')}</strong></div>
               <div className="video-showcase__index-list">
                 {SHARED_GABA_VIDEOS.map((video, index) => <button key={video.id} type="button" className={`video-showcase__index-button${index === showcaseVideoIndex ? ' is-active' : ''}`} onClick={() => selectShowcaseVideo(index)} aria-current={index === showcaseVideoIndex ? 'step' : undefined}>
-                  <span>{String(index + 1).padStart(2, '0')}</span><strong>{video.channel}</strong><small>{VIDEO_STATUS_LABELS[video.status]}</small>
+                  <span>{String(index + 1).padStart(2, '0')}</span><strong>{video.channel}</strong><small>{PUBLIC_VIDEO_STATUS_LABEL}</small>
                 </button>)}
               </div>
               <p>한 편씩 확인하고, 필요한 경우에만 상세 감리에서 원문을 엽니다.</p>
@@ -2461,7 +2462,7 @@ export default function App() {
                 <span className="video-showcase__play" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5.2v13.6L19 12 8 5.2Z" /></svg></span>
               </button>
               <div className="video-showcase__copy">
-                <div className="video-showcase__meta"><span>{showcaseVideo.id}</span><span className="video-showcase__status">오늘 공유 · {VIDEO_STATUS_LABELS[showcaseVideo.status]}</span></div>
+                <div className="video-showcase__meta"><span>{showcaseVideo.id}</span><span className="video-showcase__status">오늘 공유 · {PUBLIC_VIDEO_STATUS_LABEL}</span></div>
                 <p className="video-showcase__candidate-note" role="note"><strong>사람 감리 전 검토 후보</strong><span>권위·근거·권리 확인 전에는 일반 GABA 근거 자료로 사용하지 않습니다.</span></p>
                 <h3>{showcaseVideo.publicTitle ?? showcaseVideo.title}</h3>
                 <p className="video-showcase__channel">{showcaseVideo.channel} · {showcaseVideo.speaker}</p>
