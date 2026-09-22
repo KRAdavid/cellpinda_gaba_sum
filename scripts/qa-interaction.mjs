@@ -80,6 +80,7 @@ try {
   await evaluate('localStorage.removeItem("cellpinda-gaba-video-review-draft-v1")');
   await evaluate('localStorage.removeItem("cellpinda-gaba-monitor-review-draft-v1")');
   await evaluate('localStorage.removeItem("cellpinda-gaba-source-review-draft-v1")');
+  await evaluate('localStorage.removeItem("cellpinda-gaba-tf-discussion-draft-v1")');
   await send('Page.reload');
   await wait(900);
 
@@ -312,8 +313,15 @@ try {
   const assignmentDraft = await evaluate('({open:document.querySelector(".tf-board__assignment")?.open||false,inputs:document.querySelectorAll(".tf-board__assignment input").length,copy:document.querySelector(".tf-board__assignment-actions button")?.innerText||"",note:document.querySelector(".tf-board__assignment-note")?.innerText||""})');
   assert('presenter operations board offers a local assignment draft without changing approval gates', assignmentDraft.open && assignmentDraft.inputs === 15 && assignmentDraft.copy.includes('배정 초안 복사') && assignmentDraft.note.includes('0/7'), JSON.stringify(assignmentDraft));
   await evaluate('document.querySelector(".tf-board__discussion summary")?.click()');
-  const discussion = await evaluate('({open:document.querySelector(".tf-board__discussion")?.open||false,items:document.querySelectorAll(".tf-board__discussion-item").length,copy:document.querySelector(".tf-board__discussion-actions button")?.innerText||"",text:document.querySelector(".tf-board__discussion")?.innerText||""})');
-  assert('operations board exposes evidence-backed team discussion items', discussion.open && discussion.items === 4 && discussion.copy.includes('회의 논점 복사') && discussion.text.includes('필요 증거') && discussion.text.includes('종료 조건'), JSON.stringify(discussion));
+  const discussion = await evaluate('({open:document.querySelector(".tf-board__discussion")?.open||false,items:document.querySelectorAll(".tf-board__discussion-item").length,copy:document.querySelector(".tf-board__discussion-actions button")?.innerText||"",text:document.querySelector(".tf-board__discussion")?.innerText||"",drafts:document.querySelectorAll(".tf-board__discussion-draft").length})');
+  assert('operations board exposes evidence-backed team discussion items', discussion.open && discussion.items === 4 && discussion.drafts === 4 && discussion.copy.includes('회의 논점·기록 복사') && discussion.text.includes('필요 증거') && discussion.text.includes('종료 조건'), JSON.stringify(discussion));
+  await evaluate('document.querySelector(".tf-board__discussion-draft summary")?.click()');
+  const discussionDraft = await evaluate('({open:document.querySelector(".tf-board__discussion-draft")?.open||false,fields:document.querySelectorAll(".tf-board__discussion-draft[open] [data-discussion-field]").length,textarea:!!document.querySelector(".tf-board__discussion-draft[open] textarea")})');
+  assert('team discussion exposes a per-topic decision record', discussionDraft.open && discussionDraft.fields === 4 && discussionDraft.textarea, JSON.stringify(discussionDraft));
+  await evaluate('(() => { const setValue=(selector,value) => { const field=document.querySelector(selector); const prototype=field?.tagName === "TEXTAREA" ? HTMLTextAreaElement.prototype : field?.tagName === "SELECT" ? HTMLSelectElement.prototype : HTMLInputElement.prototype; const setter=Object.getOwnPropertyDescriptor(prototype,"value")?.set; setter?.call(field,value); field?.dispatchEvent(new Event("input",{bubbles:true})); field?.dispatchEvent(new Event("change",{bubbles:true})); }; setValue("[data-discussion-field=CONTENT-02-decision]","HOLD"); setValue("[data-discussion-field=CONTENT-02-owner]","SCIENCE 담당"); setValue("[data-discussion-field=CONTENT-02-due]","다음 회의 전"); setValue("[data-discussion-field=CONTENT-02-notes]","문장 범위와 한계를 사람 검토 후 결정"); return true; })()');
+  await wait(180);
+  const savedDiscussionDraft = await evaluate('(() => { const raw=localStorage.getItem("cellpinda-gaba-tf-discussion-draft-v1"); const saved=raw ? JSON.parse(raw) : {}; const draft=saved["CONTENT-02"]||{}; return {decision:draft.decision||"",owner:draft.owner||"",due:draft.due||"",notes:draft.notes||"",summary:document.querySelector(".tf-board__discussion-draft summary")?.innerText||""}; })()');
+  assert('team discussion record persists locally without changing approval gates', savedDiscussionDraft.decision === 'HOLD' && savedDiscussionDraft.owner === 'SCIENCE 담당' && savedDiscussionDraft.due.includes('다음 회의') && savedDiscussionDraft.notes.includes('사람 검토') && savedDiscussionDraft.summary.includes('HOLD'), JSON.stringify(savedDiscussionDraft));
   await evaluate('document.querySelector(".tf-board__discussion-actions button")?.click()');
   await wait(180);
   const discussionCopyState = await evaluate('document.querySelector(".tf-board__discussion-actions span")?.innerText||""');

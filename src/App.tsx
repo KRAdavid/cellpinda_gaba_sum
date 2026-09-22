@@ -27,6 +27,9 @@ const STORY_VISUALS = {
 
 type VideoFilter = 'ALL' | 'REVIEW' | 'PROFILE' | 'INCOMPLETE' | GabaVideoRecord['status'];
 type TfAssignment = Record<string, {lead: string; backup: string}>;
+type TfDiscussionDecision = 'UNDECIDED' | 'CONTINUE' | 'HOLD' | 'DECIDED';
+type TfDiscussionDraft = {owner: string; due: string; decision: TfDiscussionDecision; notes: string; updatedAt: string};
+type TfDiscussionDrafts = Record<string, TfDiscussionDraft>;
 type VideoReviewDecision = 'UNDECIDED' | 'HOLD' | 'LIMITED_USE' | 'PUBLISH_GENERAL' | 'EXCLUDE';
 type VideoReviewDraft = {
   reviewer: string;
@@ -68,10 +71,12 @@ type ReviewHandoffPacket = {
   sourceReviewDrafts: SourceReviewDrafts;
   tfAssignments: TfAssignment;
   tfMeetingDraft: string;
+  tfDiscussionDrafts: TfDiscussionDrafts;
   boundary: string;
 };
 
 const TF_ASSIGNMENT_STORAGE_KEY = 'cellpinda-gaba-tf-assignment-draft-v1';
+const TF_DISCUSSION_STORAGE_KEY = 'cellpinda-gaba-tf-discussion-draft-v1';
 const VIDEO_REVIEW_STORAGE_KEY = 'cellpinda-gaba-video-review-draft-v1';
 const MONITOR_REVIEW_STORAGE_KEY = 'cellpinda-gaba-monitor-review-draft-v1';
 const SOURCE_REVIEW_STORAGE_KEY = 'cellpinda-gaba-source-review-draft-v1';
@@ -90,6 +95,12 @@ const VIDEO_REVIEW_DECISIONS: Array<{id: VideoReviewDecision; label: string}> = 
   {id: 'LIMITED_USE', label: '제한 사용 검토'},
   {id: 'PUBLISH_GENERAL', label: '일반 교육 공개 검토'},
   {id: 'EXCLUDE', label: '사용 제외'},
+];
+const TF_DISCUSSION_DECISIONS: Array<{id: TfDiscussionDecision; label: string}> = [
+  {id: 'UNDECIDED', label: '아직 결정하지 않음'},
+  {id: 'CONTINUE', label: '계속 검토'},
+  {id: 'HOLD', label: 'HOLD'},
+  {id: 'DECIDED', label: '결정 기록'},
 ];
 
 const makeEmptyVideoReviewDraft = (): VideoReviewDraft => ({
@@ -153,6 +164,31 @@ const normaliseTfAssignments = (value: unknown): TfAssignment => {
       backup: typeof rawAssignment.backup === 'string' ? rawAssignment.backup : '',
     }]];
   })) as TfAssignment;
+};
+
+const makeEmptyTfDiscussionDraft = (): TfDiscussionDraft => ({
+  owner: '',
+  due: '',
+  decision: 'UNDECIDED',
+  notes: '',
+  updatedAt: '',
+});
+
+const normaliseTfDiscussionDrafts = (value: unknown): TfDiscussionDrafts => {
+  if (!isRecord(value)) return {};
+  const allowedDecisions = new Set<TfDiscussionDecision>(['UNDECIDED', 'CONTINUE', 'HOLD', 'DECIDED']);
+  return Object.fromEntries(Object.entries(value).flatMap(([id, rawDraft]) => {
+    if (!isRecord(rawDraft) || !id.trim()) return [];
+    const blank = makeEmptyTfDiscussionDraft();
+    const draft: TfDiscussionDraft = {
+      owner: typeof rawDraft.owner === 'string' ? rawDraft.owner : blank.owner,
+      due: typeof rawDraft.due === 'string' ? rawDraft.due : blank.due,
+      decision: typeof rawDraft.decision === 'string' && allowedDecisions.has(rawDraft.decision as TfDiscussionDecision) ? rawDraft.decision as TfDiscussionDecision : blank.decision,
+      notes: typeof rawDraft.notes === 'string' ? rawDraft.notes : blank.notes,
+      updatedAt: typeof rawDraft.updatedAt === 'string' ? rawDraft.updatedAt : blank.updatedAt,
+    };
+    return [[id, draft]];
+  })) as TfDiscussionDrafts;
 };
 
 const normaliseSourceReviewDrafts = (value: unknown): SourceReviewDrafts => {
@@ -431,6 +467,8 @@ export default function App() {
   const [tfMeetingDraft, setTfMeetingDraft] = useState('');
   const [tfAssignmentMessage, setTfAssignmentMessage] = useState('');
   const [tfDiscussionMessage, setTfDiscussionMessage] = useState('');
+  const [tfDiscussionDrafts, setTfDiscussionDrafts] = useState<TfDiscussionDrafts>({});
+  const [tfDiscussionDraftMessage, setTfDiscussionDraftMessage] = useState('');
   const [videoReviewDrafts, setVideoReviewDrafts] = useState<VideoReviewDrafts>({});
   const [videoReviewMessage, setVideoReviewMessage] = useState('');
   const [reviewHandoffMessage, setReviewHandoffMessage] = useState('');
@@ -503,6 +541,17 @@ export default function App() {
       if (typeof parsed.meeting === 'string') setTfMeetingDraft(parsed.meeting);
     } catch {
       // A local draft is optional and must never block the public page.
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(TF_DISCUSSION_STORAGE_KEY);
+      if (!saved) return;
+      const parsed = normaliseTfDiscussionDrafts(JSON.parse(saved));
+      if (parsed && typeof parsed === 'object') setTfDiscussionDrafts(parsed);
+    } catch {
+      // A local discussion draft is optional and must never block the public page.
     }
   }, []);
 
@@ -700,6 +749,14 @@ export default function App() {
       window.localStorage.setItem(TF_ASSIGNMENT_STORAGE_KEY, JSON.stringify({assignments, meeting}));
     } catch {
       // Keep the in-memory draft when browser storage is unavailable.
+    }
+  };
+
+  const persistTfDiscussionDrafts = (drafts: TfDiscussionDrafts) => {
+    try {
+      window.localStorage.setItem(TF_DISCUSSION_STORAGE_KEY, JSON.stringify(drafts));
+    } catch {
+      // Keep the in-memory discussion draft when browser storage is unavailable.
     }
   };
 
@@ -934,6 +991,7 @@ export default function App() {
       sourceReviewDrafts,
       tfAssignments,
       tfMeetingDraft,
+      tfDiscussionDrafts,
       boundary: '브라우저 로컬 감리·회의 초안의 팀 전달용 사본이며 공식 DB 상태·공개 승인·과학/의학·권리 판정을 의미하지 않습니다.',
     };
     downloadJsonFile(`gaba-education-review-handoff-${GABA_MONITOR_SNAPSHOT.checkedAt}.json`, packet);
@@ -953,21 +1011,25 @@ export default function App() {
       const importedMonitorDrafts = normaliseReviewDrafts(parsed.monitorReviewDrafts);
       const importedSourceDrafts = normaliseSourceReviewDrafts(parsed.sourceReviewDrafts);
       const importedAssignments = normaliseTfAssignments(parsed.tfAssignments);
+      const importedDiscussionDrafts = normaliseTfDiscussionDrafts(parsed.tfDiscussionDrafts);
       const nextVideoDrafts = {...videoReviewDrafts, ...importedVideoDrafts};
       const nextMonitorDrafts = {...monitorReviewDrafts, ...importedMonitorDrafts};
       const nextSourceDrafts = {...sourceReviewDrafts, ...importedSourceDrafts};
       const nextAssignments = {...tfAssignments, ...importedAssignments};
+      const nextDiscussionDrafts = {...tfDiscussionDrafts, ...importedDiscussionDrafts};
       const nextMeetingDraft = typeof parsed.tfMeetingDraft === 'string' ? parsed.tfMeetingDraft : tfMeetingDraft;
       setVideoReviewDrafts(nextVideoDrafts);
       setMonitorReviewDrafts(nextMonitorDrafts);
       setSourceReviewDrafts(nextSourceDrafts);
       setTfAssignments(nextAssignments);
       setTfMeetingDraft(nextMeetingDraft);
+      setTfDiscussionDrafts(nextDiscussionDrafts);
       persistVideoReviewDrafts(nextVideoDrafts);
       persistMonitorReviewDrafts(nextMonitorDrafts);
       persistSourceReviewDrafts(nextSourceDrafts);
       persistTfDraft(nextAssignments, nextMeetingDraft);
-      setReviewHandoffMessage(`감리 패킷을 병합했습니다. 영상 ${Object.keys(importedVideoDrafts).length}건 · 신규 후보 ${Object.keys(importedMonitorDrafts).length}건 · 출처 ${Object.keys(importedSourceDrafts).length}건`);
+      persistTfDiscussionDrafts(nextDiscussionDrafts);
+      setReviewHandoffMessage(`감리 패킷을 병합했습니다. 영상 ${Object.keys(importedVideoDrafts).length}건 · 신규 후보 ${Object.keys(importedMonitorDrafts).length}건 · 출처 ${Object.keys(importedSourceDrafts).length}건 · 토론 ${Object.keys(importedDiscussionDrafts).length}건`);
     } catch {
       setReviewHandoffMessage('불러오지 못했습니다. 이 사이트에서 저장한 감리 패킷 JSON인지 확인해 주세요.');
     }
@@ -1055,6 +1117,15 @@ export default function App() {
     setTfAssignmentMessage('이 브라우저에 첫 회의 초안을 저장했습니다.');
   };
 
+  const updateTfDiscussionDraft = <K extends keyof TfDiscussionDraft>(discussionId: string, field: K, value: TfDiscussionDraft[K]) => {
+    const current = tfDiscussionDrafts[discussionId] ?? makeEmptyTfDiscussionDraft();
+    const nextDraft = {...current, [field]: value, updatedAt: new Date().toISOString()};
+    const next = {...tfDiscussionDrafts, [discussionId]: nextDraft};
+    setTfDiscussionDrafts(next);
+    persistTfDiscussionDrafts(next);
+    setTfDiscussionDraftMessage('토론 기록 초안을 저장했습니다.');
+  };
+
   const copyTfAssignmentDraft = async () => {
     const lines = [
       'GABA 교육 TF 업무 배정 초안',
@@ -1078,15 +1149,21 @@ export default function App() {
   const copyTfDiscussionBrief = async () => {
     const lines = [
       '일반 GABA 교육 TF 오늘의 토론 논점',
-      ...TF_DISCUSSION_ITEMS.map((item, index) => [
-        `${index + 1}. ${item.id} · ${item.issue}`,
-        `상태: ${item.status} · 다음 담당: ${item.nextOwner}`,
-        `필요 증거: ${item.evidence}`,
-        `종료 조건: ${item.exit}`,
-      ].join('\n')),
+      ...TF_DISCUSSION_ITEMS.map((item, index) => {
+        const draft = tfDiscussionDrafts[item.id] ?? makeEmptyTfDiscussionDraft();
+        const decision = TF_DISCUSSION_DECISIONS.find(option => option.id === draft.decision)?.label ?? '아직 결정하지 않음';
+        return [
+          `${index + 1}. ${item.id} · ${item.issue}`,
+          `상태: ${item.status} · 다음 담당: ${item.nextOwner}`,
+          `필요 증거: ${item.evidence}`,
+          `종료 조건: ${item.exit}`,
+          `회의 결정 초안: ${decision} · 담당: ${draft.owner.trim() || '미입력'} · 기한: ${draft.due.trim() || '미입력'}`,
+          `팀 메모: ${draft.notes.trim() || '미입력'}`,
+        ].join('\n');
+      }),
       '',
       '토론 순서: 문제 → 관점 → 증거 → 결정 또는 HOLD → 다음 담당·기한·종료 조건',
-      '※ 제품·후기·판매 문구가 아닌 일반 GABA 교육 범위의 팀 토론 초안입니다.',
+      '※ 브라우저 로컬 토론 기록 초안이며 제품·후기·판매 문구가 아닌 일반 GABA 교육 범위의 팀 토론 자료입니다. 공식 공개 승인이나 과학·의학·권리 판정을 의미하지 않습니다.',
     ];
     try {
       await copyText(lines.join('\n\n'));
@@ -1612,7 +1689,7 @@ export default function App() {
         </div> : null}
         </> : consumerStory}
         {openPanel ? <div className="info-layer" role="presentation" onMouseDown={event => {if (event.target === event.currentTarget) closePanel();}}>
-          <aside className="info-panel" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title">
+          <aside className={`info-panel${openPanel === 'ops' ? ' info-panel--ops' : ''}`} ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title">
             <div className="info-panel__topline"><span>{presentationMode ? '장면 흐름 안에서 확인' : '읽기 흐름 안에서 확인'}</span><button ref={panelCloseRef} type="button" onClick={() => closePanel()} aria-label="정보 패널 닫기">×</button></div>
             <p className="eyebrow">{openPanel === 'research' ? '일반 GABA 연구' : openPanel === 'video' ? (presentationMode ? '영상 DB 감리' : '영상 검토 DB') : '발표자 운영'}</p>
             <h2 id="info-panel-title">{panelTitle}</h2>
@@ -1820,19 +1897,35 @@ export default function App() {
                 </div>
               </details>
               <details className="tf-board__discussion">
-                <summary>오늘의 토론 논점 보기 <span aria-hidden="true">＋</span></summary>
+                <summary>오늘의 토론 논점 보기 · 기록 {Object.keys(tfDiscussionDrafts).length}/{TF_DISCUSSION_ITEMS.length} <span aria-hidden="true">＋</span></summary>
                 <div className="tf-board__discussion-body">
-                  <p>각 논점은 문제 → 관점 → 증거 → 결정 또는 HOLD → 다음 담당·기한·종료 조건 순서로 회의합니다. 기술 QA와 사람 검토를 섞지 않습니다.</p>
+                  <p>각 논점은 문제 → 관점 → 증거 → 결정 또는 HOLD → 다음 담당·기한·종료 조건 순서로 회의합니다. 아래 기록은 이 브라우저에 저장되며, 회의용 복사·감리 패킷에 포함할 수 있습니다. 기술 QA와 사람 검토를 섞지 않습니다.</p>
                   <div className="tf-board__discussion-list">
-                    {TF_DISCUSSION_ITEMS.map(item => <article key={item.id} className="tf-board__discussion-item">
-                      <div className="tf-board__discussion-topline"><strong>{item.id}</strong><span>{item.status}</span></div>
-                      <h3>{item.issue}</h3>
-                      <p><b>필요 증거:</b> {item.evidence}</p>
-                      <p><b>다음 담당:</b> {item.nextOwner}</p>
-                      <p><b>종료 조건:</b> {item.exit}</p>
-                    </article>)}
+                    {TF_DISCUSSION_ITEMS.map(item => {
+                      const draft = tfDiscussionDrafts[item.id] ?? makeEmptyTfDiscussionDraft();
+                      const decisionLabel = TF_DISCUSSION_DECISIONS.find(option => option.id === draft.decision)?.label ?? '아직 결정하지 않음';
+                      return <article key={item.id} className="tf-board__discussion-item">
+                        <div className="tf-board__discussion-topline"><strong>{item.id}</strong><span>{item.status}</span></div>
+                        <h3>{item.issue}</h3>
+                        <p><b>필요 증거:</b> {item.evidence}</p>
+                        <p><b>다음 담당:</b> {item.nextOwner}</p>
+                        <p><b>종료 조건:</b> {item.exit}</p>
+                        <details className="tf-board__discussion-draft">
+                          <summary>이 논점 회의 기록 · {decisionLabel} <span aria-hidden="true">＋</span></summary>
+                          <div className="tf-board__discussion-draft-body">
+                            <div className="tf-board__discussion-draft-fields">
+                              <label>회의 결정<select data-discussion-field={`${item.id}-decision`} value={draft.decision} onChange={event => updateTfDiscussionDraft(item.id, 'decision', event.currentTarget.value as TfDiscussionDecision)}>{TF_DISCUSSION_DECISIONS.map(option => <option key={option.id} value={option.id}>{option.label}</option>)}</select></label>
+                              <label>다음 담당<input data-discussion-field={`${item.id}-owner`} type="text" value={draft.owner} onChange={event => updateTfDiscussionDraft(item.id, 'owner', event.currentTarget.value)} placeholder="예: SCIENCE 담당" /></label>
+                              <label>기한<input data-discussion-field={`${item.id}-due`} type="text" value={draft.due} onChange={event => updateTfDiscussionDraft(item.id, 'due', event.currentTarget.value)} placeholder="예: 다음 회의 전" /></label>
+                            </div>
+                            <label>팀 메모·근거·이견<textarea data-discussion-field={`${item.id}-notes`} value={draft.notes} onChange={event => updateTfDiscussionDraft(item.id, 'notes', event.currentTarget.value)} placeholder="회의에서 확인한 증거, 이견, 결정 이유를 기록하세요." rows={3} /></label>
+                            <small aria-live="polite">{draft.updatedAt ? `마지막 저장 ${draft.updatedAt.replace('T', ' ').replace('Z', '')}` : tfDiscussionDraftMessage || '아직 기록하지 않았습니다.'}</small>
+                          </div>
+                        </details>
+                      </article>;
+                    })}
                   </div>
-                  <div className="tf-board__discussion-actions"><button type="button" onClick={copyTfDiscussionBrief}>회의 논점 복사</button><span aria-live="polite">{tfDiscussionMessage}</span></div>
+                  <div className="tf-board__discussion-actions"><button type="button" onClick={copyTfDiscussionBrief}>회의 논점·기록 복사</button><span aria-live="polite">{tfDiscussionMessage || tfDiscussionDraftMessage}</span></div>
                 </div>
               </details>
               <div className="tf-board__list">

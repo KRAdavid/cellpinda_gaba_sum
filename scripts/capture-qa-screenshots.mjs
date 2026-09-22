@@ -77,6 +77,12 @@ try {
   await send('Page.navigate', {url: presenterUrl});
   await wait(900);
   await capture('cellpinda-presenter-390-current.png');
+  await evaluate('document.querySelector(".story-ops-board-button")?.click()');
+  await wait(180);
+  await evaluate('document.querySelector(".tf-board__discussion")?.setAttribute("open", "")');
+  await evaluate('document.querySelector(".tf-board__discussion-draft")?.setAttribute("open", "")');
+  await wait(180);
+  await capture('cellpinda-ops-discussion-390-current.png');
 
   await send('Page.navigate', {url: researchUrl});
   await wait(900);

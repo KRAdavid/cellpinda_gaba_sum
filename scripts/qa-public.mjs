@@ -91,7 +91,7 @@ const required = [
   ['presenter TF meeting sequence', '첫 회의 진행 순서'],
   ['presenter TF discussion queue', '오늘의 토론 논점 보기'],
   ['presenter TF discussion evidence', '필요 증거'],
-  ['presenter TF discussion copy', '회의 논점 복사'],
+  ['presenter TF discussion copy', '회의 논점·기록 복사'],
   ['presenter video DB csv export', '영상 DB CSV 내려받기'],
   ['presenter review queue csv export', '감리 큐 CSV 내려받기'],
   ['presenter review handoff export', '감리 패킷 JSON 저장'],
