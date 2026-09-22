@@ -1861,6 +1861,11 @@ export default function App() {
     <div className="story-reader-layout">
       <aside className="story-reader-index" aria-label="GABA 소개 장면 목록">
         <p className="story-reader-index__label">전체 흐름</p>
+        <div className="story-reader-index__mobile-progress" aria-live="polite">
+          <span>지금 읽는 장면</span>
+          <strong>{String(active + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</strong>
+          <em>{readerSlide.label.replace(/^\d+\s·\s/, '')}</em>
+        </div>
         <ol>
           {slides.map((slide, index) => <li key={slide.id}>
             <button type="button" className={index === active ? 'is-active' : ''} aria-current={index === active ? 'step' : undefined} onClick={() => goTo(index, 'auto')}>
