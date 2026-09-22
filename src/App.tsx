@@ -689,9 +689,9 @@ export default function App() {
     const shareRequest = ++shareRequestRef.current;
     try {
       await copyText(getCustomerCardLink(panelSourceIndex ?? active));
-      if (shareRequest === shareRequestRef.current) setPanelShareMessage('고객용 카드 링크를 복사했습니다.');
+      if (shareRequest === shareRequestRef.current) setPanelShareMessage('고객용 장면 링크를 복사했습니다.');
     } catch {
-      if (shareRequest === shareRequestRef.current) setPanelShareMessage('고객용 카드 링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
+      if (shareRequest === shareRequestRef.current) setPanelShareMessage('고객용 장면 링크 복사에 실패했습니다. 브라우저 권한을 확인해 주세요.');
     }
   };
 
@@ -872,17 +872,17 @@ export default function App() {
   const panelSource = panelSourceIndex ?? active;
   const panelNext = slides[Math.min(slides.length - 1, panelSource + 1)];
   const panelNextAction = panelSource < slides.length - 1
-    ? `${presentationMode ? '다음 카드' : '다음 장면'}: ${panelNext.label} →`
-    : presentationMode ? '카드 흐름으로 돌아가기' : '읽기 흐름으로 돌아가기';
+    ? `다음 장면: ${panelNext.label} →`
+    : presentationMode ? '장면 흐름으로 돌아가기' : '읽기 흐름으로 돌아가기';
   const videoNextAction = nextVideo ? `다음 영상: ${nextVideo.id} →` : '영상 목록으로 돌아가기';
   const introSection = <section className="intro" aria-labelledby="page-title">
     <div className="intro-copy">
       <p className="eyebrow">일반 GABA 교육 · 제품 정보 제외</p>
-      <h1 id="page-title">GABA를<br /><em>한 장씩</em><br />알아보세요.</h1>
-      <p className="intro-body">일상에서 느끼는 뇌의 과부하부터 GABA의 일반 기능과 연구 한계까지, 한 장에 한 메시지씩 확인해 보세요.</p>
+      <h1 id="page-title">GABA를<br /><em>한 장면씩</em><br />알아보세요.</h1>
+      <p className="intro-body">일상에서 느끼는 뇌의 과부하부터 GABA의 일반 기능과 연구 한계까지, 한 장면에 한 메시지씩 확인해 보세요.</p>
       <p className="separation-note">이 페이지는 제품 판매나 개인별 섭취 판단을 위한 자료가 아닙니다. GABA가 무엇인지 이해하기 위한 일반 교육 흐름입니다.</p>
       <div className="intro-entry-actions">
-        <a className="text-button intro-primary-button" href="#story">전체 카드부터 보기 <span aria-hidden="true">↓</span></a>
+        <a className="text-button intro-primary-button" href="#story">첫 장면부터 읽기 <span aria-hidden="true">↓</span></a>
         <button type="button" className="text-button intro-presentation-button" onClick={event => enterPresentation(event.currentTarget, 0)}>발표자용 설명 시작 <span aria-hidden="true">↗</span></button>
       </div>
     </div>
@@ -891,10 +891,14 @@ export default function App() {
   const readerSlide = slides[active];
   const consumerStory = <>
     <div className="story-reader-heading">
-      <div>
-        <p className="eyebrow">한 흐름으로 읽는 일반 GABA</p>
-        <h2 id="story-title">GABA를<br /><em>8개의 장면으로</em></h2>
-        <p>아래로 읽고, 궁금한 장면으로 바로 이동하세요.<br />일상·기능·연구·영상은 각각 다른 정보입니다.</p>
+      <div className="story-reader-heading__copy">
+        <p className="eyebrow">GABA를 모르는 사람을 위한 3분 읽기</p>
+        <h2 id="story-title">GABA를 모르는 사람도<br /><em>3분 안에 이해하는 흐름</em></h2>
+        <p>몸이 지친 것처럼 느껴지는 날, 뇌에서는 어떤 일이 일어날까요?<br />일상에서 시작해 GABA의 기능과 일반 연구까지 천천히 이어갑니다.</p>
+        <a className="story-reader-heading__start" href="#story-scene-hook">첫 장면부터 읽기 <span aria-hidden="true">↓</span></a>
+      </div>
+      <div className="story-reader-heading__visual" aria-hidden="true" style={{backgroundImage: `url("${STORY_VISUALS.neural}")`}}>
+        <span>뇌의 신호<br />균형을 읽는 시간</span>
       </div>
       <div className="story-reader-heading__count" aria-live="polite"><span>현재 장면</span><strong>{String(active + 1).padStart(2, '0')}</strong><small>/ 08</small></div>
     </div>
@@ -921,7 +925,7 @@ export default function App() {
             </button>
           </li>)}
         </ol>
-        <p className="story-reader-index__hint">읽은 위치는 자동으로 기억됩니다.<br />원하는 장면을 눌러 다시 볼 수 있어요.</p>
+        <p className="story-reader-index__hint">한 장면씩 읽어도 좋고,<br />원하는 장면부터 바로 봐도 좋아요.</p>
       </aside>
       <div className="story-reader-stream" ref={readerStreamRef}>
         {slides.map((slide, index) => <article
@@ -996,26 +1000,26 @@ export default function App() {
           ><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span></button>)}
         </nav>
         <div className="story-controls">
-          <span aria-live="polite" aria-label={`현재 ${active + 1}번째 카드, 총 ${slides.length}장`}>{String(active + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</span>
+          <span aria-live="polite" aria-label={`현재 ${active + 1}번째 장면, 총 ${slides.length}장`}>{String(active + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</span>
           <div>
             {presentationMode ? <button type="button" className="story-start-button story-video-db-button" onClick={event => openVideoPanel(event.currentTarget)}>영상 DB</button> : null}
             {presentationMode ? <button type="button" className="story-start-button story-ops-board-button" onClick={event => openInfoPanel(active, 'ops', event.currentTarget)}>운영 보드</button> : null}
             <button type="button" className="story-nav-button story-prev-button" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="이전 장면"><span aria-hidden="true">←</span><span className="nav-label">이전 장면</span></button>
             <button type="button" className="story-nav-button story-next-button" onClick={() => goTo(active + 1)} disabled={active === slides.length - 1} aria-label="다음 장면"><span className="nav-label">다음 장면</span><span aria-hidden="true">→</span></button>
             {presentationMode ? <>
-              <button type="button" className="story-share-button" onClick={shareCardLink}>현재 카드 링크 공유</button>
+              <button type="button" className="story-share-button" onClick={shareCardLink}>현재 장면 링크 공유</button>
               <button type="button" className="story-presentation-toggle" onClick={exitPresentation}>발표 모드 종료</button>
             </> : <details className="story-secondary-controls">
               <summary>더 보기 <span aria-hidden="true">＋</span></summary>
-              <button type="button" className="story-share-button" onClick={shareCardLink}>현재 카드 링크 공유</button>
+              <button type="button" className="story-share-button" onClick={shareCardLink}>현재 장면 링크 공유</button>
               <button type="button" className="story-presentation-toggle" onClick={event => enterPresentation(event.currentTarget)}>발표 모드</button>
             </details>}
           </div>
         </div>
         <p className="story-share-message" aria-live="polite">{shareMessage}</p>
-        {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="고객에게 전달할 카드 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>고객용 링크 복사</button></div> : null}
+        {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="고객에게 전달할 장면 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>고객용 링크 복사</button></div> : null}
         {presentationMode ? <>
-          <p className="presenter-next-hint" aria-live="polite">{nextSlide ? <>다음 설명: <strong>{nextSlide.label}</strong></> : '마지막 설명 카드입니다.'}</p>
+          <p className="presenter-next-hint" aria-live="polite">{nextSlide ? <>다음 설명: <strong>{nextSlide.label}</strong></> : '마지막 설명 장면입니다.'}</p>
           <details className="presenter-note"><summary>발표자용 진행 포인트</summary><div className="presenter-note__grid"><div><strong>고객에게 물어보기</strong><p>{slides[active].presenterPrompt}</p></div><div><strong>이어서 말할 때</strong><p>{slides[active].presenterBoundary}</p></div></div></details>
           <details className="presenter-questions"><summary>자주 묻는 질문에 답하기</summary><div className="presenter-questions__list">{PRESENTER_QUESTIONS.map(question => <div key={question.label}><div className="presenter-questions__heading"><strong>{question.label}</strong><button type="button" className="presenter-answer-copy" onClick={() => copyPresenterAnswer(question.label, question.answer)}>답변 복사</button></div><p>{question.answer}</p></div>)}</div></details>
           <p className="presenter-copy-message" aria-live="polite">{presenterCopyMessage}</p>
@@ -1057,7 +1061,7 @@ export default function App() {
         </> : consumerStory}
         {openPanel ? <div className="info-layer" role="presentation" onMouseDown={event => {if (event.target === event.currentTarget) closePanel();}}>
           <aside className="info-panel" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title">
-            <div className="info-panel__topline"><span>{presentationMode ? '카드 흐름 안에서 확인' : '읽기 흐름 안에서 확인'}</span><button ref={panelCloseRef} type="button" onClick={() => closePanel()} aria-label="정보 패널 닫기">×</button></div>
+            <div className="info-panel__topline"><span>{presentationMode ? '장면 흐름 안에서 확인' : '읽기 흐름 안에서 확인'}</span><button ref={panelCloseRef} type="button" onClick={() => closePanel()} aria-label="정보 패널 닫기">×</button></div>
             <p className="eyebrow">{openPanel === 'research' ? '일반 GABA 연구' : openPanel === 'video' ? (presentationMode ? '영상 DB 감리' : '영상 검토 DB') : '발표자 운영'}</p>
             <h2 id="info-panel-title">{panelTitle}</h2>
             {openPanel === 'research' ? <>
@@ -1210,7 +1214,7 @@ export default function App() {
             <div className="info-panel__actions"><button type="button" className="info-panel__next" onClick={openPanel === 'video' && !presentationMode && nextVideo ? continueToNextVideo : continueToNextCard}>{openPanel === 'video' && !presentationMode && selectedVideo ? videoNextAction : panelNextAction}</button></div>
             <p className="info-panel__flow-note">현재 페이지의 흐름은 유지됩니다. 외부 링크는 원문 확인이 필요할 때만 선택하세요.</p>
             {openPanel === 'research' ? <div className="info-panel__source"><strong>출처</strong><p className="info-panel__source-title">Effects of Oral Gamma-Aminobutyric Acid (GABA) Administration on Stress and Sleep in Humans: A Systematic Review</p><p className="info-panel__source-meta">Hepsomali et al. · Front Neurosci. 2020;14:923 · PMID 33041752</p></div> : null}
-            {presentationMode ? <div className="info-panel__customer-link"><button type="button" className="info-panel__customer-copy" onClick={copyPanelCardLink}>이 카드 고객용 링크 복사</button><p>복사한 링크는 발표자 모드 없이 이 카드에서 열립니다.</p><p className="info-panel__customer-message" aria-live="polite">{panelShareMessage}</p></div> : null}
+            {presentationMode ? <div className="info-panel__customer-link"><button type="button" className="info-panel__customer-copy" onClick={copyPanelCardLink}>이 장면 고객용 링크 복사</button><p>복사한 링크는 발표자 모드 없이 이 장면에서 열립니다.</p><p className="info-panel__customer-message" aria-live="polite">{panelShareMessage}</p></div> : null}
             {openExternal ? <details className="info-panel__external-choice"><summary>외부 자료는 필요할 때만 확인 <span aria-hidden="true">＋</span></summary><a className="info-panel__external" href={openExternal} target="_blank" rel="noopener noreferrer">{panelExternalLabel} ↗</a></details> : null}
           </aside>
         </div> : null}
