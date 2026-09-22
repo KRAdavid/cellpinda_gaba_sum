@@ -31,6 +31,8 @@ const send = (method, params = {}) => new Promise((resolve, reject) => {
   socket.send(JSON.stringify({id, method, params}));
 });
 const evaluate = async expression => (await send('Runtime.evaluate', {expression, returnByValue: true, awaitPromise: true})).result?.value;
+await send('Network.enable');
+await send('Network.setCacheDisabled', {cacheDisabled: true});
 const capture = async (name) => {
   const result = await send('Page.captureScreenshot', {format: 'png', fromSurface: true});
   const filePath = path.join(outputDir, name);
