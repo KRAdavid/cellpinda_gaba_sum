@@ -4,9 +4,9 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 77건
+- 검토 대기: 78건
 - SCIENCE/MEDICAL 또는 RIGHTS 선확인: 48건
-- VIDEO 원문·자막 선확인: 29건
+- VIDEO 원문·자막 선확인: 30건
 
 ## 우선순위 정의
 
@@ -79,6 +79,7 @@
 | PENDING-20260922-fsVwONopHQM | [숙면을 방해하는 것의 정체는 가바 부족 #수면건강 #뇌과학](https://www.youtube.com/watch?v=fsVwONopHQM) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-fUdVqexJ0p8 | [킹받는 순간 뇌를 강제 휴식 모드로 바꾸는 치트키 #GABA초콜릿 #멘탈관리 #가바초콜릿](https://www.youtube.com/watch?v=fUdVqexJ0p8) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-gudlewKnA8c | [GABA Makes New Brain Cells](https://www.youtube.com/watch?v=gudlewKnA8c) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
+| PENDING-20260922-KefwGmqRs0Y | [\\[뇌성향 MBTI\\]  나의 뇌에도 MBTI 가 있다고? #뇌성향 #도파민 #세로토닌 #아세틸콜린 #GABA#신경전달물질 #MBTI #뇌유형 #두뇌건강 #감정관리 #브레인트레이닝](https://www.youtube.com/watch?v=KefwGmqRs0Y) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-mmevbPZCPmc | [뇌 신경 흥분을 억제하는 물질 "GABA" 의 균형이 무너지면?](https://www.youtube.com/watch?v=mmevbPZCPmc) | YouTube 검색: GABA 신경전달물질 (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-nLCXzRT0yis | [뇌가 스스로 진화한다? 노화를 거스르는 GABA의 비밀](https://www.youtube.com/watch?v=nLCXzRT0yis) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-nUadShxw3cI | [통증 민감도의 뇌과학적 해석 (1):  고통을 결정하는 뇌의 비밀. #통증민감도 #뇌과학 #신경전달물질 #GABA #글루타메이트 #세로토닌 #노르에피네프린 #엔도르핀 #도파민](https://www.youtube.com/watch?v=nUadShxw3cI) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | VIDEO | PENDING_REVIEW |

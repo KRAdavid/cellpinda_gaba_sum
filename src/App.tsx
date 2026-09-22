@@ -888,7 +888,7 @@ export default function App() {
                   {GABA_MONITOR_SNAPSHOT.pendingQueue.length ? <ol>{GABA_MONITOR_SNAPSHOT.pendingQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{candidate.priority}</strong><span>{candidate.title}</span></summary><div><small>상태: PENDING_REVIEW · 첫 담당: {candidate.reviewer}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>주의 신호: {candidate.signals.join(' · ')}</small><small>원문·자막·화자·권리 확인 전에는 공개하지 않습니다.</small></div></details></li>)}</ol> : <p>현재 검토 대기 후보가 없습니다.</p>}
                   <small>제목·공개 설명 기반 우선순위입니다. 영상 원문·자막·화자·권리 확인 전 공개 승인으로 보지 않습니다.</small>
                 </div>
-                <div className="monitor-snapshot__links"><a href={GABA_MONITOR_SNAPSHOT.triageUrl} target="_blank" rel="noopener noreferrer">감리 우선순위 보드 원문 ↗</a><a href={GABA_MONITOR_SNAPSHOT.reportUrl} target="_blank" rel="noopener noreferrer">일일 리포트 ↗</a></div>
+                <div className="monitor-snapshot__links"><a href={GABA_MONITOR_SNAPSHOT.triageUrl} target="_blank" rel="noopener noreferrer">감리 우선순위 보드 원문 ↗</a><a href={GABA_MONITOR_SNAPSHOT.reportUrl} target="_blank" rel="noopener noreferrer">일일 리포트 ↗</a><a href={GABA_MONITOR_SNAPSHOT.reviewSessionUrl} target="_blank" rel="noopener noreferrer">오늘 리뷰 세션 ↗</a></div>
               </div> : null}
               {presentationMode ? <div className="video-db-tools">
                 <label className="video-db-search">영상 DB 검색

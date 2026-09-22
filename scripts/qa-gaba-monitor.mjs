@@ -47,6 +47,7 @@ assert('daily report exposes caption track boundary', report.includes('등록 Yo
 assert('monitor checks caption bodies separately from track discovery', monitor.includes('checkRegisteredYouTubeCaptionBodies') && monitor.includes('registeredVideoCaptionBodiesAvailable') && monitor.includes('자막 본문 확인 HTTP'));
 assert('daily report exposes caption body boundary', report.includes('등록 YouTube 자막 본문') && report.includes('본문 경고') && report.includes('자막 본문 확인은 텍스트 응답의 존재만 점검'));
 assert('presenter queue carries reviewer and next action', monitor.includes('reviewAssignment') && snapshot.includes('pendingQueue') && snapshot.includes('"reviewer"') && snapshot.includes('"nextAction"'));
+assert('daily review session is generated for human discussion', monitor.includes('reviewSessionMarkdown') && monitor.includes('GABA_VIDEO_REVIEW_SESSION_${checkedDate}.md') && snapshot.includes('reviewSessionUrl'));
 assert('triage board exists and keeps human review boundary', triage.includes('GABA 숏츠 감리 우선순위 보드') && triage.includes('공개 승인을 판정하지 않는다') && triage.includes('PENDING_REVIEW'));
 assert('inbox has no duplicate video IDs', new Set(inboxIds).size === inboxIds.length);
 
