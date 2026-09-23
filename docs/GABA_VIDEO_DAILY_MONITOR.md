@@ -20,7 +20,7 @@ YouTube 원문은 제목·채널 메타데이터가 응답하는지도 별도로
 
 ~~~text
 YouTube 채널 RSS/Shorts 페이지 + 키워드 검색 결과
-        ↓ 매일 09:00 KST 후보·유사 콘텐츠 수집
+        ↓ 매일 09:17 KST 후보·유사 콘텐츠 수집
 docs/GABA_VIDEO_INBOX.md (PENDING_REVIEW)
         ↓ 제목 기반 주의 신호·첫 담당 제안
 docs/GABA_VIDEO_TRIAGE.md (사업자용 감리 우선순위 보드)
@@ -43,7 +43,7 @@ pnpm run monitor:gaba-shorts
 pnpm run monitor:gaba-shorts:write
 ~~~
 
-GitHub Actions는 .github/workflows/monitor-gaba-shorts.yml에서 매일 실행한다. 예약 실행이 멈추지 않도록 저장소의 Actions·Pages 권한과 기본 브랜치를 확인한다.
+GitHub Actions는 `.github/workflows/monitor-gaba-shorts.yml`에서 매일 09:17 KST에 실행한다. 매시 정각 혼잡을 피하고 중복 실행을 막기 위해 예약 실행 시간과 concurrency를 고정한다. 예약 실행이 멈추지 않도록 저장소의 Actions·Pages 권한과 기본 브랜치를 확인한다.
 
 일일 리포트·스냅샷의 기준일은 실행 서버의 UTC가 아니라 `Asia/Seoul` 한국 시간으로 생성한다. 자정 전후 실행에서도 회의에서 사용하는 날짜와 문서 파일명이 하루 밀리지 않도록 하기 위한 기준이다.
 
