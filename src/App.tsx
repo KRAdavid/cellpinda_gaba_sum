@@ -499,8 +499,8 @@ function makeSlides(): Slide[] {
     {
       id: 'gaba',
       label: '05 · GABA란 무엇일까',
-      title: '뇌의 신호를 조절하는 물질, GABA입니다.',
-      body: 'GABA는 감마아미노부티르산을 줄여 부르는 말입니다. 우리 뇌에서 신경세포 사이에 신호를 전달하는 신경전달물질 중 하나입니다.',
+      title: '뇌의 신호를 조절할 때 관여하는 물질이 GABA입니다.',
+      body: 'GABA는 감마아미노부티르산을 줄여 부르는 말입니다. GABA는 뇌의 신경세포 사이에서 신호를 전달하는 신경전달물질 중 하나입니다. 활동을 낮추는 방향의 신호에 관여합니다.',
       tone: 'green-dark',
       visual: STORY_VISUALS.neural,
       presenterPrompt: 'GABA라는 이름을 처음 들었다면 무엇부터 알고 싶으신가요?',
