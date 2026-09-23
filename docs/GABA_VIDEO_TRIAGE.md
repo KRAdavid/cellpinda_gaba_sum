@@ -4,10 +4,10 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 118건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 72건
+- 검토 대기: 119건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 73건
 - VIDEO 원문·자막 선확인: 46건
-- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 18건
+- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 19건
 
 ## 우선순위 정의
 
@@ -29,6 +29,7 @@
 | PENDING-20260923-PBlN5t4tmYE | [치매 예방약? 영양제 말고 '이것' 먼저 챙기세요!​#치매예방 #치매 #GABA #뇌건강 #알츠하이머 #감정라벨링 #대화법 #뇌건강 #노화방지 #호두선생님 #중년건강 #신경과권예지](https://www.youtube.com/watch?v=PBlN5t4tmYE) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 질환·치료 표현 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-QjuVqvwkdMU | [GABA Neurotransmitter and Anxiety With Dr. Asa](https://www.youtube.com/watch?v=QjuVqvwkdMU) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 질환·치료 표현 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-R14wnRPxOJ8 | [뇌영양제 가바(GABA) 꼭 먹어야 한다면 이렇게 해보세요](https://www.youtube.com/watch?v=R14wnRPxOJ8) | 채널명·실제 화자 확인 필요 (수동 권위 키워드 검색) | 질환·치료 표현 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20260923-tBwRqMqZNd4 | [헴프씨드 추출물로 GABA를 생성할 수 있다고 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=tBwRqMqZNd4) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-vKVJvHULUZw | [셀핀다 김치유산균 발효가바 GABA100% #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=vKVJvHULUZw) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-XoOFptYcgsc | [Stress Relief Supplements: Ashwagandha, GABA, and More! #shorts](https://www.youtube.com/watch?v=XoOFptYcgsc) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-Z2_d_8p36rM | [GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,](https://www.youtube.com/watch?v=Z2_d_8p36rM) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |

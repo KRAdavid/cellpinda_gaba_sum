@@ -1,6 +1,6 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 20:05:16 KST",
+  "checkedAtKst": "2026-09-23 20:23:47 KST",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
@@ -11,10 +11,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 27,
+  "newCandidates": 28,
   "newCandidatesThisRun": 0,
-  "pendingReview": 118,
-  "scienceMedicalPriority": 72,
+  "pendingReview": 119,
+  "scienceMedicalPriority": 73,
   "videoPriority": 46,
   "pendingQueue": [
     {
@@ -222,6 +222,20 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
     },
     {
+      "id": "PENDING-20260923-tBwRqMqZNd4",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=tBwRqMqZNd4",
+      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
       "id": "PENDING-20260923-vKVJvHULUZw",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
       "url": "https://www.youtube.com/watch?v=vKVJvHULUZw",
@@ -235,24 +249,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL → RIGHTS",
       "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
-      "id": "PENDING-20260923-zR6l44Oz6A8",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "url": "https://www.youtube.com/watch?v=zR6l44Oz6A8",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
     }
   ],
-  "productBrandQuarantine": 18,
+  "productBrandQuarantine": 19,
   "history": [
     {
       "date": "2026-09-22",
@@ -267,10 +266,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 27,
+      "newCandidates": 28,
       "newCandidatesThisRun": 0,
-      "pendingReview": 118,
-      "scienceMedicalPriority": 72,
+      "pendingReview": 119,
+      "scienceMedicalPriority": 73,
       "videoPriority": 46,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
@@ -298,8 +297,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoMetadataHealthy": 12,
   "registeredVideoMetadataWarnings": 0,
   "registeredVideoCaptionTracksChecked": 12,
-  "registeredVideoCaptionTracksAvailable": 0,
-  "registeredVideoCaptionTrackWarnings": 12,
+  "registeredVideoCaptionTracksAvailable": 12,
+  "registeredVideoCaptionTrackWarnings": 0,
   "registeredVideoCaptionBodiesChecked": 12,
   "registeredVideoCaptionBodiesAvailable": 0,
   "registeredVideoCaptionBodyWarnings": 12,

@@ -14,6 +14,8 @@ const kickoffPath = path.join(root, 'docs', 'GABA_EDUCATION_KICKOFF.md');
 const reportArchiveDir = path.join(root, 'docs', 'gaba-video-daily');
 const writeMode = process.argv.includes('--write');
 const REQUEST_TIMEOUT_MS = 12000;
+const DEFAULT_USER_AGENT = 'cellpinda-gaba-sum/1.0 (educational monitoring)';
+const YOUTUBE_BROWSER_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36';
 const keywords = [/가바/i, /\bGABA\b/i, /감마[-\s]?아미노부티르산/i, /gamma[-\s]?aminobutyric\s+acid/i];
 const discoveryQueries = [
   'GABA 신경전달물질 Shorts',
@@ -64,7 +66,7 @@ const tag = (entry, name) => {
 
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 
-const fetchText = async (url, {retries = 3, timeoutMs = REQUEST_TIMEOUT_MS} = {}) => {
+const fetchText = async (url, {retries = 3, timeoutMs = REQUEST_TIMEOUT_MS, userAgent = DEFAULT_USER_AGENT} = {}) => {
   let lastError = new Error('request failed');
   for (let attempt = 0; attempt < retries; attempt += 1) {
     const controller = new AbortController();
@@ -72,7 +74,7 @@ const fetchText = async (url, {retries = 3, timeoutMs = REQUEST_TIMEOUT_MS} = {}
     try {
       const response = await fetch(url, {
         headers: {
-          'user-agent': 'cellpinda-gaba-sum/1.0 (educational monitoring)',
+          'user-agent': userAgent,
           'accept-language': 'ko-KR,ko;q=0.9,en;q=0.8',
         },
         signal: controller.signal,
@@ -268,7 +270,7 @@ const checkRegisteredYouTubeCaptionTracks = async () => {
       continue;
     }
     try {
-      const html = await fetchText('https://www.youtube.com/watch?v=' + videoId);
+      const html = await fetchText('https://www.youtube.com/watch?v=' + videoId, {userAgent: YOUTUBE_BROWSER_USER_AGENT});
       const captionUrl = extractCaptionTrackUrl(html);
       if (html.includes('playerCaptionsTracklistRenderer') || html.includes('"captionTracks"')) available += 1;
       if (captionUrl) tracks.set(url, captionUrl);
@@ -296,8 +298,9 @@ const checkRegisteredYouTubeCaptionBodies = async captionHealth => {
       const endpoint = captionUrl + (captionUrl.includes('?') ? '&' : '?') + 'fmt=json3';
       const response = await fetch(endpoint, {
         headers: {
-          'user-agent': 'cellpinda-gaba-sum/1.0 (educational caption health check)',
+          'user-agent': YOUTUBE_BROWSER_USER_AGENT,
           'accept-language': 'ko-KR,ko;q=0.9,en;q=0.8',
+          accept: 'application/json,text/plain,*/*',
         },
       });
       if (!response.ok) {
@@ -305,7 +308,12 @@ const checkRegisteredYouTubeCaptionBodies = async captionHealth => {
         warnings.push(`${url} → 자막 본문 확인 HTTP ${response.status}`);
         continue;
       }
-      const payload = await response.json();
+      const raw = await response.text();
+      if (!raw.trim()) {
+        warnings.push(`${url} → 자막 본문 응답 비어 있음`);
+        continue;
+      }
+      const payload = JSON.parse(raw);
       const hasText = Array.isArray(payload.events)
         && payload.events.some(event => Array.isArray(event.segs) && event.segs.some(segment => segment.utf8?.trim()));
       if (hasText) {
