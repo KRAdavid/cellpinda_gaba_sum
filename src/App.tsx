@@ -386,6 +386,9 @@ const AUTHORITY_BASIS_LABELS = {
   TITLE_DESCRIPTION_SIGNAL: '전문가 표현 감지 · 자격 미확인',
   KEYWORD_DISCOVERY: '권위 검색 발견 · 자격 미확인',
 } as const;
+const monitorCandidateDisplayTitle = (candidate: MonitorCandidate) => candidate.publicationGate === 'PRODUCT_BRAND_QUARANTINE'
+  ? '제품·브랜드 격리 후보 · 원문 제목은 일일 리포트에서 확인'
+  : candidate.title;
 const VIDEO_CLAIM_LABELS: Record<GabaVideoRecord['audit']['claimCategories'][number], string> = {
   GENERAL_PHYSIOLOGY: '일반 생리',
   ORAL_GABA_HUMAN_RESEARCH: '경구 GABA 인체 연구',
@@ -2195,7 +2198,7 @@ export default function App() {
                 </div>
                 <div className="monitor-snapshot__queue" aria-label="오늘 먼저 검토할 후보">
                   <p className="eyebrow">오늘 먼저 검토할 후보</p>
-                  {presenterMonitor?.pendingQueue.length ? <ol>{presenterMonitor.pendingQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{candidate.priority}</strong><span>{candidate.title}</span></summary><div><small>상태: PENDING_REVIEW · 첫 담당: {candidate.reviewer}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>주의 신호: {candidate.signals.join(' · ')}</small><small>원문·자막·화자·권리 확인 전에는 공개하지 않습니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 검토 대기 후보가 없습니다.</p>}
+                  {presenterMonitor?.pendingQueue.length ? <ol>{presenterMonitor.pendingQueue.map(candidate => <li key={candidate.id}><details><summary><strong>{candidate.priority}</strong><span>{monitorCandidateDisplayTitle(candidate)}</span></summary><div><small>상태: PENDING_REVIEW · 첫 담당: {candidate.reviewer}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>주의 신호: {candidate.signals.join(' · ')}</small><small>원문·자막·화자·권리 확인 전에는 공개하지 않습니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 검토 대기 후보가 없습니다.</p>}
                   <small>제목·공개 설명 기반 우선순위입니다. 영상 원문·자막·화자·권리 확인 전 공개 승인으로 보지 않습니다.</small>
                 </div>
                 <div className="monitor-snapshot__authority-queue" aria-label="권위 후보 확인 전 큐">
@@ -2205,7 +2208,7 @@ export default function App() {
                 </div>
                 <div className="monitor-snapshot__product-queue" aria-label="제품 브랜드 신호 격리 큐">
                   <p className="eyebrow">제품·브랜드 신호 — 일반 공개 큐 제외</p>
-                  {presenterMonitor?.productBrandQueue.length ? <ol>{presenterMonitor.productBrandQueue.map(candidate => <li key={candidate.id}><details><summary><strong>공개 큐 제외</strong><span>{candidate.title}</span></summary><div><small>상태: PENDING_REVIEW · 일반 GABA 공개 후보로 자동 사용하지 않음</small><small>발견 신호: {candidate.signals.join(' · ')}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>제품·브랜드 주장과 일반 GABA 설명을 분리한 뒤 사람이 오탐 여부와 권리를 확인합니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 제품·브랜드 신호로 격리된 후보가 없습니다.</p>}
+                  {presenterMonitor?.productBrandQueue.length ? <ol>{presenterMonitor.productBrandQueue.map(candidate => <li key={candidate.id}><details><summary><strong>공개 큐 제외</strong><span>{monitorCandidateDisplayTitle(candidate)}</span></summary><div><small>상태: PENDING_REVIEW · 일반 GABA 공개 후보로 자동 사용하지 않음</small><small>발견 신호: {candidate.signals.join(' · ')}</small><small>다음 행동: {candidate.nextAction}</small><small>발견 경로: {candidate.channel}</small><small>제품·브랜드 주장과 일반 GABA 설명을 분리한 뒤 사람이 오탐 여부와 권리를 확인합니다.</small><button type="button" className="monitor-candidate-review-button" onClick={() => startMonitorReview(candidate.id)}>이 후보 감리 초안 시작</button></div></details></li>)}</ol> : <p>현재 제품·브랜드 신호로 격리된 후보가 없습니다.</p>}
                   <small>이 큐는 제품 정보를 공개하기 위한 목록이 아닙니다. 일반 GABA 공개 큐와 제품성 콘텐츠를 분리하기 위한 안전 장치입니다.</small>
                 </div>
                 {monitorReviewCandidate && monitorReviewDraft ? <section className="monitor-candidate-review" aria-label="신규 후보 감리 초안">
