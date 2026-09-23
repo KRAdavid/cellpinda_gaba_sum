@@ -372,6 +372,14 @@ const VIDEO_AUDIT_LABELS = {
   usageMode: {SOURCE_LINK: '원문 링크', EMBED_IF_ALLOWED: '허용 시 임베드', REVIEW_ONLY: '검토용', EXCLUDE: '공개 제외'},
 } as const;
 
+const getMonitorScheduleStatus = (snapshot: MonitorSnapshot | null | undefined) => {
+  if (!snapshot) return {label: '예약 실행 확인 전', tone: 'pending' as const};
+  if (String(snapshot.runOrigin) === 'GitHub Actions 예약 실행') {
+    return {label: '예약 실행 확인', tone: 'ready' as const};
+  }
+  return {label: '수동 실행 · 예약 증거 대기', tone: 'pending' as const};
+};
+
 const AUTHORITY_BASIS_LABELS = {
   TITLE_DESCRIPTION_SIGNAL: '전문가 표현 감지 · 자격 미확인',
   KEYWORD_DISCOVERY: '권위 검색 발견 · 자격 미확인',
@@ -589,6 +597,7 @@ export default function App() {
   const presenterVideoDb = presenterData?.videoDb ?? [];
   const presenterApprovedVideos = presenterData?.approvedVideos ?? [];
   const presenterMonitor = presenterData?.monitor;
+  const presenterScheduleStatus = getMonitorScheduleStatus(presenterMonitor);
   const presenterTfRoles = presenterData?.tfRoles ?? [];
   const presenterTfDiscussionItems = presenterData?.tfDiscussionItems ?? [];
   const presenterTfMeetingSteps = presenterData?.tfMeetingSteps ?? [];
@@ -1325,9 +1334,11 @@ export default function App() {
       return;
     }
     const snapshot = presenterMonitor;
+    const scheduleStatus = getMonitorScheduleStatus(snapshot);
     const lines = [
       'GABA Shorts 일일 감리 요약',
       `확인일: ${snapshot.checkedAt}`,
+      `자동화 상태: ${scheduleStatus.label} · 마지막 실행 출처: ${snapshot.runOrigin} · 다음 예약: ${snapshot.scheduleKst}`,
       `수집 범위: 채널 ${snapshot.sourceChannels}/${snapshot.registeredChannels} · 검색어 ${snapshot.discoveryQueries}/${snapshot.totalDiscoveryQueries}`,
       `검토 대기: ${snapshot.pendingReview}건 · SCIENCE/MEDICAL 우선: ${snapshot.scienceMedicalPriority}건 · 오늘 신규 후보(누적): ${snapshot.newCandidates}건 · 이번 실행 신규 후보: ${snapshot.newCandidatesThisRun}건`,
       `제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: ${snapshot.productBrandQuarantine}건`,
@@ -2145,7 +2156,7 @@ export default function App() {
                 <p className="video-review-batch__boundary">5개 확인 항목을 모두 마친 뒤에도 사람의 공개 판단이 필요합니다. 자동 정렬은 권위·과학적 타당성·권리를 승인하지 않습니다.</p>
               </section> : null}
               {presentationMode ? <div className="monitor-snapshot">
-                <div className="monitor-snapshot__heading"><p className="eyebrow">일일 감리 상태</p><div className="monitor-snapshot__actions"><button type="button" className="monitor-snapshot__copy" onClick={copyDailyMonitorBrief}>회의용 요약 복사</button><button type="button" className="monitor-snapshot__copy" data-export-monitor-csv onClick={exportMonitorQueueCsv}>감리 큐 CSV 내려받기</button></div></div>
+                <div className="monitor-snapshot__heading"><div className="monitor-snapshot__title"><p className="eyebrow">일일 감리 상태</p><span className={`monitor-snapshot__schedule monitor-snapshot__schedule--${presenterScheduleStatus.tone}`}>{presenterScheduleStatus.label}</span></div><div className="monitor-snapshot__actions"><button type="button" className="monitor-snapshot__copy" onClick={copyDailyMonitorBrief}>회의용 요약 복사</button><button type="button" className="monitor-snapshot__copy" data-export-monitor-csv onClick={exportMonitorQueueCsv}>감리 큐 CSV 내려받기</button></div></div>
                 <small className="monitor-snapshot__copy-message" aria-live="polite">{monitorCopyMessage}</small>
                 <p><strong>{presenterMonitor?.checkedAtKst ?? presenterMonitor?.checkedAt ?? '—'}</strong> 마지막 실행 기록 · 실행 출처: {presenterMonitor?.runOrigin ?? '확인 전'} · 다음 예약 {presenterMonitor?.scheduleKst ?? '매일 09:17 KST'} · 채널 {presenterMonitor?.sourceChannels ?? 0}/{presenterMonitor?.registeredChannels ?? 0} · 검색어 {presenterMonitor?.discoveryQueries ?? 0}/{presenterMonitor?.totalDiscoveryQueries ?? 0}</p>
                 <p>검토 대기 {presenterMonitor?.pendingReview ?? 0}건 · SCIENCE/MEDICAL 우선 {presenterMonitor?.scienceMedicalPriority ?? 0}건 · 오늘 신규 후보 {presenterMonitor?.newCandidates ?? 0}건 · 이번 실행 {presenterMonitor?.newCandidatesThisRun ?? 0}건 · 자동 공개 {presenterMonitor?.autoPublish ?? 0}건</p>

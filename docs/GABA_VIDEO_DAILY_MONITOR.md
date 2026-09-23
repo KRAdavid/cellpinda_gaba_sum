@@ -45,6 +45,8 @@ pnpm run monitor:gaba-shorts:write
 
 GitHub Actions는 `.github/workflows/monitor-gaba-shorts.yml`에서 매일 09:17 KST에 실행한다. 매시 정각 혼잡을 피하고 중복 실행을 막기 위해 예약 실행 시간과 concurrency를 고정한다. 예약 실행이 멈추지 않도록 저장소의 Actions·Pages 권한과 기본 브랜치를 확인한다.
 
+발표자 화면의 일일 감리 상태에는 마지막 실행 출처를 바탕으로 `예약 실행 확인` 또는 `수동 실행 · 예약 증거 대기`를 표시한다. 수동 실행 성공만으로 매일 예약 실행이 작동한다고 간주하지 않으며, 회의용 요약에도 같은 상태를 포함해 자동화 공백을 숨기지 않는다.
+
 일일 리포트·스냅샷의 기준일은 실행 서버의 UTC가 아니라 `Asia/Seoul` 한국 시간으로 생성한다. 자정 전후 실행에서도 회의에서 사용하는 날짜와 문서 파일명이 하루 밀리지 않도록 하기 위한 기준이다.
 
 감리 워크플로가 성공하면 `.github/workflows/deploy-pages.yml`의 `workflow_run` 경로가 Pages를 다시 빌드한다. 이 연결은 일일 리포트·감리 대기 수·발표자 스냅샷을 최신 공개 발표자 화면에 반영하기 위한 것이며, 새 후보를 소비자 공개 목록에 자동 추가하거나 `PUBLISH_GENERAL`로 승인하지 않는다.
