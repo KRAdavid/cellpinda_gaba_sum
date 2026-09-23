@@ -268,7 +268,7 @@ VID-02의 공개 설명은 도파민·엔돌핀·세로토닌·글루타메이�
 
 ## 2026-09-23 예약 이벤트 probe
 
-실제 예약 이벤트를 확인하기 위해 `00:45 UTC`(09:45 KST) 임시 cron을 추가했으나 09:48 KST까지 `Monitor GABA Shorts candidates` 실행 기록은 생성되지 않았다. push에 따른 Pages 배포는 정상 생성되었고, 임시 cron은 제거해 원래 `00:17 UTC`(09:17 KST) 단일 일일 예약으로 복원했다. 결론은 **workflow YAML·Pages 연결 기술 PASS / GitHub scheduled event 실제 발생·자동 업데이트 증거 HOLD**이며, 운영 화면의 실행 출처는 계속 실제 값으로 표시한다.
+기존 모니터 실행 5건의 GitHub run 페이지는 모두 `on: workflow_dispatch`로 확인되었다. 실제 예약 이벤트를 확인하기 위해 `00:45 UTC`(09:45 KST) 임시 cron을 추가했으나 09:48 KST까지 `Monitor GABA Shorts candidates` 실행 기록은 생성되지 않았다. push에 따른 Pages 배포는 정상 생성되었고, 임시 cron은 제거해 원래 `00:17 UTC`(09:17 KST) 단일 일일 예약으로 복원했다. 결론은 **workflow YAML·Pages 연결 기술 PASS / GitHub scheduled event 실제 발생·자동 업데이트 증거 HOLD**이며, 운영 화면의 실행 출처는 계속 실제 값으로 표시한다.
 
 ## 2026-09-23 일일 실행 heartbeat 추가
 
