@@ -34,8 +34,9 @@ const registeredShorts = shortIds.filter(id => videoDb.includes(id)).length;
 const videoRulesReady = videoRules.includes('PENDING_REVIEW')
   && videoRules.includes('상업적 이해관계')
   && videoRules.includes('제품 효능');
-const monitorReady = videoMonitor.includes('매일 09:00 KST')
-  && videoMonitor.includes('PENDING_REVIEW');
+const monitorReady = videoMonitor.includes('매일 09:17 KST')
+  && videoMonitor.includes('PENDING_REVIEW')
+  && videoMonitor.includes('수동 감리 실행 화면');
 const reviewLogReady = videoLog.includes('15분 일일 검토 순서')
   && videoLog.includes('PUBLISH_GENERAL')
   && videoLog.includes('LIMITED_USE');
