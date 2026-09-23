@@ -2001,7 +2001,7 @@ export default function App() {
 
     <div className="consumer-reel__footer">
       <div className="consumer-reel__evidence-note"><span aria-hidden="true">—</span><span>쉽게 보고, 출처로 확인</span></div>
-      <div className="consumer-reel__gesture">위로 넘기거나 버튼을 눌러 계속 <span aria-hidden="true">↑</span></div>
+      <div className={`consumer-reel__gesture${active === 0 ? ' is-visible' : ''}`} aria-hidden={active !== 0}>위로 넘겨 다음 장면 <span aria-hidden="true">↑</span></div>
       <p className="story-share-message" aria-live="polite">{shareMessage}</p>
       {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="고객에게 전달할 장면 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>링크 복사</button></div> : null}
       <div className="story-reader-next consumer-reel__next" aria-live="polite">

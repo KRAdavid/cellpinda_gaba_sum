@@ -674,7 +674,9 @@ body{background:var(--editorial-cream);color:var(--editorial-ink)}
   .consumer-reel__visual{right:-22%;bottom:-4%;width:92%;height:48%;opacity:.63}
   .consumer-reel__footer{padding-right:4px}
   .consumer-reel__evidence-note{font-size:10px}
-  .consumer-reel__gesture{display:none}
+  .consumer-reel__gesture{position:fixed;z-index:7;right:18px;bottom:max(18px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:6px;padding:7px 10px;border:1px solid var(--public-line);border-radius:999px;background:rgba(251,252,248,.92);box-shadow:0 6px 18px rgba(34,73,49,.08);color:#5e7968;font-size:10px;opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease;backdrop-filter:blur(8px)}
+  .consumer-reel__gesture.is-visible{opacity:1;transform:translateY(0)}
+  .consumer-reel__gesture span{display:grid;place-items:center;width:18px;height:18px;border:1px solid #7da68a;border-radius:50%;color:var(--public-coral);font-size:12px;line-height:1}
   .consumer-reel__next{align-items:center;margin-top:12px;padding-top:11px}
   .consumer-reel__next>div:first-child strong{font-size:12px}
   .consumer-reel__next-actions{gap:12px}
