@@ -1,15 +1,18 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 18:54:37 KST",
+  "checkedAtKst": "2026-09-23 19:09:25 KST",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
   "registeredChannels": 8,
-  "discoveryQueries": 8,
+  "discoveryQueries": 12,
   "totalDiscoveryQueries": 12,
-  "searchFallbacksUsed": [],
+  "searchFallbacksUsed": [
+    "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
+    "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
+  ],
   "newCandidates": 23,
-  "newCandidatesThisRun": 1,
+  "newCandidatesThisRun": 0,
   "pendingReview": 114,
   "scienceMedicalPriority": 70,
   "videoPriority": 44,
@@ -249,7 +252,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "date": "2026-09-23",
       "newCandidates": 23,
-      "newCandidatesThisRun": 1,
+      "newCandidatesThisRun": 0,
       "pendingReview": 114,
       "scienceMedicalPriority": 70,
       "videoPriority": 44,
