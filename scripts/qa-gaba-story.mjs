@@ -38,10 +38,10 @@ if (start < 0 || end < 0) {
     ['GABA general term boundary', '신경전달물질 중 하나입니다.'],
     ['GABA inhibitory function', '억제성 신호를 맡아'],
     ['GABA function direction', '신경세포의 활동을 낮추는 방향으로 신호를 전달합니다.'],
-    ['general GABA research label', '일부 연구에서 스트레스와 수면 지표의 긍정적 변화가 관찰되었습니다.'],
+    ['general GABA research label', '일부 인체 연구에서 스트레스·수면 지표가 좋아지는 변화가 확인됐습니다.'],
     ['14 human trials', '14개 위약대조 인체시험'],
-    ['positive stress and sleep signal', '스트레스와 수면 관련 지표의 긍정적 변화가 관찰되었습니다'],
-    ['research conditions', '연구 대상·섭취량·기간·비교 조건'],
+    ['positive stress and sleep signal', '스트레스·수면 관련 지표가 좋아지는 변화가 확인됐습니다'],
+    ['research conditions', '참여자·섭취량·기간·비교 방식'],
     ['research product boundary', '우리가 일상에서 느끼는 상태와 GABA 섭취 연구는 각각 따로 살펴봐야 합니다.'],
     ['finish educational summary', '여기까지가 일반적인 GABA를 이해하는 핵심입니다.'],
   ];
