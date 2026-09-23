@@ -4,9 +4,9 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 113건
+- 검토 대기: 114건
 - SCIENCE/MEDICAL 또는 RIGHTS 선확인: 70건
-- VIDEO 원문·자막 선확인: 43건
+- VIDEO 원문·자막 선확인: 44건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 18건
 
 ## 우선순위 정의
@@ -39,6 +39,7 @@
 | PENDING-20260923-rUqPUDKWEwM | [잠이 얕다면, 가바를 기억하세요 수면의 질, GABA, 50~60대 여성, 영양제, 숙면, 뒤척임, 중장년 건강, 밤잠, 피로 회복](https://www.youtube.com/watch?v=rUqPUDKWEwM) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260923-5QKd5-dTDKw | [GABA: The Secret to Zero Stress? Car Fire Analogy! #shorts](https://www.youtube.com/watch?v=5QKd5-dTDKw) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260923-6ehrpQKvxME | [How GABA affects your stress response. #shorts](https://www.youtube.com/watch?v=6ehrpQKvxME) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20260923-7NKXL6ceVdQ | [Does Oral GABA Actually Reach Your Brain? #shorts  #jackzheng #mihiyolabs #odf #mihiyi #ods #GABA](https://www.youtube.com/watch?v=7NKXL6ceVdQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260923-bZ3jqw_vf_E | [How does the GABA receptor work in the body?](https://www.youtube.com/watch?v=bZ3jqw_vf_E) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260923-G7QGk7dpWU4 | [Meet GABA: Your Brain’s Chill Pill ! #gaba #brain #neuroscience #didyouknow #funfacts #shorts #facts](https://www.youtube.com/watch?v=G7QGk7dpWU4) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 | 전문가 표현 감지 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260923-JmYAdnxLGtA | [The GABA-A receptor is a protein complex that acts as the brain's main brake.](https://www.youtube.com/watch?v=JmYAdnxLGtA) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |

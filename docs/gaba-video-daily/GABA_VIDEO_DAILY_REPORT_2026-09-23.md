@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-09-23 18:51:42 KST · 실행 출처: GitHub Actions 수동 실행 · 기준일 2026-09-23 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-09-23 18:54:37 KST · 실행 출처: GitHub Actions 수동 실행 · 기준일 2026-09-23 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,8 +8,8 @@
 - 유사 콘텐츠 검색어 확인: 8/12
 - 검색어 보완 경로 사용: 0건
 - Shorts 페이지 보완 수집: 0개 채널
-- 오늘 신규 후보(누적): 22건
-- 이번 실행 신규 후보: 0건
+- 오늘 신규 후보(누적): 23건
+- 이번 실행 신규 후보: 1건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 5건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
@@ -45,6 +45,7 @@
 | PENDING-20260923-G7QGk7dpWU4 | [Meet GABA: Your Brain’s Chill Pill ! #gaba #brain #neuroscience #didyouknow #funfacts #shorts #facts](https://www.youtube.com/watch?v=G7QGk7dpWU4) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260923-PBlN5t4tmYE | [치매 예방약? 영양제 말고 '이것' 먼저 챙기세요!​#치매예방 #치매 #GABA #뇌건강 #알츠하이머 #감정라벨링 #대화법 #뇌건강 #노화방지 #호두선생님 #중년건강 #신경과권예지](https://www.youtube.com/watch?v=PBlN5t4tmYE) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 질환·치료 표현 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260923-bhzUlv-pOGo | [화가 난 정이랑이 먹은 '그것'?! 😲이걸 왜 이제 알았지? #가바 #GABA #셀핀다 #스트레스해소 #꿀잠 #불면증극복 #영양제추천 #집중력향상 #부모님선물 #갱년기영양제 #쇼츠](https://www.youtube.com/watch?v=bhzUlv-pOGo) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
+| PENDING-20260923-7NKXL6ceVdQ | [Does Oral GABA Actually Reach Your Brain? #shorts  #jackzheng #mihiyolabs #odf #mihiyi #ods #GABA](https://www.youtube.com/watch?v=7NKXL6ceVdQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
