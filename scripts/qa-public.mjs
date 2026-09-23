@@ -47,6 +47,8 @@ const required = [
   ['GABA function evidence entry', 'GABA 기능 근거 읽기'],
   ['video status curation', '일반 교육 공개 승인'],
   ['shared YouTube Shorts showcase', '오늘 공유하신 국내 YouTube Shorts'],
+  ['public video count boundary', '현재 공개 흐름에 포함된'],
+  ['public video source boundary', '원출처·재게시·권리 상태를 별도로 확인할 수 있는 후보만 포함'],
   ['separate video showcase', '별도 섹션 · 영상 요약'],
   ['video showcase in-page-first action', '상세 감리 먼저 보기'],
   ['video showcase share action', '이 영상 링크 공유'],
