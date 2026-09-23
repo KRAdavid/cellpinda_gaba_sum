@@ -7,7 +7,7 @@
 - 제목·공개 설명 기반 자동 분류는 검토 순서만 제안한다.
 - 원문·자막·화자·과학 근거·권리 확인 전에는 `PUBLISH_GENERAL`로 바꾸지 않는다.
 - 일반 GABA 연구와 영상의 경구 섭취·질환·제품 주장을 분리한다.
-- 당일 수집 후보: 28건 · 누적 검토 대기 후보: 119건
+- 당일 수집 후보: 29건 · 누적 검토 대기 후보: 120건
 
 ## 오늘 먼저 논의할 후보
 
@@ -86,16 +86,16 @@
 - 결정: HOLD (사람 검토 전 기본값)
 - 타임코드·근거·권리 메모: 
 
-## 04 · PENDING-20260923-OeqoiWhkUfw
+## 04 · PENDING-20260923-LGM3arqYZx8
 
-- 영상: [이것 먹고 눕자 마자 잠들었어요. 수면제 없이 불면증 없애고 꿀잠자는 법. 가바(GABA) 국산 제품](https://www.youtube.com/watch?v=OeqoiWhkUfw)
-- 발견 경로: 이동환TV (수동 권위 키워드 검색)
+- 영상: [“GABA is the chemical that helps your brain stay calm under stress.”  #science #humanbody](https://www.youtube.com/watch?v=LGM3arqYZx8)
+- 발견 경로: YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)
 - 자동 우선순위: SCIENCE/MEDICAL 우선
-- 공개 큐 분류: 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
 - 첫 담당 제안: SCIENCE/MEDICAL
 - 다음 행동 제안: 질환·효과·안전성 표현 확인
-- 제목·공개 텍스트 주의 신호: 질환·치료 표현 · 약물 대체·비교 · 효과·안전성 단정 신호 · 제품·브랜드 신호
-- 권위 신호 구분: 해당 없음 · 권위 신호 없음
+- 제목·공개 텍스트 주의 신호: 효과·안전성 단정 신호 · 권위 후보 검색 발견
+- 권위 신호 구분: 권위 검색 발견 · 자격 미확인
 - 현재 상태: PENDING_REVIEW
 
 ### 사람 검토 체크
@@ -111,15 +111,15 @@
 - 결정: HOLD (사람 검토 전 기본값)
 - 타임코드·근거·권리 메모: 
 
-## 05 · PENDING-20260923-PBlN5t4tmYE
+## 05 · PENDING-20260923-OeqoiWhkUfw
 
-- 영상: [치매 예방약? 영양제 말고 '이것' 먼저 챙기세요!​#치매예방 #치매 #GABA #뇌건강 #알츠하이머 #감정라벨링 #대화법 #뇌건강 #노화방지 #호두선생님 #중년건강 #신경과권예지](https://www.youtube.com/watch?v=PBlN5t4tmYE)
-- 발견 경로: YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery)
+- 영상: [이것 먹고 눕자 마자 잠들었어요. 수면제 없이 불면증 없애고 꿀잠자는 법. 가바(GABA) 국산 제품](https://www.youtube.com/watch?v=OeqoiWhkUfw)
+- 발견 경로: 이동환TV (수동 권위 키워드 검색)
 - 자동 우선순위: SCIENCE/MEDICAL 우선
-- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 공개 큐 분류: 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외
 - 첫 담당 제안: SCIENCE/MEDICAL
 - 다음 행동 제안: 질환·효과·안전성 표현 확인
-- 제목·공개 텍스트 주의 신호: 질환·치료 표현 · 섭취·상업성 신호
+- 제목·공개 텍스트 주의 신호: 질환·치료 표현 · 약물 대체·비교 · 효과·안전성 단정 신호 · 제품·브랜드 신호
 - 권위 신호 구분: 해당 없음 · 권위 신호 없음
 - 현재 상태: PENDING_REVIEW
 

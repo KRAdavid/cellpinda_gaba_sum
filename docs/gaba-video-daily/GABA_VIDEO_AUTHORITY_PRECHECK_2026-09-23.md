@@ -10,6 +10,17 @@
 
 ## 후보별 사전 확인
 
+## PENDING-20260923-LGM3arqYZx8
+
+- 영상: [“GABA is the chemical that helps your brain stay calm under stress.”  #science #humanbody](https://www.youtube.com/watch?v=LGM3arqYZx8)
+- 게시 채널(oEmbed): [IK Biologist](https://www.youtube.com/@IKBiologist)
+- 게시 채널 상태: oEmbed 게시 채널 확인
+- 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
+- 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.
+- 과학·의료 감리: 일반 GABA 설명과 수면·스트레스·섭취·질환 주장을 원문에서 분리 확인 필요.
+- 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.
+- 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.
+
 ## PENDING-20260923-Z2_d_8p36rM
 
 - 영상: [GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,](https://www.youtube.com/watch?v=Z2_d_8p36rM)
@@ -47,17 +58,6 @@
 
 - 영상: [The GABA-A receptor is a protein complex that acts as the brain's main brake.](https://www.youtube.com/watch?v=JmYAdnxLGtA)
 - 게시 채널(oEmbed): [Ribosome Studio](https://www.youtube.com/@Ribosomestudio)
-- 게시 채널 상태: oEmbed 게시 채널 확인
-- 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
-- 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.
-- 과학·의료 감리: 일반 GABA 설명과 수면·스트레스·섭취·질환 주장을 원문에서 분리 확인 필요.
-- 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.
-- 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.
-
-## PENDING-20260923-mvMOHCqUmQc
-
-- 영상: [GABA vs Glutamate 🧠 #shorts #psychology #PsychPop](https://www.youtube.com/watch?v=mvMOHCqUmQc)
-- 게시 채널(oEmbed): [PsychPop](https://www.youtube.com/@PsychPop-s)
 - 게시 채널 상태: oEmbed 게시 채널 확인
 - 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
 - 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.

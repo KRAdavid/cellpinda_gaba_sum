@@ -1,6 +1,6 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 20:23:47 KST",
+  "checkedAtKst": "2026-09-23 20:26:04 KST",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
@@ -11,10 +11,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 28,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 119,
-  "scienceMedicalPriority": 73,
+  "newCandidates": 29,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 120,
+  "scienceMedicalPriority": 74,
   "videoPriority": 46,
   "pendingQueue": [
     {
@@ -62,6 +62,20 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
+      "id": "PENDING-20260923-LGM3arqYZx8",
+      "title": "“GABA is the chemical that helps your brain stay calm under stress.”  #science #humanbody",
+      "url": "https://www.youtube.com/watch?v=LGM3arqYZx8",
+      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
       "id": "PENDING-20260923-OeqoiWhkUfw",
       "title": "이것 먹고 눕자 마자 잠들었어요. 수면제 없이 불면증 없애고 꿀잠자는 법. 가바(GABA) 국산 제품",
       "url": "https://www.youtube.com/watch?v=OeqoiWhkUfw",
@@ -76,23 +90,25 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260923-PBlN5t4tmYE",
-      "title": "치매 예방약? 영양제 말고 '이것' 먼저 챙기세요!​#치매예방 #치매 #GABA #뇌건강 #알츠하이머 #감정라벨링 #대화법 #뇌건강 #노화방지 #호두선생님 #중년건강 #신경과권예지",
-      "url": "https://www.youtube.com/watch?v=PBlN5t4tmYE",
-      "channel": "YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
     }
   ],
   "authorityQueue": [
+    {
+      "id": "PENDING-20260923-LGM3arqYZx8",
+      "title": "“GABA is the chemical that helps your brain stay calm under stress.”  #science #humanbody",
+      "url": "https://www.youtube.com/watch?v=LGM3arqYZx8",
+      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "KEYWORD_DISCOVERY",
+      "publisherName": "IK Biologist",
+      "publisherUrl": "https://www.youtube.com/@IKBiologist",
+      "publisherStatus": "oEmbed 게시 채널 확인",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
     {
       "id": "PENDING-20260923-Z2_d_8p36rM",
       "title": "GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,",
@@ -154,22 +170,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "authorityBasis": "KEYWORD_DISCOVERY",
       "publisherName": "Ribosome Studio",
       "publisherUrl": "https://www.youtube.com/@Ribosomestudio",
-      "publisherStatus": "oEmbed 게시 채널 확인",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
-      "id": "PENDING-20260923-mvMOHCqUmQc",
-      "title": "GABA vs Glutamate 🧠 #shorts #psychology #PsychPop",
-      "url": "https://www.youtube.com/watch?v=mvMOHCqUmQc",
-      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "일반 설명 후보",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "publisherName": "PsychPop",
-      "publisherUrl": "https://www.youtube.com/@PsychPop-s",
       "publisherStatus": "oEmbed 게시 채널 확인",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
@@ -266,10 +266,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 28,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 119,
-      "scienceMedicalPriority": 73,
+      "newCandidates": 29,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 120,
+      "scienceMedicalPriority": 74,
       "videoPriority": 46,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
@@ -297,8 +297,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoMetadataHealthy": 12,
   "registeredVideoMetadataWarnings": 0,
   "registeredVideoCaptionTracksChecked": 12,
-  "registeredVideoCaptionTracksAvailable": 12,
-  "registeredVideoCaptionTrackWarnings": 0,
+  "registeredVideoCaptionTracksAvailable": 0,
+  "registeredVideoCaptionTrackWarnings": 12,
   "registeredVideoCaptionBodiesChecked": 12,
   "registeredVideoCaptionBodiesAvailable": 0,
   "registeredVideoCaptionBodyWarnings": 12,
