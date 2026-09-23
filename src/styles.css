@@ -674,3 +674,6 @@ body{background:var(--editorial-cream);color:var(--editorial-ink)}
   .consumer-reel__next-button span{font-size:17px}
 }
 @media(prefers-reduced-motion:reduce){.consumer-reel__scene.is-active{animation:none}.consumer-reel__next-button span{transition:none}}
+
+/* Keep the presenter card label in its own row on narrow screens. */
+.story--presentation .card-content{grid-row:2}
