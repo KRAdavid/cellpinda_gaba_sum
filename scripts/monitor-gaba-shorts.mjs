@@ -761,7 +761,7 @@ const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSour
   ].join('\n');
 };
 
-const appendDailyReviewLog = ({checkedDate: date, successfulSources, successfulSearches, candidates, runCandidateCount, pendingReview, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
+const appendDailyReviewLog = ({checkedDate: date, runOrigin: origin, successfulSources, successfulSearches, candidates, runCandidateCount, pendingReview, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
   if (!fs.existsSync(reviewLogPath)) return;
   const existing = fs.readFileSync(reviewLogPath, 'utf8');
   const marker = `## ${date} 자동 모니터 실행 기록`;
@@ -769,7 +769,7 @@ const appendDailyReviewLog = ({checkedDate: date, successfulSources, successfulS
   const block = [
     marker,
     '',
-    `자동 모니터가 ${successfulSources}/${sources.length}개 채널과 ${successfulSearches}/${discoveryQueries.length}개 검색어를 확인했다. 오늘 누적 신규 후보는 ${candidates.length}건, 이번 실행 신규 후보는 ${runCandidateCount}건이며 전체 검토 대기는 ${pendingReview}건이다.`,
+    `실행 출처: ${origin} · 모니터가 ${successfulSources}/${sources.length}개 채널과 ${successfulSearches}/${discoveryQueries.length}개 검색어를 확인했다. 오늘 누적 신규 후보는 ${candidates.length}건, 이번 실행 신규 후보는 ${runCandidateCount}건이며 전체 검토 대기는 ${pendingReview}건이다.`,
     '',
     `제품·브랜드 신호 후보 ${productBrandCandidates}건은 일반 GABA 공개 큐에서 자동 제외했으며, 모든 후보는 사람의 VIDEO·SCIENCE/MEDICAL·RIGHTS 감리 전 PENDING_REVIEW로 유지한다. 자동 공개는 0건이다.`,
     '',
@@ -926,6 +926,7 @@ const main = async () => {
   fs.writeFileSync(triagePath, triageMarkdown({inboxText: updatedInbox, checkedDate}), 'utf8');
   appendDailyReviewLog({
     checkedDate,
+    runOrigin,
     successfulSources,
     successfulSearches,
     candidates: dailyCandidates,

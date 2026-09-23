@@ -34,6 +34,7 @@ assert('English GABA keyword uses a word boundary', monitor.includes('\\bGABA\\b
 assert('known DB and register files are used for de-duplication', monitor.includes("path.join(root, 'src', 'gabaVideos.ts')") && monitor.includes('GABA_VIDEO_DB.md') && monitor.includes('watch\\?v='));
 assert('daily report is archived by date', monitor.includes('reportArchiveDir') && monitor.includes('GABA_VIDEO_DAILY_REPORT_${checkedDate}.md'));
 assert('daily monitor appends an idempotent review-log record', monitor.includes('appendDailyReviewLog') && monitor.includes('자동 모니터 실행 기록') && monitor.includes('reviewLogPath') && reviewLog.includes('GABA 영상 일일 검토·토론 로그'));
+assert('daily review log records execution origin', monitor.includes('runOrigin: origin') && monitor.includes('실행 출처: ${origin}') && report.includes('실행 출처:'));
 assert('same-day monitor refreshes only its dated review-log block', monitor.includes('nextSectionIndex') && monitor.includes('markerIndex') && monitor.includes('suffix'));
 assert('daily monitor date uses Korea time', monitor.includes("timeZone: 'Asia/Seoul'") && monitor.includes('formatToParts') && monitor.includes("koreaDatePart('year')"));
 assert('same-day reruns preserve the accumulated candidate list', monitor.includes('collectedDate') && monitor.includes('오늘 신규 후보(누적)') && monitor.includes('이번 실행 신규 후보') && monitor.includes('newCandidatesThisRun'));
