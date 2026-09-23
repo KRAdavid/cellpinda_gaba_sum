@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const source = fs.readFileSync(path.join(root, 'src', 'App.tsx'), 'utf8');
+const source = fs.readFileSync(path.join(root, 'src', 'App.tsx'), 'utf8').replaceAll('\r\n', '\n');
 const failures = [];
 
 const start = source.indexOf('function makeSlides(): Slide[] {');

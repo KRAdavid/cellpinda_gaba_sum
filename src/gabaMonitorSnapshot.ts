@@ -1,16 +1,17 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 18:28:28 KST",
-  "runOrigin": "GitHub Actions 수동 실행",
+  "checkedAtKst": "2026-09-23 18:47:59 KST",
+  "runOrigin": "로컬 기준 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
   "registeredChannels": 8,
-  "discoveryQueries": 10,
+  "discoveryQueries": 9,
   "totalDiscoveryQueries": 12,
-  "newCandidates": 21,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 112,
-  "scienceMedicalPriority": 69,
+  "searchFallbacksUsed": [],
+  "newCandidates": 22,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 113,
+  "scienceMedicalPriority": 70,
   "videoPriority": 43,
   "pendingQueue": [
     {
@@ -21,6 +22,22 @@ export const GABA_MONITOR_SNAPSHOT = {
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20260923-bhzUlv-pOGo",
+      "title": "화가 난 정이랑이 먹은 '그것'?! 😲이걸 왜 이제 알았지? #가바 #GABA #셀핀다 #스트레스해소 #꿀잠 #불면증극복 #영양제추천 #집중력향상 #부모님선물 #갱년기영양제 #쇼츠",
+      "url": "https://www.youtube.com/watch?v=bhzUlv-pOGo",
+      "channel": "YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호",
         "제품·브랜드 신호"
       ],
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
@@ -65,20 +82,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260923-R14wnRPxOJ8",
-      "title": "뇌영양제 가바(GABA) 꼭 먹어야 한다면 이렇게 해보세요",
-      "url": "https://www.youtube.com/watch?v=R14wnRPxOJ8",
-      "channel": "채널명·실제 화자 확인 필요 (수동 권위 키워드 검색)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "섭취·상업성 신호"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
@@ -168,6 +171,22 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
     },
     {
+      "id": "PENDING-20260923-bhzUlv-pOGo",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=bhzUlv-pOGo",
+      "channel": "YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
       "id": "PENDING-20260923-OeqoiWhkUfw",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
       "url": "https://www.youtube.com/watch?v=OeqoiWhkUfw",
@@ -212,23 +231,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL → RIGHTS",
       "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
-      "id": "PENDING-20260922-_XGO7xk24jo",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "url": "https://www.youtube.com/watch?v=_XGO7xk24jo",
-      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
     }
   ],
-  "productBrandQuarantine": 17,
+  "productBrandQuarantine": 18,
   "history": [
     {
       "date": "2026-09-22",
@@ -243,10 +248,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 21,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 112,
-      "scienceMedicalPriority": 69,
+      "newCandidates": 22,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 113,
+      "scienceMedicalPriority": 70,
       "videoPriority": 43,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
@@ -274,8 +279,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoMetadataHealthy": 12,
   "registeredVideoMetadataWarnings": 0,
   "registeredVideoCaptionTracksChecked": 12,
-  "registeredVideoCaptionTracksAvailable": 0,
-  "registeredVideoCaptionTrackWarnings": 12,
+  "registeredVideoCaptionTracksAvailable": 12,
+  "registeredVideoCaptionTrackWarnings": 0,
   "registeredVideoCaptionBodiesChecked": 12,
   "registeredVideoCaptionBodiesAvailable": 0,
   "registeredVideoCaptionBodyWarnings": 12,

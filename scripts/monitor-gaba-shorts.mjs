@@ -13,6 +13,7 @@ const reviewLogPath = path.join(root, 'docs', 'GABA_VIDEO_REVIEW_LOG.md');
 const kickoffPath = path.join(root, 'docs', 'GABA_EDUCATION_KICKOFF.md');
 const reportArchiveDir = path.join(root, 'docs', 'gaba-video-daily');
 const writeMode = process.argv.includes('--write');
+const REQUEST_TIMEOUT_MS = 12000;
 const keywords = [/가바/i, /\bGABA\b/i, /감마[-\s]?아미노부티르산/i, /gamma[-\s]?aminobutyric\s+acid/i];
 const discoveryQueries = [
   'GABA 신경전달물질 Shorts',
@@ -28,6 +29,10 @@ const discoveryQueries = [
   '감마아미노부티르산 대학병원 의사 Shorts',
   'GABA 신경전달물질 대학 연구 Shorts',
 ];
+const discoveryQueryFallbacks = {
+  '감마아미노부티르산 대학병원 의사 Shorts': ['GABA 대학병원 의사 Shorts', 'GABA doctor hospital Shorts'],
+  'GABA 신경전달물질 대학 연구 Shorts': ['GABA neurotransmitter university research Shorts', 'GABA neuroscience university Shorts'],
+};
 
 const sources = [
   {name: '셀럽의 건강비결', handle: '@Celeb_tip', channelId: 'UC86AuKBawrgBuEZIgiOo7hA', seedVideoId: 'Cnk0PGn9YBM'},
@@ -56,39 +61,54 @@ const tag = (entry, name) => {
 
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 
-const fetchText = async url => {
+const fetchText = async (url, {retries = 3, timeoutMs = REQUEST_TIMEOUT_MS} = {}) => {
   let lastError = new Error('request failed');
-  for (let attempt = 0; attempt < 3; attempt += 1) {
+  for (let attempt = 0; attempt < retries; attempt += 1) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
     try {
       const response = await fetch(url, {
         headers: {
           'user-agent': 'cellpinda-gaba-sum/1.0 (educational monitoring)',
           'accept-language': 'ko-KR,ko;q=0.9,en;q=0.8',
         },
+        signal: controller.signal,
       });
-      if (response.ok) return response.text();
+      if (response.ok) {
+        const body = await response.text();
+        return body;
+      }
       lastError = new Error(response.status + ' ' + response.statusText);
       if (![404, 429, 500, 502, 503, 504].includes(response.status)) throw lastError;
     } catch (error) {
-      lastError = error;
+      lastError = error.name === 'AbortError'
+        ? new Error(`request timeout after ${timeoutMs}ms`)
+        : error;
+    } finally {
+      clearTimeout(timeout);
     }
-    if (attempt < 2) await sleep(400 * (attempt + 1));
+    if (attempt < retries - 1) await sleep(400 * (attempt + 1));
   }
   throw lastError;
 };
 
 const fetchSearchResults = async query => {
-  const encodedQuery = encodeURIComponent(query);
-  const endpoints = [
-    `https://www.youtube.com/results?search_query=${encodedQuery}`,
-    `https://m.youtube.com/results?search_query=${encodedQuery}`,
-  ];
+  const queryVariants = [query, ...(discoveryQueryFallbacks[query] ?? [])];
   let lastError = new Error('search request failed');
-  for (const endpoint of endpoints) {
+  for (const queryVariant of queryVariants) {
+    const encodedQuery = encodeURIComponent(queryVariant);
+    const endpoints = [
+      `https://www.youtube.com/results?search_query=${encodedQuery}`,
+      `https://m.youtube.com/results?search_query=${encodedQuery}`,
+    ];
     try {
-      return {html: await fetchText(endpoint), endpoint};
+      return await Promise.any(endpoints.map(async endpoint => ({
+        html: await fetchText(endpoint, {retries: 1, timeoutMs: 8000}),
+        endpoint,
+        resolvedQuery: queryVariant,
+      })));
     } catch (error) {
-      lastError = error;
+      lastError = error.errors?.at(-1) ?? error;
     }
   }
   throw lastError;
@@ -571,7 +591,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
-const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth, previousHistory}) => {
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth, previousHistory}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
     .sort(reviewEntrySort(date));
@@ -622,6 +642,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: 
     registeredChannels: sources.length,
     discoveryQueries: successfulSearches,
     totalDiscoveryQueries: discoveryQueries.length,
+    searchFallbacksUsed,
     newCandidates,
     newCandidatesThisRun,
     pendingReview: entries.length,
@@ -698,7 +719,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: 
   return `export const GABA_MONITOR_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)} as const;\n`;
 };
 
-const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, candidates, runCandidateCount, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
+const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, candidates, runCandidateCount, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
@@ -714,6 +735,7 @@ const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSour
     '',
     `- 채널 확인: ${successfulSources}/${sources.length}`,
     `- 유사 콘텐츠 검색어 확인: ${successfulSearches}/${discoveryQueries.length}`,
+    `- 검색어 보완 경로 사용: ${searchFallbacksUsed.length}건`,
     `- Shorts 페이지 보완 수집: ${fallbackSources.length}개 채널`,
     `- 오늘 신규 후보(누적): ${candidates.length}건`,
     `- 이번 실행 신규 후보: ${runCandidateCount}건`,
@@ -743,6 +765,12 @@ const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSour
     fallbackSources.length
       ? fallbackSources.map(item => `- ${markdown(item)}`).join('\n')
       : '- RSS 보완 수집 없음',
+    '',
+    '## 검색어 보완 경로',
+    '',
+    searchFallbacksUsed.length
+      ? searchFallbacksUsed.map(item => `- ${markdown(item)}`).join('\n')
+      : '- 기본 검색 경로로 모두 확인',
     '',
     '## 등록 영상 원문 링크 상태',
     '',
@@ -790,7 +818,7 @@ const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSour
   ].join('\n');
 };
 
-const appendDailyReviewLog = ({checkedDate: date, runOrigin: origin, successfulSources, successfulSearches, candidates, runCandidateCount, pendingReview, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
+const appendDailyReviewLog = ({checkedDate: date, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, candidates, runCandidateCount, pendingReview, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
   if (!fs.existsSync(reviewLogPath)) return;
   const existing = fs.readFileSync(reviewLogPath, 'utf8');
   const marker = `## ${date} 자동 모니터 실행 기록`;
@@ -798,7 +826,7 @@ const appendDailyReviewLog = ({checkedDate: date, runOrigin: origin, successfulS
   const block = [
     marker,
     '',
-    `실행 출처: ${origin} · 모니터가 ${successfulSources}/${sources.length}개 채널과 ${successfulSearches}/${discoveryQueries.length}개 검색어를 확인했다. 오늘 누적 신규 후보는 ${candidates.length}건, 이번 실행 신규 후보는 ${runCandidateCount}건이며 전체 검토 대기는 ${pendingReview}건이다.`,
+    `실행 출처: ${origin} · 모니터가 ${successfulSources}/${sources.length}개 채널과 ${successfulSearches}/${discoveryQueries.length}개 검색어를 확인했다. 검색어 보완 경로 ${searchFallbacksUsed.length}건을 사용했다. 오늘 누적 신규 후보는 ${candidates.length}건, 이번 실행 신규 후보는 ${runCandidateCount}건이며 전체 검토 대기는 ${pendingReview}건이다.`,
     '',
     `제품·브랜드 신호 후보 ${productBrandCandidates}건은 일반 GABA 공개 큐에서 자동 제외했으며, 모든 후보는 사람의 VIDEO·SCIENCE/MEDICAL·RIGHTS 감리 전 PENDING_REVIEW로 유지한다. 자동 공개는 0건이다.`,
     '',
@@ -835,6 +863,7 @@ const main = async () => {
   const candidates = [];
   const errors = [];
   const fallbackSources = [];
+  const searchFallbacksUsed = [];
   let successfulSources = 0;
   let successfulSearches = 0;
 
@@ -876,8 +905,9 @@ const main = async () => {
 
   for (const query of discoveryQueries) {
     try {
-      const {html} = await fetchSearchResults(query);
+      const {html, resolvedQuery} = await fetchSearchResults(query);
       successfulSearches += 1;
+      if (resolvedQuery !== query) searchFallbacksUsed.push(`${query} → ${resolvedQuery}`);
       const source = {name: 'YouTube 검색: ' + query, handle: 'keyword-discovery', channelId: ''};
       addCandidates(parseShortsPage(html).slice(0, 12), source, '');
     } catch (error) {
@@ -947,7 +977,7 @@ const main = async () => {
     .map(inboxCandidateRecord)
     .filter(candidate => candidate.id);
   const pendingReview = parseInboxEntries(updatedInbox).filter(entry => entry.status === 'PENDING_REVIEW').length;
-  const report = dailyReport({checkedAtKst, runOrigin, successfulSources, successfulSearches, candidates: dailyCandidates, runCandidateCount: candidates.length, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth});
+  const report = dailyReport({checkedAtKst, runOrigin, successfulSources, successfulSearches, searchFallbacksUsed, candidates: dailyCandidates, runCandidateCount: candidates.length, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth});
   fs.writeFileSync(reportPath, report, 'utf8');
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
   const reviewSession = reviewSessionMarkdown({inboxText: updatedInbox, checkedDate});
@@ -958,6 +988,7 @@ const main = async () => {
     runOrigin,
     successfulSources,
     successfulSearches,
+    searchFallbacksUsed,
     candidates: dailyCandidates,
     runCandidateCount: candidates.length,
     pendingReview,
@@ -974,6 +1005,7 @@ const main = async () => {
     runOrigin,
     successfulSources,
     successfulSearches,
+    searchFallbacksUsed,
     newCandidates: dailyCandidates.length,
     newCandidatesThisRun: candidates.length,
     linkHealth,

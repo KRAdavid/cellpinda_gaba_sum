@@ -2,7 +2,7 @@
 
 ## 목적
 
-현재 등록된 채널에서 제목에 가바·GABA·감마아미노부티르산이 직접 들어간 새 영상 후보를 매일 수집하고, 일반 GABA·수면·뇌·스트레스 검색어와 `의사 GABA 신경전달물질 Shorts`, `과학자 GABA 신경전달물질 Shorts`, `감마아미노부티르산 의사 Shorts`, `감마아미노부티르산 과학자 Shorts`, `가바 GABA 대학병원 신경과 Shorts`, `가바 GABA 대학 연구 과학자 Shorts`, `감마아미노부티르산 대학병원 의사 Shorts`, `GABA 신경전달물질 대학 연구 Shorts` 권위·기관 후보 검색어로 유사 콘텐츠를 보완 발견한다. 검색 결과는 일반 YouTube 검색 실패 시 모바일 YouTube 검색으로 한 번 더 확인하고, 두 경로가 모두 실패할 때만 검색어 경고로 남긴다. 기존 영상과 중복을 확인한 뒤 검토 대기함에 쌓는다. RSS가 응답하지 않는 채널은 해당 채널의 Shorts 페이지를 보완 경로로 확인한다. 실제 Shorts 형식인지, 과학·의료·권리 감리와 공개 승인은 자동화하지 않는다.
+현재 등록된 채널에서 제목에 가바·GABA·감마아미노부티르산이 직접 들어간 새 영상 후보를 매일 수집하고, 일반 GABA·수면·뇌·스트레스 검색어와 `의사 GABA 신경전달물질 Shorts`, `과학자 GABA 신경전달물질 Shorts`, `감마아미노부티르산 의사 Shorts`, `감마아미노부티르산 과학자 Shorts`, `가바 GABA 대학병원 신경과 Shorts`, `가바 GABA 대학 연구 과학자 Shorts`, `감마아미노부티르산 대학병원 의사 Shorts`, `GABA 신경전달물질 대학 연구 Shorts` 권위·기관 후보 검색어로 유사 콘텐츠를 보완 발견한다. 검색 결과는 일반 YouTube 검색 실패 시 모바일 YouTube 검색으로 한 번 더 확인하고, 기관 검색어는 의미를 유지한 대체 검색어까지 순서대로 재시도한다. 모든 검색 경로가 실패할 때만 검색어 경고로 남긴다. 기존 영상과 중복을 확인한 뒤 검토 대기함에 쌓는다. RSS가 응답하지 않는 채널은 해당 채널의 Shorts 페이지를 보완 경로로 확인한다. 실제 Shorts 형식인지, 과학·의료·권리 감리와 공개 승인은 자동화하지 않는다.
 
 제목·공개 설명에 의사·박사·교수·과학자·doctor·scientist 등의 표현이 있으면 `전문가 자격 확인 신호`를 붙이고, 권위 검색어에서 발견된 후보에는 `권위 후보 검색 발견`을 별도로 붙인다. 이는 독립적인 자격·실제 화자·원문 발언을 확인하기 위한 감리 단서일 뿐 권위 승인이나 과학적 타당성 판정이 아니다.
 
@@ -48,7 +48,7 @@ GitHub Actions는 `.github/workflows/monitor-gaba-shorts.yml`에서 매일 09:17
 GitHub 공식 문서에 따르면 `schedule`은 POSIX cron과 선택적 IANA `timezone`을 사용하고 기본 브랜치의 최신 커밋에서 실행되지만, Actions 부하에 따라 지연될 수 있다([워크플로 문법](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [이벤트 트리거](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)). 따라서 워크플로가 `active`이고 cron이 등록되어 있다는 사실은 설정 증거이며, 실제 일일 운영 증거는 Actions 실행의 `event=schedule` 기록과 그 실행이 갱신한 리포트·Pages 배포로 별도 확인한다.
 
 <!-- GABA_SCHEDULE_OPERATIONS_STATUS:START -->
-최신 운영 확인: 2026-09-23 18:28:28 KST · GitHub Actions 수동 실행 · 예약 실행 증거 대기 · 다음 예약 매일 09:17 KST. 오늘 누적 신규 후보 21건·이번 실행 0건·검토 대기 112건·자동 공개 0건. 예약 실행·사람 감리·공개 승인 전에는 운영 HOLD를 유지한다.
+최신 운영 확인: 2026-09-23 18:47:59 KST · 로컬 기준 실행 · 예약 실행 증거 대기 · 다음 예약 매일 09:17 KST. 오늘 누적 신규 후보 22건·이번 실행 1건·검토 대기 113건·자동 공개 0건. 예약 실행·사람 감리·공개 승인 전에는 운영 HOLD를 유지한다.
 <!-- GABA_SCHEDULE_OPERATIONS_STATUS:END -->
 
 발표자 화면의 일일 감리 상태에는 마지막 실행 출처를 바탕으로 `예약 실행 확인` 또는 `수동 실행 · 예약 증거 대기`를 표시한다. 수동 실행 성공만으로 매일 예약 실행이 작동한다고 간주하지 않으며, 회의용 요약에도 같은 상태를 포함해 자동화 공백을 숨기지 않는다.

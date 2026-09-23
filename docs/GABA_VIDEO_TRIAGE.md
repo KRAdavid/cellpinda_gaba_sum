@@ -4,10 +4,10 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 112건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 69건
+- 검토 대기: 113건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 70건
 - VIDEO 원문·자막 선확인: 43건
-- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 17건
+- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 18건
 
 ## 우선순위 정의
 
@@ -23,6 +23,7 @@
 | ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 공개 큐 분류 | 첫 담당 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | PENDING-20260923-AKcZw2nqU0w | [아직도 육체노동의 시대를 살고 있나요? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=AKcZw2nqU0w) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20260923-bhzUlv-pOGo | [화가 난 정이랑이 먹은 '그것'?! 😲이걸 왜 이제 알았지? #가바 #GABA #셀핀다 #스트레스해소 #꿀잠 #불면증극복 #영양제추천 #집중력향상 #부모님선물 #갱년기영양제 #쇼츠](https://www.youtube.com/watch?v=bhzUlv-pOGo) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-OeqoiWhkUfw | [이것 먹고 눕자 마자 잠들었어요. 수면제 없이 불면증 없애고 꿀잠자는 법. 가바(GABA) 국산 제품](https://www.youtube.com/watch?v=OeqoiWhkUfw) | 이동환TV (수동 권위 키워드 검색) | 질환·치료 표현 · 약물 대체·비교 · 효과·안전성 단정 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-PBlN5t4tmYE | [치매 예방약? 영양제 말고 '이것' 먼저 챙기세요!​#치매예방 #치매 #GABA #뇌건강 #알츠하이머 #감정라벨링 #대화법 #뇌건강 #노화방지 #호두선생님 #중년건강 #신경과권예지](https://www.youtube.com/watch?v=PBlN5t4tmYE) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 질환·치료 표현 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-QjuVqvwkdMU | [GABA Neurotransmitter and Anxiety With Dr. Asa](https://www.youtube.com/watch?v=QjuVqvwkdMU) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 질환·치료 표현 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |

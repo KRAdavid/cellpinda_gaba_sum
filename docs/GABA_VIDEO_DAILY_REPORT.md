@@ -1,19 +1,20 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-09-23 18:28:28 KST · 실행 출처: GitHub Actions 수동 실행 · 기준일 2026-09-23 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-09-23 18:47:59 KST · 실행 출처: 로컬 기준 실행 · 기준일 2026-09-23 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
 - 채널 확인: 8/8
-- 유사 콘텐츠 검색어 확인: 10/12
+- 유사 콘텐츠 검색어 확인: 9/12
+- 검색어 보완 경로 사용: 0건
 - Shorts 페이지 보완 수집: 0개 채널
-- 오늘 신규 후보(누적): 21건
-- 이번 실행 신규 후보: 0건
-- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 4건
+- 오늘 신규 후보(누적): 22건
+- 이번 실행 신규 후보: 1건
+- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 5건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
-- 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
+- 등록 YouTube 자막 트랙: 12/12 watch 페이지에서 발견 · 자막 경고 0건
 - 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
 - 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-09-23.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
@@ -43,17 +44,23 @@
 | PENDING-20260923-5QKd5-dTDKw | [GABA: The Secret to Zero Stress? Car Fire Analogy! #shorts](https://www.youtube.com/watch?v=5QKd5-dTDKw) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260923-G7QGk7dpWU4 | [Meet GABA: Your Brain’s Chill Pill ! #gaba #brain #neuroscience #didyouknow #funfacts #shorts #facts](https://www.youtube.com/watch?v=G7QGk7dpWU4) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260923-PBlN5t4tmYE | [치매 예방약? 영양제 말고 '이것' 먼저 챙기세요!​#치매예방 #치매 #GABA #뇌건강 #알츠하이머 #감정라벨링 #대화법 #뇌건강 #노화방지 #호두선생님 #중년건강 #신경과권예지](https://www.youtube.com/watch?v=PBlN5t4tmYE) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 질환·치료 표현 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260923-bhzUlv-pOGo | [화가 난 정이랑이 먹은 '그것'?! 😲이걸 왜 이제 알았지? #가바 #GABA #셀핀다 #스트레스해소 #꿀잠 #불면증극복 #영양제추천 #집중력향상 #부모님선물 #갱년기영양제 #쇼츠](https://www.youtube.com/watch?v=bhzUlv-pOGo) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
 
 ## 채널 경고
 
 | 구분 | 내용 | 다음 조치 |
 | --- | --- | --- |
+| 경고 | 검색어 가바 GABA 대학 연구 과학자 Shorts: fetch failed | 재시도 또는 수동 확인 |
 | 경고 | 검색어 감마아미노부티르산 대학병원 의사 Shorts: fetch failed | 재시도 또는 수동 확인 |
 | 경고 | 검색어 GABA 신경전달물질 대학 연구 Shorts: fetch failed | 재시도 또는 수동 확인 |
 
 ## 수집 경로 보완
 
 - RSS 보완 수집 없음
+
+## 검색어 보완 경로
+
+- 기본 검색 경로로 모두 확인
 
 ## 등록 영상 원문 링크 상태
 
@@ -71,34 +78,23 @@
 
 ## 등록 YouTube 자막 트랙 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → watch 페이지 자막 트랙 없음
+- 모든 등록 YouTube watch 페이지에서 자막 트랙 안내 발견
 - 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 의미하지 않는다. 사람 검토 전 요약과 공개 상태는 바꾸지 않는다.
 
 ## 등록 YouTube 자막 본문 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 자막 본문 확인 Unexpected end of JSON input
+- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 자막 본문 확인 Unexpected end of JSON input
+- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 자막 본문 확인 Unexpected end of JSON input
+- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 자막 본문 확인 Unexpected end of JSON input
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 확인 Unexpected end of JSON input
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 확인 Unexpected end of JSON input
+- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 자막 본문 확인 Unexpected end of JSON input
+- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 자막 본문 확인 Unexpected end of JSON input
+- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 자막 본문 확인 Unexpected end of JSON input
+- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 확인 Unexpected end of JSON input
+- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 확인 Unexpected end of JSON input
+- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 확인 Unexpected end of JSON input
 - HTTP 429 접근 제한: 0건 · 제한된 본문은 사람이 원문을 재생해 타임코드와 발언을 확인
 - 자막 본문 확인은 텍스트 응답의 존재만 점검한다. 번역 정확성·발언 맥락·화자·과학적 타당성·권리를 승인하지 않으며, 본문 확인 전 요약과 공개 상태를 바꾸지 않는다.
 
