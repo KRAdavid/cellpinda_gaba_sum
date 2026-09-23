@@ -39,11 +39,11 @@ if (start < 0 || end < 0) {
     ['GABA inhibitory function', '억제성 신호를 맡아'],
     ['GABA function direction', '신경세포의 활동을 낮추는 방향으로 신호를 전달합니다.'],
     ['general GABA research label', '일부 인체 연구에서 스트레스·수면 지표가 좋아지는 변화가 확인됐습니다.'],
-    ['14 human trials', '14개 위약대조 인체시험'],
+    ['human research summary', '여러 인체 연구를 모은 문헌고찰'],
     ['positive stress and sleep signal', '스트레스·수면 관련 지표가 좋아지는 변화가 확인됐습니다'],
-    ['research conditions', '참여자·섭취량·기간·비교 방식'],
-    ['research product boundary', '우리가 일상에서 느끼는 상태와 GABA 섭취 연구는 각각 따로 살펴봐야 합니다.'],
-    ['finish educational summary', '여기까지가 일반적인 GABA를 이해하는 핵심입니다.'],
+    ['research condition boundary', '연구마다 참여자·섭취량·기간이 달랐으므로'],
+    ['research conditions', '연구 조건과 함께 살펴봅니다.'],
+    ['finish educational summary', '연구 결과는 연구 조건과 출처를 함께 살펴보면 더 정확하게 이해할 수 있습니다.'],
   ];
   for (const [label, value] of requirements) {
     if (!story.includes(value)) failures.push(`story missing ${label}: ${value}`);
@@ -52,6 +52,9 @@ if (start < 0 || end < 0) {
   const forbiddenProductCopy = ['셀핀다', 'smartstore.naver.com', '제품을 추천', '구매 링크'];
   for (const value of forbiddenProductCopy) {
     if (story.includes(value)) failures.push(`product/commercial copy leaked into consumer story: ${value}`);
+  }
+  for (const value of ['영상 검토 후보', 'PENDING_REVIEW', '영상별 감리', '연구 읽는 기준']) {
+    if (story.includes(value)) failures.push(`internal/operator copy leaked into consumer story: ${value}`);
   }
 }
 

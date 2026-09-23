@@ -494,7 +494,7 @@ function makeSlides(): Slide[] {
       note: '수면과 회복의 일반 정보는 공공기관 자료와 함께 확인합니다.',
       presenterPrompt: '수면이 줄었을 때 일상에서 가장 먼저 달라지는 것은 무엇인가요?',
       presenterBoundary: '수면의 일반 생리와 회복을 설명하는 장면입니다.',
-      link: {href: RESEARCH_URL, label: '수면 회복 근거 읽기', panel: 'research'},
+      link: {href: RESEARCH_URL, label: '수면 회복 자료 보기', panel: 'research'},
     },
     {
       id: 'gaba',
@@ -515,28 +515,28 @@ function makeSlides(): Slide[] {
       visual: STORY_VISUALS.neural,
       presenterPrompt: '뇌의 활동을 높이는 신호와 낮추는 신호가 함께 있다는 점을 기억하면 됩니다.',
       presenterBoundary: 'GABA의 일반적인 신경생리 기능을 설명하는 장면입니다.',
-      link: {href: RESEARCH_URL, label: 'GABA 기능 근거 읽기', panel: 'research'},
+      link: {href: RESEARCH_URL, label: 'GABA 기능 자료 보기', panel: 'research'},
     },
     {
       id: 'research',
       label: '07 · 일반 GABA 연구는 어디까지 알까',
       title: '일부 인체 연구에서 스트레스·수면 지표가 좋아지는 변화가 확인됐습니다.',
-      body: '일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 종합한 문헌고찰에서, 일부 연구의 스트레스·수면 관련 지표가 좋아지는 변화가 확인됐습니다. 연구마다 참여자·섭취량·기간·비교 방식이 달랐으므로 어떤 조건에서 나온 결과인지 함께 확인합니다.',
+      body: '일반 GABA 섭취를 살펴본 여러 인체 연구를 모은 문헌고찰에서, 일부 연구의 스트레스·수면 관련 지표가 좋아지는 변화가 확인됐습니다. 연구마다 참여자·섭취량·기간이 달랐으므로 결과는 연구 조건과 함께 살펴봅니다.',
       tone: 'research',
-      note: '일반 GABA 연구를 읽는 기준과 상세 출처는 아래 패널에서 확인합니다.',
+      note: '연구에 사용된 자료와 조건은 아래에서 확인할 수 있습니다.',
       presenterPrompt: '이 연구가 누구를 대상으로, 어떤 조건에서 진행됐는지 먼저 보겠습니다.',
       presenterBoundary: '일반 GABA 섭취 연구의 결과와 한계를 함께 설명하는 장면입니다.',
-      link: {href: RESEARCH_URL, label: '일반 GABA 연구 읽기', panel: 'research'},
+      link: {href: RESEARCH_URL, label: '연구 자료 보기', panel: 'research'},
     },
     {
       id: 'finish',
       label: '08 · 한 문장으로 정리하면',
       title: 'GABA는 뇌의 신호를 조절하는 대표적인 억제성 신경전달물질입니다.',
-      body: 'GABA는 뇌의 신호를 조절하는 물질입니다. 우리가 일상에서 느끼는 상태와 GABA 섭취 연구는 각각 따로 살펴봐야 합니다. 여기까지가 일반적인 GABA를 이해하는 핵심입니다. 영상 검토 후보 요약은 아래 별도 섹션에서 이어집니다.',
+      body: 'GABA는 뇌의 신호를 조절하는 대표적인 억제성 신경전달물질입니다. 연구 결과는 연구 조건과 출처를 함께 살펴보면 더 정확하게 이해할 수 있습니다.',
       tone: 'finish',
       presenterPrompt: 'GABA를 한 문장으로 설명하면 어떤 말이 가장 자연스러울까요?',
       presenterBoundary: 'GABA의 생리적 역할과 섭취 연구를 구분해 정리하는 장면입니다.',
-      link: {href: RESEARCH_URL, label: '일반 GABA 연구 다시 보기', panel: 'research'},
+      link: {href: RESEARCH_URL, label: '연구 자료 다시 보기', panel: 'research'},
     },
   ];
 }
@@ -1940,19 +1940,13 @@ export default function App() {
   >
     <div className="consumer-reel__topline">
       <div>
-        <p className="consumer-reel__context">GABA · 일반 교육</p>
+        <p className="consumer-reel__context">GABA 알아보기</p>
         <h1 id="story-title" className="consumer-reel__lead-title">GABA를 모르는 사람도<br /><em>3분 안에 이해하는 흐름</em></h1>
         <p className="consumer-reel__promise">일상에서 시작해 GABA와 연구까지 한 장면씩 읽어보세요.</p>
       </div>
       <div className="consumer-reel__counter" aria-live="polite"><strong>{String(active + 1).padStart(2, '0')}</strong><span>/ {String(slides.length).padStart(2, '0')}</span></div>
       <button type="button" className="consumer-reel__share" onClick={shareCardLink}>공유 <span aria-hidden="true">↗</span></button>
     </div>
-
-    <nav ref={phaseNavRef} className="consumer-reel__phases" aria-label="장면 흐름 단계">
-      {STORY_PHASES.map((phase, index) => <span key={phase.id} data-phase={phase.id} className={phase.id === activePhase.id ? 'is-active' : ''} aria-current={phase.id === activePhase.id ? 'step' : undefined}>
-        {phase.label}{index < STORY_PHASES.length - 1 ? <i aria-hidden="true">·</i> : null}
-      </span>)}
-    </nav>
 
     <nav className="consumer-reel__progress" aria-label="GABA 소개 장면 바로가기">
       <span className="consumer-reel__progress-caption">오늘의 흐름</span>
@@ -1981,11 +1975,6 @@ export default function App() {
           <p className="consumer-reel__label">{slide.label}</p>
           <h2 id={`reader-slide-${slide.id}`} tabIndex={-1}>{slide.title}</h2>
           <p>{slide.body}</p>
-          {slide.id === 'research' ? <dl className="consumer-reel__study-conditions" aria-label="일반 GABA 연구 조건">
-            <div><dt>연구 대상</dt><dd>성인 참가자를 대상으로 한 인체시험</dd></div>
-            <div><dt>비교 조건</dt><dd>GABA 섭취군과 대조 조건 비교</dd></div>
-            <div><dt>측정 항목</dt><dd>연구마다 스트레스·수면 지표와 기간이 달랐습니다.</dd></div>
-          </dl> : null}
           {slide.link ? <button type="button" className="reader-link consumer-reel__evidence-link" ref={element => {panelTriggerRefs.current[index] = element;}} onClick={event => openInfoPanel(index, slide.link!.panel, event.currentTarget)}>{slide.link.label} <span aria-hidden="true">↗</span></button> : null}
           {slide.note ? <p className="consumer-reel__note">{slide.note}</p> : null}
         </div>
@@ -1994,14 +1983,13 @@ export default function App() {
     </div>
 
     <div className="consumer-reel__footer">
-      <div className="consumer-reel__evidence-note"><span aria-hidden="true">—</span><span>근거는 조건까지</span></div>
+      <div className="consumer-reel__evidence-note"><span aria-hidden="true">—</span><span>쉽게 보고, 출처로 확인</span></div>
       <div className="consumer-reel__gesture">위로 넘기거나 버튼을 눌러 계속 <span aria-hidden="true">↑</span></div>
       <p className="story-share-message" aria-live="polite">{shareMessage}</p>
       {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="고객에게 전달할 장면 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>링크 복사</button></div> : null}
       <div className="story-reader-next consumer-reel__next" aria-live="polite">
         <div><span>{nextSlide ? '다음 장면' : '다음 섹션'}</span><strong>{nextSlide ? nextSlide.label : '영상으로 더 알아보기'}</strong></div>
         <div className="consumer-reel__next-actions">
-          <button type="button" className="consumer-reel__research" onClick={event => openInfoPanel(active, 'research', event.currentTarget)}>연구 읽는 기준</button>
           {nextSlide ? <button type="button" className="consumer-reel__next-button" onClick={() => goTo(active + 1)} aria-label={`다음 장면 ${nextSlide.label} 보기`}>다음 장면 <span aria-hidden="true">→</span></button> : <a className="consumer-reel__next-button" href="#video-showcase">영상 요약으로 이어가기 <span aria-hidden="true">→</span></a>}
         </div>
       </div>
@@ -2012,7 +2000,7 @@ export default function App() {
     <header className={`site-header${presentationMode ? '' : ' site-header--consumer'}`}>
       <a className="brand" href="#top">GABA<span>.</span></a>
       {presentationMode ? <p>일반 GABA 교육 자료</p> : <nav className="site-header__nav" aria-label="페이지 바로가기">
-        <a href="#story">뇌와 마음</a>
+        <a href="#story">일상</a>
         <a href="#story-scene-gaba">GABA란</a>
         <a href="#story-scene-research">연구</a>
         <a href="#video-showcase">영상</a>
@@ -2112,16 +2100,16 @@ export default function App() {
             <p className="eyebrow">{openPanel === 'research' ? '일반 GABA 연구' : openPanel === 'video' ? (presentationMode ? '영상 DB 감리' : 'GABA 영상') : '발표자 운영'}</p>
             <h2 id="info-panel-title">{panelTitle}</h2>
             {openPanel === 'research' ? <>
-              <p>연구 결과를 볼 때는 무엇을 살펴봤는지와 어떤 조건이었는지를 함께 확인하세요.</p>
-              <p className="info-panel__verification"><strong>연구를 읽는 기준</strong>연구 결과는 대상·섭취량·기간·비교 조건을 함께 볼 때 더 정확하게 이해할 수 있습니다.</p>
-              <p className="info-panel__evidence">연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 종합했습니다. 일부 연구에서 스트레스·수면 관련 지표가 좋아지는 변화가 확인됐으며, 참여자·섭취량·기간·비교 방식 등 어떤 조건에서 나온 결과인지 함께 확인합니다.</p>
-              <ul><li>참여자와 연구 대상이 누구였는지</li><li>섭취량과 기간이 어떻게 설정됐는지</li><li>비교 조건과 측정 방법이 무엇이었는지</li></ul>
-              <p className="info-panel__boundary">이 자료는 일반 GABA 원료와 GABA 섭취 연구를 구분해 읽도록 돕는 일반 교육 자료입니다.</p>
+              <p>일반 GABA 연구에서 어떤 변화가 관찰됐는지, 그리고 그 결과를 어떻게 읽으면 되는지 쉽게 정리했습니다.</p>
+              <p className="info-panel__verification"><strong>결과를 볼 때 함께 확인할 것</strong>누구를 대상으로, 얼마나 오래, 어떤 방식으로 살펴본 연구인지 확인하면 결과를 더 정확하게 이해할 수 있습니다.</p>
+              <p className="info-panel__evidence">연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 종합했습니다. 일부 연구에서 스트레스·수면 관련 지표가 좋아지는 변화가 확인됐고, 연구마다 참여자·섭취량·기간·비교 방식이 달랐습니다.</p>
+              <ul><li>누구를 대상으로 했는지</li><li>얼마나 오래 살펴봤는지</li><li>어떤 방식으로 비교했는지</li></ul>
+              <p className="info-panel__boundary">GABA의 역할과 섭취 연구는 서로 다른 내용이므로, 각각의 출처와 조건을 따로 확인합니다.</p>
               <details className="info-panel__research-sources">
-                <summary>근거 출처 5건 펼쳐 보기 <span aria-hidden="true">＋</span></summary>
+                <summary>참고한 연구·자료 보기 <span aria-hidden="true">＋</span></summary>
                 <div className="research-source-list">
                   {RESEARCH_SOURCES.map(source => <article key={source.id}>
-                    <p className="research-source-list__topic">{source.id} · {source.topic}</p>
+                    <p className="research-source-list__topic">{source.topic}</p>
                     <h3>{source.title}</h3>
                     <p>{source.summary}</p>
                     <p className="research-source-list__meta">{source.meta}</p>
@@ -2501,7 +2489,7 @@ export default function App() {
             </div>
             <div>
               <p>GABA를 설명하는 영상을 한 편씩 살펴봅니다. 영상 요약과 출연자·채널 정보를 먼저 보고, 전체 내용은 페이지 안에서 이어서 확인할 수 있습니다.</p>
-              <p className="video-showcase__boundary">영상 요약은 공개된 제목과 설명을 바탕으로 정리했습니다. 전체 내용은 YouTube 원문에서 확인하세요.</p>
+              <p className="video-showcase__boundary">영상 요약은 제목과 설명을 바탕으로 정리했습니다. 전체 내용은 YouTube 원문에서 확인하세요.</p>
               <button type="button" className="video-showcase__db-button" onClick={event => openVideoPanel(event.currentTarget)}>영상 정보 보기 <span aria-hidden="true">↗</span></button>
             </div>
           </div>
@@ -2531,7 +2519,7 @@ export default function App() {
               </div>
               <div className="video-showcase__copy">
                 <div className="video-showcase__meta"><span>GABA 참고 영상</span></div>
-                <p className="video-showcase__candidate-note" role="note"><strong>GABA 관련 참고 영상</strong><span>영상 전체 내용은 YouTube 원문에서 확인하세요.</span></p>
+                <p className="video-showcase__candidate-note" role="note"><strong>GABA 알아보기 영상</strong><span>영상 전체 내용은 YouTube 원문에서 확인하세요.</span></p>
                 <h3>{showcaseVideo.publicTitle ?? showcaseVideo.title}</h3>
                 <p className="video-showcase__channel">{showcaseVideo.channel} · {showcaseVideo.speaker}</p>
                 <p><strong>영상 요약</strong><br />{showcaseVideo.publicSummary ?? showcaseVideo.summary}</p>
@@ -2548,15 +2536,15 @@ export default function App() {
       </section> : null}
 
       <section className="guardrail" aria-label="GABA 정보 안내">
-        <div><span>01</span><h2>일반 생리</h2><p>GABA가 신경전달물질로 어떤 역할을 하는지 설명합니다.</p></div>
-        <div><span>02</span><h2>일반 인체 연구</h2><p>연구 조건과 근거의 범위를 함께 확인합니다.</p></div>
+        <div><span>01</span><h2>GABA의 역할</h2><p>뇌의 신호를 조절하는 GABA의 기본 기능을 알아봅니다.</p></div>
+        <div><span>02</span><h2>연구로 확인하기</h2><p>스트레스·수면 관련 연구에서 확인된 변화를 살펴봅니다.</p></div>
         <div><span>03</span><h2>영상으로 더 보기</h2><p>GABA를 설명하는 영상을 함께 살펴봅니다.</p></div>
       </section>
     </main>
 
     <footer className="site-footer">
-      <p>일반 GABA 교육 자료 · 일반 기능과 연구 조건을 구분해 확인합니다.</p>
-      <button type="button" className="site-footer__research-button" onClick={event => openInfoPanel(active, 'research', event.currentTarget)}>일반 연구 출처 먼저 읽기 ↗</button>
+      <p>GABA의 역할과 연구를 차근차근 살펴보는 자료입니다.</p>
+      <button type="button" className="site-footer__research-button" onClick={event => openInfoPanel(active, 'research', event.currentTarget)}>연구 출처 보기 ↗</button>
     </footer>
   </>;
 }
