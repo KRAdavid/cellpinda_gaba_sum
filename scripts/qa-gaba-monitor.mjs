@@ -17,6 +17,7 @@ const triage = fs.existsSync(triagePath) ? fs.readFileSync(triagePath, 'utf8') :
 const acceptance = read('docs/GOAL_ACCEPTANCE_MATRIX.md');
 const handoff = read('docs/RELEASE_HANDOFF.md');
 const monitorGuide = read('docs/GABA_VIDEO_DAILY_MONITOR.md');
+const sourceRegister = read('docs/GABA_SOURCE_REGISTER.md');
 
 const assert = (label, condition) => {
   if (!condition) throw new Error(`GABA monitor QA failed: ${label}`);
@@ -25,6 +26,8 @@ const assert = (label, condition) => {
 
 const sourceSection = monitor.match(/const sources = \[([\s\S]*?)\];/)?.[1] ?? '';
 const sourceCount = [...sourceSection.matchAll(/\{name: '/g)].length;
+const sourceRegisterCount = sourceRegister.split('\n').filter(line => /^\| SRC-\d+ \|/.test(line)).length;
+const snapshotSourceTotal = Number(snapshot.match(/"humanSourceTotal":\s*(\d+)/)?.[1] ?? -1);
 const inboxIds = [...inbox.matchAll(/(?:shorts\/|watch\?v=)([\w-]{11})/g)].map(match => match[1]);
 
 assert('eight registered source channels are present', sourceCount === 8);
@@ -72,6 +75,7 @@ assert('presenter exposes a decision-first daily operations brief', app.includes
 assert('presenter and meeting brief expose the longitudinal team review log', monitor.includes('reviewLogUrl') && snapshot.includes('reviewLogUrl') && app.includes('팀 리뷰 로그'));
 assert('meeting brief distinguishes daily and run candidate counts', app.includes('오늘 신규 후보(누적)') && app.includes('이번 실행 신규 후보'));
 assert('presenter snapshot includes human decision gates', snapshot.includes('humanRoleAssigned') && snapshot.includes('humanSourceReviewed') && snapshot.includes('registeredVideoApproved') && snapshot.includes('domesticPublicApproved') && snapshot.includes('domesticVideoTotal') && snapshot.includes('firstMeetingReady'));
+assert('monitor snapshot source gate matches the source register', snapshotSourceTotal === sourceRegisterCount);
 assert('monitor checks registered video source links', monitor.includes('checkRegisteredVideoLinks') && monitor.includes('registeredVideoLinksChecked') && monitor.includes('registeredVideoLinkWarnings'));
 assert('daily report exposes registered link health', report.includes('등록 영상 원문 링크') && report.includes('링크 경고'));
 assert('monitor checks authority and research evidence links separately', monitor.includes('checkRegisteredEvidenceLinks') && monitor.includes('registeredEvidenceLinksChecked') && monitor.includes('registeredEvidenceLinkWarnings'));

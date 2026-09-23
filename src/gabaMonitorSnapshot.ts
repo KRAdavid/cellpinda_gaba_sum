@@ -279,7 +279,7 @@ export const GABA_MONITOR_SNAPSHOT = {
   "humanRoleAssigned": 0,
   "humanRoleTotal": 7,
   "humanSourceReviewed": 0,
-  "humanSourceTotal": 8,
+  "humanSourceTotal": 5,
   "registeredVideoApproved": 2,
   "registeredVideoTotal": 14,
   "domesticPublicApproved": 0,
