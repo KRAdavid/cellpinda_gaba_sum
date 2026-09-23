@@ -50,7 +50,7 @@ for (const id of consumerCopyIds) {
     if (!nonEmptyRecordField(block, field)) failures.push(`${field} is empty from public-safe ${id}`);
   }
 }
-if (!consumerCopyBlock.includes('공식 채널 프로필은') || !consumerCopyBlock.includes('인물 확인용이며') || !consumerCopyBlock.includes('자동 승인하지 않습니다')) failures.push('public person summaries do not preserve source-qualified authority boundaries');
+if (!consumerCopyBlock.includes('공식 게시물은') || !consumerCopyBlock.includes('공식 채널') || !consumerCopyBlock.includes('소개합니다')) failures.push('public person summaries do not identify the speaker or source in consumer language');
 for (const field of requiredFields) {
   const missing = recordBlocks.filter(block => !block.includes(field)).length;
   if (missing) failures.push(`${field} missing from ${missing} record(s)`);
@@ -68,7 +68,7 @@ if (!source.includes('https://www.youtube.com/channel/UC9Vkx4zyHY4myJoykjtVm7A/a
 if (!source.includes("PUBLIC_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => video.status === 'PUBLISH_GENERAL')")) failures.push('public list is not restricted to PUBLISH_GENERAL');
 if (!appSource.includes("const approvedForCustomerSummary = video.status === 'PUBLISH_GENERAL';") || !appSource.includes('현재 요약은 제목·공개 설명 기반의 예비 정보이며')) failures.push('customer copy does not gate unapproved video summaries');
 if (!appSource.includes('video.publicTitle') || !appSource.includes('selectedVideo.publicSummary') || !appSource.includes('selectedVideo.publicPersonSummary') || !appSource.includes('selectedVideo.publicOperatorSentence')) failures.push('consumer video surface does not use the separate public copy fields');
-if (!appSource.includes('<dt>요약 근거</dt>') || !appSource.includes('요약 근거: {VIDEO_AUDIT_LABELS.contentBasis[showcaseVideo.audit.contentBasis]}')) failures.push('consumer video surface does not expose the summary evidence basis');
+if (!appSource.includes('{presentationMode ? <dl className="video-db-audit"') || appSource.includes('<div className="video-showcase__audit"')) failures.push('consumer video surface does not keep internal audit fields out of the public showcase');
 if (!appSource.includes('무엇을 어떻게 소개했나: ${selectedVideo.summary}') || !appSource.includes('인물 소개: ${selectedVideo.personSummary}') || !appSource.includes('무엇을 어떻게 소개했나: ${video.summary}') || !appSource.includes('인물 소개: ${video.personSummary}')) failures.push('meeting copy does not preserve each video summary and person introduction');
 if (!appSource.includes('영상별 감리 규칙')) failures.push('presenter detail does not expose the video-specific review rule');
 if (source.includes("status: 'PUBLISH_GENERAL',\n    statusReason: '")) {
