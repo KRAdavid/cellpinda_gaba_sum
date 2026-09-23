@@ -394,6 +394,14 @@ const reviewAssignment = priority => {
   return {reviewer: 'SCIENCE/MEDICAL', nextAction: '질환·효과·안전성 표현 확인'};
 };
 
+const reviewEntrySort = currentDate => (left, right) => {
+  const freshnessRank = entry => entry.collectedDate === currentDate ? 0 : 1;
+  const priorityRank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
+  return freshnessRank(left) - freshnessRank(right)
+    || priorityRank(left.priority) - priorityRank(right.priority)
+    || left.id.localeCompare(right.id);
+};
+
 const parseInboxEntries = text => text.split(/^### /m).slice(1).map(section => {
   const lines = section.split('\n');
   const id = lines[0].trim();
@@ -429,8 +437,7 @@ const authoritySignalLabel = entry => entry.signals.includes('전문가 자격 �
 const triageMarkdown = ({inboxText, checkedDate: date}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)})).sort((a, b) => {
-    const rank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
-    return rank(a.priority) - rank(b.priority) || a.id.localeCompare(b.id);
+    return reviewEntrySort(date)(a, b);
   });
   const rows = ranked.length
     ? ranked.map(entry => {
@@ -480,12 +487,13 @@ const triageMarkdown = ({inboxText, checkedDate: date}) => {
 };
 
 const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
-  const priorityRank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
   const candidates = parseInboxEntries(inboxText)
     .filter(entry => entry.status === 'PENDING_REVIEW')
     .map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
-    .sort((left, right) => priorityRank(left.priority) - priorityRank(right.priority) || left.id.localeCompare(right.id))
+    .sort(reviewEntrySort(date))
     .slice(0, 5);
+  const todayCandidateCount = parseInboxEntries(inboxText)
+    .filter(entry => entry.status === 'PENDING_REVIEW' && entry.collectedDate === date).length;
   const blocks = candidates.length
     ? candidates.map((candidate, index) => {
       const assignment = reviewAssignment(candidate.priority);
@@ -528,6 +536,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
     '- 제목·공개 설명 기반 자동 분류는 검토 순서만 제안한다.',
     '- 원문·자막·화자·과학 근거·권리 확인 전에는 `PUBLISH_GENERAL`로 바꾸지 않는다.',
     '- 일반 GABA 연구와 영상의 경구 섭취·질환·제품 주장을 분리한다.',
+    `- 당일 수집 후보: ${todayCandidateCount}건 · 누적 검토 대기 후보: ${parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW').length}건`,
     '',
     '## 오늘 먼저 논의할 후보',
     '',
@@ -543,9 +552,8 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
 
 const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth, previousHistory}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
-  const priorityRank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
-    .sort((left, right) => priorityRank(left.priority) - priorityRank(right.priority) || left.id.localeCompare(right.id));
+    .sort(reviewEntrySort(date));
   const authorityQueue = ranked
     .filter(entry => entry.signals.includes('권위 후보 검색 발견') || entry.signals.includes('전문가 자격 확인 신호'))
     .slice(0, 5);
@@ -777,10 +785,10 @@ const appendDailyReviewLog = ({checkedDate: date, runOrigin: origin, successfulS
     '',
     `자막 본문·화자·과학 주장·권리 확인 전에는 요약·권위·공개 상태를 승격하지 않는다. 다음 행동은 일일 리뷰 세션에서 원문 타임코드와 사람 담당자를 지정하는 것이다.`,
     '',
-  ].join('\n');
+  ].join('\n').trimEnd();
   const markerIndex = existing.indexOf(marker);
   if (markerIndex < 0) {
-    fs.writeFileSync(reviewLogPath, `${existing.trimEnd()}\n\n${block}`, 'utf8');
+    fs.writeFileSync(reviewLogPath, `${existing.trimEnd()}\n\n${block}\n`, 'utf8');
     return;
   }
   const nextSectionIndex = existing.indexOf('\n## ', markerIndex + marker.length);

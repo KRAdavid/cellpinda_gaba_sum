@@ -1,23 +1,23 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 11:37:25 KST",
-  "runOrigin": "GitHub Actions 수동 실행",
+  "checkedAtKst": "2026-09-23 11:56:52 KST",
+  "runOrigin": "로컬 기준 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
   "registeredChannels": 8,
   "discoveryQueries": 8,
   "totalDiscoveryQueries": 8,
-  "newCandidates": 13,
+  "newCandidates": 14,
   "newCandidatesThisRun": 0,
-  "pendingReview": 104,
+  "pendingReview": 105,
   "scienceMedicalPriority": 67,
-  "videoPriority": 37,
+  "videoPriority": 38,
   "pendingQueue": [
     {
-      "id": "PENDING-20260922-_XGO7xk24jo",
-      "title": "헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=_XGO7xk24jo",
-      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
+      "id": "PENDING-20260923-AKcZw2nqU0w",
+      "title": "아직도 육체노동의 시대를 살고 있나요? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
+      "url": "https://www.youtube.com/watch?v=AKcZw2nqU0w",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현",
@@ -28,28 +28,14 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
-      "id": "PENDING-20260922--azWbivGh5Y",
-      "title": "잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠",
-      "url": "https://www.youtube.com/watch?v=-azWbivGh5Y",
-      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "id": "PENDING-20260923-OeqoiWhkUfw",
+      "title": "이것 먹고 눕자 마자 잠들었어요. 수면제 없이 불면증 없애고 꿀잠자는 법. 가바(GABA) 국산 제품",
+      "url": "https://www.youtube.com/watch?v=OeqoiWhkUfw",
+      "channel": "이동환TV (수동 권위 키워드 검색)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-26wX746Ga6M",
-      "title": "불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=26wX746Ga6M",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
+        "약물 대체·비교",
         "효과·안전성 단정 신호",
         "제품·브랜드 신호"
       ],
@@ -58,13 +44,26 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
-      "id": "PENDING-20260922-6QgcctlfBZU",
-      "title": "Supplement GABA to reduce stress! #shorts",
-      "url": "https://www.youtube.com/watch?v=6QgcctlfBZU",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "id": "PENDING-20260923-QjuVqvwkdMU",
+      "title": "GABA Neurotransmitter and Anxiety With Dr. Asa",
+      "url": "https://www.youtube.com/watch?v=QjuVqvwkdMU",
+      "channel": "YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
-        "효과·안전성 단정 신호",
+        "질환·치료 표현"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20260923-R14wnRPxOJ8",
+      "title": "뇌영양제 가바(GABA) 꼭 먹어야 한다면 이렇게 해보세요",
+      "url": "https://www.youtube.com/watch?v=R14wnRPxOJ8",
+      "channel": "채널명·실제 화자 확인 필요 (수동 권위 키워드 검색)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
         "섭취·상업성 신호"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
@@ -72,13 +71,14 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
-      "id": "PENDING-20260922-7h0wzAM7Frw",
-      "title": "'몽진환'은 어떤 제품일까요 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=7h0wzAM7Frw",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "id": "PENDING-20260923-vKVJvHULUZw",
+      "title": "셀핀다 김치유산균 발효가바 GABA100% #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산",
+      "url": "https://www.youtube.com/watch?v=vKVJvHULUZw",
+      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
-        "질환·치료 표현",
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호",
         "제품·브랜드 신호"
       ],
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
@@ -88,9 +88,9 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "authorityQueue": [
     {
-      "id": "PENDING-20260922-Lm2HJtSRBOI",
-      "title": "가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)",
-      "url": "https://www.youtube.com/watch?v=Lm2HJtSRBOI",
+      "id": "PENDING-20260923-Z2_d_8p36rM",
+      "title": "GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,",
+      "url": "https://www.youtube.com/watch?v=Z2_d_8p36rM",
       "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "효과·안전성 단정 신호",
@@ -101,9 +101,22 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
-      "id": "PENDING-20260923-Z2_d_8p36rM",
-      "title": "GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,",
-      "url": "https://www.youtube.com/watch?v=Z2_d_8p36rM",
+      "id": "PENDING-20260923-mvMOHCqUmQc",
+      "title": "GABA vs Glutamate 🧠 #shorts #psychology #PsychPop",
+      "url": "https://www.youtube.com/watch?v=mvMOHCqUmQc",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "일반 설명 후보",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "KEYWORD_DISCOVERY",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
+      "id": "PENDING-20260922-Lm2HJtSRBOI",
+      "title": "가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)",
+      "url": "https://www.youtube.com/watch?v=Lm2HJtSRBOI",
       "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "효과·안전성 단정 신호",
@@ -138,22 +151,69 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "authorityBasis": "KEYWORD_DISCOVERY",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
-      "id": "PENDING-20260922-uLMpiXWsv94",
-      "title": "Unlock GABA Support: The Magnesium Glycinate Secret #shorts",
-      "url": "https://www.youtube.com/watch?v=uLMpiXWsv94",
-      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "일반 설명 후보",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
   ],
   "productBrandQueue": [
+    {
+      "id": "PENDING-20260923-AKcZw2nqU0w",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=AKcZw2nqU0w",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
+      "id": "PENDING-20260923-OeqoiWhkUfw",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=OeqoiWhkUfw",
+      "channel": "이동환TV (수동 권위 키워드 검색)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "약물 대체·비교",
+        "효과·안전성 단정 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
+      "id": "PENDING-20260923-vKVJvHULUZw",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=vKVJvHULUZw",
+      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
+      "id": "PENDING-20260923-zR6l44Oz6A8",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=zR6l44Oz6A8",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
@@ -162,65 +222,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
-      "id": "PENDING-20260922-26wX746Ga6M",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "url": "https://www.youtube.com/watch?v=26wX746Ga6M",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
-      "id": "PENDING-20260922-7h0wzAM7Frw",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "url": "https://www.youtube.com/watch?v=7h0wzAM7Frw",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
-      "id": "PENDING-20260922-95zYZag0tg0",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "url": "https://www.youtube.com/watch?v=95zYZag0tg0",
-      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
-      "id": "PENDING-20260922-bquifROEFMI",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "url": "https://www.youtube.com/watch?v=bquifROEFMI",
-      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호",
         "제품·브랜드 신호"
       ],
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
@@ -243,15 +244,15 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 13,
+      "newCandidates": 14,
       "newCandidatesThisRun": 0,
-      "pendingReview": 104,
+      "pendingReview": 105,
       "scienceMedicalPriority": 67,
-      "videoPriority": 37,
+      "videoPriority": 38,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
-      "captionBodyRateLimited": 0,
+      "captionBodyRateLimited": 12,
       "autoPublish": 0
     }
   ],
@@ -274,12 +275,12 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoMetadataHealthy": 12,
   "registeredVideoMetadataWarnings": 0,
   "registeredVideoCaptionTracksChecked": 12,
-  "registeredVideoCaptionTracksAvailable": 0,
-  "registeredVideoCaptionTrackWarnings": 12,
+  "registeredVideoCaptionTracksAvailable": 12,
+  "registeredVideoCaptionTrackWarnings": 0,
   "registeredVideoCaptionBodiesChecked": 12,
   "registeredVideoCaptionBodiesAvailable": 0,
   "registeredVideoCaptionBodyWarnings": 12,
-  "registeredVideoCaptionBodyRateLimited": 0,
+  "registeredVideoCaptionBodyRateLimited": 12,
   "firstMeetingReady": false,
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",
