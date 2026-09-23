@@ -1,6 +1,6 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 19:53:06 KST",
+  "checkedAtKst": "2026-09-23 20:01:48 KST",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
@@ -11,11 +11,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 24,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 115,
-  "scienceMedicalPriority": 71,
-  "videoPriority": 44,
+  "newCandidates": 27,
+  "newCandidatesThisRun": 3,
+  "pendingReview": 118,
+  "scienceMedicalPriority": 72,
+  "videoPriority": 46,
   "pendingQueue": [
     {
       "id": "PENDING-20260923-AKcZw2nqU0w",
@@ -104,6 +104,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "authorityBasis": "KEYWORD_DISCOVERY",
+      "publisherName": "Samantha Odonnell PMHNP",
+      "publisherUrl": "https://www.youtube.com/@sammiep_thepsychnp",
+      "publisherStatus": "oEmbed 게시 채널 확인",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
@@ -117,6 +120,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "authorityBasis": "KEYWORD_DISCOVERY",
+      "publisherName": "Explainique",
+      "publisherUrl": "https://www.youtube.com/@Explainique",
+      "publisherStatus": "oEmbed 게시 채널 확인",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
@@ -130,6 +136,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "authorityBasis": "TITLE_DESCRIPTION_SIGNAL",
+      "publisherName": "Get_Smarter",
+      "publisherUrl": "https://www.youtube.com/@Get_Smarter_Daily",
+      "publisherStatus": "oEmbed 게시 채널 확인",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
@@ -143,6 +152,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "authorityBasis": "KEYWORD_DISCOVERY",
+      "publisherName": "Ribosome Studio",
+      "publisherUrl": "https://www.youtube.com/@Ribosomestudio",
+      "publisherStatus": "oEmbed 게시 채널 확인",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
@@ -156,6 +168,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "authorityBasis": "KEYWORD_DISCOVERY",
+      "publisherName": "PsychPop",
+      "publisherUrl": "https://www.youtube.com/@PsychPop-s",
+      "publisherStatus": "oEmbed 게시 채널 확인",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
   ],
@@ -252,11 +267,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 24,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 115,
-      "scienceMedicalPriority": 71,
-      "videoPriority": 44,
+      "newCandidates": 27,
+      "newCandidatesThisRun": 3,
+      "pendingReview": 118,
+      "scienceMedicalPriority": 72,
+      "videoPriority": 46,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
@@ -283,8 +298,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoMetadataHealthy": 12,
   "registeredVideoMetadataWarnings": 0,
   "registeredVideoCaptionTracksChecked": 12,
-  "registeredVideoCaptionTracksAvailable": 0,
-  "registeredVideoCaptionTrackWarnings": 12,
+  "registeredVideoCaptionTracksAvailable": 12,
+  "registeredVideoCaptionTrackWarnings": 0,
   "registeredVideoCaptionBodiesChecked": 12,
   "registeredVideoCaptionBodiesAvailable": 0,
   "registeredVideoCaptionBodyWarnings": 12,
@@ -297,5 +312,9 @@ export const GABA_MONITOR_SNAPSHOT = {
   "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-09-23.md",
   "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-09-23.md",
   "kickoffUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md",
-  "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md"
+  "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md",
+  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-09-23.md",
+  "authorityMetadataChecked": 5,
+  "authorityMetadataHealthy": 5,
+  "authorityMetadataWarnings": 0
 } as const;

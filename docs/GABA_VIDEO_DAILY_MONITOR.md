@@ -12,6 +12,8 @@
 
 YouTube 원문은 제목·채널 메타데이터가 응답하는지도 별도로 확인한다. 영상별 oEmbed 결과는 `docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_YYYY-MM-DD.md`로 보관하고 발표자 화면에서 바로 연다. 이 점검은 제목·채널 존재 여부를 확인하는 운영 신호일 뿐, 영상 내용·화자 권위·과학적 타당성·권리를 승인하지 않는다.
 
+권위 후보 큐의 상위 5건은 별도로 YouTube oEmbed 게시 채널을 사전 확인해 `docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_YYYY-MM-DD.md`에 보관한다. 게시 채널명·채널 원문은 실제 영상 화자·의사/과학자 자격·발언 내용·권리의 증명이 아니며, 원문·자막·타임코드·독립 자격 출처 확인 전에는 `PUBLISH_GENERAL`로 바꾸지 않는다. 발표자 화면의 `권위 후보 사전 확인` 링크와 후보별 게시 채널 표시는 이 경계를 함께 보여준다.
+
 등록 YouTube watch 페이지에 자막 트랙 안내가 있는지도 별도로 기록한다. 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 뜻하지 않으며, 사람 검토 전 요약이나 공개 상태를 바꾸지 않는다.
 
 자막 트랙이 발견된 영상은 자막 본문 요청 응답도 별도 확인한다. 본문 확인은 비어 있지 않은 JSON3 텍스트 응답이 있었는지만 뜻하며, YouTube의 HTTP 429·본문 형식 오류·접근 제한은 경고로 남긴다. 본문이 확인되어도 번역 정확성·발언 맥락·화자 권위·과학적 타당성·권리·공개 승인을 의미하지 않는다.
@@ -48,7 +50,7 @@ GitHub Actions는 `.github/workflows/monitor-gaba-shorts.yml`에서 매일 09:17
 GitHub 공식 문서에 따르면 `schedule`은 POSIX cron과 선택적 IANA `timezone`을 사용하고 기본 브랜치의 최신 커밋에서 실행되지만, Actions 부하에 따라 지연될 수 있다([워크플로 문법](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [이벤트 트리거](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)). 따라서 워크플로가 `active`이고 cron이 등록되어 있다는 사실은 설정 증거이며, 실제 일일 운영 증거는 Actions 실행의 `event=schedule` 기록과 그 실행이 갱신한 리포트·Pages 배포로 별도 확인한다.
 
 <!-- GABA_SCHEDULE_OPERATIONS_STATUS:START -->
-최신 운영 확인: 2026-09-23 19:53:06 KST · GitHub Actions 수동 실행 · 예약 실행 증거 대기 · 다음 예약 매일 09:17 KST. 오늘 누적 신규 후보 24건·이번 실행 0건·검토 대기 115건·자동 공개 0건. 예약 실행·사람 감리·공개 승인 전에는 운영 HOLD를 유지한다.
+최신 운영 확인: 2026-09-23 20:01:48 KST · GitHub Actions 수동 실행 · 예약 실행 증거 대기 · 다음 예약 매일 09:17 KST. 오늘 누적 신규 후보 27건·이번 실행 3건·검토 대기 118건·자동 공개 0건. 예약 실행·사람 감리·공개 승인 전에는 운영 HOLD를 유지한다.
 <!-- GABA_SCHEDULE_OPERATIONS_STATUS:END -->
 
 발표자 화면의 일일 감리 상태에는 마지막 실행 출처를 바탕으로 `예약 실행 확인` 또는 `수동 실행 · 예약 증거 대기`를 표시한다. 수동 실행 성공만으로 매일 예약 실행이 작동한다고 간주하지 않으며, 회의용 요약에도 같은 상태를 포함해 자동화 공백을 숨기지 않는다.

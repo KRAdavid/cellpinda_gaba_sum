@@ -376,6 +376,39 @@ const metadataAuditMarkdown = ({checkedDate: date, metadataHealth}) => {
   ].join('\n');
 };
 
+const authorityPrecheckMarkdown = ({checkedDate: date, records}) => {
+  const rows = records.length
+    ? records.map(record => [
+      `## ${record.id}`,
+      '',
+      `- 영상: [${markdown(record.title)}](${record.url})`,
+      `- 게시 채널(oEmbed): ${record.authorName ? `[${markdown(record.authorName)}](${record.authorUrl || record.url})` : '확인 필요'}`,
+      `- 게시 채널 상태: ${markdown(record.status)}`,
+      '- 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.',
+      '- 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.',
+      '- 과학·의료 감리: 일반 GABA 설명과 수면·스트레스·섭취·질환 주장을 원문에서 분리 확인 필요.',
+      '- 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.',
+      '- 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.',
+      '',
+    ].join('\n')).join('\n')
+    : '권위 후보 사전 확인 대상이 없습니다.\n';
+  return [
+    '# GABA 권위 후보 메타데이터 사전 확인',
+    '',
+    `> 자동 생성일: ${date} · 상위 권위 후보 ${records.length}건의 YouTube oEmbed 게시 채널 확인 기록이다. 게시 채널은 실제 화자·자격·과학적 타당성·권리·공개 승인을 의미하지 않는다.`,
+    '',
+    '## 해석 규칙',
+    '',
+    '- `게시 채널(oEmbed)`은 영상을 올린 채널의 메타데이터이며, 영상에 등장한 인물의 신원이나 자격 증명이 아니다.',
+    '- 자막·원문·타임코드·화자·독립 자격 출처·권리 확인 전에는 `PUBLISH_GENERAL`로 바꾸지 않는다.',
+    '- 제목이 일반 GABA 설명처럼 보여도 섭취·수면·불안·질환·제품 주장은 별도 감리한다.',
+    '',
+    '## 후보별 사전 확인',
+    '',
+    rows,
+  ].join('\n');
+};
+
 const findChannelId = html => {
   const patterns = [
     /<meta[^>]+itemprop=["']channelId["'][^>]+content=["'](UC[\w-]+)["']/i,
@@ -506,6 +539,36 @@ const parseInboxEntries = text => text.split(/^### /m).slice(1).map(section => {
   const videoId = videoMatch[2].match(/(?:shorts\/|watch\?v=)([\w-]{11})/)?.[1] ?? '';
   return {id, status, title: videoMatch[1], url: videoMatch[2], channel, collectedDate, description, videoId};
 }).filter(Boolean);
+
+const checkAuthorityCandidateMetadata = async entries => {
+  const records = await Promise.all(entries.map(async entry => {
+    const endpoint = 'https://www.youtube.com/oembed?url=' + encodeURIComponent(entry.url) + '&format=json';
+    try {
+      const response = await fetch(endpoint, {
+        headers: {'user-agent': 'cellpinda-gaba-sum/1.0 (authority candidate metadata check)', 'accept-language': 'ko-KR,ko;q=0.9,en;q=0.8'},
+      });
+      if (!response.ok) return {id: entry.id, title: entry.title, url: entry.url, authorName: '', authorUrl: '', status: `oEmbed HTTP ${response.status}`};
+      const metadata = await response.json();
+      return {
+        id: entry.id,
+        title: entry.title,
+        url: entry.url,
+        authorName: metadata.author_name ?? '',
+        authorUrl: metadata.author_url ?? '',
+        status: metadata.author_name ? 'oEmbed 게시 채널 확인' : '게시 채널 메타데이터 없음',
+      };
+    } catch (error) {
+      return {id: entry.id, title: entry.title, url: entry.url, authorName: '', authorUrl: '', status: `oEmbed 접근 오류: ${error.message}`};
+    }
+  }));
+  return {
+    records,
+    checked: records.length,
+    healthy: records.filter(record => record.authorName).length,
+    warnings: records.filter(record => !record.authorName).length,
+    byId: Object.fromEntries(records.map(record => [record.id, record])),
+  };
+};
 
 const inboxCandidateRecord = entry => {
   const triage = screenCandidate(`${entry.title} ${entry.description}`, entry.channel);
@@ -641,13 +704,14 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
-const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth, previousHistory}) => {
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, authorityMetadata, captionHealth, captionBodyHealth, previousHistory}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
     .sort(reviewEntrySort(date));
   const authorityQueue = ranked
     .filter(entry => entry.signals.includes('권위 후보 검색 발견') || entry.signals.includes('전문가 자격 확인 신호'))
     .slice(0, 5);
+  const authorityMetadataById = authorityMetadata?.byId ?? {};
   const productBrandQueue = ranked
     .filter(entry => entry.publicationGate === 'PRODUCT_BRAND_QUARANTINE')
     .slice(0, 5);
@@ -708,16 +772,22 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: 
       publicationGate: entry.publicationGate,
       ...reviewAssignment(entry.priority),
     })),
-    authorityQueue: authorityQueue.map(entry => ({
-      id: entry.id,
-      title: entry.title,
-      url: entry.url,
-      channel: entry.channel,
-      signals: entry.signals,
-      publicationGate: entry.publicationGate,
-      authorityBasis: authorityBasis(entry),
-      nextAction: '독립적인 자격·실제 화자·원문·자막·권리 확인',
-    })),
+    authorityQueue: authorityQueue.map(entry => {
+      const publisher = authorityMetadataById[entry.id] ?? {};
+      return {
+        id: entry.id,
+        title: entry.title,
+        url: entry.url,
+        channel: entry.channel,
+        signals: entry.signals,
+        publicationGate: entry.publicationGate,
+        authorityBasis: authorityBasis(entry),
+        publisherName: publisher.authorName ?? '',
+        publisherUrl: publisher.authorUrl ?? '',
+        publisherStatus: publisher.status ?? '사전 확인 전',
+        nextAction: '독립적인 자격·실제 화자·원문·자막·권리 확인',
+      };
+    }),
     productBrandQueue: productBrandQueue.map(entry => ({
       id: entry.id,
       title: '제품성 후보 · 원문 제목은 일일 리포트에서 확인',
@@ -765,6 +835,10 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: 
     captionAuditUrl: `https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_${date}.md`,
     kickoffUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md',
     sourceRegisterUrl: 'https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md',
+    authorityPrecheckUrl: `https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_${date}.md`,
+    authorityMetadataChecked: authorityMetadata?.checked ?? 0,
+    authorityMetadataHealthy: authorityMetadata?.healthy ?? 0,
+    authorityMetadataWarnings: authorityMetadata?.warnings ?? 0,
   };
   return `export const GABA_MONITOR_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)} as const;\n`;
 };
@@ -1025,6 +1099,15 @@ const main = async () => {
   const captionAudit = captionAuditMarkdown({checkedDate, captionHealth, captionBodyHealth});
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_CAPTION_AUDIT_${checkedDate}.md`), captionAudit, 'utf8');
   const updatedInbox = fs.readFileSync(inboxPath, 'utf8');
+  const authorityCandidateEntries = parseInboxEntries(updatedInbox)
+    .filter(entry => entry.status === 'PENDING_REVIEW')
+    .map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
+    .filter(entry => entry.signals.includes('권위 후보 검색 발견') || entry.signals.includes('전문가 자격 확인 신호'))
+    .sort(reviewEntrySort(checkedDate))
+    .slice(0, 5);
+  const authorityMetadata = await checkAuthorityCandidateMetadata(authorityCandidateEntries);
+  const authorityPrecheck = authorityPrecheckMarkdown({checkedDate, records: authorityMetadata.records});
+  fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_AUTHORITY_PRECHECK_${checkedDate}.md`), authorityPrecheck, 'utf8');
   const checkedDateKey = checkedDate.replaceAll('-', '');
   const dailyCandidates = parseInboxEntries(updatedInbox)
     .filter(entry => entry.status === 'PENDING_REVIEW' && (entry.collectedDate === checkedDate || entry.id.startsWith('PENDING-' + checkedDateKey + '-')))
@@ -1065,6 +1148,7 @@ const main = async () => {
     linkHealth,
     evidenceHealth,
     metadataHealth,
+    authorityMetadata,
     captionHealth,
     captionBodyHealth,
     previousHistory,
