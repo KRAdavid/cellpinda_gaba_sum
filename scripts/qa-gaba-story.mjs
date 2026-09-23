@@ -38,11 +38,11 @@ if (start < 0 || end < 0) {
     ['GABA general term boundary', '신경전달물질 중 하나입니다.'],
     ['GABA inhibitory function', '억제성 신호를 맡아'],
     ['GABA function direction', '신경세포의 활동을 낮추는 방향으로 신호를 전달합니다.'],
-    ['general GABA research label', '일부 인체 연구에서 스트레스·수면 지표가 좋아지는 변화가 확인됐습니다.'],
-    ['human research summary', '여러 인체 연구를 모은 문헌고찰'],
-    ['positive stress and sleep signal', '스트레스·수면 관련 지표가 좋아지는 변화가 확인됐습니다'],
-    ['research condition boundary', '연구마다 참여자·섭취량·기간이 달랐으므로'],
-    ['research conditions', '연구 조건과 함께 살펴봅니다.'],
+    ['general GABA research label', '일반 GABA 인체 연구에서 스트레스·수면 지표가 개선된 결과가 보고됐습니다.'],
+    ['human research summary', '14개 위약대조 인체시험을 종합한 문헌고찰'],
+    ['positive stress and sleep signal', '스트레스·수면 관련 지표가 개선된 결과가 보고됐습니다'],
+    ['research condition boundary', '연구마다 참여자·섭취량·기간·비교 방식이 달라'],
+    ['research conditions', '어떤 조건에서 나온 결과인지 함께 살펴봅니다.'],
     ['finish educational summary', '연구 결과는 연구 조건과 출처를 함께 살펴보면 더 정확하게 이해할 수 있습니다.'],
   ];
   for (const [label, value] of requirements) {

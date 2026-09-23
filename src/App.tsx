@@ -329,7 +329,7 @@ const RESEARCH_SOURCES = [
     topic: '경구 GABA 인체 연구',
     title: 'Effects of Oral Gamma-Aminobutyric Acid (GABA) Administration on Stress and Sleep in Humans',
     meta: 'Hepsomali et al. · Front Neurosci. 2020 · PMID 33041752',
-    summary: '자연 유래·발효 GABA를 살핀 14개 위약대조 인체시험을 종합한 문헌고찰로, 일부 연구에서 스트레스·수면 관련 지표가 좋아지는 변화가 확인됐습니다.',
+    summary: '자연 유래·발효 GABA를 살핀 14개 위약대조 인체시험을 종합한 문헌고찰로, 여러 연구에서 스트레스·수면 관련 지표가 개선된 결과가 보고됐습니다.',
     boundary: '여러 연구에서 관찰된 스트레스·수면 관련 변화를 모은 자료입니다. 참여자·섭취량·기간에 따라 결과를 더 정확하게 이해할 수 있습니다.',
     url: RESEARCH_URL,
   },
@@ -442,7 +442,7 @@ const PRESENTER_QUESTIONS = [
   },
   {
     label: '수면·스트레스',
-    answer: '수면과 스트레스는 여러 요인의 영향을 받습니다. 일반 GABA 섭취 연구에서 스트레스와 수면 관련 지표가 좋아지는 변화가 확인된 사례가 있으며, 어떤 참여자와 조건에서 나온 결과인지 함께 확인하면 됩니다.',
+    answer: '수면과 스트레스는 여러 요인의 영향을 받습니다. 일반 GABA 섭취 연구에서 스트레스와 수면 관련 지표가 개선된 결과가 보고된 사례가 있으며, 어떤 참여자와 조건에서 나온 결과인지 함께 확인하면 됩니다.',
   },
   {
     label: '일반 연구',
@@ -520,8 +520,8 @@ function makeSlides(): Slide[] {
     {
       id: 'research',
       label: '07 · 일반 GABA 연구는 어디까지 알까',
-      title: '일부 인체 연구에서 스트레스·수면 지표가 좋아지는 변화가 확인됐습니다.',
-      body: '일반 GABA 섭취를 살펴본 여러 인체 연구를 모은 문헌고찰에서, 일부 연구의 스트레스·수면 관련 지표가 좋아지는 변화가 확인됐습니다. 연구마다 참여자·섭취량·기간이 달랐으므로 결과는 연구 조건과 함께 살펴봅니다.',
+      title: '일반 GABA 인체 연구에서 스트레스·수면 지표가 개선된 결과가 보고됐습니다.',
+      body: '일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 종합한 문헌고찰에서, 여러 연구의 스트레스·수면 관련 지표가 개선된 결과가 보고됐습니다. 연구마다 참여자·섭취량·기간·비교 방식이 달라, 어떤 조건에서 나온 결과인지 함께 살펴봅니다.',
       tone: 'research',
       note: '연구에 사용된 자료와 조건은 아래에서 확인할 수 있습니다.',
       presenterPrompt: '이 연구가 누구를 대상으로, 어떤 조건에서 진행됐는지 먼저 보겠습니다.',
@@ -2120,7 +2120,7 @@ export default function App() {
             {openPanel === 'research' ? <>
               <p>일반 GABA 연구에서 어떤 변화가 관찰됐는지, 그리고 그 결과를 어떻게 읽으면 되는지 쉽게 정리했습니다.</p>
               <p className="info-panel__verification"><strong>결과를 볼 때 함께 확인할 것</strong>누구를 대상으로, 얼마나 오래, 어떤 방식으로 살펴본 연구인지 확인하면 결과를 더 정확하게 이해할 수 있습니다.</p>
-              <p className="info-panel__evidence">연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 종합했습니다. 일부 연구에서 스트레스·수면 관련 지표가 좋아지는 변화가 확인됐고, 연구마다 참여자·섭취량·기간·비교 방식이 달랐습니다.</p>
+              <p className="info-panel__evidence">연결된 문헌고찰은 일반 GABA 섭취를 살펴본 14개 위약대조 인체시험을 종합했습니다. 여러 연구에서 스트레스·수면 관련 지표가 개선된 결과가 보고됐고, 연구마다 참여자·섭취량·기간·비교 방식이 달랐습니다.</p>
               <ul><li>누구를 대상으로 했는지</li><li>얼마나 오래 살펴봤는지</li><li>어떤 방식으로 비교했는지</li></ul>
               <p className="info-panel__boundary">GABA의 역할과 섭취 연구는 서로 다른 내용이므로, 각각의 출처와 조건을 따로 확인합니다.</p>
               <details className="info-panel__research-sources">
