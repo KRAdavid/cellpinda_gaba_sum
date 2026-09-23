@@ -4,7 +4,7 @@
 
 ## 운영 상태
 
-- 마지막 확인: 2026-09-23 · 로컬 기준 실행
+- 마지막 확인: 2026-09-23 · GitHub Actions 수동 실행
 - 상태값: PENDING_REVIEW → HOLD / LIMITED_USE / PUBLISH_GENERAL / EXCLUDE
 - 검토 규칙: docs/GABA_VIDEO_REVIEW_RULES.md
 - 상세 DB: docs/GABA_VIDEO_DB.md
