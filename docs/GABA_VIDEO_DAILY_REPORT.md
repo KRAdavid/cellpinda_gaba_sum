@@ -1,14 +1,14 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-09-23 17:56:23 KST · 실행 출처: GitHub Actions 수동 실행 · 기준일 2026-09-23 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-09-23 18:16:43 KST · 실행 출처: GitHub Actions 수동 실행 · 기준일 2026-09-23 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
 - 채널 확인: 8/8
 - 유사 콘텐츠 검색어 확인: 8/8
 - Shorts 페이지 보완 수집: 0개 채널
-- 오늘 신규 후보(누적): 15건
-- 이번 실행 신규 후보: 0건
+- 오늘 신규 후보(누적): 16건
+- 이번 실행 신규 후보: 1건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 4건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
@@ -37,6 +37,7 @@
 | PENDING-20260923-cvtfqT_nkow | [소화 없이 바로 흡수, 가바, 아미노산까지 한번에. 영양 핵심 정리. #Shorts #쇼츠 #건강 #음식 #건강정보 #시니어건강  #이슈 #지식 #꿀팁 #food #kfood](https://www.youtube.com/watch?v=cvtfqT_nkow) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260923-mvMOHCqUmQc | [GABA vs Glutamate 🧠 #shorts #psychology #PsychPop](https://www.youtube.com/watch?v=mvMOHCqUmQc) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260923-JmYAdnxLGtA | [The GABA-A receptor is a protein complex that acts as the brain's main brake.](https://www.youtube.com/watch?v=JmYAdnxLGtA) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260923-gZyzP56SRkw | [테아닌 가성비 멜라토닌 세로토닌 피로회복제 수면 영양제 가바 GABA](https://www.youtube.com/watch?v=gZyzP56SRkw) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 

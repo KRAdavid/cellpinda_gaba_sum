@@ -4,8 +4,8 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 106건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 67건
+- 검토 대기: 107건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 68건
 - VIDEO 원문·자막 선확인: 39건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 17건
 
@@ -33,6 +33,7 @@
 | PENDING-20260923-cvtfqT_nkow | [소화 없이 바로 흡수, 가바, 아미노산까지 한번에. 영양 핵심 정리. #Shorts #쇼츠 #건강 #음식 #건강정보 #시니어건강  #이슈 #지식 #꿀팁 #food #kfood](https://www.youtube.com/watch?v=cvtfqT_nkow) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260923-cX3HiwHE8o4 | [집중력 향상과 스트레스 완화에 좋은 가바(GABA) 효능과 섭취방법](https://www.youtube.com/watch?v=cX3HiwHE8o4) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260923-FRV6QF6E0Qk | [불안에 대한 GABA 보충제 복용량 #반바지](https://www.youtube.com/watch?v=FRV6QF6E0Qk) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
+| PENDING-20260923-gZyzP56SRkw | [테아닌 가성비 멜라토닌 세로토닌 피로회복제 수면 영양제 가바 GABA](https://www.youtube.com/watch?v=gZyzP56SRkw) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260923-rUqPUDKWEwM | [잠이 얕다면, 가바를 기억하세요 수면의 질, GABA, 50~60대 여성, 영양제, 숙면, 뒤척임, 중장년 건강, 밤잠, 피로 회복](https://www.youtube.com/watch?v=rUqPUDKWEwM) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260923-JmYAdnxLGtA | [The GABA-A receptor is a protein complex that acts as the brain's main brake.](https://www.youtube.com/watch?v=JmYAdnxLGtA) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260923-mvMOHCqUmQc | [GABA vs Glutamate 🧠 #shorts #psychology #PsychPop](https://www.youtube.com/watch?v=mvMOHCqUmQc) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
