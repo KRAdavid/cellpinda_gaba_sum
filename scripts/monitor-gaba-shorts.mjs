@@ -326,8 +326,20 @@ const koreaDateParts = new Intl.DateTimeFormat('en-CA', {
   month: '2-digit',
   day: '2-digit',
 }).formatToParts(new Date());
+const koreaDateTimeParts = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Asia/Seoul',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hourCycle: 'h23',
+}).formatToParts(new Date());
 const koreaDatePart = type => koreaDateParts.find(part => part.type === type)?.value ?? '';
+const koreaDateTimePart = type => koreaDateTimeParts.find(part => part.type === type)?.value ?? '';
 const checkedDate = `${koreaDatePart('year')}-${koreaDatePart('month')}-${koreaDatePart('day')}`;
+const checkedAtKst = `${checkedDate} ${koreaDateTimePart('hour')}:${koreaDateTimePart('minute')}:${koreaDateTimePart('second')} KST`;
 
 const readPreviousMonitorHistory = () => {
   if (!fs.existsSync(snapshotPath)) return [];
@@ -522,7 +534,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
-const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSources, successfulSearches, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth, previousHistory}) => {
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: timestamp, successfulSources, successfulSearches, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth, previousHistory}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const priorityRank = value => value === 'SCIENCE/MEDICAL 우선' ? 0 : value === 'SCIENCE/MEDICAL + RIGHTS' ? 1 : 2;
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
@@ -567,6 +579,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     .slice(-14);
   const snapshot = {
     checkedAt: date,
+    checkedAtKst: timestamp,
     scheduleKst: '매일 09:17 KST',
     sourceChannels: successfulSources,
     registeredChannels: sources.length,
@@ -648,7 +661,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
   return `export const GABA_MONITOR_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)} as const;\n`;
 };
 
-const dailyReport = ({successfulSources, successfulSearches, candidates, runCandidateCount, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
+const dailyReport = ({checkedAtKst: timestamp, successfulSources, successfulSearches, candidates, runCandidateCount, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
@@ -658,7 +671,7 @@ const dailyReport = ({successfulSources, successfulSearches, candidates, runCand
   return [
     '# GABA Shorts 일일 모니터 리포트',
     '',
-    `> 자동 생성일: ${checkedDate} · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.`,
+    `> 자동 생성일: ${timestamp} · 기준일 ${checkedDate} · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.`,
     '',
     '## 오늘의 실행 요약',
     '',
@@ -897,7 +910,7 @@ const main = async () => {
     .map(inboxCandidateRecord)
     .filter(candidate => candidate.id);
   const pendingReview = parseInboxEntries(updatedInbox).filter(entry => entry.status === 'PENDING_REVIEW').length;
-  const report = dailyReport({successfulSources, successfulSearches, candidates: dailyCandidates, runCandidateCount: candidates.length, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth});
+  const report = dailyReport({checkedAtKst, successfulSources, successfulSearches, candidates: dailyCandidates, runCandidateCount: candidates.length, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth});
   fs.writeFileSync(reportPath, report, 'utf8');
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
   const reviewSession = reviewSessionMarkdown({inboxText: updatedInbox, checkedDate});
@@ -919,6 +932,7 @@ const main = async () => {
   fs.writeFileSync(snapshotPath, monitorSnapshotTypeScript({
     inboxText: updatedInbox,
     checkedDate,
+    checkedAtKst,
     successfulSources,
     successfulSearches,
     newCandidates: dailyCandidates.length,
