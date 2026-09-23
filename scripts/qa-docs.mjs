@@ -72,6 +72,8 @@ const checks = [
   ['education invite defines human review roles', files.educationInvite, 'SCIENCE'],
   ['education invite keeps approval on hold before human input', files.educationInvite, '역할 이름이나 회의 시간이 입력되기 전에는 `HOLD`로 유지한다'],
   ['scope excludes product facts', files.scope, '셀핀다 제품명·SKU·가격·구성·섭취량·구매 링크'],
+  ['source register keeps positive public copy drafts', files.sourceRegister, '## 공개 문장 초안'],
+  ['source register public copy stays condition-aware', files.sourceRegister, '연구 조건과 함께 읽습니다'],
   ['source register keeps human review boundary', files.sourceRegister, 'HUMAN_REVIEWED'],
   ['video DB contains required audit fields', files.videoDb, 'operatorSentence'],
   ['video DB links caption access audit', files.videoDb, 'GABA_VIDEO_CAPTION_AUDIT_2026-09-22.md'],
