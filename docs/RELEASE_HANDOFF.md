@@ -8,8 +8,8 @@
 | 발표자·TF 운영 | <https://kradavid.github.io/cellpinda_gaba_sum/?mode=presenter&card=1#story> |
 | 기존 공식 배포 사이트 | <https://kradavid.github.io/cellpinda_GABA/> |
 | 저장소 | <https://github.com/KRAdavid/cellpinda_gaba_sum> |
-| 최신 커밋 | `main`의 최신 성공 Pages workflow가 가리키는 커밋 |
-| Pages 배포 | [Deploy consumer GABA page workflow](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/workflows/deploy-pages.yml) · 성공한 실행을 기준으로 확인 |
+| 최신 커밋 | `ada09b0` · 제품·브랜드 격리 후보 제목의 공개 화면 노출을 중립화 |
+| Pages 배포 | [성공한 배포 실행 35813313977](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35813313977) · 빌드·공개 번들 QA·Pages 배포 완료 |
 
 두 사이트는 저장소·URL·배포 설정을 분리한다. 공개본에는 제품·후기·판매 정보가 들어가지 않는다.
 
@@ -40,6 +40,7 @@ YouTube Shorts 후보는 상세 감리 패널 안에서 `youtube-nocookie` 공�
 - 날짜별 일일 리포트·리뷰 세션·영상별 자막 접근 감사 파일을 함께 보관함
 - 자동 공개는 0건
 - 일일 모니터는 8개 등록 채널과 8개 유사 검색어(가바 정식명칭·의사·과학자 권위 후보 포함)를 확인하고 날짜별 리포트를 보관함
+- 최신 감리: 2026-09-23 11:58:53 KST 수동 실행 [35812481557](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35812481557) · 오늘 누적 신규 후보 14건 · 이번 실행 0건 · 자동 공개 0건
 
 ## 사업자 운영
 
@@ -58,7 +59,7 @@ pnpm run qa:video-db
 QA_URL=https://kradavid.github.io/cellpinda_gaba_sum/ pnpm run qa:matrix
 ```
 
-최근 확인 결과: 정적 QA·빌드·문서 QA·공개 320·390·1440px 상호작용 QA 통과, Chrome CDP 콘솔 오류 없음.
+최근 확인 결과: 정적 QA·빌드·문서 QA·공개 320·390·1440px 상호작용 QA 통과, 실제 Pages 390px 상호작용 QA 통과, Chrome CDP 콘솔 오류 없음.
 
 ## 남은 HOLD
 
@@ -67,5 +68,6 @@ QA_URL=https://kradavid.github.io/cellpinda_gaba_sum/ pnpm run qa:matrix
 - 영상 원문·자막·권리의 사람 검토
 - 실제 iOS·Android 확인
 - 일반 소비자·사업자 A/B/C 세션
+- 2026-09-24 09:17 KST 예약 감리 실행 확인 전
 
 위 증거가 제출되기 전에는 기술 PASS를 최종 사업·과학·의학·권리 승인으로 표시하지 않는다.
