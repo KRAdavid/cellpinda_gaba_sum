@@ -1,7 +1,7 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 19:09:25 KST",
-  "runOrigin": "GitHub Actions 수동 실행",
+  "checkedAtKst": "2026-09-23 19:25:36 KST",
+  "runOrigin": "로컬 기준 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -11,10 +11,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 23,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 114,
-  "scienceMedicalPriority": 70,
+  "newCandidates": 24,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 115,
+  "scienceMedicalPriority": 71,
   "videoPriority": 44,
   "pendingQueue": [
     {
@@ -48,6 +48,20 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
+      "id": "PENDING-20260923-BqCWVRMNlFc",
+      "title": "세계 최초! 유전자가위기술 유래 제1호 식품! 고혈압 치료에도 좋다는 가바(GABA) 토마토!! 일본에서 상업화까지 진행했다고..?",
+      "url": "https://www.youtube.com/watch?v=BqCWVRMNlFc",
+      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "섭취·상업성 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
       "id": "PENDING-20260923-OeqoiWhkUfw",
       "title": "이것 먹고 눕자 마자 잠들었어요. 수면제 없이 불면증 없애고 꿀잠자는 법. 가바(GABA) 국산 제품",
       "url": "https://www.youtube.com/watch?v=OeqoiWhkUfw",
@@ -72,19 +86,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "signals": [
         "질환·치료 표현",
         "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260923-QjuVqvwkdMU",
-      "title": "GABA Neurotransmitter and Anxiety With Dr. Asa",
-      "url": "https://www.youtube.com/watch?v=QjuVqvwkdMU",
-      "channel": "YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
@@ -251,10 +252,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 23,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 114,
-      "scienceMedicalPriority": 70,
+      "newCandidates": 24,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 115,
+      "scienceMedicalPriority": 71,
       "videoPriority": 44,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
@@ -282,8 +283,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoMetadataHealthy": 12,
   "registeredVideoMetadataWarnings": 0,
   "registeredVideoCaptionTracksChecked": 12,
-  "registeredVideoCaptionTracksAvailable": 0,
-  "registeredVideoCaptionTrackWarnings": 12,
+  "registeredVideoCaptionTracksAvailable": 12,
+  "registeredVideoCaptionTrackWarnings": 0,
   "registeredVideoCaptionBodiesChecked": 12,
   "registeredVideoCaptionBodiesAvailable": 0,
   "registeredVideoCaptionBodyWarnings": 12,
