@@ -60,6 +60,8 @@ const required = [
   ['approved video publication status', '일반 교육 공개 승인'],
   ['approved video source-link guard', '상세 패널에서 원문 확인'],
   ['video monitor freshness', '영상 후보는 원문 확인 전 검토 대상으로 표시됩니다'],
+  ['video pre-play review boundary', '검토 후보 · 원문 확인 전'],
+  ['video pre-play human review boundary', '사람 감리 전 · 페이지 안에서 원문 재생'],
   ['reel next action', '다음 장면'],
   ['reel video handoff', '영상 요약으로 이어가기'],
   ['video person summary', '인물 소개'],
