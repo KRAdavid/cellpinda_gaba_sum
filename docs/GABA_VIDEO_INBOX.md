@@ -4,7 +4,7 @@
 
 ## 운영 상태
 
-- 마지막 확인: 2026-09-23 · GitHub Actions 수동 실행
+- 마지막 확인: 2026-09-23 · 로컬 기준 실행
 - 상태값: PENDING_REVIEW → HOLD / LIMITED_USE / PUBLISH_GENERAL / EXCLUDE
 - 검토 규칙: docs/GABA_VIDEO_REVIEW_RULES.md
 - 상세 DB: docs/GABA_VIDEO_DB.md
@@ -2212,6 +2212,25 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 공개 설명(자동 수집): 없음
 - 제목 기반 주의 신호: 질환·치료 표현
 - 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260923-YjJ6dMmjUf4
+
+- 상태: PENDING_REVIEW
+- 영상: [갱년기 불안 아침 두근거림, 에스트로겐과 GABA의 관계 \| 서대문구 갱년기 한의원](https://www.youtube.com/watch?v=YjJ6dMmjUf4)
+- 채널: YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-23
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
 - 공개 큐 분류: 일반 교육 공개 전 사람 감리
 - 형식: Shorts 여부 확인 필요
 - 무엇을 어떻게 소개했나: 원문·자막 확인 전

@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-09-23 20:28:34 KST · 실행 출처: GitHub Actions 수동 실행 · 기준일 2026-09-23 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-09-23 20:40:27 KST · 실행 출처: 로컬 기준 실행 · 기준일 2026-09-23 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,13 +8,13 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 0개 채널
-- 오늘 신규 후보(누적): 31건
-- 이번 실행 신규 후보: 2건
+- 오늘 신규 후보(누적): 32건
+- 이번 실행 신규 후보: 1건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 6건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
-- 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
+- 등록 YouTube 자막 트랙: 12/12 watch 페이지에서 발견 · 자막 경고 0건
 - 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
 - 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-09-23.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
@@ -54,6 +54,7 @@
 | PENDING-20260923-LGM3arqYZx8 | [“GABA is the chemical that helps your brain stay calm under stress.”  #science #humanbody](https://www.youtube.com/watch?v=LGM3arqYZx8) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 권위 후보 검색 발견 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260923-0Eblwi5cAaY | [Dopamine and GABA: Unraveling Nicotine's Pleasure-Pain Mechanism with Andrew Huberman](https://www.youtube.com/watch?v=0Eblwi5cAaY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260923-K1QqPoQu6dM | [GABA: Your Natural Remedy for Anxiety, Deep Sleep, and Relieving Muscle Tension #shorts #gaba](https://www.youtube.com/watch?v=K1QqPoQu6dM) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260923-YjJ6dMmjUf4 | [갱년기 불안 아침 두근거림, 에스트로겐과 GABA의 관계 \\| 서대문구 갱년기 한의원](https://www.youtube.com/watch?v=YjJ6dMmjUf4) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -86,34 +87,23 @@
 
 ## 등록 YouTube 자막 트랙 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → mobile YouTube watch page has no caption track metadata
+- 모든 등록 YouTube watch 페이지에서 자막 트랙 안내 발견
 - 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 의미하지 않는다. 사람 검토 전 요약과 공개 상태는 바꾸지 않는다.
 
 ## 등록 YouTube 자막 본문 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 자막 본문 응답 비어 있음
+- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 자막 본문 응답 비어 있음
+- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 자막 본문 응답 비어 있음
+- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 자막 본문 응답 비어 있음
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 응답 비어 있음
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 응답 비어 있음
+- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 자막 본문 응답 비어 있음
+- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 자막 본문 응답 비어 있음
+- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 자막 본문 응답 비어 있음
+- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 응답 비어 있음
+- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 응답 비어 있음
+- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 응답 비어 있음
 - HTTP 429 접근 제한: 0건 · 제한된 본문은 사람이 원문을 재생해 타임코드와 발언을 확인
 - 자막 본문 확인은 텍스트 응답의 존재만 점검한다. 번역 정확성·발언 맥락·화자·과학적 타당성·권리를 승인하지 않으며, 본문 확인 전 요약과 공개 상태를 바꾸지 않는다.
 

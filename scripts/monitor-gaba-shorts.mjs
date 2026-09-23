@@ -992,7 +992,7 @@ const appendDailyReviewLog = ({checkedDate: date, runOrigin: origin, successfulS
   }
   const nextSectionIndex = existing.indexOf('\n## ', markerIndex + marker.length);
   const prefix = existing.slice(0, markerIndex).trimEnd();
-  const suffix = nextSectionIndex >= 0 ? existing.slice(nextSectionIndex).trimStart() : '';
+  const suffix = nextSectionIndex >= 0 ? existing.slice(nextSectionIndex).trim() : '';
   fs.writeFileSync(reviewLogPath, [prefix, block, suffix].filter(Boolean).join('\n\n') + '\n', 'utf8');
 };
 
