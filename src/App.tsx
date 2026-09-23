@@ -1937,7 +1937,8 @@ export default function App() {
     <div className="consumer-reel__topline">
       <div>
         <p className="consumer-reel__context">GABA · 일반 교육</p>
-        <p className="consumer-reel__promise">한 장면씩 읽고, 다음 장면으로</p>
+        <h1 id="story-title" className="consumer-reel__lead-title">GABA를 모르는 사람도<br /><em>3분 안에 이해하는 흐름</em></h1>
+        <p className="consumer-reel__promise">일상에서 시작해 GABA와 연구까지 한 장면씩 읽어보세요.</p>
       </div>
       <div className="consumer-reel__counter" aria-live="polite"><strong>{String(active + 1).padStart(2, '0')}</strong><span>/ {String(slides.length).padStart(2, '0')}</span></div>
       <button type="button" className="consumer-reel__share" onClick={shareCardLink}>공유 <span aria-hidden="true">↗</span></button>
@@ -1954,7 +1955,7 @@ export default function App() {
       <ol>
         {slides.map((slide, index) => <li key={slide.id}>
           <button type="button" className={index === active ? 'is-active' : ''} aria-current={index === active ? 'step' : undefined} aria-label={`${String(index + 1).padStart(2, '0')}번 장면 ${slide.label} 보기`} onClick={() => goTo(index, 'auto')}>
-            <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><strong>{slide.label}</strong>
           </button>
         </li>)}
       </ol>
@@ -1989,7 +1990,7 @@ export default function App() {
       <p className="story-share-message" aria-live="polite">{shareMessage}</p>
       {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="고객에게 전달할 장면 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>링크 복사</button></div> : null}
       <div className="story-reader-next consumer-reel__next" aria-live="polite">
-        <div><span>{nextSlide ? '다음 장면' : '다음 섹션'}</span><strong>{nextSlide ? nextSlide.label : '영상 검토 후보'}</strong></div>
+        <div><span>{nextSlide ? '다음 장면' : '다음 섹션'}</span><strong>{nextSlide ? nextSlide.label : '영상으로 더 알아보기'}</strong></div>
         <div className="consumer-reel__next-actions">
           <button type="button" className="consumer-reel__research" onClick={event => openInfoPanel(active, 'research', event.currentTarget)}>연구 읽는 기준</button>
           {nextSlide ? <button type="button" className="consumer-reel__next-button" onClick={() => goTo(active + 1)} aria-label={`다음 장면 ${nextSlide.label} 보기`}>다음 장면 <span aria-hidden="true">→</span></button> : <a className="consumer-reel__next-button" href="#video-showcase">영상 요약으로 이어가기 <span aria-hidden="true">→</span></a>}
@@ -2001,7 +2002,12 @@ export default function App() {
   return <>
     <header className={`site-header${presentationMode ? '' : ' site-header--consumer'}`}>
       <a className="brand" href="#top">GABA<span>.</span></a>
-      <p>일반 GABA 교육 자료</p>
+      {presentationMode ? <p>일반 GABA 교육 자료</p> : <nav className="site-header__nav" aria-label="페이지 바로가기">
+        <a href="#story">뇌와 마음</a>
+        <a href="#story-scene-gaba">GABA란</a>
+        <a href="#story-scene-research">연구</a>
+        <a href="#video-showcase">영상</a>
+      </nav>}
     </header>
 
     <main id="top" className={presentationMode ? 'presenter-main' : 'consumer-main'}>
