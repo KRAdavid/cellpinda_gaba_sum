@@ -1,17 +1,17 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 12:16:43 KST",
+  "checkedAtKst": "2026-09-23 12:21:45 KST",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
   "registeredChannels": 8,
   "discoveryQueries": 8,
   "totalDiscoveryQueries": 8,
-  "newCandidates": 14,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 105,
+  "newCandidates": 15,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 106,
   "scienceMedicalPriority": 67,
-  "videoPriority": 38,
+  "videoPriority": 39,
   "pendingQueue": [
     {
       "id": "PENDING-20260923-AKcZw2nqU0w",
@@ -101,6 +101,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
+      "id": "PENDING-20260923-JmYAdnxLGtA",
+      "title": "The GABA-A receptor is a protein complex that acts as the brain's main brake.",
+      "url": "https://www.youtube.com/watch?v=JmYAdnxLGtA",
+      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "일반 설명 후보",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "KEYWORD_DISCOVERY",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
       "id": "PENDING-20260923-mvMOHCqUmQc",
       "title": "GABA vs Glutamate 🧠 #shorts #psychology #PsychPop",
       "url": "https://www.youtube.com/watch?v=mvMOHCqUmQc",
@@ -130,19 +143,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "id": "PENDING-20260922-KBC6QV2NDDU",
       "title": "Boost GABA Production: Your Brain's Natural Brake #shorts",
       "url": "https://www.youtube.com/watch?v=KBC6QV2NDDU",
-      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "일반 설명 후보",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
-      "id": "PENDING-20260922-oWtoo62PLFw",
-      "title": "Unlock Your Brain: Glutamate, GABA, and Natural Solutions #shorts",
-      "url": "https://www.youtube.com/watch?v=oWtoo62PLFw",
       "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "일반 설명 후보",
@@ -244,11 +244,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 14,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 105,
+      "newCandidates": 15,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 106,
       "scienceMedicalPriority": 67,
-      "videoPriority": 38,
+      "videoPriority": 39,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
