@@ -312,7 +312,7 @@ const RESEARCH_SOURCES = [
     title: 'Synaptic inhibition and γ-aminobutyric acid in the mammalian central nervous system',
     meta: 'Obata · Proc Jpn Acad Ser B. 2013 · PMID 23574805',
     summary: 'GABA를 척추동물 억제성 시냅스의 주요 신경전달물질로 설명하는 리뷰입니다.',
-    boundary: '일반 신경생리 자료이며 경구 섭취·수면 개선·제품 효능을 검증한 연구가 아닙니다.',
+    boundary: 'GABA의 기본적인 신경 신호 조절을 이해하는 자료입니다. 섭취와 수면 관련 결과는 별도 인체 연구에서 살펴봅니다.',
     url: 'https://pubmed.ncbi.nlm.nih.gov/23574805/',
   },
   {
@@ -321,7 +321,7 @@ const RESEARCH_SOURCES = [
     title: 'GABA tone regulation and its cognitive functions in the brain',
     meta: 'Koh et al. · Nat Rev Neurosci. 2023 · PMID 37495761',
     summary: '빠른 억제성 신호와 tonic GABA current가 신경활동을 조절하는 기전을 다루는 리뷰입니다.',
-    boundary: '기전·신경과학 리뷰이며 식품 GABA의 섭취 후 결과나 특정 제품을 말하는 자료가 아닙니다.',
+    boundary: 'GABA 신호가 뇌의 활동을 조절하는 원리를 이해하는 자료입니다. 섭취 후 변화는 별도 인체 연구에서 확인합니다.',
     url: 'https://pubmed.ncbi.nlm.nih.gov/37495761/',
   },
   {
@@ -330,7 +330,7 @@ const RESEARCH_SOURCES = [
     title: 'Effects of Oral Gamma-Aminobutyric Acid (GABA) Administration on Stress and Sleep in Humans',
     meta: 'Hepsomali et al. · Front Neurosci. 2020 · PMID 33041752',
     summary: '자연 유래·발효 GABA를 살핀 14개 위약대조 인체시험을 종합한 문헌고찰로, 일부 연구에서 스트레스·수면 관련 지표가 좋아지는 변화가 확인됐습니다.',
-    boundary: '연구마다 섭취량·기간·측정 방법이 달랐으므로 확인된 변화는 해당 연구 조건 안에서 읽습니다. 이 문헌고찰은 특정 제품의 효능을 입증하지 않습니다.',
+    boundary: '여러 연구에서 관찰된 스트레스·수면 관련 변화를 모은 자료입니다. 참여자·섭취량·기간에 따라 결과를 더 정확하게 이해할 수 있습니다.',
     url: RESEARCH_URL,
   },
   {
@@ -339,7 +339,7 @@ const RESEARCH_SOURCES = [
     title: 'Oral intake of γ-aminobutyric acid affects mood and activities of central nervous system during stressed condition induced by mental tasks',
     meta: 'Yoto et al. · Amino Acids. 2012 · PMID 22203366',
     summary: '정신적 과제를 이용한 스트레스 조건에서 경구 GABA를 살핀 무작위·위약대조 교차 연구입니다.',
-    boundary: '단일 인체시험의 조건부 결과이며 개인의 스트레스·기분이나 특정 제품의 효과로 확정하지 않습니다.',
+    boundary: '정신적 과제가 주어진 조건에서 관찰된 변화입니다. 연구 대상과 비교 조건을 함께 보면 결과를 더 정확하게 이해할 수 있습니다.',
     url: 'https://pubmed.ncbi.nlm.nih.gov/22203366/',
   },
   {
@@ -348,7 +348,7 @@ const RESEARCH_SOURCES = [
     title: 'About Sleep',
     meta: 'NICHD · National Institutes of Health',
     summary: '수면이 학습·기억·대사·면역과 연결되고 뇌가 수면 중에도 활동한다는 일반 생리 자료입니다.',
-    boundary: '수면의 중요성을 설명하는 공공기관 자료이며 GABA 섭취 효과를 입증하지 않습니다.',
+    boundary: '수면이 뇌와 몸의 회복에 중요한 이유를 설명하는 공공기관 자료입니다. GABA 연구 자료와 함께 읽으면 역할과 연구 결과를 구분해 이해할 수 있습니다.',
     url: 'https://www.nichd.nih.gov/health/topics/sleep/conditioninfo',
   },
 ] as const;

@@ -35,6 +35,7 @@ const discoveryQueryFallbacks = {
   '감마아미노부티르산 대학병원 의사 Shorts': ['의사 GABA 신경전달물질 Shorts', 'GABA doctor hospital Shorts', 'GABA doctor Shorts'],
   'GABA 신경전달물질 대학 연구 Shorts': ['과학자 GABA 신경전달물질 Shorts', 'GABA neuroscience university Shorts'],
 };
+const searchResultCache = new Map();
 
 const sources = [
   {name: '셀럽의 건강비결', handle: '@Celeb_tip', channelId: 'UC86AuKBawrgBuEZIgiOo7hA', seedVideoId: 'Cnk0PGn9YBM'},
@@ -98,19 +99,66 @@ const fetchSearchResults = async query => {
   const queryVariants = [query, ...(discoveryQueryFallbacks[query] ?? [])];
   let lastError = new Error('search request failed');
   for (const queryVariant of queryVariants) {
+    if (searchResultCache.has(queryVariant)) {
+      return {...searchResultCache.get(queryVariant), resolvedQuery: queryVariant};
+    }
     const encodedQuery = encodeURIComponent(queryVariant);
     const endpoints = [
       `https://www.youtube.com/results?search_query=${encodedQuery}`,
       `https://m.youtube.com/results?search_query=${encodedQuery}`,
     ];
+    for (const endpoint of endpoints) {
+      try {
+        const result = {
+          html: await fetchText(endpoint, {retries: 1, timeoutMs: 8000}),
+          endpoint,
+          resolvedQuery: queryVariant,
+          searchMode: 'youtube',
+        };
+        searchResultCache.set(queryVariant, result);
+        return result;
+      } catch (error) {
+        lastError = error;
+      }
+    }
+  }
+  try {
+    const external = await fetchExternalSearchCandidates(query);
+    return {html: '', resolvedQuery: query, candidates: external.candidates, searchMode: 'external', endpoint: external.endpoint};
+  } catch (externalError) {
+    throw new Error(`${lastError.message}; external search: ${externalError.message}`);
+  }
+};
+
+const extractYouTubeVideoIds = html => [...new Set([
+  ...[...html.matchAll(/(?:youtube(?:-nocookie)?\.com\/(?:shorts\/|watch\?v=)|youtu\.be\/)([\w-]{11})/gi)].map(match => match[1]),
+  ...[...html.matchAll(/(?:youtube(?:-nocookie)?%2Ecom%2F(?:shorts%2F|watch%3Fv%3D)|youtu%2Ebe%2F)([\w-]{11})/gi)].map(match => match[1]),
+])];
+
+const fetchExternalSearchCandidates = async query => {
+  const encodedQuery = encodeURIComponent(`site:youtube.com/shorts ${query}`);
+  const endpoints = [
+    `https://www.google.com/search?q=${encodedQuery}`,
+    `https://www.bing.com/search?q=${encodedQuery}`,
+  ];
+  let lastError = new Error('external search request failed');
+  for (const endpoint of endpoints) {
     try {
-      return await Promise.any(endpoints.map(async endpoint => ({
-        html: await fetchText(endpoint, {retries: 1, timeoutMs: 8000}),
-        endpoint,
-        resolvedQuery: queryVariant,
-      })));
+      const html = await fetchText(endpoint, {retries: 1, timeoutMs: 8000});
+      const ids = extractYouTubeVideoIds(html).slice(0, 12);
+      const metadata = await Promise.allSettled(ids.map(async id => {
+        const oEmbedUrl = 'https://www.youtube.com/oembed?url=' + encodeURIComponent('https://www.youtube.com/watch?v=' + id) + '&format=json';
+        const payload = JSON.parse(await fetchText(oEmbedUrl, {retries: 1, timeoutMs: 8000}));
+        return {id, title: payload.title ?? '', description: '', published: '', updated: ''};
+      }));
+      const candidates = metadata
+        .filter(result => result.status === 'fulfilled')
+        .map(result => result.value)
+        .filter(item => item.title && keywords.some(keyword => keyword.test(item.title)));
+      if (candidates.length) return {candidates, endpoint};
+      lastError = new Error('external search returned no GABA Shorts metadata');
     } catch (error) {
-      lastError = error.errors?.at(-1) ?? error;
+      lastError = error;
     }
   }
   throw lastError;
@@ -907,11 +955,15 @@ const main = async () => {
 
   for (const query of discoveryQueries) {
     try {
-      const {html, resolvedQuery} = await fetchSearchResults(query);
+      const {html, resolvedQuery, candidates: externalCandidates, searchMode, endpoint} = await fetchSearchResults(query);
       successfulSearches += 1;
-      if (resolvedQuery !== query) searchFallbacksUsed.push(`${query} → ${resolvedQuery}`);
-      const source = {name: 'YouTube 검색: ' + query, handle: 'keyword-discovery', channelId: ''};
-      addCandidates(parseShortsPage(html).slice(0, 12), source, '');
+      if (searchMode === 'external') {
+        searchFallbacksUsed.push(`${query} → 외부 검색 보완 (${endpoint})`);
+      } else if (resolvedQuery !== query) {
+        searchFallbacksUsed.push(`${query} → ${resolvedQuery}`);
+      }
+      const source = {name: (searchMode === 'external' ? '외부 검색 보완: ' : 'YouTube 검색: ') + query, handle: 'keyword-discovery', channelId: ''};
+      addCandidates(searchMode === 'external' ? externalCandidates : parseShortsPage(html).slice(0, 12), source, '');
     } catch (error) {
       errors.push('검색어 ' + query + ': ' + error.message);
     }
