@@ -438,11 +438,11 @@ const STORY_PHASES = [
 const PRESENTER_QUESTIONS = [
   {
     label: 'GABA 기능',
-    answer: 'GABA는 중추신경계에서 신경 신호를 억제하는 방향으로 작용하는 대표적 신경전달물질입니다. 일상적인 진정감이나 개인의 상태를 바로 진단하는 말은 아닙니다.',
+    answer: 'GABA는 뇌에서 신경세포의 활동을 낮추는 방향으로 신호를 전달하는 대표적인 억제성 신경전달물질입니다. 뇌의 활동을 조절하는 여러 신호 중 하나라고 이해하면 됩니다.',
   },
   {
     label: '수면·스트레스',
-    answer: '수면과 스트레스는 여러 요인의 영향을 받습니다. 일반 GABA 섭취 연구가 있다고 해서 모든 사람의 수면이나 스트레스가 개선된다고 말하지 않습니다.',
+    answer: '수면과 스트레스는 여러 요인의 영향을 받습니다. 일반 GABA 섭취 연구에서 관찰된 결과를 모든 사람에게 똑같이 적용할 수는 없으므로, 연구 대상과 조건을 함께 확인해야 합니다.',
   },
   {
     label: '일반 연구',
@@ -458,85 +458,84 @@ function makeSlides(): Slide[] {
   return [
     {
       id: 'hook',
-      label: '01 · 쉽게 흥분한 날',
-      title: '쉽게 흥분하고 실수가 이어지는 날, 알아둘 성분이 있습니다.',
-      body: '그날의 감정이나 실수를 하나의 원인으로 단정하지 않고, 몸과 뇌가 쉬는 시간부터 살펴봅니다.',
+      label: '01 · 일상에서 생기는 변화',
+      title: '집중이 흐트러지고, 말이 먼저 나오는 날이 있습니다.',
+      body: '잠이 부족하거나 할 일이 몰리면 평소보다 쉽게 지치고 작은 일에도 반응이 커질 수 있습니다. 이럴 때 뇌의 상태를 살펴보겠습니다.',
       tone: 'deep',
       visual: STORY_VISUALS.overload,
-      presenterPrompt: '최근 작은 일에 반응이 커졌거나 실수가 이어진 날이 있었나요?',
-      presenterBoundary: '일상 장면을 공감하기 위한 도입이며 감정·질환·성분 부족을 진단하는 카드가 아닙니다.',
+      presenterPrompt: '최근 집중이 흐트러지거나 말이 먼저 나왔던 순간이 있었나요?',
+      presenterBoundary: '일상에서 흔히 겪는 변화를 예로 든 도입입니다. 특정 성분 부족이나 질환을 뜻하지 않습니다.',
     },
     {
       id: 'recovered',
-      label: '02 · 충분히 쉰 날',
-      title: '충분히 쉬고 난 날에는 작은 일에도 한 번 더 생각할 여유가 생깁니다.',
-      body: '말을 바로 내뱉기보다 고르고, 해야 할 일을 차분히 이어가고, 작은 실수를 알아차리는 일상으로 표현해 봅니다.',
+      label: '02 · 여유가 생기는 날',
+      title: '잠을 충분히 잔 날에는 생각과 행동에 여유가 생깁니다.',
+      body: '말하기 전에 한 번 더 생각하고, 하던 일에 집중하고, 작은 실수를 알아차리기 쉬워집니다. 수면은 몸뿐 아니라 뇌가 회복하는 시간입니다.',
       tone: 'fresh',
-      presenterPrompt: '충분히 쉰 날에 말·집중·실수에서 무엇이 달랐는지 떠올려 보세요.',
-      presenterBoundary: '좋은 컨디션의 일상 예시이며 GABA 섭취 효과를 말하는 카드가 아닙니다.',
+      presenterPrompt: '잠을 충분히 잔 날에는 무엇이 달랐는지 떠올려 보세요.',
+      presenterBoundary: '충분한 수면이 뇌와 몸의 회복에 중요하다는 일반 설명입니다.',
     },
     {
       id: 'overload',
-      label: '03 · 뇌 과부하 상태',
-      title: '반대로 뇌가 과부하인 날에는 몸이 쉬어도 생각이 계속 다음 일로 달려갑니다.',
-      body: '같은 문장을 다시 읽고, 알림에 쉽게 끌리고, 사소한 일에도 반응이 커지는 모습으로 공감할 수 있습니다.',
+      label: '03 · 머리가 계속 바쁜 날',
+      title: '몸은 쉬고 있는데 머리는 계속 바쁠 때가 있습니다.',
+      body: '같은 문장을 반복해서 읽거나, 알림 하나에도 집중이 끊기고, 사소한 일에 예민해지는 식입니다. 흔히 말하는 ‘뇌 과부하’는 이런 일상의 상태를 표현하는 말입니다.',
       tone: 'warm',
       visual: STORY_VISUALS.overload,
-      presenterPrompt: '몸은 쉬고 있는데 머리가 계속 켜져 있었던 순간이 있었나요?',
-      presenterBoundary: '뇌 과부하를 일상의 표현으로 사용하며, 개인의 상태를 의료적으로 판단하지 않습니다.',
+      presenterPrompt: '몸은 쉬었는데 머리는 계속 바빴던 때가 있었나요?',
+      presenterBoundary: '뇌 과부하는 진단명이 아니라, 일상에서 머리가 과도하게 바쁜 상태를 표현한 말입니다.',
     },
     {
       id: 'sleep',
-      label: '04 · 회복의 시간',
-      title: '잠을 자는 동안 뇌와 몸은 다음 날을 준비합니다.',
-      body: '수면은 기억·대사·면역 등 여러 생리 과정과 관련된 회복 시간입니다. 부족한 회복을 한 가지 성분으로 대신할 수 있다고 단정하지 않습니다.',
+      label: '04 · 뇌가 쉬는 시간',
+      title: '잠은 뇌가 하루를 정리하고 다시 준비하는 시간입니다.',
+      body: '수면 중에는 기억과 학습, 대사와 면역 등 여러 과정이 이어집니다. 그래서 충분한 수면은 뇌와 몸의 기본적인 회복에 중요합니다.',
       tone: 'green',
       note: '수면과 회복의 일반 정보는 공공기관 자료와 함께 확인합니다.',
-      presenterPrompt: '수면이 줄어들었을 때 일상에서 가장 먼저 달라지는 것은 무엇인가요?',
-      presenterBoundary: '수면 부족을 GABA 부족으로 바꾸어 설명하지 않습니다.',
+      presenterPrompt: '수면이 줄었을 때 일상에서 가장 먼저 달라지는 것은 무엇인가요?',
+      presenterBoundary: '수면의 일반 생리와 회복을 설명하는 장면입니다.',
       link: {href: RESEARCH_URL, label: '수면 회복 근거 읽기', panel: 'research'},
     },
     {
       id: 'gaba',
-      label: '05 · GABA가 등장하는 이유',
-      title: '이때 자주 등장하는 성분이 GABA입니다.',
-      body: 'GABA는 감마아미노부티르산을 줄여 부르는 이름입니다. 우리 몸과 뇌에서 자연스럽게 쓰이는 신경전달물질을 가리키는 일반 용어입니다.',
+      label: '05 · GABA란 무엇일까',
+      title: '이제 GABA, 가바라는 이름을 들어볼 차례입니다.',
+      body: 'GABA는 감마아미노부티르산을 줄여 부르는 말입니다. 우리 몸에서 자연스럽게 사용되는 신경전달물질 중 하나입니다.',
       tone: 'green-dark',
       visual: STORY_VISUALS.neural,
-      presenterPrompt: 'GABA가 무엇을 뜻하는지부터 짧게 확인한 뒤 기능으로 넘어가겠습니다.',
-      presenterBoundary: 'GABA라는 생리 성분의 설명이며 개인의 섭취 결과로 연결하지 않습니다.',
+      presenterPrompt: 'GABA라는 이름을 처음 들었다면 무엇부터 알고 싶으신가요?',
+      presenterBoundary: 'GABA라는 신경전달물질의 기본 정의를 설명하는 장면입니다.',
     },
     {
       id: 'function',
-      label: '06 · 뇌의 신호 조절',
-      title: 'GABA는 뇌의 신호가 너무 커지지 않도록 브레이크처럼 조절합니다.',
-      body: '정식으로는 억제성 신경전달물질이라고 부릅니다. 흥분을 켜는 신호와 억제하는 신호가 함께 작동하는 균형 속에서 이해해야 합니다.',
+      label: '06 · GABA가 하는 일',
+      title: 'GABA는 신경세포의 활동을 낮추는 방향으로 신호를 전달합니다.',
+      body: '뇌에는 활동을 높이는 신호와 낮추는 신호가 함께 있습니다. GABA는 그중 억제성 신호를 맡아 뇌의 전체 활동이 균형을 이루도록 조절하는 데 관여합니다.',
       tone: 'research',
       visual: STORY_VISUALS.neural,
-      note: '“뇌의 브레이크”는 이해를 위한 비유이며, 개인의 감정·수면·집중을 진단하는 표현이 아닙니다.',
-      presenterPrompt: '가속 페달과 브레이크가 함께 있어야 속도를 조절할 수 있다는 비유로 설명해 보세요.',
-      presenterBoundary: '일반적인 신경생리 기능 설명이며 GABA를 섭취하면 뇌가 즉시 안정된다는 뜻이 아닙니다.',
+      presenterPrompt: '뇌의 활동을 높이는 신호와 낮추는 신호가 함께 있다는 점을 기억하면 됩니다.',
+      presenterBoundary: 'GABA의 일반적인 신경생리 기능을 설명하는 장면입니다.',
       link: {href: RESEARCH_URL, label: 'GABA 기능 근거 읽기', panel: 'research'},
     },
     {
       id: 'research',
-      label: '07 · 일반 GABA 연구',
-      title: '일반 GABA 연구는 스트레스와 수면에 관한 질문을 살펴봅니다.',
-      body: '14개 위약대조 인체시험을 검토한 문헌고찰은 스트레스 관련 근거는 제한적이고 수면 관련 근거는 매우 제한적이라고 정리합니다. 연구 대상·섭취량·기간·비교 조건까지 함께 봐야 합니다.',
+      label: '07 · 일반 GABA 연구는 어디까지 알까',
+      title: 'GABA를 먹으면 수면이나 스트레스에 도움이 될까요?',
+      body: '일반 GABA 섭취를 살펴본 14개 위약대조 인체시험 문헌고찰에서는 스트레스 관련 근거는 제한적이고 수면 관련 근거는 매우 제한적이었습니다. 연구 대상·섭취량·기간·비교 조건을 함께 봐야 결과를 정확하게 이해할 수 있습니다.',
       tone: 'research',
       note: '일반 GABA 연구를 읽는 기준과 상세 출처는 아래 패널에서 확인합니다.',
-      presenterPrompt: '연구 대상·섭취량·기간·비교 조건을 먼저 확인해 보시겠어요?',
-      presenterBoundary: '일반 GABA 연구라는 표기를 고정하고 개인 결과로 확장하지 않습니다.',
+      presenterPrompt: '이 연구가 누구를 대상으로, 어떤 조건에서 진행됐는지 먼저 보겠습니다.',
+      presenterBoundary: '일반 GABA 섭취 연구의 결과와 한계를 함께 설명하는 장면입니다.',
       link: {href: RESEARCH_URL, label: '일반 GABA 연구 읽기', panel: 'research'},
     },
     {
       id: 'finish',
-      label: '08 · 한 문장 정리',
-      title: 'GABA는 뇌의 신호 균형을 이해할 때 만나는 성분입니다.',
-      body: '무엇인지, 어떤 기능으로 알려졌는지, 일반 연구가 무엇을 살펴보는지를 차례로 확인하면 과장 없이 이해할 수 있습니다. 영상 검토 후보 요약은 아래 별도 섹션에서 이어집니다.',
+      label: '08 · 한 문장으로 정리하면',
+      title: 'GABA는 뇌의 신호를 조절하는 대표적인 억제성 신경전달물질입니다.',
+      body: 'GABA는 뇌의 신호를 조절하는 물질입니다. 우리가 일상에서 느끼는 상태와 GABA 섭취 연구는 각각 따로 살펴봐야 합니다. 여기까지가 일반적인 GABA를 이해하는 핵심입니다. 영상 검토 후보 요약은 아래 별도 섹션에서 이어집니다.',
       tone: 'finish',
-      presenterPrompt: 'GABA를 오늘 한 문장으로 설명한다면 어떻게 말하시겠어요?',
-      presenterBoundary: '마지막도 교육적 요약으로 끝내며 구매나 효능 약속으로 연결하지 않습니다.',
+      presenterPrompt: 'GABA를 한 문장으로 설명하면 어떤 말이 가장 자연스러울까요?',
+      presenterBoundary: 'GABA의 생리적 역할과 섭취 연구를 구분해 정리하는 장면입니다.',
       link: {href: RESEARCH_URL, label: '일반 GABA 연구 다시 보기', panel: 'research'},
     },
   ];
@@ -1912,10 +1911,10 @@ export default function App() {
   const videoNextAction = nextVideo ? `다음 영상: ${nextVideo.id} →` : '영상 목록으로 돌아가기';
   const introSection = <section className="intro" aria-labelledby="page-title">
     <div className="intro-copy">
-      <p className="eyebrow">일반 GABA 교육 · 제품 정보 제외</p>
-      <h1 id="page-title">GABA를<br /><em>한 장면씩</em><br />알아보세요.</h1>
-      <p className="intro-body">일상에서 느끼는 뇌의 과부하부터 GABA의 일반 기능과 연구 한계까지, 한 장면에 한 메시지씩 확인해 보세요.</p>
-      <p className="separation-note">이 페이지는 제품 판매나 개인별 섭취 판단을 위한 자료가 아닙니다. GABA가 무엇인지 이해하기 위한 일반 교육 흐름입니다.</p>
+      <p className="eyebrow">일반 GABA 소개</p>
+      <h1 id="page-title">가바(GABA),<br /><em>무엇이고</em><br />어떤 일을 할까요?</h1>
+      <p className="intro-body">우리 몸에서 사용하는 신경전달물질 GABA의 역할과 수면·스트레스 관련 연구를 8장면으로 쉽게 설명합니다.</p>
+      <p className="separation-note">제품이 아니라 GABA라는 물질 자체를 이해하는 데 초점을 맞춘 일반 소개 자료입니다.</p>
       <div className="intro-entry-actions">
         <a className="text-button intro-primary-button" href="#story">첫 장면부터 읽기 <span aria-hidden="true">↓</span></a>
         <button type="button" className="text-button intro-presentation-button" onClick={event => enterPresentation(event.currentTarget, 0)}>발표자용 설명 시작 <span aria-hidden="true">↗</span></button>
@@ -2013,7 +2012,7 @@ export default function App() {
         <div className="story-heading">
           <div>
             <p className="eyebrow">장면마다 한 메시지</p>
-            <h2 id="story-title">GABA를<br />8개의 장면으로</h2>
+            <h2 id="story-title">가바(GABA)를<br />8장면으로</h2>
           </div>
           <p>{presentationMode ? <>← → 또는 PageUp/PageDown으로 넘기고<br />Esc로 발표 모드를 종료하세요.</> : <>모바일에서는 위아래로 넘겨 보세요.<br />일상·기능·연구·영상은 각각 다른 정보입니다.</>}</p>
         </div>

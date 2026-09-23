@@ -30,21 +30,21 @@ if (start < 0 || end < 0) {
   }
 
   const requirements = [
-    ['hook everyday interest', '쉽게 흥분하고 실수가 이어지는 날, 알아둘 성분이 있습니다.'],
-    ['recovered everyday example', '충분히 쉬고 난 날에는 작은 일에도 한 번 더 생각할 여유가 생깁니다.'],
-    ['overload everyday example', '반대로 뇌가 과부하인 날에는 몸이 쉬어도 생각이 계속 다음 일로 달려갑니다.'],
-    ['sleep recovery frame', '잠을 자는 동안 뇌와 몸은 다음 날을 준비합니다.'],
-    ['GABA full name before function', 'GABA는 감마아미노부티르산을 줄여 부르는 이름입니다.'],
-    ['GABA general term boundary', '신경전달물질을 가리키는 일반 용어입니다.'],
-    ['GABA inhibitory function', '억제성 신경전달물질이라고 부릅니다.'],
-    ['GABA brake metaphor boundary', '“뇌의 브레이크”는 이해를 위한 비유'],
-    ['general GABA research label', '일반 GABA 연구는 스트레스와 수면에 관한 질문을 살펴봅니다.'],
+    ['hook everyday interest', '집중이 흐트러지고, 말이 먼저 나오는 날이 있습니다.'],
+    ['recovered everyday example', '잠을 충분히 잔 날에는 생각과 행동에 여유가 생깁니다.'],
+    ['overload everyday example', '몸은 쉬고 있는데 머리는 계속 바쁠 때가 있습니다.'],
+    ['sleep recovery frame', '잠은 뇌가 하루를 정리하고 다시 준비하는 시간입니다.'],
+    ['GABA full name before function', 'GABA는 감마아미노부티르산을 줄여 부르는 말입니다.'],
+    ['GABA general term boundary', '신경전달물질 중 하나입니다.'],
+    ['GABA inhibitory function', '억제성 신호를 맡아'],
+    ['GABA function direction', '신경세포의 활동을 낮추는 방향으로 신호를 전달합니다.'],
+    ['general GABA research label', 'GABA를 먹으면 수면이나 스트레스에 도움이 될까요?'],
     ['14 human trials', '14개 위약대조 인체시험'],
     ['limited stress evidence', '스트레스 관련 근거는 제한적'],
     ['very limited sleep evidence', '수면 관련 근거는 매우 제한적'],
     ['research conditions', '연구 대상·섭취량·기간·비교 조건'],
-    ['research product boundary', '일반 GABA 연구라는 표기를 고정하고 개인 결과로 확장하지 않습니다.'],
-    ['finish educational boundary', '구매나 효능 약속으로 연결하지 않습니다.'],
+    ['research product boundary', '우리가 일상에서 느끼는 상태와 GABA 섭취 연구는 각각 따로 살펴봐야 합니다.'],
+    ['finish educational summary', '여기까지가 일반적인 GABA를 이해하는 핵심입니다.'],
   ];
   for (const [label, value] of requirements) {
     if (!story.includes(value)) failures.push(`story missing ${label}: ${value}`);

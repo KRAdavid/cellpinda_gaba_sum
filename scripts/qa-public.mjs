@@ -22,8 +22,8 @@ const assetText = assetPaths.map(assetPath => {
 const required = [
   ['general education title', '일반 GABA 교육'],
   ['general research label', '일반 GABA 연구'],
-  ['gaba name definition', '감마아미노부티르산을 줄여 부르는 이름'],
-  ['everyday hook copy', '쉽게 흥분하고 실수가 이어지는 날'],
+  ['gaba name definition', '감마아미노부티르산을 줄여 부르는 말'],
+  ['everyday hook copy', '집중이 흐트러지고, 말이 먼저 나오는 날'],
   ['research limitation', '14개 위약대조 인체시험'],
   ['stress evidence limitation', '스트레스 관련 근거는 제한적'],
   ['sleep evidence limitation', '수면 관련 근거는 매우 제한적'],
@@ -42,7 +42,7 @@ const required = [
   ['stress human trial PMID', 'PMID 22203366'],
   ['sleep physiology source', 'About Sleep'],
   ['inhibitory neurotransmitter explanation', '억제성 신경전달물질'],
-  ['everyday GABA function explanation', '뇌의 신호가 너무 커지지 않도록 브레이크처럼 조절합니다'],
+  ['everyday GABA function explanation', '신경세포의 활동을 낮추는 방향으로 신호를 전달합니다'],
   ['sleep evidence entry', '수면 회복 근거 읽기'],
   ['GABA function evidence entry', 'GABA 기능 근거 읽기'],
   ['video status curation', '일반 교육 공개 승인'],
@@ -131,8 +131,8 @@ const required = [
 ];
 
 const requiredMetadata = [
-  ['description metadata', 'GABA가 무엇이고 뇌의 신호를 어떻게 조절하는지'],
-  ['Open Graph description', '일상 속 뇌 과부하에서 GABA의 일반 기능'],
+  ['description metadata', '가바(GABA)가 무엇인지, 뇌에서 어떤 역할을 하는지'],
+  ['Open Graph description', '가바(GABA)의 정의와 뇌 신호 조절 역할'],
 ];
 
 const forbiddenMetadata = [
