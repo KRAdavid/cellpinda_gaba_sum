@@ -15,7 +15,7 @@
 | 권위 영상 자료 | DB 승인 이력 2건(해외 AUTH, 공개 미노출), 국내 공개 승인 0건, VIDEO DB 14건(국가과학기술연구회 후보 VID-02·Braintube 후보 VID-03·서울대병원 이승훈 교수 후보 VID-04 포함), 발표자 화면의 `권위 후보 확인 전` 큐 5건, 국내 `PUBLISH_GENERAL` 승인분만 `검토 완료 영상` 영역으로 자동 연결하는 공개 게이트 | 기술 PASS / 사람 HOLD | 국내 후보의 원문·자막·화자·권리 확인 후 승인 |
 | Shorts 체계화 | 제공 Shorts 8건 등록, `PUBLISH_GENERAL`·`LIMITED_USE`·`HOLD`·`EXCLUDE` 구분, 사용자 제공 후보와 자동 수집 `PENDING_REVIEW` 큐 분리, 영상별 oEmbed 메타데이터 감사 기록, watch 페이지 `channelId`와 ID 기반 원본 채널 링크 | 기술 PASS | 각 후보의 사람 감리 로그와 타임코드 완료 |
 <!-- GABA_MONITOR_STATUS:START -->
-| 매일 유사 콘텐츠 모니터 | 8개 채널·12개 검색어·RSS/Shorts fallback·날짜별 리포트·리뷰 세션·영상별 메타데이터·자막 감사·권위 후보 큐·제품/브랜드 격리 큐. 2026-09-23 19:37:55 KST GitHub Actions 수동 실행 [35849881843](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35849881843). 오늘 누적 신규 후보 24건·이번 실행 0건·제품·브랜드 격리 18건·자동 공개 0건 | 기술 PASS / 운영 HOLD | 실제 담당자가 매일 감리하고 승인 기록을 남김 |
+| 매일 유사 콘텐츠 모니터 | 8개 채널·12개 검색어·RSS/Shorts fallback·날짜별 리포트·리뷰 세션·영상별 메타데이터·자막 감사·권위 후보 큐·제품/브랜드 격리 큐. 2026-09-23 19:53:06 KST GitHub Actions 수동 실행 [35851314151](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/35851314151). 오늘 누적 신규 후보 24건·이번 실행 0건·제품·브랜드 격리 18건·자동 공개 0건 | 기술 PASS / 운영 HOLD | 실제 담당자가 매일 감리하고 승인 기록을 남김 |
 <!-- GABA_MONITOR_STATUS:END -->
 | 자동 공개 방지 | 신규 후보 `PENDING_REVIEW`, 스냅샷 `autoPublish: 0` | PASS | 사람 승인 없는 공개 0건 유지 |
 | 페이지 이탈 방지 | 연구·영상 패널을 먼저 열고, YouTube 후보는 페이지 안 공식 플레이어를 먼저 제공하며 외부 원문은 보조 선택 | 기술 PASS / 현장 HOLD | 세션에서 외부 선행 이탈 0건 |
@@ -38,7 +38,7 @@
 - 공개 영상 경계: 자동 수집 `PENDING_REVIEW` 후보는 비공개이며, 사용자가 직접 제공한 국내 Shorts는 `영상 검토 후보`라는 중립 영역에서만 원문 확인용으로 표시됨
 - AI 사용자 승인 대리: 기술·편집 운영 유지와 공개 후보 안전장치는 `AI-PROXY-APPROVED_WITH_HUMAN_GATES`; 과학·의학·권리·준법·실기기·현장·실명 역할 배정은 대리 승인하지 않음
 <!-- GABA_SCHEDULE_STATUS:START -->
-- 예약 감리 실행 증거: 2026-09-23 19:37:55 KST · GitHub Actions 수동 실행 · 예약 실행 증거 대기. 다음 예약 매일 09:17 KST. 예약 실행·사람 감리·공개 승인을 자동으로 대체하지 않으며, 예약 증거가 없으면 일일 자동 운영 HOLD를 유지한다.
+- 예약 감리 실행 증거: 2026-09-23 19:53:06 KST · GitHub Actions 수동 실행 · 예약 실행 증거 대기. 다음 예약 매일 09:17 KST. 예약 실행·사람 감리·공개 승인을 자동으로 대체하지 않으며, 예약 증거가 없으면 일일 자동 운영 HOLD를 유지한다.
 <!-- GABA_SCHEDULE_STATUS:END -->
 
 ## 검증 명령
