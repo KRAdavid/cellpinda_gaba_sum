@@ -1,17 +1,17 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 18:23:17 KST",
+  "checkedAtKst": "2026-09-23 18:25:44 KST",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
   "registeredChannels": 8,
   "discoveryQueries": 10,
   "totalDiscoveryQueries": 12,
-  "newCandidates": 17,
-  "newCandidatesThisRun": 1,
-  "pendingReview": 108,
-  "scienceMedicalPriority": 68,
-  "videoPriority": 40,
+  "newCandidates": 21,
+  "newCandidatesThisRun": 4,
+  "pendingReview": 112,
+  "scienceMedicalPriority": 69,
+  "videoPriority": 43,
   "pendingQueue": [
     {
       "id": "PENDING-20260923-AKcZw2nqU0w",
@@ -44,6 +44,20 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
+      "id": "PENDING-20260923-PBlN5t4tmYE",
+      "title": "치매 예방약? 영양제 말고 '이것' 먼저 챙기세요!​#치매예방 #치매 #GABA #뇌건강 #알츠하이머 #감정라벨링 #대화법 #뇌건강 #노화방지 #호두선생님 #중년건강 #신경과권예지",
+      "url": "https://www.youtube.com/watch?v=PBlN5t4tmYE",
+      "channel": "YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "섭취·상업성 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
       "id": "PENDING-20260923-QjuVqvwkdMU",
       "title": "GABA Neurotransmitter and Anxiety With Dr. Asa",
       "url": "https://www.youtube.com/watch?v=QjuVqvwkdMU",
@@ -67,21 +81,6 @@ export const GABA_MONITOR_SNAPSHOT = {
         "섭취·상업성 신호"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260923-vKVJvHULUZw",
-      "title": "셀핀다 김치유산균 발효가바 GABA100% #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산",
-      "url": "https://www.youtube.com/watch?v=vKVJvHULUZw",
-      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     }
@@ -114,6 +113,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
+      "id": "PENDING-20260923-G7QGk7dpWU4",
+      "title": "Meet GABA: Your Brain’s Chill Pill ! #gaba #brain #neuroscience #didyouknow #funfacts #shorts #facts",
+      "url": "https://www.youtube.com/watch?v=G7QGk7dpWU4",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "signals": [
+        "일반 설명 후보",
+        "전문가 자격 확인 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "TITLE_DESCRIPTION_SIGNAL",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
       "id": "PENDING-20260923-JmYAdnxLGtA",
       "title": "The GABA-A receptor is a protein complex that acts as the brain's main brake.",
       "url": "https://www.youtube.com/watch?v=JmYAdnxLGtA",
@@ -133,19 +145,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "일반 설명 후보",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
-      "id": "PENDING-20260922-Lm2HJtSRBOI",
-      "title": "가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)",
-      "url": "https://www.youtube.com/watch?v=Lm2HJtSRBOI",
-      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "효과·안전성 단정 신호",
         "권위 후보 검색 발견"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
@@ -244,11 +243,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 17,
-      "newCandidatesThisRun": 1,
-      "pendingReview": 108,
-      "scienceMedicalPriority": 68,
-      "videoPriority": 40,
+      "newCandidates": 21,
+      "newCandidatesThisRun": 4,
+      "pendingReview": 112,
+      "scienceMedicalPriority": 69,
+      "videoPriority": 43,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
