@@ -58,7 +58,7 @@ const required = [
   ['approved video showcase gate', 'GABA의 일반적인 내용을 설명하는 영상을 한 편씩 살펴볼 수 있습니다'],
   ['approved video publication status', 'GABA 참고 영상'],
   ['approved video source-link guard', 'YouTube에서 전체 영상 보기'],
-  ['video monitor freshness', '한 편씩 넘겨 보며 내용을 확인하세요'],
+  ['video monitor freshness', '위로 밀어 다음 영상으로 이동할 수 있습니다'],
   ['video pre-play review boundary', 'GABA 참고 영상'],
   ['video pre-play human review boundary', '페이지 안에서 영상 보기'],
   ['reel next action', '다음 장면'],

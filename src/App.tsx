@@ -593,6 +593,7 @@ export default function App() {
   const railScrollFrameRef = useRef<number | null>(null);
   const consumerSwipeStartRef = useRef<number | null>(null);
   const consumerWheelLockRef = useRef(false);
+  const showcaseSwipeStartRef = useRef<number | null>(null);
   const phaseNavRef = useRef<HTMLElement>(null);
   const showcaseShareRequestRef = useRef(0);
   const activePhase = STORY_PHASES.find(phase => active >= phase.start && active <= phase.end) ?? STORY_PHASES[0];
@@ -858,6 +859,22 @@ export default function App() {
     if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp' && event.key !== 'PageDown' && event.key !== 'PageUp') return;
     event.preventDefault();
     goTo(active + (event.key === 'ArrowUp' || event.key === 'PageUp' ? -1 : 1));
+  };
+
+  const handleShowcaseTouchStart = (event: ReactTouchEvent<HTMLElement>) => {
+    showcaseSwipeStartRef.current = event.touches[0]?.clientY ?? null;
+  };
+
+  const handleShowcaseTouchEnd = (event: ReactTouchEvent<HTMLElement>) => {
+    const startY = showcaseSwipeStartRef.current;
+    showcaseSwipeStartRef.current = null;
+    if (startY === null) return;
+    const target = event.target;
+    if (target instanceof Element && target.closest('button, a, iframe')) return;
+    const endY = event.changedTouches[0]?.clientY ?? startY;
+    const distance = startY - endY;
+    if (Math.abs(distance) < 56) return;
+    selectShowcaseVideo(showcaseVideoIndex + (distance > 0 ? 1 : -1));
   };
 
   useEffect(() => {
@@ -2501,9 +2518,9 @@ export default function App() {
                   <span>{String(index + 1).padStart(2, '0')}</span><strong>{video.channel}</strong><small>GABA 참고 영상</small>
                 </button>)}
               </div>
-              <p>한 편씩 넘겨 보며 내용을 확인하세요.</p>
+              <p>한 편씩 넘겨 보세요. 모바일에서는 위로 밀어 다음 영상으로 이동할 수 있습니다.</p>
             </nav>
-            <article className="video-showcase__item" aria-live="polite">
+            <article className="video-showcase__item" data-video-reel aria-live="polite" onTouchStart={handleShowcaseTouchStart} onTouchEnd={handleShowcaseTouchEnd}>
               <section className="video-showcase__player" aria-label={`${showcaseVideo.publicTitle ?? showcaseVideo.title} 페이지 안에서 재생`}>
                 <div className="video-showcase__player-heading"><span>GABA 설명 영상</span><small>페이지 안에서 재생</small></div>
                 {showcaseVideoEmbedUrl && showcasePlayerStartedId === showcaseVideo.id ? <iframe src={showcaseVideoEmbedUrl} title={`${showcaseVideo.publicTitle ?? showcaseVideo.title} YouTube Shorts 원문 플레이어`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /> : <button type="button" className="video-showcase__player-poster" data-play-showcase-video onClick={() => setShowcasePlayerStartedId(showcaseVideo.id)} aria-label="페이지 안에서 YouTube 영상 재생 시작">
