@@ -1344,6 +1344,7 @@ export default function App() {
       `수집 범위: 채널 ${snapshot.sourceChannels}/${snapshot.registeredChannels} · 검색어 ${snapshot.discoveryQueries}/${snapshot.totalDiscoveryQueries}`,
       `검토 대기: ${snapshot.pendingReview}건 · SCIENCE/MEDICAL 우선: ${snapshot.scienceMedicalPriority}건 · 오늘 신규 후보(누적): ${snapshot.newCandidates}건 · 이번 실행 신규 후보: ${snapshot.newCandidatesThisRun}건`,
       `제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: ${snapshot.productBrandQuarantine}건`,
+      `오늘의 다음 행동: ${snapshot.pendingQueue[0]?.nextAction ?? '검토 대기 후보를 확인'}`,
       `자동 공개: ${snapshot.autoPublish}건 · 자동 공개는 사람 승인 전 0건 유지`,
       `등록 영상 링크: ${snapshot.registeredVideoLinksHealthy}/${snapshot.registeredVideoLinksChecked} · 경고 ${snapshot.registeredVideoLinkWarnings}건`,
       `권위·연구 출처 링크: ${snapshot.registeredEvidenceLinksHealthy}/${snapshot.registeredEvidenceLinksChecked} · 경고 ${snapshot.registeredEvidenceLinkWarnings}건`,
@@ -2168,6 +2169,15 @@ export default function App() {
                 <p>등록 YouTube 메타데이터 {presenterMonitor?.registeredVideoMetadataHealthy ?? 0}/{presenterMonitor?.registeredVideoMetadataChecked ?? 0} 제목·채널 확인 · 메타데이터 경고 {presenterMonitor?.registeredVideoMetadataWarnings ?? 0}건</p>
                 <p>등록 YouTube 자막 트랙 {presenterMonitor?.registeredVideoCaptionTracksAvailable ?? 0}/{presenterMonitor?.registeredVideoCaptionTracksChecked ?? 0} 발견 · 자막 경고 {presenterMonitor?.registeredVideoCaptionTrackWarnings ?? 0}건</p>
                 <p>등록 YouTube 자막 본문 {presenterMonitor?.registeredVideoCaptionBodiesAvailable ?? 0}/{presenterMonitor?.registeredVideoCaptionBodiesChecked ?? 0} 확인 · 본문 경고 {presenterMonitor?.registeredVideoCaptionBodyWarnings ?? 0}건 · HTTP 429 접근 제한 {presenterMonitor?.registeredVideoCaptionBodyRateLimited ?? 0}건</p>
+                <section className="monitor-snapshot__brief" data-monitor-daily-brief aria-label="오늘의 운영 브리핑">
+                  <div className="monitor-snapshot__brief-heading"><div><p className="eyebrow">오늘의 운영 브리핑</p><small>회의 전에 먼저 보는 변화·공개 경계·다음 행동</small></div><strong>{presenterScheduleStatus.tone === 'pending' ? '운영 HOLD' : '운영 확인'}</strong></div>
+                  <div className="monitor-snapshot__brief-grid">
+                    <article><span>오늘의 변화</span><strong>{presenterMonitor?.newCandidatesThisRun ? `신규 ${presenterMonitor.newCandidatesThisRun}건` : '새 후보 없음'}</strong><small>누적 후보 {presenterMonitor?.newCandidates ?? 0}건 · 검토 대기 {presenterMonitor?.pendingReview ?? 0}건</small></article>
+                    <article><span>공개 경계</span><strong>제품·브랜드 {presenterMonitor?.productBrandQuarantine ?? 0}건 격리</strong><small>일반 공개 큐 제외 · 자동 공개 {presenterMonitor?.autoPublish ?? 0}건</small></article>
+                    <article><span>다음 행동</span><strong>{presenterMonitor?.pendingQueue[0] ? '첫 후보 원문 감리' : '검토 큐 확인'}</strong><small>{presenterMonitor?.pendingQueue[0]?.nextAction ?? '오늘 검토할 후보가 없습니다.'}</small></article>
+                  </div>
+                  <p className="monitor-snapshot__brief-boundary">이 브리핑은 제목·공개 설명 기반의 운영 우선순위입니다. 예약 실행·사람 감리·권위·과학적 타당성·공개 승인을 대신하지 않습니다.</p>
+                </section>
                 <div className="monitor-snapshot__history" aria-label="최근 감리 추이">
                   <div className="monitor-snapshot__history-heading"><p className="eyebrow">최근 감리 추이</p><small>최근 {presenterMonitor?.history.length ?? 0}회</small></div>
                   <ol>
