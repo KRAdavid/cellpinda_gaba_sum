@@ -31,6 +31,25 @@ for (const block of publicRecordBlocks) {
     if (!block.includes(field)) failures.push(`${field} missing from public-safe ${id}`);
   }
 }
+const nonEmptyRecordField = (block, field) => block.match(new RegExp(`${field}:\\s*'([^']*)'`))?.[1]?.trim() ?? '';
+for (const seed of requiredSeeds) {
+  const block = recordBlocks.find(candidate => candidate.includes(seed));
+  const id = block?.match(/id: '(SHORT-[^']+)'/)?.[1] ?? seed;
+  if (!block) {
+    failures.push(`provided Shorts record block missing: ${seed}`);
+    continue;
+  }
+  for (const field of ['summary', 'personSummary', 'operatorSentence', 'statusReason']) {
+    if (!nonEmptyRecordField(block, field)) failures.push(`${field} is empty for ${id}`);
+  }
+}
+for (const id of consumerCopyIds) {
+  const block = publicRecordBlocks.find(candidate => candidate.includes(`id: '${id}'`));
+  if (!block) continue;
+  for (const field of ['publicTitle', 'publicSummary', 'publicPersonSummary', 'publicOperatorSentence']) {
+    if (!nonEmptyRecordField(block, field)) failures.push(`${field} is empty from public-safe ${id}`);
+  }
+}
 if (!consumerCopyBlock.includes('공식 채널 프로필은') || !consumerCopyBlock.includes('인물 확인용이며') || !consumerCopyBlock.includes('자동 승인하지 않습니다')) failures.push('public person summaries do not preserve source-qualified authority boundaries');
 for (const field of requiredFields) {
   const missing = recordBlocks.filter(block => !block.includes(field)).length;
