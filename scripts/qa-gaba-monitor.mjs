@@ -31,6 +31,7 @@ assert('eight registered source channels are present', sourceCount === 8);
 assert('RSS feed collection is present', monitor.includes('feeds/videos.xml?channel_id='));
 assert('Shorts page fallback collection is present', monitor.includes('/shorts') && monitor.includes('parseShortsPage'));
 assert('similar-content keyword discovery is present', monitor.includes('discoveryQueries') && monitor.includes('search_query'));
+assert('search discovery has a mobile fallback', monitor.includes('fetchSearchResults') && monitor.includes('m.youtube.com/results?search_query=') && monitor.includes('const endpoints = ['));
 assert('authority-focused keyword discovery is present', monitor.includes('의사 GABA 신경전달물질 Shorts') && monitor.includes('과학자 GABA 신경전달물질 Shorts') && monitor.includes('전문가 자격 확인 신호') && monitor.includes('권위 후보 검색 발견'));
 assert('formal GABA name discovery is present', monitor.includes('감마아미노부티르산') && monitor.includes('gamma[-\\s]?aminobutyric\\s+acid'));
 assert('formal-name authority discovery is present', monitor.includes('감마아미노부티르산 의사 Shorts') && monitor.includes('감마아미노부티르산 과학자 Shorts'));

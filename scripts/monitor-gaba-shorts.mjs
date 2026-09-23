@@ -77,6 +77,23 @@ const fetchText = async url => {
   throw lastError;
 };
 
+const fetchSearchResults = async query => {
+  const encodedQuery = encodeURIComponent(query);
+  const endpoints = [
+    `https://www.youtube.com/results?search_query=${encodedQuery}`,
+    `https://m.youtube.com/results?search_query=${encodedQuery}`,
+  ];
+  let lastError = new Error('search request failed');
+  for (const endpoint of endpoints) {
+    try {
+      return {html: await fetchText(endpoint), endpoint};
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  throw lastError;
+};
+
 const getRegisteredVideoUrls = () => {
   const sourcePath = path.join(root, 'src', 'gabaVideos.ts');
   if (!fs.existsSync(sourcePath)) return [];
@@ -859,7 +876,7 @@ const main = async () => {
 
   for (const query of discoveryQueries) {
     try {
-      const html = await fetchText('https://www.youtube.com/results?search_query=' + encodeURIComponent(query));
+      const {html} = await fetchSearchResults(query);
       successfulSearches += 1;
       const source = {name: 'YouTube 검색: ' + query, handle: 'keyword-discovery', channelId: ''};
       addCandidates(parseShortsPage(html).slice(0, 12), source, '');
