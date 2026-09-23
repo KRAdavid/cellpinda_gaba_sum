@@ -258,6 +258,24 @@ const extractCaptionTrackUrl = html => {
   }
 };
 
+const fetchYouTubeCaptionPage = async videoId => {
+  const endpoints = [
+    'https://www.youtube.com/watch?v=' + videoId,
+    'https://m.youtube.com/watch?v=' + videoId,
+  ];
+  let lastError = new Error('YouTube watch page has no caption track metadata');
+  for (const endpoint of endpoints) {
+    try {
+      const html = await fetchText(endpoint, {userAgent: YOUTUBE_BROWSER_USER_AGENT});
+      if (html.includes('playerCaptionsTracklistRenderer') || html.includes('"captionTracks"')) return html;
+      lastError = new Error(endpoint.includes('m.youtube.com') ? 'mobile YouTube watch page has no caption track metadata' : 'YouTube watch page has no caption track metadata');
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  throw lastError;
+};
+
 const checkRegisteredYouTubeCaptionTracks = async () => {
   const urls = getRegisteredVideoUrls().filter(url => /youtube\.com|youtu\.be/i.test(url));
   const warnings = [];
@@ -270,7 +288,7 @@ const checkRegisteredYouTubeCaptionTracks = async () => {
       continue;
     }
     try {
-      const html = await fetchText('https://www.youtube.com/watch?v=' + videoId, {userAgent: YOUTUBE_BROWSER_USER_AGENT});
+      const html = await fetchYouTubeCaptionPage(videoId);
       const captionUrl = extractCaptionTrackUrl(html);
       if (html.includes('playerCaptionsTracklistRenderer') || html.includes('"captionTracks"')) available += 1;
       if (captionUrl) tracks.set(url, captionUrl);
