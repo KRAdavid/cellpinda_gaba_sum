@@ -16,6 +16,7 @@ const triagePath = path.join(root, 'docs', 'GABA_VIDEO_TRIAGE.md');
 const triage = fs.existsSync(triagePath) ? fs.readFileSync(triagePath, 'utf8') : '';
 const acceptance = read('docs/GOAL_ACCEPTANCE_MATRIX.md');
 const handoff = read('docs/RELEASE_HANDOFF.md');
+const monitorGuide = read('docs/GABA_VIDEO_DAILY_MONITOR.md');
 
 const assert = (label, condition) => {
   if (!condition) throw new Error(`GABA monitor QA failed: ${label}`);
@@ -47,7 +48,7 @@ assert('workflow runs daily in the declared Korea timezone and includes report a
 assert('workflow run names expose the triggering event', workflow.includes('run-name: GABA Shorts monitor (${{ github.event_name }})'));
 assert('workflow publishes the daily review-log handoff', workflow.includes('docs/GABA_VIDEO_REVIEW_LOG.md') && workflow.includes('git add docs/GABA_VIDEO_INBOX.md docs/GABA_VIDEO_DAILY_REPORT.md docs/GABA_VIDEO_REVIEW_LOG.md'));
 assert('workflow refreshes release evidence after every monitor run', workflow.includes('scripts/sync-gaba-release-evidence.mjs') && workflow.includes('docs/GOAL_ACCEPTANCE_MATRIX.md') && workflow.includes('docs/RELEASE_HANDOFF.md'));
-assert('release evidence sync preserves monitoring boundaries', releaseSync.includes('GABA_MONITOR_SNAPSHOT') && releaseSync.includes('checkedAtKst') && releaseSync.includes('runOrigin') && releaseSync.includes('autoPublish') && releaseSync.includes('GABA_MONITOR_STATUS:START') && releaseSync.includes('GABA_SCHEDULE_STATUS:START') && releaseSync.includes('GABA_RELEASE_MONITOR_STATUS:START') && acceptance.includes('GABA_MONITOR_STATUS:START') && handoff.includes('GABA_RELEASE_MONITOR_STATUS:START'));
+assert('release evidence sync preserves monitoring boundaries', releaseSync.includes('GABA_MONITOR_SNAPSHOT') && releaseSync.includes('checkedAtKst') && releaseSync.includes('runOrigin') && releaseSync.includes('autoPublish') && releaseSync.includes('GABA_MONITOR_STATUS:START') && releaseSync.includes('GABA_SCHEDULE_STATUS:START') && releaseSync.includes('GABA_RELEASE_MONITOR_STATUS:START') && releaseSync.includes('GABA_SCHEDULE_OPERATIONS_STATUS:START') && acceptance.includes('GABA_MONITOR_STATUS:START') && handoff.includes('GABA_RELEASE_MONITOR_STATUS:START') && monitorGuide.includes('GABA_SCHEDULE_OPERATIONS_STATUS:START'));
 assert('daily report keeps candidates in review status', report.includes('자동 공개: 0건') && report.includes('PENDING_REVIEW'));
 assert('manual discovery descriptions enter the same triage path', monitor.includes("line.startsWith('- 공개 설명')") && inbox.includes('공개 설명(검색 결과)'));
 assert('triage classifier is present and explicitly non-approval', monitor.includes('screenCandidate') && monitor.includes('triagePath') && monitor.includes('제목 기반 주의 신호'));
