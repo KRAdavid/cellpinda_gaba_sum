@@ -27,10 +27,12 @@ jobs:
           node-version: 22
       - name: Collect new GABA Shorts candidates
         run: npm run monitor:gaba-shorts:write
+      - name: Sync release evidence documents
+        run: node scripts/sync-gaba-release-evidence.mjs
       - name: Check for inbox changes
         id: changes
         run: |
-          if [ -z "$(git status --porcelain -- docs/GABA_VIDEO_INBOX.md docs/GABA_VIDEO_DAILY_REPORT.md docs/GABA_VIDEO_REVIEW_LOG.md docs/GABA_VIDEO_TRIAGE.md docs/gaba-video-daily src/gabaMonitorSnapshot.ts)" ]; then
+          if [ -z "$(git status --porcelain -- docs/GABA_VIDEO_INBOX.md docs/GABA_VIDEO_DAILY_REPORT.md docs/GABA_VIDEO_REVIEW_LOG.md docs/GABA_VIDEO_TRIAGE.md docs/GABA_VIDEO_DAILY_MONITOR.md docs/gaba-video-daily src/gabaMonitorSnapshot.ts docs/GOAL_ACCEPTANCE_MATRIX.md docs/RELEASE_HANDOFF.md)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -40,6 +42,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/GABA_VIDEO_INBOX.md docs/GABA_VIDEO_DAILY_REPORT.md docs/GABA_VIDEO_REVIEW_LOG.md docs/GABA_VIDEO_TRIAGE.md docs/gaba-video-daily src/gabaMonitorSnapshot.ts
+          git add docs/GABA_VIDEO_INBOX.md docs/GABA_VIDEO_DAILY_REPORT.md docs/GABA_VIDEO_REVIEW_LOG.md docs/GABA_VIDEO_TRIAGE.md docs/GABA_VIDEO_DAILY_MONITOR.md docs/gaba-video-daily src/gabaMonitorSnapshot.ts docs/GOAL_ACCEPTANCE_MATRIX.md docs/RELEASE_HANDOFF.md
           git commit -m "chore: update GABA Shorts review inbox"
           git push

@@ -19,6 +19,7 @@
     "qa:video-monitor": "node scripts/qa-gaba-monitor.mjs",
     "monitor:gaba-shorts": "node scripts/monitor-gaba-shorts.mjs",
     "monitor:gaba-shorts:write": "node scripts/monitor-gaba-shorts.mjs --write",
+    "sync:gaba-release-evidence": "node scripts/sync-gaba-release-evidence.mjs",
     "qa:interaction": "node scripts/qa-interaction.mjs",
     "qa:matrix": "node scripts/qa-matrix.mjs"
   },
