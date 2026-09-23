@@ -2452,7 +2452,7 @@ export default function App() {
           <div className="video-showcase__heading">
             <div>
               <p className="eyebrow">GABA 영상</p>
-              <h2 id="approved-video-showcase-title">검토를 마친 영상만,<br /><em>일반 교육으로 이어집니다.</em></h2>
+              <h2 id="approved-video-showcase-title">GABA를 설명하는 영상만,<br /><em>쉽게 이어서 보세요.</em></h2>
             </div>
             <div>
               <p>GABA의 일반적인 내용을 설명하는 영상을 한 편씩 살펴볼 수 있습니다.</p>
@@ -2481,7 +2481,7 @@ export default function App() {
                 <p><strong>영상 요약</strong><br />{approvedVideo.publicSummary ?? approvedVideo.summary}</p>
                 <p><strong>출연자와 채널</strong><br />{approvedVideo.publicPersonSummary ?? approvedVideo.personSummary}</p>
                 <div className="video-showcase__actions"><button type="button" onClick={event => openVideoPanel(event.currentTarget, approvedVideo.id)}>영상 정보 보기 <span aria-hidden="true">＋</span></button><span className="video-showcase__source-note">YouTube에서 전체 영상 보기</span></div>
-                <div className="video-showcase__pager" aria-label="검토 완료 영상 이동"><button type="button" onClick={() => selectApprovedVideo(approvedVideoIndex - 1)} disabled={approvedVideoIndex === 0}>이전 영상</button><button type="button" onClick={() => selectApprovedVideo(approvedVideoIndex + 1)} disabled={approvedVideoIndex === approvedVideos.length - 1}>다음 영상 <span aria-hidden="true">→</span></button></div>
+                <div className="video-showcase__pager" aria-label="영상 이동"><button type="button" onClick={() => selectApprovedVideo(approvedVideoIndex - 1)} disabled={approvedVideoIndex === 0}>이전 영상</button><button type="button" onClick={() => selectApprovedVideo(approvedVideoIndex + 1)} disabled={approvedVideoIndex === approvedVideos.length - 1}>다음 영상 <span aria-hidden="true">→</span></button></div>
               </div>
             </article>
           </div>
@@ -2498,7 +2498,6 @@ export default function App() {
             <div>
               <p>GABA를 설명하는 영상을 한 편씩 살펴봅니다. 영상 요약과 출연자·채널 정보를 먼저 보고, 전체 내용은 페이지 안에서 이어서 확인할 수 있습니다.</p>
               <p className="video-showcase__boundary">영상 요약은 공개된 제목과 설명을 바탕으로 정리했습니다. 전체 내용은 YouTube 원문에서 확인하세요.</p>
-              <p className="video-showcase__trust-note"><strong>영상 읽는 기준</strong>무엇을 어떻게 소개했는지와 출연자·채널 정보를 함께 보여드립니다. 원문·자막·권리 확인 전에는 일반 GABA 근거 자료로 확정하지 않습니다.</p>
               <button type="button" className="video-showcase__db-button" onClick={event => openVideoPanel(event.currentTarget)}>영상 정보 보기 <span aria-hidden="true">↗</span></button>
             </div>
           </div>
@@ -2514,7 +2513,7 @@ export default function App() {
             </nav>
             <article className="video-showcase__item" aria-live="polite">
               <section className="video-showcase__player" aria-label={`${showcaseVideo.publicTitle ?? showcaseVideo.title} 페이지 안에서 재생`}>
-                <div className="video-showcase__player-heading"><span>원문 확인 전 참고 영상</span><small>페이지 안에서 재생</small></div>
+                <div className="video-showcase__player-heading"><span>GABA 설명 영상</span><small>페이지 안에서 재생</small></div>
                 {showcaseVideoEmbedUrl && showcasePlayerStartedId === showcaseVideo.id ? <iframe src={showcaseVideoEmbedUrl} title={`${showcaseVideo.publicTitle ?? showcaseVideo.title} YouTube Shorts 원문 플레이어`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /> : <button type="button" className="video-showcase__player-poster" data-play-showcase-video onClick={() => setShowcasePlayerStartedId(showcaseVideo.id)} aria-label="페이지 안에서 YouTube 영상 재생 시작">
                   {showcaseVideo.previewImage ? <img className="video-showcase__player-poster-image" src={showcaseVideo.previewImage} alt="" loading="lazy" decoding="async" onError={event => {event.currentTarget.style.display = 'none';}} /> : null}
                   <span className="video-showcase__player-poster-label">GABA · YouTube Shorts</span><strong>{showcaseVideo.publicTitle ?? 'GABA 영상'}</strong><small>눌러서 페이지 안에서 영상 보기</small><span className="video-showcase__play" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5.2v13.6L19 12 8 5.2Z" /></svg></span>

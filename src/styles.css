@@ -814,9 +814,6 @@ body{background:var(--editorial-cream);color:var(--editorial-ink)}
 .consumer-main~.site-footer{padding:22px 20px}
 }
 
-.consumer-main .video-showcase__trust-note{max-width:520px;margin:16px 0 0;padding-left:13px;border-left:2px solid var(--public-coral);color:#60796b;font-size:11px;line-height:1.65}
-.consumer-main .video-showcase__trust-note strong{display:block;margin-bottom:3px;color:var(--public-ink);font-size:10px;letter-spacing:.08em}
-@media(max-width:760px){.consumer-main .video-showcase__trust-note{margin-top:14px;font-size:10px}}
 .consumer-reel__study-conditions{display:grid;gap:0;max-width:560px;margin:24px 0 0;border-top:1px solid var(--public-line)}
 .consumer-reel__study-conditions>div{display:grid;grid-template-columns:82px minmax(0,1fr);gap:12px;padding:9px 0;border-bottom:1px solid var(--public-line)}
 .consumer-reel__study-conditions dt{color:#3e7758;font-size:10px;font-weight:850;letter-spacing:.04em}
