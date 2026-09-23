@@ -8,6 +8,7 @@ const appSource = fs.readFileSync(path.join(root, 'src', 'App.tsx'), 'utf8');
 const requiredSeeds = ['Cnk0PGn9YBM', 'RLAU1VWGsaI', 'vnocd9ZVJj0', 'BiZXS_ojLUA', '7Zsxm9Wh2Yg', 'rOFkZg09AoY', '4MTqi-bapLY', '4xGSHxkMYew'];
 const requiredChannelIds = ['UC86AuKBawrgBuEZIgiOo7hA', 'UC9Vkx4zyHY4myJoykjtVm7A', 'UCY-mXLM6DsS9cmSwlh0tqSA', 'UCR6sR1ITtHIz8GZqJOwqxDQ', 'UCHkibO5NjXrjMO90jGjhcPQ', 'UC70hC0mVGURG6rCBibw9Wug', 'UCGZQ3Ac7xkBNL0_s5pDVCKg', 'UC-eyEDlbCD_8epmh-qCJ9oA'];
 const consumerCopyIds = ['SHORT-02', 'SHORT-03', 'SHORT-04', 'SHORT-05', 'SHORT-06', 'SHORT-07', 'SHORT-08'];
+const consumerShortsOnlyIds = ['SHORT-02', 'SHORT-03', 'SHORT-04', 'SHORT-05', 'SHORT-06', 'SHORT-07', 'SHORT-08'];
 const reviewRuleIds = ['AUTH-01', 'AUTH-02', 'VID-01', 'VID-02', 'VID-03', 'VID-04', 'SHORT-01', 'SHORT-02', 'SHORT-03', 'SHORT-04', 'SHORT-05', 'SHORT-06', 'SHORT-07', 'SHORT-08'];
 const forbiddenConsumerClaimWords = ['수면제', '영양제', '보충제', '불안 완화', '부작용 없음'];
 const publicRecordBlocks = publicSource.match(/\{\n    id: 'SHORT-[^']+'[\s\S]*?\n  \},/g) ?? [];
@@ -18,6 +19,14 @@ const failures = [];
 if (recordBlocks.length < 10) failures.push(`expected at least 10 video records, found ${recordBlocks.length}`);
 if (!source.includes('SHARED_GABA_VIDEOS')) failures.push('shared YouTube review showcase is not defined');
 if (!source.includes('GABA_VIDEO_REVIEW_RULES')) failures.push('video-specific review rules are not defined');
+if (publicRecordBlocks.length !== consumerShortsOnlyIds.length) failures.push(`consumer showcase should contain ${consumerShortsOnlyIds.length} domestic Shorts, found ${publicRecordBlocks.length}`);
+for (const block of publicRecordBlocks) {
+  const id = block.match(/id: '(SHORT-[^']+)'/)?.[1] ?? 'unknown';
+  const url = block.match(/url: '([^']+)'/)?.[1] ?? '';
+  if (!consumerShortsOnlyIds.includes(id)) failures.push(`consumer showcase contains a non-approved shared ID: ${id}`);
+  if (!url.includes('youtube.com/shorts/')) failures.push(`consumer showcase URL is not a YouTube Shorts URL: ${id}`);
+}
+if (publicSource.includes('dnalc.cshl.edu') || publicSource.includes('videocast.nih.gov') || publicSource.includes('AUTH-01') || publicSource.includes('AUTH-02')) failures.push('overseas AUTH video material entered the consumer-safe source');
 for (const id of reviewRuleIds) if (!source.includes(`'${id}':`)) failures.push(`video-specific review rule missing: ${id}`);
 if (!source.includes("video.id.startsWith('SHORT-') && video.status !== 'EXCLUDE'")) failures.push('shared showcase does not exclude EXCLUDE videos');
 if (!source.includes("ACTIVE_GABA_VIDEOS = GABA_VIDEO_DB.filter(video => !video.id.startsWith('AUTH-'))") || !appSource.includes('const publicPanelVideos = useMemo(() => [...approvedVideos, ...SHARED_GABA_VIDEOS]') || !appSource.includes('const panelVideos = presentationMode ? activePresenterVideos : publicPanelVideos') || !appSource.includes("import('./gabaVideos')")) failures.push('overseas AUTH records are not isolated from domestic presenter and consumer queues');
@@ -86,4 +95,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`GABA video DB QA passed: ${recordBlocks.length} records, ${requiredSeeds.length} provided Shorts, public list gated by PUBLISH_GENERAL.`);
+console.log(`GABA video DB QA passed: ${recordBlocks.length} records, ${requiredSeeds.length} provided Shorts, ${consumerShortsOnlyIds.length} domestic consumer Shorts, public list gated by PUBLISH_GENERAL.`);
