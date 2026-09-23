@@ -882,7 +882,7 @@ const main = async () => {
 
   if (!writeMode) return;
 
-  const refreshedInbox = existing.replace(/^- 마지막 확인: .*$/m, `- 마지막 확인: ${checkedDate} 자동 모니터 실행`);
+  const refreshedInbox = existing.replace(/^- 마지막 확인: .*$/m, `- 마지막 확인: ${checkedDate} · ${runOrigin}`);
   if (refreshedInbox !== existing) {
     existing = refreshedInbox;
     fs.writeFileSync(inboxPath, existing, 'utf8');
