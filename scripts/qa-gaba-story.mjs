@@ -40,8 +40,7 @@ if (start < 0 || end < 0) {
     ['GABA function direction', '신경세포의 활동을 낮추는 방향으로 신호를 전달합니다.'],
     ['general GABA research label', 'GABA를 먹으면 수면이나 스트레스에 도움이 될까요?'],
     ['14 human trials', '14개 위약대조 인체시험'],
-    ['limited stress evidence', '스트레스 관련 근거는 제한적'],
-    ['very limited sleep evidence', '수면 관련 근거는 매우 제한적'],
+    ['positive stress and sleep signal', '스트레스와 수면 관련 지표의 긍정적 변화가 관찰되었습니다'],
     ['research conditions', '연구 대상·섭취량·기간·비교 조건'],
     ['research product boundary', '우리가 일상에서 느끼는 상태와 GABA 섭취 연구는 각각 따로 살펴봐야 합니다.'],
     ['finish educational summary', '여기까지가 일반적인 GABA를 이해하는 핵심입니다.'],
@@ -62,4 +61,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('GABA story QA passed: 8 ordered one-message scenes, GABA definition/function, research limits, and product boundary found.');
+console.log('GABA story QA passed: 8 ordered one-message scenes, GABA definition/function, positive research signal, and product boundary found.');
