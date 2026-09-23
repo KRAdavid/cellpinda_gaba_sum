@@ -80,6 +80,16 @@ try {
   await send('Page.navigate', {url: presenterUrl});
   await wait(900);
   await capture('cellpinda-presenter-390-current.png');
+  await evaluate('document.querySelector(".story-video-db-button")?.click()');
+  await wait(240);
+  await evaluate('document.querySelector(".video-db-item__select")?.click()');
+  await wait(180);
+  await evaluate('document.querySelector(".video-db-detail__customer-brief")?.setAttribute("open", "")');
+  await evaluate('document.querySelector(".video-db-detail")?.scrollIntoView({block:"center",behavior:"auto"})');
+  await wait(180);
+  await capture('cellpinda-presenter-video-detail-390-current.png');
+  await evaluate('document.querySelector(".info-panel__topline button")?.click()');
+  await wait(180);
   await evaluate('document.querySelector(".story-ops-board-button")?.click()');
   await wait(180);
   await evaluate('document.querySelector(".tf-board__field-session")?.setAttribute("open", "")');

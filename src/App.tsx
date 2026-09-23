@@ -1565,14 +1565,18 @@ export default function App() {
     }
   };
 
-  const copyVideoCustomerBrief = async (video: GabaVideoRecord) => {
+  const getVideoCustomerBrief = (video: GabaVideoRecord) => {
     const approvedForCustomerSummary = video.status === 'PUBLISH_GENERAL';
     const customerStatus = approvedForCustomerSummary ? '일반 교육 공개 승인' : PUBLIC_VIDEO_STATUS_LABEL;
-    const brief = [
+    return [
       approvedForCustomerSummary ? `이 영상은 ${video.title}을(를) 다룹니다.` : '이 영상은 GABA 관련 영상 검토 후보입니다.',
       approvedForCustomerSummary ? video.summary : '현재 요약은 제목·공개 설명 기반의 예비 정보이며, 원문·자막·발언 구간 확인 전입니다.',
       `${video.operatorSentence} 현재 상태는 ${customerStatus}이며, 이 내용을 특정 제품의 효능이나 개인의 결과로 확대해 설명하지 않습니다.`,
-    ].join(' ');
+    ];
+  };
+
+  const copyVideoCustomerBrief = async (video: GabaVideoRecord) => {
+    const brief = getVideoCustomerBrief(video).join(' ');
     try {
       await copyText(brief);
       setVideoCopyMessage('고객 설명 3문장을 복사했습니다.');
@@ -2282,7 +2286,7 @@ export default function App() {
                   <p><strong>{presentationMode ? '무엇을 어떻게 소개했나' : '영상 요약'}</strong><br />{presentationMode ? selectedVideo.summary : selectedVideo.publicSummary ?? selectedVideo.summary}</p>
                   <p><strong>{presentationMode ? '인물 소개' : '출연자와 채널'}</strong><br />{presentationMode ? selectedVideo.personSummary : selectedVideo.publicPersonSummary ?? selectedVideo.personSummary}</p>
                 </div>
-                <div className="video-db-detail__operator"><strong>{presentationMode ? '사업자 설명 한 문장' : '한 문장으로 정리하면'}</strong><p>{presentationMode ? selectedVideo.operatorSentence : selectedVideo.publicOperatorSentence ?? selectedVideo.operatorSentence}</p>{presentationMode ? <><div className="video-db-detail__operator-actions"><button type="button" onClick={() => copyVideoOperatorSentence(selectedVideo)}>설명 문장 복사</button><button type="button" onClick={() => copyVideoCustomerBrief(selectedVideo)}>고객 설명 3문장 복사</button><button type="button" data-copy-video-review-link onClick={() => copyVideoReviewLink(selectedVideo)}>이 영상 감리 링크 복사</button></div><small className="video-db-detail__customer-guard">고객 전달용 문장은 미승인 영상을 ‘원문 확인 전’으로 자동 정리합니다.</small><span aria-live="polite">{videoCopyMessage}</span></> : null}</div>
+                 <div className="video-db-detail__operator"><strong>{presentationMode ? '사업자 설명 한 문장' : '한 문장으로 정리하면'}</strong><p>{presentationMode ? selectedVideo.operatorSentence : selectedVideo.publicOperatorSentence ?? selectedVideo.operatorSentence}</p>{presentationMode ? <><div className="video-db-detail__operator-actions"><button type="button" onClick={() => copyVideoOperatorSentence(selectedVideo)}>설명 문장 복사</button><button type="button" onClick={() => copyVideoCustomerBrief(selectedVideo)}>고객 설명 3문장 복사</button><button type="button" data-copy-video-review-link onClick={() => copyVideoReviewLink(selectedVideo)}>이 영상 감리 링크 복사</button></div><details className="video-db-detail__customer-brief"><summary>고객 설명 3문장 미리 보기 <span aria-hidden="true">＋</span></summary><ol>{getVideoCustomerBrief(selectedVideo).map(sentence => <li key={sentence}>{sentence}</li>)}</ol></details><small className="video-db-detail__customer-guard">고객 전달용 문장은 미승인 영상을 ‘원문 확인 전’으로 자동 정리합니다.</small><span aria-live="polite">{videoCopyMessage}</span></> : null}</div>
                 {presentationMode ? <dl className="video-db-audit" aria-label="영상 감리 필드">
                   <div><dt>요약 근거</dt><dd>{VIDEO_AUDIT_LABELS.contentBasis[selectedVideo.audit.contentBasis]}</dd></div>
                   <div><dt>권위</dt><dd>{VIDEO_AUDIT_LABELS.authorityLevel[selectedVideo.audit.authorityLevel]}</dd></div>
