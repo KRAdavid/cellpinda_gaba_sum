@@ -45,6 +45,8 @@ pnpm run monitor:gaba-shorts:write
 
 GitHub Actions는 `.github/workflows/monitor-gaba-shorts.yml`에서 매일 09:17 KST에 실행한다. 매시 정각 혼잡을 피하고 중복 실행을 막기 위해 예약 실행 시간과 concurrency를 고정한다. 예약 실행이 멈추지 않도록 저장소의 Actions·Pages 권한과 기본 브랜치를 확인한다.
 
+GitHub 공식 문서에 따르면 `schedule`은 POSIX cron과 선택적 IANA `timezone`을 사용하고 기본 브랜치의 최신 커밋에서 실행되지만, Actions 부하에 따라 지연될 수 있다([워크플로 문법](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [이벤트 트리거](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)). 따라서 워크플로가 `active`이고 cron이 등록되어 있다는 사실은 설정 증거이며, 실제 일일 운영 증거는 Actions 실행의 `event=schedule` 기록과 그 실행이 갱신한 리포트·Pages 배포로 별도 확인한다.
+
 <!-- GABA_SCHEDULE_OPERATIONS_STATUS:START -->
 최신 운영 확인: 2026-09-23 12:34:28 KST · 로컬 기준 실행 · 예약 실행 증거 대기 · 다음 예약 매일 09:17 KST. 오늘 누적 신규 후보 15건·이번 실행 0건·검토 대기 106건·자동 공개 0건. 예약 실행·사람 감리·공개 승인 전에는 운영 HOLD를 유지한다.
 <!-- GABA_SCHEDULE_OPERATIONS_STATUS:END -->
