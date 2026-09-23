@@ -366,7 +366,7 @@ const triageRules = [
   {label: '약물 대체·비교', priority: 'SCIENCE/MEDICAL 우선', pattern: /수면제|졸피뎀|자낙스|약.*대체|대체.*약|sleep(?:ing)?\s*pill|zolpidem|xanax|instead of (?:a )?(?:sleeping )?pill|replace(?:ment)?/i},
   {label: '효과·안전성 단정 신호', priority: 'SCIENCE/MEDICAL 우선', pattern: /부작용\s*없|안전|황금 복용량|특효|효과|해결|꿀잠|치유|도움되는|side[-\s]?effect[-\s]?free|safe(?:ly)?|dosage|effective|effect|reduce|relief|cure|help(?:s|ful)?|calm(?:ing)?|sleep better/i},
   {label: '섭취·상업성 신호', priority: 'SCIENCE/MEDICAL + RIGHTS', pattern: /영양제|건기식|수면영양제|판매|품절|상륙|복용량|함량|발효|식품|섭취|supplement|dietary supplement|sleep supplement|sold|buy|dosage|amount|fermented|food|intake|consume/i},
-  {label: '제품·브랜드 신호', priority: 'SCIENCE/MEDICAL + RIGHTS', pattern: /셀핀다|cellpinda|스마트스토어|smartstore|국산\s*제품|제품\s*(?:소개|추천|구매|정보)|product\s*(?:review|recommend|buy)/i},
+  {label: '제품·브랜드 신호', priority: 'SCIENCE/MEDICAL + RIGHTS', pattern: /셀핀다|cellpinda|스마트스토어|smartstore|국산\s*제품|제품\s*(?:소개|추천|구매|정보)|product\s*(?:review|recommend|buy)|가바\s*몽진환|몽진환|케이지\s*바이오|GABA\s*100%|발효\s*가바|fermented\s*GABA/i},
 ];
 
 const authorityLeadRule = {label: '전문가 자격 확인 신호', pattern: /의사|박사|교수|과학자|전문의|doctor|scientist|professor|ph\.?d|\bMD\b|neurolog(?:y|ist)|neuroscien/i};
