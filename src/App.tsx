@@ -1636,7 +1636,7 @@ export default function App() {
     const link = getCustomerVideoLink(showcaseVideo.id);
     try {
       if (navigator.share) {
-        await navigator.share({title: 'GABA 영상 검토 후보', text: '이 영상부터 GABA 일반 교육 흐름을 확인해 보세요.', url: link});
+        await navigator.share({title: 'GABA 영상 알아보기', text: '이 영상부터 GABA 일반 교육 흐름을 확인해 보세요.', url: link});
         if (shareRequest === showcaseShareRequestRef.current) setShowcaseShareMessage('이 영상부터 보는 고객용 링크를 공유했습니다.');
         return;
       }
@@ -2106,7 +2106,7 @@ export default function App() {
         {!presentationMode ? <div className="reel-next-bar" aria-live="polite">
           <div className="reel-next-bar__copy">
             <span>{active === 0 ? '아래로 넘겨 계속' : nextSlide ? '다음 장면' : '다음 섹션'}</span>
-          <strong>{nextSlide ? nextSlide.label : '영상 검토 후보'}</strong>
+          <strong>{nextSlide ? nextSlide.label : (presentationMode ? '영상 검토 후보' : 'GABA 영상 보기')}</strong>
           </div>
           {nextSlide ? <button type="button" className="reel-next-button" onClick={() => goTo(active + 1)} aria-label={`다음 장면 ${nextSlide.label} 보기`}>다음 장면 <span aria-hidden="true">↓</span></button> : <a className="reel-next-link" href="#video-showcase">영상 요약으로 이어가기 <span aria-hidden="true">↓</span></a>}
         </div> : null}

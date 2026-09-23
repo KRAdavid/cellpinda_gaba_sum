@@ -134,8 +134,8 @@ try {
   await evaluate('document.querySelector(".info-panel__next")?.click()');
   await waitForProgress('08 / 08');
   assert('research panel next action continues the card flow', true);
-  const finalReelAction = await evaluate('({text:document.querySelector(".consumer-reel__next")?.innerText||"",href:document.querySelector(".consumer-reel__next a")?.getAttribute("href")||""})');
-  assert('last reading scene hands off to the video section', finalReelAction.text.includes('영상으로 더 알아보기') && finalReelAction.href === '#video-showcase', JSON.stringify(finalReelAction));
+  const finalReelAction = await evaluate('({text:document.querySelector(".consumer-reel__next")?.innerText||"",href:document.querySelector(".consumer-reel__next a")?.getAttribute("href")||"",reelBar:document.querySelector(".reel-next-bar")?.innerText||""})');
+  assert('last reading scene hands off to the video section', finalReelAction.text.includes('영상으로 더 알아보기') && finalReelAction.href === '#video-showcase' && !finalReelAction.reelBar.includes('검토 후보'), JSON.stringify(finalReelAction));
 
   await evaluate('document.querySelector(".site-footer__research-button")?.click()');
   await waitForText('#info-panel-title', '일반 GABA 연구를 읽는 방법');
