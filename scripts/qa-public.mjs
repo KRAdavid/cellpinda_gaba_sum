@@ -54,7 +54,7 @@ const required = [
   ['video showcase deep-link state', 'searchParams.set("video"'],
   ['video showcase source-link guard', 'YouTube 원문은 영상 정보에서 보기'],
   ['video showcase hero copy', '원문으로 확인하세요'],
-  ['video candidate boundary', 'GABA 알아보기 영상'],
+  ['video candidate boundary', '원문 확인 전 참고 영상'],
   ['video candidate source note', '영상 전체 내용은 YouTube 원문에서 확인하세요'],
   ['approved video showcase gate', 'GABA의 일반적인 내용을 설명하는 영상을 한 편씩 살펴볼 수 있습니다'],
   ['approved video publication status', 'GABA 참고 영상'],

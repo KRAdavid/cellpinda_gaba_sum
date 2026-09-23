@@ -2537,8 +2537,8 @@ export default function App() {
                 <button type="button" data-next-video-reel onClick={() => selectShowcaseVideo(showcaseVideoIndex + 1)} disabled={showcaseVideoIndex === SHARED_GABA_VIDEOS.length - 1}>다음 영상 →</button>
               </div>
               <div className="video-showcase__copy">
-                <div className="video-showcase__meta"><span>GABA 참고 영상</span></div>
-                <p className="video-showcase__candidate-note" role="note"><strong>GABA 알아보기 영상</strong><span>영상 전체 내용은 YouTube 원문에서 확인하세요.</span></p>
+                <div className="video-showcase__meta"><span>GABA 참고 영상 · 원문 확인 전</span></div>
+                <p className="video-showcase__candidate-note" role="note"><strong>원문 확인 전 참고 영상</strong><span>요약은 제목·공개 설명을 바탕으로 정리했으며, 영상 전체 내용은 YouTube 원문에서 확인하세요.</span></p>
                 <h3>{showcaseVideo.publicTitle ?? showcaseVideo.title}</h3>
                 <p className="video-showcase__channel">{showcaseVideo.channel} · {showcaseVideo.speaker}</p>
                 <p><strong>영상 요약</strong><br />{showcaseVideo.publicSummary ?? showcaseVideo.summary}</p>
