@@ -38,6 +38,7 @@ const required = [
   ['GABA tone source', 'GABA tone regulation and its cognitive functions'],
   ['stress human trial source', 'Oral intake of γ-aminobutyric acid affects mood'],
   ['stress human trial PMID', 'PMID 22203366'],
+  ['stress human trial positive observation', '뇌파와 기분 관련 지표의 긍정적 변화가 관찰됐습니다'],
   ['sleep physiology source', 'About Sleep'],
   ['inhibitory neurotransmitter explanation', '억제성 신경전달물질'],
   ['everyday GABA function explanation', '신경세포의 활동을 낮추는 방향으로 신호를 전달합니다'],

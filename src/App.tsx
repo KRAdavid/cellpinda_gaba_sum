@@ -338,7 +338,7 @@ const RESEARCH_SOURCES = [
     topic: '스트레스와 GABA 일반 연구',
     title: 'Oral intake of γ-aminobutyric acid affects mood and activities of central nervous system during stressed condition induced by mental tasks',
     meta: 'Yoto et al. · Amino Acids. 2012 · PMID 22203366',
-    summary: '정신적 과제를 이용한 스트레스 조건에서 경구 GABA를 살핀 무작위·위약대조 교차 연구입니다.',
+    summary: '정신적 과제를 이용한 스트레스 조건에서 경구 GABA를 살핀 무작위·위약대조 교차 연구로, 한 연구에서 뇌파와 기분 관련 지표의 긍정적 변화가 관찰됐습니다.',
     boundary: '정신적 과제가 주어진 조건에서 관찰된 변화입니다. 연구 대상과 비교 조건을 함께 보면 결과를 더 정확하게 이해할 수 있습니다.',
     url: 'https://pubmed.ncbi.nlm.nih.gov/22203366/',
   },
