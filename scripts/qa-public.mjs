@@ -65,6 +65,7 @@ const required = [
   ['video person summary', '인물 소개'],
   ['video operator sentence', '사업자 설명 한 문장'],
   ['video audit fields', '요약 근거'],
+  ['video audit boundary note', '이 표기는 확인한 범위를 보여 주며'],
   ['video audit next action', '다음 감리 행동'],
   ['official video preview', '공식 원문 미리보기'],
   ['video audit database', '영상 DB 감리'],

@@ -2525,6 +2525,7 @@ export default function App() {
                   <span>요약 근거: {VIDEO_AUDIT_LABELS.contentBasis[showcaseVideo.audit.contentBasis]}</span>
                   <span>사용: {VIDEO_AUDIT_LABELS.usageMode[showcaseVideo.audit.usageMode]}</span>
                 </div>
+                <p className="video-showcase__audit-note" role="note">이 표기는 확인한 범위를 보여 주며, 화자의 권위·연구 결과·특정 효과의 승인을 뜻하지 않습니다.</p>
                 <p><strong>무엇을 어떻게 소개했나 · 예비</strong><br />{showcaseVideo.publicSummary ?? showcaseVideo.summary}</p>
                 <p><strong>인물 소개</strong><br />{showcaseVideo.publicPersonSummary ?? showcaseVideo.personSummary}</p>
                 <div className="video-showcase__actions"><button type="button" data-open-video-review onClick={event => openVideoPanel(event.currentTarget, showcaseVideo.id)}>상세 감리 먼저 보기 <span aria-hidden="true">＋</span></button><button type="button" data-share-video-link onClick={shareShowcaseVideo}>이 영상 링크 공유 <span aria-hidden="true">↗</span></button><span className="video-showcase__source-note">원문 링크는 상세 패널에서 선택</span><span className="video-showcase__share-message" aria-live="polite">{showcaseShareMessage}</span></div>
