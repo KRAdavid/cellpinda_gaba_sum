@@ -23,6 +23,10 @@ const discoveryQueries = [
   '과학자 GABA 신경전달물질 Shorts',
   '감마아미노부티르산 의사 Shorts',
   '감마아미노부티르산 과학자 Shorts',
+  '가바 GABA 대학병원 신경과 Shorts',
+  '가바 GABA 대학 연구 과학자 Shorts',
+  '감마아미노부티르산 대학병원 의사 Shorts',
+  'GABA 신경전달물질 대학 연구 Shorts',
 ];
 
 const sources = [
