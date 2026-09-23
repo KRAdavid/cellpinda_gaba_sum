@@ -85,6 +85,7 @@ const required = [
   ['daily monitoring snapshot', '일일 감리 상태'],
   ['daily monitoring last check', '마지막 실행 기록'],
   ['daily monitoring schedule health', '예약 실행'],
+  ['daily monitoring manual fallback', '수동 감리 실행 화면'],
   ['registered video link health', '등록 영상 원문 링크'],
   ['registered video link warnings', '링크 경고'],
   ['registered YouTube metadata health', '등록 YouTube 메타데이터'],

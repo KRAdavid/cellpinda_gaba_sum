@@ -24,6 +24,8 @@ const STORY_VISUALS = {
   neural: `${import.meta.env.BASE_URL}images/gaba-neural-signal.png`,
 } as const;
 
+const MONITOR_WORKFLOW_URL = 'https://github.com/KRAdavid/cellpinda_gaba_sum/actions/workflows/monitor-gaba-shorts.yml';
+
 type VideoFilter = 'ALL' | 'REVIEW' | 'PROFILE' | 'INCOMPLETE' | GabaVideoRecord['status'];
 type TfAssignment = Record<string, {lead: string; backup: string}>;
 type TfDiscussionDecision = 'UNDECIDED' | 'CONTINUE' | 'HOLD' | 'DECIDED';
@@ -1351,6 +1353,7 @@ export default function App() {
       `팀 리뷰 로그: ${snapshot.reviewLogUrl}`,
       `메타데이터 상세 감사: ${snapshot.metadataAuditUrl}`,
       `자막 상세 감사: ${snapshot.captionAuditUrl}`,
+      `수동 감리 실행 화면: ${MONITOR_WORKFLOW_URL}`,
       '',
       '오늘 먼저 검토할 후보',
       ...snapshot.pendingQueue.slice(0, 5).map((candidate, index) => `${index + 1}. ${candidate.title} · ${candidate.priority} · 다음 행동: ${candidate.nextAction}`),
@@ -2218,7 +2221,8 @@ export default function App() {
                   <label className="monitor-candidate-review__notes">팀 메모<textarea data-monitor-review-field="notes" value={monitorReviewDraft.notes} onChange={event => updateMonitorReviewDraft('notes', event.currentTarget.value)} placeholder="확인한 근거, 이견, 다음 질문을 기록하세요." rows={3} /></label>
                   <div className="monitor-candidate-review__actions"><button type="button" data-monitor-review-copy onClick={copyMonitorReviewDraft}>후보 감리 초안 복사</button><span aria-live="polite">{monitorReviewMessage}</span></div>
                 </section> : null}
-                <div className="monitor-snapshot__links"><a href={presenterMonitor?.triageUrl ?? '#'} target="_blank" rel="noopener noreferrer">감리 우선순위 보드 원문 ↗</a><a href={presenterMonitor?.reportUrl ?? '#'} target="_blank" rel="noopener noreferrer">일일 리포트 ↗</a><a href={presenterMonitor?.reviewLogUrl ?? '#'} target="_blank" rel="noopener noreferrer">팀 리뷰 로그 ↗</a><a href={presenterMonitor?.reviewSessionUrl ?? '#'} target="_blank" rel="noopener noreferrer">오늘 리뷰 세션 ↗</a><a href={presenterMonitor?.metadataAuditUrl ?? '#'} target="_blank" rel="noopener noreferrer">메타데이터 감사 기록 ↗</a><a href={presenterMonitor?.captionAuditUrl ?? '#'} target="_blank" rel="noopener noreferrer">자막 감사 기록 ↗</a></div>
+                <p className="monitor-snapshot__fallback-note">예약 실행이 확인되기 전에는 아래 화면에서 `Run workflow`를 선택해 수동 감리를 시작할 수 있습니다. 수동 실행은 예약 실행 확인으로 바뀌지 않으며, 자동 공개도 발생하지 않습니다.</p>
+                <div className="monitor-snapshot__links"><a className="monitor-snapshot__manual-run" data-manual-monitor-run href={MONITOR_WORKFLOW_URL} target="_blank" rel="noopener noreferrer">수동 감리 실행 화면 ↗</a><a href={presenterMonitor?.triageUrl ?? '#'} target="_blank" rel="noopener noreferrer">감리 우선순위 보드 원문 ↗</a><a href={presenterMonitor?.reportUrl ?? '#'} target="_blank" rel="noopener noreferrer">일일 리포트 ↗</a><a href={presenterMonitor?.reviewLogUrl ?? '#'} target="_blank" rel="noopener noreferrer">팀 리뷰 로그 ↗</a><a href={presenterMonitor?.reviewSessionUrl ?? '#'} target="_blank" rel="noopener noreferrer">오늘 리뷰 세션 ↗</a><a href={presenterMonitor?.metadataAuditUrl ?? '#'} target="_blank" rel="noopener noreferrer">메타데이터 감사 기록 ↗</a><a href={presenterMonitor?.captionAuditUrl ?? '#'} target="_blank" rel="noopener noreferrer">자막 감사 기록 ↗</a></div>
               </div> : null}
               {presentationMode ? <div className="video-db-tools">
                 <label className="video-db-search">영상 DB 검색
