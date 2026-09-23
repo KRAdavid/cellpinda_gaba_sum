@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-09-23 20:26:04 KST · 실행 출처: GitHub Actions 수동 실행 · 기준일 2026-09-23 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-09-23 20:28:34 KST · 실행 출처: GitHub Actions 수동 실행 · 기준일 2026-09-23 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,8 +8,8 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 0개 채널
-- 오늘 신규 후보(누적): 29건
-- 이번 실행 신규 후보: 1건
+- 오늘 신규 후보(누적): 31건
+- 이번 실행 신규 후보: 2건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 6건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
@@ -52,6 +52,8 @@
 | PENDING-20260923-XoOFptYcgsc | [Stress Relief Supplements: Ashwagandha, GABA, and More! #shorts](https://www.youtube.com/watch?v=XoOFptYcgsc) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260923-tBwRqMqZNd4 | [헴프씨드 추출물로 GABA를 생성할 수 있다고 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=tBwRqMqZNd4) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
 | PENDING-20260923-LGM3arqYZx8 | [“GABA is the chemical that helps your brain stay calm under stress.”  #science #humanbody](https://www.youtube.com/watch?v=LGM3arqYZx8) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 권위 후보 검색 발견 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260923-0Eblwi5cAaY | [Dopamine and GABA: Unraveling Nicotine's Pleasure-Pain Mechanism with Andrew Huberman](https://www.youtube.com/watch?v=0Eblwi5cAaY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260923-K1QqPoQu6dM | [GABA: Your Natural Remedy for Anxiety, Deep Sleep, and Relieving Muscle Tension #shorts #gaba](https://www.youtube.com/watch?v=K1QqPoQu6dM) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -84,18 +86,18 @@
 
 ## 등록 YouTube 자막 트랙 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → watch 페이지 자막 트랙 없음
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → watch 페이지 자막 트랙 없음
+- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → mobile YouTube watch page has no caption track metadata
 - 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 의미하지 않는다. 사람 검토 전 요약과 공개 상태는 바꾸지 않는다.
 
 ## 등록 YouTube 자막 본문 상태

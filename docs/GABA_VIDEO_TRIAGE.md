@@ -4,9 +4,9 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 120건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 74건
-- VIDEO 원문·자막 선확인: 46건
+- 검토 대기: 122건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 75건
+- VIDEO 원문·자막 선확인: 47건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 19건
 
 ## 우선순위 정의
@@ -25,6 +25,7 @@
 | PENDING-20260923-AKcZw2nqU0w | [아직도 육체노동의 시대를 살고 있나요? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=AKcZw2nqU0w) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-bhzUlv-pOGo | [화가 난 정이랑이 먹은 '그것'?! 😲이걸 왜 이제 알았지? #가바 #GABA #셀핀다 #스트레스해소 #꿀잠 #불면증극복 #영양제추천 #집중력향상 #부모님선물 #갱년기영양제 #쇼츠](https://www.youtube.com/watch?v=bhzUlv-pOGo) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-BqCWVRMNlFc | [세계 최초! 유전자가위기술 유래 제1호 식품! 고혈압 치료에도 좋다는 가바(GABA) 토마토!! 일본에서 상업화까지 진행했다고..?](https://www.youtube.com/watch?v=BqCWVRMNlFc) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 질환·치료 표현 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20260923-K1QqPoQu6dM | [GABA: Your Natural Remedy for Anxiety, Deep Sleep, and Relieving Muscle Tension #shorts #gaba](https://www.youtube.com/watch?v=K1QqPoQu6dM) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-LGM3arqYZx8 | [“GABA is the chemical that helps your brain stay calm under stress.”  #science #humanbody](https://www.youtube.com/watch?v=LGM3arqYZx8) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-OeqoiWhkUfw | [이것 먹고 눕자 마자 잠들었어요. 수면제 없이 불면증 없애고 꿀잠자는 법. 가바(GABA) 국산 제품](https://www.youtube.com/watch?v=OeqoiWhkUfw) | 이동환TV (수동 권위 키워드 검색) | 질환·치료 표현 · 약물 대체·비교 · 효과·안전성 단정 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260923-PBlN5t4tmYE | [치매 예방약? 영양제 말고 '이것' 먼저 챙기세요!​#치매예방 #치매 #GABA #뇌건강 #알츠하이머 #감정라벨링 #대화법 #뇌건강 #노화방지 #호두선생님 #중년건강 #신경과권예지](https://www.youtube.com/watch?v=PBlN5t4tmYE) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 질환·치료 표현 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
@@ -41,6 +42,7 @@
 | PENDING-20260923-FRV6QF6E0Qk | [불안에 대한 GABA 보충제 복용량 #반바지](https://www.youtube.com/watch?v=FRV6QF6E0Qk) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260923-gZyzP56SRkw | [테아닌 가성비 멜라토닌 세로토닌 피로회복제 수면 영양제 가바 GABA](https://www.youtube.com/watch?v=gZyzP56SRkw) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260923-rUqPUDKWEwM | [잠이 얕다면, 가바를 기억하세요 수면의 질, GABA, 50~60대 여성, 영양제, 숙면, 뒤척임, 중장년 건강, 밤잠, 피로 회복](https://www.youtube.com/watch?v=rUqPUDKWEwM) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
+| PENDING-20260923-0Eblwi5cAaY | [Dopamine and GABA: Unraveling Nicotine's Pleasure-Pain Mechanism with Andrew Huberman](https://www.youtube.com/watch?v=0Eblwi5cAaY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260923-5QKd5-dTDKw | [GABA: The Secret to Zero Stress? Car Fire Analogy! #shorts](https://www.youtube.com/watch?v=5QKd5-dTDKw) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260923-6ehrpQKvxME | [How GABA affects your stress response. #shorts](https://www.youtube.com/watch?v=6ehrpQKvxME) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260923-7NKXL6ceVdQ | [Does Oral GABA Actually Reach Your Brain? #shorts  #jackzheng #mihiyolabs #odf #mihiyi #ods #GABA](https://www.youtube.com/watch?v=7NKXL6ceVdQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |

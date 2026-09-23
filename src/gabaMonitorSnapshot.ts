@@ -1,6 +1,6 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 20:26:04 KST",
+  "checkedAtKst": "2026-09-23 20:28:34 KST",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
@@ -11,11 +11,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 29,
-  "newCandidatesThisRun": 1,
-  "pendingReview": 120,
-  "scienceMedicalPriority": 74,
-  "videoPriority": 46,
+  "newCandidates": 31,
+  "newCandidatesThisRun": 2,
+  "pendingReview": 122,
+  "scienceMedicalPriority": 75,
+  "videoPriority": 47,
   "pendingQueue": [
     {
       "id": "PENDING-20260923-AKcZw2nqU0w",
@@ -62,6 +62,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
+      "id": "PENDING-20260923-K1QqPoQu6dM",
+      "title": "GABA: Your Natural Remedy for Anxiety, Deep Sleep, and Relieving Muscle Tension #shorts #gaba",
+      "url": "https://www.youtube.com/watch?v=K1QqPoQu6dM",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
       "id": "PENDING-20260923-LGM3arqYZx8",
       "title": "“GABA is the chemical that helps your brain stay calm under stress.”  #science #humanbody",
       "url": "https://www.youtube.com/watch?v=LGM3arqYZx8",
@@ -72,22 +85,6 @@ export const GABA_MONITOR_SNAPSHOT = {
         "권위 후보 검색 발견"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260923-OeqoiWhkUfw",
-      "title": "이것 먹고 눕자 마자 잠들었어요. 수면제 없이 불면증 없애고 꿀잠자는 법. 가바(GABA) 국산 제품",
-      "url": "https://www.youtube.com/watch?v=OeqoiWhkUfw",
-      "channel": "이동환TV (수동 권위 키워드 검색)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "약물 대체·비교",
-        "효과·안전성 단정 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     }
@@ -266,11 +263,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 29,
-      "newCandidatesThisRun": 1,
-      "pendingReview": 120,
-      "scienceMedicalPriority": 74,
-      "videoPriority": 46,
+      "newCandidates": 31,
+      "newCandidatesThisRun": 2,
+      "pendingReview": 122,
+      "scienceMedicalPriority": 75,
+      "videoPriority": 47,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
