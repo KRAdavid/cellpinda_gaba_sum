@@ -270,6 +270,8 @@ VID-02의 공개 설명은 도파민·엔돌핀·세로토닌·글루타메이�
 
 기존 모니터 실행 5건의 GitHub run 페이지는 모두 `on: workflow_dispatch`로 확인되었다. 실제 예약 이벤트를 확인하기 위해 `00:45 UTC`(09:45 KST) 임시 cron을 추가했으나 09:48 KST까지 `Monitor GABA Shorts candidates` 실행 기록은 생성되지 않았다. push에 따른 Pages 배포는 정상 생성되었고, 임시 cron은 제거해 원래 `00:17 UTC`(09:17 KST) 단일 일일 예약으로 복원했다. 결론은 **workflow YAML·Pages 연결 기술 PASS / GitHub scheduled event 실제 발생·자동 업데이트 증거 HOLD**이며, 운영 화면의 실행 출처는 계속 실제 값으로 표시한다.
 
+이후 예약 시각을 UTC 환산값이 아닌 `cron: '17 9 * * *'`와 `timezone: "Asia/Seoul"`로 직접 표현했다. GitHub 공식 workflow 문법과 일치하는 설정이며, 다음 실행부터 09:17 KST를 workflow 자체가 기준으로 사용한다. 결론은 **한국시간 명시 기술 PASS / 실제 예약 실행 증거 HOLD**다.
+
 ## 2026-09-23 일일 실행 heartbeat 추가
 
 새 후보가 없는 날에도 예약 실행 여부를 확인할 수 있도록 일일 리포트와 발표자 스냅샷에 한국시간 초 단위 `checkedAtKst`를 기록한다. 기존 날짜만 기록하던 방식은 “예약 실행 없음”과 “실행했지만 후보 변화 없음”을 구분하기 어려웠다. heartbeat는 수집 실행의 흔적만 남기며, 후보의 과학적 타당성·권위·권리·공개 승인을 의미하지 않는다. 결정은 **일일 실행 추적성 기술 PASS / 실제 예약 이벤트·사람 감리·공개 승인 HOLD**다.
