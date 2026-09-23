@@ -520,7 +520,7 @@ function makeSlides(): Slide[] {
     {
       id: 'research',
       label: '07 · 일반 GABA 연구는 어디까지 알까',
-      title: 'GABA를 먹으면 수면이나 스트레스에 도움이 될까요?',
+      title: '일부 연구에서 스트레스와 수면 지표의 긍정적 변화가 관찰되었습니다.',
       body: '일반 GABA 섭취를 살펴본 14개 위약대조 인체시험 문헌고찰에서는 일부 연구에서 스트레스와 수면 관련 지표의 긍정적 변화가 관찰되었습니다. 연구 대상·섭취량·기간·비교 조건에 따라 결과가 달라질 수 있어 연구 조건을 함께 봐야 합니다.',
       tone: 'research',
       note: '일반 GABA 연구를 읽는 기준과 상세 출처는 아래 패널에서 확인합니다.',
@@ -1977,6 +1977,11 @@ export default function App() {
           <p className="consumer-reel__label">{slide.label}</p>
           <h2 id={`reader-slide-${slide.id}`} tabIndex={-1}>{slide.title}</h2>
           <p>{slide.body}</p>
+          {slide.id === 'research' ? <dl className="consumer-reel__study-conditions" aria-label="일반 GABA 연구 조건">
+            <div><dt>연구 대상</dt><dd>성인 참가자를 대상으로 한 인체시험</dd></div>
+            <div><dt>비교 조건</dt><dd>GABA 섭취군과 대조 조건 비교</dd></div>
+            <div><dt>측정 항목</dt><dd>연구마다 스트레스·수면 지표와 기간이 달랐습니다.</dd></div>
+          </dl> : null}
           {slide.link ? <button type="button" className="reader-link consumer-reel__evidence-link" ref={element => {panelTriggerRefs.current[index] = element;}} onClick={event => openInfoPanel(index, slide.link!.panel, event.currentTarget)}>{slide.link.label} <span aria-hidden="true">↗</span></button> : null}
           {slide.note ? <p className="consumer-reel__note">{slide.note}</p> : null}
         </div>
