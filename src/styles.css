@@ -811,5 +811,9 @@ body{background:var(--editorial-cream);color:var(--editorial-ink)}
   .consumer-main .video-showcase{padding-top:80px}
   .consumer-main .video-showcase__index-button{border-bottom:0}
   .consumer-main .video-showcase__index-button.is-active{border-left:0}
-  .consumer-main~.site-footer{padding:22px 20px}
+.consumer-main~.site-footer{padding:22px 20px}
 }
+
+.consumer-main .video-showcase__trust-note{max-width:520px;margin:16px 0 0;padding-left:13px;border-left:2px solid var(--public-coral);color:#60796b;font-size:11px;line-height:1.65}
+.consumer-main .video-showcase__trust-note strong{display:block;margin-bottom:3px;color:var(--public-ink);font-size:10px;letter-spacing:.08em}
+@media(max-width:760px){.consumer-main .video-showcase__trust-note{margin-top:14px;font-size:10px}}

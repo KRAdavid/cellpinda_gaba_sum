@@ -1,6 +1,6 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 12:34:28 KST",
+  "checkedAtKst": "2026-09-23 17:29:19 KST",
   "runOrigin": "로컬 기준 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
@@ -252,7 +252,7 @@ export const GABA_MONITOR_SNAPSHOT = {
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
-      "captionBodyRateLimited": 12,
+      "captionBodyRateLimited": 0,
       "autoPublish": 0
     }
   ],
@@ -280,7 +280,7 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoCaptionBodiesChecked": 12,
   "registeredVideoCaptionBodiesAvailable": 0,
   "registeredVideoCaptionBodyWarnings": 12,
-  "registeredVideoCaptionBodyRateLimited": 12,
+  "registeredVideoCaptionBodyRateLimited": 0,
   "firstMeetingReady": false,
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",
