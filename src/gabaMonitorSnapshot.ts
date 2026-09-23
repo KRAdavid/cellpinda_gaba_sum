@@ -1,6 +1,6 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 18:25:44 KST",
+  "checkedAtKst": "2026-09-23 18:28:28 KST",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
@@ -8,7 +8,7 @@ export const GABA_MONITOR_SNAPSHOT = {
   "discoveryQueries": 10,
   "totalDiscoveryQueries": 12,
   "newCandidates": 21,
-  "newCandidatesThisRun": 4,
+  "newCandidatesThisRun": 0,
   "pendingReview": 112,
   "scienceMedicalPriority": 69,
   "videoPriority": 43,
@@ -244,7 +244,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "date": "2026-09-23",
       "newCandidates": 21,
-      "newCandidatesThisRun": 4,
+      "newCandidatesThisRun": 0,
       "pendingReview": 112,
       "scienceMedicalPriority": 69,
       "videoPriority": 43,
