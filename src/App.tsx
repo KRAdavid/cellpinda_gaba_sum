@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useRef, useState, type ChangeEvent} from 'react';
+import {useEffect, useMemo, useRef, useState, type ChangeEvent, type KeyboardEvent as ReactKeyboardEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent} from 'react';
 import {DOMESTIC_PUBLIC_GABA_VIDEOS, SHARED_GABA_VIDEOS} from './gabaPublicVideos';
 import type {GabaVideoRecord} from './gabaVideos';
 
@@ -579,6 +579,8 @@ export default function App() {
   const shareRequestRef = useRef(0);
   const programmaticTargetRef = useRef<number | null>(null);
   const railScrollFrameRef = useRef<number | null>(null);
+  const consumerSwipeStartRef = useRef<number | null>(null);
+  const consumerWheelLockRef = useRef(false);
   const phaseNavRef = useRef<HTMLElement>(null);
   const showcaseShareRequestRef = useRef(0);
   const activePhase = STORY_PHASES.find(phase => active >= phase.start && active <= phase.end) ?? STORY_PHASES[0];
@@ -815,6 +817,34 @@ export default function App() {
     window.setTimeout(() => {
       if (programmaticTargetRef.current === next) programmaticTargetRef.current = null;
     }, settleDelay);
+  };
+
+  const handleConsumerWheel = (event: ReactWheelEvent<HTMLDivElement>) => {
+    if (presentationModeRef.current || openPanel || Math.abs(event.deltaY) < 24 || consumerWheelLockRef.current) return;
+    event.preventDefault();
+    consumerWheelLockRef.current = true;
+    goTo(active + (event.deltaY > 0 ? 1 : -1));
+    window.setTimeout(() => { consumerWheelLockRef.current = false; }, 680);
+  };
+
+  const handleConsumerTouchStart = (event: ReactTouchEvent<HTMLDivElement>) => {
+    consumerSwipeStartRef.current = event.touches[0]?.clientY ?? null;
+  };
+
+  const handleConsumerTouchEnd = (event: ReactTouchEvent<HTMLDivElement>) => {
+    const startY = consumerSwipeStartRef.current;
+    consumerSwipeStartRef.current = null;
+    if (presentationModeRef.current || openPanel || startY === null) return;
+    const endY = event.changedTouches[0]?.clientY ?? startY;
+    const distance = startY - endY;
+    if (Math.abs(distance) < 44) return;
+    goTo(active + (distance > 0 ? 1 : -1));
+  };
+
+  const handleConsumerKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp' && event.key !== 'PageDown' && event.key !== 'PageUp') return;
+    event.preventDefault();
+    goTo(active + (event.key === 'ArrowUp' || event.key === 'PageUp' ? -1 : 1));
   };
 
   useEffect(() => {
@@ -1875,96 +1905,81 @@ export default function App() {
     </div>
     <div className="intro-orbit" aria-hidden="true"><span>GABA</span><i>일상<br />이해</i></div>
   </section>;
-  const readerSlide = slides[active];
-  const consumerStory = <>
-    <div className="story-reader-heading">
-      <div className="story-reader-heading__copy">
-        <p className="eyebrow">GABA를 모르는 사람을 위한 3분 읽기</p>
-        <h2 id="story-title">GABA를 모르는 사람도<br /><em>3분 안에 이해하는 흐름</em></h2>
-        <p>몸이 지친 것처럼 느껴지는 날, 뇌에서는 어떤 일이 일어날까요?<br />일상에서 시작해 GABA의 기능과 일반 연구까지 천천히 이어갑니다.</p>
-        <a className="story-reader-heading__start" href="#story-scene-hook">첫 장면부터 읽기 <span aria-hidden="true">↓</span></a>
+  const consumerStory = <div
+    id="consumer-reel"
+    className="consumer-reel"
+    onWheel={handleConsumerWheel}
+    onTouchStart={handleConsumerTouchStart}
+    onTouchEnd={handleConsumerTouchEnd}
+    onKeyDown={handleConsumerKeyDown}
+    tabIndex={0}
+    role="region"
+    aria-roledescription="세로 리더"
+    aria-labelledby="story-title"
+  >
+    <div className="consumer-reel__topline">
+      <div>
+        <p className="consumer-reel__context">GABA · 일반 교육</p>
+        <p className="consumer-reel__promise">한 장면씩 읽고, 다음 장면으로</p>
       </div>
-      <div className="story-reader-heading__visual" aria-hidden="true" style={{backgroundImage: `url("${STORY_VISUALS.neural}")`}}>
-        <span>뇌의 신호<br />균형을 읽는 시간</span>
+      <div className="consumer-reel__counter" aria-live="polite"><strong>{String(active + 1).padStart(2, '0')}</strong><span>/ {String(slides.length).padStart(2, '0')}</span></div>
+      <button type="button" className="consumer-reel__share" onClick={shareCardLink}>공유 <span aria-hidden="true">↗</span></button>
+    </div>
+
+    <nav ref={phaseNavRef} className="consumer-reel__phases" aria-label="장면 흐름 단계">
+      {STORY_PHASES.map((phase, index) => <span key={phase.id} data-phase={phase.id} className={phase.id === activePhase.id ? 'is-active' : ''} aria-current={phase.id === activePhase.id ? 'step' : undefined}>
+        {phase.label}{index < STORY_PHASES.length - 1 ? <i aria-hidden="true">·</i> : null}
+      </span>)}
+    </nav>
+
+    <nav className="consumer-reel__progress" aria-label="GABA 소개 장면 바로가기">
+      <span className="consumer-reel__progress-caption">오늘의 흐름</span>
+      <ol>
+        {slides.map((slide, index) => <li key={slide.id}>
+          <button type="button" className={index === active ? 'is-active' : ''} aria-current={index === active ? 'step' : undefined} aria-label={`${String(index + 1).padStart(2, '0')}번 장면 ${slide.label} 보기`} onClick={() => goTo(index, 'auto')}>
+            <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          </button>
+        </li>)}
+      </ol>
+    </nav>
+
+    <div id="story-scene-hook" className="consumer-reel__stage story-reader-stream" aria-live="polite">
+      {slides.map((slide, index) => <article
+        key={slide.id}
+        id={`story-scene-${slide.id}`}
+        ref={element => {slideRefs.current[index] = element;}}
+        data-index={index}
+        className={`consumer-reel__scene story-reader-scene story-reader-scene--${slide.tone}${index === active ? ' is-active' : ' story-reader-scene--hidden'}`}
+        aria-hidden={index === active ? undefined : true}
+        inert={index === active ? undefined : true}
+        aria-labelledby={`reader-slide-${slide.id}`}
+      >
+        <div className="consumer-reel__scene-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
+        <div className="consumer-reel__copy">
+          <p className="consumer-reel__label">{slide.label}</p>
+          <h2 id={`reader-slide-${slide.id}`} tabIndex={-1}>{slide.title}</h2>
+          <p>{slide.body}</p>
+          {slide.link ? <button type="button" className="reader-link consumer-reel__evidence-link" ref={element => {panelTriggerRefs.current[index] = element;}} onClick={event => openInfoPanel(index, slide.link!.panel, event.currentTarget)}>{slide.link.label} <span aria-hidden="true">↗</span></button> : null}
+          {slide.note ? <p className="consumer-reel__note">{slide.note}</p> : null}
+        </div>
+        {slide.visual ? <div className="consumer-reel__visual" aria-hidden="true" style={{backgroundImage: `url("${slide.visual}")`}} /> : <div className="consumer-reel__visual consumer-reel__visual--quiet" aria-hidden="true" />}
+      </article>)}
+    </div>
+
+    <div className="consumer-reel__footer">
+      <div className="consumer-reel__evidence-note"><span aria-hidden="true">—</span><span>근거는 조건까지</span></div>
+      <div className="consumer-reel__gesture">위로 넘기거나 버튼을 눌러 계속 <span aria-hidden="true">↑</span></div>
+      <p className="story-share-message" aria-live="polite">{shareMessage}</p>
+      {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="고객에게 전달할 장면 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>링크 복사</button></div> : null}
+      <div className="story-reader-next consumer-reel__next" aria-live="polite">
+        <div><span>{nextSlide ? '다음 장면' : '다음 섹션'}</span><strong>{nextSlide ? nextSlide.label : '영상 검토 후보'}</strong></div>
+        <div className="consumer-reel__next-actions">
+          <button type="button" className="consumer-reel__research" onClick={event => openInfoPanel(active, 'research', event.currentTarget)}>연구 읽는 기준</button>
+          {nextSlide ? <button type="button" className="consumer-reel__next-button" onClick={() => goTo(active + 1)} aria-label={`다음 장면 ${nextSlide.label} 보기`}>다음 장면 <span aria-hidden="true">→</span></button> : <a className="consumer-reel__next-button" href="#video-showcase">영상 요약으로 이어가기 <span aria-hidden="true">→</span></a>}
+        </div>
       </div>
-      <div className="story-reader-heading__count" aria-live="polite"><span>현재 장면</span><strong>{String(active + 1).padStart(2, '0')}</strong><small>/ 08</small></div>
     </div>
-    <div className="story-reader-tools">
-      <button type="button" onClick={shareCardLink}>현재 장면 링크 공유 <span aria-hidden="true">↗</span></button>
-    </div>
-    <p className="story-share-message" aria-live="polite">{shareMessage}</p>
-    {shareUrl ? <div className="story-share-row"><input className="story-share-url" value={shareUrl} readOnly aria-label="고객에게 전달할 장면 링크" onFocus={event => event.currentTarget.select()} /><button type="button" className="story-share-copy-button" onClick={copySharedCardLink}>링크 복사</button></div> : null}
-    <div className="story-reader-phase-wrap">
-      <nav ref={phaseNavRef} className="story-reader-phase" aria-label="장면 흐름 단계">
-        {STORY_PHASES.map((phase, index) => <span key={phase.id} data-phase={phase.id} className={phase.id === activePhase.id ? 'is-active' : ''} aria-current={phase.id === activePhase.id ? 'step' : undefined}>
-          {phase.label}{index < STORY_PHASES.length - 1 ? <i aria-hidden="true">→</i> : null}
-        </span>)}
-      </nav>
-    </div>
-    <div className="story-reader-layout">
-      <aside className="story-reader-index" aria-label="GABA 소개 장면 목록">
-        <p className="story-reader-index__label">전체 흐름</p>
-        <div className="story-reader-index__mobile-progress" aria-live="polite">
-          <span>지금 읽는 장면</span>
-          <strong>{String(active + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</strong>
-          <em>{readerSlide.label.replace(/^\d+\s·\s/, '')}</em>
-        </div>
-        <ol>
-          {slides.map((slide, index) => <li key={slide.id}>
-            <button type="button" className={index === active ? 'is-active' : ''} aria-current={index === active ? 'step' : undefined} onClick={() => goTo(index, 'auto')}>
-              <span>{String(index + 1).padStart(2, '0')}</span><strong>{slide.label.replace(/^\d+\s·\s/, '')}</strong>
-            </button>
-          </li>)}
-        </ol>
-        <p className="story-reader-index__hint">한 장면씩 읽어도 좋고,<br />원하는 장면부터 바로 봐도 좋아요.</p>
-      </aside>
-      <div className="story-reader-mobile-next" aria-live="polite">
-        <div>
-          <span>{nextSlide ? '다음 메시지' : '읽기 완료'}</span>
-          <strong>{nextSlide ? nextSlide.label.replace(/^\d+\s·\s/, '') : '영상 검토 후보로 이어가기'}</strong>
-        </div>
-        {nextSlide ? <button type="button" onClick={() => goTo(active + 1)}>넘겨 보기 <span aria-hidden="true">↓</span></button> : <a href="#video-showcase">영상 보기 <span aria-hidden="true">↓</span></a>}
-      </div>
-      <div id="story-scene-hook" className="story-reader-stream" aria-live="polite">
-        {slides.map((slide, index) => <article
-          key={slide.id}
-          id={`story-scene-${slide.id}`}
-          ref={element => {slideRefs.current[index] = element;}}
-          data-index={index}
-          className={`story-reader-scene story-reader-scene--${slide.tone}${index === active ? ' is-active' : ' story-reader-scene--hidden'}`}
-          aria-hidden={index === active ? undefined : true}
-          inert={index === active ? undefined : true}
-          aria-labelledby={`reader-slide-${slide.id}`}
-        >
-          <div className="story-reader-scene__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
-          <div className="story-reader-scene__copy">
-            <p className="story-reader-scene__label">{slide.label}</p>
-            <h3 id={`reader-slide-${slide.id}`} tabIndex={-1}>{slide.title}</h3>
-            <p>{slide.body}</p>
-            {slide.link ? <button type="button" className="reader-link" ref={element => {panelTriggerRefs.current[index] = element;}} onClick={event => openInfoPanel(index, slide.link!.panel, event.currentTarget)}>{slide.link.label} <span aria-hidden="true">↗</span></button> : null}
-            {slide.note ? <p className="story-reader-scene__note">{slide.note}</p> : null}
-          </div>
-          {slide.visual ? <div className="story-reader-scene__visual" aria-hidden="true" style={{backgroundImage: `url("${slide.visual}")`}} /> : <div className="story-reader-scene__rule" aria-hidden="true" />}
-        </article>)}
-      </div>
-      <aside className="story-reader-aside" aria-label="현재 장면의 핵심 안내">
-        <div className="story-reader-aside__block story-reader-aside__block--current">
-          <p className="story-reader-aside__kicker">지금 읽는 장면</p>
-          <strong>{readerSlide.label.replace(/^\d+\s·\s/, '')}</strong>
-          <p>{readerSlide.note ?? readerSlide.body}</p>
-        </div>
-        <div className="story-reader-aside__block">
-          <p className="story-reader-aside__kicker">일반 GABA 연구</p>
-          <p>이 페이지는 GABA의 일반 기능과 연구를 소개합니다. 연구 결과는 조건과 한계를 확인하고, 특정 제품의 효능으로 확장하지 않습니다.</p>
-          <button type="button" onClick={event => openInfoPanel(active, 'research', event.currentTarget)}>연구 읽는 기준 보기 <span aria-hidden="true">↗</span></button>
-        </div>
-      </aside>
-    </div>
-    <div className="story-reader-next" aria-live="polite">
-      <div><span>{nextSlide ? '다음 장면' : '다음 섹션'}</span><strong>{nextSlide ? nextSlide.label : '영상 검토 후보'}</strong></div>
-      {nextSlide ? <button type="button" onClick={() => goTo(active + 1)}>다음 장면 <span aria-hidden="true">↓</span></button> : <a href="#video-showcase">영상 요약으로 이어가기 <span aria-hidden="true">↓</span></a>}
-    </div>
-  </>;
+  </div>;
 
   return <>
     <header className={`site-header${presentationMode ? '' : ' site-header--consumer'}`}>

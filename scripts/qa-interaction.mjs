@@ -38,7 +38,7 @@ const evaluate = async expression => (await send('Runtime.evaluate', {expression
 const waitForProgress = async expected => {
   const deadline = Date.now() + 4000;
   while (Date.now() < deadline) {
-    const progress = await evaluate('(() => { const reader=document.querySelector(".story-reader-heading__count strong")?.innerText; return reader ? `${reader} / 08` : document.querySelector(".story-controls span")?.innerText || ""; })()');
+    const progress = await evaluate('(() => { const reader=document.querySelector(".consumer-reel__counter strong")?.innerText; return reader ? `${reader} / 08` : document.querySelector(".story-controls span")?.innerText || ""; })()');
     if (progress === expected) return;
     await wait(80);
   }
@@ -85,7 +85,7 @@ try {
   await send('Page.reload');
   await wait(900);
 
-  const initial = await evaluate('(() => { const scenes=[...document.querySelectorAll(".story-reader-scene")]; const body=document.body.innerText; return {title:document.title,width:innerWidth,height:innerHeight,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,scenes:scenes.length,legacyCards:document.querySelectorAll(".story-card").length,progress:(document.querySelector(".story-reader-heading__count strong")?.innerText||"")+" / 08",storyTop:document.querySelector("#story")?.getBoundingClientRect().top||0,heading:!!document.querySelector(".story-reader-heading"),publicIntro:document.querySelectorAll(".intro").length,presenterStart:/(발표자용|발표 모드)/.test(body),body}; })()');
+  const initial = await evaluate('(() => { const scenes=[...document.querySelectorAll(".story-reader-scene")]; const body=document.body.innerText; return {title:document.title,width:innerWidth,height:innerHeight,clientWidth:document.documentElement.clientWidth,docWidth:document.documentElement.scrollWidth,scenes:scenes.length,legacyCards:document.querySelectorAll(".story-card").length,progress:(document.querySelector(".consumer-reel__counter strong")?.innerText||"")+" / 08",storyTop:document.querySelector("#story")?.getBoundingClientRect().top||0,heading:!!document.querySelector(".consumer-reel__topline"),publicIntro:document.querySelectorAll(".intro").length,presenterStart:/(발표자용|발표 모드)/.test(body),body}; })()');
   assert('page identity is general GABA education', initial.title.includes('일반 GABA 교육'));
   assert('mobile viewport has no horizontal overflow', initial.width === viewportWidth && initial.docWidth === initial.clientWidth && initial.docWidth <= initial.width, JSON.stringify(initial));
   assert('consumer page contains no product or review content', !initial.body.includes('셀핀다') && !initial.body.includes('구매자 후기') && !initial.body.includes('스마트스토어') && !initial.body.includes('smartstore.naver.com'));
@@ -93,30 +93,33 @@ try {
   assert('consumer page keeps presenter entry out of the public flow', initial.publicIntro === 0 && !initial.presenterStart, JSON.stringify(initial));
   assert('consumer root enters the vertical reading flow immediately', Math.abs(initial.storyTop) < 2 && initial.heading && initial.scenes === 8, JSON.stringify(initial));
   assert('story has eight one-message scenes', initial.scenes === 8 && initial.legacyCards === 0 && initial.progress === '01 / 08', JSON.stringify(initial));
-  const readerOpening = await evaluate('({headline:document.querySelector(".story-reader-heading h2")?.innerText||"",visual:!!document.querySelector(".story-reader-heading__visual"),start:document.querySelector(".story-reader-heading__start")?.getAttribute("href")||"",hasCardCopy:document.body.innerText.includes("전체 카드부터 보기")||document.body.innerText.includes("현재 카드 링크 공유")})');
-  assert('reader opening explains the flow before the first message', readerOpening.headline.includes('3분 안에 이해하는 흐름') && readerOpening.visual && readerOpening.start === '#story-scene-hook' && !readerOpening.hasCardCopy, JSON.stringify(readerOpening));
-  const readerLayout = await evaluate('(() => { const story=document.querySelector("#story"), stream=document.querySelector(".story-reader-stream"), scene=document.querySelector(".story-reader-scene"), index=document.querySelector(".story-reader-index"), mobileProgress=document.querySelector(".story-reader-index__mobile-progress"), storyStyle=getComputedStyle(story), streamStyle=getComputedStyle(stream), sceneStyle=getComputedStyle(scene), scenes=[...document.querySelectorAll(".story-reader-scene")]; return {storyHeight:story?.getBoundingClientRect().height||0,streamHeight:stream?.getBoundingClientRect().height||0,sceneWidth:scene?.getBoundingClientRect().width||0,contentWidth:document.documentElement.clientWidth,index:!!index,mobileProgress:!!mobileProgress,scenes:scenes.length,visibleScenes:scenes.filter(item => getComputedStyle(item).display !== "none").length,hiddenScenes:scenes.filter(item => getComputedStyle(item).display === "none").length,layout:streamStyle.display,storyBackground:storyStyle.backgroundColor,sceneBorder:sceneStyle.borderBottomWidth,stageId:stream?.id||""}; })()');
-  assert('consumer reading flow uses one open page instead of stacked cards', readerLayout.scenes === 8 && readerLayout.visibleScenes === 1 && readerLayout.hiddenScenes === 7 && readerLayout.index && readerLayout.mobileProgress && readerLayout.streamHeight > 0 && readerLayout.sceneWidth < readerLayout.contentWidth && readerLayout.stageId === 'story-scene-hook' && readerLayout.storyBackground !== 'rgb(22, 59, 44)', JSON.stringify(readerLayout));
-  await evaluate('document.querySelector(".story-reader-index li:nth-child(2) button")?.click()');
+  const readerOpening = await evaluate('({headline:document.querySelector(".consumer-reel__scene.is-active h2")?.innerText||"",visual:!!document.querySelector(".consumer-reel__scene.is-active .consumer-reel__visual"),next:!!document.querySelector(".consumer-reel__next-button"),progress:!!document.querySelector(".consumer-reel__progress"),hasCardCopy:document.body.innerText.includes("전체 카드부터 보기")||document.body.innerText.includes("현재 카드 링크 공유")})');
+  assert('reader opening presents one focused message with a reel action', readerOpening.headline.includes('쉽게 흥분하고') && readerOpening.visual && readerOpening.next && readerOpening.progress && !readerOpening.hasCardCopy, JSON.stringify(readerOpening));
+  const readerLayout = await evaluate('(() => { const story=document.querySelector("#story"), stream=document.querySelector(".story-reader-stream"), scene=document.querySelector(".story-reader-scene"), progress=document.querySelector(".consumer-reel__progress"), storyStyle=getComputedStyle(story), streamStyle=getComputedStyle(stream), sceneStyle=getComputedStyle(scene), scenes=[...document.querySelectorAll(".story-reader-scene")]; return {storyHeight:story?.getBoundingClientRect().height||0,streamHeight:stream?.getBoundingClientRect().height||0,sceneWidth:scene?.getBoundingClientRect().width||0,contentWidth:document.documentElement.clientWidth,progress:!!progress,scenes:scenes.length,visibleScenes:scenes.filter(item => getComputedStyle(item).display !== "none").length,hiddenScenes:scenes.filter(item => getComputedStyle(item).display === "none").length,layout:streamStyle.display,storyBackground:storyStyle.backgroundColor,sceneBorder:sceneStyle.borderBottomWidth,stageId:stream?.id||""}; })()');
+  assert('consumer reading flow uses one open page instead of stacked cards', readerLayout.scenes === 8 && readerLayout.visibleScenes === 1 && readerLayout.hiddenScenes === 7 && readerLayout.progress && readerLayout.streamHeight > 0 && readerLayout.sceneWidth < readerLayout.contentWidth && readerLayout.stageId === 'story-scene-hook' && readerLayout.storyBackground === 'rgb(9, 47, 44)' && readerLayout.sceneBorder === '0px', JSON.stringify(readerLayout));
+  await evaluate('document.querySelectorAll(".consumer-reel__progress button")[1]?.click()');
   await waitForProgress('02 / 08');
-  const directProgress = await evaluate('({active:document.querySelector(".story-reader-index li:nth-child(2) button")?.getAttribute("aria-current")||"",label:document.querySelector(".story-reader-index li:nth-child(2) button")?.innerText||""})');
+  const directProgress = await evaluate('({active:document.querySelectorAll(".consumer-reel__progress button")[1]?.getAttribute("aria-current")||"",label:document.querySelectorAll(".consumer-reel__progress button")[1]?.getAttribute("aria-label")||""})');
   assert('story chapter index jumps directly to a selected scene', directProgress.active === 'step' && directProgress.label.includes('02'), JSON.stringify(directProgress));
-  await evaluate('document.querySelector(".story-reader-index button:first-child")?.click()');
+  await evaluate('document.querySelectorAll(".consumer-reel__progress button")[0]?.click()');
   await waitForProgress('01 / 08');
-  const nextBar = await evaluate('({text:document.querySelector(".story-reader-next")?.innerText||"",button:!!document.querySelector(".story-reader-next button"),link:!!document.querySelector(".story-reader-next a"),visible:!!document.querySelector(".story-reader-next"),mobileButton:!!document.querySelector(".story-reader-mobile-next button"),mobileText:document.querySelector(".story-reader-mobile-next")?.innerText||""})');
+  const nextBar = await evaluate('({text:document.querySelector(".consumer-reel__next")?.innerText||"",button:!!document.querySelector(".consumer-reel__next-button"),link:!!document.querySelector(".consumer-reel__next a"),visible:!!document.querySelector(".consumer-reel__next"),mobileButton:!!document.querySelector(".consumer-reel__next-button"),mobileText:document.querySelector(".consumer-reel__next")?.innerText||""})');
   assert('reading flow exposes the next message action', nextBar.visible && nextBar.button && !nextBar.link && nextBar.text.includes('다음 장면') && nextBar.text.includes('02 · 충분히 쉰 날') && nextBar.mobileButton && nextBar.mobileText.includes('충분히 쉰 날'), JSON.stringify(nextBar));
 
-  await evaluate('document.querySelector(".story-reader-next button")?.click()');
+  await evaluate('document.querySelector(".consumer-reel__next-button")?.click()');
   await waitForProgress('02 / 08');
   await wait(900);
-  const paged = await evaluate('(() => { const scenes=[...document.querySelectorAll(".story-reader-scene")]; return {progress:(document.querySelector(".story-reader-heading__count strong")?.innerText||"")+" / 08",activeTitle:document.querySelector(".story-reader-scene.is-active h3")?.innerText||"",visibleScenes:scenes.filter(item => getComputedStyle(item).display !== "none").length,stageTop:document.querySelector("#story-scene-hook")?.getBoundingClientRect().top||999}; })()');
+  const paged = await evaluate('(() => { const scenes=[...document.querySelectorAll(".story-reader-scene")]; return {progress:(document.querySelector(".consumer-reel__counter strong")?.innerText||"")+" / 08",activeTitle:document.querySelector(".story-reader-scene.is-active h2")?.innerText||"",visibleScenes:scenes.filter(item => getComputedStyle(item).display !== "none").length,stageTop:document.querySelector("#story-scene-hook")?.getBoundingClientRect().top ?? 999}; })()');
   assert('page-turn action advances one focused message', paged.progress === '02 / 08' && paged.activeTitle.includes('충분히 쉬고 난 날') && paged.visibleScenes === 1 && Math.abs(paged.stageTop) < 120, JSON.stringify(paged));
-  const nextBarAfterPageTurn = await evaluate('document.querySelector(".story-reader-next")?.innerText||""');
+  const nextBarAfterPageTurn = await evaluate('document.querySelector(".consumer-reel__next")?.innerText||""');
   assert('page-turn flow previews the following message', nextBarAfterPageTurn.includes('다음 장면') && nextBarAfterPageTurn.includes('03 · 뇌 과부하 상태'), nextBarAfterPageTurn);
 
-  await evaluate('document.querySelector(".story-reader-next button")?.click()');
+  await evaluate('document.querySelector(".consumer-reel__next-button")?.click()');
   await waitForProgress('03 / 08');
   assert('consumer next action advances the story', true);
+  await evaluate('document.querySelector("#consumer-reel")?.dispatchEvent(new WheelEvent("wheel", {deltaY: 120, bubbles: true, cancelable: true}))');
+  await waitForProgress('04 / 08');
+  assert('consumer reel wheel gesture advances one focused message', true);
 
   await send('Page.navigate', {url: routeUrl({card: '7'})});
   await waitForProgress('07 / 08');
@@ -130,7 +133,7 @@ try {
   await evaluate('document.querySelector(".info-panel__next")?.click()');
   await waitForProgress('08 / 08');
   assert('research panel next action continues the card flow', true);
-  const finalReelAction = await evaluate('({text:document.querySelector(".story-reader-next")?.innerText||"",href:document.querySelector(".story-reader-next a")?.getAttribute("href")||""})');
+  const finalReelAction = await evaluate('({text:document.querySelector(".consumer-reel__next")?.innerText||"",href:document.querySelector(".consumer-reel__next a")?.getAttribute("href")||""})');
   assert('last reading scene hands off to the video section', finalReelAction.text.includes('영상 검토 후보') && finalReelAction.href === '#video-showcase', JSON.stringify(finalReelAction));
 
   await evaluate('document.querySelector(".site-footer__research-button")?.click()');

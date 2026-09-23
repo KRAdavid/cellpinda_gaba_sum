@@ -54,7 +54,7 @@ try {
   await send('Page.navigate', {url: baseUrl});
   await wait(900);
   await capture('cellpinda-consumer-390-current.png');
-  await evaluate('document.querySelector(".story-reader-next button")?.click()');
+  await evaluate('document.querySelector(".consumer-reel__next-button")?.click()');
   await wait(1000);
   await capture('cellpinda-consumer-page-02-390-current.png');
 
