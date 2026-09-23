@@ -30,8 +30,10 @@ const discoveryQueries = [
   'GABA 신경전달물질 대학 연구 Shorts',
 ];
 const discoveryQueryFallbacks = {
-  '감마아미노부티르산 대학병원 의사 Shorts': ['GABA 대학병원 의사 Shorts', 'GABA doctor hospital Shorts'],
-  'GABA 신경전달물질 대학 연구 Shorts': ['GABA neurotransmitter university research Shorts', 'GABA neuroscience university Shorts'],
+  '가바 GABA 대학병원 신경과 Shorts': ['의사 GABA 신경전달물질 Shorts', 'GABA doctor Shorts'],
+  '가바 GABA 대학 연구 과학자 Shorts': ['과학자 GABA 신경전달물질 Shorts', 'GABA scientist Shorts'],
+  '감마아미노부티르산 대학병원 의사 Shorts': ['의사 GABA 신경전달물질 Shorts', 'GABA doctor hospital Shorts', 'GABA doctor Shorts'],
+  'GABA 신경전달물질 대학 연구 Shorts': ['과학자 GABA 신경전달물질 Shorts', 'GABA neuroscience university Shorts'],
 };
 
 const sources = [

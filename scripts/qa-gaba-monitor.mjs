@@ -32,7 +32,7 @@ assert('RSS feed collection is present', monitor.includes('feeds/videos.xml?chan
 assert('Shorts page fallback collection is present', monitor.includes('/shorts') && monitor.includes('parseShortsPage'));
 assert('similar-content keyword discovery is present', monitor.includes('discoveryQueries') && monitor.includes('search_query'));
 assert('search discovery has a mobile fallback', monitor.includes('fetchSearchResults') && monitor.includes('m.youtube.com/results?search_query=') && monitor.includes('const endpoints = ['));
-assert('institutional search retries with meaning-preserving variants', monitor.includes('discoveryQueryFallbacks') && monitor.includes('GABA 대학병원 의사 Shorts') && monitor.includes('GABA neurotransmitter university research Shorts') && monitor.includes('resolvedQuery') && monitor.includes('검색어 보완 경로 사용'));
+assert('institutional search retries with meaning-preserving variants', monitor.includes('discoveryQueryFallbacks') && monitor.includes('가바 GABA 대학병원 신경과 Shorts') && monitor.includes('가바 GABA 대학 연구 과학자 Shorts') && monitor.includes('의사 GABA 신경전달물질 Shorts') && monitor.includes('과학자 GABA 신경전달물질 Shorts') && monitor.includes('GABA neuroscience university Shorts') && monitor.includes('resolvedQuery') && monitor.includes('검색어 보완 경로 사용'));
 assert('authority-focused keyword discovery is present', monitor.includes('의사 GABA 신경전달물질 Shorts') && monitor.includes('과학자 GABA 신경전달물질 Shorts') && monitor.includes('전문가 자격 확인 신호') && monitor.includes('권위 후보 검색 발견'));
 assert('formal GABA name discovery is present', monitor.includes('감마아미노부티르산') && monitor.includes('gamma[-\\s]?aminobutyric\\s+acid'));
 assert('formal-name authority discovery is present', monitor.includes('감마아미노부티르산 의사 Shorts') && monitor.includes('감마아미노부티르산 과학자 Shorts'));
