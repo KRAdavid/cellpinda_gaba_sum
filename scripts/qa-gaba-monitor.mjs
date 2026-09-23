@@ -40,6 +40,7 @@ assert('daily monitor date uses Korea time', monitor.includes("timeZone: 'Asia/S
 assert('same-day reruns preserve the accumulated candidate list', monitor.includes('collectedDate') && monitor.includes('오늘 신규 후보(누적)') && monitor.includes('이번 실행 신규 후보') && monitor.includes('newCandidatesThisRun'));
 assert('inbox refreshes its last-run date on write', monitor.includes('const refreshedInbox = existing.replace') && monitor.includes('마지막 확인: ${checkedDate} 자동 모니터 실행') && /- 마지막 확인: \d{4}-\d{2}-\d{2} 자동 모니터 실행/.test(inbox));
 assert('workflow runs daily in the declared Korea timezone and includes report archive changes', /cron:\s*'\d+\s+\d+\s+\*\s+\*\s+\*'/.test(workflow) && workflow.includes('timezone: "Asia/Seoul"') && workflow.includes('docs/gaba-video-daily') && workflow.includes('concurrency:'));
+assert('workflow run names expose the triggering event', workflow.includes('run-name: GABA Shorts monitor (${{ github.event_name }})'));
 assert('workflow publishes the daily review-log handoff', workflow.includes('docs/GABA_VIDEO_REVIEW_LOG.md') && workflow.includes('git add docs/GABA_VIDEO_INBOX.md docs/GABA_VIDEO_DAILY_REPORT.md docs/GABA_VIDEO_REVIEW_LOG.md'));
 assert('daily report keeps candidates in review status', report.includes('자동 공개: 0건') && report.includes('PENDING_REVIEW'));
 assert('manual discovery descriptions enter the same triage path', monitor.includes("line.startsWith('- 공개 설명')") && inbox.includes('공개 설명(검색 결과)'));

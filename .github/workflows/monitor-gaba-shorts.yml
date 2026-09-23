@@ -1,4 +1,5 @@
 name: Monitor GABA Shorts candidates
+run-name: GABA Shorts monitor (${{ github.event_name }})
 
 on:
   schedule:
