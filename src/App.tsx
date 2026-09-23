@@ -2041,6 +2041,7 @@ export default function App() {
             <button type="button" className="story-nav-button story-next-button" onClick={() => goTo(active + 1)} disabled={active === slides.length - 1} aria-label="다음 장면"><span className="nav-label">다음 장면</span><span aria-hidden="true">→</span></button>
             {presentationMode ? <>
               <button type="button" className="story-share-button" onClick={shareCardLink}>현재 장면 링크 공유</button>
+              <button type="button" className="story-share-button story-presenter-copy-button" data-presenter-quick-copy onClick={copyPresenterSceneBrief}>설명문 복사</button>
               <button type="button" className="story-presentation-toggle" onClick={exitPresentation}>발표 모드 종료</button>
             </> : <details className="story-secondary-controls">
               <summary>더 보기 <span aria-hidden="true">＋</span></summary>
