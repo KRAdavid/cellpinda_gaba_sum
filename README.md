@@ -21,6 +21,8 @@
 
 일반 교육 TF의 논점·결정·보류 사유는 [`docs/GABA_EDUCATION_DECISION_REGISTER.md`](docs/GABA_EDUCATION_DECISION_REGISTER.md)에 기록합니다. 실제 구성원 초대와 첫 업무 배정은 [`docs/GABA_EDUCATION_TEAM_INVITE.md`](docs/GABA_EDUCATION_TEAM_INVITE.md)를 사용합니다.
 
+사용자가 위임한 AI 승인 대리의 현재 판단과 제한 범위는 [`docs/AI_PROXY_APPROVAL_2026-09-23.md`](docs/AI_PROXY_APPROVAL_2026-09-23.md)에서 확인합니다. `AI-PROXY-APPROVED_WITH_HUMAN_GATES`는 기술·편집 운영의 조건부 승인이지 과학·의학·권리·준법 또는 사람 현장 승인이 아닙니다.
+
 이 저장소는 기존 [cellpinda_GABA](https://github.com/KRAdavid/cellpinda_GABA) 공식 배포 사이트와 구분되는 별도 일반 GABA 교육 페이지입니다. 공개 화면에는 일반 생리·일반 인체 연구·영상 검토 후보가 포함되며, 사람 검토를 마친 권위 영상만 승인 영상으로 별도 판정합니다.
 
 소비자 화면의 핵심 흐름은 접속 즉시 `GABA를 모르는 사람도 3분 안에 이해하는 흐름`을 한 화면 한 메시지의 세로 리더로 보여줍니다. 카드 목록 대신 모바일 릴스처럼 현재 장면만 크게 띄우고, 우측 진행 레일·다음 장면 버튼·휠·키보드·스와이프로 한 장면씩 이동합니다. 연구 링크는 먼저 페이지 안의 정보 패널로 열고, `다음 장면`으로 읽기 흐름을 이어갑니다. 원문 링크는 패널을 읽은 뒤 선택하는 보조 경로입니다. 사람 검토를 마친 국내 `PUBLISH_GENERAL` 영상이 생기면 별도의 `검토 완료 영상` 흐름으로 자동 연결하고, 승인 건이 없을 때는 그 영역을 노출하지 않습니다. 그 뒤에는 오늘 공유된 영상 검토 후보를 별도 섹션으로 분리해 현재 영상 한 편의 히어로 샷·예비 요약·인물 소개와 compact한 영상 순서 인덱스를 제공합니다. `이전 영상`·`다음 영상` 또는 인덱스로 한 편씩 이동하고, 상세 패널 안의 YouTube 공식 플레이어로 원문을 먼저 재생한 뒤 필요할 때 원문 링크를 선택하게 합니다. `PUBLISH_GENERAL` 승인 영상으로 확정되기 전에는 권위·효능 근거처럼 소개하지 않습니다. 소비자 화면에는 장면 링크 공유만 보조 행동으로 제공하고 발표자·TF 기능은 노출하지 않습니다. 사업자용 소개 화면·장면형 발표 화면·영상 DB·운영 보드는 전용 발표 URL에서만 확인합니다. 상세 결정과 수용 기준은 [`docs/CONSUMER_REEL_REDESIGN.md`](docs/CONSUMER_REEL_REDESIGN.md), 퍼블리싱 TF의 역할·검토 기준은 [`docs/PUBLISHING_TF.md`](docs/PUBLISHING_TF.md)에 기록합니다.

@@ -4,6 +4,7 @@
 
 | ID | 결정 질문 | 결정권자 | 실행 담당·백업 | 증거·산출물 | 상태 | 다음 검토 |
 | --- | --- | --- | --- | --- | --- | --- |
+| AI-PROXY-01 | 공개본의 기술·편집 운영을 사용자 위임에 따라 AI가 조건부 승인 대리할 것인가? | 사용자 위임에 따른 AI-OPS (범위 한정) | AI-OPS / 인간 PM 미배정 | `AI_PROXY_APPROVAL_2026-09-23.md`·최신 Pages·정적/브라우저 QA | AI-PROXY-APPROVED_WITH_HUMAN_GATES | 사람의 과학·의학·영상·권리·실기기·현장 게이트 해소 시 재검토 |
 | SCOPE-01 | 제품·후기·판매 정보를 제외한 일반 GABA 교육 자료로 범위를 확정할 것인가? | PM + SCIENCE | AI-OPS / PM 미배정 | `GABA_EDUCATION_SCOPE.md` | DECIDED | 킥오프 |
 | CLAIM-01 | GABA의 일반 정의와 신경 신호 조절을 어떤 용어로 설명할 것인가? | SCIENCE + MEDICAL | AI-OPS / UX 미배정 | `GABA_SOURCE_REGISTER.md` SRC-01~02 | OPEN | 첫 회의 |
 | CLAIM-02 | 수면·스트레스 연구의 결과와 한계를 어떤 문장으로 보여줄 것인가? | SCIENCE + MEDICAL | AI-OPS / UX 미배정 | `GABA_SOURCE_REGISTER.md` SRC-03~05 | OPEN | 첫 회의 |
