@@ -51,7 +51,7 @@ assert('monitor generates a presenter snapshot', monitor.includes('snapshotPath'
 assert('workflow stages presenter snapshot changes', workflow.includes('src/gabaMonitorSnapshot.ts'));
 assert('successful monitor run triggers Pages publication', deployWorkflow.includes('workflow_run:') && deployWorkflow.includes('Monitor GABA Shorts candidates') && deployWorkflow.includes("github.event.workflow_run.conclusion == 'success'"));
 assert('presenter snapshot keeps publication gated', snapshot.includes('GABA_MONITOR_SNAPSHOT') && snapshot.includes('pendingReview') && snapshot.includes('autoPublish') && snapshot.includes('"autoPublish": 0'));
-assert('monitor snapshot keeps recent history', monitor.includes('readPreviousMonitorHistory') && monitor.includes('slice(-14)') && snapshot.includes('"history"') && snapshot.includes('"captionBodiesAvailable"') && snapshot.includes('"captionBodyRateLimited"'));
+assert('monitor snapshot keeps recent history and schedule', monitor.includes('readPreviousMonitorHistory') && monitor.includes('slice(-14)') && monitor.includes("scheduleKst: '매일 09:17 KST'") && snapshot.includes('"scheduleKst": "매일 09:17 KST"') && snapshot.includes('"history"') && snapshot.includes('"captionBodiesAvailable"') && snapshot.includes('"captionBodyRateLimited"'));
 assert('presenter exposes recent monitor history', app.includes('monitor-snapshot__history') && app.includes('최근 감리 추이') && app.includes('pendingDelta'));
 assert('presenter and meeting brief expose the longitudinal team review log', monitor.includes('reviewLogUrl') && snapshot.includes('reviewLogUrl') && app.includes('팀 리뷰 로그'));
 assert('meeting brief distinguishes daily and run candidate counts', app.includes('오늘 신규 후보(누적)') && app.includes('이번 실행 신규 후보'));

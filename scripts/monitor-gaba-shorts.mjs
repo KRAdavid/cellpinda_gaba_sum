@@ -567,6 +567,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, successfulSour
     .slice(-14);
   const snapshot = {
     checkedAt: date,
+    scheduleKst: '매일 09:17 KST',
     sourceChannels: successfulSources,
     registeredChannels: sources.length,
     discoveryQueries: successfulSearches,
