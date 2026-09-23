@@ -1,17 +1,17 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-23",
-  "checkedAtKst": "2026-09-23 18:16:43 KST",
+  "checkedAtKst": "2026-09-23 18:23:17 KST",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
   "registeredChannels": 8,
-  "discoveryQueries": 8,
-  "totalDiscoveryQueries": 8,
-  "newCandidates": 16,
+  "discoveryQueries": 10,
+  "totalDiscoveryQueries": 12,
+  "newCandidates": 17,
   "newCandidatesThisRun": 1,
-  "pendingReview": 107,
+  "pendingReview": 108,
   "scienceMedicalPriority": 68,
-  "videoPriority": 39,
+  "videoPriority": 40,
   "pendingQueue": [
     {
       "id": "PENDING-20260923-AKcZw2nqU0w",
@@ -101,6 +101,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
+      "id": "PENDING-20260923-bZ3jqw_vf_E",
+      "title": "How does the GABA receptor work in the body?",
+      "url": "https://www.youtube.com/watch?v=bZ3jqw_vf_E",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "일반 설명 후보",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "KEYWORD_DISCOVERY",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
       "id": "PENDING-20260923-JmYAdnxLGtA",
       "title": "The GABA-A receptor is a protein complex that acts as the brain's main brake.",
       "url": "https://www.youtube.com/watch?v=JmYAdnxLGtA",
@@ -133,19 +146,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "효과·안전성 단정 신호",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
-      "id": "PENDING-20260922-KBC6QV2NDDU",
-      "title": "Boost GABA Production: Your Brain's Natural Brake #shorts",
-      "url": "https://www.youtube.com/watch?v=KBC6QV2NDDU",
-      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "일반 설명 후보",
         "권위 후보 검색 발견"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
@@ -244,11 +244,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-23",
-      "newCandidates": 16,
+      "newCandidates": 17,
       "newCandidatesThisRun": 1,
-      "pendingReview": 107,
+      "pendingReview": 108,
       "scienceMedicalPriority": 68,
-      "videoPriority": 39,
+      "videoPriority": 40,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
