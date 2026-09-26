@@ -32,6 +32,7 @@ export type GabaVideoRecord = {
   sourceChannelId?: string;
   speaker: string;
   authorityEvidenceUrl?: string;
+  authoritySourceCheckedAt?: string;
   researchEvidenceUrl?: string;
   summary: string;
   operatorSentence: string;
@@ -126,6 +127,7 @@ const GABA_VIDEO_DB_RECORDS: GabaVideoRecord[] = [
     operatorSentence: '국가 연구회 채널의 신경전달물질 개론 후보로, GABA 일반 기능을 설명하는 실제 구간과 근거를 확인한 뒤 원문 링크 방식으로 검토합니다.',
     personSummary: '국가과학기술연구회 영상 설명은 안전성평가연구소 백정엽 박사와 함께 설명한다고 밝히며, 국가독성과학연구소 공식 자료에는 백정엽 박사의 연구·정책협력 활동이 확인됩니다. 이는 인물·소속 확인용이며 영상의 실제 발언·GABA 주장·공개 승인을 자동으로 의미하지 않습니다.',
     authorityEvidenceUrl: 'https://www.kitox.re.kr/doksa/achievement/mem_index/page/2',
+    authoritySourceCheckedAt: '2026-09-27',
     status: 'HOLD',
     statusReason: '공식 연구기관 채널과 연구자 출처는 확인됐지만, GABA 일반 기능 구간·자막·발언 근거·사용 조건을 사람 감리하기 전입니다.',
     checkedAt: '2026-09-23',
@@ -176,6 +178,7 @@ const GABA_VIDEO_DB_RECORDS: GabaVideoRecord[] = [
     operatorSentence: '32분대 GABA·글루타메이트 설명이 실제 원문에서 어떻게 말해지는지 확인한 뒤, 일반 신호 조절 설명 후보로만 검토합니다.',
     personSummary: '서울대학교병원 공식 프로필은 이승훈을 신경과 교수로 소개합니다. 이 소속 확인은 인물 자격을 확인하는 보조 출처이며, 해당 영상의 실제 화자·발언·연구 인용·공개 승인이나 제품 효능을 대신하지 않습니다.',
     authorityEvidenceUrl: 'https://raredisease.snuh.org/doctors/adult/lee-seung-hoon/',
+    authoritySourceCheckedAt: '2026-09-27',
     status: 'HOLD',
     statusReason: '서울대병원 교수라는 인물 출처는 확인했지만, 영상의 GABA 구간은 제3자 AI 요약과 타임코드 후보에 의존하고 MSG·식품 설명과 혼재되어 있습니다. 원문 자막·실제 화자·근거·권리 확인 전에는 일반 공개 자료로 사용하지 않습니다.',
     checkedAt: '2026-09-23',

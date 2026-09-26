@@ -1204,7 +1204,7 @@ export default function App() {
   };
 
   const exportVideoDbCsv = () => {
-    const headers = ['ID', '원본 제목', '소비자 제목', '영상 URL', '채널', '화자', '상태', '상태 사유', '무엇을 어떻게 소개했나', '인물 소개', '요약 근거', '권위', '근거', '주장 범위', '권리', '사용 방식', '다음 감리 행동', '확인일'];
+    const headers = ['ID', '원본 제목', '소비자 제목', '영상 URL', '채널', '화자', '상태', '상태 사유', '무엇을 어떻게 소개했나', '인물 소개', '요약 근거', '권위', '근거', '주장 범위', '권리', '사용 방식', '다음 감리 행동', '확인일', '인물 출처 확인일'];
     const rows = activePresenterVideos.map(video => [
       video.id,
       video.title,
@@ -1224,6 +1224,7 @@ export default function App() {
       VIDEO_AUDIT_LABELS.usageMode[video.audit.usageMode],
       video.audit.nextAction,
       video.checkedAt,
+      video.authoritySourceCheckedAt ?? '',
     ]);
     downloadCsvFile(`gaba-video-db-${presenterMonitor?.checkedAt ?? 'pending'}.csv`, [headers, ...rows]);
     setVideoReviewMessage('영상 DB CSV를 내려받았습니다. 공개 승인 상태는 바뀌지 않습니다.');
@@ -2309,7 +2310,7 @@ export default function App() {
                 </dl> : null}
                 <p className="video-db-detail__next"><strong>{presentationMode ? '다음 감리 행동' : '더 알아보기'}</strong><br />{presentationMode ? selectedVideo.audit.nextAction : '영상의 전체 내용과 출연자 설명은 YouTube 원문에서 확인하세요.'}</p>
                 <p className="info-panel__status">{presentationMode ? selectedVideo.statusReason : 'GABA를 이해하기 위한 참고 영상입니다.'}</p>
-                <p className="video-db-detail__meta">{presentationMode ? <>확인일 {selectedVideo.checkedAt} · 채널 {selectedVideo.channel} · 화자 {selectedVideo.speaker}{selectedVideo.sourceChannelUrl ? <> · <a href={selectedVideo.sourceChannelUrl} target="_blank" rel="noopener noreferrer">채널 원문 보기 ↗</a></> : null}{selectedVideo.authorityEvidenceUrl ? <> · <a href={selectedVideo.authorityEvidenceUrl} target="_blank" rel="noopener noreferrer">화자·소속 확인 출처 ↗</a></> : null}{selectedVideo.researchEvidenceUrl ? <> · <a href={selectedVideo.researchEvidenceUrl} target="_blank" rel="noopener noreferrer">관련 연구 기록 ↗</a></> : null}</> : <>채널 {selectedVideo.channel} · 출연자 {selectedVideo.speaker}</>}</p>
+                <p className="video-db-detail__meta">{presentationMode ? <>확인일 {selectedVideo.checkedAt}{selectedVideo.authoritySourceCheckedAt ? <> · 인물 출처 확인일 {selectedVideo.authoritySourceCheckedAt}</> : null} · 채널 {selectedVideo.channel} · 화자 {selectedVideo.speaker}{selectedVideo.sourceChannelUrl ? <> · <a href={selectedVideo.sourceChannelUrl} target="_blank" rel="noopener noreferrer">채널 원문 보기 ↗</a></> : null}{selectedVideo.authorityEvidenceUrl ? <> · <a href={selectedVideo.authorityEvidenceUrl} target="_blank" rel="noopener noreferrer">화자·소속 확인 출처 ↗</a></> : null}{selectedVideo.researchEvidenceUrl ? <> · <a href={selectedVideo.researchEvidenceUrl} target="_blank" rel="noopener noreferrer">관련 연구 기록 ↗</a></> : null}</> : <>채널 {selectedVideo.channel} · 출연자 {selectedVideo.speaker}</>}</p>
                 {presentationMode && selectedVideoReviewDraft ? <details className="video-review-draft">
                   <summary><span>이 영상 감리 기록 초안</span><strong>{selectedReviewCheckCount}/5 확인 <span aria-hidden="true">＋</span></strong></summary>
                   <div className="video-review-draft__body">
