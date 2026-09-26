@@ -77,6 +77,7 @@ assert('presenter and meeting brief expose the longitudinal team review log', mo
 assert('meeting brief distinguishes daily and run candidate counts', app.includes('오늘 신규 후보(누적)') && app.includes('이번 실행 신규 후보'));
 assert('presenter snapshot includes human decision gates', snapshot.includes('humanRoleAssigned') && snapshot.includes('humanSourceReviewed') && snapshot.includes('registeredVideoApproved') && snapshot.includes('domesticPublicApproved') && snapshot.includes('domesticVideoTotal') && snapshot.includes('firstMeetingReady'));
 assert('presenter exposes the exact schedule expression without treating it as approval', app.includes('scheduleExpression') && app.includes('예약 트리거 표현식') && app.includes('예약 실행 증거와 사람 감리는 별도'));
+assert('presenter treats yesterday schedule heartbeat as pending today', app.includes("timeZone: 'Asia/Seoul'") && app.includes('snapshot.checkedAt === getTodayKst()') && app.includes('예약 증거 대기 · 마지막 확인'));
 assert('monitor snapshot source gate matches the source register', snapshotSourceTotal === sourceRegisterCount);
 assert('monitor checks registered video source links', monitor.includes('checkRegisteredVideoLinks') && monitor.includes('registeredVideoLinksChecked') && monitor.includes('registeredVideoLinkWarnings'));
 assert('daily report exposes registered link health', report.includes('등록 영상 원문 링크') && report.includes('링크 경고'));

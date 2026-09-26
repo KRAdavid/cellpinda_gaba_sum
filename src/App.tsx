@@ -380,10 +380,20 @@ const VIDEO_AUDIT_LABELS = {
   usageMode: {SOURCE_LINK: '원문 링크', EMBED_IF_ALLOWED: '허용 시 임베드', REVIEW_ONLY: '검토용', EXCLUDE: '공개 제외'},
 } as const;
 
+const getTodayKst = () => new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Asia/Seoul',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+}).format(new Date());
+
 const getMonitorScheduleStatus = (snapshot: MonitorSnapshot | null | undefined) => {
   if (!snapshot) return {label: '예약 실행 확인 전', tone: 'pending' as const};
-  if (String(snapshot.runOrigin) === 'GitHub Actions 예약 실행') {
+  if (String(snapshot.runOrigin) === 'GitHub Actions 예약 실행' && snapshot.checkedAt === getTodayKst()) {
     return {label: '예약 실행 확인', tone: 'ready' as const};
+  }
+  if (String(snapshot.runOrigin) === 'GitHub Actions 예약 실행') {
+    return {label: `예약 증거 대기 · 마지막 확인 ${snapshot.checkedAt}`, tone: 'pending' as const};
   }
   return {label: '수동 실행 · 예약 증거 대기', tone: 'pending' as const};
 };
