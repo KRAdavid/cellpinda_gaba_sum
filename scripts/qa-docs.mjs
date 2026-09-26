@@ -68,6 +68,7 @@ const checks = [
   ['AI proxy approval records the delegated scope', files.aiProxy, 'AI-PROXY-APPROVED_WITH_HUMAN_GATES'],
   ['AI proxy keeps human gates', files.aiProxy, '법률·광고·식품 표시·의료 준법 판단'],
   ['AI proxy does not approve public authority videos', files.aiProxy, '국내 공개 승인 0건'],
+  ['AI proxy records the latest scheduled-run evidence without approving human review', files.aiProxy, '예약 실행 증거는 확보했지만 사람 감리·공개 승인과는 별도'],
   ['education invite is product-free', files.educationInvite, '제품명·가격·구성·섭취량·후기·판매 링크·제품 효능은 이 TF의 공개 범위가 아니다'],
   ['education invite defines human review roles', files.educationInvite, 'SCIENCE'],
   ['education invite keeps approval on hold before human input', files.educationInvite, '역할 이름이나 회의 시간이 입력되기 전에는 `HOLD`로 유지한다'],
@@ -90,6 +91,7 @@ const failures = checks
   .filter(([, content, expected]) => !content.includes(expected))
   .map(([label, , expected]) => `${label}: ${expected}`);
 if (!files.videoDb.includes('https://pubmed.ncbi.nlm.nih.gov/23574805/') || files.videoDb.includes('https://pubmed.ncbi.nlm.nih.gov/31869147/')) failures.push('video DB general physiology reference is out of sync with the source register');
+if (files.aiProxy.includes('실제 `event=schedule` 실행 증거 대기')) failures.push('AI proxy approval keeps stale scheduled-run waiting language after schedule evidence was confirmed');
 
 const readmeDocLinks = [...files.readme.matchAll(/\]\((docs\/[^)]+)\)/g)].map(match => match[1]);
 for (const relativePath of readmeDocLinks) {
