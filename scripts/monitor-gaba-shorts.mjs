@@ -183,6 +183,16 @@ const getRegisteredEvidenceUrls = () => {
   ])];
 };
 
+const getRegisteredAuthoritySourceDateHealth = () => {
+  const sourcePath = path.join(root, 'src', 'gabaVideos.ts');
+  if (!fs.existsSync(sourcePath)) return {evidenceSources: 0, checked: 0, missing: 0};
+  const source = fs.readFileSync(sourcePath, 'utf8');
+  const recordBlocks = source.match(/\{\n    id: '[^']+'[\s\S]*?\n  \},/g) ?? [];
+  const authorityRecords = recordBlocks.filter(block => /\n\s+authorityEvidenceUrl: '([^']+)'/.test(block));
+  const checked = authorityRecords.filter(block => /\n\s+authoritySourceCheckedAt: '([^']+)'/.test(block)).length;
+  return {evidenceSources: authorityRecords.length, checked, missing: authorityRecords.length - checked};
+};
+
 const checkUrlHealth = async (urls, userAgent) => {
   const warnings = [];
   let healthy = 0;
@@ -730,7 +740,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
-const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, authorityMetadata, captionHealth, captionBodyHealth, previousHistory}) => {
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, authorityMetadata, authoritySourceDateHealth, captionHealth, captionBodyHealth, previousHistory}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
     .sort(reviewEntrySort(date));
@@ -842,6 +852,9 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: 
     registeredEvidenceLinksChecked: evidenceHealth.checked,
     registeredEvidenceLinksHealthy: evidenceHealth.healthy,
     registeredEvidenceLinkWarnings: evidenceHealth.warnings.length,
+    registeredAuthoritySourcesWithEvidence: authoritySourceDateHealth.evidenceSources,
+    registeredAuthoritySourceDatesChecked: authoritySourceDateHealth.checked,
+    registeredAuthoritySourceDatesMissing: authoritySourceDateHealth.missing,
     registeredVideoMetadataChecked: metadataHealth.checked,
     registeredVideoMetadataHealthy: metadataHealth.healthy,
     registeredVideoMetadataWarnings: metadataHealth.warnings.length,
@@ -869,7 +882,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: 
   return `export const GABA_MONITOR_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)} as const;\n`;
 };
 
-const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, candidates, runCandidateCount, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
+const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, candidates, runCandidateCount, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, authoritySourceDateHealth, captionHealth, captionBodyHealth}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
@@ -892,6 +905,7 @@ const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSour
     `- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: ${candidates.filter(item => item.publicationGate === 'PRODUCT_BRAND_QUARANTINE').length}건`,
     `- 등록 영상 원문 링크: ${linkHealth.healthy}/${linkHealth.checked} 접근 확인 · 링크 경고 ${linkHealth.warnings.length}건`,
     `- 권위·연구 출처 링크: ${evidenceHealth.healthy}/${evidenceHealth.checked} 접근 확인 · 출처 링크 경고 ${evidenceHealth.warnings.length}건`,
+    `- 인물 출처 확인일: ${authoritySourceDateHealth.checked}/${authoritySourceDateHealth.evidenceSources} 기록 · 미기록 ${authoritySourceDateHealth.missing}건 · 이 날짜는 영상 발언·자막·권리·공개 승인이 아님`,
     `- 등록 YouTube 메타데이터: ${metadataHealth.healthy}/${metadataHealth.checked} 제목·채널 확인 · 메타데이터 경고 ${metadataHealth.warnings.length}건`,
     `- 등록 YouTube 자막 트랙: ${captionHealth.available}/${captionHealth.checked} watch 페이지에서 발견 · 자막 경고 ${captionHealth.warnings.length}건`,
     `- 등록 YouTube 자막 본문: ${captionBodyHealth.available}/${captionBodyHealth.checked} 본문 확인 · 본문 경고 ${captionBodyHealth.warnings.length}건 · HTTP 429 접근 제한 ${captionBodyHealth.rateLimited}건`,
@@ -968,7 +982,7 @@ const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSour
   ].join('\n');
 };
 
-const appendDailyReviewLog = ({checkedDate: date, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, candidates, runCandidateCount, pendingReview, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth}) => {
+const appendDailyReviewLog = ({checkedDate: date, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, candidates, runCandidateCount, pendingReview, linkHealth, evidenceHealth, metadataHealth, authoritySourceDateHealth, captionHealth, captionBodyHealth}) => {
   if (!fs.existsSync(reviewLogPath)) return;
   const existing = fs.readFileSync(reviewLogPath, 'utf8');
   const marker = `## ${date} 자동 모니터 실행 기록`;
@@ -981,6 +995,8 @@ const appendDailyReviewLog = ({checkedDate: date, runOrigin: origin, successfulS
     `제품·브랜드 신호 후보 ${productBrandCandidates}건은 일반 GABA 공개 큐에서 자동 제외했으며, 모든 후보는 사람의 VIDEO·SCIENCE/MEDICAL·RIGHTS 감리 전 PENDING_REVIEW로 유지한다. 자동 공개는 0건이다.`,
     '',
     `등록 원문 링크 ${linkHealth.healthy}/${linkHealth.checked}, 권위·연구 출처 링크 ${evidenceHealth.healthy}/${evidenceHealth.checked}, YouTube 메타데이터 ${metadataHealth.healthy}/${metadataHealth.checked}, 자막 트랙 ${captionHealth.available}/${captionHealth.checked}, 자막 본문 ${captionBodyHealth.available}/${captionBodyHealth.checked}를 확인했다.`,
+    '',
+    `인물 출처 확인일은 공식 인물·소속 출처가 연결된 ${authoritySourceDateHealth.evidenceSources}건 중 ${authoritySourceDateHealth.checked}건에 기록되어 있으며, ${authoritySourceDateHealth.missing}건은 사람 또는 운영자가 출처 확인일을 보완해야 한다. 이 지표는 영상 발언·자막·권리·공개 승인을 뜻하지 않는다.`,
     '',
     `자막 본문·화자·과학 주장·권리 확인 전에는 요약·권위·공개 상태를 승격하지 않는다. 다음 행동은 일일 리뷰 세션에서 원문 타임코드와 사람 담당자를 지정하는 것이다.`,
     '',
@@ -1071,6 +1087,7 @@ const main = async () => {
 
   const linkHealth = await checkRegisteredVideoLinks();
   const evidenceHealth = await checkRegisteredEvidenceLinks();
+  const authoritySourceDateHealth = getRegisteredAuthoritySourceDateHealth();
   const metadataHealth = await checkRegisteredYouTubeMetadata();
   const captionHealth = await checkRegisteredYouTubeCaptionTracks();
   const captionBodyHealth = await checkRegisteredYouTubeCaptionBodies(captionHealth);
@@ -1080,6 +1097,7 @@ const main = async () => {
   console.log('- new candidates: ' + candidates.length);
   console.log('- registered video links: ' + linkHealth.healthy + '/' + linkHealth.checked + ' healthy');
   console.log('- registered authority/research evidence links: ' + evidenceHealth.healthy + '/' + evidenceHealth.checked + ' healthy');
+  console.log('- registered authority source dates: ' + authoritySourceDateHealth.checked + '/' + authoritySourceDateHealth.evidenceSources + ' recorded');
   console.log('- registered YouTube metadata: ' + metadataHealth.healthy + '/' + metadataHealth.checked + ' healthy');
   console.log('- registered YouTube caption tracks: ' + captionHealth.available + '/' + captionHealth.checked + ' available');
   console.log('- registered YouTube caption bodies: ' + captionBodyHealth.available + '/' + captionBodyHealth.checked + ' available');
@@ -1140,7 +1158,7 @@ const main = async () => {
     .map(inboxCandidateRecord)
     .filter(candidate => candidate.id);
   const pendingReview = parseInboxEntries(updatedInbox).filter(entry => entry.status === 'PENDING_REVIEW').length;
-  const report = dailyReport({checkedAtKst, runOrigin, successfulSources, successfulSearches, searchFallbacksUsed, candidates: dailyCandidates, runCandidateCount: candidates.length, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, captionHealth, captionBodyHealth});
+  const report = dailyReport({checkedAtKst, runOrigin, successfulSources, successfulSearches, searchFallbacksUsed, candidates: dailyCandidates, runCandidateCount: candidates.length, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, authoritySourceDateHealth, captionHealth, captionBodyHealth});
   fs.writeFileSync(reportPath, report, 'utf8');
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
   const reviewSession = reviewSessionMarkdown({inboxText: updatedInbox, checkedDate});
@@ -1158,6 +1176,7 @@ const main = async () => {
     linkHealth,
     evidenceHealth,
     metadataHealth,
+    authoritySourceDateHealth,
     captionHealth,
     captionBodyHealth,
   });
@@ -1175,6 +1194,7 @@ const main = async () => {
     evidenceHealth,
     metadataHealth,
     authorityMetadata,
+    authoritySourceDateHealth,
     captionHealth,
     captionBodyHealth,
     previousHistory,

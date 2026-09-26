@@ -64,7 +64,11 @@ type VideoReviewDraft = {
   updatedAt: string;
 };
 type VideoReviewDrafts = Record<string, VideoReviewDraft>;
-type MonitorSnapshot = typeof import('./gabaMonitorSnapshot')['GABA_MONITOR_SNAPSHOT'];
+type MonitorSnapshot = typeof import('./gabaMonitorSnapshot')['GABA_MONITOR_SNAPSHOT'] & {
+  registeredAuthoritySourcesWithEvidence?: number;
+  registeredAuthoritySourceDatesChecked?: number;
+  registeredAuthoritySourceDatesMissing?: number;
+};
 type MonitorCandidate = MonitorSnapshot['pendingQueue'][number] | MonitorSnapshot['authorityQueue'][number] | MonitorSnapshot['productBrandQueue'][number];
 type PresenterData = {
   activeVideos: GabaVideoRecord[];
@@ -2195,6 +2199,7 @@ export default function App() {
                 <p>검토 대기 {presenterMonitor?.pendingReview ?? 0}건 · SCIENCE/MEDICAL 우선 {presenterMonitor?.scienceMedicalPriority ?? 0}건 · 오늘 신규 후보 {presenterMonitor?.newCandidates ?? 0}건 · 이번 실행 {presenterMonitor?.newCandidatesThisRun ?? 0}건 · 자동 공개 {presenterMonitor?.autoPublish ?? 0}건</p>
                 <p>등록 영상 원문 링크 {presenterMonitor?.registeredVideoLinksHealthy ?? 0}/{presenterMonitor?.registeredVideoLinksChecked ?? 0} 접근 확인 · 링크 경고 {presenterMonitor?.registeredVideoLinkWarnings ?? 0}건</p>
                 <p>권위·연구 출처 링크 {presenterMonitor?.registeredEvidenceLinksHealthy ?? 0}/{presenterMonitor?.registeredEvidenceLinksChecked ?? 0} 접근 확인 · 출처 링크 경고 {presenterMonitor?.registeredEvidenceLinkWarnings ?? 0}건</p>
+                {presenterMonitor?.registeredAuthoritySourcesWithEvidence != null ? <p>인물 출처 확인일 {presenterMonitor.registeredAuthoritySourceDatesChecked ?? 0}/{presenterMonitor.registeredAuthoritySourcesWithEvidence} 기록 · 미기록 {presenterMonitor.registeredAuthoritySourceDatesMissing ?? 0}건 · 영상 발언·권리·공개 승인과 별도</p> : null}
                 <p>등록 YouTube 메타데이터 {presenterMonitor?.registeredVideoMetadataHealthy ?? 0}/{presenterMonitor?.registeredVideoMetadataChecked ?? 0} 제목·채널 확인 · 메타데이터 경고 {presenterMonitor?.registeredVideoMetadataWarnings ?? 0}건</p>
                 <p>권위 후보 게시 채널 사전 확인 {presenterMonitor?.authorityMetadataHealthy ?? 0}/{presenterMonitor?.authorityMetadataChecked ?? 0} 확인 · 경고 {presenterMonitor?.authorityMetadataWarnings ?? 0}건 · 실제 화자·자격은 별도 검토</p>
                 <p>등록 YouTube 자막 트랙 {presenterMonitor?.registeredVideoCaptionTracksAvailable ?? 0}/{presenterMonitor?.registeredVideoCaptionTracksChecked ?? 0} 발견 · 자막 경고 {presenterMonitor?.registeredVideoCaptionTrackWarnings ?? 0}건</p>
