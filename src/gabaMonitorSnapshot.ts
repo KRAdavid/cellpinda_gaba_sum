@@ -1,6 +1,6 @@
 export const GABA_MONITOR_SNAPSHOT = {
-  "checkedAt": "2026-09-25",
-  "checkedAtKst": "2026-09-25 13:58:30 KST",
+  "checkedAt": "2026-09-26",
+  "checkedAtKst": "2026-09-26 13:58:51 KST",
   "runOrigin": "GitHub Actions 예약 실행",
   "scheduleKst": "매일 09:17 KST",
   "sourceChannels": 8,
@@ -13,29 +13,28 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "newCandidates": 2,
   "newCandidatesThisRun": 2,
-  "pendingReview": 125,
+  "pendingReview": 127,
   "scienceMedicalPriority": 76,
-  "videoPriority": 49,
+  "videoPriority": 51,
   "pendingQueue": [
     {
-      "id": "PENDING-20260925-rVGz6lONwc4",
-      "title": "What GABA Does for Anxiety #shorts",
-      "url": "https://www.youtube.com/watch?v=rVGz6lONwc4",
-      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
+      "id": "PENDING-20260926-9hInYdu5WzI",
+      "title": "The Magic of GABA",
+      "url": "https://www.youtube.com/watch?v=9hInYdu5WzI",
+      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
       "signals": [
-        "질환·치료 표현",
-        "권위 후보 검색 발견"
+        "일반 설명 후보"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
     },
     {
-      "id": "PENDING-20260925-CyC9NEFCLF4",
-      "title": "만성 이명·어지럼증 및 메니에르 증후군 5 가바 GABA 신호선 복구와 전신 삼투압 정산 마감 스펙의 실측 해법",
-      "url": "https://www.youtube.com/watch?v=CyC9NEFCLF4",
-      "channel": "YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery)",
+      "id": "PENDING-20260926-Hl9uGwLSURc",
+      "title": "What GABA Really Does for Your Mind & Body (You’ll Be Surprised!)",
+      "url": "https://www.youtube.com/watch?v=Hl9uGwLSURc",
+      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
       "priority": "VIDEO 우선",
       "signals": [
         "일반 설명 후보"
@@ -91,22 +90,6 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "authorityQueue": [
     {
-      "id": "PENDING-20260925-rVGz6lONwc4",
-      "title": "What GABA Does for Anxiety #shorts",
-      "url": "https://www.youtube.com/watch?v=rVGz6lONwc4",
-      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "질환·치료 표현",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "publisherName": "Dr. Tracey Marks",
-      "publisherUrl": "https://www.youtube.com/@DrTraceyMarks",
-      "publisherStatus": "oEmbed 게시 채널 확인",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
       "id": "PENDING-20260922-Lm2HJtSRBOI",
       "title": "가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)",
       "url": "https://www.youtube.com/watch?v=Lm2HJtSRBOI",
@@ -151,6 +134,22 @@ export const GABA_MONITOR_SNAPSHOT = {
       "authorityBasis": "KEYWORD_DISCOVERY",
       "publisherName": "Samantha Odonnell PMHNP",
       "publisherUrl": "https://www.youtube.com/@sammiep_thepsychnp",
+      "publisherStatus": "oEmbed 게시 채널 확인",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
+      "id": "PENDING-20260925-rVGz6lONwc4",
+      "title": "What GABA Does for Anxiety #shorts",
+      "url": "https://www.youtube.com/watch?v=rVGz6lONwc4",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "질환·치료 표현",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "KEYWORD_DISCOVERY",
+      "publisherName": "Dr. Tracey Marks",
+      "publisherUrl": "https://www.youtube.com/@DrTraceyMarks",
       "publisherStatus": "oEmbed 게시 채널 확인",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
@@ -297,6 +296,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "captionBodyWarnings": 12,
       "captionBodyRateLimited": 0,
       "autoPublish": 0
+    },
+    {
+      "date": "2026-09-26",
+      "newCandidates": 2,
+      "newCandidatesThisRun": 2,
+      "pendingReview": 127,
+      "scienceMedicalPriority": 76,
+      "videoPriority": 51,
+      "captionBodiesAvailable": 0,
+      "captionBodiesChecked": 12,
+      "captionBodyWarnings": 12,
+      "captionBodyRateLimited": 0,
+      "autoPublish": 0
     }
   ],
   "autoPublish": 0,
@@ -328,12 +340,12 @@ export const GABA_MONITOR_SNAPSHOT = {
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",
   "reviewLogUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_REVIEW_LOG.md",
-  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-09-25.md",
-  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-09-25.md",
-  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-09-25.md",
+  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-09-26.md",
+  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-09-26.md",
+  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-09-26.md",
   "kickoffUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md",
   "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md",
-  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-09-25.md",
+  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-09-26.md",
   "authorityMetadataChecked": 5,
   "authorityMetadataHealthy": 5,
   "authorityMetadataWarnings": 0
