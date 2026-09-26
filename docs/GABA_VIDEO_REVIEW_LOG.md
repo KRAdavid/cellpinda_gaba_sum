@@ -324,3 +324,20 @@ VID-02의 공개 설명은 도파민·엔돌핀·세로토닌·글루타메이�
 국내 후보 중 공식 기관 출처가 연결된 VID-02·VID-04를 다시 확인했다. VID-02는 [국가독성과학연구소 공식 연구자 성과 목록](https://www.kitox.re.kr/doksa/achievement/mem_index/page/2)에서 백정엽 연구자와 신경독성·신경퇴행 관련 연구 키워드를 확인했고, VID-04는 [서울대학교병원 공식 이승훈 교수 프로필](https://raredisease.snuh.org/doctors/adult/lee-seung-hoon/)에서 신경과 소속과 교수 경력을 확인했다.
 
 이번 확인은 인물·소속·연구 분야의 출처를 보강한 것이다. 두 영상의 실제 화자 일치, GABA 발언·자막·타임코드, 과학적 주장 범위, 임베드·인용·재사용 권리까지 확인한 것은 아니므로 `authorityLevel`·`evidenceLevel`·`rightsStatus`·공개 판정은 변경하지 않는다. 두 후보는 계속 `HOLD`이며 소비자용 `검토 완료 영상`에도 연결하지 않는다. 결정은 **공식 인물 출처 추적성 보강 PASS / 영상 원문·자막·권리·사람 감리·공개 승인 HOLD**다.
+
+## 2026-09-27 08:14 KST Shorts 식별 메타데이터 사전 확인
+
+오늘 공유된 Shorts 8건을 YouTube oEmbed로 다시 조회해 제목·게시 채널·채널 원문 주소를 기록했다. 이 확인은 09:17 KST 예약 감리 전의 식별 정보 사전 확인이며, 영상 내용을 시청하거나 자막·실제 화자·자격·과학적 타당성·사용권을 확인한 것이 아니다. `SHORT-01`은 기존과 같이 재게시·원출처 미확인으로 소비자 후보에서 제외한다.
+
+| ID | 제목·게시 채널 | 채널 원문 |
+| --- | --- | --- |
+| SHORT-01 | [여에스더 "갱년기 잠 못 자면 노화 빨라져요" 수면제보다 안전한 영양제](https://www.youtube.com/shorts/Cnk0PGn9YBM) · 셀럽의 건강비결 | [채널](https://www.youtube.com/@Celeb_tip) |
+| SHORT-02 | [잠자기 어렵다면 수면제 말고 이것으로 해결하세요. #가바](https://www.youtube.com/shorts/RLAU1VWGsaI) · 교육하는 의사! 이동환TV | [채널](https://www.youtube.com/@doctorLeeTV) |
+| SHORT-03 | [신경을 안정시켜 수면에 도움되는 '가바'](https://www.youtube.com/shorts/vnocd9ZVJj0) · 영양과학자 양과자 | [채널](https://www.youtube.com/@snack-yang) |
+| SHORT-04 | [불면증에 가바 영양제가 좋다는 이유](https://www.youtube.com/shorts/BiZXS_ojLUA) · 브레인튜브 Brain Doctor | [채널](https://www.youtube.com/@브레인튜브BrainDoctor) |
+| SHORT-05 | [자율신경건강을 지켜줄 음식 - GABA 성분](https://www.youtube.com/shorts/7Zsxm9Wh2Yg) · 30년 자율신경, 정이안한의원TV | [채널](https://www.youtube.com/@JeongianTV) |
+| SHORT-06 | [영양제로 먹는 가바(GABA), 정말 효과 있을까?](https://www.youtube.com/shorts/rOFkZg09AoY) · SLEEP Dr. 신원철 꿀잠튜브 | [채널](https://www.youtube.com/@sleepdoctor1) |
+| SHORT-07 | [불안 완화를 위한 GABA 활용법](https://www.youtube.com/shorts/4MTqi-bapLY) · 마음 튼튼, 뇌연구소 바이탈라이즈 | [채널](https://www.youtube.com/@vitalize866) |
+| SHORT-08 | [가바는 어떤 역할을 하는 걸까?](https://www.youtube.com/shorts/4xGSHxkMYew) · 비엠한방내과 | [채널](https://www.youtube.com/@bm_k_clinic) |
+
+메타데이터가 확인됐어도 모든 후보는 기존 `HOLD`·`LIMITED_USE`·`EXCLUDE` 분류를 유지한다. 다음 단계는 예약 감리 리포트에서 변경·신규 후보를 확인하고, 사람 감리자가 원문 타임코드·발언·화자·권리·주장 범위를 기록하는 것이다. 결정은 **식별 메타데이터 추적성 기술 PASS / 영상 내용·자격·권리·공개 승인 HOLD**다.
