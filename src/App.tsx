@@ -2294,8 +2294,8 @@ export default function App() {
                   <p>{presentationMode ? '임베드가 제한되면 아래 원문 링크를 선택하세요. 플레이어 재생은 사람 감리·권위 확인·공개 승인을 의미하지 않습니다.' : '영상 전체 내용은 아래 YouTube 원문에서 확인할 수 있습니다.'}</p>
                 </section> : null}
                 <div className="video-db-detail__summary">
-                  <p><strong>{presentationMode ? '무엇을 어떻게 소개했나' : '영상 요약'}</strong><br />{presentationMode ? selectedVideo.summary : selectedVideo.publicSummary ?? selectedVideo.summary}</p>
-                  <p><strong>{presentationMode ? '인물 소개' : '출연자와 채널'}</strong><br />{presentationMode ? selectedVideo.personSummary : selectedVideo.publicPersonSummary ?? selectedVideo.personSummary}</p>
+                  <p><strong>무엇을 어떻게 소개했나</strong><br />{presentationMode ? selectedVideo.summary : selectedVideo.publicSummary ?? selectedVideo.summary}</p>
+                  <p><strong>인물 소개</strong><br />{presentationMode ? selectedVideo.personSummary : selectedVideo.publicPersonSummary ?? selectedVideo.personSummary}</p>
                 </div>
                  <div className="video-db-detail__operator"><strong>{presentationMode ? '사업자 설명 한 문장' : '한 문장으로 정리하면'}</strong><p>{presentationMode ? selectedVideo.operatorSentence : selectedVideo.publicOperatorSentence ?? selectedVideo.operatorSentence}</p>{presentationMode ? <><div className="video-db-detail__operator-actions"><button type="button" onClick={() => copyVideoOperatorSentence(selectedVideo)}>설명 문장 복사</button><button type="button" onClick={() => copyVideoCustomerBrief(selectedVideo)}>고객 설명 3문장 복사</button><button type="button" data-copy-video-review-link onClick={() => copyVideoReviewLink(selectedVideo)}>이 영상 감리 링크 복사</button></div><details className="video-db-detail__customer-brief"><summary>고객 설명 3문장 미리 보기 <span aria-hidden="true">＋</span></summary><ol>{getVideoCustomerBrief(selectedVideo).map(sentence => <li key={sentence}>{sentence}</li>)}</ol></details><small className="video-db-detail__customer-guard">고객 전달용 문장은 미승인 영상을 ‘원문 확인 전’으로 자동 정리합니다.</small><span aria-live="polite">{videoCopyMessage}</span></> : null}</div>
                 {presentationMode ? <dl className="video-db-audit" aria-label="영상 감리 필드">
@@ -2503,8 +2503,8 @@ export default function App() {
                 <div className="video-showcase__meta"><span>GABA 참고 영상</span></div>
                 <h3>{approvedVideo.publicTitle ?? approvedVideo.title}</h3>
                 <p className="video-showcase__channel">{approvedVideo.channel} · {approvedVideo.speaker}</p>
-                <p><strong>영상 요약</strong><br />{approvedVideo.publicSummary ?? approvedVideo.summary}</p>
-                <p><strong>출연자와 채널</strong><br />{approvedVideo.publicPersonSummary ?? approvedVideo.personSummary}</p>
+                <p><strong>무엇을 어떻게 소개했나</strong><br />{approvedVideo.publicSummary ?? approvedVideo.summary}</p>
+                <p><strong>인물 소개</strong><br />{approvedVideo.publicPersonSummary ?? approvedVideo.personSummary}</p>
                 <div className="video-showcase__actions"><button type="button" onClick={event => openVideoPanel(event.currentTarget, approvedVideo.id)}>영상 정보 보기 <span aria-hidden="true">＋</span></button><span className="video-showcase__source-note">YouTube에서 전체 영상 보기</span></div>
                 <div className="video-showcase__pager" aria-label="영상 이동"><button type="button" onClick={() => selectApprovedVideo(approvedVideoIndex - 1)} disabled={approvedVideoIndex === 0}>이전 영상</button><button type="button" onClick={() => selectApprovedVideo(approvedVideoIndex + 1)} disabled={approvedVideoIndex === approvedVideos.length - 1}>다음 영상 <span aria-hidden="true">→</span></button></div>
               </div>
@@ -2521,8 +2521,9 @@ export default function App() {
               <h2 id="video-showcase-title">영상은 짧게 보고,<br /><em>원문으로 확인하세요.</em></h2>
             </div>
             <div>
-              <p>GABA를 설명하는 영상을 한 편씩 살펴봅니다. 영상 요약과 출연자·채널 정보를 먼저 보고, 전체 내용은 페이지 안에서 이어서 확인할 수 있습니다.</p>
-              <p className="video-showcase__boundary">영상 요약은 제목과 설명을 바탕으로 정리했습니다. 전체 내용은 YouTube 원문에서 확인하세요.</p>
+              <p>GABA를 설명하는 영상을 한 편씩 살펴봅니다. 무엇을 어떻게 소개했는지와 인물 소개를 먼저 보고, 전체 내용은 페이지 안에서 이어서 확인할 수 있습니다.</p>
+              <p className="video-showcase__boundary">두 요약은 제목과 공개 설명을 바탕으로 정리했습니다. 전체 내용은 YouTube 원문에서 확인하세요.</p>
+              <p className="video-showcase__guide"><strong>먼저 볼 것</strong><span>무엇을 어떻게 소개했나</span><span>인물 소개</span><span>페이지 안에서 원문</span></p>
               <button type="button" className="video-showcase__db-button" onClick={event => openVideoPanel(event.currentTarget)}>영상 정보 보기 <span aria-hidden="true">↗</span></button>
             </div>
           </div>
@@ -2555,8 +2556,8 @@ export default function App() {
                 <p className="video-showcase__candidate-note" role="note"><strong>원문 확인 전 참고 영상</strong><span>요약은 제목·공개 설명을 바탕으로 정리했으며, 영상 전체 내용은 YouTube 원문에서 확인하세요.</span></p>
                 <h3>{showcaseVideo.publicTitle ?? showcaseVideo.title}</h3>
                 <p className="video-showcase__channel">{showcaseVideo.channel} · {showcaseVideo.speaker}</p>
-                <p><strong>영상 요약</strong><br />{showcaseVideo.publicSummary ?? showcaseVideo.summary}</p>
-                <p><strong>출연자와 채널</strong><br />{showcaseVideo.publicPersonSummary ?? showcaseVideo.personSummary}</p>
+                <p><strong>무엇을 어떻게 소개했나</strong><br />{showcaseVideo.publicSummary ?? showcaseVideo.summary}</p>
+                <p><strong>인물 소개</strong><br />{showcaseVideo.publicPersonSummary ?? showcaseVideo.personSummary}</p>
                 <div className="video-showcase__actions"><button type="button" data-open-video-review onClick={event => openVideoPanel(event.currentTarget, showcaseVideo.id)}>영상 정보 보기 <span aria-hidden="true">＋</span></button><button type="button" data-share-video-link onClick={shareShowcaseVideo}>이 영상 링크 공유 <span aria-hidden="true">↗</span></button><span className="video-showcase__source-note">YouTube 원문은 영상 정보에서 보기</span><span className="video-showcase__share-message" aria-live="polite">{showcaseShareMessage}</span></div>
                 <div className="video-showcase__pager" aria-label="영상 이동">
                   <button type="button" onClick={() => selectShowcaseVideo(showcaseVideoIndex - 1)} disabled={showcaseVideoIndex === 0}>이전 영상</button>
