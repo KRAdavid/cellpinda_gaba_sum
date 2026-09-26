@@ -75,6 +75,7 @@ type PresenterData = {
   tfDiscussionItems: typeof import('./tfBoard')['TF_DISCUSSION_ITEMS'];
   tfMeetingSteps: typeof import('./tfBoard')['TF_MEETING_STEPS'];
   tfWorkstreams: typeof import('./tfBoard')['TF_WORKSTREAMS'];
+  tfAutoConfig: typeof import('./tfAutoConfig')['TF_AUTOCONFIG'];
 };
 type MonitorReviewDrafts = Record<string, VideoReviewDraft>;
 type SourceReviewDecision = 'UNDECIDED' | 'USE_GENERAL' | 'REVISE' | 'HOLD';
@@ -607,6 +608,7 @@ export default function App() {
   const presenterTfDiscussionItems = presenterData?.tfDiscussionItems ?? [];
   const presenterTfMeetingSteps = presenterData?.tfMeetingSteps ?? [];
   const presenterTfWorkstreams = presenterData?.tfWorkstreams ?? [];
+  const presenterTfAutoConfig = presenterData?.tfAutoConfig;
   const approvedVideos = useMemo(() => DOMESTIC_PUBLIC_GABA_VIDEOS.map(video => {
     const videoId = video.url.match(/\/shorts\/([^?&#/]+)/)?.[1];
     return {
@@ -927,7 +929,8 @@ export default function App() {
       import('./gabaVideos'),
       import('./gabaMonitorSnapshot'),
       import('./tfBoard'),
-    ]).then(([videos, monitor, board]) => {
+      import('./tfAutoConfig'),
+    ]).then(([videos, monitor, board, autoConfig]) => {
       if (cancelled) return;
       setPresenterData({
         activeVideos: videos.ACTIVE_GABA_VIDEOS,
@@ -938,6 +941,7 @@ export default function App() {
         tfDiscussionItems: board.TF_DISCUSSION_ITEMS,
         tfMeetingSteps: board.TF_MEETING_STEPS,
         tfWorkstreams: board.TF_WORKSTREAMS,
+        tfAutoConfig: autoConfig.TF_AUTOCONFIG,
       });
     }).catch(() => {
       if (!cancelled) setPresenterData(null);
@@ -2342,6 +2346,16 @@ export default function App() {
             </> : null}
             {openPanel === 'ops' ? <>
               <p>이 보드는 공개 소비자용 내용이 아니라, 일반 GABA 교육 자료를 검토·회의·배포하는 사업자용 운영 화면입니다.</p>
+              {presenterTfAutoConfig ? <section className="tf-autoconfig" aria-label="AI-OPS TF 자동 구성" data-tf-autoconfig>
+                <div className="tf-autoconfig__heading"><div><p className="eyebrow">AI-OPS TF 자동 구성</p><strong>{presenterTfAutoConfig.statusLabel}</strong></div><span>{presenterTfAutoConfig.version}</span></div>
+                <p className="tf-autoconfig__scope">{presenterTfAutoConfig.scope} · {presenterTfAutoConfig.owner}</p>
+                <div className="tf-autoconfig__summary"><strong>{presenterTfAutoConfig.aiWorkstreams.length}개 AI 업무 즉시 실행</strong><span>사람 역할 {presenterTfAutoConfig.humanGates.length}개는 입력 전 대기</span></div>
+                <ol className="tf-autoconfig__workstreams">
+                  {presenterTfAutoConfig.aiWorkstreams.map(workstream => <li key={workstream.id}><div><strong>{workstream.id} · {workstream.title}</strong><small>{workstream.action}</small></div><span>AI-OPS</span></li>)}
+                </ol>
+                <div className="tf-autoconfig__gates"><strong>자동 확정하지 않는 사람 게이트</strong><div>{presenterTfAutoConfig.humanGates.map(gate => <span key={gate.id}>{gate.id} · 입력 필요</span>)}</div></div>
+                <p className="tf-autoconfig__boundary">{presenterTfAutoConfig.boundary}</p>
+              </section> : null}
               <section className="tf-board__today" aria-label="오늘 바로 할 일">
                 <div className="tf-board__today-heading"><div><p className="eyebrow">오늘 바로 할 일</p><strong>15분 시작 순서</strong></div><span>자동 정렬 → 사람 판정</span></div>
                 <ol>

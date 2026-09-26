@@ -2,6 +2,8 @@
 
 이 TF는 제품 판매나 제품 효능을 검토하는 조직이 아니라, 일반 소비자를 위한 GABA 교육 자료를 만드는 편집·과학·영상·UX 협업팀이다.
 
+AI-OPS가 사람 입력 전 바로 실행할 수 있는 기본 구성은 [`GABA_EDUCATION_TF_AUTOCONFIG.md`](GABA_EDUCATION_TF_AUTOCONFIG.md)와 발표자 운영 보드에서 확인한다. 자동 구성은 초안·QA·감리 큐를 시작하지만 실명 역할·과학·의학·권리·공개 승인을 대신하지 않는다.
+
 실제 구성원 초대와 첫 업무 배정은 [`GABA_EDUCATION_TEAM_INVITE.md`](GABA_EDUCATION_TEAM_INVITE.md)를 사용한다. 이 문서는 역할을 임의로 채우지 않고, 사람 입력 전 상태를 `배정 필요`로 유지한다.
 
 ## 운영 주체

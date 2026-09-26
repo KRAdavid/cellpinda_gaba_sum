@@ -10,7 +10,7 @@
 
 팀의 매일 검토 순서와 사업자 설명용 판정 문장은 [GABA_VIDEO_REVIEW_LOG.md](docs/GABA_VIDEO_REVIEW_LOG.md)에 기록합니다.
 
-> 현재 공개본은 **제품과 완전히 분리된 일반 GABA 교육 자료**입니다. 제품·후기·판매 정보는 공개 읽기 흐름과 패널에서 다루지 않습니다. 현재 범위와 TF 운영 기준은 [`docs/GABA_EDUCATION_SCOPE.md`](docs/GABA_EDUCATION_SCOPE.md), [`docs/GABA_EDUCATION_TF.md`](docs/GABA_EDUCATION_TF.md), [`docs/GABA_EDUCATION_KICKOFF.md`](docs/GABA_EDUCATION_KICKOFF.md)에서 확인합니다.
+> 현재 공개본은 **제품과 완전히 분리된 일반 GABA 교육 자료**입니다. 제품·후기·판매 정보는 공개 읽기 흐름과 패널에서 다루지 않습니다. 현재 범위와 TF 운영 기준은 [`docs/GABA_EDUCATION_SCOPE.md`](docs/GABA_EDUCATION_SCOPE.md), [`docs/GABA_EDUCATION_TF.md`](docs/GABA_EDUCATION_TF.md), [`docs/GABA_EDUCATION_TF_AUTOCONFIG.md`](docs/GABA_EDUCATION_TF_AUTOCONFIG.md), [`docs/GABA_EDUCATION_KICKOFF.md`](docs/GABA_EDUCATION_KICKOFF.md)에서 확인합니다.
 
 기존 판매·영업용 TF 문서는 과거 구현의 기록으로 보관하며, 새 공개본의 범위·문안·승인 기준은 위 일반 GABA 교육 문서와 영상 감리 문서만 기준으로 삼습니다.
 

@@ -12,6 +12,8 @@ const videoDb = read('docs/GABA_VIDEO_DB.md');
 const videoRules = read('docs/GABA_VIDEO_REVIEW_RULES.md');
 const videoMonitor = read('docs/GABA_VIDEO_DAILY_MONITOR.md');
 const videoLog = read('docs/GABA_VIDEO_REVIEW_LOG.md');
+const autoConfigDoc = read('docs/GABA_EDUCATION_TF_AUTOCONFIG.md');
+const autoConfigSource = read('src/tfAutoConfig.ts');
 
 const coreRoles = ['PM', 'SCIENCE', 'MEDICAL', 'VIDEO', 'RIGHTS', 'UX', 'QA'];
 const rowFor = id => roster.split('\n').find(line => line.startsWith(`| ${id} |`)) ?? '';
@@ -40,6 +42,14 @@ const monitorReady = videoMonitor.includes('매일 09:17 KST')
 const reviewLogReady = videoLog.includes('15분 일일 검토 순서')
   && videoLog.includes('PUBLISH_GENERAL')
   && videoLog.includes('LIMITED_USE');
+const autoConfigReady = autoConfigDoc.includes('TF-AUTOCONFIG-v1')
+  && autoConfigDoc.includes('AI-01~AI-05')
+  && autoConfigDoc.includes('NEEDS_INPUT')
+  && autoConfigDoc.includes('자동 공개는 `0건`')
+  && autoConfigSource.includes("status: 'ACTIVE'")
+  && autoConfigSource.includes("mode: 'AI-OPS_WITH_HUMAN_GATES'")
+  && ['AI-01', 'AI-02', 'AI-03', 'AI-04', 'AI-05'].every(id => autoConfigSource.includes(`id: '${id}'`))
+  && autoConfigSource.includes('PUBLISH_GENERAL·권위·권리는 자동 확정하지 않음');
 const dbPublishHistory = videoRows.filter(line => line.includes('| PUBLISH_GENERAL |')).length;
 const domesticVideoRows = videoRows.filter(line => !line.startsWith('| AUTH-'));
 const domesticPublishReady = domesticVideoRows.filter(line => line.includes('| PUBLISH_GENERAL |')).length;
@@ -56,6 +66,7 @@ const ready = assignedRoles.length === coreRoles.length
   && videoRulesReady
   && monitorReady
   && reviewLogReady
+  && autoConfigReady
   && scopeReady;
 
 console.log('GABA education TF readiness report');
@@ -65,6 +76,7 @@ console.log('- 국내 공개 승인: ' + domesticPublishReady + '/' + domesticVi
 console.log('- 영상 감리 규칙: ' + (videoRulesReady ? '확인' : 'HOLD'));
 console.log('- 일일 모니터 파이프라인: ' + (monitorReady ? '준비' : 'HOLD'));
 console.log('- 일일 팀 검토 로그: ' + (reviewLogReady ? '준비' : 'HOLD'));
+console.log('- AI-OPS TF 자동 구성: ' + (autoConfigReady ? '활성' : 'HOLD'));
 console.log(`- 핵심 인간 역할 배정: ${assignedRoles.length}/${coreRoles.length}`);
 console.log('- AI-OPS 실행 권한: 활성');
 console.log(`- 첫 회의 입력: ${firstMeetingFilled ? '입력됨' : '필요'}`);
@@ -84,6 +96,7 @@ if (registeredShorts < shortIds.length) console.log('- 다음 조치: 제공 쇼
 if (!videoRulesReady) console.log('- 다음 조치: 영상별 권위·근거·상업성·권리 감리 규칙을 확인');
 if (!monitorReady) console.log('- 다음 조치: 일일 숏츠 수집 파이프라인을 확인');
 if (!reviewLogReady) console.log('- 다음 조치: 일일 검토·토론 로그와 공개 판정 문장을 확인');
+if (!autoConfigReady) console.log('- 다음 조치: AI-OPS 자동 구성 문서·기본 설정·사람 게이트를 확인');
 
 if (strict && !ready) {
   console.error('GABA education TF strict readiness failed.');
