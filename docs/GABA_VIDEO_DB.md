@@ -40,6 +40,8 @@
 | `usageMode` | 원문 링크, 허용 시 임베드, 검토용, 공개 제외 |
 | `nextAction` | 다음 감리 담당자가 실제로 확인할 한 가지 행동 |
 
+최근 보조 출처 재확인 결과는 [`GABA_VIDEO_AUTHORITY_SOURCE_RECHECK_2026-09-27.md`](gaba-video-daily/GABA_VIDEO_AUTHORITY_SOURCE_RECHECK_2026-09-27.md)에 기록한다. 이 기록은 인물·소속 출처 확인과 영상 감리·권리·공개 승인을 분리한다.
+
 `GABA_VIDEO_REVIEW_RULES`에는 등록된 14건 모두의 영상별 규칙이 ID별로 들어 있다. 이
 규칙은 발표자 화면의 `영상별 감리 규칙`과 감리 기록 복사본에 함께 표시되지만, 과학적
 결론이나 공개 승인으로 취급하지 않는다. 원문·자막·화자·근거·권리 확인 체크가 모두
