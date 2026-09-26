@@ -49,6 +49,8 @@ GitHub Actions는 `.github/workflows/monitor-gaba-shorts.yml`에서 매일 09:17
 
 GitHub 공식 문서에 따르면 `schedule`은 POSIX cron과 선택적 IANA `timezone`을 사용하고 기본 브랜치의 최신 커밋에서 실행되지만, Actions 부하에 따라 지연될 수 있다([워크플로 문법](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [이벤트 트리거](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)). 따라서 워크플로가 `active`이고 cron이 등록되어 있다는 사실은 설정 증거이며, 실제 일일 운영 증거는 Actions 실행의 `event=schedule` 기록과 그 실행이 갱신한 리포트·Pages 배포로 별도 확인한다.
 
+예약 실행 시 GitHub의 `github.event.schedule` 값을 `GITHUB_EVENT_SCHEDULE`로 전달해 스냅샷·일일 리포트·운영자 화면에 예약 트리거 표현식을 함께 기록한다. 이 값은 예약 실행의 식별·추적용이며 후보 승인, 영상 권위, 자막·권리 확인을 의미하지 않는다. 수동·로컬 실행이나 이벤트 값이 없는 실행은 `해당 없음`으로 남겨 예약 증거와 혼동하지 않는다.
+
 <!-- GABA_SCHEDULE_OPERATIONS_STATUS:START -->
 최신 운영 확인: 2026-09-26 13:58:51 KST · GitHub Actions 예약 실행 · 예약 실행 확인 · 다음 예약 매일 09:17 KST. 오늘 누적 신규 후보 2건·이번 실행 2건·검토 대기 127건·자동 공개 0건. 예약 실행·사람 감리·공개 승인 전에는 운영 HOLD를 유지한다.
 <!-- GABA_SCHEDULE_OPERATIONS_STATUS:END -->

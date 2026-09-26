@@ -65,6 +65,7 @@ type VideoReviewDraft = {
 };
 type VideoReviewDrafts = Record<string, VideoReviewDraft>;
 type MonitorSnapshot = typeof import('./gabaMonitorSnapshot')['GABA_MONITOR_SNAPSHOT'] & {
+  scheduleExpression?: string | null;
   registeredAuthoritySourcesWithEvidence?: number;
   registeredAuthoritySourceDatesChecked?: number;
   registeredAuthoritySourceDatesMissing?: number;
@@ -2197,6 +2198,7 @@ export default function App() {
                 <small className="monitor-snapshot__copy-message" aria-live="polite">{monitorCopyMessage}</small>
                 <p><strong>{presenterMonitor?.checkedAtKst ?? presenterMonitor?.checkedAt ?? '—'}</strong> 마지막 실행 기록 · 실행 출처: {presenterMonitor?.runOrigin ?? '확인 전'} · 다음 예약 {presenterMonitor?.scheduleKst ?? '매일 09:17 KST'} · 채널 {presenterMonitor?.sourceChannels ?? 0}/{presenterMonitor?.registeredChannels ?? 0} · 검색어 {presenterMonitor?.discoveryQueries ?? 0}/{presenterMonitor?.totalDiscoveryQueries ?? 0} · 검색어 보완 {presenterMonitor?.searchFallbacksUsed?.length ?? 0}건</p>
                 <p>검토 대기 {presenterMonitor?.pendingReview ?? 0}건 · SCIENCE/MEDICAL 우선 {presenterMonitor?.scienceMedicalPriority ?? 0}건 · 오늘 신규 후보 {presenterMonitor?.newCandidates ?? 0}건 · 이번 실행 {presenterMonitor?.newCandidatesThisRun ?? 0}건 · 자동 공개 {presenterMonitor?.autoPublish ?? 0}건</p>
+                {presenterMonitor?.scheduleExpression ? <p>예약 트리거 표현식 {presenterMonitor.scheduleExpression} · 예약 실행 증거와 사람 감리는 별도</p> : null}
                 <p>등록 영상 원문 링크 {presenterMonitor?.registeredVideoLinksHealthy ?? 0}/{presenterMonitor?.registeredVideoLinksChecked ?? 0} 접근 확인 · 링크 경고 {presenterMonitor?.registeredVideoLinkWarnings ?? 0}건</p>
                 <p>권위·연구 출처 링크 {presenterMonitor?.registeredEvidenceLinksHealthy ?? 0}/{presenterMonitor?.registeredEvidenceLinksChecked ?? 0} 접근 확인 · 출처 링크 경고 {presenterMonitor?.registeredEvidenceLinkWarnings ?? 0}건</p>
                 {presenterMonitor?.registeredAuthoritySourcesWithEvidence != null ? <p>인물 출처 확인일 {presenterMonitor.registeredAuthoritySourceDatesChecked ?? 0}/{presenterMonitor.registeredAuthoritySourcesWithEvidence} 기록 · 미기록 {presenterMonitor.registeredAuthoritySourceDatesMissing ?? 0}건 · 영상 발언·권리·공개 승인과 별도</p> : null}

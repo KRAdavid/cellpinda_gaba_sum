@@ -500,6 +500,7 @@ const koreaDatePart = type => koreaDateParts.find(part => part.type === type)?.v
 const koreaDateTimePart = type => koreaDateTimeParts.find(part => part.type === type)?.value ?? '';
 const checkedDate = `${koreaDatePart('year')}-${koreaDatePart('month')}-${koreaDatePart('day')}`;
 const checkedAtKst = `${checkedDate} ${koreaDateTimePart('hour')}:${koreaDateTimePart('minute')}:${koreaDateTimePart('second')} KST`;
+const scheduleExpression = process.env.GITHUB_EVENT_SCHEDULE || '';
 const runOrigin = process.env.GITHUB_EVENT_NAME === 'schedule'
   ? 'GitHub Actions 예약 실행'
   : process.env.GITHUB_EVENT_NAME === 'workflow_dispatch'
@@ -740,7 +741,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
-const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, authorityMetadata, authoritySourceDateHealth, captionHealth, captionBodyHealth, previousHistory}) => {
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: timestamp, runOrigin: origin, scheduleExpression: scheduledExpression, successfulSources, successfulSearches, searchFallbacksUsed, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, authorityMetadata, authoritySourceDateHealth, captionHealth, captionBodyHealth, previousHistory}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
     .sort(reviewEntrySort(date));
@@ -787,6 +788,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: 
     checkedAt: date,
     checkedAtKst: timestamp,
     runOrigin: origin,
+    scheduleExpression: scheduledExpression || null,
     scheduleKst: '매일 09:17 KST',
     sourceChannels: successfulSources,
     registeredChannels: sources.length,
@@ -882,7 +884,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: 
   return `export const GABA_MONITOR_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)} as const;\n`;
 };
 
-const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, candidates, runCandidateCount, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, authoritySourceDateHealth, captionHealth, captionBodyHealth}) => {
+const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, scheduleExpression: scheduledExpression, successfulSources, successfulSearches, searchFallbacksUsed, candidates, runCandidateCount, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, authoritySourceDateHealth, captionHealth, captionBodyHealth}) => {
   const warningRows = errors.length
     ? errors.map(error => `| 경고 | ${markdown(error)} | 재시도 또는 수동 확인 |`).join('\n')
     : '| 없음 | 모든 등록 채널 응답 확인 | 다음 단계로 진행 |';
@@ -892,7 +894,7 @@ const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSour
   return [
     '# GABA Shorts 일일 모니터 리포트',
     '',
-    `> 자동 생성일: ${timestamp} · 실행 출처: ${origin} · 기준일 ${checkedDate} · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.`,
+    `> 자동 생성일: ${timestamp} · 실행 출처: ${origin} · 예약 트리거: ${scheduledExpression || '해당 없음(수동·로컬 또는 이벤트 값 미전달)'} · 기준일 ${checkedDate} · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.`,
     '',
     '## 오늘의 실행 요약',
     '',
@@ -982,7 +984,7 @@ const dailyReport = ({checkedAtKst: timestamp, runOrigin: origin, successfulSour
   ].join('\n');
 };
 
-const appendDailyReviewLog = ({checkedDate: date, runOrigin: origin, successfulSources, successfulSearches, searchFallbacksUsed, candidates, runCandidateCount, pendingReview, linkHealth, evidenceHealth, metadataHealth, authoritySourceDateHealth, captionHealth, captionBodyHealth}) => {
+const appendDailyReviewLog = ({checkedDate: date, runOrigin: origin, scheduleExpression: scheduledExpression, successfulSources, successfulSearches, searchFallbacksUsed, candidates, runCandidateCount, pendingReview, linkHealth, evidenceHealth, metadataHealth, authoritySourceDateHealth, captionHealth, captionBodyHealth}) => {
   if (!fs.existsSync(reviewLogPath)) return;
   const existing = fs.readFileSync(reviewLogPath, 'utf8');
   const marker = `## ${date} 자동 모니터 실행 기록`;
@@ -990,7 +992,7 @@ const appendDailyReviewLog = ({checkedDate: date, runOrigin: origin, successfulS
   const block = [
     marker,
     '',
-    `실행 출처: ${origin} · 모니터가 ${successfulSources}/${sources.length}개 채널과 ${successfulSearches}/${discoveryQueries.length}개 검색어를 확인했다. 검색어 보완 경로 ${searchFallbacksUsed.length}건을 사용했다. 오늘 누적 신규 후보는 ${candidates.length}건, 이번 실행 신규 후보는 ${runCandidateCount}건이며 전체 검토 대기는 ${pendingReview}건이다.`,
+    `실행 출처: ${origin} · 예약 트리거: ${scheduledExpression || '해당 없음(수동·로컬 또는 이벤트 값 미전달)'} · 모니터가 ${successfulSources}/${sources.length}개 채널과 ${successfulSearches}/${discoveryQueries.length}개 검색어를 확인했다. 검색어 보완 경로 ${searchFallbacksUsed.length}건을 사용했다. 오늘 누적 신규 후보는 ${candidates.length}건, 이번 실행 신규 후보는 ${runCandidateCount}건이며 전체 검토 대기는 ${pendingReview}건이다.`,
     '',
     `제품·브랜드 신호 후보 ${productBrandCandidates}건은 일반 GABA 공개 큐에서 자동 제외했으며, 모든 후보는 사람의 VIDEO·SCIENCE/MEDICAL·RIGHTS 감리 전 PENDING_REVIEW로 유지한다. 자동 공개는 0건이다.`,
     '',
@@ -1158,7 +1160,7 @@ const main = async () => {
     .map(inboxCandidateRecord)
     .filter(candidate => candidate.id);
   const pendingReview = parseInboxEntries(updatedInbox).filter(entry => entry.status === 'PENDING_REVIEW').length;
-  const report = dailyReport({checkedAtKst, runOrigin, successfulSources, successfulSearches, searchFallbacksUsed, candidates: dailyCandidates, runCandidateCount: candidates.length, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, authoritySourceDateHealth, captionHealth, captionBodyHealth});
+  const report = dailyReport({checkedAtKst, runOrigin, scheduleExpression, successfulSources, successfulSearches, searchFallbacksUsed, candidates: dailyCandidates, runCandidateCount: candidates.length, errors, fallbackSources, linkHealth, evidenceHealth, metadataHealth, authoritySourceDateHealth, captionHealth, captionBodyHealth});
   fs.writeFileSync(reportPath, report, 'utf8');
   fs.writeFileSync(path.join(reportArchiveDir, `GABA_VIDEO_DAILY_REPORT_${checkedDate}.md`), report, 'utf8');
   const reviewSession = reviewSessionMarkdown({inboxText: updatedInbox, checkedDate});
@@ -1167,6 +1169,7 @@ const main = async () => {
   appendDailyReviewLog({
     checkedDate,
     runOrigin,
+    scheduleExpression,
     successfulSources,
     successfulSearches,
     searchFallbacksUsed,
@@ -1185,6 +1188,7 @@ const main = async () => {
     checkedDate,
     checkedAtKst,
     runOrigin,
+    scheduleExpression,
     successfulSources,
     successfulSearches,
     searchFallbacksUsed,
