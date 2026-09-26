@@ -74,6 +74,6 @@ QA_URL=https://kradavid.github.io/cellpinda_gaba_sum/ pnpm run qa:matrix
 - 영상 원문·자막·권리의 사람 검토
 - 실제 iOS·Android 확인
 - 일반 소비자·사업자 A/B/C 세션
-- 2026-09-24 09:17 KST 예약 감리 실행 확인 전
+- 2026-09-26 13:58:51 KST GitHub Actions `schedule` 실행을 확인했으며, 다음 예약 감리는 매일 09:17 KST다. 예약 실행 증거는 확보됐지만 사람 감리·공개 승인을 대신하지 않는다.
 
 위 증거가 제출되기 전에는 기술 PASS를 최종 사업·과학·의학·권리 승인으로 표시하지 않는다.
