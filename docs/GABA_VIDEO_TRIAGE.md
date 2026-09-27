@@ -4,8 +4,8 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 135건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 80건
+- 검토 대기: 136건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 81건
 - VIDEO 원문·자막 선확인: 55건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 24건
 
@@ -25,6 +25,7 @@
 | PENDING-20260927-EMWL4wdS4Sw | [GABA Transaminase Deficiency#GABATransaminaseDeficiency #GABATDeficiency #GABA #ABATGene](https://www.youtube.com/watch?v=EMWL4wdS4Sw) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 질환·치료 표현 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260927-gIZgguWtICU | [#내돈내산 여행 중에도 꿀잠을 책임져 준 굿슬립가바 365💜 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애 #바이탈뷰티](https://www.youtube.com/watch?v=gIZgguWtICU) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260927-LZNrQCvLrP4 | [#제품제공 내 몸과 마음의 소리에 집중하며, 건강한 수면이 무엇인지 알아차리게 해준 경험💜 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애](https://www.youtube.com/watch?v=LZNrQCvLrP4) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20260927-XNSt3oMYvVk | [#제품제공 #내돈내산 다 먹은 바이탈뷰티 용기들 200% 활용하기💜👍🏻 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애](https://www.youtube.com/watch?v=XNSt3oMYvVk) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260927-4ZxoQXlHEn0 | [가바가 필요한 신호~! #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=4ZxoQXlHEn0) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 섭취·상업성 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260927-3EzF6onpf88 | [진정 작용 원리는 무엇일까요? GABA 시스템 #의학교육 #과학 #심전도 #의사](https://www.youtube.com/watch?v=3EzF6onpf88) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견 | 전문가 표현 감지 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260927-8wRjCtV3xho | [GABA #gaba #neurotransmitters #nervoussystem #shorts #trending #foryou #drdiaries #neurology #medico](https://www.youtube.com/watch?v=8wRjCtV3xho) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 | 전문가 표현 감지 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |

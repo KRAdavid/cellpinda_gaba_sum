@@ -1,8 +1,8 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-27",
-  "checkedAtKst": "2026-09-27 12:07:22 KST",
-  "runId": "36290485606",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36290485606",
+  "checkedAtKst": "2026-09-27 12:34:07 KST",
+  "runId": "36291780176",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36291780176",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleExpression": null,
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
@@ -14,10 +14,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 8,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 135,
-  "scienceMedicalPriority": 80,
+  "newCandidates": 9,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 136,
+  "scienceMedicalPriority": 81,
   "videoPriority": 55,
   "pendingQueue": [
     {
@@ -62,6 +62,20 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
+      "id": "PENDING-20260927-XNSt3oMYvVk",
+      "title": "#제품제공 #내돈내산 다 먹은 바이탈뷰티 용기들 200% 활용하기💜👍🏻 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애",
+      "url": "https://www.youtube.com/watch?v=XNSt3oMYvVk",
+      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
       "id": "PENDING-20260927-4ZxoQXlHEn0",
       "title": "가바가 필요한 신호~! #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산",
       "url": "https://www.youtube.com/watch?v=4ZxoQXlHEn0",
@@ -74,21 +88,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL → RIGHTS",
       "nextAction": "주장·이해관계·사용권 확인"
-    },
-    {
-      "id": "PENDING-20260927-3EzF6onpf88",
-      "title": "진정 작용 원리는 무엇일까요? GABA 시스템 #의학교육 #과학 #심전도 #의사",
-      "url": "https://www.youtube.com/watch?v=3EzF6onpf88",
-      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "priority": "VIDEO 우선",
-      "signals": [
-        "일반 설명 후보",
-        "전문가 자격 확인 신호",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "VIDEO",
-      "nextAction": "원문·자막·화자 확인"
     }
   ],
   "authorityQueue": [
@@ -315,10 +314,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-27",
-      "newCandidates": 8,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 135,
-      "scienceMedicalPriority": 80,
+      "newCandidates": 9,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 136,
+      "scienceMedicalPriority": 81,
       "videoPriority": 55,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
