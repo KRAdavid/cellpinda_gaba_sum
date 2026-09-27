@@ -896,7 +896,8 @@ export default function App() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const requested = Number(params.get('card'));
+    const requestedParam = params.get('card');
+    const requested = requestedParam === null ? Number.NaN : Number(requestedParam);
     const presenterRequested = params.get('mode') === 'presenter' || params.get('presenter') === '1';
     const requestedVideoId = params.get('video');
     if (presenterRequested) {
@@ -911,6 +912,17 @@ export default function App() {
       setActive(requestedIndex);
       if (!presenterRequested) {
         window.requestAnimationFrame(() => document.getElementById('story-scene-hook')?.scrollIntoView({behavior: 'auto', block: 'start'}));
+      }
+    }
+    if (!presenterRequested && !Number.isInteger(requested)) {
+      const requestedHash = window.location.hash;
+      const hashIndex = slides.findIndex(slide => requestedHash === `#story-scene-${slide.id}`);
+      if (hashIndex >= 0) {
+        programmaticTargetRef.current = null;
+        setActive(hashIndex);
+        window.requestAnimationFrame(() => document.getElementById('story-scene-hook')?.scrollIntoView({behavior: 'auto', block: 'start'}));
+      } else if (requestedHash === '#video-showcase') {
+        window.requestAnimationFrame(() => document.getElementById('video-showcase')?.scrollIntoView({behavior: 'auto', block: 'start'}));
       }
     }
     if (presenterRequested && requestedVideoId && presenterData?.videoDb.some(video => video.id === requestedVideoId)) {
@@ -933,6 +945,23 @@ export default function App() {
       }
     }
   }, [slides.length, presenterData]);
+
+  useEffect(() => {
+    const handleConsumerHashChange = () => {
+      if (presentationModeRef.current) return;
+      const requestedHash = window.location.hash;
+      const hashIndex = slides.findIndex(slide => requestedHash === `#story-scene-${slide.id}`);
+      if (hashIndex >= 0) {
+        programmaticTargetRef.current = null;
+        setActive(hashIndex);
+        window.requestAnimationFrame(() => document.getElementById('story-scene-hook')?.scrollIntoView({behavior: 'auto', block: 'start'}));
+      } else if (requestedHash === '#video-showcase') {
+        window.requestAnimationFrame(() => document.getElementById('video-showcase')?.scrollIntoView({behavior: 'auto', block: 'start'}));
+      }
+    };
+    window.addEventListener('hashchange', handleConsumerHashChange);
+    return () => window.removeEventListener('hashchange', handleConsumerHashChange);
+  }, [slides, presentationMode]);
 
   useEffect(() => {
     if (!presentationMode) {
