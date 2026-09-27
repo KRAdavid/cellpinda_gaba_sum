@@ -50,6 +50,8 @@ const required = [
   ['public video viewing guide', '먼저 볼 것'],
   ['public video source boundary', '전체 내용은 YouTube 원문에서 확인하세요'],
   ['separate video showcase', 'GABA 영상'],
+  ['consumer video status is visible before the reel', '오늘 공유된 참고 영상 · 원문 확인 전'],
+  ['approved video status is explicit', '사람 검토 완료 · 일반 GABA 교육'],
   ['video showcase in-page-first action', '영상 정보 보기'],
   ['video showcase share action', '이 영상 링크 공유'],
   ['video showcase deep-link state', 'searchParams.set("video"'],

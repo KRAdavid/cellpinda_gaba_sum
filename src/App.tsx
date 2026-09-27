@@ -2494,6 +2494,7 @@ export default function App() {
         <div className="video-showcase__inner">
           <div className="video-showcase__heading">
             <div>
+              <p className="eyebrow video-showcase__status">사람 검토 완료 · 일반 GABA 교육</p>
               <p className="eyebrow">GABA 영상</p>
               <h2 id="approved-video-showcase-title">GABA를 설명하는 영상만,<br /><em>쉽게 이어서 보세요.</em></h2>
             </div>
@@ -2535,6 +2536,7 @@ export default function App() {
         <div className="video-showcase__inner">
           <div className="video-showcase__heading">
             <div>
+              <p className="eyebrow video-showcase__status">오늘 공유된 참고 영상 · 원문 확인 전</p>
               <p className="eyebrow">GABA 영상</p>
               <h2 id="video-showcase-title">영상은 짧게 보고,<br /><em>원문으로 확인하세요.</em></h2>
             </div>
@@ -2557,7 +2559,7 @@ export default function App() {
             </nav>
             <article className="video-showcase__item" data-video-reel aria-live="polite" onTouchStart={handleShowcaseTouchStart} onTouchEnd={handleShowcaseTouchEnd}>
               <section className="video-showcase__player" aria-label={`${showcaseVideo.publicTitle ?? showcaseVideo.title} 페이지 안에서 재생`}>
-                <div className="video-showcase__player-heading"><span>GABA 설명 영상</span><small>페이지 안에서 재생</small></div>
+                <div className="video-showcase__player-heading"><span>GABA 설명 영상</span><small>{showcaseVideo.status === 'PUBLISH_GENERAL' ? '일반 교육 공개' : '원문 확인 전'} · 페이지 안에서 재생</small></div>
                 {showcaseVideoEmbedUrl && showcasePlayerStartedId === showcaseVideo.id ? <iframe src={showcaseVideoEmbedUrl} title={`${showcaseVideo.publicTitle ?? showcaseVideo.title} YouTube Shorts 원문 플레이어`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /> : <button type="button" className="video-showcase__player-poster" data-play-showcase-video onClick={() => setShowcasePlayerStartedId(showcaseVideo.id)} aria-label="페이지 안에서 YouTube 영상 재생 시작">
                   {showcaseVideo.previewImage ? <img className="video-showcase__player-poster-image" src={showcaseVideo.previewImage} alt="" loading="lazy" decoding="async" onError={event => {event.currentTarget.style.display = 'none';}} /> : null}
                   <span className="video-showcase__player-poster-label">GABA · YouTube Shorts</span><strong>{showcaseVideo.publicTitle ?? 'GABA 영상'}</strong><small>눌러서 페이지 안에서 영상 보기</small><span className="video-showcase__play" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5.2v13.6L19 12 8 5.2Z" /></svg></span>
