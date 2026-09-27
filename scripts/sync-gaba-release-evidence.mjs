@@ -8,6 +8,7 @@ const handoffPath = path.join(root, 'docs', 'RELEASE_HANDOFF.md');
 const monitorGuidePath = path.join(root, 'docs', 'GABA_VIDEO_DAILY_MONITOR.md');
 const resumePacketPath = path.join(root, 'docs', 'TF_RESUME_PACKET_2026-09-27.md');
 const goalAuditPath = path.join(root, 'docs', 'GOAL_COMPLETION_AUDIT_2026-09-27.md');
+const autoConfigPath = path.join(root, 'docs', 'GABA_EDUCATION_TF_AUTOCONFIG.md');
 
 const snapshotSource = fs.readFileSync(snapshotPath, 'utf8');
 const snapshotMatch = snapshotSource.match(/export const GABA_MONITOR_SNAPSHOT = (\{[\s\S]*\}) as const;/);
@@ -35,6 +36,7 @@ const releaseStatus = `- 최신 감리: ${snapshot.checkedAtKst} · ${snapshot.r
 const monitorGuideStatus = `최신 운영 확인: ${snapshot.checkedAtKst} · ${snapshot.runOrigin} · ${executionLabel} · 다음 예약 ${snapshot.scheduleKst}. 오늘 누적 신규 후보 ${snapshot.newCandidates}건·이번 실행 ${snapshot.newCandidatesThisRun}건·검토 대기 ${snapshot.pendingReview}건·자동 공개 ${snapshot.autoPublish}건. 예약 실행·사람 감리·공개 승인 전에는 운영 HOLD를 유지한다.`;
 const resumeStatus = `최신 자동 감리 동기화: ${snapshot.checkedAtKst} · ${snapshot.runOrigin} ${runEvidence} · ${snapshot.sourceChannels}/${snapshot.registeredChannels}개 채널·${snapshot.discoveryQueries}/${snapshot.totalDiscoveryQueries}개 검색어 · 오늘 누적 신규 ${snapshot.newCandidates}건 · 이번 실행 ${snapshot.newCandidatesThisRun}건 · 검토 대기 ${snapshot.pendingReview}건 · 제품·브랜드 격리 ${snapshot.productBrandQuarantine}건 · 자동 공개 ${snapshot.autoPublish}건. 예약 \`event=schedule\` 실행·사람 감리·공개 승인은 별도 게이트로 유지한다.`;
 const goalAuditStatus = `최신 자동 감리 동기화: ${snapshot.checkedAtKst} · ${snapshot.runOrigin} ${runEvidence} · 신규 누적 ${snapshot.newCandidates}건 · 이번 실행 ${snapshot.newCandidatesThisRun}건 · 검토 대기 ${snapshot.pendingReview}건 · 제품·브랜드 격리 ${snapshot.productBrandQuarantine}건 · 자동 공개 ${snapshot.autoPublish}건. 예약 \`event=schedule\` 실행·사람 감리·공개 승인 전에는 목표 상태를 \`ACTIVE · 사람 게이트 유지\`로 둔다.`;
+const autoConfigStatus = `최신 자동 구성 확인: ${snapshot.checkedAtKst} · ${snapshot.runOrigin} ${runEvidence} · AI-OPS 자동 구성 ACTIVE · 핵심 역할 ${snapshot.humanRoleAssigned}/${snapshot.humanRoleTotal} · 출처 사람 검토 ${snapshot.humanSourceReviewed}/${snapshot.humanSourceTotal} · 국내 공개 승인 ${snapshot.domesticPublicApproved}/${snapshot.domesticVideoTotal} · 검토 대기 ${snapshot.pendingReview}건 · 자동 공개 ${snapshot.autoPublish}건. 이 수치는 사람 승인 상태를 자동으로 변경하지 않는다.`;
 
 let acceptance = fs.readFileSync(acceptancePath, 'utf8');
 acceptance = replaceBlock(acceptance, '<!-- GABA_MONITOR_STATUS:START -->', '<!-- GABA_MONITOR_STATUS:END -->', monitorStatus);
@@ -56,5 +58,9 @@ fs.writeFileSync(resumePacketPath, resumePacket);
 let goalAudit = fs.readFileSync(goalAuditPath, 'utf8');
 goalAudit = replaceBlock(goalAudit, '<!-- GABA_GOAL_AUDIT_STATUS:START -->', '<!-- GABA_GOAL_AUDIT_STATUS:END -->', goalAuditStatus);
 fs.writeFileSync(goalAuditPath, goalAudit);
+
+let autoConfig = fs.readFileSync(autoConfigPath, 'utf8');
+autoConfig = replaceBlock(autoConfig, '<!-- GABA_TF_AUTOCONFIG_STATUS:START -->', '<!-- GABA_TF_AUTOCONFIG_STATUS:END -->', autoConfigStatus);
+fs.writeFileSync(autoConfigPath, autoConfig);
 
 console.log(`Synced GABA release evidence from ${snapshot.checkedAtKst} (${eventName}).`);
