@@ -501,6 +501,10 @@ const koreaDateTimePart = type => koreaDateTimeParts.find(part => part.type === 
 const checkedDate = `${koreaDatePart('year')}-${koreaDatePart('month')}-${koreaDatePart('day')}`;
 const checkedAtKst = `${checkedDate} ${koreaDateTimePart('hour')}:${koreaDateTimePart('minute')}:${koreaDateTimePart('second')} KST`;
 const scheduleExpression = process.env.GITHUB_EVENT_SCHEDULE || '';
+const runId = process.env.GITHUB_RUN_ID?.trim() || '';
+const githubRepository = process.env.GITHUB_REPOSITORY || 'KRAdavid/cellpinda_gaba_sum';
+const githubServerUrl = process.env.GITHUB_SERVER_URL || 'https://github.com';
+const runUrl = runId ? `${githubServerUrl}/${githubRepository}/actions/runs/${runId}` : '';
 const runOrigin = process.env.GITHUB_EVENT_NAME === 'schedule'
   ? 'GitHub Actions 예약 실행'
   : process.env.GITHUB_EVENT_NAME === 'workflow_dispatch'
@@ -741,7 +745,7 @@ const reviewSessionMarkdown = ({inboxText, checkedDate: date}) => {
   ].join('\n');
 };
 
-const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: timestamp, runOrigin: origin, scheduleExpression: scheduledExpression, successfulSources, successfulSearches, searchFallbacksUsed, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, authorityMetadata, authoritySourceDateHealth, captionHealth, captionBodyHealth, previousHistory}) => {
+const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: timestamp, runId: executionId, runUrl: executionUrl, runOrigin: origin, scheduleExpression: scheduledExpression, successfulSources, successfulSearches, searchFallbacksUsed, newCandidates, newCandidatesThisRun, linkHealth, evidenceHealth, metadataHealth, authorityMetadata, authoritySourceDateHealth, captionHealth, captionBodyHealth, previousHistory}) => {
   const entries = parseInboxEntries(inboxText).filter(entry => entry.status === 'PENDING_REVIEW');
   const ranked = entries.map(entry => ({...entry, ...screenCandidate(`${entry.title} ${entry.description}`, entry.channel)}))
     .sort(reviewEntrySort(date));
@@ -787,6 +791,8 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: 
   const snapshot = {
     checkedAt: date,
     checkedAtKst: timestamp,
+    runId: executionId || null,
+    runUrl: executionUrl || null,
     runOrigin: origin,
     scheduleExpression: scheduledExpression || null,
     scheduleKst: '매일 09:17 KST · 지연 시 09:37 KST 재확인',
@@ -1187,6 +1193,8 @@ const main = async () => {
     inboxText: updatedInbox,
     checkedDate,
     checkedAtKst,
+    runId,
+    runUrl,
     runOrigin,
     scheduleExpression,
     successfulSources,

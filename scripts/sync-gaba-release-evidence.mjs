@@ -14,7 +14,7 @@ const snapshot = JSON.parse(snapshotMatch[1]);
 
 const repository = process.env.GITHUB_REPOSITORY ?? 'KRAdavid/cellpinda_gaba_sum';
 const serverUrl = process.env.GITHUB_SERVER_URL ?? 'https://github.com';
-const runId = process.env.GITHUB_RUN_ID?.trim();
+const runId = process.env.GITHUB_RUN_ID?.trim() || (typeof snapshot.runId === 'string' ? snapshot.runId.trim() : '');
 const eventName = process.env.GITHUB_EVENT_NAME?.trim() || 'local';
 const runUrl = runId ? `${serverUrl}/${repository}/actions/runs/${runId}` : '';
 const runEvidence = runUrl ? `[${runId}](${runUrl})` : '현재 스냅샷';
