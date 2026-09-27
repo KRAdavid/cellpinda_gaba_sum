@@ -8,19 +8,19 @@
 
 | 항목 | 현재 확인값 |
 | --- | --- |
-| 공개 사이트 커밋 | `8bb88de` |
-| 소비자 화면 | [공개용 GABA 소개 페이지](https://kradavid.github.io/cellpinda_gaba_sum/?v=8bb88de) |
-| TF 운영 화면 | [발표자·운영 모드](https://kradavid.github.io/cellpinda_gaba_sum/?v=8bb88de&mode=presenter) |
+| 공개 사이트 커밋 | `a5bfe0c` |
+| 소비자 화면 | [공개용 GABA 소개 페이지](https://kradavid.github.io/cellpinda_gaba_sum/?v=a5bfe0c) |
+| TF 운영 화면 | [발표자·운영 모드](https://kradavid.github.io/cellpinda_gaba_sum/?v=a5bfe0c&mode=presenter) |
 | 공개 UX | 8장 세로 릴 · 한 페이지 한 메시지 · 연구·영상 인페이지 확인 |
-| 최신 모니터 기준 | 2026-09-27 09:46:36 KST · 수동 실행 |
-| 신규 후보 | 1건 · `PENDING_REVIEW` |
+| 최신 모니터 기준 | 2026-09-27 10:09:17 KST · 수동 실행 `36284658801` |
+| 신규 후보 | 오늘 누적 1건 · 이번 실행 0건 · `PENDING_REVIEW` |
 | 전체 검토 대기 | 128건 |
 | 자동 공개 | 0건 |
 | 사람 역할 배정 | 0/7 |
 | 과학 출처 사람 검토 | 0/5 |
 | 국내 영상 공개 승인 | 0/12 |
 
-10:01 KST 재확인에서도 오늘 `event=schedule` 실행은 없었다. 최신 운영 스냅샷은 09:46:36 KST 수동 실행이며, 수동 실행은 예약 성공으로 표시하지 않는다.
+10:09 KST 수동 보완 실행이 성공했지만 오늘 `event=schedule` 실행은 여전히 없었다. 수동 실행은 예약 성공으로 표시하지 않는다. 이번 실행은 8/8 채널·12/12 검색어를 확인했고 신규 후보는 0건이었다. 후속 운영 배포는 Pages 실행 `36284738342`로 성공했다.
 
 ## AI-OPS에 즉시 맡겨진 업무
 
