@@ -8,9 +8,9 @@
 
 | 항목 | 현재 확인값 |
 | --- | --- |
-| 공개 사이트 커밋 | `4121e1e` |
-| 소비자 화면 | [공개용 GABA 소개 페이지](https://kradavid.github.io/cellpinda_gaba_sum/?v=4121e1e) |
-| TF 운영 화면 | [발표자·운영 모드](https://kradavid.github.io/cellpinda_gaba_sum/?v=4121e1e&mode=presenter) |
+| 공개 사이트 커밋 | `8bb88de` |
+| 소비자 화면 | [공개용 GABA 소개 페이지](https://kradavid.github.io/cellpinda_gaba_sum/?v=8bb88de) |
+| TF 운영 화면 | [발표자·운영 모드](https://kradavid.github.io/cellpinda_gaba_sum/?v=8bb88de&mode=presenter) |
 | 공개 UX | 8장 세로 릴 · 한 페이지 한 메시지 · 연구·영상 인페이지 확인 |
 | 최신 모니터 기준 | 2026-09-27 09:46:36 KST · 수동 실행 |
 | 신규 후보 | 1건 · `PENDING_REVIEW` |
