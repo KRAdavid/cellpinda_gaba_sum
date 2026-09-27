@@ -8,9 +8,9 @@
 
 | 항목 | 현재 확인값 |
 | --- | --- |
-| 공개 사이트 기준 커밋 | `83d159d` |
-| 소비자 화면 | [공개용 GABA 소개 페이지](https://kradavid.github.io/cellpinda_gaba_sum/?v=83d159d) |
-| TF 운영 화면 | [발표자·운영 모드](https://kradavid.github.io/cellpinda_gaba_sum/?v=83d159d&mode=presenter) |
+| 공개 사이트 기준 커밋 | `c47e4e7` |
+| 소비자 화면 | [공개용 GABA 소개 페이지](https://kradavid.github.io/cellpinda_gaba_sum/?v=c47e4e7) |
+| TF 운영 화면 | [발표자·운영 모드](https://kradavid.github.io/cellpinda_gaba_sum/?v=c47e4e7&mode=presenter) |
 | 공개 UX | 8장 세로 릴 · 한 페이지 한 메시지 · 연구·영상 인페이지 확인 |
 | 최신 모니터 기준 | 2026-09-27 10:26:22 KST · 수동 실행 `36285523234` |
 | 신규 후보 | 오늘 누적 2건 · 이번 실행 1건 · `PENDING_REVIEW` |
@@ -59,3 +59,11 @@
 - 소비자 화면에서 제품·후기·판매 정보가 계속 제외됨
 
 이 조건 전에는 목표를 완료로 선언하지 않고 `ACTIVE · 사람 게이트 유지`로 둔다.
+
+## 10:47 KST 브라우저 재개 확인
+
+- 소비자 화면의 `#story-scene-gaba`·`#story-scene-research` 해시 바로가기가 해당 장면을 활성화하도록 보완했다. 기존에는 주소 해시만 바뀌고 장면이 바뀌지 않았다.
+- 임시 Playwright 실행으로 390px 소비자 흐름을 확인했다: 8장면 이동, 연구 패널, 7개 참고 영상, 페이지 안 재생, 다음 영상 이동 후 재생을 통과했다.
+- 1440px 발표자 흐름도 확인했다: 영상 DB, TF 운영 보드, `AI-OPS TF 자동 구성`, 사람 역할 `7개 입력 전 대기` 표시를 통과했다.
+- `pnpm run qa:story`와 `pnpm run build`가 통과했다. 저장소 의존성에는 Playwright를 추가하지 않았고, 실제 iOS·Android 및 현장 세션은 여전히 대기다.
+- 코드 기준선은 `c47e4e7`이며, Pages 배포 후 공개 URL에서 같은 브라우저 검증을 재실행해야 한다.
