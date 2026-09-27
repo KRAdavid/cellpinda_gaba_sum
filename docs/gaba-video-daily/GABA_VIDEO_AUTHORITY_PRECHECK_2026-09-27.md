@@ -10,6 +10,17 @@
 
 ## 후보별 사전 확인
 
+## PENDING-20260927-3EzF6onpf88
+
+- 영상: [진정 작용 원리는 무엇일까요? GABA 시스템 #의학교육 #과학 #심전도 #의사](https://www.youtube.com/watch?v=3EzF6onpf88)
+- 게시 채널(oEmbed): [E-Pulsepoints ](https://www.youtube.com/@ecgkid)
+- 게시 채널 상태: oEmbed 게시 채널 확인
+- 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
+- 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.
+- 과학·의료 감리: 일반 GABA 설명과 수면·스트레스·섭취·질환 주장을 원문에서 분리 확인 필요.
+- 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.
+- 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.
+
 ## PENDING-20260927-8wRjCtV3xho
 
 - 영상: [GABA #gaba #neurotransmitters #nervoussystem #shorts #trending #foryou #drdiaries #neurology #medico](https://www.youtube.com/watch?v=8wRjCtV3xho)
@@ -47,17 +58,6 @@
 
 - 영상: [“GABA is the chemical that helps your brain stay calm under stress.”  #science #humanbody](https://www.youtube.com/watch?v=LGM3arqYZx8)
 - 게시 채널(oEmbed): [IK Biologist](https://www.youtube.com/@IKBiologist)
-- 게시 채널 상태: oEmbed 게시 채널 확인
-- 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
-- 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.
-- 과학·의료 감리: 일반 GABA 설명과 수면·스트레스·섭취·질환 주장을 원문에서 분리 확인 필요.
-- 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.
-- 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.
-
-## PENDING-20260923-Z2_d_8p36rM
-
-- 영상: [GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,](https://www.youtube.com/watch?v=Z2_d_8p36rM)
-- 게시 채널(oEmbed): [Samantha Odonnell PMHNP](https://www.youtube.com/@sammiep_thepsychnp)
 - 게시 채널 상태: oEmbed 게시 채널 확인
 - 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
 - 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.

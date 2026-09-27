@@ -7,7 +7,7 @@
 - 제목·공개 설명 기반 자동 분류는 검토 순서만 제안한다.
 - 원문·자막·화자·과학 근거·권리 확인 전에는 `PUBLISH_GENERAL`로 바꾸지 않는다.
 - 일반 GABA 연구와 영상의 경구 섭취·질환·제품 주장을 분리한다.
-- 당일 수집 후보: 4건 · 누적 검토 대기 후보: 131건
+- 당일 수집 후보: 6건 · 누적 검토 대기 후보: 133건
 
 ## 오늘 먼저 논의할 후보
 
@@ -41,10 +41,10 @@
 - 영상: [가바가 필요한 신호~! #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=4ZxoQXlHEn0)
 - 발견 경로: YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)
 - 자동 우선순위: SCIENCE/MEDICAL + RIGHTS
-- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 공개 큐 분류: 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외
 - 첫 담당 제안: SCIENCE/MEDICAL → RIGHTS
 - 다음 행동 제안: 주장·이해관계·사용권 확인
-- 제목·공개 텍스트 주의 신호: 섭취·상업성 신호
+- 제목·공개 텍스트 주의 신호: 섭취·상업성 신호 · 제품·브랜드 신호
 - 권위 신호 구분: 해당 없음 · 권위 신호 없음
 - 현재 상태: PENDING_REVIEW
 
@@ -61,7 +61,32 @@
 - 결정: HOLD (사람 검토 전 기본값)
 - 타임코드·근거·권리 메모: 
 
-## 03 · PENDING-20260927-8wRjCtV3xho
+## 03 · PENDING-20260927-3EzF6onpf88
+
+- 영상: [진정 작용 원리는 무엇일까요? GABA 시스템 #의학교육 #과학 #심전도 #의사](https://www.youtube.com/watch?v=3EzF6onpf88)
+- 발견 경로: YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)
+- 자동 우선순위: VIDEO 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 첫 담당 제안: VIDEO
+- 다음 행동 제안: 원문·자막·화자 확인
+- 제목·공개 텍스트 주의 신호: 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견
+- 권위 신호 구분: 전문가 표현 감지 · 자격 미확인
+- 현재 상태: PENDING_REVIEW
+
+### 사람 검토 체크
+
+- [ ] VIDEO: 실제 Shorts 형식·원문·자막·화자 확인
+- [ ] SCIENCE/MEDICAL: 일반 GABA 생리와 질환·수면·스트레스·섭취 주장을 분리
+- [ ] RIGHTS: 원문 링크·임베드·인용·재사용 범위 확인
+- [ ] PM/UX: 소비자에게 한 문장으로 설명할 수 있는지 확인
+- [ ] 최종 판정과 보류 사유를 `GABA_VIDEO_REVIEW_LOG.md`에 기록
+
+### 회의 메모
+
+- 결정: HOLD (사람 검토 전 기본값)
+- 타임코드·근거·권리 메모: 
+
+## 04 · PENDING-20260927-8wRjCtV3xho
 
 - 영상: [GABA #gaba #neurotransmitters #nervoussystem #shorts #trending #foryou #drdiaries #neurology #medico](https://www.youtube.com/watch?v=8wRjCtV3xho)
 - 발견 경로: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
@@ -86,40 +111,15 @@
 - 결정: HOLD (사람 검토 전 기본값)
 - 타임코드·근거·권리 메모: 
 
-## 04 · PENDING-20260927-R0sFGdN-0mE
+## 05 · PENDING-20260927-oLJp7JVPfdA
 
-- 영상: [Ever wondered what GABA does? #neuroscience #funny #brain](https://www.youtube.com/watch?v=R0sFGdN-0mE)
-- 발견 경로: YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)
+- 영상: [황미밥 가바 효능 #올쿠 #황미 #유명현](https://www.youtube.com/watch?v=oLJp7JVPfdA)
+- 발견 경로: YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)
 - 자동 우선순위: VIDEO 우선
 - 공개 큐 분류: 일반 교육 공개 전 사람 감리
 - 첫 담당 제안: VIDEO
 - 다음 행동 제안: 원문·자막·화자 확인
-- 제목·공개 텍스트 주의 신호: 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견
-- 권위 신호 구분: 전문가 표현 감지 · 자격 미확인
-- 현재 상태: PENDING_REVIEW
-
-### 사람 검토 체크
-
-- [ ] VIDEO: 실제 Shorts 형식·원문·자막·화자 확인
-- [ ] SCIENCE/MEDICAL: 일반 GABA 생리와 질환·수면·스트레스·섭취 주장을 분리
-- [ ] RIGHTS: 원문 링크·임베드·인용·재사용 범위 확인
-- [ ] PM/UX: 소비자에게 한 문장으로 설명할 수 있는지 확인
-- [ ] 최종 판정과 보류 사유를 `GABA_VIDEO_REVIEW_LOG.md`에 기록
-
-### 회의 메모
-
-- 결정: HOLD (사람 검토 전 기본값)
-- 타임코드·근거·권리 메모: 
-
-## 05 · PENDING-20260922-_XGO7xk24jo
-
-- 영상: [헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=_XGO7xk24jo)
-- 발견 경로: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
-- 자동 우선순위: SCIENCE/MEDICAL 우선
-- 공개 큐 분류: 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외
-- 첫 담당 제안: SCIENCE/MEDICAL
-- 다음 행동 제안: 질환·효과·안전성 표현 확인
-- 제목·공개 텍스트 주의 신호: 질환·치료 표현 · 제품·브랜드 신호
+- 제목·공개 텍스트 주의 신호: 일반 설명 후보
 - 권위 신호 구분: 해당 없음 · 권위 신호 없음
 - 현재 상태: PENDING_REVIEW
 

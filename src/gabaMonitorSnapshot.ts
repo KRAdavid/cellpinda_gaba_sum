@@ -1,6 +1,6 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-27",
-  "checkedAtKst": "2026-09-27 10:52:00 KST",
+  "checkedAtKst": "2026-09-27 10:59:09 KST",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleExpression": null,
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
@@ -12,11 +12,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 4,
+  "newCandidates": 6,
   "newCandidatesThisRun": 2,
-  "pendingReview": 131,
+  "pendingReview": 133,
   "scienceMedicalPriority": 78,
-  "videoPriority": 53,
+  "videoPriority": 55,
   "pendingQueue": [
     {
       "id": "PENDING-20260927-EMWL4wdS4Sw",
@@ -38,11 +38,27 @@ export const GABA_MONITOR_SNAPSHOT = {
       "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL + RIGHTS",
       "signals": [
-        "섭취·상업성 신호"
+        "섭취·상업성 신호",
+        "제품·브랜드 신호"
       ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL → RIGHTS",
       "nextAction": "주장·이해관계·사용권 확인"
+    },
+    {
+      "id": "PENDING-20260927-3EzF6onpf88",
+      "title": "진정 작용 원리는 무엇일까요? GABA 시스템 #의학교육 #과학 #심전도 #의사",
+      "url": "https://www.youtube.com/watch?v=3EzF6onpf88",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
+      "signals": [
+        "일반 설명 후보",
+        "전문가 자격 확인 신호",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
     },
     {
       "id": "PENDING-20260927-8wRjCtV3xho",
@@ -59,36 +75,37 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "원문·자막·화자 확인"
     },
     {
-      "id": "PENDING-20260927-R0sFGdN-0mE",
-      "title": "Ever wondered what GABA does? #neuroscience #funny #brain",
-      "url": "https://www.youtube.com/watch?v=R0sFGdN-0mE",
-      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "id": "PENDING-20260927-oLJp7JVPfdA",
+      "title": "황미밥 가바 효능 #올쿠 #황미 #유명현",
+      "url": "https://www.youtube.com/watch?v=oLJp7JVPfdA",
+      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
       "priority": "VIDEO 우선",
+      "signals": [
+        "일반 설명 후보"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
+    }
+  ],
+  "authorityQueue": [
+    {
+      "id": "PENDING-20260927-3EzF6onpf88",
+      "title": "진정 작용 원리는 무엇일까요? GABA 시스템 #의학교육 #과학 #심전도 #의사",
+      "url": "https://www.youtube.com/watch?v=3EzF6onpf88",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "일반 설명 후보",
         "전문가 자격 확인 신호",
         "권위 후보 검색 발견"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "VIDEO",
-      "nextAction": "원문·자막·화자 확인"
+      "authorityBasis": "TITLE_DESCRIPTION_SIGNAL",
+      "publisherName": "E-Pulsepoints ",
+      "publisherUrl": "https://www.youtube.com/@ecgkid",
+      "publisherStatus": "oEmbed 게시 채널 확인",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
-    {
-      "id": "PENDING-20260922-_XGO7xk24jo",
-      "title": "헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=_XGO7xk24jo",
-      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    }
-  ],
-  "authorityQueue": [
     {
       "id": "PENDING-20260927-8wRjCtV3xho",
       "title": "GABA #gaba #neurotransmitters #nervoussystem #shorts #trending #foryou #drdiaries #neurology #medico",
@@ -153,25 +170,23 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publisherUrl": "https://www.youtube.com/@IKBiologist",
       "publisherStatus": "oEmbed 게시 채널 확인",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
-      "id": "PENDING-20260923-Z2_d_8p36rM",
-      "title": "GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,",
-      "url": "https://www.youtube.com/watch?v=Z2_d_8p36rM",
-      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "효과·안전성 단정 신호",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "publisherName": "Samantha Odonnell PMHNP",
-      "publisherUrl": "https://www.youtube.com/@sammiep_thepsychnp",
-      "publisherStatus": "oEmbed 게시 채널 확인",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
   ],
   "productBrandQueue": [
+    {
+      "id": "PENDING-20260927-4ZxoQXlHEn0",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=4ZxoQXlHEn0",
+      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL + RIGHTS",
+      "signals": [
+        "섭취·상업성 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
@@ -228,25 +243,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL → RIGHTS",
       "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
-      "id": "PENDING-20260922-bquifROEFMI",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "url": "https://www.youtube.com/watch?v=bquifROEFMI",
-      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
     }
   ],
-  "productBrandQuarantine": 19,
+  "productBrandQuarantine": 24,
   "history": [
     {
       "date": "2026-09-22",
@@ -313,11 +312,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-27",
-      "newCandidates": 4,
+      "newCandidates": 6,
       "newCandidatesThisRun": 2,
-      "pendingReview": 131,
+      "pendingReview": 133,
       "scienceMedicalPriority": 78,
-      "videoPriority": 53,
+      "videoPriority": 55,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
