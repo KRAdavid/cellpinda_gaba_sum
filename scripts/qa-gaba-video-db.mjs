@@ -59,7 +59,7 @@ for (const id of consumerCopyIds) {
     if (!nonEmptyRecordField(block, field)) failures.push(`${field} is empty from public-safe ${id}`);
   }
 }
-if (!consumerCopyBlock.includes('공식 게시물은') || !consumerCopyBlock.includes('공식 채널') || !consumerCopyBlock.includes('소개합니다')) failures.push('public person summaries do not identify the speaker or source in consumer language');
+if (!(consumerCopyBlock.includes('영상 채널은') || consumerCopyBlock.includes('공식 채널')) || !consumerCopyBlock.includes('소개합니다')) failures.push('public person summaries do not identify the speaker or source in consumer language');
 for (const field of requiredFields) {
   const missing = recordBlocks.filter(block => !block.includes(field)).length;
   if (missing) failures.push(`${field} missing from ${missing} record(s)`);

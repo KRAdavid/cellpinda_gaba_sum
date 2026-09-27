@@ -2325,9 +2325,9 @@ export default function App() {
                   {presentationMode ? <div><dt>주장 범위</dt><dd>{selectedVideo.audit.claimCategories.map(category => VIDEO_CLAIM_LABELS[category]).join(' · ')}</dd></div> : null}
                   {presentationMode ? <div><dt>영상별 감리 규칙</dt><dd>{selectedVideo.reviewRule ?? selectedVideo.audit.nextAction}</dd></div> : null}
                 </dl> : null}
-                <p className="video-db-detail__next"><strong>{presentationMode ? '다음 감리 행동' : '더 알아보기'}</strong><br />{presentationMode ? selectedVideo.audit.nextAction : '영상의 전체 내용과 출연자 설명은 YouTube 원문에서 확인하세요.'}</p>
+                <p className="video-db-detail__next"><strong>{presentationMode ? '다음 감리 행동' : '더 알아보기'}</strong><br />{presentationMode ? selectedVideo.audit.nextAction : '영상 전체 내용은 같은 화면에서 확인하고, GABA 연구 내용은 연구 출처에서 따로 살펴보세요.'}</p>
                 <p className="info-panel__status">{presentationMode ? selectedVideo.statusReason : 'GABA를 이해하기 위한 참고 영상입니다.'}</p>
-                <p className="video-db-detail__meta">{presentationMode ? <>확인일 {selectedVideo.checkedAt}{selectedVideo.authoritySourceCheckedAt ? <> · 인물 출처 확인일 {selectedVideo.authoritySourceCheckedAt}</> : null} · 채널 {selectedVideo.channel} · 화자 {selectedVideo.speaker}{selectedVideo.sourceChannelUrl ? <> · <a href={selectedVideo.sourceChannelUrl} target="_blank" rel="noopener noreferrer">채널 원문 보기 ↗</a></> : null}{selectedVideo.authorityEvidenceUrl ? <> · <a href={selectedVideo.authorityEvidenceUrl} target="_blank" rel="noopener noreferrer">화자·소속 확인 출처 ↗</a></> : null}{selectedVideo.researchEvidenceUrl ? <> · <a href={selectedVideo.researchEvidenceUrl} target="_blank" rel="noopener noreferrer">관련 연구 기록 ↗</a></> : null}</> : <>채널 {selectedVideo.channel} · 출연자 {selectedVideo.speaker}</>}</p>
+                <p className="video-db-detail__meta">{presentationMode ? <>확인일 {selectedVideo.checkedAt}{selectedVideo.authoritySourceCheckedAt ? <> · 인물 출처 확인일 {selectedVideo.authoritySourceCheckedAt}</> : null} · 채널 {selectedVideo.channel} · 화자 {selectedVideo.speaker}{selectedVideo.sourceChannelUrl ? <> · <a href={selectedVideo.sourceChannelUrl} target="_blank" rel="noopener noreferrer">채널 원문 보기 ↗</a></> : null}{selectedVideo.authorityEvidenceUrl ? <> · <a href={selectedVideo.authorityEvidenceUrl} target="_blank" rel="noopener noreferrer">화자·소속 확인 출처 ↗</a></> : null}{selectedVideo.researchEvidenceUrl ? <> · <a href={selectedVideo.researchEvidenceUrl} target="_blank" rel="noopener noreferrer">관련 연구 기록 ↗</a></> : null}</> : <>채널 {selectedVideo.channel}</>}</p>
                 {presentationMode && selectedVideoReviewDraft ? <details className="video-review-draft">
                   <summary><span>이 영상 감리 기록 초안</span><strong>{selectedReviewCheckCount}/5 확인 <span aria-hidden="true">＋</span></strong></summary>
                   <div className="video-review-draft__body">
@@ -2500,7 +2500,7 @@ export default function App() {
             </div>
             <div>
               <p>GABA의 일반적인 내용을 설명하는 영상을 한 편씩 살펴볼 수 있습니다.</p>
-              <p className="video-showcase__boundary">영상의 전체 내용은 YouTube 원문에서 확인하세요.</p>
+              <p className="video-showcase__boundary">영상은 GABA를 이해하기 위한 참고 자료입니다. 연구 내용은 아래 연구 출처에서 따로 확인하세요.</p>
             </div>
           </div>
           <div className="video-showcase__flow">
@@ -2536,14 +2536,14 @@ export default function App() {
         <div className="video-showcase__inner">
           <div className="video-showcase__heading">
             <div>
-              <p className="eyebrow video-showcase__status">오늘 공유된 참고 영상 · 원문 확인 전</p>
+              <p className="eyebrow video-showcase__status">GABA 이해를 돕는 참고 영상</p>
               <p className="eyebrow">GABA 영상</p>
               <h2 id="video-showcase-title">영상은 짧게 보고,<br /><em>원문으로 확인하세요.</em></h2>
             </div>
             <div>
-              <p>GABA를 설명하는 영상을 한 편씩 살펴봅니다. 무엇을 어떻게 소개했는지와 인물 소개를 먼저 보고, 전체 내용은 페이지 안에서 이어서 확인할 수 있습니다.</p>
-              <p className="video-showcase__boundary">두 요약은 제목과 공개 설명을 바탕으로 정리했습니다. 전체 내용은 YouTube 원문에서 확인하세요.</p>
-              <p className="video-showcase__guide"><strong>먼저 볼 것</strong><span>무엇을 어떻게 소개했나</span><span>인물 소개</span><span>페이지 안에서 원문</span></p>
+              <p>GABA를 설명하는 영상을 한 편씩 살펴봅니다. 무엇을 어떻게 소개했는지와 인물 소개를 먼저 보고, 같은 화면에서 영상을 이어서 확인할 수 있습니다.</p>
+              <p className="video-showcase__boundary">영상은 이해를 돕는 참고 자료이며, GABA 연구 내용은 연구 출처에서 따로 확인합니다.</p>
+              <p className="video-showcase__guide"><strong>먼저 볼 것</strong><span>무엇을 어떻게 소개했나</span><span>인물 소개</span><span>페이지 안에서 재생</span></p>
               <button type="button" className="video-showcase__db-button" onClick={event => openVideoPanel(event.currentTarget)}>영상 정보 보기 <span aria-hidden="true">↗</span></button>
             </div>
           </div>
@@ -2559,7 +2559,7 @@ export default function App() {
             </nav>
             <article className="video-showcase__item" data-video-reel aria-live="polite" onTouchStart={handleShowcaseTouchStart} onTouchEnd={handleShowcaseTouchEnd}>
               <section className="video-showcase__player" aria-label={`${showcaseVideo.publicTitle ?? showcaseVideo.title} 페이지 안에서 재생`}>
-                <div className="video-showcase__player-heading"><span>GABA 설명 영상</span><small>{showcaseVideo.status === 'PUBLISH_GENERAL' ? '일반 교육 공개' : '원문 확인 전'} · 페이지 안에서 재생</small></div>
+                <div className="video-showcase__player-heading"><span>GABA 설명 영상</span><small>페이지 안에서 재생</small></div>
                 {showcaseVideoEmbedUrl && showcasePlayerStartedId === showcaseVideo.id ? <iframe src={showcaseVideoEmbedUrl} title={`${showcaseVideo.publicTitle ?? showcaseVideo.title} YouTube Shorts 원문 플레이어`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /> : <button type="button" className="video-showcase__player-poster" data-play-showcase-video onClick={() => setShowcasePlayerStartedId(showcaseVideo.id)} aria-label="페이지 안에서 YouTube 영상 재생 시작">
                   {showcaseVideo.previewImage ? <img className="video-showcase__player-poster-image" src={showcaseVideo.previewImage} alt="" loading="lazy" decoding="async" onError={event => {event.currentTarget.style.display = 'none';}} /> : null}
                   <span className="video-showcase__player-poster-label">GABA · YouTube Shorts</span><strong>{showcaseVideo.publicTitle ?? 'GABA 영상'}</strong><small>눌러서 페이지 안에서 영상 보기</small><span className="video-showcase__play" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5.2v13.6L19 12 8 5.2Z" /></svg></span>
@@ -2572,8 +2572,8 @@ export default function App() {
                 <button type="button" data-next-video-reel onClick={() => selectShowcaseVideo(showcaseVideoIndex + 1)} disabled={showcaseVideoIndex === SHARED_GABA_VIDEOS.length - 1}>다음 영상 →</button>
               </div>
               <div className="video-showcase__copy">
-                <div className="video-showcase__meta"><span>GABA 참고 영상 · 원문 확인 전</span></div>
-                <p className="video-showcase__candidate-note" role="note"><strong>원문 확인 전 참고 영상</strong><span>요약은 제목·공개 설명을 바탕으로 정리했으며, 영상 전체 내용은 YouTube 원문에서 확인하세요.</span></p>
+                <div className="video-showcase__meta"><span>GABA 이해를 돕는 참고 영상</span></div>
+                <p className="video-showcase__candidate-note" role="note"><strong>참고 영상</strong><span>영상의 핵심 내용과 인물 소개를 먼저 읽고, 같은 화면에서 영상을 이어 보세요. 연구 결과는 연구 출처에서 따로 확인할 수 있습니다.</span></p>
                 <h3>{showcaseVideo.publicTitle ?? showcaseVideo.title}</h3>
                 <p className="video-showcase__channel">{showcaseVideo.channel} · {showcaseVideo.speaker}</p>
                 <p><strong>무엇을 어떻게 소개했나</strong><br />{showcaseVideo.publicSummary ?? showcaseVideo.summary}</p>
