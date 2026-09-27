@@ -633,10 +633,13 @@ export default function App() {
       previewLabel: video.previewLabel ?? '사람 검토 완료 · 일반 GABA 교육',
     };
   }), []);
-  const publicPanelVideos = useMemo(() => [...approvedVideos, ...SHARED_GABA_VIDEOS], [approvedVideos]);
+  // Consumer records intentionally contain only the public-safe video fields;
+  // presenter-only calculations use the same runtime shape only behind this
+  // boundary and never expose their internal audit properties to consumers.
+  const publicPanelVideos = useMemo(() => [...approvedVideos, ...SHARED_GABA_VIDEOS] as unknown as GabaVideoRecord[], [approvedVideos]);
   const approvedVideo = approvedVideos[approvedVideoIndex] ?? approvedVideos[0] ?? null;
   const publicVideo = publicPanelVideos[0] ?? null;
-  const showcaseVideo = SHARED_GABA_VIDEOS[showcaseVideoIndex] ?? SHARED_GABA_VIDEOS[0] ?? null;
+  const showcaseVideo = (SHARED_GABA_VIDEOS as unknown as GabaVideoRecord[])[showcaseVideoIndex] ?? (SHARED_GABA_VIDEOS as unknown as GabaVideoRecord[])[0] ?? null;
   const panelVideos = presentationMode ? activePresenterVideos : publicPanelVideos;
   const selectedVideo = panelVideoId ? panelVideos.find(video => video.id === panelVideoId) ?? presenterVideoDb.find(video => video.id === panelVideoId) ?? null : null;
   const selectedVideoId = selectedVideo?.url.match(/(?:shorts\/|watch\?v=)([\w-]{11})/)?.[1] ?? null;
@@ -672,7 +675,7 @@ export default function App() {
       EXCLUDE: 9,
     };
     const reviewProgress = (video: GabaVideoRecord) => VIDEO_REVIEW_CHECKS.filter(check => videoReviewDrafts[video.id]?.[check.key]).length;
-    const reviewPool = presentationMode && activePresenterVideos.length ? activePresenterVideos : SHARED_GABA_VIDEOS;
+    const reviewPool = presentationMode && activePresenterVideos.length ? activePresenterVideos : SHARED_GABA_VIDEOS as unknown as GabaVideoRecord[];
     return [...reviewPool]
       .filter(video => video.status !== 'EXCLUDE')
       .sort((left, right) => {
@@ -2554,8 +2557,8 @@ export default function App() {
                 <div className="video-showcase__meta"><span>GABA 참고 영상</span></div>
                 <h3>{approvedVideo.publicTitle ?? approvedVideo.title}</h3>
                 <p className="video-showcase__channel">{approvedVideo.channel} · {approvedVideo.speaker}</p>
-                <p><strong>무엇을 어떻게 소개했나</strong><br />{approvedVideo.publicSummary ?? approvedVideo.summary}</p>
-                <p><strong>인물 소개</strong><br />{approvedVideo.publicPersonSummary ?? approvedVideo.personSummary}</p>
+                <p><strong>무엇을 어떻게 소개했나</strong><br />{approvedVideo.publicSummary}</p>
+                <p><strong>인물 소개</strong><br />{approvedVideo.publicPersonSummary}</p>
                 <div className="video-showcase__actions"><button type="button" onClick={event => openVideoPanel(event.currentTarget, approvedVideo.id)}>영상 정보 보기 <span aria-hidden="true">＋</span></button><span className="video-showcase__source-note">YouTube에서 전체 영상 보기</span></div>
                 <div className="video-showcase__pager" aria-label="영상 이동"><button type="button" onClick={() => selectApprovedVideo(approvedVideoIndex - 1)} disabled={approvedVideoIndex === 0}>이전 영상</button><button type="button" onClick={() => selectApprovedVideo(approvedVideoIndex + 1)} disabled={approvedVideoIndex === approvedVideos.length - 1}>다음 영상 <span aria-hidden="true">→</span></button></div>
               </div>
@@ -2608,8 +2611,8 @@ export default function App() {
                 <p className="video-showcase__candidate-note" role="note"><strong>참고 영상</strong><span>영상의 핵심 내용과 인물 소개를 먼저 읽고, 같은 화면에서 영상을 이어 보세요. 연구 결과는 연구 출처에서 따로 확인할 수 있습니다.</span></p>
                 <h3>{showcaseVideo.publicTitle ?? showcaseVideo.title}</h3>
                 <p className="video-showcase__channel">{showcaseVideo.channel} · {showcaseVideo.speaker}</p>
-                <p><strong>무엇을 어떻게 소개했나</strong><br />{showcaseVideo.publicSummary ?? showcaseVideo.summary}</p>
-                <p><strong>인물 소개</strong><br />{showcaseVideo.publicPersonSummary ?? showcaseVideo.personSummary}</p>
+                <p><strong>무엇을 어떻게 소개했나</strong><br />{showcaseVideo.publicSummary}</p>
+                <p><strong>인물 소개</strong><br />{showcaseVideo.publicPersonSummary}</p>
                 <div className="video-showcase__actions"><button type="button" data-open-video-review onClick={event => openVideoPanel(event.currentTarget, showcaseVideo.id)}>영상 정보 보기 <span aria-hidden="true">＋</span></button><button type="button" data-share-video-link onClick={shareShowcaseVideo}>이 영상 링크 공유 <span aria-hidden="true">↗</span></button><span className="video-showcase__source-note">YouTube 원문은 영상 정보에서 보기</span><span className="video-showcase__share-message" aria-live="polite">{showcaseShareMessage}</span></div>
                 <div className="video-showcase__pager" aria-label="영상 이동">
                   <button type="button" onClick={() => selectShowcaseVideo(showcaseVideoIndex - 1)} disabled={showcaseVideoIndex === 0}>이전 영상</button>

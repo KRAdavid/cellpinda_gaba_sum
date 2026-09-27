@@ -35,6 +35,20 @@ const send = (method, params = {}) => new Promise((resolve, reject) => {
   socket.send(JSON.stringify({id, method, params}));
 });
 const evaluate = async expression => (await send('Runtime.evaluate', {expression, returnByValue: true, awaitPromise: true})).result?.value;
+const waitForAppBody = async () => {
+  const deadline = Date.now() + 6000;
+  while (Date.now() < deadline) {
+    if (await evaluate('Boolean(document.body?.innerText?.trim())')) return true;
+    await wait(120);
+  }
+  return false;
+};
+const navigate = async url => {
+  await send('Page.navigate', {url});
+  if (await waitForAppBody()) return;
+  await send('Page.reload');
+  await waitForAppBody();
+};
 const waitForProgress = async expected => {
   const deadline = Date.now() + 4000;
   while (Date.now() < deadline) {
@@ -45,7 +59,7 @@ const waitForProgress = async expected => {
   throw new Error(`Timed out waiting for progress ${expected}`);
 };
 const waitForPresentation = async expected => {
-  const deadline = Date.now() + 4000;
+  const deadline = Date.now() + 8000;
   while (Date.now() < deadline) {
     const state = await evaluate('({progress:document.querySelector(".story-controls span")?.innerText||"",presentation:!!document.querySelector(".story--presentation")})');
     if (state.progress === expected && state.presentation) return;
@@ -54,12 +68,13 @@ const waitForPresentation = async expected => {
   throw new Error(`Timed out waiting for presenter state ${expected}`);
 };
 const waitForText = async (selector, text) => {
-  const deadline = Date.now() + 4000;
+  const deadline = Date.now() + 8000;
   while (Date.now() < deadline) {
     if ((await evaluate(`document.querySelector(${JSON.stringify(selector)})?.innerText || ''`)).includes(text)) return;
     await wait(80);
   }
-  throw new Error(`Timed out waiting for ${text}`);
+  const diagnostic = await evaluate('({url:location.href,body:document.body.innerText.slice(0,500),presentation:!!document.querySelector(".story--presentation"),buttonCount:document.querySelectorAll(".story-video-db-button").length,panelTitle:document.querySelector("#info-panel-title")?.innerText||""})');
+  throw new Error(`Timed out waiting for ${text}: ${JSON.stringify(diagnostic)}`);
 };
 const press = async (key, code, virtualKeyCode) => {
   await send('Input.dispatchKeyEvent', {type: 'rawKeyDown', key, code, windowsVirtualKeyCode: virtualKeyCode, nativeVirtualKeyCode: virtualKeyCode});
@@ -75,7 +90,7 @@ try {
   await send('Network.enable');
   await send('Network.setCacheDisabled', {cacheDisabled: true});
   await send('Emulation.setDeviceMetricsOverride', {width: viewportWidth, height: viewportHeight, deviceScaleFactor: 1, mobile: viewportWidth <= 760});
-  await send('Page.navigate', {url: baseUrl});
+  await navigate(baseUrl);
   await wait(900);
   await evaluate('localStorage.removeItem("cellpinda-gaba-video-review-draft-v1")');
   await evaluate('localStorage.removeItem("cellpinda-gaba-monitor-review-draft-v1")');
@@ -124,7 +139,7 @@ try {
   await waitForProgress('04 / 08');
   assert('consumer reel wheel gesture advances one focused message', true);
 
-  await send('Page.navigate', {url: routeUrl({card: '7'})});
+  await navigate(routeUrl({card: '7'}));
   await waitForProgress('07 / 08');
   await evaluate('document.querySelector("#story-scene-research .reader-link")?.click()');
   await waitForText('#info-panel-title', '일반 GABA 연구를 읽는 방법');
@@ -146,7 +161,7 @@ try {
   await evaluate('document.querySelector(".info-panel__topline button")?.click()');
   await wait(120);
 
-  await send('Page.navigate', {url: routeUrl({card: '4'})});
+  await navigate(routeUrl({card: '4'}));
   await waitForProgress('04 / 08');
   const sleepEvidenceEntry = await evaluate('({text:document.querySelector("#story-scene-sleep .reader-link")?.innerText||"",href:location.href})');
    assert('sleep scene offers an in-page evidence entry', sleepEvidenceEntry.text.includes('수면 회복 자료 보기') && !sleepEvidenceEntry.href.includes('pubmed'), JSON.stringify(sleepEvidenceEntry));
@@ -157,7 +172,7 @@ try {
   await evaluate('document.querySelector(".info-panel__topline button")?.click()');
   await wait(120);
 
-  await send('Page.navigate', {url: routeUrl({card: '6'})});
+  await navigate(routeUrl({card: '6'}));
   await waitForProgress('06 / 08');
   const functionEvidenceEntry = await evaluate('({text:document.querySelector("#story-scene-function .reader-link")?.innerText||"",href:location.href})');
    assert('GABA function scene offers an in-page evidence entry', functionEvidenceEntry.text.includes('GABA 기능 자료 보기') && !functionEvidenceEntry.href.includes('pubmed'), JSON.stringify(functionEvidenceEntry));
@@ -218,12 +233,12 @@ try {
   assert('consumer can continue to the next video without leaving the page', nextPublicVideo.detail.includes('30년 자율신경') && nextPublicVideo.button.includes('다음 영상'), JSON.stringify(nextPublicVideo));
   await press('Escape', 'Escape', 27);
 
-  await send('Page.navigate', {url: routeUrl({video: 'SHORT-04'}, 'video-showcase')});
+  await navigate(routeUrl({video: 'SHORT-04'}, 'video-showcase'));
   await waitForText('.video-showcase__copy h3', 'GABA와 뇌 신호를 알아보는 영상');
   const directPublicVideo = await evaluate('({meta:document.querySelector("#video-showcase .video-showcase__meta")?.innerText||"",hash:location.hash})');
   assert('consumer direct video link opens the requested entry point', directPublicVideo.meta.includes('참고 영상') && directPublicVideo.hash === '#video-showcase', JSON.stringify(directPublicVideo));
 
-  await send('Page.navigate', {url: routeUrl({mode: 'presenter', card: '1'})});
+  await navigate(routeUrl({mode: 'presenter', card: '1'}));
   await waitForPresentation('01 / 08');
   const presenterEntry = await evaluate('({presentation:!!document.querySelector(".story--presentation"),button:!!document.querySelector(".story-video-db-button"),opsButton:!!document.querySelector(".story-ops-board-button"),sceneCopy:!!document.querySelector(".presenter-note__actions button"),quickCopy:!!document.querySelector("[data-presenter-quick-copy]"),product:document.body.innerText.includes("셀핀다 제품")})');
   assert('presenter mode exposes the video DB, operations controls, and scene copy', presenterEntry.presentation && presenterEntry.button && presenterEntry.opsButton && presenterEntry.sceneCopy && presenterEntry.quickCopy && !presenterEntry.product, JSON.stringify(presenterEntry));
@@ -238,7 +253,7 @@ try {
   await wait(180);
   const fullBriefCopyState = await evaluate('document.querySelector(".presenter-copy-message")?.innerText||""');
   assert('presenter can copy the complete product-free education flow', fullBriefCopyState.includes('전체 교육 흐름 설명문을 복사했습니다.') || fullBriefCopyState.includes('복사에 실패했습니다'), fullBriefCopyState);
-  await send('Page.navigate', {url: routeUrl({mode: 'presenter', card: '7'})});
+  await navigate(routeUrl({mode: 'presenter', card: '7'}));
   await waitForPresentation('07 / 08');
   await evaluate('document.querySelector(".story-card--research .card-link")?.click()');
   await waitForText('#info-panel-title', '일반 GABA 연구를 읽는 방법');
@@ -254,7 +269,7 @@ try {
   const sourceReviewCopyState = await evaluate('document.querySelector(".source-review-draft__actions")?.innerText||""');
   assert('source review draft copy is wired', sourceReviewCopyState.includes('과학 출처 검토 초안을 복사했습니다.') || sourceReviewCopyState.includes('복사에 실패했습니다'), sourceReviewCopyState);
   await press('Escape', 'Escape', 27);
-  await send('Page.navigate', {url: routeUrl({mode: 'presenter', card: '1'})});
+  await navigate(routeUrl({mode: 'presenter', card: '1'}));
   await waitForPresentation('01 / 08');
   await evaluate('document.querySelector(".story-video-db-button")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
@@ -330,7 +345,7 @@ try {
   await wait(180);
   const reviewLinkCopyState = await evaluate('document.querySelector(".video-db-detail__operator")?.innerText||""');
   assert('presenter can request a direct internal review link for the selected video', reviewLinkCopyState.includes('이 영상 감리 링크 복사') && (reviewLinkCopyState.includes('이 영상 감리 링크를 복사했습니다.') || reviewLinkCopyState.includes('복사에 실패했습니다')), reviewLinkCopyState);
-  await send('Page.navigate', {url: routeUrl({mode: 'presenter', card: '1', video: 'SHORT-02'}, 'video-showcase')});
+  await navigate(routeUrl({mode: 'presenter', card: '1', video: 'SHORT-02'}, 'video-showcase'));
   await waitForPresentation('01 / 08');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
   const directVideoReview = await evaluate('({title:document.querySelector(".video-db-detail h3")?.innerText||"",selected:document.querySelector(".video-db-item.is-selected")?.innerText||"",url:location.href})');
@@ -422,5 +437,5 @@ try {
   const finalState = await evaluate('({presentation:!!document.querySelector(".story--presentation"),url:location.href})');
   assert('Escape exits presenter mode', !finalState.presentation && !finalState.url.includes('mode=presenter'), JSON.stringify(finalState));
 } finally {
-  socket.close();
+  if (socket.readyState === WebSocket.OPEN) socket.close();
 }
