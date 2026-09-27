@@ -29,6 +29,22 @@
 - 원문 영상·자막·실제 화자·주장 범위·권리 확인을 마치기 전에는 소비자용 `검토 완료 영상`에 연결하지 않는다.
 - 사용자가 제공한 국내 Shorts는 현재 공개 후보 참고 영상으로만 유지하며, 해외 `AUTH-*` 영상은 소비자 화면에 연결하지 않는다.
 
+## 12:26 KST 출처 페이지 접근성 재확인
+
+공식 인물·소속 출처 URL 7건을 `Invoke-WebRequest`로 다시 요청했고 모두 HTTP 200을 반환했다. 이번 확인은 페이지 접근성·응답 존재만 기록하며 영상의 실제 화자, 발언 내용, 자격의 독립 검증, 연구 타당성, 임베드·재사용 권리 또는 `PUBLISH_GENERAL`을 승인하지 않는다.
+
+| ID | 확인 URL | 응답 |
+| --- | --- | --- |
+| VID-03 | Braintube 공식 YouTube 채널 정보 | HTTP 200 |
+| SHORT-02 | 이동환TV 공식 YouTube 채널 정보 | HTTP 200 |
+| SHORT-03 | 양과자 공식 YouTube 채널 정보 | HTTP 200 |
+| SHORT-04 | Braintube 공식 YouTube 채널 정보 | HTTP 200 |
+| SHORT-05 | 서울시 정이안 소개 자료 | HTTP 200 |
+| SHORT-06 | 대한수면연구학회 행사 자료 | HTTP 200 |
+| SHORT-08 | 비엠한방내과 이제원 소개 자료 | HTTP 200 |
+
+운영 모니터 스냅샷의 `registeredAuthoritySourceDatesChecked`·사람 검토·국내 공개 승인 수치는 이 로컬 접근성 재확인만으로 변경하지 않는다. 다음 단계는 각 영상의 원문·자막·실제 화자·주장 범위·권리 확인이다.
+
 ## 원문 출처
 
 - [국가독성과학연구소 공식 성과 페이지](https://www.kitox.re.kr/doksa/achievement/mem_index/page/2)
