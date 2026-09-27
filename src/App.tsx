@@ -2162,10 +2162,11 @@ export default function App() {
         </div> : null}
         </> : consumerStory}
         {openPanel ? <div className="info-layer" role="presentation" onMouseDown={event => {if (event.target === event.currentTarget) closePanel();}}>
-          <aside className={`info-panel${openPanel === 'ops' ? ' info-panel--ops' : ''}${openPanel === 'video' && !presentationMode ? ' info-panel--consumer-video' : ''}`} ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title">
+          <aside className={`info-panel${openPanel === 'ops' ? ' info-panel--ops' : ''}${openPanel === 'video' && !presentationMode ? ' info-panel--consumer-video' : ''}`} ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="info-panel-title" aria-describedby="info-panel-description">
             <div className="info-panel__topline"><span>{presentationMode ? '장면 흐름 안에서 확인' : '읽기 흐름 안에서 확인'}</span><button ref={panelCloseRef} type="button" onClick={() => closePanel()} aria-label="정보 패널 닫기">×</button></div>
             <p className="eyebrow">{openPanel === 'research' ? '일반 GABA 연구' : openPanel === 'video' ? (presentationMode ? '영상 DB 감리' : 'GABA 영상') : '발표자 운영'}</p>
             <h2 id="info-panel-title">{panelTitle}</h2>
+            <p id="info-panel-description" className="sr-only">현재 읽기 흐름 위에서 상세 정보를 확인하는 패널입니다. 닫으면 원래 보던 위치로 돌아갑니다.</p>
             {openPanel === 'research' ? <>
               <p>일반 GABA 연구에서 어떤 변화가 관찰됐는지, 그리고 그 결과를 어떻게 읽으면 되는지 쉽게 정리했습니다.</p>
               <p className="info-panel__verification"><strong>결과를 볼 때 함께 확인할 것</strong>누구를 대상으로, 얼마나 오래, 어떤 방식으로 살펴본 연구인지 확인하면 결과를 더 정확하게 이해할 수 있습니다.</p>
