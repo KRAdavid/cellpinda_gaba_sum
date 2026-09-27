@@ -176,8 +176,8 @@ try {
   assert('consumer opens the original player only after an intentional in-page action', startedVideoPlayer.player && !startedVideoPlayer.poster, JSON.stringify(startedVideoPlayer));
   await evaluate('document.querySelectorAll(".video-showcase__index-button")[1]?.click()');
   await waitForText('.video-showcase__copy h3', 'GABA와 뇌 신호를 알아보는 영상');
-  const secondShowcaseVideo = await evaluate('({active:document.querySelector(".video-showcase__index-button.is-active")?.innerText||"",meta:document.querySelector(".video-showcase__meta")?.innerText||"",title:document.querySelector(".video-showcase__copy h3")?.innerText||""})');
-  assert('consumer can move to the next video without leaving the showcase', secondShowcaseVideo.active.includes('02') && secondShowcaseVideo.meta.includes('GABA 참고 영상') && secondShowcaseVideo.title.includes('GABA와 뇌 신호'), JSON.stringify(secondShowcaseVideo));
+  const secondShowcaseVideo = await evaluate('({active:document.querySelector("#video-showcase .video-showcase__index-button.is-active")?.innerText||"",meta:document.querySelector("#video-showcase .video-showcase__meta")?.innerText||"",title:document.querySelector("#video-showcase .video-showcase__copy h3")?.innerText||""})');
+  assert('consumer can move to the next video without leaving the showcase', secondShowcaseVideo.active.includes('02') && secondShowcaseVideo.meta.includes('참고 영상') && secondShowcaseVideo.title.includes('GABA와 뇌 신호'), JSON.stringify(secondShowcaseVideo));
   await evaluate('document.querySelectorAll(".video-showcase__index-button")[0]?.click()');
   await waitForText('.video-showcase__copy h3', 'GABA의 역할을 소개하는 영상');
   await evaluate('(() => { const item=document.querySelector("[data-video-reel]"); if (!item) return false; const makeTouch=(y)=>new Touch({identifier:1,target:item,clientX:120,clientY:y,screenX:120,screenY:y,pageX:120,pageY:y}); item.dispatchEvent(new TouchEvent("touchstart",{bubbles:true,touches:[makeTouch(620)],changedTouches:[makeTouch(620)]})); item.dispatchEvent(new TouchEvent("touchend",{bubbles:true,touches:[],changedTouches:[makeTouch(500)]})); return true; })()');
@@ -188,8 +188,8 @@ try {
   await waitForText('.video-showcase__copy h3', 'GABA의 역할을 소개하는 영상');
   await evaluate('document.querySelector("[data-next-video-reel]")?.click()');
   await waitForText('.video-showcase__copy h3', 'GABA와 뇌 신호를 알아보는 영상');
-  const reelNextVideo = await evaluate('({meta:document.querySelector(".video-showcase__meta")?.innerText||"",progress:document.querySelector(".video-showcase__reel-controls span strong")?.innerText||"",url:location.href})');
-  assert('consumer next-video reel control advances the current entry', reelNextVideo.meta.includes('GABA 참고 영상') && reelNextVideo.progress.includes('02 / 07') && reelNextVideo.url.includes('video=SHORT-04'), JSON.stringify(reelNextVideo));
+  const reelNextVideo = await evaluate('({meta:document.querySelector("#video-showcase .video-showcase__meta")?.innerText||"",progress:document.querySelector("#video-showcase .video-showcase__reel-controls span strong")?.innerText||"",url:location.href})');
+  assert('consumer next-video reel control advances the current entry', reelNextVideo.meta.includes('참고 영상') && reelNextVideo.progress.includes('02 / 07') && reelNextVideo.url.includes('video=SHORT-04'), JSON.stringify(reelNextVideo));
   await evaluate('document.querySelectorAll(".video-showcase__index-button")[0]?.click()');
   await waitForText('.video-showcase__copy h3', 'GABA의 역할을 소개하는 영상');
   const sharedVideoLink = await evaluate('({href:location.href,button:!!document.querySelector("[data-share-video-link]"),text:document.querySelector("[data-share-video-link]")?.innerText||""})');
@@ -220,8 +220,8 @@ try {
 
   await send('Page.navigate', {url: routeUrl({video: 'SHORT-04'}, 'video-showcase')});
   await waitForText('.video-showcase__copy h3', 'GABA와 뇌 신호를 알아보는 영상');
-  const directPublicVideo = await evaluate('({meta:document.querySelector(".video-showcase__meta")?.innerText||"",hash:location.hash})');
-  assert('consumer direct video link opens the requested entry point', directPublicVideo.meta.includes('GABA 참고 영상') && directPublicVideo.hash === '#video-showcase', JSON.stringify(directPublicVideo));
+  const directPublicVideo = await evaluate('({meta:document.querySelector("#video-showcase .video-showcase__meta")?.innerText||"",hash:location.hash})');
+  assert('consumer direct video link opens the requested entry point', directPublicVideo.meta.includes('참고 영상') && directPublicVideo.hash === '#video-showcase', JSON.stringify(directPublicVideo));
 
   await send('Page.navigate', {url: routeUrl({mode: 'presenter', card: '1'})});
   await waitForPresentation('01 / 08');
