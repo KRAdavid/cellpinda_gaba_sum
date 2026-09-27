@@ -43,10 +43,10 @@
 - 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.
 - 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.
 
-## PENDING-20260927-R0sFGdN-0mE
+## PENDING-20260927-JylbntGKoGs
 
-- 영상: [Ever wondered what GABA does? #neuroscience #funny #brain](https://www.youtube.com/watch?v=R0sFGdN-0mE)
-- 게시 채널(oEmbed): [Tour The World With Us](https://www.youtube.com/@danieleskritt3507)
+- 영상: [GABA vs. Glutamate: Your Brain's Chemical Messengers Explained #shorts](https://www.youtube.com/watch?v=JylbntGKoGs)
+- 게시 채널(oEmbed): [Dr. Buchi \| TheAdvancedNP](https://www.youtube.com/@theadvancednp9368)
 - 게시 채널 상태: oEmbed 게시 채널 확인
 - 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
 - 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.
@@ -54,10 +54,10 @@
 - 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.
 - 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.
 
-## PENDING-20260922-Lm2HJtSRBOI
+## PENDING-20260927-R0sFGdN-0mE
 
-- 영상: [가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)](https://www.youtube.com/watch?v=Lm2HJtSRBOI)
-- 게시 채널(oEmbed): [닥터지노 Dr Jino ](https://www.youtube.com/@drjino)
+- 영상: [Ever wondered what GABA does? #neuroscience #funny #brain](https://www.youtube.com/watch?v=R0sFGdN-0mE)
+- 게시 채널(oEmbed): [Tour The World With Us](https://www.youtube.com/@danieleskritt3507)
 - 게시 채널 상태: oEmbed 게시 채널 확인
 - 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
 - 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.

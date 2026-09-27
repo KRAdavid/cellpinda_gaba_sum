@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-27",
-  "checkedAtKst": "2026-09-27 14:19:46 KST",
-  "runId": "36296880650",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36296880650",
+  "checkedAtKst": "2026-09-27 14:38:38 KST",
+  "runId": "36297788679",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36297788679",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,11 +14,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 15,
-  "newCandidatesThisRun": 4,
-  "pendingReview": 142,
+  "newCandidates": 17,
+  "newCandidatesThisRun": 2,
+  "pendingReview": 144,
   "scienceMedicalPriority": 86,
-  "videoPriority": 56,
+  "videoPriority": 58,
   "pendingQueue": [
     {
       "id": "PENDING-20260927-3_dDQSpBkMQ",
@@ -140,6 +140,22 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
     {
+      "id": "PENDING-20260927-JylbntGKoGs",
+      "title": "GABA vs. Glutamate: Your Brain's Chemical Messengers Explained #shorts",
+      "url": "https://www.youtube.com/watch?v=JylbntGKoGs",
+      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "일반 설명 후보",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "KEYWORD_DISCOVERY",
+      "publisherName": "Dr. Buchi | TheAdvancedNP",
+      "publisherUrl": "https://www.youtube.com/@theadvancednp9368",
+      "publisherStatus": "oEmbed 게시 채널 확인",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
       "id": "PENDING-20260927-R0sFGdN-0mE",
       "title": "Ever wondered what GABA does? #neuroscience #funny #brain",
       "url": "https://www.youtube.com/watch?v=R0sFGdN-0mE",
@@ -153,22 +169,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "authorityBasis": "TITLE_DESCRIPTION_SIGNAL",
       "publisherName": "Tour The World With Us",
       "publisherUrl": "https://www.youtube.com/@danieleskritt3507",
-      "publisherStatus": "oEmbed 게시 채널 확인",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
-      "id": "PENDING-20260922-Lm2HJtSRBOI",
-      "title": "가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)",
-      "url": "https://www.youtube.com/watch?v=Lm2HJtSRBOI",
-      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "효과·안전성 단정 신호",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "publisherName": "닥터지노 Dr Jino ",
-      "publisherUrl": "https://www.youtube.com/@drjino",
       "publisherStatus": "oEmbed 게시 채널 확인",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
@@ -313,11 +313,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-27",
-      "newCandidates": 15,
-      "newCandidatesThisRun": 4,
-      "pendingReview": 142,
+      "newCandidates": 17,
+      "newCandidatesThisRun": 2,
+      "pendingReview": 144,
       "scienceMedicalPriority": 86,
-      "videoPriority": 56,
+      "videoPriority": 58,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,

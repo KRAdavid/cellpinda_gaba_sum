@@ -4,9 +4,9 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 142건
+- 검토 대기: 144건
 - SCIENCE/MEDICAL 또는 RIGHTS 선확인: 86건
-- VIDEO 원문·자막 선확인: 56건
+- VIDEO 원문·자막 선확인: 58건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 25건
 
 ## 우선순위 정의
@@ -35,6 +35,8 @@
 | PENDING-20260927-2_cCcvJ-8wQ | [GABA는 뇌에 못 간다? 30분 만에 잠드는 진짜 비결](https://www.youtube.com/watch?v=2_cCcvJ-8wQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260927-3EzF6onpf88 | [진정 작용 원리는 무엇일까요? GABA 시스템 #의학교육 #과학 #심전도 #의사](https://www.youtube.com/watch?v=3EzF6onpf88) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견 | 전문가 표현 감지 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260927-8wRjCtV3xho | [GABA #gaba #neurotransmitters #nervoussystem #shorts #trending #foryou #drdiaries #neurology #medico](https://www.youtube.com/watch?v=8wRjCtV3xho) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 | 전문가 표현 감지 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20260927-JylbntGKoGs | [GABA vs. Glutamate: Your Brain's Chemical Messengers Explained #shorts](https://www.youtube.com/watch?v=JylbntGKoGs) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20260927-NDHghNfjjkU | [골프 실력보다 중요한 '이것'? 해외 골퍼들의 비밀 루틴  #가바 #gaba #골프 #골프연습](https://www.youtube.com/watch?v=NDHghNfjjkU) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260927-oLJp7JVPfdA | [황미밥 가바 효능 #올쿠 #황미 #유명현](https://www.youtube.com/watch?v=oLJp7JVPfdA) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260927-R0sFGdN-0mE | [Ever wondered what GABA does? #neuroscience #funny #brain](https://www.youtube.com/watch?v=R0sFGdN-0mE) | YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견 | 전문가 표현 감지 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-_XGO7xk24jo | [헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=_XGO7xk24jo) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |

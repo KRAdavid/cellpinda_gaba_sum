@@ -2599,3 +2599,41 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260927-JylbntGKoGs
+
+- 상태: PENDING_REVIEW
+- 영상: [GABA vs. Glutamate: Your Brain's Chemical Messengers Explained #shorts](https://www.youtube.com/watch?v=JylbntGKoGs)
+- 채널: YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-27
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보 · 권위 후보 검색 발견
+- 자동 우선순위: VIDEO 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260927-NDHghNfjjkU
+
+- 상태: PENDING_REVIEW
+- 영상: [골프 실력보다 중요한 '이것'? 해외 골퍼들의 비밀 루틴  #가바 #gaba #골프 #골프연습](https://www.youtube.com/watch?v=NDHghNfjjkU)
+- 채널: YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-27
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
