@@ -1,8 +1,8 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-27",
-  "checkedAtKst": "2026-09-27 11:44:20 KST",
-  "runId": "36289376289",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36289376289",
+  "checkedAtKst": "2026-09-27 12:07:22 KST",
+  "runId": "36290485606",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36290485606",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleExpression": null,
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
