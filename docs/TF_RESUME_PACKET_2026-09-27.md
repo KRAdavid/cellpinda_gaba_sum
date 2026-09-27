@@ -8,9 +8,9 @@
 
 | 항목 | 현재 확인값 |
 | --- | --- |
-| 공개 사이트 기준 커밋 | `e15e2a4` · 감리 실행 ID·원문 링크 보존 포함 |
-| 소비자 화면 | [공개용 GABA 소개 페이지](https://kradavid.github.io/cellpinda_gaba_sum/?v=e15e2a4) |
-| TF 운영 화면 | [발표자·운영 모드](https://kradavid.github.io/cellpinda_gaba_sum/?v=e15e2a4&mode=presenter) |
+| 공개 사이트 기준 커밋 | `8c8d118` · 감리 실행 ID·원문 링크 보존 및 최신 인수인계 기록 포함 |
+| 소비자 화면 | [공개용 GABA 소개 페이지](https://kradavid.github.io/cellpinda_gaba_sum/?v=8c8d118) |
+| TF 운영 화면 | [발표자·운영 모드](https://kradavid.github.io/cellpinda_gaba_sum/?v=8c8d118&mode=presenter) |
 | 공개 UX | 8장 세로 릴 · 한 페이지 한 메시지 · 연구·영상 인페이지 확인 |
 | 최신 모니터 기준 | 2026-09-27 10:59:09 KST · 수동 실행 `36287158697` · 8/8 채널·12/12 검색어 |
 | 신규 후보 | 오늘 누적 6건 · 이번 실행 2건 · `PENDING_REVIEW` |
@@ -100,3 +100,8 @@
 - 커밋 `e15e2a4`에서 모니터 스냅샷에 `runId`와 `runUrl`을 보존하고, 발표자 화면의 일일 감리 상태에 `실행 원문 보기`를 추가했다.
 - 현재 스냅샷은 수동 감리 `36287158697`과 직접 연결되며, 수동 실행은 예약 실행이나 사람 승인으로 승격되지 않는다.
 - Pages 배포 `36288129093`의 build·deploy가 성공했고, 최신 소비자·발표자 URL HTTP 200과 원격 Playwright 2/2를 확인했다.
+
+## 11:24 KST 최신 인수인계 기준선 확인
+
+- 문서 기준선 커밋 `8c8d118`과 Pages 배포 `36288243017`의 build·deploy 성공을 확인했다.
+- 최신 원격 소비자·발표자 URL은 HTTP 200이며, 모바일 소비자·데스크톱 발표자 브라우저 QA는 `2/2` 통과했다. 실행 원문 링크는 수동 감리 `36287158697`로 연결된다.
