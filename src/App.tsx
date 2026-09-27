@@ -2341,6 +2341,7 @@ export default function App() {
                   <div className="video-db-embed__heading"><strong>{presentationMode ? '페이지 안에서 원문 재생' : '페이지 안에서 영상 보기'}</strong><small>YouTube · {selectedVideoIsShort ? 'Shorts' : '영상'}</small></div>
                   <iframe src={selectedVideoEmbedUrl} title={`${presentationMode ? selectedVideo.title : selectedVideo.publicTitle ?? selectedVideo.title} YouTube 원문 플레이어`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
                   <p>{presentationMode ? '임베드가 제한되면 아래 원문 링크를 선택하세요. 플레이어 재생은 사람 감리·권위 확인·공개 승인을 의미하지 않습니다.' : '영상 전체 내용은 아래 YouTube 원문에서 확인할 수 있습니다.'}</p>
+                  <a className="video-db-embed__source-link" href={selectedVideo.url} target="_blank" rel="noopener noreferrer">{presentationMode ? 'YouTube 원문 링크 열기 ↗' : 'YouTube 원문 보기 ↗'}</a>
                 </section> : null}
                 <div className="video-db-detail__summary">
                   <p><strong>무엇을 어떻게 소개했나</strong><br />{presentationMode ? selectedVideo.summary : selectedVideo.publicSummary ?? selectedVideo.summary}</p>
