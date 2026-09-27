@@ -8,14 +8,14 @@
 
 | 항목 | 현재 확인값 |
 | --- | --- |
-| 공개 사이트 기준 커밋 | `8c8d118` · 감리 실행 ID·원문 링크 보존 및 최신 인수인계 기록 포함 |
-| 소비자 화면 | [공개용 GABA 소개 페이지](https://kradavid.github.io/cellpinda_gaba_sum/?v=8c8d118) |
-| TF 운영 화면 | [발표자·운영 모드](https://kradavid.github.io/cellpinda_gaba_sum/?v=8c8d118&mode=presenter) |
+| 공개 사이트 기준 커밋 | `main` 최신 성공 Pages 실행 기준 · 감리 실행 ID·원문 링크 보존 |
+| 소비자 화면 | [공개용 GABA 소개 페이지](https://kradavid.github.io/cellpinda_gaba_sum/) |
+| TF 운영 화면 | [발표자·운영 모드](https://kradavid.github.io/cellpinda_gaba_sum/?mode=presenter) |
 | 공개 UX | 8장 세로 릴 · 한 페이지 한 메시지 · 연구·영상 인페이지 확인 |
-| 최신 모니터 기준 | 2026-09-27 10:59:09 KST · 수동 실행 `36287158697` · 8/8 채널·12/12 검색어 |
-| 신규 후보 | 오늘 누적 6건 · 이번 실행 2건 · `PENDING_REVIEW` |
-| 전체 검토 대기 | 133건 |
-| 자동 공개 | 0건 |
+| 최신 모니터 기준 | 아래 `GABA_TF_RESUME_STATUS` 자동 동기화 블록 |
+| 신규 후보 | 아래 자동 동기화 블록 기준 · `PENDING_REVIEW` |
+| 전체 검토 대기 | 아래 자동 동기화 블록 기준 |
+| 자동 공개 | 아래 자동 동기화 블록 기준 |
 | 사람 역할 배정 | 0/7 |
 | 과학 출처 사람 검토 | 0/5 |
 | 국내 영상 공개 승인 | 0/12 |
