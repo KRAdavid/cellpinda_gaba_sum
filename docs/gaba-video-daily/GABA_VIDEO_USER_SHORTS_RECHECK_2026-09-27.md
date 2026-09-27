@@ -4,7 +4,7 @@
 
 - 확인일: 2026-09-27
 - 대상: 사용자가 제공한 국내 Shorts 8건의 YouTube 원문 페이지
-- 확인한 항목: 공개 제목·페이지 접근 상태
+- 확인한 항목: YouTube oEmbed 공개 제목·게시 채널·원문 링크
 - 확인하지 않은 항목: 영상 전체 발언·자막·실제 화자·과학적 근거·권리·`PUBLISH_GENERAL`
 
 YouTube 페이지의 제목이나 채널이 확인되어도 영상의 내용·화자 자격·과학적 타당성·사용 권리를 승인한 것으로 보지 않는다. 아래 결과는 제목 수준의 감리 신호만 추가한 기록이며 영상 상태를 자동 변경하지 않는다.
@@ -13,14 +13,14 @@ YouTube 페이지의 제목이나 채널이 확인되어도 영상의 내용·�
 
 | ID | 원문 | 제목 수준 확인 | 운영 판정 |
 | --- | --- | --- | --- |
-| SHORT-01 | [YouTube Shorts](https://www.youtube.com/shorts/Cnk0PGn9YBM) | 접근 제한으로 이번 확인에서 제목 재확인 불가 | 기존 `EXCLUDE` 유지 |
+| SHORT-01 | [YouTube Shorts](https://www.youtube.com/shorts/Cnk0PGn9YBM) | `여에스더 "갱년기 잠 못 자면 노화 빨라져요" 수면제보다 안전한 영양제` · 셀럽의 건강비결 | 수면제·안전성 프레임과 재게시 여부를 확인하기 전 `EXCLUDE` 유지 |
 | SHORT-02 | [YouTube Shorts](https://www.youtube.com/shorts/RLAU1VWGsaI) | `잠자기 어렵다면 수면제 말고 이것으로 해결하세요. #가바` 제목 확인 | 수면제 대체 프레임이므로 `HOLD` 유지 · 공개 카피에 재전달하지 않음 |
 | SHORT-03 | [YouTube Shorts](https://www.youtube.com/shorts/vnocd9ZVJj0) | `신경을 안정시켜 수면에 도움되는 '가바' (GABA, 졸피뎀, 자낙스, 가바수용체)` 제목 확인 | 약물·수면 도움 프레임이므로 `HOLD` 유지 · 일반 GABA 기능과 분리 |
-| SHORT-04 | [YouTube Shorts](https://www.youtube.com/shorts/BiZXS_ojLUA) | 접근 제한으로 이번 확인에서 제목 재확인 불가 | 기존 `LIMITED_USE` 유지 |
-| SHORT-05 | [YouTube Shorts](https://www.youtube.com/shorts/7Zsxm9Wh2Yg) | 접근 제한으로 이번 확인에서 제목 재확인 불가 | 기존 `LIMITED_USE` 유지 |
-| SHORT-06 | [YouTube Shorts](https://www.youtube.com/shorts/rOFkZg09AoY) | 접근 제한으로 이번 확인에서 제목 재확인 불가 | 기존 `HOLD` 유지 |
-| SHORT-07 | [YouTube Shorts](https://www.youtube.com/shorts/4MTqi-bapLY) | 접근 제한으로 이번 확인에서 제목 재확인 불가 | 기존 `HOLD` 유지 |
-| SHORT-08 | [YouTube Shorts](https://www.youtube.com/shorts/4xGSHxkMYew) | 접근 제한으로 이번 확인에서 제목 재확인 불가 | 기존 `LIMITED_USE` 유지 |
+| SHORT-04 | [YouTube Shorts](https://www.youtube.com/shorts/BiZXS_ojLUA) | `불면증에 가바 영양제가 좋다는 이유` · 브레인튜브 Brain Doctor | 불면증·영양제 효과 프레임을 원문에서 분리 확인하기 전 `LIMITED_USE` 유지 |
+| SHORT-05 | [YouTube Shorts](https://www.youtube.com/shorts/7Zsxm9Wh2Yg) | `자율신경건강을 지켜줄 음식 - GABA 성분 #shorts` · 30년 자율신경, 정이안한의원TV | 음식·건강 결과 연결을 확인하기 전 `LIMITED_USE` 유지 |
+| SHORT-06 | [YouTube Shorts](https://www.youtube.com/shorts/rOFkZg09AoY) | `영양제로 먹는 가바(GABA), 정말 효과 있을까? 부작용 없는 천연 수면 보충제의 비밀` · SLEEP Dr. 신원철 꿀잠튜브 | 효과·부작용 없음·수면 보충제 프레임이므로 `HOLD` 유지 |
+| SHORT-07 | [YouTube Shorts](https://www.youtube.com/shorts/4MTqi-bapLY) | `불안 완화를 위한 GABA 활용법` · 마음 튼튼, 뇌연구소 바이탈라이즈 | 불안 완화·활용법 프레임이므로 `HOLD` 유지 |
+| SHORT-08 | [YouTube Shorts](https://www.youtube.com/shorts/4xGSHxkMYew) | `가바는 어떤 역할을 하는 걸까? #gaba` · 비엠한방내과 [bm_k_clinic] | 일반 역할 구간과 개인 조언을 분리하기 전 `LIMITED_USE` 유지 |
 
 ## 공개 카피 적용
 
