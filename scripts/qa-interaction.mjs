@@ -16,8 +16,13 @@ const target = await targetResponse.json();
 const socket = new WebSocket(target.webSocketDebuggerUrl);
 let messageId = 0;
 const pending = new Map();
+const runtimeExceptions = [];
 socket.addEventListener('message', event => {
   const message = JSON.parse(event.data);
+  if (message.method === 'Runtime.exceptionThrown') {
+    const details = message.params?.exceptionDetails;
+    runtimeExceptions.push(details?.exception?.description ?? details?.text ?? 'unknown runtime exception');
+  }
   if (!message.id || !pending.has(message.id)) return;
   const resolve = pending.get(message.id);
   pending.delete(message.id);
@@ -91,6 +96,7 @@ const assert = (label, condition, detail = '') => {
 };
 
 try {
+  await send('Runtime.enable');
   await send('Network.enable');
   await send('Network.setCacheDisabled', {cacheDisabled: true});
   await send('Emulation.setDeviceMetricsOverride', {width: viewportWidth, height: viewportHeight, deviceScaleFactor: 1, mobile: viewportWidth <= 760});
@@ -279,6 +285,7 @@ try {
   await waitForPresentation('01 / 08');
   await evaluate('document.querySelector(".story-video-db-button")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 DB 검토');
+  assert('presenter video DB initial load has no runtime exceptions', runtimeExceptions.length === 0, runtimeExceptions.join(' | '));
   await waitForText('.video-db-list', 'SHORT-01');
   const presenterDb = await evaluate('({items:document.querySelectorAll(".video-db-item").length,hasHold:document.querySelector(".video-db-list")?.innerText.includes("검토 보류")||false,detail:document.querySelector(".video-db-detail")?.innerText||"",body:document.querySelector(".video-db-list")?.innerText||"",panel:document.querySelector(".info-panel")?.innerText||"",search:!!document.querySelector(".video-db-search input"),filters:document.querySelectorAll(".video-db-filters button").length})');
   assert('presenter video DB keeps candidate review separate from public curation', presenterDb.items === 12 && presenterDb.hasHold && !presenterDb.detail && !presenterDb.body?.includes('Molecular regulation') && presenterDb.panel.includes('국내 공개 승인 0건') && presenterDb.panel.includes('DB 승인 이력 2건') && presenterDb.panel.includes('감리 초안 0건'), JSON.stringify(presenterDb));

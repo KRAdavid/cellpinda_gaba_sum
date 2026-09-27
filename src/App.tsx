@@ -675,7 +675,10 @@ export default function App() {
       EXCLUDE: 9,
     };
     const reviewProgress = (video: GabaVideoRecord) => VIDEO_REVIEW_CHECKS.filter(check => videoReviewDrafts[video.id]?.[check.key]).length;
-    const reviewPool = presentationMode && activePresenterVideos.length ? activePresenterVideos : SHARED_GABA_VIDEOS as unknown as GabaVideoRecord[];
+    // Presenter review cards require the audit fields that are loaded by the
+    // presenter-only data import. Do not use public-safe records as a loading
+    // fallback: they intentionally omit internal audit metadata.
+    const reviewPool = presentationMode ? activePresenterVideos : SHARED_GABA_VIDEOS as unknown as GabaVideoRecord[];
     return [...reviewPool]
       .filter(video => video.status !== 'EXCLUDE')
       .sort((left, right) => {
