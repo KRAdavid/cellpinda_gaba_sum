@@ -117,3 +117,8 @@
 - Pages 공개 URL `https://kradavid.github.io/cellpinda_gaba_sum/?v=49a201e`에서 Playwright `2/2`를 통과했다. 소비자 8장면, 연구 인페이지 패널, 영상 인페이지 플레이어, 발표자 영상 DB·운영 보드를 재확인했다.
 - `pnpm run qa:public`은 스토리·영상 DB·일일 모니터·문서·빌드·공개 번들까지 통과했고, `pnpm run qa:education-tf`는 AI-OPS 구성을 확인했지만 사람 역할 `0/7`, 출처 사람 검토 `0/5`, 국내 공개 승인 `0/12`를 대기 상태로 보고했다.
 - 최신 모니터 `36290485606`은 `workflow_dispatch` 성공 실행이며, 예약 `event=schedule`이나 사람 감리·공개 승인으로 승격하지 않는다. 목표 상태는 계속 `ACTIVE · 사람 게이트 유지`다.
+
+## 12:23 KST 입력 방식 추가 검증
+
+- 공개 Pages의 390px 소비자 흐름에서 키보드 `ArrowDown`·`ArrowUp`과 모바일 터치 스와이프를 직접 재현했다. 장면 카운터가 `02 / 08 → 01 / 08 → 02 / 08`로 이동했다.
+- 같은 실행에서 문서 폭은 viewport와 동일했고 콘솔 오류·경고가 없었다. 이는 Chrome/Playwright 입력 검증이며 실제 iOS·Android 현장 승인으로 승격하지 않는다.
