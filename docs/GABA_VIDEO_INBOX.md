@@ -2352,3 +2352,41 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260927-R0sFGdN-0mE
+
+- 상태: PENDING_REVIEW
+- 영상: [Ever wondered what GABA does? #neuroscience #funny #brain](https://www.youtube.com/watch?v=R0sFGdN-0mE)
+- 채널: YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-27
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견
+- 자동 우선순위: VIDEO 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260927-4ZxoQXlHEn0
+
+- 상태: PENDING_REVIEW
+- 영상: [가바가 필요한 신호~! #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=4ZxoQXlHEn0)
+- 채널: YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-27
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 섭취·상업성 신호
+- 자동 우선순위: SCIENCE/MEDICAL + RIGHTS
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
