@@ -499,6 +499,11 @@ body{background:var(--editorial-cream);color:var(--editorial-ink)}
 .story--presentation .card-content p{max-width:600px;font-size:15px;line-height:1.75}
 .story--presentation .story-dots{display:none}
 .story--presentation .presenter-next-hint{order:6;position:relative;inset:auto;width:100%;margin:11px 0 0;padding:0;color:rgba(215,240,220,.78);font-size:11px}
+.story--presentation .presenter-quick-actions{order:4;display:flex;align-items:center;justify-content:flex-end;gap:10px;width:100%;margin:0 0 9px}
+.story--presentation .presenter-quick-actions button{width:auto;min-height:34px;padding:7px 12px;border:1px solid rgba(185,235,200,.62);border-radius:999px;background:rgba(185,235,200,.1);color:#d8ebdc;font:inherit;font-size:11px;font-weight:800;cursor:pointer}
+.story--presentation .presenter-quick-actions button:hover{background:rgba(185,235,200,.18)}
+.story--presentation .presenter-quick-actions button:focus-visible{outline:3px solid #e07a4d;outline-offset:3px}
+.story--presentation .presenter-quick-actions span{color:rgba(215,240,220,.66);font-size:10px}
 .story--presentation .presenter-note,.story--presentation .presenter-questions{order:7;position:relative;inset:auto;width:100%;margin:9px 0 0;padding:0;color:#d8ebdc}
 .story--presentation .presenter-questions{order:8}
 .story--presentation .presenter-copy-message{order:9;position:relative;inset:auto;width:100%;margin:6px 0 0;padding:0;text-align:left}
@@ -517,6 +522,9 @@ body{background:var(--editorial-cream);color:var(--editorial-ink)}
   .story--presentation .story-controls .story-nav-button,.story--presentation .story-controls .story-share-button,.story--presentation .story-controls .story-presentation-toggle{grid-column:span 3}
   .story--presentation .story-controls>span{font-size:22px}
   .story--presentation .story-rail{height:clamp(360px,55svh,480px);min-height:360px}
+  .story--presentation .presenter-quick-actions{justify-content:flex-start;align-items:flex-start;flex-direction:column;gap:4px;margin-bottom:7px}
+  .story--presentation .presenter-quick-actions button{min-height:34px;font-size:11px}
+  .story--presentation .presenter-quick-actions span{font-size:9px}
   .story--presentation .story-card{padding:26px 21px 24px}
   .story--presentation .card-label{top:22px;right:21px;left:21px;font-size:9px}
   .story--presentation .card-label span:last-child{font-size:52px}
