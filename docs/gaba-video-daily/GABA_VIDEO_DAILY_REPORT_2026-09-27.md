@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-09-27 11:26:08 KST · 실행 출처: GitHub Actions 수동 실행 · 예약 트리거: 해당 없음(수동·로컬 또는 이벤트 값 미전달) · 기준일 2026-09-27 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-09-27 11:34:03 KST · 실행 출처: GitHub Actions 수동 실행 · 예약 트리거: 해당 없음(수동·로컬 또는 이벤트 값 미전달) · 기준일 2026-09-27 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,8 +8,8 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 8개 채널
-- 오늘 신규 후보(누적): 6건
-- 이번 실행 신규 후보: 0건
+- 오늘 신규 후보(누적): 8건
+- 이번 실행 신규 후보: 2건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 1건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
@@ -30,6 +30,8 @@
 | PENDING-20260927-4ZxoQXlHEn0 | [가바가 필요한 신호~! #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산](https://www.youtube.com/watch?v=4ZxoQXlHEn0) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 섭취·상업성 신호 · 제품·브랜드 신호 | SCIENCE/MEDICAL + RIGHTS | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
 | PENDING-20260927-3EzF6onpf88 | [진정 작용 원리는 무엇일까요? GABA 시스템 #의학교육 #과학 #심전도 #의사](https://www.youtube.com/watch?v=3EzF6onpf88) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260927-oLJp7JVPfdA | [황미밥 가바 효능 #올쿠 #황미 #유명현](https://www.youtube.com/watch?v=oLJp7JVPfdA) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260927-gIZgguWtICU | [#내돈내산 여행 중에도 꿀잠을 책임져 준 굿슬립가바 365💜 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애 #바이탈뷰티](https://www.youtube.com/watch?v=gIZgguWtICU) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260927-LZNrQCvLrP4 | [#제품제공 내 몸과 마음의 소리에 집중하며, 건강한 수면이 무엇인지 알아차리게 해준 경험💜 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애](https://www.youtube.com/watch?v=LZNrQCvLrP4) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 

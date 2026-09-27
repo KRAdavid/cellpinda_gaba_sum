@@ -1,8 +1,8 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-27",
-  "checkedAtKst": "2026-09-27 11:26:08 KST",
-  "runId": "36288493792",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36288493792",
+  "checkedAtKst": "2026-09-27 11:34:03 KST",
+  "runId": "36288878133",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36288878133",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleExpression": null,
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
@@ -14,10 +14,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 6,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 133,
-  "scienceMedicalPriority": 78,
+  "newCandidates": 8,
+  "newCandidatesThisRun": 2,
+  "pendingReview": 135,
+  "scienceMedicalPriority": 80,
   "videoPriority": 55,
   "pendingQueue": [
     {
@@ -28,6 +28,34 @@ export const GABA_MONITOR_SNAPSHOT = {
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20260927-gIZgguWtICU",
+      "title": "#내돈내산 여행 중에도 꿀잠을 책임져 준 굿슬립가바 365💜 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애 #바이탈뷰티",
+      "url": "https://www.youtube.com/watch?v=gIZgguWtICU",
+      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20260927-LZNrQCvLrP4",
+      "title": "#제품제공 내 몸과 마음의 소리에 집중하며, 건강한 수면이 무엇인지 알아차리게 해준 경험💜 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애",
+      "url": "https://www.youtube.com/watch?v=LZNrQCvLrP4",
+      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
@@ -57,33 +85,6 @@ export const GABA_MONITOR_SNAPSHOT = {
         "일반 설명 후보",
         "전문가 자격 확인 신호",
         "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "VIDEO",
-      "nextAction": "원문·자막·화자 확인"
-    },
-    {
-      "id": "PENDING-20260927-8wRjCtV3xho",
-      "title": "GABA #gaba #neurotransmitters #nervoussystem #shorts #trending #foryou #drdiaries #neurology #medico",
-      "url": "https://www.youtube.com/watch?v=8wRjCtV3xho",
-      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
-      "priority": "VIDEO 우선",
-      "signals": [
-        "일반 설명 후보",
-        "전문가 자격 확인 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "VIDEO",
-      "nextAction": "원문·자막·화자 확인"
-    },
-    {
-      "id": "PENDING-20260927-oLJp7JVPfdA",
-      "title": "황미밥 가바 효능 #올쿠 #황미 #유명현",
-      "url": "https://www.youtube.com/watch?v=oLJp7JVPfdA",
-      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
-      "priority": "VIDEO 우선",
-      "signals": [
-        "일반 설명 후보"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "VIDEO",
@@ -314,10 +315,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-27",
-      "newCandidates": 6,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 133,
-      "scienceMedicalPriority": 78,
+      "newCandidates": 8,
+      "newCandidatesThisRun": 2,
+      "pendingReview": 135,
+      "scienceMedicalPriority": 80,
       "videoPriority": 55,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
