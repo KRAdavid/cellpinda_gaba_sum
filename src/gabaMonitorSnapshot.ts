@@ -1,6 +1,6 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-27",
-  "checkedAtKst": "2026-09-27 09:46:36 KST",
+  "checkedAtKst": "2026-09-27 10:09:17 KST",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleExpression": null,
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
@@ -13,7 +13,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
   "newCandidates": 1,
-  "newCandidatesThisRun": 1,
+  "newCandidatesThisRun": 0,
   "pendingReview": 128,
   "scienceMedicalPriority": 77,
   "videoPriority": 51,
@@ -315,7 +315,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "date": "2026-09-27",
       "newCandidates": 1,
-      "newCandidatesThisRun": 1,
+      "newCandidatesThisRun": 0,
       "pendingReview": 128,
       "scienceMedicalPriority": 77,
       "videoPriority": 51,
