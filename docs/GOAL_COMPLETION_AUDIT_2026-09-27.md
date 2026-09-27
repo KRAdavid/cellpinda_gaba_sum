@@ -157,3 +157,12 @@
 
 - 공개 Pages의 390px 소비자 흐름에서 키보드 `ArrowDown`·`ArrowUp`과 모바일 터치 스와이프를 직접 재현했다. 장면 카운터가 `02 / 08 → 01 / 08 → 02 / 08`로 이동했다.
 - 같은 실행에서 문서 폭은 viewport와 동일했고 콘솔 오류·경고가 없었다. 이는 Chrome/Playwright 입력 검증이며 실제 iOS·Android 현장 승인으로 승격하지 않는다.
+
+## 13:58 KST 공개 Pages 발표자 초기 로딩 회귀 수정
+
+- 공개 Pages 발표자 화면의 비동기 데이터 로딩 초기에 소비자용 영상 객체를 감리 목록의 임시 데이터로 사용하면서 `audit.nextAction`을 읽는 런타임 예외가 발생하는 것을 확인했다.
+- 코드 `d9cd14f`에서 발표자 감리 목록은 발표자 전용 데이터가 준비되기 전까지 비워 두도록 수정했다. 소비자용 공개 영상 객체와 내부 감리 객체를 다시 섞지 않는다.
+- `qa:interaction`에 `presenter video DB initial load has no runtime exceptions` 회귀 검사를 추가했다.
+- 수정 후 로컬 390px 상호작용 QA, 공개 Pages 390px 상호작용 QA, 공개 Pages 1440px 상호작용 QA를 통과했다. 영상 DB 진입·연구 패널·TF 운영 보드·영상별 감리 초안·사람 게이트 표시를 확인했다.
+- Pages 기능 수정 배포 `36295601925`와 재개 패킷 문서 반영 배포 `36295695573`이 성공했다. 최신 공개 URL은 [소비자 화면](https://kradavid.github.io/cellpinda_gaba_sum/?v=e235f85)과 [발표자 화면](https://kradavid.github.io/cellpinda_gaba_sum/?v=e235f85&mode=presenter)이다.
+- 이 기술 수정은 역할 `0/7`, 과학 출처 사람 검토 `0/5`, 국내 공개 승인 `0/12`, 예약 당일 `event=schedule` 여부를 변경하지 않는다. 목표 상태는 계속 `ACTIVE · 사람 게이트 유지`다.
