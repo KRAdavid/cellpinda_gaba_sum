@@ -37,7 +37,7 @@
 - 오늘 예약 실행: 11:09 KST 재확인 시 `event=schedule` 미확인 · 수동 실행을 예약 성공으로 간주하지 않음
 
 <!-- GABA_GOAL_AUDIT_STATUS:START -->
-최신 자동 감리 동기화: 2026-09-27 13:23:41 KST · GitHub Actions 수동 실행 [36294169705](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36294169705) · 신규 누적 11건 · 이번 실행 1건 · 검토 대기 138건 · 제품·브랜드 격리 24건 · 자동 공개 0건. 예약 `event=schedule` 실행·사람 감리·공개 승인 전에는 목표 상태를 `ACTIVE · 사람 게이트 유지`로 둔다.
+최신 자동 감리 동기화: 2026-09-27 14:19:46 KST · GitHub Actions 예약 실행 [36296880650](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36296880650) · 신규 누적 15건 · 이번 실행 4건 · 검토 대기 142건 · 제품·브랜드 격리 25건 · 자동 공개 0건. 예약 `event=schedule` 실행·사람 감리·공개 승인 전에는 목표 상태를 `ACTIVE · 사람 게이트 유지`로 둔다.
 <!-- GABA_GOAL_AUDIT_STATUS:END -->
 
 ## 다음 회의의 첫 15분

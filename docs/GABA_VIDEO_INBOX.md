@@ -4,7 +4,7 @@
 
 ## 운영 상태
 
-- 마지막 확인: 2026-09-27 · GitHub Actions 수동 실행
+- 마지막 확인: 2026-09-27 · GitHub Actions 예약 실행
 - 상태값: PENDING_REVIEW → HOLD / LIMITED_USE / PUBLISH_GENERAL / EXCLUDE
 - 검토 규칙: docs/GABA_VIDEO_REVIEW_RULES.md
 - 상세 DB: docs/GABA_VIDEO_DB.md
@@ -2516,6 +2516,82 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 공개 설명(자동 수집): 없음
 - 제목 기반 주의 신호: 질환·치료 표현 · 권위 후보 검색 발견
 - 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260927-3_dDQSpBkMQ
+
+- 상태: PENDING_REVIEW
+- 영상: [🤯 야근 후 불면증? L-테아닌이 GABA보다 빠른 비결!](https://www.youtube.com/watch?v=3_dDQSpBkMQ)
+- 채널: YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-27
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 질환·치료 표현
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260927-zpvYvJexISw
+
+- 상태: PENDING_REVIEW
+- 영상: [잠을 자도 피곤하다면 ?  수면 습관을 체크하세요🌙 #수면건강 #건강정보#수면의질 #수면웰니스 #숙면 #수면영양제 #멜라토닌 #락티움 #GABA #수면습관 #건강정보 #Shorts](https://www.youtube.com/watch?v=zpvYvJexISw)
+- 채널: YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-27
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 섭취·상업성 신호
+- 자동 우선순위: SCIENCE/MEDICAL + RIGHTS
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260927-mBiaDFE8Iwo
+
+- 상태: PENDING_REVIEW
+- 영상: [GABA를 함유한 몽진환  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=mBiaDFE8Iwo)
+- 채널: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-27
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 질환·치료 표현 · 제품·브랜드 신호
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20260927-5wMCV2NSGKg
+
+- 상태: PENDING_REVIEW
+- 영상: [Reasons Why I Don't Recommend The GABA Supplement](https://www.youtube.com/watch?v=5wMCV2NSGKg)
+- 채널: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-09-27
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 섭취·상업성 신호
+- 자동 우선순위: SCIENCE/MEDICAL + RIGHTS
 - 공개 큐 분류: 일반 교육 공개 전 사람 감리
 - 형식: Shorts 여부 확인 필요
 - 무엇을 어떻게 소개했나: 원문·자막 확인 전

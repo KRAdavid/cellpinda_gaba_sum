@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-09-27 13:23:41 KST · 실행 출처: GitHub Actions 수동 실행 · 예약 트리거: 해당 없음(수동·로컬 또는 이벤트 값 미전달) · 기준일 2026-09-27 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-09-27 14:19:46 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-09-27 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,9 +8,9 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 8개 채널
-- 오늘 신규 후보(누적): 11건
-- 이번 실행 신규 후보: 1건
-- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 1건
+- 오늘 신규 후보(누적): 15건
+- 이번 실행 신규 후보: 4건
+- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 2건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
 - 인물 출처 확인일: 2/9 기록 · 미기록 7건 · 이 날짜는 영상 발언·자막·권리·공개 승인이 아님
@@ -35,6 +35,10 @@
 | PENDING-20260927-XNSt3oMYvVk | [#제품제공 #내돈내산 다 먹은 바이탈뷰티 용기들 200% 활용하기💜👍🏻 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애](https://www.youtube.com/watch?v=XNSt3oMYvVk) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260927-2_cCcvJ-8wQ | [GABA는 뇌에 못 간다? 30분 만에 잠드는 진짜 비결](https://www.youtube.com/watch?v=2_cCcvJ-8wQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260927-CopcRocKsCY | [What is GABA? #gaba #brain #anxiety](https://www.youtube.com/watch?v=CopcRocKsCY) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 질환·치료 표현 · 권위 후보 검색 발견 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260927-3_dDQSpBkMQ | [🤯 야근 후 불면증? L-테아닌이 GABA보다 빠른 비결!](https://www.youtube.com/watch?v=3_dDQSpBkMQ) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260927-zpvYvJexISw | [잠을 자도 피곤하다면 ?  수면 습관을 체크하세요🌙 #수면건강 #건강정보#수면의질 #수면웰니스 #숙면 #수면영양제 #멜라토닌 #락티움 #GABA #수면습관 #건강정보 #Shorts](https://www.youtube.com/watch?v=zpvYvJexISw) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260927-mBiaDFE8Iwo | [GABA를 함유한 몽진환  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=mBiaDFE8Iwo) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
+| PENDING-20260927-5wMCV2NSGKg | [Reasons Why I Don't Recommend The GABA Supplement](https://www.youtube.com/watch?v=5wMCV2NSGKg) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 

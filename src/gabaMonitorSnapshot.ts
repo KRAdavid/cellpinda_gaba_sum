@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-27",
-  "checkedAtKst": "2026-09-27 13:23:41 KST",
-  "runId": "36294169705",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36294169705",
-  "runOrigin": "GitHub Actions 수동 실행",
-  "scheduleExpression": null,
+  "checkedAtKst": "2026-09-27 14:19:46 KST",
+  "runId": "36296880650",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36296880650",
+  "runOrigin": "GitHub Actions 예약 실행",
+  "scheduleExpression": "17 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,12 +14,25 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 11,
-  "newCandidatesThisRun": 1,
-  "pendingReview": 138,
-  "scienceMedicalPriority": 82,
+  "newCandidates": 15,
+  "newCandidatesThisRun": 4,
+  "pendingReview": 142,
+  "scienceMedicalPriority": 86,
   "videoPriority": 56,
   "pendingQueue": [
+    {
+      "id": "PENDING-20260927-3_dDQSpBkMQ",
+      "title": "🤯 야근 후 불면증? L-테아닌이 GABA보다 빠른 비결!",
+      "url": "https://www.youtube.com/watch?v=3_dDQSpBkMQ",
+      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
     {
       "id": "PENDING-20260927-CopcRocKsCY",
       "title": "What is GABA? #gaba #brain #anxiety",
@@ -65,20 +78,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "id": "PENDING-20260927-LZNrQCvLrP4",
       "title": "#제품제공 내 몸과 마음의 소리에 집중하며, 건강한 수면이 무엇인지 알아차리게 해준 경험💜 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애",
       "url": "https://www.youtube.com/watch?v=LZNrQCvLrP4",
-      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260927-XNSt3oMYvVk",
-      "title": "#제품제공 #내돈내산 다 먹은 바이탈뷰티 용기들 200% 활용하기💜👍🏻 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애",
-      "url": "https://www.youtube.com/watch?v=XNSt3oMYvVk",
       "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
@@ -176,6 +175,20 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "productBrandQueue": [
     {
+      "id": "PENDING-20260927-mBiaDFE8Iwo",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=mBiaDFE8Iwo",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
       "id": "PENDING-20260927-4ZxoQXlHEn0",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
       "url": "https://www.youtube.com/watch?v=4ZxoQXlHEn0",
@@ -231,23 +244,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL → RIGHTS",
       "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
-      "id": "PENDING-20260922-95zYZag0tg0",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "url": "https://www.youtube.com/watch?v=95zYZag0tg0",
-      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
     }
   ],
-  "productBrandQuarantine": 24,
+  "productBrandQuarantine": 25,
   "history": [
     {
       "date": "2026-09-22",
@@ -314,10 +313,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-27",
-      "newCandidates": 11,
-      "newCandidatesThisRun": 1,
-      "pendingReview": 138,
-      "scienceMedicalPriority": 82,
+      "newCandidates": 15,
+      "newCandidatesThisRun": 4,
+      "pendingReview": 142,
+      "scienceMedicalPriority": 86,
       "videoPriority": 56,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
