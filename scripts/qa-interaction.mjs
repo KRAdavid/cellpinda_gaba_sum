@@ -44,10 +44,14 @@ const waitForAppBody = async () => {
   return false;
 };
 const navigate = async url => {
-  await send('Page.navigate', {url});
-  if (await waitForAppBody()) return;
-  await send('Page.reload');
-  await waitForAppBody();
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try { await send('Page.stopLoading'); } catch {}
+    await send('Page.navigate', {url});
+    if (await waitForAppBody()) return;
+    await send('Page.reload', {ignoreCache: true});
+    if (await waitForAppBody()) return;
+    await wait(250);
+  }
 };
 const waitForProgress = async expected => {
   const deadline = Date.now() + 4000;
@@ -213,6 +217,8 @@ try {
   await wait(180);
   const inlinePlayer = await evaluate('({frame:!!document.querySelector(".video-showcase__player iframe"),ratio:document.querySelector(".video-showcase__player iframe") ? getComputedStyle(document.querySelector(".video-showcase__player iframe")).aspectRatio : ""})');
   assert('consumer video keeps the original player inside the page', inlinePlayer.frame && inlinePlayer.ratio === '9 / 16', JSON.stringify(inlinePlayer));
+  const publicVideoReadingOrder = await evaluate('(() => { const item=document.querySelector("[data-video-reel]"); const copy=item?.querySelector(".video-showcase__copy")?.getBoundingClientRect(); const player=item?.querySelector(".video-showcase__player")?.getBoundingClientRect(); return {copyTop:copy?.top ?? 0, playerTop:player?.top ?? 0}; })()');
+  assert('consumer mobile video explains before player', viewportWidth > 760 || publicVideoReadingOrder.copyTop < publicVideoReadingOrder.playerTop, JSON.stringify(publicVideoReadingOrder));
   await evaluate('document.querySelector("[data-open-video-review]")?.click()');
   await waitForText('#info-panel-title', 'GABA 영상 보기');
   const publicVideo = await evaluate('({items:document.querySelectorAll(".video-db-item").length,detail:document.querySelector(".video-db-detail")?.innerText||"",external:document.querySelector(".info-panel__external")?.getAttribute("href")||"",embedSource:document.querySelector(".video-db-embed__source-link")?.getAttribute("href")||"",embedSourceText:document.querySelector(".video-db-embed__source-link")?.innerText||"",channels:[...document.querySelectorAll(".video-db-detail__meta a")].map(link=>link.getAttribute("href")||""),preview:!!document.querySelector(".video-db-preview") && (!!document.querySelector(".video-db-preview img") || !!document.querySelector(".video-db-preview__source-mark")),embed:!!document.querySelector(".video-db-embed iframe") && (document.querySelector(".video-db-embed iframe")?.getAttribute("src")||"").includes("youtube-nocookie.com/embed/"),localUrl:!location.href.includes("youtube.com"),body:document.querySelector(".info-panel")?.innerText||"",panelClass:document.querySelector(".info-panel")?.className||"",actionPosition:getComputedStyle(document.querySelector(".info-panel__actions")).position})');
