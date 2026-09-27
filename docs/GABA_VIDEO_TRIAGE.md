@@ -4,8 +4,8 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 137건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 81건
+- 검토 대기: 138건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 82건
 - VIDEO 원문·자막 선확인: 56건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 24건
 
@@ -22,6 +22,7 @@
 
 | ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 공개 큐 분류 | 첫 담당 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| PENDING-20260927-CopcRocKsCY | [What is GABA? #gaba #brain #anxiety](https://www.youtube.com/watch?v=CopcRocKsCY) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 질환·치료 표현 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260927-EMWL4wdS4Sw | [GABA Transaminase Deficiency#GABATransaminaseDeficiency #GABATDeficiency #GABA #ABATGene](https://www.youtube.com/watch?v=EMWL4wdS4Sw) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 질환·치료 표현 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260927-gIZgguWtICU | [#내돈내산 여행 중에도 꿀잠을 책임져 준 굿슬립가바 365💜 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애 #바이탈뷰티](https://www.youtube.com/watch?v=gIZgguWtICU) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260927-LZNrQCvLrP4 | [#제품제공 내 몸과 마음의 소리에 집중하며, 건강한 수면이 무엇인지 알아차리게 해준 경험💜 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애](https://www.youtube.com/watch?v=LZNrQCvLrP4) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |

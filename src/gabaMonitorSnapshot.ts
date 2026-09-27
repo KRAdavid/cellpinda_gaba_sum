@@ -1,8 +1,8 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-27",
-  "checkedAtKst": "2026-09-27 12:56:48 KST",
-  "runId": "36292869960",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36292869960",
+  "checkedAtKst": "2026-09-27 13:23:41 KST",
+  "runId": "36294169705",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36294169705",
   "runOrigin": "GitHub Actions 수동 실행",
   "scheduleExpression": null,
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
@@ -14,12 +14,26 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 10,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 137,
-  "scienceMedicalPriority": 81,
+  "newCandidates": 11,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 138,
+  "scienceMedicalPriority": 82,
   "videoPriority": 56,
   "pendingQueue": [
+    {
+      "id": "PENDING-20260927-CopcRocKsCY",
+      "title": "What is GABA? #gaba #brain #anxiety",
+      "url": "https://www.youtube.com/watch?v=CopcRocKsCY",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
     {
       "id": "PENDING-20260927-EMWL4wdS4Sw",
       "title": "GABA Transaminase Deficiency#GABATransaminaseDeficiency #GABATDeficiency #GABA #ABATGene",
@@ -74,23 +88,25 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260927-4ZxoQXlHEn0",
-      "title": "가바가 필요한 신호~! #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #청소년 #명절 #선물 #아미노산",
-      "url": "https://www.youtube.com/watch?v=4ZxoQXlHEn0",
-      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL + RIGHTS",
-      "signals": [
-        "섭취·상업성 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "주장·이해관계·사용권 확인"
     }
   ],
   "authorityQueue": [
+    {
+      "id": "PENDING-20260927-CopcRocKsCY",
+      "title": "What is GABA? #gaba #brain #anxiety",
+      "url": "https://www.youtube.com/watch?v=CopcRocKsCY",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "질환·치료 표현",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "KEYWORD_DISCOVERY",
+      "publisherName": "",
+      "publisherUrl": "",
+      "publisherStatus": "oEmbed HTTP 401",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
     {
       "id": "PENDING-20260927-3EzF6onpf88",
       "title": "진정 작용 원리는 무엇일까요? GABA 시스템 #의학교육 #과학 #심전도 #의사",
@@ -154,22 +170,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "authorityBasis": "KEYWORD_DISCOVERY",
       "publisherName": "닥터지노 Dr Jino ",
       "publisherUrl": "https://www.youtube.com/@drjino",
-      "publisherStatus": "oEmbed 게시 채널 확인",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
-      "id": "PENDING-20260923-LGM3arqYZx8",
-      "title": "“GABA is the chemical that helps your brain stay calm under stress.”  #science #humanbody",
-      "url": "https://www.youtube.com/watch?v=LGM3arqYZx8",
-      "channel": "YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "효과·안전성 단정 신호",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "publisherName": "IK Biologist",
-      "publisherUrl": "https://www.youtube.com/@IKBiologist",
       "publisherStatus": "oEmbed 게시 채널 확인",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
@@ -314,10 +314,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-27",
-      "newCandidates": 10,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 137,
-      "scienceMedicalPriority": 81,
+      "newCandidates": 11,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 138,
+      "scienceMedicalPriority": 82,
       "videoPriority": 56,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
@@ -365,6 +365,6 @@ export const GABA_MONITOR_SNAPSHOT = {
   "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md",
   "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-09-27.md",
   "authorityMetadataChecked": 5,
-  "authorityMetadataHealthy": 5,
-  "authorityMetadataWarnings": 0
+  "authorityMetadataHealthy": 4,
+  "authorityMetadataWarnings": 1
 } as const;
