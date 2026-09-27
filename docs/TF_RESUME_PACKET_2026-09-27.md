@@ -9,6 +9,8 @@
 | 항목 | 현재 확인값 |
 | --- | --- |
 | 공개 사이트 기준 커밋 | `main` 최신 성공 Pages 실행 기준 · 감리 실행 ID·원문 링크 보존 |
+| 현재 코드 기준선 | `272c430` · 모바일 영상 읽기 순서 문서화까지 반영 |
+| 최신 Pages 배포 | `36294970236` 성공 · [공개 소비자 화면](https://kradavid.github.io/cellpinda_gaba_sum/?v=272c430) · [TF 운영 화면](https://kradavid.github.io/cellpinda_gaba_sum/?v=272c430&mode=presenter) |
 | 소비자 화면 | [공개용 GABA 소개 페이지](https://kradavid.github.io/cellpinda_gaba_sum/) |
 | TF 운영 화면 | [발표자·운영 모드](https://kradavid.github.io/cellpinda_gaba_sum/?mode=presenter) |
 | 공개 UX | 8장 세로 릴 · 한 페이지 한 메시지 · 연구·영상 인페이지 확인 |
