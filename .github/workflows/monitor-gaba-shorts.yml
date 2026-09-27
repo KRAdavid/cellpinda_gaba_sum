@@ -3,8 +3,11 @@ run-name: GABA Shorts monitor (${{ github.event_name }})
 
 on:
   schedule:
-    # 09:17 KST; keep the local operating time explicit.
+    # 09:17 KST primary run; keep the local operating time explicit.
     - cron: '17 9 * * *'
+      timezone: "Asia/Seoul"
+    # 09:37 KST delayed-recovery run when the primary scheduled event is delayed or missed.
+    - cron: '37 9 * * *'
       timezone: "Asia/Seoul"
   workflow_dispatch:
 

@@ -74,7 +74,7 @@ export const TF_AUTOCONFIG = {
   reviewQueue: {
     sources: ['SRC-01', 'SRC-02', 'SRC-03', 'SRC-04', 'SRC-05'],
     providedVideos: ['AUTH-01', 'AUTH-02', 'SHORT-01', 'SHORT-02', 'SHORT-03', 'SHORT-04', 'SHORT-05', 'SHORT-06', 'SHORT-07', 'SHORT-08'],
-    dailyMonitor: '매일 09:17 KST · PENDING_REVIEW 유지 · 자동 공개 0건',
+    dailyMonitor: '매일 09:17 KST · 지연 시 09:37 KST 재확인 · PENDING_REVIEW 유지 · 자동 공개 0건',
   },
   nextActions: [
     '사람 역할 7개와 백업을 입력하고 첫 회의 일시를 확정',

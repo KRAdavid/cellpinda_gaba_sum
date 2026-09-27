@@ -22,7 +22,7 @@ YouTube 원문은 제목·채널 메타데이터가 응답하는지도 별도로
 
 ~~~text
 YouTube 채널 RSS/Shorts 페이지 + 키워드 검색 결과
-        ↓ 매일 09:17 KST 후보·유사 콘텐츠 수집
+        ↓ 매일 09:17 KST 후보·유사 콘텐츠 수집 · 지연 시 09:37 KST 재확인
 docs/GABA_VIDEO_INBOX.md (PENDING_REVIEW)
         ↓ 제목 기반 주의 신호·첫 담당 제안
 docs/GABA_VIDEO_TRIAGE.md (사업자용 감리 우선순위 보드)
@@ -45,14 +45,14 @@ pnpm run monitor:gaba-shorts
 pnpm run monitor:gaba-shorts:write
 ~~~
 
-GitHub Actions는 `.github/workflows/monitor-gaba-shorts.yml`에서 매일 09:17 KST에 실행한다. 매시 정각 혼잡을 피하고 중복 실행을 막기 위해 예약 실행 시간과 concurrency를 고정한다. 예약 실행이 멈추지 않도록 저장소의 Actions·Pages 권한과 기본 브랜치를 확인한다.
+GitHub Actions는 `.github/workflows/monitor-gaba-shorts.yml`에서 매일 09:17 KST에 기본 실행하고, 예약 이벤트가 지연되거나 누락되는 경우를 확인하기 위해 09:37 KST 지연 복구 슬롯도 실행한다. 두 슬롯은 같은 수집·중복 방지·`PENDING_REVIEW`·자동 공개 0건 규칙을 사용하며, 매시 정각 혼잡을 피하고 겹치는 실행을 막기 위해 concurrency를 고정한다. 예약 실행이 멈추지 않도록 저장소의 Actions·Pages 권한과 기본 브랜치를 확인한다.
 
 GitHub 공식 문서에 따르면 `schedule`은 POSIX cron과 선택적 IANA `timezone`을 사용하고 기본 브랜치의 최신 커밋에서 실행되지만, Actions 부하에 따라 지연될 수 있다([워크플로 문법](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [이벤트 트리거](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)). 따라서 워크플로가 `active`이고 cron이 등록되어 있다는 사실은 설정 증거이며, 실제 일일 운영 증거는 Actions 실행의 `event=schedule` 기록과 그 실행이 갱신한 리포트·Pages 배포로 별도 확인한다.
 
 예약 실행 시 GitHub의 `github.event.schedule` 값을 `GITHUB_EVENT_SCHEDULE`로 전달해 스냅샷·일일 리포트·운영자 화면에 예약 트리거 표현식을 함께 기록한다. 이 값은 예약 실행의 식별·추적용이며 후보 승인, 영상 권위, 자막·권리 확인을 의미하지 않는다. 수동·로컬 실행이나 이벤트 값이 없는 실행은 `해당 없음`으로 남겨 예약 증거와 혼동하지 않는다.
 
 <!-- GABA_SCHEDULE_OPERATIONS_STATUS:START -->
-최신 운영 확인: 2026-09-26 13:58:51 KST · GitHub Actions 예약 실행 · 예약 실행 확인 · 다음 예약 매일 09:17 KST. 오늘 누적 신규 후보 2건·이번 실행 2건·검토 대기 127건·자동 공개 0건. 예약 실행·사람 감리·공개 승인 전에는 운영 HOLD를 유지한다.
+최신 운영 확인: 2026-09-26 13:58:51 KST · GitHub Actions 예약 실행 · 예약 실행 확인 · 다음 예약 매일 09:17 KST · 지연 시 09:37 KST 재확인. 오늘 누적 신규 후보 2건·이번 실행 2건·검토 대기 127건·자동 공개 0건. 예약 실행·사람 감리·공개 승인 전에는 운영 HOLD를 유지한다.
 <!-- GABA_SCHEDULE_OPERATIONS_STATUS:END -->
 
 발표자 화면의 일일 감리 상태에는 마지막 실행 출처를 바탕으로 `예약 실행 확인` 또는 `수동 실행 · 예약 증거 대기`를 표시한다. 수동 실행 성공만으로 매일 예약 실행이 작동한다고 간주하지 않으며, 회의용 요약에도 같은 상태를 포함해 자동화 공백을 숨기지 않는다.

@@ -2,7 +2,7 @@ export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-26",
   "checkedAtKst": "2026-09-26 13:58:51 KST",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleKst": "매일 09:17 KST",
+  "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
   "discoveryQueries": 12,

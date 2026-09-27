@@ -789,7 +789,7 @@ const monitorSnapshotTypeScript = ({inboxText, checkedDate: date, checkedAtKst: 
     checkedAtKst: timestamp,
     runOrigin: origin,
     scheduleExpression: scheduledExpression || null,
-    scheduleKst: '매일 09:17 KST',
+    scheduleKst: '매일 09:17 KST · 지연 시 09:37 KST 재확인',
     sourceChannels: successfulSources,
     registeredChannels: sources.length,
     discoveryQueries: successfulSearches,
