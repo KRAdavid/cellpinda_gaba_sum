@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-09-27 12:34:07 KST · 실행 출처: GitHub Actions 수동 실행 · 예약 트리거: 해당 없음(수동·로컬 또는 이벤트 값 미전달) · 기준일 2026-09-27 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-09-27 12:45:41 KST · 실행 출처: GitHub Actions 수동 실행 · 예약 트리거: 해당 없음(수동·로컬 또는 이벤트 값 미전달) · 기준일 2026-09-27 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,7 +8,7 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 8개 채널
-- 오늘 신규 후보(누적): 9건
+- 오늘 신규 후보(누적): 10건
 - 이번 실행 신규 후보: 1건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 1건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
@@ -33,6 +33,7 @@
 | PENDING-20260927-gIZgguWtICU | [#내돈내산 여행 중에도 꿀잠을 책임져 준 굿슬립가바 365💜 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애 #바이탈뷰티](https://www.youtube.com/watch?v=gIZgguWtICU) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260927-LZNrQCvLrP4 | [#제품제공 내 몸과 마음의 소리에 집중하며, 건강한 수면이 무엇인지 알아차리게 해준 경험💜 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애](https://www.youtube.com/watch?v=LZNrQCvLrP4) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20260927-XNSt3oMYvVk | [#제품제공 #내돈내산 다 먹은 바이탈뷰티 용기들 200% 활용하기💜👍🏻 #굿슬립가바365 #꿀잠캠프 #꿀잠트래블러 #수면영양제 #수면건강기능식품 #수면장애](https://www.youtube.com/watch?v=XNSt3oMYvVk) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20260927-2_cCcvJ-8wQ | [GABA는 뇌에 못 간다? 30분 만에 잠드는 진짜 비결](https://www.youtube.com/watch?v=2_cCcvJ-8wQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
