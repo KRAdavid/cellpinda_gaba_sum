@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-09-29",
-  "checkedAtKst": "2026-09-29 14:45:01 KST",
-  "runId": "36527626608",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36527626608",
+  "checkedAtKst": "2026-09-29 15:05:45 KST",
+  "runId": "36529318798",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/36529318798",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,11 +14,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 2,
-  "newCandidatesThisRun": 2,
-  "pendingReview": 146,
+  "newCandidates": 3,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 147,
   "scienceMedicalPriority": 87,
-  "videoPriority": 59,
+  "videoPriority": 60,
   "pendingQueue": [
     {
       "id": "PENDING-20260929-LVGBin-NcoI",
@@ -41,6 +41,20 @@ export const GABA_MONITOR_SNAPSHOT = {
       "priority": "VIDEO 우선",
       "signals": [
         "일반 설명 후보"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
+    },
+    {
+      "id": "PENDING-20260929-Xu3Rsa6dhxU",
+      "title": "Neurotransmitters Unlocked: GABA vs. Glutamate ⚡🧠 #neuroplasticity #neuroscience #brainhealth",
+      "url": "https://www.youtube.com/watch?v=Xu3Rsa6dhxU",
+      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
+      "signals": [
+        "일반 설명 후보",
+        "전문가 자격 확인 신호"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "VIDEO",
@@ -74,24 +88,25 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-26wX746Ga6M",
-      "title": "불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=26wX746Ga6M",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
     }
   ],
   "authorityQueue": [
+    {
+      "id": "PENDING-20260929-Xu3Rsa6dhxU",
+      "title": "Neurotransmitters Unlocked: GABA vs. Glutamate ⚡🧠 #neuroplasticity #neuroscience #brainhealth",
+      "url": "https://www.youtube.com/watch?v=Xu3Rsa6dhxU",
+      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
+      "signals": [
+        "일반 설명 후보",
+        "전문가 자격 확인 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "TITLE_DESCRIPTION_SIGNAL",
+      "publisherName": "Synapse Shorts 🧠",
+      "publisherUrl": "https://www.youtube.com/@SynapseShortsX",
+      "publisherStatus": "oEmbed 게시 채널 확인",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
     {
       "id": "PENDING-20260922-Lm2HJtSRBOI",
       "title": "가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)",
@@ -154,22 +169,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publisherName": "Dr. Tracey Marks",
       "publisherUrl": "https://www.youtube.com/@DrTraceyMarks",
       "publisherStatus": "oEmbed 게시 채널 확인",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
-      "id": "PENDING-20260927-CopcRocKsCY",
-      "title": "What is GABA? #gaba #brain #anxiety",
-      "url": "https://www.youtube.com/watch?v=CopcRocKsCY",
-      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "질환·치료 표현",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "publisherName": "",
-      "publisherUrl": "",
-      "publisherStatus": "oEmbed HTTP 401",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
   ],
@@ -341,11 +340,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-09-29",
-      "newCandidates": 2,
-      "newCandidatesThisRun": 2,
-      "pendingReview": 146,
+      "newCandidates": 3,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 147,
       "scienceMedicalPriority": 87,
-      "videoPriority": 59,
+      "videoPriority": 60,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
@@ -392,6 +391,6 @@ export const GABA_MONITOR_SNAPSHOT = {
   "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md",
   "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-09-29.md",
   "authorityMetadataChecked": 5,
-  "authorityMetadataHealthy": 4,
-  "authorityMetadataWarnings": 1
+  "authorityMetadataHealthy": 5,
+  "authorityMetadataWarnings": 0
 } as const;
