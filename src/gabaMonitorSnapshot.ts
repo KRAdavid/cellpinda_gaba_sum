@@ -1,24 +1,23 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-10-05",
-  "checkedAtKst": "2026-10-05 14:41:50 KST",
-  "runId": "37268912844",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/37268912844",
+  "checkedAtKst": "2026-10-05 15:07:49 KST",
+  "runId": "37270859307",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/37270859307",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
   "discoveryQueries": 12,
   "totalDiscoveryQueries": 12,
   "searchFallbacksUsed": [
-    "가바 GABA 대학 연구 과학자 Shorts → 과학자 GABA 신경전달물질 Shorts",
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 6,
-  "newCandidatesThisRun": 6,
-  "pendingReview": 163,
-  "scienceMedicalPriority": 93,
+  "newCandidates": 7,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 164,
+  "scienceMedicalPriority": 94,
   "videoPriority": 70,
   "pendingQueue": [
     {
@@ -49,6 +48,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
+      "id": "PENDING-20261005-thaM8eARktQ",
+      "title": "5분이면 뇌가 깨어나는 (5분에 책1권 읽기) 뇌 안전에 탁월한 가바, 신경전달물질",
+      "url": "https://www.youtube.com/watch?v=thaM8eARktQ",
+      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
       "id": "PENDING-20261005-w1iZj03Sh30",
       "title": "GABA: The Brain Chemical That Calms You Down 😌🧠 #Shorts #BrainFacts #ScienceTok #USA #ViralShorts",
       "url": "https://www.youtube.com/watch?v=w1iZj03Sh30",
@@ -66,19 +78,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "title": "Why You're Anxious & Can't Sleep — It's Your GABA #shorts",
       "url": "https://www.youtube.com/watch?v=gYjbS9W5voc",
       "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "VIDEO 우선",
-      "signals": [
-        "일반 설명 후보"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "VIDEO",
-      "nextAction": "원문·자막·화자 확인"
-    },
-    {
-      "id": "PENDING-20261005-H1yIQwCU90w",
-      "title": "GABA neurotransmitter 😍😍#shorts #shortsfeed #viralshorts #subscribe #popular #bscnursing",
-      "url": "https://www.youtube.com/watch?v=H1yIQwCU90w",
-      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
       "priority": "VIDEO 우선",
       "signals": [
         "일반 설명 후보"
@@ -416,10 +415,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-10-05",
-      "newCandidates": 6,
-      "newCandidatesThisRun": 6,
-      "pendingReview": 163,
-      "scienceMedicalPriority": 93,
+      "newCandidates": 7,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 164,
+      "scienceMedicalPriority": 94,
       "videoPriority": 70,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,

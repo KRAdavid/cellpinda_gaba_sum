@@ -1,15 +1,15 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-10-05 14:41:50 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-10-05 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-10-05 15:07:49 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-10-05 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
 - 채널 확인: 8/8
 - 유사 콘텐츠 검색어 확인: 12/12
-- 검색어 보완 경로 사용: 3건
+- 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 8개 채널
-- 오늘 신규 후보(누적): 6건
-- 이번 실행 신규 후보: 6건
+- 오늘 신규 후보(누적): 7건
+- 이번 실행 신규 후보: 1건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
@@ -30,6 +30,7 @@
 | PENDING-20261005-w1iZj03Sh30 | [GABA: The Brain Chemical That Calms You Down 😌🧠 #Shorts #BrainFacts #ScienceTok #USA #ViralShorts](https://www.youtube.com/watch?v=w1iZj03Sh30) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20261005-5L9f0Z6iyWY | [Study Confirms Gaba For Calm + Less Anxiety](https://www.youtube.com/watch?v=5L9f0Z6iyWY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20261005-SFY7Ua_aAHA | [Unlock Calm: GABA & Serotonin vs. Modern Stress & Brain Alarm! #shorts](https://www.youtube.com/watch?v=SFY7Ua_aAHA) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261005-thaM8eARktQ | [5분이면 뇌가 깨어나는 (5분에 책1권 읽기) 뇌 안전에 탁월한 가바, 신경전달물질](https://www.youtube.com/watch?v=thaM8eARktQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -50,7 +51,6 @@
 
 ## 검색어 보완 경로
 
-- 가바 GABA 대학 연구 과학자 Shorts → 과학자 GABA 신경전달물질 Shorts
 - 감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts
 - GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts
 

@@ -4,8 +4,8 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 163건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 93건
+- 검토 대기: 164건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 94건
 - VIDEO 원문·자막 선확인: 70건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 26건
 
@@ -24,6 +24,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | PENDING-20261005-5L9f0Z6iyWY | [Study Confirms Gaba For Calm + Less Anxiety](https://www.youtube.com/watch?v=5L9f0Z6iyWY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20261005-SFY7Ua_aAHA | [Unlock Calm: GABA & Serotonin vs. Modern Stress & Brain Alarm! #shorts](https://www.youtube.com/watch?v=SFY7Ua_aAHA) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20261005-thaM8eARktQ | [5분이면 뇌가 깨어나는 (5분에 책1권 읽기) 뇌 안전에 탁월한 가바, 신경전달물질](https://www.youtube.com/watch?v=thaM8eARktQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20261005-w1iZj03Sh30 | [GABA: The Brain Chemical That Calms You Down 😌🧠 #Shorts #BrainFacts #ScienceTok #USA #ViralShorts](https://www.youtube.com/watch?v=w1iZj03Sh30) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20261005-gYjbS9W5voc | [Why You're Anxious & Can't Sleep — It's Your GABA #shorts](https://www.youtube.com/watch?v=gYjbS9W5voc) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20261005-H1yIQwCU90w | [GABA neurotransmitter 😍😍#shorts #shortsfeed #viralshorts #subscribe #popular #bscnursing](https://www.youtube.com/watch?v=H1yIQwCU90w) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
