@@ -1,43 +1,70 @@
 export const GABA_MONITOR_SNAPSHOT = {
-  "checkedAt": "2026-10-04",
-  "checkedAtKst": "2026-10-04 15:15:07 KST",
-  "runId": "37182250067",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/37182250067",
+  "checkedAt": "2026-10-05",
+  "checkedAtKst": "2026-10-05 14:41:50 KST",
+  "runId": "37268912844",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/37268912844",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "37 9 * * *",
+  "scheduleExpression": "17 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
   "discoveryQueries": 12,
   "totalDiscoveryQueries": 12,
   "searchFallbacksUsed": [
+    "가바 GABA 대학 연구 과학자 Shorts → 과학자 GABA 신경전달물질 Shorts",
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 3,
-  "newCandidatesThisRun": 3,
-  "pendingReview": 157,
-  "scienceMedicalPriority": 90,
-  "videoPriority": 67,
+  "newCandidates": 6,
+  "newCandidatesThisRun": 6,
+  "pendingReview": 163,
+  "scienceMedicalPriority": 93,
+  "videoPriority": 70,
   "pendingQueue": [
     {
-      "id": "PENDING-20261004-Ew6nC_RAALY",
-      "title": "GABA Supplements: Do They Actually Work for Stress and Calm?",
-      "url": "https://www.youtube.com/watch?v=Ew6nC_RAALY",
+      "id": "PENDING-20261005-5L9f0Z6iyWY",
+      "title": "Study Confirms Gaba For Calm + Less Anxiety",
+      "url": "https://www.youtube.com/watch?v=5L9f0Z6iyWY",
       "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
+        "질환·치료 표현",
+        "효과·안전성 단정 신호"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
-      "id": "PENDING-20261004-OHYQnRCCDIE",
-      "title": "GABA: Your Brain's Chill Button!",
-      "url": "https://www.youtube.com/watch?v=OHYQnRCCDIE",
+      "id": "PENDING-20261005-SFY7Ua_aAHA",
+      "title": "Unlock Calm: GABA & Serotonin vs. Modern Stress & Brain Alarm! #shorts",
+      "url": "https://www.youtube.com/watch?v=SFY7Ua_aAHA",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20261005-w1iZj03Sh30",
+      "title": "GABA: The Brain Chemical That Calms You Down 😌🧠 #Shorts #BrainFacts #ScienceTok #USA #ViralShorts",
+      "url": "https://www.youtube.com/watch?v=w1iZj03Sh30",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20261005-gYjbS9W5voc",
+      "title": "Why You're Anxious & Can't Sleep — It's Your GABA #shorts",
+      "url": "https://www.youtube.com/watch?v=gYjbS9W5voc",
       "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
       "priority": "VIDEO 우선",
       "signals": [
@@ -48,46 +75,17 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "원문·자막·화자 확인"
     },
     {
-      "id": "PENDING-20261004-TQVRpBleyas",
-      "title": "Why Some People Never Feel Anxious: The GABA Mutation #Shorts",
-      "url": "https://www.youtube.com/watch?v=TQVRpBleyas",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "VIDEO 우선",
-      "signals": [
-        "일반 설명 후보"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "VIDEO",
-      "nextAction": "원문·자막·화자 확인"
-    },
-    {
-      "id": "PENDING-20260922-_XGO7xk24jo",
-      "title": "헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=_XGO7xk24jo",
+      "id": "PENDING-20261005-H1yIQwCU90w",
+      "title": "GABA neurotransmitter 😍😍#shorts #shortsfeed #viralshorts #subscribe #popular #bscnursing",
+      "url": "https://www.youtube.com/watch?v=H1yIQwCU90w",
       "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
+      "priority": "VIDEO 우선",
       "signals": [
-        "질환·치료 표현",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922--azWbivGh5Y",
-      "title": "잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠",
-      "url": "https://www.youtube.com/watch?v=-azWbivGh5Y",
-      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
+        "일반 설명 후보"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
     }
   ],
   "authorityQueue": [
@@ -415,6 +413,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "captionBodyWarnings": 12,
       "captionBodyRateLimited": 0,
       "autoPublish": 0
+    },
+    {
+      "date": "2026-10-05",
+      "newCandidates": 6,
+      "newCandidatesThisRun": 6,
+      "pendingReview": 163,
+      "scienceMedicalPriority": 93,
+      "videoPriority": 70,
+      "captionBodiesAvailable": 0,
+      "captionBodiesChecked": 12,
+      "captionBodyWarnings": 12,
+      "captionBodyRateLimited": 0,
+      "autoPublish": 0
     }
   ],
   "autoPublish": 0,
@@ -449,12 +460,12 @@ export const GABA_MONITOR_SNAPSHOT = {
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",
   "reviewLogUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_REVIEW_LOG.md",
-  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-10-04.md",
-  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-10-04.md",
-  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-04.md",
+  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-10-05.md",
+  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-10-05.md",
+  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-05.md",
   "kickoffUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md",
   "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md",
-  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-10-04.md",
+  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-10-05.md",
   "authorityMetadataChecked": 5,
   "authorityMetadataHealthy": 4,
   "authorityMetadataWarnings": 1

@@ -23,7 +23,7 @@
 | 국내 영상 공개 승인 | 0/12 |
 
 <!-- GABA_TF_RESUME_STATUS:START -->
-최신 자동 감리 동기화: 2026-10-04 15:15:07 KST · GitHub Actions 예약 실행 [37182250067](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/37182250067) · 8/8개 채널·12/12개 검색어 · 오늘 누적 신규 3건 · 이번 실행 3건 · 검토 대기 157건 · 제품·브랜드 격리 26건 · 자동 공개 0건. 예약 `event=schedule` 실행·사람 감리·공개 승인은 별도 게이트로 유지한다.
+최신 자동 감리 동기화: 2026-10-05 14:41:50 KST · GitHub Actions 예약 실행 [37268912844](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/37268912844) · 8/8개 채널·12/12개 검색어 · 오늘 누적 신규 6건 · 이번 실행 6건 · 검토 대기 163건 · 제품·브랜드 격리 26건 · 자동 공개 0건. 예약 `event=schedule` 실행·사람 감리·공개 승인은 별도 게이트로 유지한다.
 <!-- GABA_TF_RESUME_STATUS:END -->
 
 이하 `11:09 KST 재확인`부터 이어지는 항목은 당시의 역사적 운영 기록이다. 현재값은 위 `GABA_TF_RESUME_STATUS` 자동 동기화 블록을 기준으로 확인한다. 당시 최신 모니터는 10:59:09 KST 수동 실행 `36287158697`이었고, 수동 실행은 예약 성공으로 표시하지 않았다. 역사 기록의 후보 역시 원문·자막·화자·권리·주장 범위 확인 전까지 `PENDING_REVIEW`로 유지한다.
