@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-10-06",
-  "checkedAtKst": "2026-10-06 15:22:02 KST",
-  "runId": "37423315988",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/37423315988",
+  "checkedAtKst": "2026-10-06 15:47:41 KST",
+  "runId": "37425754009",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/37425754009",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,12 +14,25 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 5,
-  "newCandidatesThisRun": 5,
-  "pendingReview": 169,
-  "scienceMedicalPriority": 96,
+  "newCandidates": 6,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 170,
+  "scienceMedicalPriority": 97,
   "videoPriority": 73,
   "pendingQueue": [
+    {
+      "id": "PENDING-20261006--xD5VrFiRjo",
+      "title": "GABA TRANSAMINASE DEFICIENCY SYMPTOMS",
+      "url": "https://www.youtube.com/watch?v=-xD5VrFiRjo",
+      "channel": "YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
     {
       "id": "PENDING-20261006-NggX5E1BEM0",
       "title": "Discover GABA's calming power! #HealthInsights #GABA #Wellness",
@@ -68,19 +81,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "signals": [
         "일반 설명 후보",
         "전문가 자격 확인 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "VIDEO",
-      "nextAction": "원문·자막·화자 확인"
-    },
-    {
-      "id": "PENDING-20261006-zMhntIzpZ_s",
-      "title": "Wired But Tired? The GABA, B6, and Gene Connection #shorts",
-      "url": "https://www.youtube.com/watch?v=zMhntIzpZ_s",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "VIDEO 우선",
-      "signals": [
-        "일반 설명 후보"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "VIDEO",
@@ -417,10 +417,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-10-06",
-      "newCandidates": 5,
-      "newCandidatesThisRun": 5,
-      "pendingReview": 169,
-      "scienceMedicalPriority": 96,
+      "newCandidates": 6,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 170,
+      "scienceMedicalPriority": 97,
       "videoPriority": 73,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,

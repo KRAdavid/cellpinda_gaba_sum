@@ -4,8 +4,8 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 169건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 96건
+- 검토 대기: 170건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 97건
 - VIDEO 원문·자막 선확인: 73건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 26건
 
@@ -22,6 +22,7 @@
 
 | ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 공개 큐 분류 | 첫 담당 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| PENDING-20261006--xD5VrFiRjo | [GABA TRANSAMINASE DEFICIENCY SYMPTOMS](https://www.youtube.com/watch?v=-xD5VrFiRjo) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 질환·치료 표현 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20261006-NggX5E1BEM0 | [Discover GABA's calming power! #HealthInsights #GABA #Wellness](https://www.youtube.com/watch?v=NggX5E1BEM0) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20261006-r8pwTfyBfvQ | [What is GABA (gamma-aminobutyric acid)? #shorts #health #supplements #bodybuilding #gym #muscle](https://www.youtube.com/watch?v=r8pwTfyBfvQ) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20261006-IkLpmSGWprY | [How Your GABA Activation Controls Total Relaxation](https://www.youtube.com/watch?v=IkLpmSGWprY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
