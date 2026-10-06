@@ -1,12 +1,12 @@
 # GABA 숏츠 감리 우선순위 보드
 
-> 자동 생성일: 2026-10-05 · 제목과 수집된 공개 설명 기반의 감리 보조 분류다. 권위·근거·권리·공개 승인을 판정하지 않는다.
+> 자동 생성일: 2026-10-06 · 제목과 수집된 공개 설명 기반의 감리 보조 분류다. 권위·근거·권리·공개 승인을 판정하지 않는다.
 
 ## 오늘의 큐
 
-- 검토 대기: 164건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 94건
-- VIDEO 원문·자막 선확인: 70건
+- 검토 대기: 169건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 96건
+- VIDEO 원문·자막 선확인: 73건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 26건
 
 ## 우선순위 정의
@@ -22,13 +22,11 @@
 
 | ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 공개 큐 분류 | 첫 담당 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| PENDING-20261005-5L9f0Z6iyWY | [Study Confirms Gaba For Calm + Less Anxiety](https://www.youtube.com/watch?v=5L9f0Z6iyWY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
-| PENDING-20261005-SFY7Ua_aAHA | [Unlock Calm: GABA & Serotonin vs. Modern Stress & Brain Alarm! #shorts](https://www.youtube.com/watch?v=SFY7Ua_aAHA) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
-| PENDING-20261005-thaM8eARktQ | [5분이면 뇌가 깨어나는 (5분에 책1권 읽기) 뇌 안전에 탁월한 가바, 신경전달물질](https://www.youtube.com/watch?v=thaM8eARktQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
-| PENDING-20261005-w1iZj03Sh30 | [GABA: The Brain Chemical That Calms You Down 😌🧠 #Shorts #BrainFacts #ScienceTok #USA #ViralShorts](https://www.youtube.com/watch?v=w1iZj03Sh30) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
-| PENDING-20261005-gYjbS9W5voc | [Why You're Anxious & Can't Sleep — It's Your GABA #shorts](https://www.youtube.com/watch?v=gYjbS9W5voc) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
-| PENDING-20261005-H1yIQwCU90w | [GABA neurotransmitter 😍😍#shorts #shortsfeed #viralshorts #subscribe #popular #bscnursing](https://www.youtube.com/watch?v=H1yIQwCU90w) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
-| PENDING-20261005-jBWcpBBzlmU | [How GABA and Glutamate Affect Your Brain, Mood, and Sleep](https://www.youtube.com/watch?v=jBWcpBBzlmU) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20261006-NggX5E1BEM0 | [Discover GABA's calming power! #HealthInsights #GABA #Wellness](https://www.youtube.com/watch?v=NggX5E1BEM0) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20261006-r8pwTfyBfvQ | [What is GABA (gamma-aminobutyric acid)? #shorts #health #supplements #bodybuilding #gym #muscle](https://www.youtube.com/watch?v=r8pwTfyBfvQ) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
+| PENDING-20261006-IkLpmSGWprY | [How Your GABA Activation Controls Total Relaxation](https://www.youtube.com/watch?v=IkLpmSGWprY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20261006-OJnCK2zZZ1A | [GABA 대 멜라토닌!￼#건강 #사실 #과학 #단편 #당신을 위한 #의사 #동기부여 #수면 #뇌 #스트레스](https://www.youtube.com/watch?v=OJnCK2zZZ1A) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 | 전문가 표현 감지 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20261006-zMhntIzpZ_s | [Wired But Tired? The GABA, B6, and Gene Connection #shorts](https://www.youtube.com/watch?v=zMhntIzpZ_s) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-_XGO7xk24jo | [헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=_XGO7xk24jo) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922--azWbivGh5Y | [잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠](https://www.youtube.com/watch?v=-azWbivGh5Y) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-26wX746Ga6M | [불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=26wX746Ga6M) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
@@ -94,6 +92,10 @@
 | PENDING-20260930-tzsVUOdfSn4 | [수면제와 신경안정제의 부작용과 대안은?  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=tzsVUOdfSn4) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 · 약물 대체·비교 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20261001-7D2_67PFhu8 | [몸은 피곤한데 ? 약사가 알려주는 수면과학 #불면증 #잠이안올때 #수면장애 #숙면 #뇌과학 #가바 #GABA #글루타메이트 #수면의질 #잠잘자는법#산화질소#새벽3시#천현수#문정인](https://www.youtube.com/watch?v=7D2_67PFhu8) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 질환·치료 표현 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20261004-Ew6nC_RAALY | [GABA Supplements: Do They Actually Work for Stress and Calm?](https://www.youtube.com/watch?v=Ew6nC_RAALY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20261005-5L9f0Z6iyWY | [Study Confirms Gaba For Calm + Less Anxiety](https://www.youtube.com/watch?v=5L9f0Z6iyWY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20261005-SFY7Ua_aAHA | [Unlock Calm: GABA & Serotonin vs. Modern Stress & Brain Alarm! #shorts](https://www.youtube.com/watch?v=SFY7Ua_aAHA) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20261005-thaM8eARktQ | [5분이면 뇌가 깨어나는 (5분에 책1권 읽기) 뇌 안전에 탁월한 가바, 신경전달물질](https://www.youtube.com/watch?v=thaM8eARktQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20261005-w1iZj03Sh30 | [GABA: The Brain Chemical That Calms You Down 😌🧠 #Shorts #BrainFacts #ScienceTok #USA #ViralShorts](https://www.youtube.com/watch?v=w1iZj03Sh30) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-2elwFVwzW_M | [신경전달물질(GABA) 가바가 많은 음식정리!! Foods rich in the neurotransmitter (GABA)!!#건강정보 #지식 #건강#꿀팁 #정보 #health #](https://www.youtube.com/watch?v=2elwFVwzW_M) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-5j1WKvZI-Tc | [가바(GABA) 섭취할 수 있는 음식들 shorts (원본 영상 참조)](https://www.youtube.com/watch?v=5j1WKvZI-Tc) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-5W34llnp5mc | [GABA란 무엇인가? 섭취 후 우리 몸에 일어나는 일 #shorts #viral #animation #설명](https://www.youtube.com/watch?v=5W34llnp5mc) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
@@ -186,6 +188,9 @@
 | PENDING-20261003-KccV1cMis9w | [GABA 증진: 즉시 긴장을 풀고 숙면을 취하세요! 맨델 박사](https://www.youtube.com/watch?v=KccV1cMis9w) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견 | 전문가 표현 감지 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20261004-OHYQnRCCDIE | [GABA: Your Brain's Chill Button!](https://www.youtube.com/watch?v=OHYQnRCCDIE) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20261004-TQVRpBleyas | [Why Some People Never Feel Anxious: The GABA Mutation #Shorts](https://www.youtube.com/watch?v=TQVRpBleyas) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20261005-gYjbS9W5voc | [Why You're Anxious & Can't Sleep — It's Your GABA #shorts](https://www.youtube.com/watch?v=gYjbS9W5voc) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20261005-H1yIQwCU90w | [GABA neurotransmitter 😍😍#shorts #shortsfeed #viralshorts #subscribe #popular #bscnursing](https://www.youtube.com/watch?v=H1yIQwCU90w) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20261005-jBWcpBBzlmU | [How GABA and Glutamate Affect Your Brain, Mood, and Sleep](https://www.youtube.com/watch?v=jBWcpBBzlmU) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 
 ## 다음 행동
 
