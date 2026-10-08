@@ -4,9 +4,9 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 172건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 97건
-- VIDEO 원문·자막 선확인: 75건
+- 검토 대기: 175건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 99건
+- VIDEO 원문·자막 선확인: 76건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 26건
 
 ## 우선순위 정의
@@ -22,6 +22,9 @@
 
 | ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 공개 큐 분류 | 첫 담당 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| PENDING-20261008-hYpkoSpVu7E | [GABA-rich foods to help with itchy skin #shorts](https://www.youtube.com/watch?v=hYpkoSpVu7E) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20261008-p1q7afveGd0 | [Meet GABA: Your brain's primary calming chemical! ⚡➡️🧘](https://www.youtube.com/watch?v=p1q7afveGd0) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20261008-JQpjpjBl3-Y | [마취제가 동물마다 다르게 작용하는 이유: 고대 GABA 신호](https://www.youtube.com/watch?v=JQpjpjBl3-Y) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-_XGO7xk24jo | [헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=_XGO7xk24jo) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922--azWbivGh5Y | [잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠](https://www.youtube.com/watch?v=-azWbivGh5Y) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-26wX746Ga6M | [불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=26wX746Ga6M) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |

@@ -10,6 +10,28 @@
 
 ## 후보별 사전 확인
 
+## PENDING-20261008-p1q7afveGd0
+
+- 영상: [Meet GABA: Your brain's primary calming chemical! ⚡➡️🧘](https://www.youtube.com/watch?v=p1q7afveGd0)
+- 게시 채널(oEmbed): [Phoenix@D7](https://www.youtube.com/@DPhoenix7)
+- 게시 채널 상태: oEmbed 게시 채널 확인
+- 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
+- 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.
+- 과학·의료 감리: 일반 GABA 설명과 수면·스트레스·섭취·질환 주장을 원문에서 분리 확인 필요.
+- 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.
+- 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.
+
+## PENDING-20261008-JQpjpjBl3-Y
+
+- 영상: [마취제가 동물마다 다르게 작용하는 이유: 고대 GABA 신호](https://www.youtube.com/watch?v=JQpjpjBl3-Y)
+- 게시 채널(oEmbed): [Danesthesia](https://www.youtube.com/@DanesthesiaM)
+- 게시 채널 상태: oEmbed 게시 채널 확인
+- 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
+- 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.
+- 과학·의료 감리: 일반 GABA 설명과 수면·스트레스·섭취·질환 주장을 원문에서 분리 확인 필요.
+- 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.
+- 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.
+
 ## PENDING-20260922-Lm2HJtSRBOI
 
 - 영상: [가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)](https://www.youtube.com/watch?v=Lm2HJtSRBOI)
@@ -37,28 +59,6 @@
 - 영상: [GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,](https://www.youtube.com/watch?v=Z2_d_8p36rM)
 - 게시 채널(oEmbed): [Samantha Odonnell PMHNP](https://www.youtube.com/@sammiep_thepsychnp)
 - 게시 채널 상태: oEmbed 게시 채널 확인
-- 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
-- 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.
-- 과학·의료 감리: 일반 GABA 설명과 수면·스트레스·섭취·질환 주장을 원문에서 분리 확인 필요.
-- 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.
-- 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.
-
-## PENDING-20260925-rVGz6lONwc4
-
-- 영상: [What GABA Does for Anxiety #shorts](https://www.youtube.com/watch?v=rVGz6lONwc4)
-- 게시 채널(oEmbed): [Dr. Tracey Marks](https://www.youtube.com/@DrTraceyMarks)
-- 게시 채널 상태: oEmbed 게시 채널 확인
-- 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
-- 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.
-- 과학·의료 감리: 일반 GABA 설명과 수면·스트레스·섭취·질환 주장을 원문에서 분리 확인 필요.
-- 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.
-- 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.
-
-## PENDING-20260927-CopcRocKsCY
-
-- 영상: [What is GABA? #gaba #brain #anxiety](https://www.youtube.com/watch?v=CopcRocKsCY)
-- 게시 채널(oEmbed): 확인 필요
-- 게시 채널 상태: oEmbed HTTP 401
 - 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
 - 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.
 - 과학·의료 감리: 일반 GABA 설명과 수면·스트레스·섭취·질환 주장을 원문에서 분리 확인 필요.
