@@ -45,7 +45,7 @@ YouTube Shorts 후보는 상세 감리 패널 안에서 `youtube-nocookie` 공�
 - 자동 공개는 0건
 - 일일 모니터는 8개 등록 채널과 12개 유사 검색어(가바 정식명칭·의사·과학자·대학병원·연구기관 권위 후보 포함)를 확인하고 날짜별 리포트를 보관함
 <!-- GABA_RELEASE_MONITOR_STATUS:START -->
-- 최신 감리: 2026-10-08 15:34:24 KST · GitHub Actions 예약 실행 · 실행 [37738341501](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/37738341501) · 오늘 누적 신규 후보 3건 · 이번 실행 3건 · 제품·브랜드 격리 26건 · 자동 공개 0건
+- 최신 감리: 2026-10-09 15:09:42 KST · GitHub Actions 예약 실행 · 실행 [37892088897](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/37892088897) · 오늘 누적 신규 후보 1건 · 이번 실행 1건 · 제품·브랜드 격리 26건 · 자동 공개 0건
 <!-- GABA_RELEASE_MONITOR_STATUS:END -->
 
 ## 사업자 운영

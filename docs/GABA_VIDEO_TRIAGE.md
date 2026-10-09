@@ -1,12 +1,12 @@
 # GABA 숏츠 감리 우선순위 보드
 
-> 자동 생성일: 2026-10-08 · 제목과 수집된 공개 설명 기반의 감리 보조 분류다. 권위·근거·권리·공개 승인을 판정하지 않는다.
+> 자동 생성일: 2026-10-09 · 제목과 수집된 공개 설명 기반의 감리 보조 분류다. 권위·근거·권리·공개 승인을 판정하지 않는다.
 
 ## 오늘의 큐
 
-- 검토 대기: 175건
+- 검토 대기: 176건
 - SCIENCE/MEDICAL 또는 RIGHTS 선확인: 99건
-- VIDEO 원문·자막 선확인: 76건
+- VIDEO 원문·자막 선확인: 77건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 26건
 
 ## 우선순위 정의
@@ -22,9 +22,7 @@
 
 | ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 공개 큐 분류 | 첫 담당 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| PENDING-20261008-hYpkoSpVu7E | [GABA-rich foods to help with itchy skin #shorts](https://www.youtube.com/watch?v=hYpkoSpVu7E) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
-| PENDING-20261008-p1q7afveGd0 | [Meet GABA: Your brain's primary calming chemical! ⚡➡️🧘](https://www.youtube.com/watch?v=p1q7afveGd0) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
-| PENDING-20261008-JQpjpjBl3-Y | [마취제가 동물마다 다르게 작용하는 이유: 고대 GABA 신호](https://www.youtube.com/watch?v=JQpjpjBl3-Y) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20261009-U-Xz2V-HGgo | [Sleep Is an ACTIVE GABA Operation](https://www.youtube.com/watch?v=U-Xz2V-HGgo) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-_XGO7xk24jo | [헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=_XGO7xk24jo) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922--azWbivGh5Y | [잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠](https://www.youtube.com/watch?v=-azWbivGh5Y) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-26wX746Ga6M | [불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=26wX746Ga6M) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
@@ -96,6 +94,8 @@
 | PENDING-20261005-w1iZj03Sh30 | [GABA: The Brain Chemical That Calms You Down 😌🧠 #Shorts #BrainFacts #ScienceTok #USA #ViralShorts](https://www.youtube.com/watch?v=w1iZj03Sh30) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20261006--xD5VrFiRjo | [GABA TRANSAMINASE DEFICIENCY SYMPTOMS](https://www.youtube.com/watch?v=-xD5VrFiRjo) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 질환·치료 표현 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20261006-NggX5E1BEM0 | [Discover GABA's calming power! #HealthInsights #GABA #Wellness](https://www.youtube.com/watch?v=NggX5E1BEM0) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20261008-hYpkoSpVu7E | [GABA-rich foods to help with itchy skin #shorts](https://www.youtube.com/watch?v=hYpkoSpVu7E) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20261008-p1q7afveGd0 | [Meet GABA: Your brain's primary calming chemical! ⚡➡️🧘](https://www.youtube.com/watch?v=p1q7afveGd0) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-2elwFVwzW_M | [신경전달물질(GABA) 가바가 많은 음식정리!! Foods rich in the neurotransmitter (GABA)!!#건강정보 #지식 #건강#꿀팁 #정보 #health #](https://www.youtube.com/watch?v=2elwFVwzW_M) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-5j1WKvZI-Tc | [가바(GABA) 섭취할 수 있는 음식들 shorts (원본 영상 참조)](https://www.youtube.com/watch?v=5j1WKvZI-Tc) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20260922-5W34llnp5mc | [GABA란 무엇인가? 섭취 후 우리 몸에 일어나는 일 #shorts #viral #animation #설명](https://www.youtube.com/watch?v=5W34llnp5mc) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
@@ -197,6 +197,7 @@
 | PENDING-20261006-zMhntIzpZ_s | [Wired But Tired? The GABA, B6, and Gene Connection #shorts](https://www.youtube.com/watch?v=zMhntIzpZ_s) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20261007-Cu3Wsvfna_8 | [gamma-aminobutyric acid #gaba #psychology #brainlearning #psychologyfacts](https://www.youtube.com/watch?v=Cu3Wsvfna_8) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20261007-enfLjHG_Vq8 | [킹받는 순간 뇌를 강제 휴식 모드로 바꾸는 치트키 #GABA초콜릿 #멘탈관리 #가바초콜릿](https://www.youtube.com/watch?v=enfLjHG_Vq8) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20261008-JQpjpjBl3-Y | [마취제가 동물마다 다르게 작용하는 이유: 고대 GABA 신호](https://www.youtube.com/watch?v=JQpjpjBl3-Y) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 
 ## 다음 행동
 
