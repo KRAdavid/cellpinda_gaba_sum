@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-10-12 14:59:29 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-10-12 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-10-12 15:25:51 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-10-12 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,8 +8,8 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 7개 채널
-- 오늘 신규 후보(누적): 1건
-- 이번 실행 신규 후보: 1건
+- 오늘 신규 후보(누적): 3건
+- 이번 실행 신규 후보: 2건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
@@ -25,6 +25,8 @@
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
 | PENDING-20261012-7aBbvP6ba0k | [The Glutamate-GABA Balance #shorts](https://www.youtube.com/watch?v=7aBbvP6ba0k) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261012-WjVP6arLt30 | [#편안한밤 개운한아침을 위해 굿슬립가바365 #꿀잠템](https://www.youtube.com/watch?v=WjVP6arLt30) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261012-1ULkKUhpvIc | [Discover the power of GABA! #StressRelief #GABA #LifeProTip](https://www.youtube.com/watch?v=1ULkKUhpvIc) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -37,10 +39,10 @@
 - 셀럽의 건강비결: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 교육하는 의사! 이동환TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 브레인튜브 Brain Doctor: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 30년 자율신경, 정이안한의원TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
+- 30년 자율신경, 정이안한의원TV: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
 - SLEEP Dr. 신원철 꿀잠튜브: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 마음 튼튼, 뇌연구소 바이탈라이즈: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 비엠한방내과: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
+- 비엠한방내과: RSS 404 Not Found → Shorts 페이지로 보완 수집
 
 ## 검색어 보완 경로
 

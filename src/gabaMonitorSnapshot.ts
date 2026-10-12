@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-10-12",
-  "checkedAtKst": "2026-10-12 14:59:29 KST",
-  "runId": "38210379512",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/38210379512",
+  "checkedAtKst": "2026-10-12 15:25:51 KST",
+  "runId": "38212470889",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/38212470889",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,12 +14,38 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 1,
-  "newCandidatesThisRun": 1,
-  "pendingReview": 177,
-  "scienceMedicalPriority": 99,
+  "newCandidates": 3,
+  "newCandidatesThisRun": 2,
+  "pendingReview": 179,
+  "scienceMedicalPriority": 101,
   "videoPriority": 78,
   "pendingQueue": [
+    {
+      "id": "PENDING-20261012-1ULkKUhpvIc",
+      "title": "Discover the power of GABA! #StressRelief #GABA #LifeProTip",
+      "url": "https://www.youtube.com/watch?v=1ULkKUhpvIc",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20261012-WjVP6arLt30",
+      "title": "#편안한밤 개운한아침을 위해 굿슬립가바365 #꿀잠템",
+      "url": "https://www.youtube.com/watch?v=WjVP6arLt30",
+      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
     {
       "id": "PENDING-20261012-7aBbvP6ba0k",
       "title": "The Glutamate-GABA Balance #shorts",
@@ -55,35 +81,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-26wX746Ga6M",
-      "title": "불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=26wX746Ga6M",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-6QgcctlfBZU",
-      "title": "Supplement GABA to reduce stress! #shorts",
-      "url": "https://www.youtube.com/watch?v=6QgcctlfBZU",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
         "효과·안전성 단정 신호",
         "섭취·상업성 신호"
       ],
@@ -422,10 +419,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-10-12",
-      "newCandidates": 1,
-      "newCandidatesThisRun": 1,
-      "pendingReview": 177,
-      "scienceMedicalPriority": 99,
+      "newCandidates": 3,
+      "newCandidatesThisRun": 2,
+      "pendingReview": 179,
+      "scienceMedicalPriority": 101,
       "videoPriority": 78,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
