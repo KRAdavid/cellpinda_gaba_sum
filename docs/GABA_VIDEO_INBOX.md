@@ -3473,3 +3473,41 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20261018-X424EwKd_MI
+
+- 상태: PENDING_REVIEW
+- 영상: [How Benzodiazepines Affect Your Brain’s GABA Brake #shorts](https://www.youtube.com/watch?v=X424EwKd_MI)
+- 채널: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-10-18
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20261018-G9-RW26-WFE
+
+- 상태: PENDING_REVIEW
+- 영상: [Glutamate vs GABA: Excitatory vs Inhibitory \| VCE Psychology #Shorts](https://www.youtube.com/watch?v=G9-RW26-WFE)
+- 채널: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-10-18
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS

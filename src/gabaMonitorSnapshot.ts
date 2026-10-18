@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-10-18",
-  "checkedAtKst": "2026-10-18 13:35:09 KST",
-  "runId": "39097598445",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/39097598445",
+  "checkedAtKst": "2026-10-18 14:02:27 KST",
+  "runId": "39099161299",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/39099161299",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,17 +14,43 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 1,
-  "newCandidatesThisRun": 1,
-  "pendingReview": 188,
+  "newCandidates": 3,
+  "newCandidatesThisRun": 2,
+  "pendingReview": 190,
   "scienceMedicalPriority": 103,
-  "videoPriority": 85,
+  "videoPriority": 87,
   "pendingQueue": [
+    {
+      "id": "PENDING-20261018-G9-RW26-WFE",
+      "title": "Glutamate vs GABA: Excitatory vs Inhibitory \\| VCE Psychology #Shorts",
+      "url": "https://www.youtube.com/watch?v=G9-RW26-WFE",
+      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
+      "signals": [
+        "일반 설명 후보"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
+    },
     {
       "id": "PENDING-20261018-w36Rgue2lZA",
       "title": "혈압과 뇌의 신경을 조절하는 신비한 물질, 가바.(깻잎,토마토,감자등) #ai콘텐츠",
       "url": "https://www.youtube.com/watch?v=w36Rgue2lZA",
       "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
+      "signals": [
+        "일반 설명 후보"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
+    },
+    {
+      "id": "PENDING-20261018-X424EwKd_MI",
+      "title": "How Benzodiazepines Affect Your Brain’s GABA Brake #shorts",
+      "url": "https://www.youtube.com/watch?v=X424EwKd_MI",
+      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
       "priority": "VIDEO 우선",
       "signals": [
         "일반 설명 후보"
@@ -55,35 +81,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-26wX746Ga6M",
-      "title": "불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=26wX746Ga6M",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-6QgcctlfBZU",
-      "title": "Supplement GABA to reduce stress! #shorts",
-      "url": "https://www.youtube.com/watch?v=6QgcctlfBZU",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
         "효과·안전성 단정 신호",
         "섭취·상업성 신호"
       ],
@@ -422,11 +419,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-10-18",
-      "newCandidates": 1,
-      "newCandidatesThisRun": 1,
-      "pendingReview": 188,
+      "newCandidates": 3,
+      "newCandidatesThisRun": 2,
+      "pendingReview": 190,
       "scienceMedicalPriority": 103,
-      "videoPriority": 85,
+      "videoPriority": 87,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
