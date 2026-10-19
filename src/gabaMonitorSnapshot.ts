@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-10-19",
-  "checkedAtKst": "2026-10-19 13:41:55 KST",
-  "runId": "39200761192",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/39200761192",
+  "checkedAtKst": "2026-10-19 14:11:52 KST",
+  "runId": "39203270746",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/39203270746",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -15,7 +15,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
   "newCandidates": 1,
-  "newCandidatesThisRun": 1,
+  "newCandidatesThisRun": 0,
   "pendingReview": 191,
   "scienceMedicalPriority": 103,
   "videoPriority": 88,
@@ -423,7 +423,7 @@ export const GABA_MONITOR_SNAPSHOT = {
     {
       "date": "2026-10-19",
       "newCandidates": 1,
-      "newCandidatesThisRun": 1,
+      "newCandidatesThisRun": 0,
       "pendingReview": 191,
       "scienceMedicalPriority": 103,
       "videoPriority": 88,
