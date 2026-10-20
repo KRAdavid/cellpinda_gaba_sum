@@ -1,25 +1,38 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-10-20",
-  "checkedAtKst": "2026-10-20 13:51:46 KST",
-  "runId": "39371798622",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/39371798622",
+  "checkedAtKst": "2026-10-20 14:11:19 KST",
+  "runId": "39373536768",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/39373536768",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
-  "discoveryQueries": 12,
+  "discoveryQueries": 7,
   "totalDiscoveryQueries": 12,
   "searchFallbacksUsed": [
-    "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
-    "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
+    "가바 GABA 대학병원 신경과 Shorts → 의사 GABA 신경전달물질 Shorts",
+    "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 1,
+  "newCandidates": 2,
   "newCandidatesThisRun": 1,
-  "pendingReview": 192,
-  "scienceMedicalPriority": 103,
+  "pendingReview": 193,
+  "scienceMedicalPriority": 104,
   "videoPriority": 89,
   "pendingQueue": [
+    {
+      "id": "PENDING-20261020--EkbXo7Iuvs",
+      "title": "오늘 밤은 조금 다르게 자보세요 🌙 #햄프슬립 #hempsleep #멜라토닌무첨가 #제품소개 #휴식루틴 #gaba #웰니스루틴",
+      "url": "https://www.youtube.com/watch?v=-EkbXo7Iuvs",
+      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL + RIGHTS",
+      "signals": [
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "주장·이해관계·사용권 확인"
+    },
     {
       "id": "PENDING-20261020-_Q2_HxQvBIM",
       "title": "A-LOG Good Sleep GABA For You",
@@ -74,20 +87,6 @@ export const GABA_MONITOR_SNAPSHOT = {
         "제품·브랜드 신호"
       ],
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-6QgcctlfBZU",
-      "title": "Supplement GABA to reduce stress! #shorts",
-      "url": "https://www.youtube.com/watch?v=6QgcctlfBZU",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     }
@@ -176,6 +175,19 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "productBrandQueue": [
     {
+      "id": "PENDING-20261020--EkbXo7Iuvs",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=-EkbXo7Iuvs",
+      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL + RIGHTS",
+      "signals": [
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
       "id": "PENDING-20260922-_XGO7xk24jo",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
       "url": "https://www.youtube.com/watch?v=_XGO7xk24jo",
@@ -231,25 +243,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL → RIGHTS",
       "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
-      "id": "PENDING-20260922-bquifROEFMI",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "url": "https://www.youtube.com/watch?v=bquifROEFMI",
-      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
     }
   ],
-  "productBrandQuarantine": 26,
+  "productBrandQuarantine": 27,
   "history": [
     {
       "date": "2026-10-07",
@@ -422,10 +418,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-10-20",
-      "newCandidates": 1,
+      "newCandidates": 2,
       "newCandidatesThisRun": 1,
-      "pendingReview": 192,
-      "scienceMedicalPriority": 103,
+      "pendingReview": 193,
+      "scienceMedicalPriority": 104,
       "videoPriority": 89,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,

@@ -3549,3 +3549,22 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20261020--EkbXo7Iuvs
+
+- 상태: PENDING_REVIEW
+- 영상: [오늘 밤은 조금 다르게 자보세요 🌙 #햄프슬립 #hempsleep #멜라토닌무첨가 #제품소개 #휴식루틴 #gaba #웰니스루틴](https://www.youtube.com/watch?v=-EkbXo7Iuvs)
+- 채널: YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-10-20
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 제품·브랜드 신호
+- 자동 우선순위: SCIENCE/MEDICAL + RIGHTS
+- 공개 큐 분류: 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
