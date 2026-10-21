@@ -1,43 +1,43 @@
 export const GABA_MONITOR_SNAPSHOT = {
-  "checkedAt": "2026-10-20",
-  "checkedAtKst": "2026-10-20 14:11:19 KST",
-  "runId": "39373536768",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/39373536768",
+  "checkedAt": "2026-10-21",
+  "checkedAtKst": "2026-10-21 13:49:05 KST",
+  "runId": "39546093538",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/39546093538",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "37 9 * * *",
+  "scheduleExpression": "17 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
-  "discoveryQueries": 7,
+  "discoveryQueries": 12,
   "totalDiscoveryQueries": 12,
   "searchFallbacksUsed": [
-    "가바 GABA 대학병원 신경과 Shorts → 의사 GABA 신경전달물질 Shorts",
-    "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts"
+    "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
+    "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
   "newCandidates": 2,
-  "newCandidatesThisRun": 1,
-  "pendingReview": 193,
+  "newCandidatesThisRun": 2,
+  "pendingReview": 195,
   "scienceMedicalPriority": 104,
-  "videoPriority": 89,
+  "videoPriority": 91,
   "pendingQueue": [
     {
-      "id": "PENDING-20261020--EkbXo7Iuvs",
-      "title": "오늘 밤은 조금 다르게 자보세요 🌙 #햄프슬립 #hempsleep #멜라토닌무첨가 #제품소개 #휴식루틴 #gaba #웰니스루틴",
-      "url": "https://www.youtube.com/watch?v=-EkbXo7Iuvs",
-      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL + RIGHTS",
+      "id": "PENDING-20261021-fWT5mcP5hDw",
+      "title": "GABA가 뭐길래? 뇌와 휴식에 관한 이야기",
+      "url": "https://www.youtube.com/watch?v=fWT5mcP5hDw",
+      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
       "signals": [
-        "제품·브랜드 신호"
+        "일반 설명 후보"
       ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "주장·이해관계·사용권 확인"
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
     },
     {
-      "id": "PENDING-20261020-_Q2_HxQvBIM",
-      "title": "A-LOG Good Sleep GABA For You",
-      "url": "https://www.youtube.com/watch?v=_Q2_HxQvBIM",
-      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "id": "PENDING-20261021-NBoLcDiOVXc",
+      "title": "Got Mood Poisoning? Try GABA + L-Theanine for Stress & Mood Support",
+      "url": "https://www.youtube.com/watch?v=NBoLcDiOVXc",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
       "priority": "VIDEO 우선",
       "signals": [
         "일반 설명 후보"
@@ -175,19 +175,6 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "productBrandQueue": [
     {
-      "id": "PENDING-20261020--EkbXo7Iuvs",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "url": "https://www.youtube.com/watch?v=-EkbXo7Iuvs",
-      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL + RIGHTS",
-      "signals": [
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
       "id": "PENDING-20260922-_XGO7xk24jo",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
       "url": "https://www.youtube.com/watch?v=_XGO7xk24jo",
@@ -243,23 +230,26 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL → RIGHTS",
       "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
+      "id": "PENDING-20260922-bquifROEFMI",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=bquifROEFMI",
+      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
     }
   ],
   "productBrandQuarantine": 27,
   "history": [
-    {
-      "date": "2026-10-07",
-      "newCandidates": 2,
-      "newCandidatesThisRun": 2,
-      "pendingReview": 172,
-      "scienceMedicalPriority": 97,
-      "videoPriority": 75,
-      "captionBodiesAvailable": 0,
-      "captionBodiesChecked": 12,
-      "captionBodyWarnings": 12,
-      "captionBodyRateLimited": 0,
-      "autoPublish": 0
-    },
     {
       "date": "2026-10-08",
       "newCandidates": 3,
@@ -428,6 +418,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "captionBodyWarnings": 12,
       "captionBodyRateLimited": 0,
       "autoPublish": 0
+    },
+    {
+      "date": "2026-10-21",
+      "newCandidates": 2,
+      "newCandidatesThisRun": 2,
+      "pendingReview": 195,
+      "scienceMedicalPriority": 104,
+      "videoPriority": 91,
+      "captionBodiesAvailable": 0,
+      "captionBodiesChecked": 12,
+      "captionBodyWarnings": 12,
+      "captionBodyRateLimited": 0,
+      "autoPublish": 0
     }
   ],
   "autoPublish": 0,
@@ -462,12 +465,12 @@ export const GABA_MONITOR_SNAPSHOT = {
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",
   "reviewLogUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_REVIEW_LOG.md",
-  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-10-20.md",
-  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-10-20.md",
-  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-20.md",
+  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-10-21.md",
+  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-10-21.md",
+  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-21.md",
   "kickoffUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md",
   "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md",
-  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-10-20.md",
+  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-10-21.md",
   "authorityMetadataChecked": 5,
   "authorityMetadataHealthy": 4,
   "authorityMetadataWarnings": 1
