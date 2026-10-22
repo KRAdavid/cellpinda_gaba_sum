@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-10-21 14:13:14 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-10-21 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-10-22 13:47:39 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-10-22 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,8 +8,8 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 8개 채널
-- 오늘 신규 후보(누적): 4건
-- 이번 실행 신규 후보: 2건
+- 오늘 신규 후보(누적): 1건
+- 이번 실행 신규 후보: 1건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
@@ -17,17 +17,14 @@
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
 - 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
-- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-21.md) · 트랙·본문 상태를 영상별로 보관
+- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-22.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
 ## 신규 후보
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
-| PENDING-20261021-fWT5mcP5hDw | [GABA가 뭐길래? 뇌와 휴식에 관한 이야기](https://www.youtube.com/watch?v=fWT5mcP5hDw) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261021-NBoLcDiOVXc | [Got Mood Poisoning? Try GABA + L-Theanine for Stress & Mood Support](https://www.youtube.com/watch?v=NBoLcDiOVXc) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261021-Os0djYeAhKQ | [ADHD + Anxiety Day 9: Gaba and glutamate: the brakes and the gas](https://www.youtube.com/watch?v=Os0djYeAhKQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261021-XAs1xGswEJw | [Synthesis of Serotonin, GABA and Histamine \\| Block D Neurosciences \\| MBBS Modular System](https://www.youtube.com/watch?v=XAs1xGswEJw) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261022-pwMoLEmc950 | [GABA...#gaba #dsmp #psychology #ai #study #students #support #vairal #shorts #relatable #new](https://www.youtube.com/watch?v=pwMoLEmc950) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -41,7 +38,7 @@
 - 교육하는 의사! 이동환TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 영양과학자 양과자: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 브레인튜브 Brain Doctor: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 30년 자율신경, 정이안한의원TV: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
+- 30년 자율신경, 정이안한의원TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - SLEEP Dr. 신원철 꿀잠튜브: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 마음 튼튼, 뇌연구소 바이탈라이즈: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 비엠한방내과: RSS 404 Not Found → Shorts 페이지로 보완 수집
