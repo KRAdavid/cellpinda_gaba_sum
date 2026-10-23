@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
-  "checkedAt": "2026-10-22",
-  "checkedAtKst": "2026-10-22 14:16:18 KST",
-  "runId": "39727055072",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/39727055072",
+  "checkedAt": "2026-10-23",
+  "checkedAtKst": "2026-10-23 13:50:28 KST",
+  "runId": "39902459182",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/39902459182",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "37 9 * * *",
+  "scheduleExpression": "17 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -15,16 +15,16 @@ export const GABA_MONITOR_SNAPSHOT = {
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
   "newCandidates": 1,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 198,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 199,
   "scienceMedicalPriority": 105,
-  "videoPriority": 93,
+  "videoPriority": 94,
   "pendingQueue": [
     {
-      "id": "PENDING-20261022-pwMoLEmc950",
-      "title": "GABA...#gaba #dsmp #psychology #ai #study #students #support #vairal #shorts #relatable #new",
-      "url": "https://www.youtube.com/watch?v=pwMoLEmc950",
-      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
+      "id": "PENDING-20261023-220yhn_ScgU",
+      "title": "술 마신 다음 날 불안한 이유, GABA 때문입니다",
+      "url": "https://www.youtube.com/watch?v=220yhn_ScgU",
+      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
       "priority": "VIDEO 우선",
       "signals": [
         "일반 설명 후보"
@@ -252,19 +252,6 @@ export const GABA_MONITOR_SNAPSHOT = {
   "productBrandQuarantine": 27,
   "history": [
     {
-      "date": "2026-10-09",
-      "newCandidates": 1,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 176,
-      "scienceMedicalPriority": 99,
-      "videoPriority": 77,
-      "captionBodiesAvailable": 0,
-      "captionBodiesChecked": 12,
-      "captionBodyWarnings": 12,
-      "captionBodyRateLimited": 0,
-      "autoPublish": 0
-    },
-    {
       "date": "2026-10-10",
       "newCandidates": 0,
       "newCandidatesThisRun": 0,
@@ -432,6 +419,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "captionBodyWarnings": 12,
       "captionBodyRateLimited": 0,
       "autoPublish": 0
+    },
+    {
+      "date": "2026-10-23",
+      "newCandidates": 1,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 199,
+      "scienceMedicalPriority": 105,
+      "videoPriority": 94,
+      "captionBodiesAvailable": 0,
+      "captionBodiesChecked": 12,
+      "captionBodyWarnings": 12,
+      "captionBodyRateLimited": 0,
+      "autoPublish": 0
     }
   ],
   "autoPublish": 0,
@@ -466,12 +466,12 @@ export const GABA_MONITOR_SNAPSHOT = {
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",
   "reviewLogUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_REVIEW_LOG.md",
-  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-10-22.md",
-  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-10-22.md",
-  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-22.md",
+  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-10-23.md",
+  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-10-23.md",
+  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-23.md",
   "kickoffUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md",
   "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md",
-  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-10-22.md",
+  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-10-23.md",
   "authorityMetadataChecked": 5,
   "authorityMetadataHealthy": 4,
   "authorityMetadataWarnings": 1
