@@ -20,7 +20,7 @@
 | 자동 공개 | `0건 유지` |
 
 <!-- GABA_TF_AUTOCONFIG_STATUS:START -->
-최신 자동 구성 확인: 2026-10-24 13:37:54 KST · GitHub Actions 예약 실행 [40063087263](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/40063087263) · AI-OPS 자동 구성 ACTIVE · 핵심 역할 0/7 · 출처 사람 검토 0/5 · 국내 공개 승인 0/12 · 검토 대기 202건 · 자동 공개 0건. 이 수치는 사람 승인 상태를 자동으로 변경하지 않는다.
+최신 자동 구성 확인: 2026-10-24 13:56:59 KST · GitHub Actions 예약 실행 [40064337233](https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/40064337233) · AI-OPS 자동 구성 ACTIVE · 핵심 역할 0/7 · 출처 사람 검토 0/5 · 국내 공개 승인 0/12 · 검토 대기 203건 · 자동 공개 0건. 이 수치는 사람 승인 상태를 자동으로 변경하지 않는다.
 <!-- GABA_TF_AUTOCONFIG_STATUS:END -->
 
 ## AI-OPS 즉시 실행 업무

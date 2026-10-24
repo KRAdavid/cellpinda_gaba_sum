@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-10-24 13:37:54 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-10-24 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-10-24 13:56:59 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-10-24 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,9 +8,9 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 8개 채널
-- 오늘 신규 후보(누적): 3건
-- 이번 실행 신규 후보: 3건
-- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
+- 오늘 신규 후보(누적): 4건
+- 이번 실행 신규 후보: 1건
+- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 1건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
 - 인물 출처 확인일: 2/9 기록 · 미기록 7건 · 이 날짜는 영상 발언·자막·권리·공개 승인이 아님
@@ -27,6 +27,7 @@
 | PENDING-20261024-hvs8Ize5Gvw | [GABA : 5 Foods for Your Brain's Relaxation System #facts #health #shorts #shortsfeed](https://www.youtube.com/watch?v=hvs8Ize5Gvw) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20261024-m7KVFmkCRbY | [수면을 연구하다 GABA를 만났습니다 :)  #햄프슬립#웰니스#수면#가바#GABA#나이트루틴#불면증](https://www.youtube.com/watch?v=m7KVFmkCRbY) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 | PENDING-20261024-5IaUrCw4G1Q | [Meet the brain's natural braking system: GABA. #sleepdoctor #betterinbed #gaba](https://www.youtube.com/watch?v=5IaUrCw4G1Q) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261024-lQn8MGhs9Xw | [밤이 편안해지는 셀핀다가바 김치유산균](https://www.youtube.com/watch?v=lQn8MGhs9Xw) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -38,7 +39,7 @@
 
 - 셀럽의 건강비결: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 교육하는 의사! 이동환TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 영양과학자 양과자: RSS 404 Not Found → Shorts 페이지로 보완 수집
+- 영양과학자 양과자: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
 - 브레인튜브 Brain Doctor: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 30년 자율신경, 정이안한의원TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - SLEEP Dr. 신원철 꿀잠튜브: RSS 404 Not Found → Shorts 페이지로 보완 수집

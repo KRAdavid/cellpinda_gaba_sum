@@ -4,10 +4,10 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 202건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 107건
+- 검토 대기: 203건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 108건
 - VIDEO 원문·자막 선확인: 95건
-- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 27건
+- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 28건
 
 ## 우선순위 정의
 
@@ -22,6 +22,7 @@
 
 | ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 공개 큐 분류 | 첫 담당 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| PENDING-20261024-lQn8MGhs9Xw | [밤이 편안해지는 셀핀다가바 김치유산균](https://www.youtube.com/watch?v=lQn8MGhs9Xw) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20261024-m7KVFmkCRbY | [수면을 연구하다 GABA를 만났습니다 :)  #햄프슬립#웰니스#수면#가바#GABA#나이트루틴#불면증](https://www.youtube.com/watch?v=m7KVFmkCRbY) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 질환·치료 표현 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20261024-hvs8Ize5Gvw | [GABA : 5 Foods for Your Brain's Relaxation System #facts #health #shorts #shortsfeed](https://www.youtube.com/watch?v=hvs8Ize5Gvw) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
 | PENDING-20261024-5IaUrCw4G1Q | [Meet the brain's natural braking system: GABA. #sleepdoctor #betterinbed #gaba](https://www.youtube.com/watch?v=5IaUrCw4G1Q) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 전문가 자격 확인 신호 · 권위 후보 검색 발견 | 전문가 표현 감지 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
