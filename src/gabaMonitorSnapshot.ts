@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-10-27",
-  "checkedAtKst": "2026-10-27 14:06:19 KST",
-  "runId": "40453400545",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/40453400545",
+  "checkedAtKst": "2026-10-27 14:29:48 KST",
+  "runId": "40455622358",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/40455622358",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,11 +14,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 3,
-  "newCandidatesThisRun": 3,
-  "pendingReview": 211,
+  "newCandidates": 4,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 212,
   "scienceMedicalPriority": 113,
-  "videoPriority": 98,
+  "videoPriority": 99,
   "pendingQueue": [
     {
       "id": "PENDING-20261027-Je6xgbEkAn4",
@@ -61,6 +61,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "nextAction": "원문·자막·화자 확인"
     },
     {
+      "id": "PENDING-20261027-cU_KqmeA43Q",
+      "title": "Sejal Gaba 🆚 Triggered Insaan Who Is Best#sejal #shorts #insan #viral",
+      "url": "https://www.youtube.com/watch?v=cU_KqmeA43Q",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
+      "signals": [
+        "일반 설명 후보"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
+    },
+    {
       "id": "PENDING-20260922-_XGO7xk24jo",
       "title": "헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
       "url": "https://www.youtube.com/watch?v=_XGO7xk24jo",
@@ -71,21 +84,6 @@ export const GABA_MONITOR_SNAPSHOT = {
         "제품·브랜드 신호"
       ],
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922--azWbivGh5Y",
-      "title": "잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠",
-      "url": "https://www.youtube.com/watch?v=-azWbivGh5Y",
-      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     }
@@ -420,11 +418,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-10-27",
-      "newCandidates": 3,
-      "newCandidatesThisRun": 3,
-      "pendingReview": 211,
+      "newCandidates": 4,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 212,
       "scienceMedicalPriority": 113,
-      "videoPriority": 98,
+      "videoPriority": 99,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
