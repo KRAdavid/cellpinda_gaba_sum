@@ -4,7 +4,7 @@
 
 ## 운영 상태
 
-- 마지막 확인: 2026-10-26 · GitHub Actions 예약 실행
+- 마지막 확인: 2026-10-27 · GitHub Actions 예약 실행
 - 상태값: PENDING_REVIEW → HOLD / LIMITED_USE / PUBLISH_GENERAL / EXCLUDE
 - 검토 규칙: docs/GABA_VIDEO_REVIEW_RULES.md
 - 상세 DB: docs/GABA_VIDEO_DB.md
@@ -3842,6 +3842,63 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 채널: YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)
 - 공개일: 확인 필요
 - 수집일: 2026-10-26
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보 · 권위 후보 검색 발견
+- 자동 우선순위: VIDEO 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20261027-rXYH5R8VYkw
+
+- 상태: PENDING_REVIEW
+- 영상: [수면을 연구하다 GABA를 만났습니다 :)  #햄프슬립#웰니스#수면#가바#GABA#나이트루틴#불면증](https://www.youtube.com/watch?v=rXYH5R8VYkw)
+- 채널: YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-10-27
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 질환·치료 표현
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20261027-Je6xgbEkAn4
+
+- 상태: PENDING_REVIEW
+- 영상: [There it pushes your brain's brake (GABA) and lifts off the gas.A little feels calm.#shorts](https://www.youtube.com/watch?v=Je6xgbEkAn4)
+- 채널: YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-10-27
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 효과·안전성 단정 신호
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20261027-C8a2x36Amok
+
+- 상태: PENDING_REVIEW
+- 영상: [What Does GABA Actually Do to Your Brain? #Shorts](https://www.youtube.com/watch?v=C8a2x36Amok)
+- 채널: YouTube 검색: 과학자 GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-10-27
 - 키워드 일치: 가바/GABA 제목
 - 공개 설명(자동 수집): 없음
 - 제목 기반 주의 신호: 일반 설명 후보 · 권위 후보 검색 발견
