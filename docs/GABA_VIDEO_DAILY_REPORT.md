@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-10-28 14:43:07 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-10-28 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-10-28 15:12:17 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-10-28 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,8 +8,8 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 8개 채널
-- 오늘 신규 후보(누적): 0건
-- 이번 실행 신규 후보: 0건
+- 오늘 신규 후보(누적): 2건
+- 이번 실행 신규 후보: 2건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 8/9 접근 확인 · 출처 링크 경고 1건
@@ -24,7 +24,8 @@
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 없음 | 신규 후보 없음 | - | - | - |
+| PENDING-20261028-sMXvuWAeaqw | [토마토가 진짜 ‘신경안정제’라고요? : 건강한 토마토 편 \\[건강한 식재료\\] #가바토마토 #GABA토마토 #스트레스완화](https://www.youtube.com/watch?v=sMXvuWAeaqw) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261028-qlbwXnV-6HI | [GABA Receptors #pharmacology #pharmcist #medicalstudents #sedative](https://www.youtube.com/watch?v=qlbwXnV-6HI) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -64,18 +65,18 @@
 
 ## 등록 YouTube 자막 트랙 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 429 Too Many Requests
-- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 429 Too Many Requests
-- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 429 Too Many Requests
-- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 429 Too Many Requests
+- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → mobile YouTube watch page has no caption track metadata
 - 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 의미하지 않는다. 사람 검토 전 요약과 공개 상태는 바꾸지 않는다.
 
 ## 등록 YouTube 자막 본문 상태
