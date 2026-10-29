@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
-  "checkedAt": "2026-10-28",
-  "checkedAtKst": "2026-10-28 15:12:17 KST",
-  "runId": "40642428038",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/40642428038",
+  "checkedAt": "2026-10-29",
+  "checkedAtKst": "2026-10-29 14:49:24 KST",
+  "runId": "40825580878",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/40825580878",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "37 9 * * *",
+  "scheduleExpression": "17 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,31 +14,17 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 2,
-  "newCandidatesThisRun": 2,
-  "pendingReview": 214,
+  "newCandidates": 1,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 215,
   "scienceMedicalPriority": 113,
-  "videoPriority": 101,
+  "videoPriority": 102,
   "pendingQueue": [
     {
-      "id": "PENDING-20261028-qlbwXnV-6HI",
-      "title": "GABA Receptors #pharmacology #pharmcist #medicalstudents #sedative",
-      "url": "https://www.youtube.com/watch?v=qlbwXnV-6HI",
-      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "priority": "VIDEO 우선",
-      "signals": [
-        "일반 설명 후보",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "VIDEO",
-      "nextAction": "원문·자막·화자 확인"
-    },
-    {
-      "id": "PENDING-20261028-sMXvuWAeaqw",
-      "title": "토마토가 진짜 ‘신경안정제’라고요? : 건강한 토마토 편 \\[건강한 식재료\\] #가바토마토 #GABA토마토 #스트레스완화",
-      "url": "https://www.youtube.com/watch?v=sMXvuWAeaqw",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "id": "PENDING-20261029-pZTXgDOpkvY",
+      "title": "만성 스트레스와 불안, 오미자가 간과 뇌(GABA)를 동시에 편안하게 해주는 원리 #shorts",
+      "url": "https://www.youtube.com/watch?v=pZTXgDOpkvY",
+      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
       "priority": "VIDEO 우선",
       "signals": [
         "일반 설명 후보"
@@ -90,25 +76,23 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20260922-6QgcctlfBZU",
+      "title": "Supplement GABA to reduce stress! #shorts",
+      "url": "https://www.youtube.com/watch?v=6QgcctlfBZU",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
     }
   ],
   "authorityQueue": [
-    {
-      "id": "PENDING-20261028-qlbwXnV-6HI",
-      "title": "GABA Receptors #pharmacology #pharmcist #medicalstudents #sedative",
-      "url": "https://www.youtube.com/watch?v=qlbwXnV-6HI",
-      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "일반 설명 후보",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "publisherName": "pharmamadeasy",
-      "publisherUrl": "https://www.youtube.com/@pharmamadeasy-d9j",
-      "publisherStatus": "oEmbed 게시 채널 확인",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
     {
       "id": "PENDING-20260922-Lm2HJtSRBOI",
       "title": "가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)",
@@ -171,6 +155,22 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publisherName": "Dr. Tracey Marks",
       "publisherUrl": "https://www.youtube.com/@DrTraceyMarks",
       "publisherStatus": "oEmbed 게시 채널 확인",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
+      "id": "PENDING-20260927-CopcRocKsCY",
+      "title": "What is GABA? #gaba #brain #anxiety",
+      "url": "https://www.youtube.com/watch?v=CopcRocKsCY",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "질환·치료 표현",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "KEYWORD_DISCOVERY",
+      "publisherName": "",
+      "publisherUrl": "",
+      "publisherStatus": "oEmbed HTTP 401",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
   ],
@@ -251,19 +251,6 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "productBrandQuarantine": 28,
   "history": [
-    {
-      "date": "2026-10-15",
-      "newCandidates": 2,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 184,
-      "scienceMedicalPriority": 103,
-      "videoPriority": 81,
-      "captionBodiesAvailable": 0,
-      "captionBodiesChecked": 12,
-      "captionBodyWarnings": 12,
-      "captionBodyRateLimited": 0,
-      "autoPublish": 0
-    },
     {
       "date": "2026-10-16",
       "newCandidates": 2,
@@ -432,6 +419,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "captionBodyWarnings": 12,
       "captionBodyRateLimited": 0,
       "autoPublish": 0
+    },
+    {
+      "date": "2026-10-29",
+      "newCandidates": 1,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 215,
+      "scienceMedicalPriority": 113,
+      "videoPriority": 102,
+      "captionBodiesAvailable": 0,
+      "captionBodiesChecked": 12,
+      "captionBodyWarnings": 12,
+      "captionBodyRateLimited": 0,
+      "autoPublish": 0
     }
   ],
   "autoPublish": 0,
@@ -466,13 +466,13 @@ export const GABA_MONITOR_SNAPSHOT = {
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",
   "reviewLogUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_REVIEW_LOG.md",
-  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-10-28.md",
-  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-10-28.md",
-  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-28.md",
+  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-10-29.md",
+  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-10-29.md",
+  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-29.md",
   "kickoffUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md",
   "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md",
-  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-10-28.md",
+  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-10-29.md",
   "authorityMetadataChecked": 5,
-  "authorityMetadataHealthy": 5,
-  "authorityMetadataWarnings": 0
+  "authorityMetadataHealthy": 4,
+  "authorityMetadataWarnings": 1
 } as const;
