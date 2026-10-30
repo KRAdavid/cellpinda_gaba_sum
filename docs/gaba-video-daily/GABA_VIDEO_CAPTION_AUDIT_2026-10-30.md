@@ -17,7 +17,7 @@
 | 7Zsxm9Wh2Yg | [원문 보기](https://www.youtube.com/shorts/7Zsxm9Wh2Yg) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
 | rOFkZg09AoY | [원문 보기](https://www.youtube.com/shorts/rOFkZg09AoY) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
 | 4MTqi-bapLY | [원문 보기](https://www.youtube.com/shorts/4MTqi-bapLY) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
-| 4xGSHxkMYew | [원문 보기](https://www.youtube.com/shorts/4xGSHxkMYew) | 발견 | 경고: 자막 본문 응답 비어 있음 | 원문 재생·자막·발언 구간을 사람이 확인 |
+| 4xGSHxkMYew | [원문 보기](https://www.youtube.com/shorts/4xGSHxkMYew) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
 
 ## 해석 기준
 
