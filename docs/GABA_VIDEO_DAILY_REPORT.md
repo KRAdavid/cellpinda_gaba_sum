@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-10-30 15:20:39 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-10-30 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-10-31 14:42:46 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-10-31 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -17,7 +17,7 @@
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
 - 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
-- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-30.md) · 트랙·본문 상태를 영상별로 보관
+- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-31.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
 ## 신규 후보
@@ -54,7 +54,7 @@
 
 ## 권위·연구 출처 링크 상태
 
-- 경고: https://raredisease.snuh.org/doctors/adult/lee-seung-hoon/ → HTTP 403
+- 경고: https://raredisease.snuh.org/doctors/adult/lee-seung-hoon/ → fetch failed
 - 이 점검은 등록된 출처 URL의 접근 상태만 확인한다. 링크 접근 가능 여부는 인물 자격·영상 화자 일치·연구 내용·과학적 타당성·권리·공개 승인을 의미하지 않는다.
 
 ## 등록 YouTube 메타데이터 상태
