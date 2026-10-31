@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-10-31 14:42:46 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-10-31 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-10-31 15:11:56 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-10-31 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,14 +8,14 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 8개 채널
-- 오늘 신규 후보(누적): 0건
-- 이번 실행 신규 후보: 0건
+- 오늘 신규 후보(누적): 1건
+- 이번 실행 신규 후보: 1건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
-- 권위·연구 출처 링크: 8/9 접근 확인 · 출처 링크 경고 1건
+- 권위·연구 출처 링크: 7/9 접근 확인 · 출처 링크 경고 2건
 - 인물 출처 확인일: 2/9 기록 · 미기록 7건 · 이 날짜는 영상 발언·자막·권리·공개 승인이 아님
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
-- 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
+- 등록 YouTube 자막 트랙: 2/12 watch 페이지에서 발견 · 자막 경고 10건
 - 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
 - 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-31.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
@@ -24,7 +24,7 @@
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 없음 | 신규 후보 없음 | - | - | - |
+| PENDING-20261031-qkjYWTWGaKo | [잠을 잘 자는것 vs 단순히 오래자는것 #웰니스라이프 #햄프슬립 #가바생성](https://www.youtube.com/watch?v=qkjYWTWGaKo) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -35,7 +35,7 @@
 ## 수집 경로 보완
 
 - 셀럽의 건강비결: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 교육하는 의사! 이동환TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
+- 교육하는 의사! 이동환TV: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
 - 영양과학자 양과자: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 브레인튜브 Brain Doctor: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 30년 자율신경, 정이안한의원TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
@@ -55,6 +55,7 @@
 ## 권위·연구 출처 링크 상태
 
 - 경고: https://raredisease.snuh.org/doctors/adult/lee-seung-hoon/ → fetch failed
+- 경고: https://mediahub.seoul.go.kr/archives/1135642 → fetch failed
 - 이 점검은 등록된 출처 URL의 접근 상태만 확인한다. 링크 접근 가능 여부는 인물 자격·영상 화자 일치·연구 내용·과학적 타당성·권리·공개 승인을 의미하지 않는다.
 
 ## 등록 YouTube 메타데이터 상태
@@ -69,11 +70,9 @@
 - 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/4MTqi-bapLY → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/4xGSHxkMYew → mobile YouTube watch page has no caption track metadata
 - 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 의미하지 않는다. 사람 검토 전 요약과 공개 상태는 바꾸지 않는다.
@@ -85,11 +84,11 @@
 - 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 응답 비어 있음
 - 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 응답 비어 있음
 - 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 요청 URL 없음
 - HTTP 429 접근 제한: 0건 · 제한된 본문은 사람이 원문을 재생해 타임코드와 발언을 확인

@@ -11,11 +11,11 @@
 | R14wnRPxOJ8 | [원문 보기](https://www.youtube.com/watch?v=R14wnRPxOJ8) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
 | dzlxJOSL_Ik | [원문 보기](https://www.youtube.com/watch?v=dzlxJOSL_Ik) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
 | Cnk0PGn9YBM | [원문 보기](https://www.youtube.com/shorts/Cnk0PGn9YBM) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
-| RLAU1VWGsaI | [원문 보기](https://www.youtube.com/shorts/RLAU1VWGsaI) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
+| RLAU1VWGsaI | [원문 보기](https://www.youtube.com/shorts/RLAU1VWGsaI) | 발견 | 경고: 자막 본문 응답 비어 있음 | 원문 재생·자막·발언 구간을 사람이 확인 |
 | vnocd9ZVJj0 | [원문 보기](https://www.youtube.com/shorts/vnocd9ZVJj0) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
 | BiZXS_ojLUA | [원문 보기](https://www.youtube.com/shorts/BiZXS_ojLUA) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
 | 7Zsxm9Wh2Yg | [원문 보기](https://www.youtube.com/shorts/7Zsxm9Wh2Yg) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
-| rOFkZg09AoY | [원문 보기](https://www.youtube.com/shorts/rOFkZg09AoY) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
+| rOFkZg09AoY | [원문 보기](https://www.youtube.com/shorts/rOFkZg09AoY) | 발견 | 경고: 자막 본문 응답 비어 있음 | 원문 재생·자막·발언 구간을 사람이 확인 |
 | 4MTqi-bapLY | [원문 보기](https://www.youtube.com/shorts/4MTqi-bapLY) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
 | 4xGSHxkMYew | [원문 보기](https://www.youtube.com/shorts/4xGSHxkMYew) | 미발견 | 경고: 자막 본문 요청 URL 없음 | 원문 재생·자막·발언 구간을 사람이 확인 |
 
