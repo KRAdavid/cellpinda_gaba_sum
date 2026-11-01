@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
-  "checkedAt": "2026-10-31",
-  "checkedAtKst": "2026-10-31 15:11:56 KST",
-  "runId": "41175591786",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/41175591786",
+  "checkedAt": "2026-11-01",
+  "checkedAtKst": "2026-11-01 15:06:09 KST",
+  "runId": "41279439873",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/41279439873",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "37 9 * * *",
+  "scheduleExpression": "17 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -16,22 +16,23 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "newCandidates": 1,
   "newCandidatesThisRun": 1,
-  "pendingReview": 216,
-  "scienceMedicalPriority": 113,
+  "pendingReview": 217,
+  "scienceMedicalPriority": 114,
   "videoPriority": 103,
   "pendingQueue": [
     {
-      "id": "PENDING-20261031-qkjYWTWGaKo",
-      "title": "잠을 잘 자는것 vs 단순히 오래자는것 #웰니스라이프 #햄프슬립 #가바생성",
-      "url": "https://www.youtube.com/watch?v=qkjYWTWGaKo",
-      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
-      "priority": "VIDEO 우선",
+      "id": "PENDING-20261101-wRnKckLgE-I",
+      "title": "Can GABA Supplements Actually Make Anxiety Worse?",
+      "url": "https://www.youtube.com/watch?v=wRnKckLgE-I",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
-        "일반 설명 후보"
+        "질환·치료 표현",
+        "섭취·상업성 신호"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "VIDEO",
-      "nextAction": "원문·자막·화자 확인"
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
     },
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
@@ -252,19 +253,6 @@ export const GABA_MONITOR_SNAPSHOT = {
   "productBrandQuarantine": 28,
   "history": [
     {
-      "date": "2026-10-18",
-      "newCandidates": 3,
-      "newCandidatesThisRun": 2,
-      "pendingReview": 190,
-      "scienceMedicalPriority": 103,
-      "videoPriority": 87,
-      "captionBodiesAvailable": 0,
-      "captionBodiesChecked": 12,
-      "captionBodyWarnings": 12,
-      "captionBodyRateLimited": 0,
-      "autoPublish": 0
-    },
-    {
       "date": "2026-10-19",
       "newCandidates": 1,
       "newCandidatesThisRun": 0,
@@ -432,6 +420,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "captionBodyWarnings": 12,
       "captionBodyRateLimited": 0,
       "autoPublish": 0
+    },
+    {
+      "date": "2026-11-01",
+      "newCandidates": 1,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 217,
+      "scienceMedicalPriority": 114,
+      "videoPriority": 103,
+      "captionBodiesAvailable": 0,
+      "captionBodiesChecked": 12,
+      "captionBodyWarnings": 12,
+      "captionBodyRateLimited": 0,
+      "autoPublish": 0
     }
   ],
   "autoPublish": 0,
@@ -447,8 +448,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoLinksHealthy": 14,
   "registeredVideoLinkWarnings": 0,
   "registeredEvidenceLinksChecked": 9,
-  "registeredEvidenceLinksHealthy": 7,
-  "registeredEvidenceLinkWarnings": 2,
+  "registeredEvidenceLinksHealthy": 8,
+  "registeredEvidenceLinkWarnings": 1,
   "registeredAuthoritySourcesWithEvidence": 9,
   "registeredAuthoritySourceDatesChecked": 2,
   "registeredAuthoritySourceDatesMissing": 7,
@@ -456,8 +457,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoMetadataHealthy": 12,
   "registeredVideoMetadataWarnings": 0,
   "registeredVideoCaptionTracksChecked": 12,
-  "registeredVideoCaptionTracksAvailable": 2,
-  "registeredVideoCaptionTrackWarnings": 10,
+  "registeredVideoCaptionTracksAvailable": 0,
+  "registeredVideoCaptionTrackWarnings": 12,
   "registeredVideoCaptionBodiesChecked": 12,
   "registeredVideoCaptionBodiesAvailable": 0,
   "registeredVideoCaptionBodyWarnings": 12,
@@ -466,12 +467,12 @@ export const GABA_MONITOR_SNAPSHOT = {
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",
   "reviewLogUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_REVIEW_LOG.md",
-  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-10-31.md",
-  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-10-31.md",
-  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-10-31.md",
+  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-11-01.md",
+  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-11-01.md",
+  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-01.md",
   "kickoffUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md",
   "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md",
-  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-10-31.md",
+  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-11-01.md",
   "authorityMetadataChecked": 5,
   "authorityMetadataHealthy": 4,
   "authorityMetadataWarnings": 1
