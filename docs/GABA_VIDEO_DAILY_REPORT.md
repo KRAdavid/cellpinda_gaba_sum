@@ -1,13 +1,13 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-11-02 15:04:31 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-11-02 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-11-02 15:42:45 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-11-02 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
 - 채널 확인: 8/8
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
-- Shorts 페이지 보완 수집: 7개 채널
+- Shorts 페이지 보완 수집: 8개 채널
 - 오늘 신규 후보(누적): 0건
 - 이번 실행 신규 후보: 0건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
@@ -35,7 +35,8 @@
 ## 수집 경로 보완
 
 - 셀럽의 건강비결: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 교육하는 의사! 이동환TV: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
+- 교육하는 의사! 이동환TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
+- 영양과학자 양과자: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 브레인튜브 Brain Doctor: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 30년 자율신경, 정이안한의원TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - SLEEP Dr. 신원철 꿀잠튜브: RSS 404 Not Found → Shorts 페이지로 보완 수집
@@ -67,13 +68,13 @@
 - 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/rOFkZg09AoY → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/4MTqi-bapLY → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → mobile YouTube watch page has no caption track metadata
 - 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 의미하지 않는다. 사람 검토 전 요약과 공개 상태는 바꾸지 않는다.
 
 ## 등록 YouTube 자막 본문 상태
@@ -82,14 +83,14 @@
 - 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 응답 비어 있음
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 자막 본문 요청 URL 없음
 - 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 자막 본문 요청 URL 없음
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 요청 URL 없음
+- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 자막 본문 응답 비어 있음
 - HTTP 429 접근 제한: 0건 · 제한된 본문은 사람이 원문을 재생해 타임코드와 발언을 확인
 - 자막 본문 확인은 텍스트 응답의 존재만 점검한다. 번역 정확성·발언 맥락·화자·과학적 타당성·권리를 승인하지 않으며, 본문 확인 전 요약과 공개 상태를 바꾸지 않는다.
 
