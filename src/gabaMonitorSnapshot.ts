@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-11-05",
-  "checkedAtKst": "2026-11-05 15:47:06 KST",
-  "runId": "41982732540",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/41982732540",
+  "checkedAtKst": "2026-11-05 16:17:36 KST",
+  "runId": "41986187312",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/41986187312",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,11 +14,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 1,
+  "newCandidates": 2,
   "newCandidatesThisRun": 1,
-  "pendingReview": 220,
+  "pendingReview": 221,
   "scienceMedicalPriority": 117,
-  "videoPriority": 103,
+  "videoPriority": 104,
   "pendingQueue": [
     {
       "id": "PENDING-20261105-H1l0BglRbFA",
@@ -32,6 +32,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20261105-nP0rXzOHLfs",
+      "title": "🌙 요즘 밤에 푹 주무시나요? #앱소브 #가바GABA #클라운지경기군포1호점 #수면보조",
+      "url": "https://www.youtube.com/watch?v=nP0rXzOHLfs",
+      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
+      "signals": [
+        "일반 설명 후보"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
     },
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
@@ -74,20 +87,6 @@ export const GABA_MONITOR_SNAPSHOT = {
         "제품·브랜드 신호"
       ],
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-6QgcctlfBZU",
-      "title": "Supplement GABA to reduce stress! #shorts",
-      "url": "https://www.youtube.com/watch?v=6QgcctlfBZU",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     }
@@ -422,11 +421,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-11-05",
-      "newCandidates": 1,
+      "newCandidates": 2,
       "newCandidatesThisRun": 1,
-      "pendingReview": 220,
+      "pendingReview": 221,
       "scienceMedicalPriority": 117,
-      "videoPriority": 103,
+      "videoPriority": 104,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
