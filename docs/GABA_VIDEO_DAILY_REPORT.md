@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-11-06 15:46:59 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-11-06 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-11-06 16:18:14 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-11-06 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,9 +8,9 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 8개 채널
-- 오늘 신규 후보(누적): 0건
-- 이번 실행 신규 후보: 0건
-- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
+- 오늘 신규 후보(누적): 1건
+- 이번 실행 신규 후보: 1건
+- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 1건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
 - 인물 출처 확인일: 2/9 기록 · 미기록 7건 · 이 날짜는 영상 발언·자막·권리·공개 승인이 아님
@@ -24,7 +24,7 @@
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 없음 | 신규 후보 없음 | - | - | - |
+| PENDING-20261106-qJjQGAdyWs8 | ['GABA' 보충제 정말 뇌까지 갈까요?  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=qJjQGAdyWs8) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -34,7 +34,7 @@
 
 ## 수집 경로 보완
 
-- 셀럽의 건강비결: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
+- 셀럽의 건강비결: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 교육하는 의사! 이동환TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 영양과학자 양과자: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 브레인튜브 Brain Doctor: RSS 404 Not Found → Shorts 페이지로 보완 수집
@@ -64,18 +64,18 @@
 
 ## 등록 YouTube 자막 트랙 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 429 Too Many Requests
-- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 429 Too Many Requests
-- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 429 Too Many Requests
-- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → 429 Too Many Requests
+- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/rOFkZg09AoY → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/4MTqi-bapLY → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/4xGSHxkMYew → mobile YouTube watch page has no caption track metadata
 - 자막 트랙 발견은 자막 본문 확보·정확성·화자 확인을 의미하지 않는다. 사람 검토 전 요약과 공개 상태는 바꾸지 않는다.
 
 ## 등록 YouTube 자막 본문 상태

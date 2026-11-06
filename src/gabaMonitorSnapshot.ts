@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-11-06",
-  "checkedAtKst": "2026-11-06 15:46:59 KST",
-  "runId": "42176615038",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/42176615038",
+  "checkedAtKst": "2026-11-06 16:18:14 KST",
+  "runId": "42179968195",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/42179968195",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,12 +14,26 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 0,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 221,
-  "scienceMedicalPriority": 117,
+  "newCandidates": 1,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 222,
+  "scienceMedicalPriority": 118,
   "videoPriority": 104,
   "pendingQueue": [
+    {
+      "id": "PENDING-20261106-qJjQGAdyWs8",
+      "title": "'GABA' 보충제 정말 뇌까지 갈까요?  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
+      "url": "https://www.youtube.com/watch?v=qJjQGAdyWs8",
+      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
       "title": "헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
@@ -75,20 +89,6 @@ export const GABA_MONITOR_SNAPSHOT = {
         "섭취·상업성 신호"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-7h0wzAM7Frw",
-      "title": "'몽진환'은 어떤 제품일까요 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=7h0wzAM7Frw",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     }
@@ -177,6 +177,20 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "productBrandQueue": [
     {
+      "id": "PENDING-20261106-qJjQGAdyWs8",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=qJjQGAdyWs8",
+      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
       "id": "PENDING-20260922-_XGO7xk24jo",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
       "url": "https://www.youtube.com/watch?v=_XGO7xk24jo",
@@ -232,25 +246,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL → RIGHTS",
       "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
-      "id": "PENDING-20260922-bquifROEFMI",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "url": "https://www.youtube.com/watch?v=bquifROEFMI",
-      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
     }
   ],
-  "productBrandQuarantine": 28,
+  "productBrandQuarantine": 29,
   "history": [
     {
       "date": "2026-10-24",
@@ -423,10 +421,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-11-06",
-      "newCandidates": 0,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 221,
-      "scienceMedicalPriority": 117,
+      "newCandidates": 1,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 222,
+      "scienceMedicalPriority": 118,
       "videoPriority": 104,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
