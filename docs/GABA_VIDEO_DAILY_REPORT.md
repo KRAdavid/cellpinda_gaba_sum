@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-11-08 15:01:46 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-11-08 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-11-08 15:36:46 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-11-08 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,9 +8,9 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 8개 채널
-- 오늘 신규 후보(누적): 1건
-- 이번 실행 신규 후보: 1건
-- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
+- 오늘 신규 후보(누적): 3건
+- 이번 실행 신규 후보: 2건
+- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 1건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
 - 인물 출처 확인일: 2/9 기록 · 미기록 7건 · 이 날짜는 영상 발언·자막·권리·공개 승인이 아님
@@ -25,6 +25,8 @@
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
 | PENDING-20261108-3vjFxf1w91Y | [GABA Supplements and the Leaky Gut–Brain Barrier Connection #shorts](https://www.youtube.com/watch?v=3vjFxf1w91Y) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261108-8PTAqFZvE3E | [식물성 멜라토닌 수면 젤리 GABA 와 L-테아닌 씹다 보충제 불면증 개선 스트레스 해소 1정당 2mg 함유 멜라토닌, 30정, 1개](https://www.youtube.com/watch?v=8PTAqFZvE3E) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261108-EPQc_80p7Tc | [셀핀다 김치유산균 발효가바 리뷰! 스트레스 케어, 충분한 수면을 위한 관리, 가바로 강력한 릴렉스를 경험해 보세요](https://www.youtube.com/watch?v=EPQc_80p7Tc) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
 
 ## 채널 경고
 
