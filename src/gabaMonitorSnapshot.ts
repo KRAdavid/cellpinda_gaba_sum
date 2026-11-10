@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
-  "checkedAt": "2026-11-09",
-  "checkedAtKst": "2026-11-09 16:05:27 KST",
-  "runId": "42577067736",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/42577067736",
+  "checkedAt": "2026-11-10",
+  "checkedAtKst": "2026-11-10 16:19:09 KST",
+  "runId": "42774428828",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/42774428828",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "37 9 * * *",
+  "scheduleExpression": "17 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -15,23 +15,24 @@ export const GABA_MONITOR_SNAPSHOT = {
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
   "newCandidates": 1,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 229,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 230,
   "scienceMedicalPriority": 124,
-  "videoPriority": 105,
+  "videoPriority": 106,
   "pendingQueue": [
     {
-      "id": "PENDING-20261109-Tivcyj9b4CE",
-      "title": "GABA Supplements and the Leaky Gut–Brain Barrier Connection #shorts",
-      "url": "https://www.youtube.com/watch?v=Tivcyj9b4CE",
-      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL + RIGHTS",
+      "id": "PENDING-20261110-S3eYAmwLMFs",
+      "title": "PMDD와 PMS 차이, 뇌의 GABA 수용체 반응이 다릅니다 \\| 평택시 PMDD 한의원",
+      "url": "https://www.youtube.com/watch?v=S3eYAmwLMFs",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
       "signals": [
-        "섭취·상업성 신호"
+        "일반 설명 후보",
+        "권위 후보 검색 발견"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "주장·이해관계·사용권 확인"
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
     },
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
@@ -94,6 +95,22 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "authorityQueue": [
     {
+      "id": "PENDING-20261110-S3eYAmwLMFs",
+      "title": "PMDD와 PMS 차이, 뇌의 GABA 수용체 반응이 다릅니다 \\| 평택시 PMDD 한의원",
+      "url": "https://www.youtube.com/watch?v=S3eYAmwLMFs",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "일반 설명 후보",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "KEYWORD_DISCOVERY",
+      "publisherName": "어지럼증 노트",
+      "publisherUrl": "https://www.youtube.com/@%EC%96%B4%EC%A7%80%EB%9F%BC%EC%A6%9D%EB%85%B8%ED%8A%B8",
+      "publisherStatus": "oEmbed 게시 채널 확인",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
+    {
       "id": "PENDING-20260922-Lm2HJtSRBOI",
       "title": "가바(GABA) 올리는 데 가장 효과적인 CBG? shorts (원본 영상 참조)",
       "url": "https://www.youtube.com/watch?v=Lm2HJtSRBOI",
@@ -155,22 +172,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publisherName": "Dr. Tracey Marks",
       "publisherUrl": "https://www.youtube.com/@DrTraceyMarks",
       "publisherStatus": "oEmbed 게시 채널 확인",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
-      "id": "PENDING-20260927-CopcRocKsCY",
-      "title": "What is GABA? #gaba #brain #anxiety",
-      "url": "https://www.youtube.com/watch?v=CopcRocKsCY",
-      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "질환·치료 표현",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "publisherName": "",
-      "publisherUrl": "",
-      "publisherStatus": "oEmbed HTTP 401",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
   ],
@@ -251,19 +252,6 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "productBrandQuarantine": 30,
   "history": [
-    {
-      "date": "2026-10-27",
-      "newCandidates": 4,
-      "newCandidatesThisRun": 1,
-      "pendingReview": 212,
-      "scienceMedicalPriority": 113,
-      "videoPriority": 99,
-      "captionBodiesAvailable": 0,
-      "captionBodiesChecked": 12,
-      "captionBodyWarnings": 12,
-      "captionBodyRateLimited": 0,
-      "autoPublish": 0
-    },
     {
       "date": "2026-10-28",
       "newCandidates": 2,
@@ -432,6 +420,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "captionBodyWarnings": 12,
       "captionBodyRateLimited": 0,
       "autoPublish": 0
+    },
+    {
+      "date": "2026-11-10",
+      "newCandidates": 1,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 230,
+      "scienceMedicalPriority": 124,
+      "videoPriority": 106,
+      "captionBodiesAvailable": 0,
+      "captionBodiesChecked": 12,
+      "captionBodyWarnings": 12,
+      "captionBodyRateLimited": 0,
+      "autoPublish": 0
     }
   ],
   "autoPublish": 0,
@@ -466,13 +467,13 @@ export const GABA_MONITOR_SNAPSHOT = {
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",
   "reviewLogUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_REVIEW_LOG.md",
-  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-11-09.md",
-  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-11-09.md",
-  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-09.md",
+  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-11-10.md",
+  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-11-10.md",
+  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-10.md",
   "kickoffUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md",
   "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md",
-  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-11-09.md",
+  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-11-10.md",
   "authorityMetadataChecked": 5,
-  "authorityMetadataHealthy": 4,
-  "authorityMetadataWarnings": 1
+  "authorityMetadataHealthy": 5,
+  "authorityMetadataWarnings": 0
 } as const;
