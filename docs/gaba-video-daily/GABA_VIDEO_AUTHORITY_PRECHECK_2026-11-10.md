@@ -10,6 +10,17 @@
 
 ## 후보별 사전 확인
 
+## PENDING-20261110-VtyoLoQeLFY
+
+- 영상: [Fix Your GABA Deficiency to Stop Chronic Stress #shorts](https://www.youtube.com/watch?v=VtyoLoQeLFY)
+- 게시 채널(oEmbed): [Escape to Mexico Now](https://www.youtube.com/@EscapeToMexicoNow)
+- 게시 채널 상태: oEmbed 게시 채널 확인
+- 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
+- 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.
+- 과학·의료 감리: 일반 GABA 설명과 수면·스트레스·섭취·질환 주장을 원문에서 분리 확인 필요.
+- 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.
+- 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.
+
 ## PENDING-20261110-S3eYAmwLMFs
 
 - 영상: [PMDD와 PMS 차이, 뇌의 GABA 수용체 반응이 다릅니다 \\| 평택시 PMDD 한의원](https://www.youtube.com/watch?v=S3eYAmwLMFs)
@@ -47,17 +58,6 @@
 
 - 영상: [GABA is your calming neurotransmitter! Increase it by consuming the building blocks, increasing b6,](https://www.youtube.com/watch?v=Z2_d_8p36rM)
 - 게시 채널(oEmbed): [Samantha Odonnell PMHNP](https://www.youtube.com/@sammiep_thepsychnp)
-- 게시 채널 상태: oEmbed 게시 채널 확인
-- 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
-- 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.
-- 과학·의료 감리: 일반 GABA 설명과 수면·스트레스·섭취·질환 주장을 원문에서 분리 확인 필요.
-- 권리·공개 판정: 미확인 · 현재 PENDING_REVIEW/HOLD.
-- 다음 행동: VIDEO가 원문·자막·실제 화자를 확인하고 SCIENCE/MEDICAL·RIGHTS가 이어서 검토.
-
-## PENDING-20260925-rVGz6lONwc4
-
-- 영상: [What GABA Does for Anxiety #shorts](https://www.youtube.com/watch?v=rVGz6lONwc4)
-- 게시 채널(oEmbed): [Dr. Tracey Marks](https://www.youtube.com/@DrTraceyMarks)
 - 게시 채널 상태: oEmbed 게시 채널 확인
 - 무엇을 어떻게 소개했나: 제목·게시 채널만 확인됨. 원문·자막·타임코드 확인 전.
 - 인물 소개: 게시 채널 정보는 확인 보조 자료일 뿐이며 실제 화자·의사/과학자 자격·소속은 미확인.

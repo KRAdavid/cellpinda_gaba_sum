@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-11-10",
-  "checkedAtKst": "2026-11-10 16:19:09 KST",
-  "runId": "42774428828",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/42774428828",
+  "checkedAtKst": "2026-11-10 16:41:13 KST",
+  "runId": "42777006646",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/42777006646",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,12 +14,40 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 1,
-  "newCandidatesThisRun": 1,
-  "pendingReview": 230,
-  "scienceMedicalPriority": 124,
+  "newCandidates": 3,
+  "newCandidatesThisRun": 2,
+  "pendingReview": 232,
+  "scienceMedicalPriority": 126,
   "videoPriority": 106,
   "pendingQueue": [
+    {
+      "id": "PENDING-20261110-t2XSeVpsOHg",
+      "title": "Fix Your GABA Deficiency for Better Calm #shorts",
+      "url": "https://www.youtube.com/watch?v=t2XSeVpsOHg",
+      "channel": "YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "효과·안전성 단정 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20261110-VtyoLoQeLFY",
+      "title": "Fix Your GABA Deficiency to Stop Chronic Stress #shorts",
+      "url": "https://www.youtube.com/watch?v=VtyoLoQeLFY",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
     {
       "id": "PENDING-20261110-S3eYAmwLMFs",
       "title": "PMDD와 PMS 차이, 뇌의 GABA 수용체 반응이 다릅니다 \\| 평택시 PMDD 한의원",
@@ -62,38 +90,25 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-26wX746Ga6M",
-      "title": "불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=26wX746Ga6M",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-6QgcctlfBZU",
-      "title": "Supplement GABA to reduce stress! #shorts",
-      "url": "https://www.youtube.com/watch?v=6QgcctlfBZU",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
     }
   ],
   "authorityQueue": [
+    {
+      "id": "PENDING-20261110-VtyoLoQeLFY",
+      "title": "Fix Your GABA Deficiency to Stop Chronic Stress #shorts",
+      "url": "https://www.youtube.com/watch?v=VtyoLoQeLFY",
+      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
+      "signals": [
+        "질환·치료 표현",
+        "권위 후보 검색 발견"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "authorityBasis": "KEYWORD_DISCOVERY",
+      "publisherName": "Escape to Mexico Now",
+      "publisherUrl": "https://www.youtube.com/@EscapeToMexicoNow",
+      "publisherStatus": "oEmbed 게시 채널 확인",
+      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
+    },
     {
       "id": "PENDING-20261110-S3eYAmwLMFs",
       "title": "PMDD와 PMS 차이, 뇌의 GABA 수용체 반응이 다릅니다 \\| 평택시 PMDD 한의원",
@@ -155,22 +170,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "authorityBasis": "KEYWORD_DISCOVERY",
       "publisherName": "Samantha Odonnell PMHNP",
       "publisherUrl": "https://www.youtube.com/@sammiep_thepsychnp",
-      "publisherStatus": "oEmbed 게시 채널 확인",
-      "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
-    },
-    {
-      "id": "PENDING-20260925-rVGz6lONwc4",
-      "title": "What GABA Does for Anxiety #shorts",
-      "url": "https://www.youtube.com/watch?v=rVGz6lONwc4",
-      "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
-      "signals": [
-        "질환·치료 표현",
-        "권위 후보 검색 발견"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "authorityBasis": "KEYWORD_DISCOVERY",
-      "publisherName": "Dr. Tracey Marks",
-      "publisherUrl": "https://www.youtube.com/@DrTraceyMarks",
       "publisherStatus": "oEmbed 게시 채널 확인",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     }
@@ -423,10 +422,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-11-10",
-      "newCandidates": 1,
-      "newCandidatesThisRun": 1,
-      "pendingReview": 230,
-      "scienceMedicalPriority": 124,
+      "newCandidates": 3,
+      "newCandidatesThisRun": 2,
+      "pendingReview": 232,
+      "scienceMedicalPriority": 126,
       "videoPriority": 106,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
