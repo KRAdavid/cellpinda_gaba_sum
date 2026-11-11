@@ -4309,3 +4309,22 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20261111-UcnG1ZVEM5M
+
+- 상태: PENDING_REVIEW
+- 영상: [\[2분컷\] 버리는 물도 다시 보자! 현미차의 'GABA' 성분이 스트레스와 혈압을 잡는 과학!#현미차 #GABA #스트레스해소 #혈압조절 #소화촉진 #국민차 #자연과어울림](https://www.youtube.com/watch?v=UcnG1ZVEM5M)
+- 채널: YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-11-11
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS

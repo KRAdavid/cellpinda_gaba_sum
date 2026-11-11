@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-11-11",
-  "checkedAtKst": "2026-11-11 15:22:27 KST",
-  "runId": "42971951904",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/42971951904",
+  "checkedAtKst": "2026-11-11 15:59:27 KST",
+  "runId": "42976225813",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/42976225813",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,12 +14,25 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 0,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 232,
+  "newCandidates": 1,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 233,
   "scienceMedicalPriority": 126,
-  "videoPriority": 106,
+  "videoPriority": 107,
   "pendingQueue": [
+    {
+      "id": "PENDING-20261111-UcnG1ZVEM5M",
+      "title": "\\[2분컷\\] 버리는 물도 다시 보자! 현미차의 'GABA' 성분이 스트레스와 혈압을 잡는 과학!#현미차 #GABA #스트레스해소 #혈압조절 #소화촉진 #국민차 #자연과어울림",
+      "url": "https://www.youtube.com/watch?v=UcnG1ZVEM5M",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
+      "signals": [
+        "일반 설명 후보"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
+    },
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
       "title": "헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
@@ -75,20 +88,6 @@ export const GABA_MONITOR_SNAPSHOT = {
         "섭취·상업성 신호"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-7h0wzAM7Frw",
-      "title": "'몽진환'은 어떤 제품일까요 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=7h0wzAM7Frw",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     }
@@ -423,11 +422,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-11-11",
-      "newCandidates": 0,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 232,
+      "newCandidates": 1,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 233,
       "scienceMedicalPriority": 126,
-      "videoPriority": 106,
+      "videoPriority": 107,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
