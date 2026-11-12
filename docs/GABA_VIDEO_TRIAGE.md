@@ -1,6 +1,6 @@
 # GABA 숏츠 감리 우선순위 보드
 
-> 자동 생성일: 2026-11-11 · 제목과 수집된 공개 설명 기반의 감리 보조 분류다. 권위·근거·권리·공개 승인을 판정하지 않는다.
+> 자동 생성일: 2026-11-12 · 제목과 수집된 공개 설명 기반의 감리 보조 분류다. 권위·근거·권리·공개 승인을 판정하지 않는다.
 
 ## 오늘의 큐
 
@@ -22,7 +22,6 @@
 
 | ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 공개 큐 분류 | 첫 담당 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| PENDING-20261111-UcnG1ZVEM5M | [\\[2분컷\\] 버리는 물도 다시 보자! 현미차의 'GABA' 성분이 스트레스와 혈압을 잡는 과학!#현미차 #GABA #스트레스해소 #혈압조절 #소화촉진 #국민차 #자연과어울림](https://www.youtube.com/watch?v=UcnG1ZVEM5M) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-_XGO7xk24jo | [헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=_XGO7xk24jo) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922--azWbivGh5Y | [잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠](https://www.youtube.com/watch?v=-azWbivGh5Y) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-26wX746Ga6M | [불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=26wX746Ga6M) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
@@ -255,6 +254,7 @@
 | PENDING-20261105-nP0rXzOHLfs | [🌙 요즘 밤에 푹 주무시나요? #앱소브 #가바GABA #클라운지경기군포1호점 #수면보조](https://www.youtube.com/watch?v=nP0rXzOHLfs) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20261107-Z0zXQBf-ieM | [Exam stress aur woh jigri dost! 😂📚" \\| Sejal Gaba \\| #shorts #sejalgabashorts #funny #exam #schoollife](https://www.youtube.com/watch?v=Z0zXQBf-ieM) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20261110-S3eYAmwLMFs | [PMDD와 PMS 차이, 뇌의 GABA 수용체 반응이 다릅니다 \\| 평택시 PMDD 한의원](https://www.youtube.com/watch?v=S3eYAmwLMFs) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | 권위 검색 발견 · 자격 미확인 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20261111-UcnG1ZVEM5M | [\\[2분컷\\] 버리는 물도 다시 보자! 현미차의 'GABA' 성분이 스트레스와 혈압을 잡는 과학!#현미차 #GABA #스트레스해소 #혈압조절 #소화촉진 #국민차 #자연과어울림](https://www.youtube.com/watch?v=UcnG1ZVEM5M) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 
 ## 다음 행동
 
