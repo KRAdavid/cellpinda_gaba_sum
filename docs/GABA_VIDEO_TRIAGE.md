@@ -4,10 +4,10 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 236건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 128건
-- VIDEO 원문·자막 선확인: 108건
-- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 30건
+- 검토 대기: 239건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 129건
+- VIDEO 원문·자막 선확인: 110건
+- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 31건
 
 ## 우선순위 정의
 
@@ -22,6 +22,9 @@
 
 | ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 공개 큐 분류 | 첫 담당 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| PENDING-20261113-FjwOFA2p0Lg | [카페인, 수면제 vs 김치유산균 발효가바 #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #명절 #선물 #갱년기 #뇌건강](https://www.youtube.com/watch?v=FjwOFA2p0Lg) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 약물 대체·비교 · 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
+| PENDING-20261113-aMYk0TDEmSo | [하루는 끝났는데, 왜 머릿속은 퇴근을 못 할까요? #앱소브 #가바GABA  #클라운지경기군포1호점](https://www.youtube.com/watch?v=aMYk0TDEmSo) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
+| PENDING-20261113-vxN_zsnujTQ | [멜라토닌? 테아닌? 트립토판? 가바? 뭐가 좋지?](https://www.youtube.com/watch?v=vxN_zsnujTQ) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-_XGO7xk24jo | [헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=_XGO7xk24jo) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922--azWbivGh5Y | [잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠](https://www.youtube.com/watch?v=-azWbivGh5Y) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922-26wX746Ga6M | [불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=26wX746Ga6M) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |

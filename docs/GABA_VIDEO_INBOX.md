@@ -4385,3 +4385,60 @@ ID: PENDING-YYYYMMDD-VIDEOID
 - 과학 감리: 미검토
 - 상업·권리 감리: 미검토
 - 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20261113-aMYk0TDEmSo
+
+- 상태: PENDING_REVIEW
+- 영상: [하루는 끝났는데, 왜 머릿속은 퇴근을 못 할까요? #앱소브 #가바GABA  #클라운지경기군포1호점](https://www.youtube.com/watch?v=aMYk0TDEmSo)
+- 채널: YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-11-13
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20261113-vxN_zsnujTQ
+
+- 상태: PENDING_REVIEW
+- 영상: [멜라토닌? 테아닌? 트립토판? 가바? 뭐가 좋지?](https://www.youtube.com/watch?v=vxN_zsnujTQ)
+- 채널: YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-11-13
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 일반 설명 후보
+- 자동 우선순위: VIDEO 우선
+- 공개 큐 분류: 일반 교육 공개 전 사람 감리
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
+
+### PENDING-20261113-FjwOFA2p0Lg
+
+- 상태: PENDING_REVIEW
+- 영상: [카페인, 수면제 vs 김치유산균 발효가바 #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #명절 #선물 #갱년기 #뇌건강](https://www.youtube.com/watch?v=FjwOFA2p0Lg)
+- 채널: YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)
+- 공개일: 확인 필요
+- 수집일: 2026-11-13
+- 키워드 일치: 가바/GABA 제목
+- 공개 설명(자동 수집): 없음
+- 제목 기반 주의 신호: 약물 대체·비교 · 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호
+- 자동 우선순위: SCIENCE/MEDICAL 우선
+- 공개 큐 분류: 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외
+- 형식: Shorts 여부 확인 필요
+- 무엇을 어떻게 소개했나: 원문·자막 확인 전
+- 인물 소개: 확인 전
+- 과학 감리: 미검토
+- 상업·권리 감리: 미검토
+- 다음 담당: VIDEO → SCIENCE/MEDICAL → RIGHTS
