@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-11-12 16:38:36 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-11-12 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-11-13 15:46:30 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-11-13 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,8 +8,8 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 8개 채널
-- 오늘 신규 후보(누적): 3건
-- 이번 실행 신규 후보: 3건
+- 오늘 신규 후보(누적): 0건
+- 이번 실행 신규 후보: 0건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
@@ -17,16 +17,14 @@
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
 - 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
-- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-12.md) · 트랙·본문 상태를 영상별로 보관
+- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-13.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
 ## 신규 후보
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
-| PENDING-20261112-Vac98zGlDU0 | [GABA: 5 Health Benefits for Stress, Sleep, and Mood](https://www.youtube.com/watch?v=Vac98zGlDU0) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261112-0VHxu7JVxco | [Unlock Calm: How GABA Reduces Brain Overactivity #shorts](https://www.youtube.com/watch?v=0VHxu7JVxco) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261112-CP7cRfaWO2c | [The Chemical That Helps Calm Your Brain!GABA#Neuroscience #Psychology#BrainFacts #Neurotransmitters](https://www.youtube.com/watch?v=CP7cRfaWO2c) | YouTube 검색: 가바 GABA 대학병원 신경과 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 전문가 자격 확인 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| 없음 | 신규 후보 없음 | - | - | - |
 
 ## 채널 경고
 
@@ -42,7 +40,7 @@
 - 브레인튜브 Brain Doctor: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - 30년 자율신경, 정이안한의원TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
 - SLEEP Dr. 신원철 꿀잠튜브: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 마음 튼튼, 뇌연구소 바이탈라이즈: RSS 404 Not Found → Shorts 페이지로 보완 수집
+- 마음 튼튼, 뇌연구소 바이탈라이즈: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
 - 비엠한방내과: RSS 404 Not Found → Shorts 페이지로 보완 수집
 
 ## 검색어 보완 경로
