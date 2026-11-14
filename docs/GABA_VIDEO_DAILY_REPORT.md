@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-11-13 16:08:50 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-11-13 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-11-14 15:23:48 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-11-14 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -17,16 +17,16 @@
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
 - 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
-- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-13.md) · 트랙·본문 상태를 영상별로 보관
+- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-14.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
 ## 신규 후보
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
-| PENDING-20261113-aMYk0TDEmSo | [하루는 끝났는데, 왜 머릿속은 퇴근을 못 할까요? #앱소브 #가바GABA  #클라운지경기군포1호점](https://www.youtube.com/watch?v=aMYk0TDEmSo) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261113-vxN_zsnujTQ | [멜라토닌? 테아닌? 트립토판? 가바? 뭐가 좋지?](https://www.youtube.com/watch?v=vxN_zsnujTQ) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261113-FjwOFA2p0Lg | [카페인, 수면제 vs 김치유산균 발효가바 #가바 #발효 #갱년기 #뇌건강 #스트레스 #면역 #수면 #집중 #요가 #명상 #김치 #유산균 #부모님 #명절 #선물 #갱년기 #뇌건강](https://www.youtube.com/watch?v=FjwOFA2p0Lg) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 약물 대체·비교 · 효과·안전성 단정 신호 · 섭취·상업성 신호 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
+| PENDING-20261114-o-D0BywQBxs | [GABA토마토, 수험생 뇌 건강에 좋다고요? : 건강한 토마토 편 \\[건강한 식재료\\] #가바토마토 #GABA토마토 #스트레스완화 #뇌건강 #수험생 #집중력 #기억력](https://www.youtube.com/watch?v=o-D0BywQBxs) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261114-tkY87COTuGQ | [저강도 운동이 통증 역치를 높이는 뇌과학적 메커니즘. #통증관리 #저강도운동 #뇌과학 #통증역치 #운동치료 #신경가소성 #전전두엽 #GABA #엔도르핀 #신경염증 #BDNF](https://www.youtube.com/watch?v=tkY87COTuGQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261114-rVeT18w6JYs | [대마에 대한 오해와 진실\\[1편\\]  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=rVeT18w6JYs) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
 
 ## 채널 경고
 
