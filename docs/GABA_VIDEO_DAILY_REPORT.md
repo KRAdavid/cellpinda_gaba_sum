@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-11-14 15:56:26 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-11-14 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-11-15 15:33:20 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-11-15 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,25 +8,23 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 8개 채널
-- 오늘 신규 후보(누적): 3건
-- 이번 실행 신규 후보: 0건
-- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 1건
+- 오늘 신규 후보(누적): 1건
+- 이번 실행 신규 후보: 1건
+- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
 - 인물 출처 확인일: 2/9 기록 · 미기록 7건 · 이 날짜는 영상 발언·자막·권리·공개 승인이 아님
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
 - 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
-- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-14.md) · 트랙·본문 상태를 영상별로 보관
+- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-15.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
 ## 신규 후보
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
-| PENDING-20261114-o-D0BywQBxs | [GABA토마토, 수험생 뇌 건강에 좋다고요? : 건강한 토마토 편 \\[건강한 식재료\\] #가바토마토 #GABA토마토 #스트레스완화 #뇌건강 #수험생 #집중력 #기억력](https://www.youtube.com/watch?v=o-D0BywQBxs) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261114-tkY87COTuGQ | [저강도 운동이 통증 역치를 높이는 뇌과학적 메커니즘. #통증관리 #저강도운동 #뇌과학 #통증역치 #운동치료 #신경가소성 #전전두엽 #GABA #엔도르핀 #신경염증 #BDNF](https://www.youtube.com/watch?v=tkY87COTuGQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261114-rVeT18w6JYs | [대마에 대한 오해와 진실\\[1편\\]  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=rVeT18w6JYs) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
+| PENDING-20261115-42D7PX28sU0 | [This Is What Happens In Your Brain When Anxiety Lowers GABA](https://www.youtube.com/watch?v=42D7PX28sU0) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 질환·치료 표현 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
