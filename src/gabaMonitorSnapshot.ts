@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-11-16",
-  "checkedAtKst": "2026-11-16 15:30:38 KST",
-  "runId": "43817221537",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/43817221537",
+  "checkedAtKst": "2026-11-16 16:11:00 KST",
+  "runId": "43821966506",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/43821966506",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,12 +14,25 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 0,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 246,
-  "scienceMedicalPriority": 134,
+  "newCandidates": 1,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 247,
+  "scienceMedicalPriority": 135,
   "videoPriority": 112,
   "pendingQueue": [
+    {
+      "id": "PENDING-20261116-ncCKJiq6TDQ",
+      "title": "The Hidden Truth About GABA Supplements #shorts",
+      "url": "https://www.youtube.com/watch?v=ncCKJiq6TDQ",
+      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL + RIGHTS",
+      "signals": [
+        "섭취·상업성 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "주장·이해관계·사용권 확인"
+    },
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
       "title": "헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
@@ -75,20 +88,6 @@ export const GABA_MONITOR_SNAPSHOT = {
         "섭취·상업성 신호"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-7h0wzAM7Frw",
-      "title": "'몽진환'은 어떤 제품일까요 ? #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=7h0wzAM7Frw",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     }
@@ -423,10 +422,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-11-16",
-      "newCandidates": 0,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 246,
-      "scienceMedicalPriority": 134,
+      "newCandidates": 1,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 247,
+      "scienceMedicalPriority": 135,
       "videoPriority": 112,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
@@ -448,8 +447,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoLinksHealthy": 14,
   "registeredVideoLinkWarnings": 0,
   "registeredEvidenceLinksChecked": 9,
-  "registeredEvidenceLinksHealthy": 9,
-  "registeredEvidenceLinkWarnings": 0,
+  "registeredEvidenceLinksHealthy": 8,
+  "registeredEvidenceLinkWarnings": 1,
   "registeredAuthoritySourcesWithEvidence": 9,
   "registeredAuthoritySourceDatesChecked": 2,
   "registeredAuthoritySourceDatesMissing": 7,
