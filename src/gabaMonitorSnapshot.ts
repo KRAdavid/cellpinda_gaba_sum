@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
-  "checkedAt": "2026-11-16",
-  "checkedAtKst": "2026-11-16 16:11:00 KST",
-  "runId": "43821966506",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/43821966506",
+  "checkedAt": "2026-11-17",
+  "checkedAtKst": "2026-11-17 16:55:54 KST",
+  "runId": "44042488648",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/44042488648",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "37 9 * * *",
+  "scheduleExpression": "17 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -16,22 +16,22 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "newCandidates": 1,
   "newCandidatesThisRun": 1,
-  "pendingReview": 247,
+  "pendingReview": 248,
   "scienceMedicalPriority": 135,
-  "videoPriority": 112,
+  "videoPriority": 113,
   "pendingQueue": [
     {
-      "id": "PENDING-20261116-ncCKJiq6TDQ",
-      "title": "The Hidden Truth About GABA Supplements #shorts",
-      "url": "https://www.youtube.com/watch?v=ncCKJiq6TDQ",
-      "channel": "YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL + RIGHTS",
+      "id": "PENDING-20261117-QDViy0XpGjY",
+      "title": "Seizures Explained: How GABA & Glutamate Affect Neurons! 🧠 #Shorts",
+      "url": "https://www.youtube.com/watch?v=QDViy0XpGjY",
+      "channel": "YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
       "signals": [
-        "섭취·상업성 신호"
+        "일반 설명 후보"
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "주장·이해관계·사용권 확인"
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
     },
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
@@ -252,19 +252,6 @@ export const GABA_MONITOR_SNAPSHOT = {
   "productBrandQuarantine": 32,
   "history": [
     {
-      "date": "2026-11-03",
-      "newCandidates": 0,
-      "newCandidatesThisRun": 0,
-      "pendingReview": 217,
-      "scienceMedicalPriority": 114,
-      "videoPriority": 103,
-      "captionBodiesAvailable": 0,
-      "captionBodiesChecked": 12,
-      "captionBodyWarnings": 12,
-      "captionBodyRateLimited": 0,
-      "autoPublish": 0
-    },
-    {
       "date": "2026-11-04",
       "newCandidates": 2,
       "newCandidatesThisRun": 0,
@@ -432,6 +419,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "captionBodyWarnings": 12,
       "captionBodyRateLimited": 0,
       "autoPublish": 0
+    },
+    {
+      "date": "2026-11-17",
+      "newCandidates": 1,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 248,
+      "scienceMedicalPriority": 135,
+      "videoPriority": 113,
+      "captionBodiesAvailable": 0,
+      "captionBodiesChecked": 12,
+      "captionBodyWarnings": 12,
+      "captionBodyRateLimited": 0,
+      "autoPublish": 0
     }
   ],
   "autoPublish": 0,
@@ -447,8 +447,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "registeredVideoLinksHealthy": 14,
   "registeredVideoLinkWarnings": 0,
   "registeredEvidenceLinksChecked": 9,
-  "registeredEvidenceLinksHealthy": 8,
-  "registeredEvidenceLinkWarnings": 1,
+  "registeredEvidenceLinksHealthy": 9,
+  "registeredEvidenceLinkWarnings": 0,
   "registeredAuthoritySourcesWithEvidence": 9,
   "registeredAuthoritySourceDatesChecked": 2,
   "registeredAuthoritySourceDatesMissing": 7,
@@ -466,12 +466,12 @@ export const GABA_MONITOR_SNAPSHOT = {
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",
   "reviewLogUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_REVIEW_LOG.md",
-  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-11-16.md",
-  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-11-16.md",
-  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-16.md",
+  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-11-17.md",
+  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-11-17.md",
+  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-17.md",
   "kickoffUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md",
   "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md",
-  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-11-16.md",
+  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-11-17.md",
   "authorityMetadataChecked": 5,
   "authorityMetadataHealthy": 4,
   "authorityMetadataWarnings": 1

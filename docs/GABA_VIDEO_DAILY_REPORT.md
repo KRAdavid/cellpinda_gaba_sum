@@ -1,30 +1,30 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-11-16 16:11:00 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-11-16 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-11-17 16:55:54 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-11-17 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
 - 채널 확인: 8/8
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
-- Shorts 페이지 보완 수집: 8개 채널
+- Shorts 페이지 보완 수집: 0개 채널
 - 오늘 신규 후보(누적): 1건
 - 이번 실행 신규 후보: 1건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
-- 권위·연구 출처 링크: 8/9 접근 확인 · 출처 링크 경고 1건
+- 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
 - 인물 출처 확인일: 2/9 기록 · 미기록 7건 · 이 날짜는 영상 발언·자막·권리·공개 승인이 아님
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
 - 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
-- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-16.md) · 트랙·본문 상태를 영상별로 보관
+- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-17.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
 ## 신규 후보
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
-| PENDING-20261116-ncCKJiq6TDQ | [The Hidden Truth About GABA Supplements #shorts](https://www.youtube.com/watch?v=ncCKJiq6TDQ) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261117-QDViy0XpGjY | [Seizures Explained: How GABA & Glutamate Affect Neurons! 🧠 #Shorts](https://www.youtube.com/watch?v=QDViy0XpGjY) | YouTube 검색: 감마아미노부티르산 의사 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -34,14 +34,7 @@
 
 ## 수집 경로 보완
 
-- 셀럽의 건강비결: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 교육하는 의사! 이동환TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 영양과학자 양과자: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 브레인튜브 Brain Doctor: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 30년 자율신경, 정이안한의원TV: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- SLEEP Dr. 신원철 꿀잠튜브: RSS 500 Internal Server Error → Shorts 페이지로 보완 수집
-- 마음 튼튼, 뇌연구소 바이탈라이즈: RSS 404 Not Found → Shorts 페이지로 보완 수집
-- 비엠한방내과: RSS 404 Not Found → Shorts 페이지로 보완 수집
+- RSS 보완 수집 없음
 
 ## 검색어 보완 경로
 
@@ -54,7 +47,7 @@
 
 ## 권위·연구 출처 링크 상태
 
-- 경고: https://mediahub.seoul.go.kr/archives/1135642 → fetch failed
+- 등록된 권위·연구 출처 링크에서 HTTP 경고 없음
 - 이 점검은 등록된 출처 URL의 접근 상태만 확인한다. 링크 접근 가능 여부는 인물 자격·영상 화자 일치·연구 내용·과학적 타당성·권리·공개 승인을 의미하지 않는다.
 
 ## 등록 YouTube 메타데이터 상태
