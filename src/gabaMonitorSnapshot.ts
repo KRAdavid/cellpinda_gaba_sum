@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
-  "checkedAt": "2026-11-18",
-  "checkedAtKst": "2026-11-18 16:52:42 KST",
-  "runId": "44262271701",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/44262271701",
+  "checkedAt": "2026-11-19",
+  "checkedAtKst": "2026-11-19 16:27:15 KST",
+  "runId": "44479720411",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/44479720411",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "37 9 * * *",
+  "scheduleExpression": "17 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,29 +14,16 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 2,
-  "newCandidatesThisRun": 0,
-  "pendingReview": 250,
+  "newCandidates": 1,
+  "newCandidatesThisRun": 1,
+  "pendingReview": 251,
   "scienceMedicalPriority": 136,
-  "videoPriority": 114,
+  "videoPriority": 115,
   "pendingQueue": [
     {
-      "id": "PENDING-20261118-B1PuHZRqM0U",
-      "title": "GABA Can Help When Stress Starts Affecting Sleep",
-      "url": "https://www.youtube.com/watch?v=B1PuHZRqM0U",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "효과·안전성 단정 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20261118-gks90ClvoYI",
-      "title": "neurotransmitter it is secreted by persynpatic from chemical sypase . Example Gaba , epinephrine.",
-      "url": "https://www.youtube.com/watch?v=gks90ClvoYI",
+      "id": "PENDING-20261119-bp1XAg34F0Q",
+      "title": "How do benzodiazepines enhance GABA-A? #Shorts",
+      "url": "https://www.youtube.com/watch?v=bp1XAg34F0Q",
       "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
       "priority": "VIDEO 우선",
       "signals": [
@@ -90,13 +77,27 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20260922-6QgcctlfBZU",
+      "title": "Supplement GABA to reduce stress! #shorts",
+      "url": "https://www.youtube.com/watch?v=6QgcctlfBZU",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
     }
   ],
   "authorityQueue": [
     {
-      "id": "PENDING-20261118-gks90ClvoYI",
-      "title": "neurotransmitter it is secreted by persynpatic from chemical sypase . Example Gaba , epinephrine.",
-      "url": "https://www.youtube.com/watch?v=gks90ClvoYI",
+      "id": "PENDING-20261119-bp1XAg34F0Q",
+      "title": "How do benzodiazepines enhance GABA-A? #Shorts",
+      "url": "https://www.youtube.com/watch?v=bp1XAg34F0Q",
       "channel": "YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery)",
       "signals": [
         "일반 설명 후보",
@@ -104,8 +105,8 @@ export const GABA_MONITOR_SNAPSHOT = {
       ],
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "authorityBasis": "KEYWORD_DISCOVERY",
-      "publisherName": "Human Anatomy 💪",
-      "publisherUrl": "https://www.youtube.com/@RohiniDhimdhime",
+      "publisherName": "MedRev | Medical Revision",
+      "publisherUrl": "https://www.youtube.com/@MedRev_26",
       "publisherStatus": "oEmbed 게시 채널 확인",
       "nextAction": "독립적인 자격·실제 화자·원문·자막·권리 확인"
     },
@@ -251,19 +252,6 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "productBrandQuarantine": 32,
   "history": [
-    {
-      "date": "2026-11-05",
-      "newCandidates": 2,
-      "newCandidatesThisRun": 1,
-      "pendingReview": 221,
-      "scienceMedicalPriority": 117,
-      "videoPriority": 104,
-      "captionBodiesAvailable": 0,
-      "captionBodiesChecked": 12,
-      "captionBodyWarnings": 12,
-      "captionBodyRateLimited": 0,
-      "autoPublish": 0
-    },
     {
       "date": "2026-11-06",
       "newCandidates": 1,
@@ -432,6 +420,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "captionBodyWarnings": 12,
       "captionBodyRateLimited": 0,
       "autoPublish": 0
+    },
+    {
+      "date": "2026-11-19",
+      "newCandidates": 1,
+      "newCandidatesThisRun": 1,
+      "pendingReview": 251,
+      "scienceMedicalPriority": 136,
+      "videoPriority": 115,
+      "captionBodiesAvailable": 0,
+      "captionBodiesChecked": 12,
+      "captionBodyWarnings": 12,
+      "captionBodyRateLimited": 0,
+      "autoPublish": 0
     }
   ],
   "autoPublish": 0,
@@ -444,8 +445,8 @@ export const GABA_MONITOR_SNAPSHOT = {
   "domesticPublicApproved": 0,
   "domesticVideoTotal": 12,
   "registeredVideoLinksChecked": 14,
-  "registeredVideoLinksHealthy": 14,
-  "registeredVideoLinkWarnings": 0,
+  "registeredVideoLinksHealthy": 13,
+  "registeredVideoLinkWarnings": 1,
   "registeredEvidenceLinksChecked": 9,
   "registeredEvidenceLinksHealthy": 9,
   "registeredEvidenceLinkWarnings": 0,
@@ -466,12 +467,12 @@ export const GABA_MONITOR_SNAPSHOT = {
   "triageUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_TRIAGE.md",
   "reportUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_DAILY_REPORT.md",
   "reviewLogUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_VIDEO_REVIEW_LOG.md",
-  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-11-18.md",
-  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-11-18.md",
-  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-18.md",
+  "reviewSessionUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_REVIEW_SESSION_2026-11-19.md",
+  "metadataAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_METADATA_AUDIT_2026-11-19.md",
+  "captionAuditUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-19.md",
   "kickoffUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_EDUCATION_KICKOFF.md",
   "sourceRegisterUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/GABA_SOURCE_REGISTER.md",
-  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-11-18.md",
+  "authorityPrecheckUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/blob/main/docs/gaba-video-daily/GABA_VIDEO_AUTHORITY_PRECHECK_2026-11-19.md",
   "authorityMetadataChecked": 5,
   "authorityMetadataHealthy": 5,
   "authorityMetadataWarnings": 0
