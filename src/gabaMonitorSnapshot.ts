@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-11-19",
-  "checkedAtKst": "2026-11-19 16:27:15 KST",
-  "runId": "44479720411",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/44479720411",
+  "checkedAtKst": "2026-11-19 16:49:54 KST",
+  "runId": "44482619448",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/44482619448",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,12 +14,40 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 1,
-  "newCandidatesThisRun": 1,
-  "pendingReview": 251,
-  "scienceMedicalPriority": 136,
+  "newCandidates": 3,
+  "newCandidatesThisRun": 2,
+  "pendingReview": 253,
+  "scienceMedicalPriority": 138,
   "videoPriority": 115,
   "pendingQueue": [
+    {
+      "id": "PENDING-20261119-fHw3y_PifHY",
+      "title": "GABA Chocolate for relief stress #gaba #chocolate #japantravel #japanesefood #snacks",
+      "url": "https://www.youtube.com/watch?v=fHw3y_PifHY",
+      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "효과·안전성 단정 신호",
+        "섭취·상업성 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20261119-VZSg_WHc90I",
+      "title": "불면증엔 ‘수면제용 토마토’가 있다? : 건강한 토마토 편 \\[건강한 식재료\\] #가바토마토 #GABA토마토 #스트레스완화 #혈관확장 #혈압조절 #수면유도",
+      "url": "https://www.youtube.com/watch?v=VZSg_WHc90I",
+      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL 우선",
+      "signals": [
+        "질환·치료 표현",
+        "약물 대체·비교"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL",
+      "nextAction": "질환·효과·안전성 표현 확인"
+    },
     {
       "id": "PENDING-20261119-bp1XAg34F0Q",
       "title": "How do benzodiazepines enhance GABA-A? #Shorts",
@@ -56,35 +84,6 @@ export const GABA_MONITOR_SNAPSHOT = {
       "priority": "SCIENCE/MEDICAL 우선",
       "signals": [
         "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-26wX746Ga6M",
-      "title": "불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=26wX746Ga6M",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-6QgcctlfBZU",
-      "title": "Supplement GABA to reduce stress! #shorts",
-      "url": "https://www.youtube.com/watch?v=6QgcctlfBZU",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
         "효과·안전성 단정 신호",
         "섭취·상업성 신호"
       ],
@@ -423,10 +422,10 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-11-19",
-      "newCandidates": 1,
-      "newCandidatesThisRun": 1,
-      "pendingReview": 251,
-      "scienceMedicalPriority": 136,
+      "newCandidates": 3,
+      "newCandidatesThisRun": 2,
+      "pendingReview": 253,
+      "scienceMedicalPriority": 138,
       "videoPriority": 115,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
