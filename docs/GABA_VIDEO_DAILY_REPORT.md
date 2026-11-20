@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-11-19 16:49:54 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-11-19 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-11-20 16:16:59 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-11-20 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,25 +8,23 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 0개 채널
-- 오늘 신규 후보(누적): 3건
-- 이번 실행 신규 후보: 2건
+- 오늘 신규 후보(누적): 0건
+- 이번 실행 신규 후보: 0건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
-- 등록 영상 원문 링크: 13/14 접근 확인 · 링크 경고 1건
+- 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
 - 인물 출처 확인일: 2/9 기록 · 미기록 7건 · 이 날짜는 영상 발언·자막·권리·공개 승인이 아님
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
 - 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
-- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-19.md) · 트랙·본문 상태를 영상별로 보관
+- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-20.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
 ## 신규 후보
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
-| PENDING-20261119-bp1XAg34F0Q | [How do benzodiazepines enhance GABA-A? #Shorts](https://www.youtube.com/watch?v=bp1XAg34F0Q) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 · 권위 후보 검색 발견 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261119-VZSg_WHc90I | [불면증엔 ‘수면제용 토마토’가 있다? : 건강한 토마토 편 \\[건강한 식재료\\] #가바토마토 #GABA토마토 #스트레스완화 #혈관확장 #혈압조절 #수면유도](https://www.youtube.com/watch?v=VZSg_WHc90I) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 질환·치료 표현 · 약물 대체·비교 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261119-fHw3y_PifHY | [GABA Chocolate for relief stress #gaba #chocolate #japantravel #japanesefood #snacks](https://www.youtube.com/watch?v=fHw3y_PifHY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 섭취·상업성 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| 없음 | 신규 후보 없음 | - | - | - |
 
 ## 채널 경고
 
@@ -45,7 +43,7 @@
 
 ## 등록 영상 원문 링크 상태
 
-- 경고: https://videocast.nih.gov/watch=51064 → fetch failed
+- 등록 영상 원문 링크에서 HTTP 경고 없음
 
 ## 권위·연구 출처 링크 상태
 
