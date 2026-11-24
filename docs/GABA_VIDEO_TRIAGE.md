@@ -4,10 +4,10 @@
 
 ## 오늘의 큐
 
-- 검토 대기: 256건
-- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 139건
-- VIDEO 원문·자막 선확인: 117건
-- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 32건
+- 검토 대기: 259건
+- SCIENCE/MEDICAL 또는 RIGHTS 선확인: 141건
+- VIDEO 원문·자막 선확인: 118건
+- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 33건
 
 ## 우선순위 정의
 
@@ -22,6 +22,9 @@
 
 | ID | 영상 | 발견 채널·경로 | 제목·공개 텍스트 주의 신호 | 권위 신호 구분 | 자동 우선순위 | 공개 큐 분류 | 첫 담당 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| PENDING-20261124--muO3wO1qns | [#협찬 발효가바 직장인건강 휴식을 위한 수면도움 셀핀다가바](https://www.youtube.com/watch?v=-muO3wO1qns) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
+| PENDING-20261124-ZCd-E-XIlMU | [Why Your GABA Supplements Might Be a Red Flag #shorts](https://www.youtube.com/watch?v=ZCd-E-XIlMU) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | SCIENCE/MEDICAL → RIGHTS | PENDING_REVIEW |
+| PENDING-20261124-JAaU8EWJLkY | [Check into GABA for better sleep](https://www.youtube.com/watch?v=JAaU8EWJLkY) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20261124-rWpuXNknKtM | [How does phenobarbital enhance GABA-A? #Shorts](https://www.youtube.com/watch?v=rWpuXNknKtM) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 | 해당 없음 · 권위 신호 없음 | VIDEO 우선 | 일반 교육 검토 | VIDEO | PENDING_REVIEW |
 | PENDING-20260922-_XGO7xk24jo | [헴프씨드 GABA 뇌 건강 솔루션  #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오](https://www.youtube.com/watch?v=_XGO7xk24jo) | YouTube 검색: GABA 뇌 신경 Shorts (keyword-discovery) | 질환·치료 표현 · 제품·브랜드 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 제품·브랜드 공개 큐 제외 | SCIENCE/MEDICAL | PENDING_REVIEW |
 | PENDING-20260922--azWbivGh5Y | [잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠](https://www.youtube.com/watch?v=-azWbivGh5Y) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 질환·치료 표현 · 효과·안전성 단정 신호 · 섭취·상업성 신호 | 해당 없음 · 권위 신호 없음 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | SCIENCE/MEDICAL | PENDING_REVIEW |

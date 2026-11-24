@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-11-24",
-  "checkedAtKst": "2026-11-24 18:55:09 KST",
-  "runId": "45369716360",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/45369716360",
+  "checkedAtKst": "2026-11-24 19:20:45 KST",
+  "runId": "45373878824",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/45373878824",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,12 +14,52 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 1,
-  "newCandidatesThisRun": 1,
-  "pendingReview": 256,
-  "scienceMedicalPriority": 139,
-  "videoPriority": 117,
+  "newCandidates": 4,
+  "newCandidatesThisRun": 3,
+  "pendingReview": 259,
+  "scienceMedicalPriority": 141,
+  "videoPriority": 118,
   "pendingQueue": [
+    {
+      "id": "PENDING-20261124--muO3wO1qns",
+      "title": "#협찬 발효가바 직장인건강 휴식을 위한 수면도움 셀핀다가바",
+      "url": "https://www.youtube.com/watch?v=-muO3wO1qns",
+      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL + RIGHTS",
+      "signals": [
+        "섭취·상업성 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "주장·이해관계·사용권 확인"
+    },
+    {
+      "id": "PENDING-20261124-ZCd-E-XIlMU",
+      "title": "Why Your GABA Supplements Might Be a Red Flag #shorts",
+      "url": "https://www.youtube.com/watch?v=ZCd-E-XIlMU",
+      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL + RIGHTS",
+      "signals": [
+        "섭취·상업성 신호"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "주장·이해관계·사용권 확인"
+    },
+    {
+      "id": "PENDING-20261124-JAaU8EWJLkY",
+      "title": "Check into GABA for better sleep",
+      "url": "https://www.youtube.com/watch?v=JAaU8EWJLkY",
+      "channel": "YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
+      "signals": [
+        "일반 설명 후보"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
+    },
     {
       "id": "PENDING-20261124-rWpuXNknKtM",
       "title": "How does phenobarbital enhance GABA-A? #Shorts",
@@ -44,50 +84,6 @@ export const GABA_MONITOR_SNAPSHOT = {
         "제품·브랜드 신호"
       ],
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922--azWbivGh5Y",
-      "title": "잠잘자게하는 성분 top 10 #수면영양제 #꿀잠비법 #멜라토닌 #가바 #수면장애 #불면증#수면영양제추천  #약사쇼츠 #꿀잠꿀팁 #건강정보 #약사채널 #약사쇼츠 #건강정보쇼츠",
-      "url": "https://www.youtube.com/watch?v=-azWbivGh5Y",
-      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-26wX746Ga6M",
-      "title": "불면증 현대인의 고민과 해결책 #GABA #가바 #공황장애 #몽진환 #불면증 #수면부족 #스트레스완화 #천연신경안정제 #가바몽진환 #케이지바이오",
-      "url": "https://www.youtube.com/watch?v=26wX746Ga6M",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-6QgcctlfBZU",
-      "title": "Supplement GABA to reduce stress! #shorts",
-      "url": "https://www.youtube.com/watch?v=6QgcctlfBZU",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     }
@@ -176,6 +172,20 @@ export const GABA_MONITOR_SNAPSHOT = {
   ],
   "productBrandQueue": [
     {
+      "id": "PENDING-20261124--muO3wO1qns",
+      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
+      "url": "https://www.youtube.com/watch?v=-muO3wO1qns",
+      "channel": "YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery)",
+      "priority": "SCIENCE/MEDICAL + RIGHTS",
+      "signals": [
+        "섭취·상업성 신호",
+        "제품·브랜드 신호"
+      ],
+      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
+      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
+      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
+    },
+    {
       "id": "PENDING-20260922-_XGO7xk24jo",
       "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
       "url": "https://www.youtube.com/watch?v=_XGO7xk24jo",
@@ -231,25 +241,9 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
       "reviewer": "SCIENCE/MEDICAL → RIGHTS",
       "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
-    },
-    {
-      "id": "PENDING-20260922-bquifROEFMI",
-      "title": "제품성 후보 · 원문 제목은 일일 리포트에서 확인",
-      "url": "https://www.youtube.com/watch?v=bquifROEFMI",
-      "channel": "YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "질환·치료 표현",
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호",
-        "제품·브랜드 신호"
-      ],
-      "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL → RIGHTS",
-      "nextAction": "제품·브랜드 주장과 일반 GABA 교육 범위를 분리하고 공개 큐 제외 여부 확인"
     }
   ],
-  "productBrandQuarantine": 32,
+  "productBrandQuarantine": 33,
   "history": [
     {
       "date": "2026-11-11",
@@ -422,11 +416,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-11-24",
-      "newCandidates": 1,
-      "newCandidatesThisRun": 1,
-      "pendingReview": 256,
-      "scienceMedicalPriority": 139,
-      "videoPriority": 117,
+      "newCandidates": 4,
+      "newCandidatesThisRun": 3,
+      "pendingReview": 259,
+      "scienceMedicalPriority": 141,
+      "videoPriority": 118,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,
