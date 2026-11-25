@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-11-24 19:20:45 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-11-24 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-11-25 17:35:08 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-11-25 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,26 +8,23 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 0개 채널
-- 오늘 신규 후보(누적): 4건
-- 이번 실행 신규 후보: 3건
-- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 1건
+- 오늘 신규 후보(누적): 1건
+- 이번 실행 신규 후보: 1건
+- 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
 - 인물 출처 확인일: 2/9 기록 · 미기록 7건 · 이 날짜는 영상 발언·자막·권리·공개 승인이 아님
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
 - 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
-- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-24.md) · 트랙·본문 상태를 영상별로 보관
+- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-25.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
 ## 신규 후보
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
-| PENDING-20261124-rWpuXNknKtM | [How does phenobarbital enhance GABA-A? #Shorts](https://www.youtube.com/watch?v=rWpuXNknKtM) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261124--muO3wO1qns | [#협찬 발효가바 직장인건강 휴식을 위한 수면도움 셀핀다가바](https://www.youtube.com/watch?v=-muO3wO1qns) | YouTube 검색: 가바 수면 영양제 Shorts (keyword-discovery) | 섭취·상업성 신호 · 제품·브랜드 신호 | SCIENCE/MEDICAL + RIGHTS | 제품·브랜드 공개 큐 제외 | PENDING_REVIEW |
-| PENDING-20261124-JAaU8EWJLkY | [Check into GABA for better sleep](https://www.youtube.com/watch?v=JAaU8EWJLkY) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261124-ZCd-E-XIlMU | [Why Your GABA Supplements Might Be a Red Flag #shorts](https://www.youtube.com/watch?v=ZCd-E-XIlMU) | YouTube 검색: 가바 GABA 대학 연구 과학자 Shorts (keyword-discovery) | 섭취·상업성 신호 | SCIENCE/MEDICAL + RIGHTS | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261125-gpzmDog3YEU | [GABA: The Calming Neurotransmitter 🧠🤯](https://www.youtube.com/watch?v=gpzmDog3YEU) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 권위 후보 검색 발견 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
