@@ -1,10 +1,10 @@
 export const GABA_MONITOR_SNAPSHOT = {
   "checkedAt": "2026-11-25",
-  "checkedAtKst": "2026-11-25 17:35:08 KST",
-  "runId": "45577556004",
-  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/45577556004",
+  "checkedAtKst": "2026-11-25 18:01:54 KST",
+  "runId": "45581492893",
+  "runUrl": "https://github.com/KRAdavid/cellpinda_gaba_sum/actions/runs/45581492893",
   "runOrigin": "GitHub Actions 예약 실행",
-  "scheduleExpression": "17 9 * * *",
+  "scheduleExpression": "37 9 * * *",
   "scheduleKst": "매일 09:17 KST · 지연 시 09:37 KST 재확인",
   "sourceChannels": 8,
   "registeredChannels": 8,
@@ -14,11 +14,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     "감마아미노부티르산 대학병원 의사 Shorts → 의사 GABA 신경전달물질 Shorts",
     "GABA 신경전달물질 대학 연구 Shorts → 과학자 GABA 신경전달물질 Shorts"
   ],
-  "newCandidates": 1,
+  "newCandidates": 2,
   "newCandidatesThisRun": 1,
-  "pendingReview": 260,
+  "pendingReview": 261,
   "scienceMedicalPriority": 142,
-  "videoPriority": 118,
+  "videoPriority": 119,
   "pendingQueue": [
     {
       "id": "PENDING-20261125-gpzmDog3YEU",
@@ -33,6 +33,19 @@ export const GABA_MONITOR_SNAPSHOT = {
       "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
+    },
+    {
+      "id": "PENDING-20261125-KrarLjLIWnM",
+      "title": "GABA (Gamma aminobutyric acid) #gaba #neurotransmitter #biology #youtube #neet",
+      "url": "https://www.youtube.com/watch?v=KrarLjLIWnM",
+      "channel": "YouTube 검색: 감마아미노부티르산 과학자 Shorts (keyword-discovery)",
+      "priority": "VIDEO 우선",
+      "signals": [
+        "일반 설명 후보"
+      ],
+      "publicationGate": "GENERAL_EDUCATION_REVIEW",
+      "reviewer": "VIDEO",
+      "nextAction": "원문·자막·화자 확인"
     },
     {
       "id": "PENDING-20260922-_XGO7xk24jo",
@@ -75,20 +88,6 @@ export const GABA_MONITOR_SNAPSHOT = {
         "제품·브랜드 신호"
       ],
       "publicationGate": "PRODUCT_BRAND_QUARANTINE",
-      "reviewer": "SCIENCE/MEDICAL",
-      "nextAction": "질환·효과·안전성 표현 확인"
-    },
-    {
-      "id": "PENDING-20260922-6QgcctlfBZU",
-      "title": "Supplement GABA to reduce stress! #shorts",
-      "url": "https://www.youtube.com/watch?v=6QgcctlfBZU",
-      "channel": "YouTube 검색: 가바 스트레스 Shorts (keyword-discovery)",
-      "priority": "SCIENCE/MEDICAL 우선",
-      "signals": [
-        "효과·안전성 단정 신호",
-        "섭취·상업성 신호"
-      ],
-      "publicationGate": "GENERAL_EDUCATION_REVIEW",
       "reviewer": "SCIENCE/MEDICAL",
       "nextAction": "질환·효과·안전성 표현 확인"
     }
@@ -423,11 +422,11 @@ export const GABA_MONITOR_SNAPSHOT = {
     },
     {
       "date": "2026-11-25",
-      "newCandidates": 1,
+      "newCandidates": 2,
       "newCandidatesThisRun": 1,
-      "pendingReview": 260,
+      "pendingReview": 261,
       "scienceMedicalPriority": 142,
-      "videoPriority": 118,
+      "videoPriority": 119,
       "captionBodiesAvailable": 0,
       "captionBodiesChecked": 12,
       "captionBodyWarnings": 12,

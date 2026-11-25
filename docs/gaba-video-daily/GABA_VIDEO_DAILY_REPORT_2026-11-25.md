@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-11-25 17:35:08 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-11-25 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-11-25 18:01:54 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-11-25 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -8,7 +8,7 @@
 - 유사 콘텐츠 검색어 확인: 12/12
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 0개 채널
-- 오늘 신규 후보(누적): 1건
+- 오늘 신규 후보(누적): 2건
 - 이번 실행 신규 후보: 1건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
@@ -25,6 +25,7 @@
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
 | PENDING-20261125-gpzmDog3YEU | [GABA: The Calming Neurotransmitter 🧠🤯](https://www.youtube.com/watch?v=gpzmDog3YEU) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 권위 후보 검색 발견 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261125-KrarLjLIWnM | [GABA (Gamma aminobutyric acid) #gaba #neurotransmitter #biology #youtube #neet](https://www.youtube.com/watch?v=KrarLjLIWnM) | YouTube 검색: 감마아미노부티르산 과학자 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -57,12 +58,12 @@
 
 ## 등록 YouTube 자막 트랙 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → mobile YouTube watch page has no caption track metadata
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 429 Too Many Requests
+- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 429 Too Many Requests
+- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 429 Too Many Requests
+- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 429 Too Many Requests
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 429 Too Many Requests
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 429 Too Many Requests
 - 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → mobile YouTube watch page has no caption track metadata
