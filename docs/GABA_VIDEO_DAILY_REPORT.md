@@ -1,6 +1,6 @@
 # GABA Shorts 일일 모니터 리포트
 
-> 자동 생성일: 2026-11-25 18:01:54 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 37 9 * * * · 기준일 2026-11-25 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
+> 자동 생성일: 2026-11-26 17:18:19 KST · 실행 출처: GitHub Actions 예약 실행 · 예약 트리거: 17 9 * * * · 기준일 2026-11-26 · 이 문서는 공개 승인 기록이 아니라 팀 검토 입력이다.
 
 ## 오늘의 실행 요약
 
@@ -9,7 +9,7 @@
 - 검색어 보완 경로 사용: 2건
 - Shorts 페이지 보완 수집: 0개 채널
 - 오늘 신규 후보(누적): 2건
-- 이번 실행 신규 후보: 1건
+- 이번 실행 신규 후보: 2건
 - 제품·브랜드 신호로 일반 GABA 공개 큐에서 자동 제외: 0건
 - 등록 영상 원문 링크: 14/14 접근 확인 · 링크 경고 0건
 - 권위·연구 출처 링크: 9/9 접근 확인 · 출처 링크 경고 0건
@@ -17,15 +17,15 @@
 - 등록 YouTube 메타데이터: 12/12 제목·채널 확인 · 메타데이터 경고 0건
 - 등록 YouTube 자막 트랙: 0/12 watch 페이지에서 발견 · 자막 경고 12건
 - 등록 YouTube 자막 본문: 0/12 본문 확인 · 본문 경고 12건 · HTTP 429 접근 제한 0건
-- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-25.md) · 트랙·본문 상태를 영상별로 보관
+- 자막 상세 감사: [영상별 기록](gaba-video-daily/GABA_VIDEO_CAPTION_AUDIT_2026-11-26.md) · 트랙·본문 상태를 영상별로 보관
 - 자동 공개: 0건 · 모든 후보는 VIDEO·SCIENCE/MEDICAL·RIGHTS 검토 전 PENDING_REVIEW
 
 ## 신규 후보
 
 | ID | 영상 | 채널 | 제목 기반 주의 신호 | 우선순위 | 공개 큐 분류 | 상태 |
 | --- | --- | --- | --- | --- | --- | --- |
-| PENDING-20261125-gpzmDog3YEU | [GABA: The Calming Neurotransmitter 🧠🤯](https://www.youtube.com/watch?v=gpzmDog3YEU) | YouTube 검색: 의사 GABA 신경전달물질 Shorts (keyword-discovery) | 효과·안전성 단정 신호 · 권위 후보 검색 발견 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
-| PENDING-20261125-KrarLjLIWnM | [GABA (Gamma aminobutyric acid) #gaba #neurotransmitter #biology #youtube #neet](https://www.youtube.com/watch?v=KrarLjLIWnM) | YouTube 검색: 감마아미노부티르산 과학자 Shorts (keyword-discovery) | 일반 설명 후보 | VIDEO 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261126-LUt0nRTaSQQ | [The Hidden Reality Of How Sleeping Pills Work On Your Brain #GABA #Shorts](https://www.youtube.com/watch?v=LUt0nRTaSQQ) | YouTube 검색: GABA 신경전달물질 Shorts (keyword-discovery) | 약물 대체·비교 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
+| PENDING-20261126-Zj5S7aDbMuY | [Discover the calming power of GABA! #GABA #LifeProTip #StressRelief](https://www.youtube.com/watch?v=Zj5S7aDbMuY) | YouTube 검색: 가바 스트레스 Shorts (keyword-discovery) | 효과·안전성 단정 신호 | SCIENCE/MEDICAL 우선 | 일반 교육 검토 | PENDING_REVIEW |
 
 ## 채널 경고
 
@@ -58,12 +58,12 @@
 
 ## 등록 YouTube 자막 트랙 상태
 
-- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → 429 Too Many Requests
-- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → 429 Too Many Requests
-- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → 429 Too Many Requests
-- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → 429 Too Many Requests
-- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → 429 Too Many Requests
+- 경고: https://www.youtube.com/watch?v=z-VLanhugWI&t=152s → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=zfW2JC3gMcU → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=R14wnRPxOJ8 → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/watch?v=dzlxJOSL_Ik → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/Cnk0PGn9YBM → mobile YouTube watch page has no caption track metadata
+- 경고: https://www.youtube.com/shorts/RLAU1VWGsaI → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/vnocd9ZVJj0 → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/BiZXS_ojLUA → mobile YouTube watch page has no caption track metadata
 - 경고: https://www.youtube.com/shorts/7Zsxm9Wh2Yg → mobile YouTube watch page has no caption track metadata
